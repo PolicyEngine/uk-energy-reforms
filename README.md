@@ -124,7 +124,7 @@ Use Microcosm for anything below national totals. eFRS weights are highly concen
 (Kish effective sample size about 1,100).
 
 policyengine-uk does not uprate `electricity_consumption` or `gas_consumption` between
-years. policyengine-uk#1860 added CPI uprating; #1868 removed it again, because
+years. [policyengine-uk#1860](https://github.com/PolicyEngine/policyengine-uk/pull/1860) added CPI uprating; [policyengine-uk#1868](https://github.com/PolicyEngine/policyengine-uk/pull/1868) removed it again, because
 policyengine-uk-data prices the Enhanced FRS at Ofgem April–June 2026 unit rates. Spend
 therefore stays at each dataset's stored price level in every year: April–June 2026 for the
 Enhanced FRS and 2024-25 for Microcosm. Ofgem's typical-use cap averaged within 2% of its
