@@ -122,17 +122,23 @@ amount:
       amount:
         values:
           2000-01-01: 0
-unit_rate:
+bill_share:
   in_effect:
     description: >-
-      Support is a share of the household's annual gas and electricity spend (a unit-rate
-      discount) instead of a fixed amount.
+      Support is a share of the household's annual gas and electricity spend (a
+      bill-share discount) instead of a fixed amount. RF proposes a cut in unit prices
+      (pence per kWh); the microdata hold annual spend, not kWh, so this discounts spend,
+      standing charges included, and gives low-consumption households relatively more
+      than a per-kWh cut would.
     values:
       2000-01-01: false
     metadata:
       unit: bool
   rate:
-    description: Discount as a share of the annual gas and electricity bill, by assessed income.
+    description: >-
+      Discount as a share of the annual gas and electricity bill, by assessed income.
+      Rates default to zero; calibrate.bill_share_changes derives rates that match a
+      fixed-amount schedule's averages, and each run's receipt records the rates used.
     metadata:
       type: single_amount
       threshold_unit: currency-GBP

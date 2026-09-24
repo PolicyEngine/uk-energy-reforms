@@ -1,9 +1,11 @@
-"""Turn published averages into unit rates, or rescale a schedule to a budget.
+"""Turn published averages into bill shares, or rescale a schedule to a budget.
 
-RF's scheme discounts unit prices, so support rises with consumption; its 175 GBP (flat)
-and 220 / 85 GBP (tiered) figures are averages across eligible households. These helpers
-derive, from a fixed-amount run on a given dataset, the unit rates that reproduce those
-averages tier by tier, and rescale any schedule to a total cost.
+RF's scheme cuts unit prices (pence per kWh), so support rises with consumption; its
+175 GBP (flat) and 220 / 85 GBP (tiered) figures are averages across eligible households.
+Neither dataset records kWh, only annual gas and electricity spend (which includes
+standing charges), so the closest we can model is a bill-share discount: a percentage off
+the household's annual spend. These helpers derive, from a fixed-amount run, the shares
+that reproduce the fixed amounts' averages, and rescale any schedule to a total cost.
 """
 
 from __future__ import annotations
@@ -21,24 +23,25 @@ def _paid_bracket(frame, thresholds):
     )
 
 
-def unit_rate_changes(fixed: Run) -> dict:
-    """Parameter changes for a unit-rate schedule matching ``fixed``'s tier averages.
+def bill_share_changes(fixed: Run) -> dict:
+    """Parameter changes for a bill-share schedule matching ``fixed``'s averages.
 
-    For each paying bracket, the rate is the bracket's fixed amount divided by the
-    weighted mean bill of households paid in that bracket, so average support per
-    recipient in each bracket is unchanged while individual support scales with the
-    household's bill. Brackets paying the same amount share one rate.
+    Brackets paying the same fixed amount share one rate: that amount divided by the
+    weighted mean bill of all households paid at it. Average support per recipient is
+    therefore unchanged across each such group of brackets combined, not within each
+    bracket (a flat schedule has one rate for everyone, so its brackets can average
+    different amounts). Individual support scales with the household's bill.
     """
     s = fixed.schedule
-    if s["unit_rate"]:
-        raise ValueError("unit_rate_changes expects a fixed-amount run")
+    if s["bill_share"]:
+        raise ValueError("bill_share_changes expects a fixed-amount run")
     f = fixed.frame[fixed.frame.discount > 0]
     bracket = _paid_bracket(f, s["thresholds"])
     changes = dict(fixed.changes)
-    changes[f"{P}.unit_rate.in_effect"] = True
+    changes[f"{P}.bill_share.in_effect"] = True
     amounts = np.asarray(s["amounts"])
     for i, (threshold, amount) in enumerate(zip(s["thresholds"], amounts)):
-        changes[f"{P}.unit_rate.rate[{i}].threshold"] = threshold
+        changes[f"{P}.bill_share.rate[{i}].threshold"] = threshold
         same = np.isin(bracket, np.flatnonzero(amounts == amount))
         if amount <= 0 or not same.any():
             rate = 0.0
@@ -46,7 +49,7 @@ def unit_rate_changes(fixed: Run) -> dict:
             bills = f.bill.values[same]
             weights = f.weight.values[same]
             rate = float(amount / np.average(bills, weights=weights))
-        changes[f"{P}.unit_rate.rate[{i}].amount"] = rate
+        changes[f"{P}.bill_share.rate[{i}].amount"] = rate
     return changes
 
 
@@ -60,9 +63,9 @@ def budget_changes(run: Run, budget: float) -> dict:
     factor = budget / cost(run)
     s = run.schedule
     changes = dict(run.changes)
-    if s["unit_rate"]:
+    if s["bill_share"]:
         for i, rate in enumerate(s["rates"]):
-            changes[f"{P}.unit_rate.rate[{i}].amount"] = rate * factor
+            changes[f"{P}.bill_share.rate[{i}].amount"] = rate * factor
     else:
         for i, amount in enumerate(s["amounts"]):
             changes[f"{P}.amount[{i}].amount"] = amount * factor

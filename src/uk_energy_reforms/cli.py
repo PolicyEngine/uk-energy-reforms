@@ -28,9 +28,12 @@ def main(argv: list[str] | None = None) -> None:
         "--presets", nargs="+", default=["rf_flat", "rf_tiered"], choices=PRESETS
     )
     r.add_argument(
-        "--unit-rate",
+        "--bill-share",
         action="store_true",
-        help="Also run each preset as a unit-rate discount with the same tier averages",
+        help=(
+            "Also run each preset as a bill-share discount (a share of annual gas and "
+            "electricity spend) with the same averages"
+        ),
     )
     r.add_argument(
         "--budget",
@@ -77,7 +80,7 @@ def main(argv: list[str] | None = None) -> None:
             args.datasets,
             args.year,
             args.presets,
-            unit_rate=args.unit_rate,
+            bill_share=args.bill_share,
             budget=args.budget,
             take_up=args.take_up,
         )

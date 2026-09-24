@@ -110,19 +110,19 @@
   },
   {
    "id": "couples_children_household_eligible_m",
-   "label": "Working-age couples with children eligible under the household test (m)",
+   "label": "Couples with children (benefit units) eligible under the household test (m)",
    "rf": 1.8,
    "rf_statement": "1.8 million such families eligible under the household option",
    "page": 7,
    "unit": "millions",
    "policyengine": {
     "microcosm_979": {
-     "2024": 1.390699875,
-     "2026": 1.21155875
+     "2024": 1.603337049484253,
+     "2026": 1.3883987665176392
     },
     "efrs_1573": {
-     "2024": 1.28280925,
-     "2026": 1.162940875
+     "2024": 1.454566240310669,
+     "2026": 1.2918884754180908
     }
    }
   },
@@ -135,66 +135,66 @@
    "unit": "thousands",
    "policyengine": {
     "microcosm_979": {
-     "2024": 534.322,
-     "2026": 443.9700625
+     "2024": 652.6506958007812,
+     "2026": 535.7325439453125
     },
     "efrs_1573": {
-     "2024": 582.110875,
-     "2026": 544.1575
+     "2024": 676.3201293945312,
+     "2026": 607.69580078125
     }
    }
   },
   {
    "id": "couples_children_lose_bottom_quintile",
-   "label": "Share of those couples with children in the poorest fifth",
+   "label": "Share of those couples with children in the poorest fifth of households",
    "rf": 0.71,
    "rf_statement": "71% of them are in the poorest fifth",
    "page": 7,
    "unit": "share",
    "policyengine": {
     "microcosm_979": {
-     "2024": 0.6434572339057922,
-     "2026": 0.6194583177566528
+     "2024": 0.5410510897636414,
+     "2026": 0.5754618048667908
     },
     "efrs_1573": {
-     "2024": 0.5615407228469849,
-     "2026": 0.7139857411384583
+     "2024": 0.5120246410369873,
+     "2026": 0.6031903624534607
     }
    }
   },
   {
    "id": "pensioners_gain_k",
-   "label": "Pensioner households eligible only under the individual test (thousands)",
+   "label": "Pensioner benefit units eligible only under the individual test (thousands)",
    "rf": 780,
    "rf_statement": "780,000 pensioner households would become eligible",
    "page": 8,
    "unit": "thousands",
    "policyengine": {
     "microcosm_979": {
-     "2024": 903.6441875,
-     "2026": 892.856875
+     "2024": 1089.1435546875,
+     "2026": 1092.26708984375
     },
     "efrs_1573": {
-     "2024": 809.608625,
-     "2026": 814.69975
+     "2024": 823.7606811523438,
+     "2026": 831.7198486328125
     }
    }
   },
   {
    "id": "pensioners_gain_decile5plus",
-   "label": "Share of those pensioner households in decile five or above",
+   "label": "Share of those pensioner units in household decile five or above",
    "rf": 0.81,
    "rf_statement": "81% of them (630,000) are in decile five or above",
    "page": 8,
    "unit": "share",
    "policyengine": {
     "microcosm_979": {
-     "2024": 0.7383507490158081,
-     "2026": 0.6155683398246765
+     "2024": 0.7610656023025513,
+     "2026": 0.6354759931564331
     },
     "efrs_1573": {
-     "2024": 0.5975138545036316,
-     "2026": 0.49251753091812134
+     "2024": 0.6902995705604553,
+     "2026": 0.5709627866744995
     }
    }
   },
@@ -316,11 +316,16 @@
     "income_test_bottom4": 0.7255478501319885,
     "household_test_share": 0.37600189447402954,
     "household_test_bottom4": 0.7390965819358826,
-    "couples_children_household_eligible_m": 1.390699875,
-    "couples_children_lose_k": 534.322,
-    "couples_children_lose_bottom_quintile": 0.6434572339057922,
-    "pensioners_gain_k": 903.6441875,
-    "pensioners_gain_decile5plus": 0.7383507490158081,
+    "couples_children_household_eligible_m": 1.603337049484253,
+    "couples_children_lose_k": 652.6506958007812,
+    "couples_children_lose_bottom_quintile": 0.5410510897636414,
+    "pensioners_gain_k": 1089.1435546875,
+    "pensioners_gain_decile5plus": 0.7610656023025513,
+    "couples_children_household_eligible_m_households": 1.390699875,
+    "couples_children_lose_k_households": 534.322,
+    "couples_children_lose_bottom_quintile_households": 0.6434572339057922,
+    "pensioners_gain_k_households": 903.6441875,
+    "pensioners_gain_decile5plus_households": 0.7383507490158081,
     "flat_average_at_budget": 151.27224496180224,
     "flat_average_at_budget_income_test": 176.82144879538177,
     "tiered_low_at_budget_income_test": 211.17382437094773,
@@ -332,8 +337,8 @@
     "cost_flat_at_175_bn": 2.313709056,
     "cost_tiered_at_220_85_bn": 2.604824064,
     "cost_tiered_own_income_at_220_85_bn": 2.2459712,
-    "sample_n_couples_children_lose": 760,
-    "sample_n_pensioners_gain": 2211
+    "sample_n_couples_children_lose": 868,
+    "sample_n_pensioners_gain": 2341
    },
    "2026": {
     "gb_households_m": 28.565264,
@@ -342,11 +347,16 @@
     "income_test_bottom4": 0.6794704794883728,
     "household_test_share": 0.3417467772960663,
     "household_test_bottom4": 0.6801631450653076,
-    "couples_children_household_eligible_m": 1.21155875,
-    "couples_children_lose_k": 443.9700625,
-    "couples_children_lose_bottom_quintile": 0.6194583177566528,
-    "pensioners_gain_k": 892.856875,
-    "pensioners_gain_decile5plus": 0.6155683398246765,
+    "couples_children_household_eligible_m": 1.3883987665176392,
+    "couples_children_lose_k": 535.7325439453125,
+    "couples_children_lose_bottom_quintile": 0.5754618048667908,
+    "pensioners_gain_k": 1092.26708984375,
+    "pensioners_gain_decile5plus": 0.6354759931564331,
+    "couples_children_household_eligible_m_households": 1.21155875,
+    "couples_children_lose_k_households": 443.9700625,
+    "couples_children_lose_bottom_quintile_households": 0.6194583177566528,
+    "pensioners_gain_k_households": 892.856875,
+    "pensioners_gain_decile5plus_households": 0.6155683398246765,
     "flat_average_at_budget": 159.51013798583998,
     "flat_average_at_budget_income_test": 192.2794050490649,
     "tiered_low_at_budget_income_test": 230.8099419407492,
@@ -358,8 +368,8 @@
     "cost_flat_at_175_bn": 2.194217728,
     "cost_tiered_at_220_85_bn": 2.481935872,
     "cost_tiered_own_income_at_220_85_bn": 2.087963392,
-    "sample_n_couples_children_lose": 635,
-    "sample_n_pensioners_gain": 2320
+    "sample_n_couples_children_lose": 741,
+    "sample_n_pensioners_gain": 2462
    }
   },
   "efrs_1573": {
@@ -370,11 +380,16 @@
     "income_test_bottom4": 0.76659095287323,
     "household_test_share": 0.37882086634635925,
     "household_test_bottom4": 0.7579333782196045,
-    "couples_children_household_eligible_m": 1.28280925,
-    "couples_children_lose_k": 582.110875,
-    "couples_children_lose_bottom_quintile": 0.5615407228469849,
-    "pensioners_gain_k": 809.608625,
-    "pensioners_gain_decile5plus": 0.5975138545036316,
+    "couples_children_household_eligible_m": 1.454566240310669,
+    "couples_children_lose_k": 676.3201293945312,
+    "couples_children_lose_bottom_quintile": 0.5120246410369873,
+    "pensioners_gain_k": 823.7606811523438,
+    "pensioners_gain_decile5plus": 0.6902995705604553,
+    "couples_children_household_eligible_m_households": 1.28280925,
+    "couples_children_lose_k_households": 582.110875,
+    "couples_children_lose_bottom_quintile_households": 0.5615407228469849,
+    "pensioners_gain_k_households": 809.608625,
+    "pensioners_gain_decile5plus_households": 0.5975138545036316,
     "flat_average_at_budget": 146.37241225467892,
     "flat_average_at_budget_income_test": 162.36536461009825,
     "tiered_low_at_budget_income_test": 190.7199866586168,
@@ -386,8 +401,8 @@
     "cost_flat_at_175_bn": 2.391160832,
     "cost_tiered_at_220_85_bn": 2.670118656,
     "cost_tiered_own_income_at_220_85_bn": 2.421447168,
-    "sample_n_couples_children_lose": 520,
-    "sample_n_pensioners_gain": 2080
+    "sample_n_couples_children_lose": 618,
+    "sample_n_pensioners_gain": 2184
    },
    "2026": {
     "gb_households_m": 30.672374,
@@ -396,11 +411,16 @@
     "income_test_bottom4": 0.7334484457969666,
     "household_test_share": 0.3508462905883789,
     "household_test_bottom4": 0.7100368142127991,
-    "couples_children_household_eligible_m": 1.162940875,
-    "couples_children_lose_k": 544.1575,
-    "couples_children_lose_bottom_quintile": 0.7139857411384583,
-    "pensioners_gain_k": 814.69975,
-    "pensioners_gain_decile5plus": 0.49251753091812134,
+    "couples_children_household_eligible_m": 1.2918884754180908,
+    "couples_children_lose_k": 607.69580078125,
+    "couples_children_lose_bottom_quintile": 0.6031903624534607,
+    "pensioners_gain_k": 831.7198486328125,
+    "pensioners_gain_decile5plus": 0.5709627866744995,
+    "couples_children_household_eligible_m_households": 1.162940875,
+    "couples_children_lose_k_households": 544.1575,
+    "couples_children_lose_bottom_quintile_households": 0.7139857411384583,
+    "pensioners_gain_k_households": 814.69975,
+    "pensioners_gain_decile5plus_households": 0.49251753091812134,
     "flat_average_at_budget": 152.55139151277282,
     "flat_average_at_budget_income_test": 171.60737160057596,
     "tiered_low_at_budget_income_test": 201.44283164919582,
@@ -412,8 +432,8 @@
     "cost_flat_at_175_bn": 2.294308608,
     "cost_tiered_at_220_85_bn": 2.56872704,
     "cost_tiered_own_income_at_220_85_bn": 2.307987712,
-    "sample_n_couples_children_lose": 420,
-    "sample_n_pensioners_gain": 2125
+    "sample_n_couples_children_lose": 514,
+    "sample_n_pensioners_gain": 2253
    }
   }
  },
@@ -432,7 +452,7 @@
  "notes": [
   "RF: Family Resources Survey 2024-25, GB, with the IPPR tax-benefit model.",
   "Eligibility shares are for the income test alone; passporting is separate.",
-  "RF counts benefit units in family-type figures; PolicyEngine counts households with one benefit unit, so multi-family households are left out of those rows.",
+  "Family-type rows count benefit units wherever they live (including multi-family households) and use household-weighted income deciles, as RF's figures do; household-level versions are in `extra` (*_households, person-weighted deciles).",
   "\u00a32bn averages divide \u00a32bn among all recipients (passported or passing the test), and separately among households passing the income test only, which is closer to how RF's averages appear to be costed. For the tiered option, RF does not say which tier passported households get; the all-recipient figure places them in the top tier."
  ]
 }

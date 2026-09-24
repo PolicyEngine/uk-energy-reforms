@@ -152,13 +152,13 @@ def test_northern_ireland_is_out_of_scope():
     assert calc(situation, {**preset("rf_flat"), f"{P}.gb_only": False}) == 175
 
 
-def test_unit_rate_discount_scales_with_the_bill():
+def test_bill_share_discount_scales_with_the_bill():
     situation = household([earner(17_000)], electricity=900, gas=600)
     changes = {
         **preset("rf_tiered"),
-        f"{P}.unit_rate.in_effect": True,
-        f"{P}.unit_rate.rate[0].amount": 0.10,
-        f"{P}.unit_rate.rate[1].amount": 0.05,
+        f"{P}.bill_share.in_effect": True,
+        f"{P}.bill_share.rate[0].amount": 0.10,
+        f"{P}.bill_share.rate[1].amount": 0.05,
     }
     assert calc(situation, changes) == pytest.approx(150)
     mid = household([earner(20_000)], electricity=900, gas=600)

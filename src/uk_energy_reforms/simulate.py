@@ -66,6 +66,7 @@ def baseline_frame(dataset: str, year: int) -> pd.DataFrame:
             "tenure": _values(sim, "tenure_type", year).astype(str),
             "elec": _values(sim, "electricity_consumption", year),
             "gas": _values(sim, "gas_consumption", year),
+            "equivalisation_bhc": _values(sim, "household_equivalisation_bhc", year),
         }
     )
     for variable, column in OUTCOMES.items():
@@ -89,15 +90,53 @@ def baseline_frame(dataset: str, year: int) -> pd.DataFrame:
             "n_wa_adults": g.apply(
                 lambda d: int((~d.is_child & ~d.sp_age).sum()), include_groups=False
             ),
-            "second_income": g.total_income.apply(
-                lambda s: np.sort(s.values)[-2] if len(s) > 1 else 0.0
-            ),
         }
     )
+    # Whether the highest-income member is over State Pension age (pays no employee
+    # NI), which sets the marginal rate used for dead zones.
+    top = person.sort_values("total_income", ascending=False, kind="stable")
+    counts["top_earner_pensioner"] = top.groupby("household_id").sp_age.first()
     counts["household_type"] = classify(person)
     frame = frame.merge(counts, left_on="household_id", right_index=True, how="left")
     frame["gb"] = frame.region != "NORTHERN_IRELAND"
     return frame
+
+
+@lru_cache(maxsize=8)
+def benunit_frame(dataset: str, year: int) -> pd.DataFrame:
+    """Benefit units with their household, weight and family type (for RF's counts).
+
+    RF counts benefit units in its family-type figures: couples with children (two
+    working-age adults and at least one child) and pensioner units (an adult over State
+    Pension age), wherever they live, including multi-family households.
+    """
+    sim = Microsimulation(dataset=str(dataset_path(dataset)))
+    person = pd.DataFrame(
+        {
+            "benunit_id": _values(sim, "benunit_id", year, map_to="person"),
+            "household_id": _values(sim, "household_id", year, map_to="person"),
+            "is_child": _values(sim, "is_child", year).astype(bool),
+            "sp_age": _values(sim, "is_SP_age", year).astype(bool),
+        }
+    )
+    person["sp_adult"] = person.sp_age & ~person.is_child
+    g = person.groupby("benunit_id")
+    units = pd.DataFrame(
+        {
+            "household_id": g.household_id.first(),
+            "adults": g.is_child.apply(lambda s: int((~s).sum())),
+            "children": g.is_child.sum(),
+            "pensioner": g.sp_adult.any(),
+        }
+    )
+    weights = pd.Series(
+        _values(sim, "benunit_weight", year), index=_values(sim, "benunit_id", year)
+    )
+    units["weight"] = weights.reindex(units.index).values
+    units["couple_with_children"] = (
+        (units.adults == 2) & (units.children > 0) & ~units.pensioner
+    )
+    return units.reset_index()
 
 
 def resolved_schedule(sim, year: int) -> dict:
@@ -106,11 +145,11 @@ def resolved_schedule(sim, year: int) -> dict:
     )
     return {
         "in_effect": bool(p.in_effect),
-        "unit_rate": bool(p.unit_rate.in_effect),
+        "bill_share": bool(p.bill_share.in_effect),
         "thresholds": [float(t) for t in p.amount.thresholds],
         "amounts": [float(a) for a in p.amount.amounts],
-        "rate_thresholds": [float(t) for t in p.unit_rate.rate.thresholds],
-        "rates": [float(r) for r in p.unit_rate.rate.amounts],
+        "rate_thresholds": [float(t) for t in p.bill_share.rate.thresholds],
+        "rates": [float(r) for r in p.bill_share.rate.amounts],
         "passport_assessed_income": float(p.passport.assessed_income),
         "income_test": bool(p.income_test.in_effect),
         "household_equivalised": bool(p.income_test.household_equivalised),

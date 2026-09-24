@@ -26,15 +26,15 @@ def _params(period, parameters):
 
 def _schedule(p, income, bill):
     """Support due at an assessed income, in pounds per household."""
-    if p.unit_rate.in_effect:
-        return p.unit_rate.rate.calc(income) * bill
+    if p.bill_share.in_effect:
+        return p.bill_share.rate.calc(income) * bill
     return p.amount.calc(income)
 
 
 def _schedule_pays(p, income):
     """Whether the schedule pays anything at this assessed income."""
-    if p.unit_rate.in_effect:
-        return p.unit_rate.rate.calc(income) > 0
+    if p.bill_share.in_effect:
+        return p.bill_share.rate.calc(income) > 0
     return p.amount.calc(income) > 0
 
 

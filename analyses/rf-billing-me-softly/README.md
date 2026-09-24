@@ -9,7 +9,9 @@ tiered version: about £220 below £18,000 and £85 from £18,000 to £24,000. T
 estimates those options with PolicyEngine UK and sets the estimates beside the report's
 own figures.
 
-Key results for 2026-27. Figures are Microcosm / Enhanced FRS; see "Data" below.
+Key results for 2026-27. Figures are Microcosm / Enhanced FRS; see "Data" below. The
+Enhanced FRS weights sum to 30.7m GB households against 28.6m in Microcosm and about 28m
+in the report, so its counts run 7-10% high; its shares and rates are comparable.
 
 - **Flat option (£175 per eligible household):** costs £2.19bn / £2.29bn and reaches
   12.5m / 13.1m households (44% / 43% of GB households).
@@ -35,15 +37,26 @@ estimates the following, set beside the Resolution Foundation's published figure
 | Poorest four deciles passing the £24,000 individual test | 75% (p. 6) | 73% | 77% |
 | Households with equivalised household income below £30,000 | around 40% (p. 6) | 38% | 38% |
 | Poorest four deciles passing the £30,000 household test | 78% (p. 6) | 74% | 76% |
-| Couples with children eligible under the household test but not the individual test | 490,000 (p. 7) | 534,000 | 582,000 |
-| Pensioner households eligible under the individual test but not the household test | 780,000 (p. 8) | 904,000 | 810,000 |
+| Couples with children (benefit units) eligible under the household test | 1.8m (p. 7) | 1.6m | 1.5m |
+| …of which not eligible under the individual test | 490,000 (p. 7) | 653,000 | 676,000 |
+| Pensioner units eligible under the individual test but not the household test | 780,000 (p. 8) | 1,089,000 | 824,000 |
+| …of which in household decile five or above | 81% (p. 8) | 76% | 69% |
 | Flat average of a £2bn scheme, over households passing the income test | £175 (p. 9) | £177 | £162 |
 | Tiered amounts of a £2bn scheme, over households passing the income test | £220 / £85 (p. 9) | £211 / £82 | £191 / £74 |
 
 Three differences in method explain the gaps:
 
-- **Benefit units against households.** The report counts benefit units in its family-type
-  figures. PolicyEngine counts single-benefit-unit households.
+- **Benefit units against households.** Figure 4 counts benefit units; the text calls the
+  pensioner group "households". The table counts benefit units wherever they live, with
+  household-weighted deciles.
+  - Counted instead as households with a single benefit unit, the rows read 1.4m / 1.3m
+    eligible couples with children, 534k / 582k not eligible under the individual test,
+    and 904k / 810k pensioner households gaining.
+  - Neither unit matches every family figure in the report, so read these rows as
+    agreeing on direction and rough size rather than level.
+  - The decile basis matters too. With person-weighted deciles, 74% / 60% of the
+    pensioner households are in decile five or above; with household-weighted deciles it
+    is 79% / 69%, against the report's 81%.
 - **Denominator for the £2bn averages.** Dividing £2bn among all eligible households
   (passported or passing the test) gives £151 / £146. The published £175 matches the
   income-test group.
@@ -96,23 +109,38 @@ Eligibility rates within household types agree across the two datasets; counts d
   - household-income test: 74% / 81%;
   - passporting alone: 65% / 74%. It reaches 43% / 46% of households in the poorest four
     deciles, against 76% / 80% under the flat option.
-- **Cliffs.** Support falls to zero at £24,000, and in the tiered option it also drops by
-  £135 at £18,000.
-  - 410k non-passported households have tested income within £1,000 above £24,000. 200k /
-    270k of them are in the poorest four deciles.
-  - 386k / 333k households sit within £1,000 above £18,000, and 82–84% of them are in the
+- **Cliffs** (Microcosm only; the Enhanced FRS rests on an effective sample of about 10
+  households within £1,000 of each line). Support falls to zero at £24,000, and in the
+  tiered option it also drops by £135 at £18,000.
+  - 410k non-passported households have tested income within £1,000 above £24,000. 200k
+    of them are in the poorest four deciles and 64k in relative poverty after housing
+    costs (effective sample size 53).
+  - 386k households sit within £1,000 above £18,000, and 318k (82%) of them are in the
     poorest four deciles.
   - Households either side of a line look alike. On Microcosm, 44% of non-passported
     households within £1,000 below £24,000 are in the poorest four deciles, against 49%
     within £1,000 above.
-- **Dead zones.** A basic-rate employee in these ranges would need more extra gross pay than
-  the support lost to break even:
-  - flat option: 52k / 58k households at £24,000;
-  - tiered option: 68k / 92k at £18,000 plus 26k at £24,000.
-- **Unit-rate delivery,** the report's mechanism, keeps each tier's average but pays in
-  proportion to gas and electricity bills (Microcosm, flat option).
-  - Single adults average £124 and couples with children £253.
-  - Dead zones roughly double, because households with high bills lose more at the line.
+- **Dead zones** (Microcosm). These are households whose top earner would need more extra
+  gross pay than the support lost to break even. The marginal rate is 28% (basic-rate tax
+  plus 8% employee NI), or 20% where the top earner is over State Pension age and pays no
+  NI; a pensioner's zone is £219 wide rather than £243 for £175 of support.
+  - flat option: 50k households at £24,000;
+  - tiered option: 64k at £18,000 plus 26k at £24,000.
+- **Bill-share delivery.** The report proposes a cut in unit prices (pence per kWh). The
+  microdata hold annual gas and electricity spend, not kWh, so the closest model is a
+  percentage off the annual bill.
+  - That also discounts standing charges and gives low-consumption households relatively
+    more than a per-kWh cut would.
+  - Matching the fixed amounts' averages takes 13.5% off the annual bill in the flat
+    option, and 17.1% (below £18,000) and 6.4% (£18,000 to £24,000) in the tiered option
+    (Microcosm).
+  - Support then follows bills: single adults average £124 and couples with children £253
+    (Microcosm, flat option).
+  - Dead zones rise from 50k to 85k, because households with high bills lose more at the
+    line.
+  - Brackets paying the same fixed amount share one rate, so averages match across those
+    brackets combined, not within each. On the Enhanced FRS the two flat brackets average
+    £169 and £281.
 
 ## Method
 
@@ -121,7 +149,7 @@ Commands, from the repository root:
 ```bash
 uv run uk-energy-reforms run --datasets microcosm_979 efrs_1573 --year 2026 \
   --presets rf_flat rf_tiered rf_tiered_own_income rf_household_income passport_only \
-  --unit-rate --budget 2e9 --out analyses/rf-billing-me-softly/results-2026
+  --bill-share --budget 2e9 --out analyses/rf-billing-me-softly/results-2026
 uv run uk-energy-reforms run --datasets microcosm_979 efrs_1573 --year 2024 \
   --presets rf_flat rf_tiered rf_household_income --out analyses/rf-billing-me-softly/results-2024
 uv run uk-energy-reforms rf-compare --out analyses/rf-billing-me-softly
@@ -155,7 +183,10 @@ uv run uk-energy-reforms rf-compare --out analyses/rf-billing-me-softly
   - 14% of its GB households have no electricity spend.
   - Its weights are concentrated: the Kish effective sample size is about 1,100, and 207
     records carry 10m households. Treat its regional, household-type and band estimates as
-    indicative, and set aside its unit-rate results.
+    indicative, and set aside its bill-share results.
+  - Its weights sum to 30.7m GB households in 2026-27, 7% above Microcosm and 10% above
+    the report's 28m, so every Enhanced FRS count (recipients, households in poverty,
+    people moved out of poverty) runs high by about that much.
 - **Household-type weights differ between the datasets.** Multi-family households are 21%
   of households in Microcosm and 9% in the Enhanced FRS, from the same survey records.
 - **What neither dataset records:** prepayment meters, off-grid heating fuels, energy
