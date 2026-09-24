@@ -89,7 +89,7 @@ function describeSchedule(s: Schedule): string {
     return "Passported households only; no income test.";
   }
   const band = (a: number, r: number) =>
-    s.unit_rate ? `${pct(r, 1)} of the annual gas and electricity bill` : gbp(a);
+    s.bill_share ? `${pct(r, 1)} off the annual gas and electricity bill` : gbp(a);
   const parts =
     s.amounts[0] === s.amounts[1] && s.rates[0] === s.rates[1]
       ? [`${band(s.amounts[0], s.rates[0])} where ${test} is below ${gbp(t2)}`]
@@ -154,7 +154,7 @@ function Breakdown({ rows, groupHeader }: { rows: BreakdownRow[]; groupHeader: s
   );
 }
 
-function Overview({ result }: { result: Result }) {
+function Overview({ result, dataset }: { result: Result; dataset: string }) {
   const h = result.headline;
   const rel = result.poverty.find((p) => p.measure === "rel_pov_ahc" && p.group === "people");
   const relKids = result.poverty.find((p) => p.measure === "rel_pov_ahc" && p.group === "children");
@@ -166,6 +166,13 @@ function Overview({ result }: { result: Result }) {
   }));
   return (
     <>
+      {dataset === "efrs_1573" && (
+        <p className="text-sm text-muted-foreground">
+          Enhanced FRS weights sum to {millions(h.gb_households_m, 1)} GB households, about
+          7-10% more than Microcosm and the report, so its counts run high; shares are
+          comparable.
+        </p>
+      )}
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <MetricCard label="Cost in 2026-27" value={gbpBn(h.cost_bn)} />
         <MetricCard
@@ -238,7 +245,7 @@ function Overview({ result }: { result: Result }) {
   );
 }
 
-function Thresholds({ result }: { result: Result }) {
+function Thresholds({ result, dataset }: { result: Result; dataset: string }) {
   if (result.cliffs.length === 0) {
     return (
       <Section title="Income thresholds">
@@ -251,6 +258,13 @@ function Thresholds({ result }: { result: Result }) {
   }
   return (
     <>
+      {dataset === "efrs_1573" && (
+        <p className="rounded-md border border-border bg-muted p-3 text-sm text-foreground">
+          The Enhanced FRS puts an effective sample of about 10 households within £1,000 of
+          each line, so these band figures are shown for completeness only; the written
+          analysis quotes Microcosm&apos;s.
+        </p>
+      )}
       {result.cliffs.map((c) => {
         const b = c.bands;
         const rows = [
@@ -288,9 +302,10 @@ function Thresholds({ result }: { result: Result }) {
             </div>
             <BandChart rows={rows} />
             <p className="text-xs text-muted-foreground">
-              The dead zone is the income range just above the threshold where a basic-rate
-              employee (20% income tax, 8% National Insurance) would need more extra gross pay
-              than the support lost to break even. Effective sample size within £1,000 above:{" "}
+              The dead zone is the income range just above the threshold where the
+              household&apos;s top earner would need more extra gross pay than the support lost
+              to break even, at 20% income tax plus 8% National Insurance (20% for top earners
+              over State Pension age). Effective sample size within £1,000 above:{" "}
               {Math.round(b["1000_above"].ess)}; treat band counts as indicative.
             </p>
           </Section>
@@ -407,8 +422,11 @@ function Methodology() {
         <li>
           Support: &quot;RF&apos;s amounts&quot; pays the report&apos;s averages to every eligible
           household. &quot;Scaled to £2bn&quot; scales them so the scheme costs £2bn.
-          &quot;Unit rate&quot; pays a share of each household&apos;s gas and electricity
-          bill, set so each tier&apos;s average matches the report&apos;s. Every eligible
+          &quot;Bill share&quot; takes a percentage off each household&apos;s annual gas and
+          electricity spend, set so the average matches the report&apos;s amounts. The
+          report proposes a cut in unit prices (pence per kWh); the microdata hold annual
+          spend, not kWh, so the bill share also discounts standing charges and gives
+          low-consumption households relatively more than a per-kWh cut would. Every eligible
           household claims.
         </li>
         <li>
@@ -420,6 +438,19 @@ function Methodology() {
           Data: {DATASET_ORDER.map((d) => `${m.datasets[d].label}. ${m.datasets[d].notes}`).join(" ")}{" "}
           Neither dataset records prepayment meters, off-grid heating fuels, energy efficiency
           ratings or whether households can afford to keep warm.
+        </li>
+        <li>
+          Levels differ between the datasets: the Enhanced FRS weights sum to{" "}
+          {data.results.rf_flat?.efrs_1573?.headline.gb_households_m.toFixed(1)}m GB households
+          in 2026-27, against{" "}
+          {data.results.rf_flat?.microcosm_979?.headline.gb_households_m.toFixed(1)}m in
+          Microcosm and about 28m in the report, so its counts run about 7-10% high. Shares
+          and rates are comparable across datasets; counts are not.
+        </li>
+        <li>
+          Dead zones gross the lost support up at the household top earner&apos;s marginal
+          rate: 20% basic-rate income tax plus 8% employee National Insurance, or 20% where
+          the top earner is over State Pension age.
         </li>
         <li>
           The two datasets weight household types differently (multi-family households are 21%
@@ -530,7 +561,7 @@ export default function Dashboard() {
               <TabsTrigger value="method">Methodology</TabsTrigger>
             </TabsList>
             <TabsContent value="overview" className="flex flex-col gap-4">
-              <Overview result={result} />
+              <Overview result={result} dataset={dataset} />
             </TabsContent>
             <TabsContent value="region" className="flex flex-col gap-4">
               <Breakdown rows={result.by_region} groupHeader="Region" />
@@ -539,7 +570,7 @@ export default function Dashboard() {
               <Breakdown rows={result.by_household_type} groupHeader="Household type" />
             </TabsContent>
             <TabsContent value="thresholds" className="flex flex-col gap-4">
-              <Thresholds result={result} />
+              <Thresholds result={result} dataset={dataset} />
             </TabsContent>
             <TabsContent value="rf" className="flex flex-col gap-4">
               <RfComparison />

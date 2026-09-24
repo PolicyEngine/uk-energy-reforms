@@ -87,7 +87,7 @@ export interface BreakdownRow {
 }
 
 export interface Schedule {
-  unit_rate: boolean;
+  bill_share: boolean;
   thresholds: number[];
   amounts: number[];
   rates: number[];
@@ -111,7 +111,7 @@ export interface Result {
 export interface Scenario {
   id: string;
   preset: string;
-  variant: "published" | "budget_2bn" | "unit_rate";
+  variant: "published" | "budget_2bn" | "bill_share";
   label: string;
   description: string;
 }
@@ -163,6 +163,6 @@ export const DATASET_SHORT: Record<string, string> = {
 
 export function scenarioId(preset: string, variant: string): string {
   if (variant === "published") return preset;
-  if (variant === "unit_rate") return `${preset}_unit_rate`;
+  if (variant === "bill_share") return `${preset}_bill_share`;
   return `${preset}_budget_2bn`;
 }
