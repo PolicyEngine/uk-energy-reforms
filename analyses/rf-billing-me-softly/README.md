@@ -9,9 +9,11 @@ tiered version: about £220 below £18,000 and £85 from £18,000 to £24,000. T
 estimates those options with PolicyEngine UK and sets the estimates beside the report's
 own figures.
 
-Key results for 2026-27. Figures are Microcosm / Enhanced FRS; see "Data" below. The
-Enhanced FRS weights sum to 30.7m GB households against 28.6m in Microcosm and about 28m
-in the report, so its counts run 7-10% high; its shares and rates are comparable.
+Key results for 2026-27, which runs from April 2026 to March 2027 and so contains the
+January–March 2027 window the report proposes. Figures are Microcosm / Enhanced FRS; see
+"Data" below. The Enhanced FRS weights sum to 30.7m GB households against 28.6m in
+Microcosm and about 28m in the report, so its counts run 7-10% high; its shares and rates
+are comparable.
 
 - **Flat option (£175 per eligible household):** costs £2.19bn / £2.29bn and reaches
   12.5m / 13.1m households (44% / 43% of GB households).
@@ -24,6 +26,18 @@ in the report, so its counts run 7-10% high; its shares and rates are comparable
 - **Absolute poverty after housing costs:** the scheme reaches 86% / 89% of the 4.1m / 5.0m
   households below the line. It misses 0.56m in both datasets, almost all of them
   working-age.
+- **Winners and inequality (flat option):** 40% / 37% of people in Great Britain live in a
+  household that gains, from 82% / 85% in the poorest decile to 5% / 2% in the richest.
+  0.4% / 1.0% of people gain more than 5% of net income. Nobody loses, because the analysis
+  does not model how the scheme is paid for. The Gini coefficient of equivalised household
+  income falls by 0.0010 / 0.0011 before housing costs (0.3% on both) and by 0.0012 /
+  0.0014 after housing costs.
+- **2027-28 (the following winter):** the flat option costs £2.15bn / £2.26bn and reaches
+  12.3m / 12.9m households (43% / 42%). The nominal £24,000 line covers fewer households as
+  incomes rise: 35% / 37% pass the income test, down from 36% / 38%. Relative poverty after
+  housing costs falls by 180k / 135k people. Poverty counts move by tens of thousands
+  between years and datasets, because they depend on how many people sit just below the
+  line.
 
 ## Replication of the report's figures
 
@@ -82,6 +96,31 @@ How to read the table, and what explains the gaps:
 `rf_comparison.md` lists every figure with 2026-27 values as well. Two statements are not
 reproduced: the share of households unable to keep warm (the HBAI deprivation item is not in
 the microdata), and the three-month income assessment (the microdata hold annual incomes).
+
+## Baseline against published statistics
+
+The dashboard's Baseline tab sets each model figure beside its nearest published figure,
+with sources (`src/uk_energy_reforms/external_sources.json`).
+
+- **Households.** 28.6m / 30.7m GB households in 2026-27 (28.3m / 30.3m in 2024-25). ONS
+  counts 28.25m in 2025 (England, Wales and Scotland summed) and DESNZ uses 28.2m for 2024.
+- **Passporting.** 27% / 26% of households on modelled receipt and 24% / 26% on reported
+  receipt, against the report's "around a quarter". The Warm Home Discount paid 5.52m
+  rebates in 2025-26 (18.6% of GB households). Rebates reach bill-payers matched through
+  government data and the count excludes Scotland's Broader Group, so it sits below the
+  number of households receiving the benefits.
+- **Bills.** Microcosm averages £1,440 at 2024-25 prices, 19% below ONS Family Spending's
+  £1,773 for 2024-25 (UK, weekly spend × 52). Most of the gap is gas: £523 against £733,
+  with electricity £917 against £1,040. The Enhanced FRS averages £1,586 at April–June 2026
+  unit rates, against Ofgem's typical-use cap of £1,477 for that quarter and £1,723 for
+  October–December 2026. Its median is £906, pulled down by the 14% of its households with
+  no electricity spend.
+- **Gas.** 75% / 95% of households have gas spend; DESNZ puts 84% of properties on the gas
+  grid.
+- **Relative poverty after housing costs, 2024-25.** 19.6% / 23.7% of people, against 19.6%
+  in HBAI; children 26.7% / 32.9% against 27.4%; pensioners 16.2% / 17.5% against 13.9%.
+  HBAI covers the UK; the model covers Great Britain against 60% of the UK median in its
+  own data.
 
 ## By region (flat option)
 
@@ -166,9 +205,15 @@ Commands, from the repository root:
 uv run uk-energy-reforms run --datasets microcosm_979 efrs_1573 --year 2026 \
   --presets rf_flat rf_tiered rf_tiered_own_income rf_household_income passport_only \
   --bill-share --budget 2e9 --out analyses/rf-billing-me-softly/results-2026
+uv run uk-energy-reforms run --datasets microcosm_979 efrs_1573 --year 2027 \
+  --presets rf_flat rf_tiered rf_tiered_own_income rf_household_income passport_only \
+  --bill-share --budget 2e9 --out analyses/rf-billing-me-softly/results-2027
 uv run uk-energy-reforms run --datasets microcosm_979 efrs_1573 --year 2024 \
   --presets rf_flat rf_tiered rf_household_income --out analyses/rf-billing-me-softly/results-2024
 uv run uk-energy-reforms rf-compare --out analyses/rf-billing-me-softly
+uv run uk-energy-reforms export-dashboard --analysis analyses/rf-billing-me-softly \
+  --out dashboard/public/data/targeted_energy_discount_results.json \
+  --calculator-out dashboard/public/data/calculator.json
 ```
 
 - **Model.** Static microsimulation with policyengine-uk 2.100.1 for Great Britain.
@@ -179,15 +224,27 @@ uv run uk-energy-reforms rf-compare --out analyses/rf-billing-me-softly
 - **Income test.** It uses `total_income`: earnings, pensions including the State Pension,
   property, savings, dividends and taxable benefits. Incomes are annual.
 - **Nominal thresholds.** The £24,000, £18,000 and £30,000 thresholds are held at their
-  nominal values while incomes are uprated from 2024-25 to 2026-27. That is why the
-  £24,000 test covers 40% / 41% of households on 2024-25 incomes but 36% / 38% in 2026-27.
+  nominal values while incomes are uprated from 2024-25. That is why the £24,000 test
+  covers 40% / 41% of households on 2024-25 incomes, 36% / 38% in 2026-27 and 35% / 37% in
+  2027-28.
+- **Energy spend is not uprated.** policyengine-uk 2.100 holds gas and electricity spend at
+  the price level each dataset stores. The Enhanced FRS stores April–June 2026 unit rates;
+  Microcosm stores 2024-25 prices, so its bills, bill-share payments and energy-burden
+  shares are understated in 2026-27 and 2027-28. Fixed amounts and eligibility do not
+  depend on spend.
 - **Take-up and income treatment.** Every eligible household claims. The discount counts as
   HBAI income, as DWP counts the Warm Home Discount.
 - **Poverty lines.**
   - Relative poverty is 60% of the baseline UK median, held fixed for the reform.
   - Absolute poverty uses the 2010-11 HBAI line uprated by CPI.
   - Deciles rank GB people by equivalised income after housing costs.
-- **Receipts.** `results-2026/report.md` and `results-2024/report.md` hold every table,
+- **Winners and inequality.** People are banded by their household's change in net income
+  before housing costs relative to its baseline: above 5%, 0.1% to 5%, and within 0.1% (no
+  change). Gini coefficients and top-10% and top-1% income shares use equivalised household
+  net income, weighted by people in Great Britain; the record straddling a top-share
+  cut-off counts in proportion to the weight inside it.
+- **Receipts.** `results-2026/report.md`, `results-2027/report.md` and
+  `results-2024/report.md` hold every table,
   including effective sample sizes. `results.json` holds the raw numbers.
 
 ## Data

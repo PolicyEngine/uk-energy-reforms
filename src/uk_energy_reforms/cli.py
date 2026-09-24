@@ -64,14 +64,23 @@ def main(argv: list[str] | None = None) -> None:
     )
     e.add_argument("--analysis", type=Path, required=True)
     e.add_argument("--out", type=Path, required=True)
+    e.add_argument(
+        "--calculator-out",
+        type=Path,
+        default=None,
+        help="Also write the household calculator's reference cases (runs the model)",
+    )
 
     args = parser.parse_args(argv)
 
     if args.command == "export-dashboard":
         from uk_energy_reforms.dashboard_data import write
 
-        write(args.analysis, args.out)
-        print(f"Wrote {args.out}")
+        write(args.analysis, args.out, args.calculator_out)
+        print(
+            f"Wrote {args.out}"
+            + (f" and {args.calculator_out}" if args.calculator_out else "")
+        )
         return
 
     args.out.mkdir(parents=True, exist_ok=True)

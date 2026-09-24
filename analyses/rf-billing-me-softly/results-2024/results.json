@@ -64,6 +64,503 @@
     },
     "hbai_income_change_bn": 2.313709020614624
    },
+   "baseline": {
+    "households_m": 28.2537,
+    "people_m": 67.35553173977416,
+    "mean_bill": 1439.96533203125,
+    "median_bill": 1197.514892578125,
+    "total_bill_bn": 40.684349060058594,
+    "mean_electricity": 916.5137329101562,
+    "mean_gas": 523.4515991210938,
+    "no_electricity_spend_share": 0.0,
+    "gas_spend_share": 0.7522157430648804,
+    "energy_over_10pct_share": 0.08830078691244125,
+    "passported_share": 0.2746606171131134,
+    "income_test_share": 0.4003314673900604,
+    "poverty_rates": [
+     {
+      "measure": "abs_pov_bhc",
+      "group": "people",
+      "baseline_rate": 0.09365241041304084
+     },
+     {
+      "measure": "abs_pov_bhc",
+      "group": "children",
+      "baseline_rate": 0.10993661683275086
+     },
+     {
+      "measure": "abs_pov_bhc",
+      "group": "working_age_adults",
+      "baseline_rate": 0.08468809879333349
+     },
+     {
+      "measure": "abs_pov_bhc",
+      "group": "pensioners",
+      "baseline_rate": 0.1048287395262061
+     },
+     {
+      "measure": "abs_pov_ahc",
+      "group": "people",
+      "baseline_rate": 0.13136470943730438
+     },
+     {
+      "measure": "abs_pov_ahc",
+      "group": "children",
+      "baseline_rate": 0.17252019730942778
+     },
+     {
+      "measure": "abs_pov_ahc",
+      "group": "working_age_adults",
+      "baseline_rate": 0.13238453767212946
+     },
+     {
+      "measure": "abs_pov_ahc",
+      "group": "pensioners",
+      "baseline_rate": 0.08011257261944366
+     },
+     {
+      "measure": "rel_pov_bhc",
+      "group": "people",
+      "baseline_rate": 0.14916300542832117
+     },
+     {
+      "measure": "rel_pov_bhc",
+      "group": "children",
+      "baseline_rate": 0.1828089363478636
+     },
+     {
+      "measure": "rel_pov_bhc",
+      "group": "working_age_adults",
+      "baseline_rate": 0.13223068128750443
+     },
+     {
+      "measure": "rel_pov_bhc",
+      "group": "pensioners",
+      "baseline_rate": 0.16691805856466294
+     },
+     {
+      "measure": "rel_pov_ahc",
+      "group": "people",
+      "baseline_rate": 0.19598820406130965
+     },
+     {
+      "measure": "rel_pov_ahc",
+      "group": "children",
+      "baseline_rate": 0.26681864396060445
+     },
+     {
+      "measure": "rel_pov_ahc",
+      "group": "working_age_adults",
+      "baseline_rate": 0.18171254717704421
+     },
+     {
+      "measure": "rel_pov_ahc",
+      "group": "pensioners",
+      "baseline_rate": 0.1616096689367324
+     }
+    ],
+    "bill_by_decile": [
+     {
+      "group": 1,
+      "households_m": 3.24867825,
+      "mean_bill": 1309.1549072265625,
+      "mean_electricity": 873.89599609375,
+      "mean_gas": 435.259033203125,
+      "energy_over_10pct_share": 0.3456946313381195
+     },
+     {
+      "group": 2,
+      "households_m": 2.932523,
+      "mean_bill": 1363.99853515625,
+      "mean_electricity": 897.4917602539062,
+      "mean_gas": 466.50689697265625,
+      "energy_over_10pct_share": 0.1807936131954193
+     },
+     {
+      "group": 3,
+      "households_m": 2.84951475,
+      "mean_bill": 1345.2579345703125,
+      "mean_electricity": 859.3214111328125,
+      "mean_gas": 485.9365539550781,
+      "energy_over_10pct_share": 0.0957055613398552
+     },
+     {
+      "group": 4,
+      "households_m": 2.74289825,
+      "mean_bill": 1398.244384765625,
+      "mean_electricity": 905.0341796875,
+      "mean_gas": 493.2101745605469,
+      "energy_over_10pct_share": 0.06377771496772766
+     },
+     {
+      "group": 5,
+      "households_m": 2.86619425,
+      "mean_bill": 1335.07763671875,
+      "mean_electricity": 856.29150390625,
+      "mean_gas": 478.7861022949219,
+      "energy_over_10pct_share": 0.050801996141672134
+     },
+     {
+      "group": 6,
+      "households_m": 2.80010575,
+      "mean_bill": 1401.18408203125,
+      "mean_electricity": 883.9334106445312,
+      "mean_gas": 517.2507934570312,
+      "energy_over_10pct_share": 0.035698916763067245
+     },
+     {
+      "group": 7,
+      "households_m": 2.645111,
+      "mean_bill": 1535.5550537109375,
+      "mean_electricity": 955.6455688476562,
+      "mean_gas": 579.9094848632812,
+      "energy_over_10pct_share": 0.024492671713232994
+     },
+     {
+      "group": 8,
+      "households_m": 2.57948925,
+      "mean_bill": 1531.41455078125,
+      "mean_electricity": 950.7573852539062,
+      "mean_gas": 580.6572265625,
+      "energy_over_10pct_share": 0.01998610980808735
+     },
+     {
+      "group": 9,
+      "households_m": 2.64255725,
+      "mean_bill": 1558.7313232421875,
+      "mean_electricity": 941.9456787109375,
+      "mean_gas": 616.78564453125,
+      "energy_over_10pct_share": 0.00847565196454525
+     },
+     {
+      "group": 10,
+      "households_m": 2.9466275,
+      "mean_bill": 1656.7149658203125,
+      "mean_electricity": 1050.0513916015625,
+      "mean_gas": 606.6633911132812,
+      "energy_over_10pct_share": 0.0032699299044907093
+     }
+    ],
+    "bill_by_region": [
+     {
+      "group": "North East",
+      "households_m": 1.20933125,
+      "mean_bill": 1404.680419921875,
+      "mean_electricity": 803.157958984375,
+      "mean_gas": 601.5224609375,
+      "energy_over_10pct_share": 0.08708196878433228
+     },
+     {
+      "group": "North West",
+      "households_m": 3.25978,
+      "mean_bill": 1393.7349853515625,
+      "mean_electricity": 827.8611450195312,
+      "mean_gas": 565.873779296875,
+      "energy_over_10pct_share": 0.08248197287321091
+     },
+     {
+      "group": "Yorkshire and the Humber",
+      "households_m": 2.384038,
+      "mean_bill": 1470.673828125,
+      "mean_electricity": 897.0520629882812,
+      "mean_gas": 573.6216430664062,
+      "energy_over_10pct_share": 0.07785902172327042
+     },
+     {
+      "group": "East Midlands",
+      "households_m": 2.104065,
+      "mean_bill": 1592.7413330078125,
+      "mean_electricity": 986.9788208007812,
+      "mean_gas": 605.7623291015625,
+      "energy_over_10pct_share": 0.0983743965625763
+     },
+     {
+      "group": "West Midlands",
+      "households_m": 2.50243425,
+      "mean_bill": 1467.919921875,
+      "mean_electricity": 961.3514404296875,
+      "mean_gas": 506.5685119628906,
+      "energy_over_10pct_share": 0.09619110822677612
+     },
+     {
+      "group": "East of England",
+      "households_m": 2.7197915,
+      "mean_bill": 1442.83740234375,
+      "mean_electricity": 944.5509643554688,
+      "mean_gas": 498.2863464355469,
+      "energy_over_10pct_share": 0.09737314283847809
+     },
+     {
+      "group": "London",
+      "households_m": 3.6011965,
+      "mean_bill": 1427.77587890625,
+      "mean_electricity": 877.0166625976562,
+      "mean_gas": 550.7593994140625,
+      "energy_over_10pct_share": 0.08372654765844345
+     },
+     {
+      "group": "South East",
+      "households_m": 3.9502985,
+      "mean_bill": 1521.819091796875,
+      "mean_electricity": 999.8976440429688,
+      "mean_gas": 521.9215698242188,
+      "energy_over_10pct_share": 0.090834841132164
+     },
+     {
+      "group": "South West",
+      "households_m": 2.521535,
+      "mean_bill": 1313.8221435546875,
+      "mean_electricity": 907.2398071289062,
+      "mean_gas": 406.5822448730469,
+      "energy_over_10pct_share": 0.06306863576173782
+     },
+     {
+      "group": "Wales",
+      "households_m": 1.377074125,
+      "mean_bill": 1457.140380859375,
+      "mean_electricity": 993.5538940429688,
+      "mean_gas": 463.5865478515625,
+      "energy_over_10pct_share": 0.10346558690071106
+     },
+     {
+      "group": "Scotland",
+      "households_m": 2.62415575,
+      "mean_bill": 1339.330810546875,
+      "mean_electricity": 865.4073486328125,
+      "mean_gas": 473.9234924316406,
+      "energy_over_10pct_share": 0.09932266920804977
+     }
+    ],
+    "bill_by_household_type": [
+     {
+      "group": "Single pensioner",
+      "households_m": 3.98410725,
+      "mean_bill": 1076.3460693359375,
+      "mean_electricity": 750.5466918945312,
+      "mean_gas": 325.7993469238281,
+      "energy_over_10pct_share": 0.18817391991615295
+     },
+     {
+      "group": "Pensioner couple",
+      "households_m": 3.526691,
+      "mean_bill": 1519.1676025390625,
+      "mean_electricity": 970.2891235351562,
+      "mean_gas": 548.8782958984375,
+      "energy_over_10pct_share": 0.06699706614017487
+     },
+     {
+      "group": "Single, no children",
+      "households_m": 4.382905,
+      "mean_bill": 944.323486328125,
+      "mean_electricity": 656.197998046875,
+      "mean_gas": 288.12554931640625,
+      "energy_over_10pct_share": 0.148738294839859
+     },
+     {
+      "group": "Couple, no children",
+      "households_m": 4.196482,
+      "mean_bill": 1422.3714599609375,
+      "mean_electricity": 886.3579711914062,
+      "mean_gas": 536.0135498046875,
+      "energy_over_10pct_share": 0.05602215602993965
+     },
+     {
+      "group": "Lone parent",
+      "households_m": 1.342577625,
+      "mean_bill": 1290.652099609375,
+      "mean_electricity": 826.524658203125,
+      "mean_gas": 464.12744140625,
+      "energy_over_10pct_share": 0.06010543555021286
+     },
+     {
+      "group": "Couple with children",
+      "households_m": 4.80609,
+      "mean_bill": 1846.18994140625,
+      "mean_electricity": 1145.164306640625,
+      "mean_gas": 701.02587890625,
+      "energy_over_10pct_share": 0.06480954587459564
+     },
+     {
+      "group": "Multi-family household",
+      "households_m": 6.014846,
+      "mean_bill": 1716.56005859375,
+      "mean_electricity": 1043.029541015625,
+      "mean_gas": 673.5305786132812,
+      "energy_over_10pct_share": 0.0381825715303421
+     }
+    ],
+    "bill_by_tenure": [
+     {
+      "group": "OWNED_OUTRIGHT",
+      "households_m": 10.347903,
+      "mean_bill": 1480.1744384765625,
+      "mean_electricity": 945.0139770507812,
+      "mean_gas": 535.1602783203125,
+      "energy_over_10pct_share": 0.11017026752233505
+     },
+     {
+      "group": "OWNED_WITH_MORTGAGE",
+      "households_m": 7.5951895,
+      "mean_bill": 1600.3916015625,
+      "mean_electricity": 976.0498657226562,
+      "mean_gas": 624.3417358398438,
+      "energy_over_10pct_share": 0.06764039397239685
+     },
+     {
+      "group": "RENT_FROM_COUNCIL",
+      "households_m": 2.5691525,
+      "mean_bill": 1341.9112548828125,
+      "mean_electricity": 878.9264526367188,
+      "mean_gas": 462.98480224609375,
+      "energy_over_10pct_share": 0.10118822008371353
+     },
+     {
+      "group": "RENT_FROM_HA",
+      "households_m": 2.835174,
+      "mean_bill": 1143.9554443359375,
+      "mean_electricity": 757.016357421875,
+      "mean_gas": 386.93902587890625,
+      "energy_over_10pct_share": 0.06355138123035431
+     },
+     {
+      "group": "RENT_PRIVATELY",
+      "households_m": 4.906281,
+      "mean_bill": 1329.2113037109375,
+      "mean_electricity": 876.0888061523438,
+      "mean_gas": 453.1225280761719,
+      "energy_over_10pct_share": 0.08171233534812927
+     }
+    ]
+   },
+   "inequality": {
+    "gini_bhc": {
+     "baseline": 0.2887415222819102,
+     "reform": 0.28765229030236406,
+     "change": -0.0010892319795461347,
+     "change_pct": -0.0037723427200147294
+    },
+    "top_10_share_bhc": {
+     "baseline": 0.23334618267736787,
+     "reform": 0.23301032511896444,
+     "change": -0.00033585755840342957,
+     "change_pct": -0.001439310275187991
+    },
+    "top_1_share_bhc": {
+     "baseline": 0.05623576873771716,
+     "reform": 0.05615103507788099,
+     "change": -8.473365983616837e-05,
+     "change_pct": -0.0015067573848125911
+    },
+    "gini_ahc": {
+     "baseline": 0.33043183894781525,
+     "reform": 0.3290843060072912,
+     "change": -0.0013475329405240322,
+     "change_pct": -0.0040780965442523435
+    },
+    "top_10_share_ahc": {
+     "baseline": 0.2509496959521006,
+     "reform": 0.25051942166930463,
+     "change": -0.0004302742827959616,
+     "change_pct": -0.0017145837980138024
+    },
+    "top_1_share_ahc": {
+     "baseline": 0.06325173422523207,
+     "reform": 0.06313694966034467,
+     "change": -0.0001147845648874074,
+     "change_pct": -0.0018147259722345779
+    }
+   },
+   "winners_losers": {
+    "all": {
+     "gain_more_than_5pct": 0.004077061475817636,
+     "gain_less_than_5pct": 0.4164538896307169,
+     "no_change": 0.5794690488934656,
+     "lose_less_than_5pct": 0.0,
+     "lose_more_than_5pct": 0.0
+    },
+    "by_decile": [
+     {
+      "decile": 1,
+      "gain_more_than_5pct": 0.04076783281151274,
+      "gain_less_than_5pct": 0.8009437037589902,
+      "no_change": 0.1582884634294971,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 2,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.8113355063556806,
+      "no_change": 0.18866449364431936,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 3,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.6998428499854625,
+      "no_change": 0.3001571500145375,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 4,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.5451170457179431,
+      "no_change": 0.45488295428205694,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 5,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.4576062630769439,
+      "no_change": 0.542393736923056,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 6,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.3172852984391659,
+      "no_change": 0.6827147015608341,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 7,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.2399023178862886,
+      "no_change": 0.7600976821137114,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 8,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.12762617416870173,
+      "no_change": 0.8723738258312983,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 9,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.09539832436271539,
+      "no_change": 0.9046016756372846,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 10,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.06910080599357407,
+      "no_change": 0.930899194006426,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     }
+    ]
+   },
    "deciles_ahc": [
     {
      "decile": 1,
@@ -953,6 +1450,503 @@
      }
     },
     "hbai_income_change_bn": 2.391160726547241
+   },
+   "baseline": {
+    "households_m": 30.337822,
+    "people_m": 67.19251830348345,
+    "mean_bill": 1586.006103515625,
+    "median_bill": 905.9693603515625,
+    "total_bill_bn": 48.115970611572266,
+    "mean_electricity": 899.3849487304688,
+    "mean_gas": 686.6211547851562,
+    "no_electricity_spend_share": 0.13928765058517456,
+    "gas_spend_share": 0.9466286897659302,
+    "energy_over_10pct_share": 0.14350542426109314,
+    "passported_share": 0.2615073621273041,
+    "income_test_share": 0.4060244560241699,
+    "poverty_rates": [
+     {
+      "measure": "abs_pov_bhc",
+      "group": "people",
+      "baseline_rate": 0.11275790545141037
+     },
+     {
+      "measure": "abs_pov_bhc",
+      "group": "children",
+      "baseline_rate": 0.12630930936008508
+     },
+     {
+      "measure": "abs_pov_bhc",
+      "group": "working_age_adults",
+      "baseline_rate": 0.11320312692485991
+     },
+     {
+      "measure": "abs_pov_bhc",
+      "group": "pensioners",
+      "baseline_rate": 0.09419542370751553
+     },
+     {
+      "measure": "abs_pov_ahc",
+      "group": "people",
+      "baseline_rate": 0.14696411719430702
+     },
+     {
+      "measure": "abs_pov_ahc",
+      "group": "children",
+      "baseline_rate": 0.18620418625123522
+     },
+     {
+      "measure": "abs_pov_ahc",
+      "group": "working_age_adults",
+      "baseline_rate": 0.15308747201725922
+     },
+     {
+      "measure": "abs_pov_ahc",
+      "group": "pensioners",
+      "baseline_rate": 0.07653577516523967
+     },
+     {
+      "measure": "rel_pov_bhc",
+      "group": "people",
+      "baseline_rate": 0.1974315292073872
+     },
+     {
+      "measure": "rel_pov_bhc",
+      "group": "children",
+      "baseline_rate": 0.24892116988489688
+     },
+     {
+      "measure": "rel_pov_bhc",
+      "group": "working_age_adults",
+      "baseline_rate": 0.17250269496637005
+     },
+     {
+      "measure": "rel_pov_bhc",
+      "group": "pensioners",
+      "baseline_rate": 0.21874337890650355
+     },
+     {
+      "measure": "rel_pov_ahc",
+      "group": "people",
+      "baseline_rate": 0.23667188372904024
+     },
+     {
+      "measure": "rel_pov_ahc",
+      "group": "children",
+      "baseline_rate": 0.3286775253867377
+     },
+     {
+      "measure": "rel_pov_ahc",
+      "group": "working_age_adults",
+      "baseline_rate": 0.22097310920513427
+     },
+     {
+      "measure": "rel_pov_ahc",
+      "group": "pensioners",
+      "baseline_rate": 0.17523404164645226
+     }
+    ],
+    "bill_by_decile": [
+     {
+      "group": 1,
+      "households_m": 3.6439365,
+      "mean_bill": 1193.0938720703125,
+      "mean_electricity": 667.4440307617188,
+      "mean_gas": 525.6499633789062,
+      "energy_over_10pct_share": 0.3604196608066559
+     },
+     {
+      "group": 2,
+      "households_m": 2.952617,
+      "mean_bill": 1282.568603515625,
+      "mean_electricity": 758.94482421875,
+      "mean_gas": 523.623779296875,
+      "energy_over_10pct_share": 0.17821826040744781
+     },
+     {
+      "group": 3,
+      "households_m": 3.0840325,
+      "mean_bill": 1434.2183837890625,
+      "mean_electricity": 811.1587524414062,
+      "mean_gas": 623.0595703125,
+      "energy_over_10pct_share": 0.18969851732254028
+     },
+     {
+      "group": 4,
+      "households_m": 2.999946,
+      "mean_bill": 1492.4342041015625,
+      "mean_electricity": 864.6994018554688,
+      "mean_gas": 627.7346801757812,
+      "energy_over_10pct_share": 0.17132888734340668
+     },
+     {
+      "group": 5,
+      "households_m": 3.25807525,
+      "mean_bill": 1480.3646240234375,
+      "mean_electricity": 858.5678100585938,
+      "mean_gas": 621.7968139648438,
+      "energy_over_10pct_share": 0.10841703414916992
+     },
+     {
+      "group": 6,
+      "households_m": 3.11629025,
+      "mean_bill": 2417.941162109375,
+      "mean_electricity": 1366.2506103515625,
+      "mean_gas": 1051.6907958984375,
+      "energy_over_10pct_share": 0.18999594449996948
+     },
+     {
+      "group": 7,
+      "households_m": 2.82623075,
+      "mean_bill": 1579.9481201171875,
+      "mean_electricity": 881.8803100585938,
+      "mean_gas": 698.0677490234375,
+      "energy_over_10pct_share": 0.0660741999745369
+     },
+     {
+      "group": 8,
+      "households_m": 2.6762845,
+      "mean_bill": 1755.9620361328125,
+      "mean_electricity": 999.7501220703125,
+      "mean_gas": 756.2119140625,
+      "energy_over_10pct_share": 0.049988940358161926
+     },
+     {
+      "group": 9,
+      "households_m": 2.62900975,
+      "mean_bill": 1696.4326171875,
+      "mean_electricity": 965.6619873046875,
+      "mean_gas": 730.7705688476562,
+      "energy_over_10pct_share": 0.032286010682582855
+     },
+     {
+      "group": 10,
+      "households_m": 3.15140125,
+      "mean_bill": 1617.7705078125,
+      "mean_electricity": 874.2244873046875,
+      "mean_gas": 743.546142578125,
+      "energy_over_10pct_share": 0.020420290529727936
+     }
+    ],
+    "bill_by_region": [
+     {
+      "group": "North East",
+      "households_m": 1.302546375,
+      "mean_bill": 2146.225341796875,
+      "mean_electricity": 1162.3021240234375,
+      "mean_gas": 983.9230346679688,
+      "energy_over_10pct_share": 0.22810927033424377
+     },
+     {
+      "group": "North West",
+      "households_m": 3.499573,
+      "mean_bill": 1595.3499755859375,
+      "mean_electricity": 909.2054443359375,
+      "mean_gas": 686.1444091796875,
+      "energy_over_10pct_share": 0.1657153069972992
+     },
+     {
+      "group": "Yorkshire and the Humber",
+      "households_m": 2.5553565,
+      "mean_bill": 1917.7437744140625,
+      "mean_electricity": 1049.5230712890625,
+      "mean_gas": 868.2207641601562,
+      "energy_over_10pct_share": 0.17306853830814362
+     },
+     {
+      "group": "East Midlands",
+      "households_m": 2.26209225,
+      "mean_bill": 1948.3974609375,
+      "mean_electricity": 1109.294677734375,
+      "mean_gas": 839.102783203125,
+      "energy_over_10pct_share": 0.13647925853729248
+     },
+     {
+      "group": "West Midlands",
+      "households_m": 2.67165675,
+      "mean_bill": 1401.102783203125,
+      "mean_electricity": 772.9761352539062,
+      "mean_gas": 628.126708984375,
+      "energy_over_10pct_share": 0.14426977932453156
+     },
+     {
+      "group": "East of England",
+      "households_m": 2.90283125,
+      "mean_bill": 1338.9261474609375,
+      "mean_electricity": 776.6294555664062,
+      "mean_gas": 562.2966918945312,
+      "energy_over_10pct_share": 0.07976841926574707
+     },
+     {
+      "group": "London",
+      "households_m": 3.9194285,
+      "mean_bill": 1084.5228271484375,
+      "mean_electricity": 578.7416381835938,
+      "mean_gas": 505.7811584472656,
+      "energy_over_10pct_share": 0.05452181026339531
+     },
+     {
+      "group": "South East",
+      "households_m": 4.2128035,
+      "mean_bill": 1573.05517578125,
+      "mean_electricity": 879.0816650390625,
+      "mean_gas": 693.9735717773438,
+      "energy_over_10pct_share": 0.20098121464252472
+     },
+     {
+      "group": "South West",
+      "households_m": 2.7361945,
+      "mean_bill": 1317.458984375,
+      "mean_electricity": 823.6795654296875,
+      "mean_gas": 493.77960205078125,
+      "energy_over_10pct_share": 0.08708038926124573
+     },
+     {
+      "group": "Wales",
+      "households_m": 1.5649675,
+      "mean_bill": 1845.1556396484375,
+      "mean_electricity": 1042.968994140625,
+      "mean_gas": 802.1865234375,
+      "energy_over_10pct_share": 0.19431987404823303
+     },
+     {
+      "group": "Scotland",
+      "households_m": 2.71037325,
+      "mean_bill": 2003.169921875,
+      "mean_electricity": 1188.441162109375,
+      "mean_gas": 814.7286987304688,
+      "energy_over_10pct_share": 0.18663497269153595
+     }
+    ],
+    "bill_by_household_type": [
+     {
+      "group": "Single pensioner",
+      "households_m": 4.044378,
+      "mean_bill": 1315.21142578125,
+      "mean_electricity": 733.8985595703125,
+      "mean_gas": 581.31298828125,
+      "energy_over_10pct_share": 0.21607448160648346
+     },
+     {
+      "group": "Pensioner couple",
+      "households_m": 3.84184325,
+      "mean_bill": 2365.772216796875,
+      "mean_electricity": 1362.951904296875,
+      "mean_gas": 1002.8201293945312,
+      "energy_over_10pct_share": 0.18536661565303802
+     },
+     {
+      "group": "Single, no children",
+      "households_m": 5.58196,
+      "mean_bill": 1163.6591796875,
+      "mean_electricity": 642.6113891601562,
+      "mean_gas": 521.047607421875,
+      "energy_over_10pct_share": 0.2163844257593155
+     },
+     {
+      "group": "Couple, no children",
+      "households_m": 7.105159,
+      "mean_bill": 1725.6365966796875,
+      "mean_electricity": 994.2197875976562,
+      "mean_gas": 731.4170532226562,
+      "energy_over_10pct_share": 0.12699586153030396
+     },
+     {
+      "group": "Lone parent",
+      "households_m": 2.09701875,
+      "mean_bill": 740.9887084960938,
+      "mean_electricity": 407.93695068359375,
+      "mean_gas": 333.0517578125,
+      "energy_over_10pct_share": 0.034425292164087296
+     },
+     {
+      "group": "Couple with children",
+      "households_m": 4.926222,
+      "mean_bill": 1629.059814453125,
+      "mean_electricity": 927.1756591796875,
+      "mean_gas": 701.8840942382812,
+      "energy_over_10pct_share": 0.05749952048063278
+     },
+     {
+      "group": "Multi-family household",
+      "households_m": 2.74124225,
+      "mean_bill": 1959.8533935546875,
+      "mean_electricity": 1096.9202880859375,
+      "mean_gas": 862.93310546875,
+      "energy_over_10pct_share": 0.11016350984573364
+     }
+    ],
+    "bill_by_tenure": [
+     {
+      "group": "OWNED_OUTRIGHT",
+      "households_m": 10.613467,
+      "mean_bill": 1966.802978515625,
+      "mean_electricity": 1106.771728515625,
+      "mean_gas": 860.03125,
+      "energy_over_10pct_share": 0.2087177038192749
+     },
+     {
+      "group": "OWNED_WITH_MORTGAGE",
+      "households_m": 8.1424605,
+      "mean_bill": 1627.4158935546875,
+      "mean_electricity": 903.451416015625,
+      "mean_gas": 723.9642944335938,
+      "energy_over_10pct_share": 0.10229891538619995
+     },
+     {
+      "group": "RENT_FROM_COUNCIL",
+      "households_m": 2.68317775,
+      "mean_bill": 973.9340209960938,
+      "mean_electricity": 594.4618530273438,
+      "mean_gas": 379.4720764160156,
+      "energy_over_10pct_share": 0.09515001624822617
+     },
+     {
+      "group": "RENT_FROM_HA",
+      "households_m": 2.44074975,
+      "mean_bill": 1038.9317626953125,
+      "mean_electricity": 611.099853515625,
+      "mean_gas": 427.83197021484375,
+      "energy_over_10pct_share": 0.13544604182243347
+     },
+     {
+      "group": "RENT_PRIVATELY",
+      "households_m": 6.457968,
+      "mean_bill": 1369.03662109375,
+      "mean_electricity": 789.0701904296875,
+      "mean_gas": 579.96630859375,
+      "energy_over_10pct_share": 0.11142271012067795
+     }
+    ]
+   },
+   "inequality": {
+    "gini_bhc": {
+     "baseline": 0.3131015659966776,
+     "reform": 0.31191678948121615,
+     "change": -0.0011847765154614498,
+     "change_pct": -0.0037840006059695714
+    },
+    "top_10_share_bhc": {
+     "baseline": 0.23766830308477369,
+     "reform": 0.23732634465130495,
+     "change": -0.00034195843346873644,
+     "change_pct": -0.0014388053814090793
+    },
+    "top_1_share_bhc": {
+     "baseline": 0.049974670084731436,
+     "reform": 0.04990070382757527,
+     "change": -7.396625715616612e-05,
+     "change_pct": -0.0014800749465830837
+    },
+    "gini_ahc": {
+     "baseline": 0.35746332494475175,
+     "reform": 0.3559570943385083,
+     "change": -0.0015062306062434416,
+     "change_pct": -0.004213664734630439
+    },
+    "top_10_share_ahc": {
+     "baseline": 0.2555059107980194,
+     "reform": 0.2550547350694267,
+     "change": -0.00045117572859265653,
+     "change_pct": -0.0017658132729043462
+    },
+    "top_1_share_ahc": {
+     "baseline": 0.055396819886045855,
+     "reform": 0.05529659802588753,
+     "change": -0.00010022186015832407,
+     "change_pct": -0.0018091626985896603
+    }
+   },
+   "winners_losers": {
+    "all": {
+     "gain_more_than_5pct": 0.010207582531508908,
+     "gain_less_than_5pct": 0.376367530965234,
+     "no_change": 0.6134248865032571,
+     "lose_less_than_5pct": 0.0,
+     "lose_more_than_5pct": 0.0
+    },
+    "by_decile": [
+     {
+      "decile": 1,
+      "gain_more_than_5pct": 0.10205257681077003,
+      "gain_less_than_5pct": 0.7968862359414198,
+      "no_change": 0.10106118724781017,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 2,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.8238208969675368,
+      "no_change": 0.17617910303246315,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 3,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.7832764169245026,
+      "no_change": 0.2167235830754974,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 4,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.5458602563078582,
+      "no_change": 0.45413974369214183,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 5,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.43870777005207245,
+      "no_change": 0.5612922299479276,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 6,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.18257074839003734,
+      "no_change": 0.8174292516099626,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 7,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.10945213490424999,
+      "no_change": 0.89054786509575,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 8,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.05917279670294608,
+      "no_change": 0.9408272032970539,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 9,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.007396156490422467,
+      "no_change": 0.9926038435095775,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 10,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.015301171867222943,
+      "no_change": 0.9846988281327771,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     }
+    ]
    },
    "deciles_ahc": [
     {
@@ -1846,6 +2840,503 @@
      }
     },
     "hbai_income_change_bn": 2.6048240661621094
+   },
+   "baseline": {
+    "households_m": 28.2537,
+    "people_m": 67.35553173977416,
+    "mean_bill": 1439.96533203125,
+    "median_bill": 1197.514892578125,
+    "total_bill_bn": 40.684349060058594,
+    "mean_electricity": 916.5137329101562,
+    "mean_gas": 523.4515991210938,
+    "no_electricity_spend_share": 0.0,
+    "gas_spend_share": 0.7522157430648804,
+    "energy_over_10pct_share": 0.08830078691244125,
+    "passported_share": 0.2746606171131134,
+    "income_test_share": 0.4003314673900604,
+    "poverty_rates": [
+     {
+      "measure": "abs_pov_bhc",
+      "group": "people",
+      "baseline_rate": 0.09365241041304084
+     },
+     {
+      "measure": "abs_pov_bhc",
+      "group": "children",
+      "baseline_rate": 0.10993661683275086
+     },
+     {
+      "measure": "abs_pov_bhc",
+      "group": "working_age_adults",
+      "baseline_rate": 0.08468809879333349
+     },
+     {
+      "measure": "abs_pov_bhc",
+      "group": "pensioners",
+      "baseline_rate": 0.1048287395262061
+     },
+     {
+      "measure": "abs_pov_ahc",
+      "group": "people",
+      "baseline_rate": 0.13136470943730438
+     },
+     {
+      "measure": "abs_pov_ahc",
+      "group": "children",
+      "baseline_rate": 0.17252019730942778
+     },
+     {
+      "measure": "abs_pov_ahc",
+      "group": "working_age_adults",
+      "baseline_rate": 0.13238453767212946
+     },
+     {
+      "measure": "abs_pov_ahc",
+      "group": "pensioners",
+      "baseline_rate": 0.08011257261944366
+     },
+     {
+      "measure": "rel_pov_bhc",
+      "group": "people",
+      "baseline_rate": 0.14916300542832117
+     },
+     {
+      "measure": "rel_pov_bhc",
+      "group": "children",
+      "baseline_rate": 0.1828089363478636
+     },
+     {
+      "measure": "rel_pov_bhc",
+      "group": "working_age_adults",
+      "baseline_rate": 0.13223068128750443
+     },
+     {
+      "measure": "rel_pov_bhc",
+      "group": "pensioners",
+      "baseline_rate": 0.16691805856466294
+     },
+     {
+      "measure": "rel_pov_ahc",
+      "group": "people",
+      "baseline_rate": 0.19598820406130965
+     },
+     {
+      "measure": "rel_pov_ahc",
+      "group": "children",
+      "baseline_rate": 0.26681864396060445
+     },
+     {
+      "measure": "rel_pov_ahc",
+      "group": "working_age_adults",
+      "baseline_rate": 0.18171254717704421
+     },
+     {
+      "measure": "rel_pov_ahc",
+      "group": "pensioners",
+      "baseline_rate": 0.1616096689367324
+     }
+    ],
+    "bill_by_decile": [
+     {
+      "group": 1,
+      "households_m": 3.24867825,
+      "mean_bill": 1309.1549072265625,
+      "mean_electricity": 873.89599609375,
+      "mean_gas": 435.259033203125,
+      "energy_over_10pct_share": 0.3456946313381195
+     },
+     {
+      "group": 2,
+      "households_m": 2.932523,
+      "mean_bill": 1363.99853515625,
+      "mean_electricity": 897.4917602539062,
+      "mean_gas": 466.50689697265625,
+      "energy_over_10pct_share": 0.1807936131954193
+     },
+     {
+      "group": 3,
+      "households_m": 2.84951475,
+      "mean_bill": 1345.2579345703125,
+      "mean_electricity": 859.3214111328125,
+      "mean_gas": 485.9365539550781,
+      "energy_over_10pct_share": 0.0957055613398552
+     },
+     {
+      "group": 4,
+      "households_m": 2.74289825,
+      "mean_bill": 1398.244384765625,
+      "mean_electricity": 905.0341796875,
+      "mean_gas": 493.2101745605469,
+      "energy_over_10pct_share": 0.06377771496772766
+     },
+     {
+      "group": 5,
+      "households_m": 2.86619425,
+      "mean_bill": 1335.07763671875,
+      "mean_electricity": 856.29150390625,
+      "mean_gas": 478.7861022949219,
+      "energy_over_10pct_share": 0.050801996141672134
+     },
+     {
+      "group": 6,
+      "households_m": 2.80010575,
+      "mean_bill": 1401.18408203125,
+      "mean_electricity": 883.9334106445312,
+      "mean_gas": 517.2507934570312,
+      "energy_over_10pct_share": 0.035698916763067245
+     },
+     {
+      "group": 7,
+      "households_m": 2.645111,
+      "mean_bill": 1535.5550537109375,
+      "mean_electricity": 955.6455688476562,
+      "mean_gas": 579.9094848632812,
+      "energy_over_10pct_share": 0.024492671713232994
+     },
+     {
+      "group": 8,
+      "households_m": 2.57948925,
+      "mean_bill": 1531.41455078125,
+      "mean_electricity": 950.7573852539062,
+      "mean_gas": 580.6572265625,
+      "energy_over_10pct_share": 0.01998610980808735
+     },
+     {
+      "group": 9,
+      "households_m": 2.64255725,
+      "mean_bill": 1558.7313232421875,
+      "mean_electricity": 941.9456787109375,
+      "mean_gas": 616.78564453125,
+      "energy_over_10pct_share": 0.00847565196454525
+     },
+     {
+      "group": 10,
+      "households_m": 2.9466275,
+      "mean_bill": 1656.7149658203125,
+      "mean_electricity": 1050.0513916015625,
+      "mean_gas": 606.6633911132812,
+      "energy_over_10pct_share": 0.0032699299044907093
+     }
+    ],
+    "bill_by_region": [
+     {
+      "group": "North East",
+      "households_m": 1.20933125,
+      "mean_bill": 1404.680419921875,
+      "mean_electricity": 803.157958984375,
+      "mean_gas": 601.5224609375,
+      "energy_over_10pct_share": 0.08708196878433228
+     },
+     {
+      "group": "North West",
+      "households_m": 3.25978,
+      "mean_bill": 1393.7349853515625,
+      "mean_electricity": 827.8611450195312,
+      "mean_gas": 565.873779296875,
+      "energy_over_10pct_share": 0.08248197287321091
+     },
+     {
+      "group": "Yorkshire and the Humber",
+      "households_m": 2.384038,
+      "mean_bill": 1470.673828125,
+      "mean_electricity": 897.0520629882812,
+      "mean_gas": 573.6216430664062,
+      "energy_over_10pct_share": 0.07785902172327042
+     },
+     {
+      "group": "East Midlands",
+      "households_m": 2.104065,
+      "mean_bill": 1592.7413330078125,
+      "mean_electricity": 986.9788208007812,
+      "mean_gas": 605.7623291015625,
+      "energy_over_10pct_share": 0.0983743965625763
+     },
+     {
+      "group": "West Midlands",
+      "households_m": 2.50243425,
+      "mean_bill": 1467.919921875,
+      "mean_electricity": 961.3514404296875,
+      "mean_gas": 506.5685119628906,
+      "energy_over_10pct_share": 0.09619110822677612
+     },
+     {
+      "group": "East of England",
+      "households_m": 2.7197915,
+      "mean_bill": 1442.83740234375,
+      "mean_electricity": 944.5509643554688,
+      "mean_gas": 498.2863464355469,
+      "energy_over_10pct_share": 0.09737314283847809
+     },
+     {
+      "group": "London",
+      "households_m": 3.6011965,
+      "mean_bill": 1427.77587890625,
+      "mean_electricity": 877.0166625976562,
+      "mean_gas": 550.7593994140625,
+      "energy_over_10pct_share": 0.08372654765844345
+     },
+     {
+      "group": "South East",
+      "households_m": 3.9502985,
+      "mean_bill": 1521.819091796875,
+      "mean_electricity": 999.8976440429688,
+      "mean_gas": 521.9215698242188,
+      "energy_over_10pct_share": 0.090834841132164
+     },
+     {
+      "group": "South West",
+      "households_m": 2.521535,
+      "mean_bill": 1313.8221435546875,
+      "mean_electricity": 907.2398071289062,
+      "mean_gas": 406.5822448730469,
+      "energy_over_10pct_share": 0.06306863576173782
+     },
+     {
+      "group": "Wales",
+      "households_m": 1.377074125,
+      "mean_bill": 1457.140380859375,
+      "mean_electricity": 993.5538940429688,
+      "mean_gas": 463.5865478515625,
+      "energy_over_10pct_share": 0.10346558690071106
+     },
+     {
+      "group": "Scotland",
+      "households_m": 2.62415575,
+      "mean_bill": 1339.330810546875,
+      "mean_electricity": 865.4073486328125,
+      "mean_gas": 473.9234924316406,
+      "energy_over_10pct_share": 0.09932266920804977
+     }
+    ],
+    "bill_by_household_type": [
+     {
+      "group": "Single pensioner",
+      "households_m": 3.98410725,
+      "mean_bill": 1076.3460693359375,
+      "mean_electricity": 750.5466918945312,
+      "mean_gas": 325.7993469238281,
+      "energy_over_10pct_share": 0.18817391991615295
+     },
+     {
+      "group": "Pensioner couple",
+      "households_m": 3.526691,
+      "mean_bill": 1519.1676025390625,
+      "mean_electricity": 970.2891235351562,
+      "mean_gas": 548.8782958984375,
+      "energy_over_10pct_share": 0.06699706614017487
+     },
+     {
+      "group": "Single, no children",
+      "households_m": 4.382905,
+      "mean_bill": 944.323486328125,
+      "mean_electricity": 656.197998046875,
+      "mean_gas": 288.12554931640625,
+      "energy_over_10pct_share": 0.148738294839859
+     },
+     {
+      "group": "Couple, no children",
+      "households_m": 4.196482,
+      "mean_bill": 1422.3714599609375,
+      "mean_electricity": 886.3579711914062,
+      "mean_gas": 536.0135498046875,
+      "energy_over_10pct_share": 0.05602215602993965
+     },
+     {
+      "group": "Lone parent",
+      "households_m": 1.342577625,
+      "mean_bill": 1290.652099609375,
+      "mean_electricity": 826.524658203125,
+      "mean_gas": 464.12744140625,
+      "energy_over_10pct_share": 0.06010543555021286
+     },
+     {
+      "group": "Couple with children",
+      "households_m": 4.80609,
+      "mean_bill": 1846.18994140625,
+      "mean_electricity": 1145.164306640625,
+      "mean_gas": 701.02587890625,
+      "energy_over_10pct_share": 0.06480954587459564
+     },
+     {
+      "group": "Multi-family household",
+      "households_m": 6.014846,
+      "mean_bill": 1716.56005859375,
+      "mean_electricity": 1043.029541015625,
+      "mean_gas": 673.5305786132812,
+      "energy_over_10pct_share": 0.0381825715303421
+     }
+    ],
+    "bill_by_tenure": [
+     {
+      "group": "OWNED_OUTRIGHT",
+      "households_m": 10.347903,
+      "mean_bill": 1480.1744384765625,
+      "mean_electricity": 945.0139770507812,
+      "mean_gas": 535.1602783203125,
+      "energy_over_10pct_share": 0.11017026752233505
+     },
+     {
+      "group": "OWNED_WITH_MORTGAGE",
+      "households_m": 7.5951895,
+      "mean_bill": 1600.3916015625,
+      "mean_electricity": 976.0498657226562,
+      "mean_gas": 624.3417358398438,
+      "energy_over_10pct_share": 0.06764039397239685
+     },
+     {
+      "group": "RENT_FROM_COUNCIL",
+      "households_m": 2.5691525,
+      "mean_bill": 1341.9112548828125,
+      "mean_electricity": 878.9264526367188,
+      "mean_gas": 462.98480224609375,
+      "energy_over_10pct_share": 0.10118822008371353
+     },
+     {
+      "group": "RENT_FROM_HA",
+      "households_m": 2.835174,
+      "mean_bill": 1143.9554443359375,
+      "mean_electricity": 757.016357421875,
+      "mean_gas": 386.93902587890625,
+      "energy_over_10pct_share": 0.06355138123035431
+     },
+     {
+      "group": "RENT_PRIVATELY",
+      "households_m": 4.906281,
+      "mean_bill": 1329.2113037109375,
+      "mean_electricity": 876.0888061523438,
+      "mean_gas": 453.1225280761719,
+      "energy_over_10pct_share": 0.08171233534812927
+     }
+    ]
+   },
+   "inequality": {
+    "gini_bhc": {
+     "baseline": 0.2887415222819102,
+     "reform": 0.28750772409115577,
+     "change": -0.0012337981907544204,
+     "change_pct": -0.0042730196232387135
+    },
+    "top_10_share_bhc": {
+     "baseline": 0.23334618267736787,
+     "reform": 0.23296808934749627,
+     "change": -0.00037809332987159827,
+     "change_pct": -0.001620310756891029
+    },
+    "top_1_share_bhc": {
+     "baseline": 0.05623576873771716,
+     "reform": 0.0561398587721643,
+     "change": -9.590996555285808e-05,
+     "change_pct": -0.0017054975455244655
+    },
+    "gini_ahc": {
+     "baseline": 0.33043183894781525,
+     "reform": 0.32888503269031966,
+     "change": -0.001546806257495592,
+     "change_pct": -0.004681165902235824
+    },
+    "top_10_share_ahc": {
+     "baseline": 0.2509496959521006,
+     "reform": 0.25046453042213296,
+     "change": -0.00048516552996763496,
+     "change_pct": -0.0019333178632750356
+    },
+    "top_1_share_ahc": {
+     "baseline": 0.06325173422523207,
+     "reform": 0.06312184831775193,
+     "change": -0.00012988590748014284,
+     "change_pct": -0.0020534758306805347
+    }
+   },
+   "winners_losers": {
+    "all": {
+     "gain_more_than_5pct": 0.004786481606754539,
+     "gain_less_than_5pct": 0.4162740705548045,
+     "no_change": 0.5789394478384411,
+     "lose_less_than_5pct": 0.0,
+     "lose_more_than_5pct": 0.0
+    },
+    "by_decile": [
+     {
+      "decile": 1,
+      "gain_more_than_5pct": 0.047861550054360325,
+      "gain_less_than_5pct": 0.7938499865161426,
+      "no_change": 0.1582884634294971,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 2,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.8113355063556806,
+      "no_change": 0.18866449364431936,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 3,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.6998428499854625,
+      "no_change": 0.3001571500145375,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 4,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.5451170457179431,
+      "no_change": 0.45488295428205694,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 5,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.4576062630769439,
+      "no_change": 0.542393736923056,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 6,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.3172852984391659,
+      "no_change": 0.6827147015608341,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 7,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.2399023178862886,
+      "no_change": 0.7600976821137114,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 8,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.12762617416870173,
+      "no_change": 0.8723738258312983,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 9,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.09539832436271539,
+      "no_change": 0.9046016756372846,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 10,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.0744420791697701,
+      "no_change": 0.9255579208302299,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     }
+    ]
    },
    "deciles_ahc": [
     {
@@ -2786,6 +4277,503 @@
      }
     },
     "hbai_income_change_bn": 2.670118570327759
+   },
+   "baseline": {
+    "households_m": 30.337822,
+    "people_m": 67.19251830348345,
+    "mean_bill": 1586.006103515625,
+    "median_bill": 905.9693603515625,
+    "total_bill_bn": 48.115970611572266,
+    "mean_electricity": 899.3849487304688,
+    "mean_gas": 686.6211547851562,
+    "no_electricity_spend_share": 0.13928765058517456,
+    "gas_spend_share": 0.9466286897659302,
+    "energy_over_10pct_share": 0.14350542426109314,
+    "passported_share": 0.2615073621273041,
+    "income_test_share": 0.4060244560241699,
+    "poverty_rates": [
+     {
+      "measure": "abs_pov_bhc",
+      "group": "people",
+      "baseline_rate": 0.11275790545141037
+     },
+     {
+      "measure": "abs_pov_bhc",
+      "group": "children",
+      "baseline_rate": 0.12630930936008508
+     },
+     {
+      "measure": "abs_pov_bhc",
+      "group": "working_age_adults",
+      "baseline_rate": 0.11320312692485991
+     },
+     {
+      "measure": "abs_pov_bhc",
+      "group": "pensioners",
+      "baseline_rate": 0.09419542370751553
+     },
+     {
+      "measure": "abs_pov_ahc",
+      "group": "people",
+      "baseline_rate": 0.14696411719430702
+     },
+     {
+      "measure": "abs_pov_ahc",
+      "group": "children",
+      "baseline_rate": 0.18620418625123522
+     },
+     {
+      "measure": "abs_pov_ahc",
+      "group": "working_age_adults",
+      "baseline_rate": 0.15308747201725922
+     },
+     {
+      "measure": "abs_pov_ahc",
+      "group": "pensioners",
+      "baseline_rate": 0.07653577516523967
+     },
+     {
+      "measure": "rel_pov_bhc",
+      "group": "people",
+      "baseline_rate": 0.1974315292073872
+     },
+     {
+      "measure": "rel_pov_bhc",
+      "group": "children",
+      "baseline_rate": 0.24892116988489688
+     },
+     {
+      "measure": "rel_pov_bhc",
+      "group": "working_age_adults",
+      "baseline_rate": 0.17250269496637005
+     },
+     {
+      "measure": "rel_pov_bhc",
+      "group": "pensioners",
+      "baseline_rate": 0.21874337890650355
+     },
+     {
+      "measure": "rel_pov_ahc",
+      "group": "people",
+      "baseline_rate": 0.23667188372904024
+     },
+     {
+      "measure": "rel_pov_ahc",
+      "group": "children",
+      "baseline_rate": 0.3286775253867377
+     },
+     {
+      "measure": "rel_pov_ahc",
+      "group": "working_age_adults",
+      "baseline_rate": 0.22097310920513427
+     },
+     {
+      "measure": "rel_pov_ahc",
+      "group": "pensioners",
+      "baseline_rate": 0.17523404164645226
+     }
+    ],
+    "bill_by_decile": [
+     {
+      "group": 1,
+      "households_m": 3.6439365,
+      "mean_bill": 1193.0938720703125,
+      "mean_electricity": 667.4440307617188,
+      "mean_gas": 525.6499633789062,
+      "energy_over_10pct_share": 0.3604196608066559
+     },
+     {
+      "group": 2,
+      "households_m": 2.952617,
+      "mean_bill": 1282.568603515625,
+      "mean_electricity": 758.94482421875,
+      "mean_gas": 523.623779296875,
+      "energy_over_10pct_share": 0.17821826040744781
+     },
+     {
+      "group": 3,
+      "households_m": 3.0840325,
+      "mean_bill": 1434.2183837890625,
+      "mean_electricity": 811.1587524414062,
+      "mean_gas": 623.0595703125,
+      "energy_over_10pct_share": 0.18969851732254028
+     },
+     {
+      "group": 4,
+      "households_m": 2.999946,
+      "mean_bill": 1492.4342041015625,
+      "mean_electricity": 864.6994018554688,
+      "mean_gas": 627.7346801757812,
+      "energy_over_10pct_share": 0.17132888734340668
+     },
+     {
+      "group": 5,
+      "households_m": 3.25807525,
+      "mean_bill": 1480.3646240234375,
+      "mean_electricity": 858.5678100585938,
+      "mean_gas": 621.7968139648438,
+      "energy_over_10pct_share": 0.10841703414916992
+     },
+     {
+      "group": 6,
+      "households_m": 3.11629025,
+      "mean_bill": 2417.941162109375,
+      "mean_electricity": 1366.2506103515625,
+      "mean_gas": 1051.6907958984375,
+      "energy_over_10pct_share": 0.18999594449996948
+     },
+     {
+      "group": 7,
+      "households_m": 2.82623075,
+      "mean_bill": 1579.9481201171875,
+      "mean_electricity": 881.8803100585938,
+      "mean_gas": 698.0677490234375,
+      "energy_over_10pct_share": 0.0660741999745369
+     },
+     {
+      "group": 8,
+      "households_m": 2.6762845,
+      "mean_bill": 1755.9620361328125,
+      "mean_electricity": 999.7501220703125,
+      "mean_gas": 756.2119140625,
+      "energy_over_10pct_share": 0.049988940358161926
+     },
+     {
+      "group": 9,
+      "households_m": 2.62900975,
+      "mean_bill": 1696.4326171875,
+      "mean_electricity": 965.6619873046875,
+      "mean_gas": 730.7705688476562,
+      "energy_over_10pct_share": 0.032286010682582855
+     },
+     {
+      "group": 10,
+      "households_m": 3.15140125,
+      "mean_bill": 1617.7705078125,
+      "mean_electricity": 874.2244873046875,
+      "mean_gas": 743.546142578125,
+      "energy_over_10pct_share": 0.020420290529727936
+     }
+    ],
+    "bill_by_region": [
+     {
+      "group": "North East",
+      "households_m": 1.302546375,
+      "mean_bill": 2146.225341796875,
+      "mean_electricity": 1162.3021240234375,
+      "mean_gas": 983.9230346679688,
+      "energy_over_10pct_share": 0.22810927033424377
+     },
+     {
+      "group": "North West",
+      "households_m": 3.499573,
+      "mean_bill": 1595.3499755859375,
+      "mean_electricity": 909.2054443359375,
+      "mean_gas": 686.1444091796875,
+      "energy_over_10pct_share": 0.1657153069972992
+     },
+     {
+      "group": "Yorkshire and the Humber",
+      "households_m": 2.5553565,
+      "mean_bill": 1917.7437744140625,
+      "mean_electricity": 1049.5230712890625,
+      "mean_gas": 868.2207641601562,
+      "energy_over_10pct_share": 0.17306853830814362
+     },
+     {
+      "group": "East Midlands",
+      "households_m": 2.26209225,
+      "mean_bill": 1948.3974609375,
+      "mean_electricity": 1109.294677734375,
+      "mean_gas": 839.102783203125,
+      "energy_over_10pct_share": 0.13647925853729248
+     },
+     {
+      "group": "West Midlands",
+      "households_m": 2.67165675,
+      "mean_bill": 1401.102783203125,
+      "mean_electricity": 772.9761352539062,
+      "mean_gas": 628.126708984375,
+      "energy_over_10pct_share": 0.14426977932453156
+     },
+     {
+      "group": "East of England",
+      "households_m": 2.90283125,
+      "mean_bill": 1338.9261474609375,
+      "mean_electricity": 776.6294555664062,
+      "mean_gas": 562.2966918945312,
+      "energy_over_10pct_share": 0.07976841926574707
+     },
+     {
+      "group": "London",
+      "households_m": 3.9194285,
+      "mean_bill": 1084.5228271484375,
+      "mean_electricity": 578.7416381835938,
+      "mean_gas": 505.7811584472656,
+      "energy_over_10pct_share": 0.05452181026339531
+     },
+     {
+      "group": "South East",
+      "households_m": 4.2128035,
+      "mean_bill": 1573.05517578125,
+      "mean_electricity": 879.0816650390625,
+      "mean_gas": 693.9735717773438,
+      "energy_over_10pct_share": 0.20098121464252472
+     },
+     {
+      "group": "South West",
+      "households_m": 2.7361945,
+      "mean_bill": 1317.458984375,
+      "mean_electricity": 823.6795654296875,
+      "mean_gas": 493.77960205078125,
+      "energy_over_10pct_share": 0.08708038926124573
+     },
+     {
+      "group": "Wales",
+      "households_m": 1.5649675,
+      "mean_bill": 1845.1556396484375,
+      "mean_electricity": 1042.968994140625,
+      "mean_gas": 802.1865234375,
+      "energy_over_10pct_share": 0.19431987404823303
+     },
+     {
+      "group": "Scotland",
+      "households_m": 2.71037325,
+      "mean_bill": 2003.169921875,
+      "mean_electricity": 1188.441162109375,
+      "mean_gas": 814.7286987304688,
+      "energy_over_10pct_share": 0.18663497269153595
+     }
+    ],
+    "bill_by_household_type": [
+     {
+      "group": "Single pensioner",
+      "households_m": 4.044378,
+      "mean_bill": 1315.21142578125,
+      "mean_electricity": 733.8985595703125,
+      "mean_gas": 581.31298828125,
+      "energy_over_10pct_share": 0.21607448160648346
+     },
+     {
+      "group": "Pensioner couple",
+      "households_m": 3.84184325,
+      "mean_bill": 2365.772216796875,
+      "mean_electricity": 1362.951904296875,
+      "mean_gas": 1002.8201293945312,
+      "energy_over_10pct_share": 0.18536661565303802
+     },
+     {
+      "group": "Single, no children",
+      "households_m": 5.58196,
+      "mean_bill": 1163.6591796875,
+      "mean_electricity": 642.6113891601562,
+      "mean_gas": 521.047607421875,
+      "energy_over_10pct_share": 0.2163844257593155
+     },
+     {
+      "group": "Couple, no children",
+      "households_m": 7.105159,
+      "mean_bill": 1725.6365966796875,
+      "mean_electricity": 994.2197875976562,
+      "mean_gas": 731.4170532226562,
+      "energy_over_10pct_share": 0.12699586153030396
+     },
+     {
+      "group": "Lone parent",
+      "households_m": 2.09701875,
+      "mean_bill": 740.9887084960938,
+      "mean_electricity": 407.93695068359375,
+      "mean_gas": 333.0517578125,
+      "energy_over_10pct_share": 0.034425292164087296
+     },
+     {
+      "group": "Couple with children",
+      "households_m": 4.926222,
+      "mean_bill": 1629.059814453125,
+      "mean_electricity": 927.1756591796875,
+      "mean_gas": 701.8840942382812,
+      "energy_over_10pct_share": 0.05749952048063278
+     },
+     {
+      "group": "Multi-family household",
+      "households_m": 2.74124225,
+      "mean_bill": 1959.8533935546875,
+      "mean_electricity": 1096.9202880859375,
+      "mean_gas": 862.93310546875,
+      "energy_over_10pct_share": 0.11016350984573364
+     }
+    ],
+    "bill_by_tenure": [
+     {
+      "group": "OWNED_OUTRIGHT",
+      "households_m": 10.613467,
+      "mean_bill": 1966.802978515625,
+      "mean_electricity": 1106.771728515625,
+      "mean_gas": 860.03125,
+      "energy_over_10pct_share": 0.2087177038192749
+     },
+     {
+      "group": "OWNED_WITH_MORTGAGE",
+      "households_m": 8.1424605,
+      "mean_bill": 1627.4158935546875,
+      "mean_electricity": 903.451416015625,
+      "mean_gas": 723.9642944335938,
+      "energy_over_10pct_share": 0.10229891538619995
+     },
+     {
+      "group": "RENT_FROM_COUNCIL",
+      "households_m": 2.68317775,
+      "mean_bill": 973.9340209960938,
+      "mean_electricity": 594.4618530273438,
+      "mean_gas": 379.4720764160156,
+      "energy_over_10pct_share": 0.09515001624822617
+     },
+     {
+      "group": "RENT_FROM_HA",
+      "households_m": 2.44074975,
+      "mean_bill": 1038.9317626953125,
+      "mean_electricity": 611.099853515625,
+      "mean_gas": 427.83197021484375,
+      "energy_over_10pct_share": 0.13544604182243347
+     },
+     {
+      "group": "RENT_PRIVATELY",
+      "households_m": 6.457968,
+      "mean_bill": 1369.03662109375,
+      "mean_electricity": 789.0701904296875,
+      "mean_gas": 579.96630859375,
+      "energy_over_10pct_share": 0.11142271012067795
+     }
+    ]
+   },
+   "inequality": {
+    "gini_bhc": {
+     "baseline": 0.3131015659966776,
+     "reform": 0.3117689055521279,
+     "change": -0.0013326604445497159,
+     "change_pct": -0.00425631995901246
+    },
+    "top_10_share_bhc": {
+     "baseline": 0.23766830308477369,
+     "reform": 0.23728885903279248,
+     "change": -0.0003794440519812037,
+     "change_pct": -0.001596527795487563
+    },
+    "top_1_share_bhc": {
+     "baseline": 0.049974670084731436,
+     "reform": 0.049892291783668795,
+     "change": -8.23783010626411e-05,
+     "change_pct": -0.001648401098455872
+    },
+    "gini_ahc": {
+     "baseline": 0.35746332494475175,
+     "reform": 0.35575100299290885,
+     "change": -0.001712321951842899,
+     "change_pct": -0.004790203168695836
+    },
+    "top_10_share_ahc": {
+     "baseline": 0.2555059107980194,
+     "reform": 0.25500254998776517,
+     "change": -0.0005033608102542053,
+     "change_pct": -0.0019700554428743466
+    },
+    "top_1_share_ahc": {
+     "baseline": 0.055396819886045855,
+     "reform": 0.055284657665556625,
+     "change": -0.00011216222048923002,
+     "change_pct": -0.0020247050411910565
+    }
+   },
+   "winners_losers": {
+    "all": {
+     "gain_more_than_5pct": 0.012963630736308298,
+     "gain_less_than_5pct": 0.37485598820610483,
+     "no_change": 0.6121803810575869,
+     "lose_less_than_5pct": 0.0,
+     "lose_more_than_5pct": 0.0
+    },
+    "by_decile": [
+     {
+      "decile": 1,
+      "gain_more_than_5pct": 0.12960678176049947,
+      "gain_less_than_5pct": 0.7693320309916903,
+      "no_change": 0.10106118724781017,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 2,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.8238208969675368,
+      "no_change": 0.17617910303246315,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 3,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.7832764169245026,
+      "no_change": 0.2167235830754974,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 4,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.5458602563078582,
+      "no_change": 0.45413974369214183,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 5,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.43870777005207245,
+      "no_change": 0.5612922299479276,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 6,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.18257074839003734,
+      "no_change": 0.8174292516099626,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 7,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.10945213490424999,
+      "no_change": 0.89054786509575,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 8,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.05917279670294608,
+      "no_change": 0.9408272032970539,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 9,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.009292019840005036,
+      "no_change": 0.990707980159995,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 10,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.02586185201105986,
+      "no_change": 0.9741381479889402,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     }
+    ]
    },
    "deciles_ahc": [
     {
@@ -3729,6 +5717,503 @@
     },
     "hbai_income_change_bn": 2.120724678039551
    },
+   "baseline": {
+    "households_m": 28.2537,
+    "people_m": 67.35553173977416,
+    "mean_bill": 1439.96533203125,
+    "median_bill": 1197.514892578125,
+    "total_bill_bn": 40.684349060058594,
+    "mean_electricity": 916.5137329101562,
+    "mean_gas": 523.4515991210938,
+    "no_electricity_spend_share": 0.0,
+    "gas_spend_share": 0.7522157430648804,
+    "energy_over_10pct_share": 0.08830078691244125,
+    "passported_share": 0.2746606171131134,
+    "income_test_share": 0.37600189447402954,
+    "poverty_rates": [
+     {
+      "measure": "abs_pov_bhc",
+      "group": "people",
+      "baseline_rate": 0.09365241041304084
+     },
+     {
+      "measure": "abs_pov_bhc",
+      "group": "children",
+      "baseline_rate": 0.10993661683275086
+     },
+     {
+      "measure": "abs_pov_bhc",
+      "group": "working_age_adults",
+      "baseline_rate": 0.08468809879333349
+     },
+     {
+      "measure": "abs_pov_bhc",
+      "group": "pensioners",
+      "baseline_rate": 0.1048287395262061
+     },
+     {
+      "measure": "abs_pov_ahc",
+      "group": "people",
+      "baseline_rate": 0.13136470943730438
+     },
+     {
+      "measure": "abs_pov_ahc",
+      "group": "children",
+      "baseline_rate": 0.17252019730942778
+     },
+     {
+      "measure": "abs_pov_ahc",
+      "group": "working_age_adults",
+      "baseline_rate": 0.13238453767212946
+     },
+     {
+      "measure": "abs_pov_ahc",
+      "group": "pensioners",
+      "baseline_rate": 0.08011257261944366
+     },
+     {
+      "measure": "rel_pov_bhc",
+      "group": "people",
+      "baseline_rate": 0.14916300542832117
+     },
+     {
+      "measure": "rel_pov_bhc",
+      "group": "children",
+      "baseline_rate": 0.1828089363478636
+     },
+     {
+      "measure": "rel_pov_bhc",
+      "group": "working_age_adults",
+      "baseline_rate": 0.13223068128750443
+     },
+     {
+      "measure": "rel_pov_bhc",
+      "group": "pensioners",
+      "baseline_rate": 0.16691805856466294
+     },
+     {
+      "measure": "rel_pov_ahc",
+      "group": "people",
+      "baseline_rate": 0.19598820406130965
+     },
+     {
+      "measure": "rel_pov_ahc",
+      "group": "children",
+      "baseline_rate": 0.26681864396060445
+     },
+     {
+      "measure": "rel_pov_ahc",
+      "group": "working_age_adults",
+      "baseline_rate": 0.18171254717704421
+     },
+     {
+      "measure": "rel_pov_ahc",
+      "group": "pensioners",
+      "baseline_rate": 0.1616096689367324
+     }
+    ],
+    "bill_by_decile": [
+     {
+      "group": 1,
+      "households_m": 3.24867825,
+      "mean_bill": 1309.1549072265625,
+      "mean_electricity": 873.89599609375,
+      "mean_gas": 435.259033203125,
+      "energy_over_10pct_share": 0.3456946313381195
+     },
+     {
+      "group": 2,
+      "households_m": 2.932523,
+      "mean_bill": 1363.99853515625,
+      "mean_electricity": 897.4917602539062,
+      "mean_gas": 466.50689697265625,
+      "energy_over_10pct_share": 0.1807936131954193
+     },
+     {
+      "group": 3,
+      "households_m": 2.84951475,
+      "mean_bill": 1345.2579345703125,
+      "mean_electricity": 859.3214111328125,
+      "mean_gas": 485.9365539550781,
+      "energy_over_10pct_share": 0.0957055613398552
+     },
+     {
+      "group": 4,
+      "households_m": 2.74289825,
+      "mean_bill": 1398.244384765625,
+      "mean_electricity": 905.0341796875,
+      "mean_gas": 493.2101745605469,
+      "energy_over_10pct_share": 0.06377771496772766
+     },
+     {
+      "group": 5,
+      "households_m": 2.86619425,
+      "mean_bill": 1335.07763671875,
+      "mean_electricity": 856.29150390625,
+      "mean_gas": 478.7861022949219,
+      "energy_over_10pct_share": 0.050801996141672134
+     },
+     {
+      "group": 6,
+      "households_m": 2.80010575,
+      "mean_bill": 1401.18408203125,
+      "mean_electricity": 883.9334106445312,
+      "mean_gas": 517.2507934570312,
+      "energy_over_10pct_share": 0.035698916763067245
+     },
+     {
+      "group": 7,
+      "households_m": 2.645111,
+      "mean_bill": 1535.5550537109375,
+      "mean_electricity": 955.6455688476562,
+      "mean_gas": 579.9094848632812,
+      "energy_over_10pct_share": 0.024492671713232994
+     },
+     {
+      "group": 8,
+      "households_m": 2.57948925,
+      "mean_bill": 1531.41455078125,
+      "mean_electricity": 950.7573852539062,
+      "mean_gas": 580.6572265625,
+      "energy_over_10pct_share": 0.01998610980808735
+     },
+     {
+      "group": 9,
+      "households_m": 2.64255725,
+      "mean_bill": 1558.7313232421875,
+      "mean_electricity": 941.9456787109375,
+      "mean_gas": 616.78564453125,
+      "energy_over_10pct_share": 0.00847565196454525
+     },
+     {
+      "group": 10,
+      "households_m": 2.9466275,
+      "mean_bill": 1656.7149658203125,
+      "mean_electricity": 1050.0513916015625,
+      "mean_gas": 606.6633911132812,
+      "energy_over_10pct_share": 0.0032699299044907093
+     }
+    ],
+    "bill_by_region": [
+     {
+      "group": "North East",
+      "households_m": 1.20933125,
+      "mean_bill": 1404.680419921875,
+      "mean_electricity": 803.157958984375,
+      "mean_gas": 601.5224609375,
+      "energy_over_10pct_share": 0.08708196878433228
+     },
+     {
+      "group": "North West",
+      "households_m": 3.25978,
+      "mean_bill": 1393.7349853515625,
+      "mean_electricity": 827.8611450195312,
+      "mean_gas": 565.873779296875,
+      "energy_over_10pct_share": 0.08248197287321091
+     },
+     {
+      "group": "Yorkshire and the Humber",
+      "households_m": 2.384038,
+      "mean_bill": 1470.673828125,
+      "mean_electricity": 897.0520629882812,
+      "mean_gas": 573.6216430664062,
+      "energy_over_10pct_share": 0.07785902172327042
+     },
+     {
+      "group": "East Midlands",
+      "households_m": 2.104065,
+      "mean_bill": 1592.7413330078125,
+      "mean_electricity": 986.9788208007812,
+      "mean_gas": 605.7623291015625,
+      "energy_over_10pct_share": 0.0983743965625763
+     },
+     {
+      "group": "West Midlands",
+      "households_m": 2.50243425,
+      "mean_bill": 1467.919921875,
+      "mean_electricity": 961.3514404296875,
+      "mean_gas": 506.5685119628906,
+      "energy_over_10pct_share": 0.09619110822677612
+     },
+     {
+      "group": "East of England",
+      "households_m": 2.7197915,
+      "mean_bill": 1442.83740234375,
+      "mean_electricity": 944.5509643554688,
+      "mean_gas": 498.2863464355469,
+      "energy_over_10pct_share": 0.09737314283847809
+     },
+     {
+      "group": "London",
+      "households_m": 3.6011965,
+      "mean_bill": 1427.77587890625,
+      "mean_electricity": 877.0166625976562,
+      "mean_gas": 550.7593994140625,
+      "energy_over_10pct_share": 0.08372654765844345
+     },
+     {
+      "group": "South East",
+      "households_m": 3.9502985,
+      "mean_bill": 1521.819091796875,
+      "mean_electricity": 999.8976440429688,
+      "mean_gas": 521.9215698242188,
+      "energy_over_10pct_share": 0.090834841132164
+     },
+     {
+      "group": "South West",
+      "households_m": 2.521535,
+      "mean_bill": 1313.8221435546875,
+      "mean_electricity": 907.2398071289062,
+      "mean_gas": 406.5822448730469,
+      "energy_over_10pct_share": 0.06306863576173782
+     },
+     {
+      "group": "Wales",
+      "households_m": 1.377074125,
+      "mean_bill": 1457.140380859375,
+      "mean_electricity": 993.5538940429688,
+      "mean_gas": 463.5865478515625,
+      "energy_over_10pct_share": 0.10346558690071106
+     },
+     {
+      "group": "Scotland",
+      "households_m": 2.62415575,
+      "mean_bill": 1339.330810546875,
+      "mean_electricity": 865.4073486328125,
+      "mean_gas": 473.9234924316406,
+      "energy_over_10pct_share": 0.09932266920804977
+     }
+    ],
+    "bill_by_household_type": [
+     {
+      "group": "Single pensioner",
+      "households_m": 3.98410725,
+      "mean_bill": 1076.3460693359375,
+      "mean_electricity": 750.5466918945312,
+      "mean_gas": 325.7993469238281,
+      "energy_over_10pct_share": 0.18817391991615295
+     },
+     {
+      "group": "Pensioner couple",
+      "households_m": 3.526691,
+      "mean_bill": 1519.1676025390625,
+      "mean_electricity": 970.2891235351562,
+      "mean_gas": 548.8782958984375,
+      "energy_over_10pct_share": 0.06699706614017487
+     },
+     {
+      "group": "Single, no children",
+      "households_m": 4.382905,
+      "mean_bill": 944.323486328125,
+      "mean_electricity": 656.197998046875,
+      "mean_gas": 288.12554931640625,
+      "energy_over_10pct_share": 0.148738294839859
+     },
+     {
+      "group": "Couple, no children",
+      "households_m": 4.196482,
+      "mean_bill": 1422.3714599609375,
+      "mean_electricity": 886.3579711914062,
+      "mean_gas": 536.0135498046875,
+      "energy_over_10pct_share": 0.05602215602993965
+     },
+     {
+      "group": "Lone parent",
+      "households_m": 1.342577625,
+      "mean_bill": 1290.652099609375,
+      "mean_electricity": 826.524658203125,
+      "mean_gas": 464.12744140625,
+      "energy_over_10pct_share": 0.06010543555021286
+     },
+     {
+      "group": "Couple with children",
+      "households_m": 4.80609,
+      "mean_bill": 1846.18994140625,
+      "mean_electricity": 1145.164306640625,
+      "mean_gas": 701.02587890625,
+      "energy_over_10pct_share": 0.06480954587459564
+     },
+     {
+      "group": "Multi-family household",
+      "households_m": 6.014846,
+      "mean_bill": 1716.56005859375,
+      "mean_electricity": 1043.029541015625,
+      "mean_gas": 673.5305786132812,
+      "energy_over_10pct_share": 0.0381825715303421
+     }
+    ],
+    "bill_by_tenure": [
+     {
+      "group": "OWNED_OUTRIGHT",
+      "households_m": 10.347903,
+      "mean_bill": 1480.1744384765625,
+      "mean_electricity": 945.0139770507812,
+      "mean_gas": 535.1602783203125,
+      "energy_over_10pct_share": 0.11017026752233505
+     },
+     {
+      "group": "OWNED_WITH_MORTGAGE",
+      "households_m": 7.5951895,
+      "mean_bill": 1600.3916015625,
+      "mean_electricity": 976.0498657226562,
+      "mean_gas": 624.3417358398438,
+      "energy_over_10pct_share": 0.06764039397239685
+     },
+     {
+      "group": "RENT_FROM_COUNCIL",
+      "households_m": 2.5691525,
+      "mean_bill": 1341.9112548828125,
+      "mean_electricity": 878.9264526367188,
+      "mean_gas": 462.98480224609375,
+      "energy_over_10pct_share": 0.10118822008371353
+     },
+     {
+      "group": "RENT_FROM_HA",
+      "households_m": 2.835174,
+      "mean_bill": 1143.9554443359375,
+      "mean_electricity": 757.016357421875,
+      "mean_gas": 386.93902587890625,
+      "energy_over_10pct_share": 0.06355138123035431
+     },
+     {
+      "group": "RENT_PRIVATELY",
+      "households_m": 4.906281,
+      "mean_bill": 1329.2113037109375,
+      "mean_electricity": 876.0888061523438,
+      "mean_gas": 453.1225280761719,
+      "energy_over_10pct_share": 0.08171233534812927
+     }
+    ]
+   },
+   "inequality": {
+    "gini_bhc": {
+     "baseline": 0.2887415222819102,
+     "reform": 0.28768320675857084,
+     "change": -0.0010583155233393482,
+     "change_pct": -0.0036652695981358417
+    },
+    "top_10_share_bhc": {
+     "baseline": 0.23334618267736787,
+     "reform": 0.23303347511241854,
+     "change": -0.0003127075649493327,
+     "change_pct": -0.001340101480818705
+    },
+    "top_1_share_bhc": {
+     "baseline": 0.05623576873771716,
+     "reform": 0.0561566137838625,
+     "change": -7.915495385465987e-05,
+     "change_pct": -0.0014075552914344868
+    },
+    "gini_ahc": {
+     "baseline": 0.33043183894781525,
+     "reform": 0.3291086497370399,
+     "change": -0.001323189210775344,
+     "change_pct": -0.004004424074231884
+    },
+    "top_10_share_ahc": {
+     "baseline": 0.2509496959521006,
+     "reform": 0.25054898519445606,
+     "change": -0.000400710757644529,
+     "change_pct": -0.00159677721913245
+    },
+    "top_1_share_ahc": {
+     "baseline": 0.06325173422523207,
+     "reform": 0.06314487013417286,
+     "change": -0.0001068640910592139,
+     "change_pct": -0.00168950452296981
+    }
+   },
+   "winners_losers": {
+    "all": {
+     "gain_more_than_5pct": 0.004036905738201016,
+     "gain_less_than_5pct": 0.4023394001396476,
+     "no_change": 0.5936236941221515,
+     "lose_less_than_5pct": 0.0,
+     "lose_more_than_5pct": 0.0
+    },
+    "by_decile": [
+     {
+      "decile": 1,
+      "gain_more_than_5pct": 0.040366302835257224,
+      "gain_less_than_5pct": 0.8880281862906223,
+      "no_change": 0.07160551087412048,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 2,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.883565244138219,
+      "no_change": 0.11643475586178094,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 3,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.6801296857432839,
+      "no_change": 0.3198703142567161,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 4,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.4692602390727403,
+      "no_change": 0.5307397609272597,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 5,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.3489928623719454,
+      "no_change": 0.6510071376280546,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 6,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.253935467966325,
+      "no_change": 0.746064532033675,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 7,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.21486945881168715,
+      "no_change": 0.7851305411883128,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 8,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.1225956149350938,
+      "no_change": 0.8774043850649063,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 9,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.09491359065553963,
+      "no_change": 0.9050864093444604,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 10,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.066711377741299,
+      "no_change": 0.933288622258701,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     }
+    ]
+   },
    "deciles_ahc": [
     {
      "decile": 1,
@@ -4619,6 +7104,503 @@
      }
     },
     "hbai_income_change_bn": 2.177910566329956
+   },
+   "baseline": {
+    "households_m": 30.337822,
+    "people_m": 67.19251830348345,
+    "mean_bill": 1586.006103515625,
+    "median_bill": 905.9693603515625,
+    "total_bill_bn": 48.115970611572266,
+    "mean_electricity": 899.3849487304688,
+    "mean_gas": 686.6211547851562,
+    "no_electricity_spend_share": 0.13928765058517456,
+    "gas_spend_share": 0.9466286897659302,
+    "energy_over_10pct_share": 0.14350542426109314,
+    "passported_share": 0.2615073621273041,
+    "income_test_share": 0.37882086634635925,
+    "poverty_rates": [
+     {
+      "measure": "abs_pov_bhc",
+      "group": "people",
+      "baseline_rate": 0.11275790545141037
+     },
+     {
+      "measure": "abs_pov_bhc",
+      "group": "children",
+      "baseline_rate": 0.12630930936008508
+     },
+     {
+      "measure": "abs_pov_bhc",
+      "group": "working_age_adults",
+      "baseline_rate": 0.11320312692485991
+     },
+     {
+      "measure": "abs_pov_bhc",
+      "group": "pensioners",
+      "baseline_rate": 0.09419542370751553
+     },
+     {
+      "measure": "abs_pov_ahc",
+      "group": "people",
+      "baseline_rate": 0.14696411719430702
+     },
+     {
+      "measure": "abs_pov_ahc",
+      "group": "children",
+      "baseline_rate": 0.18620418625123522
+     },
+     {
+      "measure": "abs_pov_ahc",
+      "group": "working_age_adults",
+      "baseline_rate": 0.15308747201725922
+     },
+     {
+      "measure": "abs_pov_ahc",
+      "group": "pensioners",
+      "baseline_rate": 0.07653577516523967
+     },
+     {
+      "measure": "rel_pov_bhc",
+      "group": "people",
+      "baseline_rate": 0.1974315292073872
+     },
+     {
+      "measure": "rel_pov_bhc",
+      "group": "children",
+      "baseline_rate": 0.24892116988489688
+     },
+     {
+      "measure": "rel_pov_bhc",
+      "group": "working_age_adults",
+      "baseline_rate": 0.17250269496637005
+     },
+     {
+      "measure": "rel_pov_bhc",
+      "group": "pensioners",
+      "baseline_rate": 0.21874337890650355
+     },
+     {
+      "measure": "rel_pov_ahc",
+      "group": "people",
+      "baseline_rate": 0.23667188372904024
+     },
+     {
+      "measure": "rel_pov_ahc",
+      "group": "children",
+      "baseline_rate": 0.3286775253867377
+     },
+     {
+      "measure": "rel_pov_ahc",
+      "group": "working_age_adults",
+      "baseline_rate": 0.22097310920513427
+     },
+     {
+      "measure": "rel_pov_ahc",
+      "group": "pensioners",
+      "baseline_rate": 0.17523404164645226
+     }
+    ],
+    "bill_by_decile": [
+     {
+      "group": 1,
+      "households_m": 3.6439365,
+      "mean_bill": 1193.0938720703125,
+      "mean_electricity": 667.4440307617188,
+      "mean_gas": 525.6499633789062,
+      "energy_over_10pct_share": 0.3604196608066559
+     },
+     {
+      "group": 2,
+      "households_m": 2.952617,
+      "mean_bill": 1282.568603515625,
+      "mean_electricity": 758.94482421875,
+      "mean_gas": 523.623779296875,
+      "energy_over_10pct_share": 0.17821826040744781
+     },
+     {
+      "group": 3,
+      "households_m": 3.0840325,
+      "mean_bill": 1434.2183837890625,
+      "mean_electricity": 811.1587524414062,
+      "mean_gas": 623.0595703125,
+      "energy_over_10pct_share": 0.18969851732254028
+     },
+     {
+      "group": 4,
+      "households_m": 2.999946,
+      "mean_bill": 1492.4342041015625,
+      "mean_electricity": 864.6994018554688,
+      "mean_gas": 627.7346801757812,
+      "energy_over_10pct_share": 0.17132888734340668
+     },
+     {
+      "group": 5,
+      "households_m": 3.25807525,
+      "mean_bill": 1480.3646240234375,
+      "mean_electricity": 858.5678100585938,
+      "mean_gas": 621.7968139648438,
+      "energy_over_10pct_share": 0.10841703414916992
+     },
+     {
+      "group": 6,
+      "households_m": 3.11629025,
+      "mean_bill": 2417.941162109375,
+      "mean_electricity": 1366.2506103515625,
+      "mean_gas": 1051.6907958984375,
+      "energy_over_10pct_share": 0.18999594449996948
+     },
+     {
+      "group": 7,
+      "households_m": 2.82623075,
+      "mean_bill": 1579.9481201171875,
+      "mean_electricity": 881.8803100585938,
+      "mean_gas": 698.0677490234375,
+      "energy_over_10pct_share": 0.0660741999745369
+     },
+     {
+      "group": 8,
+      "households_m": 2.6762845,
+      "mean_bill": 1755.9620361328125,
+      "mean_electricity": 999.7501220703125,
+      "mean_gas": 756.2119140625,
+      "energy_over_10pct_share": 0.049988940358161926
+     },
+     {
+      "group": 9,
+      "households_m": 2.62900975,
+      "mean_bill": 1696.4326171875,
+      "mean_electricity": 965.6619873046875,
+      "mean_gas": 730.7705688476562,
+      "energy_over_10pct_share": 0.032286010682582855
+     },
+     {
+      "group": 10,
+      "households_m": 3.15140125,
+      "mean_bill": 1617.7705078125,
+      "mean_electricity": 874.2244873046875,
+      "mean_gas": 743.546142578125,
+      "energy_over_10pct_share": 0.020420290529727936
+     }
+    ],
+    "bill_by_region": [
+     {
+      "group": "North East",
+      "households_m": 1.302546375,
+      "mean_bill": 2146.225341796875,
+      "mean_electricity": 1162.3021240234375,
+      "mean_gas": 983.9230346679688,
+      "energy_over_10pct_share": 0.22810927033424377
+     },
+     {
+      "group": "North West",
+      "households_m": 3.499573,
+      "mean_bill": 1595.3499755859375,
+      "mean_electricity": 909.2054443359375,
+      "mean_gas": 686.1444091796875,
+      "energy_over_10pct_share": 0.1657153069972992
+     },
+     {
+      "group": "Yorkshire and the Humber",
+      "households_m": 2.5553565,
+      "mean_bill": 1917.7437744140625,
+      "mean_electricity": 1049.5230712890625,
+      "mean_gas": 868.2207641601562,
+      "energy_over_10pct_share": 0.17306853830814362
+     },
+     {
+      "group": "East Midlands",
+      "households_m": 2.26209225,
+      "mean_bill": 1948.3974609375,
+      "mean_electricity": 1109.294677734375,
+      "mean_gas": 839.102783203125,
+      "energy_over_10pct_share": 0.13647925853729248
+     },
+     {
+      "group": "West Midlands",
+      "households_m": 2.67165675,
+      "mean_bill": 1401.102783203125,
+      "mean_electricity": 772.9761352539062,
+      "mean_gas": 628.126708984375,
+      "energy_over_10pct_share": 0.14426977932453156
+     },
+     {
+      "group": "East of England",
+      "households_m": 2.90283125,
+      "mean_bill": 1338.9261474609375,
+      "mean_electricity": 776.6294555664062,
+      "mean_gas": 562.2966918945312,
+      "energy_over_10pct_share": 0.07976841926574707
+     },
+     {
+      "group": "London",
+      "households_m": 3.9194285,
+      "mean_bill": 1084.5228271484375,
+      "mean_electricity": 578.7416381835938,
+      "mean_gas": 505.7811584472656,
+      "energy_over_10pct_share": 0.05452181026339531
+     },
+     {
+      "group": "South East",
+      "households_m": 4.2128035,
+      "mean_bill": 1573.05517578125,
+      "mean_electricity": 879.0816650390625,
+      "mean_gas": 693.9735717773438,
+      "energy_over_10pct_share": 0.20098121464252472
+     },
+     {
+      "group": "South West",
+      "households_m": 2.7361945,
+      "mean_bill": 1317.458984375,
+      "mean_electricity": 823.6795654296875,
+      "mean_gas": 493.77960205078125,
+      "energy_over_10pct_share": 0.08708038926124573
+     },
+     {
+      "group": "Wales",
+      "households_m": 1.5649675,
+      "mean_bill": 1845.1556396484375,
+      "mean_electricity": 1042.968994140625,
+      "mean_gas": 802.1865234375,
+      "energy_over_10pct_share": 0.19431987404823303
+     },
+     {
+      "group": "Scotland",
+      "households_m": 2.71037325,
+      "mean_bill": 2003.169921875,
+      "mean_electricity": 1188.441162109375,
+      "mean_gas": 814.7286987304688,
+      "energy_over_10pct_share": 0.18663497269153595
+     }
+    ],
+    "bill_by_household_type": [
+     {
+      "group": "Single pensioner",
+      "households_m": 4.044378,
+      "mean_bill": 1315.21142578125,
+      "mean_electricity": 733.8985595703125,
+      "mean_gas": 581.31298828125,
+      "energy_over_10pct_share": 0.21607448160648346
+     },
+     {
+      "group": "Pensioner couple",
+      "households_m": 3.84184325,
+      "mean_bill": 2365.772216796875,
+      "mean_electricity": 1362.951904296875,
+      "mean_gas": 1002.8201293945312,
+      "energy_over_10pct_share": 0.18536661565303802
+     },
+     {
+      "group": "Single, no children",
+      "households_m": 5.58196,
+      "mean_bill": 1163.6591796875,
+      "mean_electricity": 642.6113891601562,
+      "mean_gas": 521.047607421875,
+      "energy_over_10pct_share": 0.2163844257593155
+     },
+     {
+      "group": "Couple, no children",
+      "households_m": 7.105159,
+      "mean_bill": 1725.6365966796875,
+      "mean_electricity": 994.2197875976562,
+      "mean_gas": 731.4170532226562,
+      "energy_over_10pct_share": 0.12699586153030396
+     },
+     {
+      "group": "Lone parent",
+      "households_m": 2.09701875,
+      "mean_bill": 740.9887084960938,
+      "mean_electricity": 407.93695068359375,
+      "mean_gas": 333.0517578125,
+      "energy_over_10pct_share": 0.034425292164087296
+     },
+     {
+      "group": "Couple with children",
+      "households_m": 4.926222,
+      "mean_bill": 1629.059814453125,
+      "mean_electricity": 927.1756591796875,
+      "mean_gas": 701.8840942382812,
+      "energy_over_10pct_share": 0.05749952048063278
+     },
+     {
+      "group": "Multi-family household",
+      "households_m": 2.74124225,
+      "mean_bill": 1959.8533935546875,
+      "mean_electricity": 1096.9202880859375,
+      "mean_gas": 862.93310546875,
+      "energy_over_10pct_share": 0.11016350984573364
+     }
+    ],
+    "bill_by_tenure": [
+     {
+      "group": "OWNED_OUTRIGHT",
+      "households_m": 10.613467,
+      "mean_bill": 1966.802978515625,
+      "mean_electricity": 1106.771728515625,
+      "mean_gas": 860.03125,
+      "energy_over_10pct_share": 0.2087177038192749
+     },
+     {
+      "group": "OWNED_WITH_MORTGAGE",
+      "households_m": 8.1424605,
+      "mean_bill": 1627.4158935546875,
+      "mean_electricity": 903.451416015625,
+      "mean_gas": 723.9642944335938,
+      "energy_over_10pct_share": 0.10229891538619995
+     },
+     {
+      "group": "RENT_FROM_COUNCIL",
+      "households_m": 2.68317775,
+      "mean_bill": 973.9340209960938,
+      "mean_electricity": 594.4618530273438,
+      "mean_gas": 379.4720764160156,
+      "energy_over_10pct_share": 0.09515001624822617
+     },
+     {
+      "group": "RENT_FROM_HA",
+      "households_m": 2.44074975,
+      "mean_bill": 1038.9317626953125,
+      "mean_electricity": 611.099853515625,
+      "mean_gas": 427.83197021484375,
+      "energy_over_10pct_share": 0.13544604182243347
+     },
+     {
+      "group": "RENT_PRIVATELY",
+      "households_m": 6.457968,
+      "mean_bill": 1369.03662109375,
+      "mean_electricity": 789.0701904296875,
+      "mean_gas": 579.96630859375,
+      "energy_over_10pct_share": 0.11142271012067795
+     }
+    ]
+   },
+   "inequality": {
+    "gini_bhc": {
+     "baseline": 0.3131015659966776,
+     "reform": 0.31196933013692196,
+     "change": -0.001132235859755637,
+     "change_pct": -0.003616193538194093
+    },
+    "top_10_share_bhc": {
+     "baseline": 0.23766830308477369,
+     "reform": 0.2373544478599304,
+     "change": -0.00031385522484328465,
+     "change_pct": -0.0013205598759685507
+    },
+    "top_1_share_bhc": {
+     "baseline": 0.049974670084731436,
+     "reform": 0.049906612863473844,
+     "change": -6.805722125759195e-05,
+     "change_pct": -0.0013618343281146584
+    },
+    "gini_ahc": {
+     "baseline": 0.35746332494475175,
+     "reform": 0.3560169684756874,
+     "change": -0.001446356469064325,
+     "change_pct": -0.004046167447493722
+    },
+    "top_10_share_ahc": {
+     "baseline": 0.2555059107980194,
+     "reform": 0.25509190361948386,
+     "change": -0.0004140071785355137,
+     "change_pct": -0.0016203428611199198
+    },
+    "top_1_share_ahc": {
+     "baseline": 0.055396819886045855,
+     "reform": 0.05530465627413435,
+     "change": -9.216361191150685e-05,
+     "change_pct": -0.0016636986040190068
+    }
+   },
+   "winners_losers": {
+    "all": {
+     "gain_more_than_5pct": 0.006451184575799607,
+     "gain_less_than_5pct": 0.35973992555230927,
+     "no_change": 0.6338088898718911,
+     "lose_less_than_5pct": 0.0,
+     "lose_more_than_5pct": 0.0
+    },
+    "by_decile": [
+     {
+      "decile": 1,
+      "gain_more_than_5pct": 0.0644971527205398,
+      "gain_less_than_5pct": 0.8554713943124546,
+      "no_change": 0.08003145296700569,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 2,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.9167293310509135,
+      "no_change": 0.08327066894908648,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 3,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.7971731605945939,
+      "no_change": 0.2028268394054062,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 4,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.44054750275707333,
+      "no_change": 0.5594524972429267,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 5,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.29034988291177055,
+      "no_change": 0.7096501170882294,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 6,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.13130056555708236,
+      "no_change": 0.8686994344429176,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 7,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.0847590547439532,
+      "no_change": 0.9152409452560468,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 8,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.05782646067890463,
+      "no_change": 0.9421735393210954,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 9,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.0069824941300986034,
+      "no_change": 0.9930175058699015,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     },
+     {
+      "decile": 10,
+      "gain_more_than_5pct": 0.0,
+      "gain_less_than_5pct": 0.015301171867222943,
+      "no_change": 0.9846988281327771,
+      "lose_less_than_5pct": 0.0,
+      "lose_more_than_5pct": 0.0
+     }
+    ]
    },
    "deciles_ahc": [
     {
