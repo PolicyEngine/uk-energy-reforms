@@ -123,13 +123,15 @@ and are set as an input, because policyengine-core forbids randomness inside for
 Use Microcosm for anything below national totals. eFRS weights are highly concentrated
 (Kish effective sample size about 1,100).
 
-policyengine-uk 2.100 does not uprate `electricity_consumption` or `gas_consumption`
-between years (its uprating file notes that policyengine-uk-data stores them at 2026-27
-prices). The Enhanced FRS stores Ofgem April–June 2026 rates, so its spend is at 2026-27
-prices in every year. Microcosm prices spend at 2024-25 DESNZ prices, so its bills stay at
-2024-25 levels in 2026-27 and 2027-28. Fixed amounts and eligibility are unaffected; bill
-levels, bill-share payments and energy-burden shares on Microcosm are understated in the
-scheme years.
+policyengine-uk does not uprate `electricity_consumption` or `gas_consumption` between
+years. policyengine-uk#1860 added CPI uprating; #1868 removed it again, because
+policyengine-uk-data prices the Enhanced FRS at Ofgem April–June 2026 unit rates. Spend
+therefore stays at each dataset's stored price level in every year: April–June 2026 for the
+Enhanced FRS and 2024-25 for Microcosm. Ofgem's typical-use cap averaged within 2% of its
+April–June 2026 level over 2024-25, so the two datasets sit at about the same price level.
+Both sit below this winter's cap (October–December 2026 is 17–18% above April–June 2026), so
+bill levels, bill-share payments and energy-burden shares are understated in the scheme years
+on both. Fixed amounts and eligibility do not depend on spend.
 
 ## Notes
 

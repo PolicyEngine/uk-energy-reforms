@@ -110,11 +110,12 @@ with sources (`src/uk_energy_reforms/external_sources.json`).
   government data and the count excludes Scotland's Broader Group, so it sits below the
   number of households receiving the benefits.
 - **Bills.** Microcosm averages £1,440 at 2024-25 prices, 19% below ONS Family Spending's
-  £1,773 for 2024-25 (UK, weekly spend × 52). Most of the gap is gas: £523 against £733,
-  with electricity £917 against £1,040. The Enhanced FRS averages £1,586 at April–June 2026
-  unit rates, against Ofgem's typical-use cap of £1,477 for that quarter and £1,723 for
-  October–December 2026. Its median is £906, pulled down by the 14% of its households with
-  no electricity spend.
+  £1,773 for the same year (UK, weekly spend × 52). Most of the gap is gas: £523 against
+  £733, with electricity £917 against £1,040. The Enhanced FRS averages £1,586 at
+  April–June 2026 unit rates, a price level within 2% of 2024-25's, so its higher average
+  is consumption. Its median is £906, pulled down by the 14% of its households with no
+  electricity spend. For comparison, Ofgem's typical-use cap is £1,477 for April–June 2026
+  and £1,723 for October–December 2026.
 - **Gas.** 75% / 95% of households have gas spend; DESNZ puts 84% of properties on the gas
   grid.
 - **Relative poverty after housing costs, 2024-25.** 19.6% / 23.7% of people, against 19.6%
@@ -227,11 +228,18 @@ uv run uk-energy-reforms export-dashboard --analysis analyses/rf-billing-me-soft
   nominal values while incomes are uprated from 2024-25. That is why the £24,000 test
   covers 40% / 41% of households on 2024-25 incomes, 36% / 38% in 2026-27 and 35% / 37% in
   2027-28.
-- **Energy spend is not uprated.** policyengine-uk 2.100 holds gas and electricity spend at
-  the price level each dataset stores. The Enhanced FRS stores April–June 2026 unit rates;
-  Microcosm stores 2024-25 prices, so its bills, bill-share payments and energy-burden
-  shares are understated in 2026-27 and 2027-28. Fixed amounts and eligibility do not
-  depend on spend.
+- **Energy spend is not uprated.** policyengine-uk holds gas and electricity spend at the
+  price level each dataset stores. policyengine-uk#1860 added CPI uprating, and #1868
+  (merged 23 September) removed it again, because policyengine-uk-data already prices the
+  Enhanced FRS at April–June 2026 unit rates.
+  - Microcosm stores 2024-25 prices. Ofgem's cap for typical use averaged £1,678 over
+    2024-25, 2% above its April–June 2026 level (£1,641, same consumption basis), so the
+    two datasets sit at about the same price level. The gap between their average bills is
+    consumption, not price.
+  - Both sit below this winter's prices: the October–December 2026 cap is 17–18% above
+    April–June 2026. Bill levels, bill-share payments and energy-burden shares are
+    therefore understated in 2026-27 and 2027-28 on both datasets. Fixed amounts and
+    eligibility do not depend on spend.
 - **Take-up and income treatment.** Every eligible household claims. The discount counts as
   HBAI income, as DWP counts the Warm Home Discount.
 - **Poverty lines.**

@@ -161,6 +161,24 @@
   "note": "Real-terms rise of 5% BHC and 5% AHC on FYE 2024, statistically significant. The relative low-income line is 60% of these medians."
  },
  {
+  "id": "ofgem_cap_fy2024_25",
+  "quantity": "Ofgem price cap, typical dual-fuel Direct Debit annual bill, each quarter of 2024-25",
+  "value": {
+   "apr_jun_2024": 1690,
+   "jul_sep_2024": 1568,
+   "oct_dec_2024": 1717,
+   "jan_mar_2025": 1738,
+   "mean": 1678.25
+  },
+  "unit": "gbp_per_year",
+  "period": "2024-04-01 to 2025-03-31",
+  "geography": "GB",
+  "publisher": "Ofgem",
+  "title": "Changes to energy price cap between 1 July to 30 September 2024",
+  "url": "https://www.ofgem.gov.uk/news/changes-energy-price-cap-between-1-july-30-september-2024",
+  "note": "At the 2023 TDCV (2,700 kWh electricity, 11,500 kWh gas), the basis of ofgem_cap_2026_apr_jun.at_2023_tdcv (1,641). The July-September 2024 figure (1,568, down from 1,690) is from the cited page; April-June 2024 from https://www.ofgem.gov.uk/publications/new-energy-price-cap-level-april-june-2024-starts-today , October-December 2024 from https://www.ofgem.gov.uk/news/changes-energy-price-cap-between-1-october-31-december-2024 , January-March 2025 from https://www.ofgem.gov.uk/news/changes-energy-price-cap-between-1-january-and-31-march-2025 . The mean is the simple average of the four quarters (my derivation)."
+ },
+ {
   "id": "ofgem_cap_2026_apr_jun",
   "quantity": "Ofgem price cap, typical dual-fuel Direct Debit annual bill, 1 April - 30 June 2026",
   "value": {
