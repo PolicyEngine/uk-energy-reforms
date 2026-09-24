@@ -5,8 +5,8 @@ export const alt =
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-// The image renderer cannot read CSS variables, so tokens are written as hex:
-// #2C7A7B is --primary (teal-600), #E6FFFA is teal-50.
+// The image renderer cannot read CSS variables, so the tokens are written as hex:
+// #285E61 is primary-700 and #E6FFFA primary-50 in the PolicyEngine palette.
 export default function OpengraphImage() {
   return new ImageResponse(
     (
@@ -18,7 +18,7 @@ export default function OpengraphImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "72px",
-          background: "#2C7A7B",
+          background: "#285E61",
           color: "#FFFFFF",
           fontFamily: "sans-serif",
         }}
@@ -28,7 +28,7 @@ export default function OpengraphImage() {
           <div style={{ fontSize: 76, fontWeight: 700 }}>Targeted energy discount</div>
           <div style={{ fontSize: 36, color: "#E6FFFA", maxWidth: 980 }}>
             Who the Resolution Foundation&apos;s £24,000 highest-income test and benefit
-            passporting would reach in 2026-27
+            passporting would reach
           </div>
         </div>
       </div>

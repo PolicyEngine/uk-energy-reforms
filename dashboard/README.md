@@ -1,26 +1,44 @@
 # Targeted energy discount dashboard
 
-A static dashboard for the Resolution Foundation's targeted energy discount proposal:
-who each option reaches, what it costs, its distributional and poverty effects,
-breakdowns by region and household type, income-threshold cliffs, and PolicyEngine's
-estimates beside the report's own figures.
+A static dashboard for the Resolution Foundation's targeted energy discount proposal
+(*Billing me softly*, August 2026), built on the template of PolicyEngine's published UK
+dashboards. Five tabs:
 
-Stack: Next.js (App Router), Tailwind v4 with `@policyengine/ui-kit` 0.4.0, Recharts,
-bun. It is path-mounted for the policyengine.org multizone at
+- **Targeted energy discount:** cost, reach, gains by income decile, winners and losers,
+  inequality, poverty, reach among struggling households, breakdowns by region and household
+  type, and the income cut-offs, for each option, set of amounts, year and dataset.
+- **Your household:** the discount a household would get under each option, from its
+  region, adults' taxable incomes, children, benefits and energy bill.
+- **Baseline:** households, bills and eligibility before the scheme, data coverage, and the
+  model's figures beside official statistics and other organisations' estimates.
+- **Comparison with the report:** every figure the report publishes beside PolicyEngine's.
+- **Methodology:** the assumptions behind every figure.
+
+Stack: Next.js 14 (App Router), React 18, Tailwind 3 with `@policyengine/design-system`
+tokens, Recharts, bun. It is path-mounted for the policyengine.org multizone at
 `/uk/targeted-energy-discount`.
 
 ## Data
 
-Everything the page shows is pre-computed. `data/results.json` is generated from the
-analysis folder by the Python package at the repository root:
+Everything the page shows is pre-computed and served from `public/data/`:
+
+- `targeted_energy_discount_results.json`: every option, set of amounts, year and dataset,
+  the baseline, the 2024-25 replication, the report comparison and the external sources.
+- `calculator.json`: the equivalence scale and household cases computed with
+  policyengine-uk, which the JavaScript calculator in `src/lib/calculator.js` is tested
+  against (`bun run test`).
+
+Both are generated from the analysis folder by the Python package at the repository root:
 
 ```bash
 # from the repository root, after the analysis runs (see analyses/rf-billing-me-softly)
-uv run uk-energy-reforms export-dashboard \
-  --analysis analyses/rf-billing-me-softly --out dashboard/data/results.json
+uv run uk-energy-reforms export-dashboard --analysis analyses/rf-billing-me-softly \
+  --out dashboard/public/data/targeted_energy_discount_results.json \
+  --calculator-out dashboard/public/data/calculator.json
 ```
 
-The file holds aggregate estimates only; no microdata is committed.
+The files hold aggregate estimates and synthetic household cases only; no microdata is
+committed.
 
 ## Develop
 
@@ -30,6 +48,6 @@ Needs bun 1.4 or later: `bun.lock` is a v2 lockfile, which bun 1.3 refuses (CI's
 ```bash
 bun install
 bun run dev      # http://localhost:3000/uk/targeted-energy-discount
-bun run lint
+bun run test
 bun run build
 ```
