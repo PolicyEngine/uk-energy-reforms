@@ -229,7 +229,7 @@ uv run uk-energy-reforms export-dashboard --analysis analyses/rf-billing-me-soft
   covers 40% / 41% of households on 2024-25 incomes, 36% / 38% in 2026-27 and 35% / 37% in
   2027-28.
 - **Energy spend is not uprated.** policyengine-uk holds gas and electricity spend at the
-  price level each dataset stores. policyengine-uk#1860 added CPI uprating, and #1868
+  price level each dataset stores. [policyengine-uk#1860](https://github.com/PolicyEngine/policyengine-uk/pull/1860) added CPI uprating, and [policyengine-uk#1868](https://github.com/PolicyEngine/policyengine-uk/pull/1868)
   (merged 23 September) removed it again, because policyengine-uk-data already prices the
   Enhanced FRS at April–June 2026 unit rates.
   - Microcosm stores 2024-25 prices. Ofgem's cap for typical use averaged £1,678 over
