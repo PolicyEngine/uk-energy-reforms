@@ -52,11 +52,15 @@ estimates the following, set beside the Resolution Foundation's published figure
 | Poorest four deciles passing the £24,000 individual test | 75% (p. 6) | 73% | 77% |
 | Households with equivalised household income below £30,000 | around 40% (p. 6) | 38% | 38% |
 | Poorest four deciles passing the £30,000 household test | 78% (p. 6) | 74% | 76% |
-| Couples with children (benefit units) passing the household test | 1.8m (p. 7) | 1.6m | 1.5m |
-| …of which not eligible under the individual option | 490,000 (p. 7) | 342,000 | 344,000 |
-| …of which in the poorest fifth | 71% (p. 7) | 77% | 65% |
-| Pensioner units eligible only under the individual option | 780,000 (p. 8) | 982,000 | 815,000 |
-| …of which in decile five or above | 81% (p. 8) | 70% | 59% |
+| Couples with children (benefit units) passing the household income test | 1.8m (p. 7) | 1.6m | 1.5m |
+| …of which failing the individual income test (RF's basis) | 490,000 (p. 7) | 653,000 | 676,000 |
+| …of which in the poorest fifth (RF's basis) | 71% (p. 7) | 61% | 55% |
+| …of which losing the discount, as not passported (policy count) | not published | 342,000 | 344,000 |
+| …of which in the poorest fifth (policy count) | not published | 77% | 65% |
+| Pensioner units passing the individual test but not the household one (RF's basis) | 780,000 (p. 8) | 1,089,000 | 824,000 |
+| …of which in decile five or above (RF's basis) | 81% (p. 8) | 71% | 60% |
+| Pensioner units gaining the discount only under the individual option (policy count) | not published | 982,000 | 815,000 |
+| …of which in decile five or above (policy count) | not published | 70% | 59% |
 | Flat average of a £2bn scheme, over households passing the income test | £175 (p. 9) | £177 | £162 |
 | Tiered amounts of a £2bn scheme, over households passing the income test | £220 / £85 (p. 9) | £211 / £82 | £191 / £74 |
 
@@ -65,28 +69,39 @@ How to read the table, and what explains the gaps:
 - **Passporting basis.** Our passporting uses modelled receipt, including each dataset's
   take-up. RF uses receipt reported in the FRS. On reported receipt the shares are 24% /
   26%, either side of RF's "around a quarter"; modelled receipt puts Microcosm at 27%.
-- **Family rows are policy counts.** A unit counts as losing (or gaining) only if its
-  household is eligible under one option and not the other. Passported households are
-  eligible under both, so they are excluded.
-  - Netting out passporting takes the couples who lose from 653k / 676k to 342k / 344k,
-    now about 30% below RF's 490,000.
-  - The rows count benefit units wherever they live, as RF's Figure 4 does. Counted as
-    households with a single benefit unit they read 1.4m / 1.4m couples passing the
-    household test, 326k / 284k losing and 871k / 804k pensioner households gaining.
+- **Family rows on two bases.** RF's p. 7-8 figures compare the two income-test series,
+  and both of its figures show passporting as a separate series. So RF's 490,000 and
+  780,000 are units that pass one income test and fail the other, whether or not they are
+  passported. The "RF's basis" rows measure exactly that.
+  - The "policy count" rows net out passporting, because a passported household is
+    eligible under both options and loses or gains nothing. They count the units that
+    actually lose or gain the discount. RF does not publish them.
+  - On RF's basis, 653k / 676k couples with children fail the individual test, 33–38%
+    above RF's 490,000. Netting out passporting halves that to 342k / 344k.
+  - The pensioner rows barely move: 1,089k / 824k on RF's basis and 982k / 815k as a
+    policy count, since few of these pensioners are passported.
+  - Every row counts benefit units wherever they live, as RF's Figure 4 does. Counted as
+    households with a single benefit unit, 1.4m / 1.4m couples pass the household test,
+    536k / 584k fail the individual test (326k / 284k as a policy count), and 901k /
+    810k pensioner households pass only the individual test (871k / 804k).
 - **Decile basis.** Deciles are person-weighted AHC deciles, the HBAI convention. RF's
   footnote 6 names the income measure but not the weighting, so this is our choice.
-  - With household-weighted deciles instead, 69% / 62% of the couples who lose are in the
-    poorest fifth, against RF's 71%.
-  - On the same basis, 76% / 69% of the pensioner units who gain are in decile five or
-    above, against RF's 81%.
-- **Composition behind the pensioner row.** Microcosm's 982,000 exceeds the Enhanced FRS's
-  815,000, which is within 5% of RF's 780,000. The gap comes mainly from household
+  - With household-weighted deciles, 54% / 51% of the couples on RF's basis are in the
+    poorest fifth (69% / 62% as a policy count), against RF's 71%.
+  - On the same basis, 76% / 69% of the pensioner units are in decile five or above (76%
+    / 69% as a policy count), against RF's 81%.
+- **Composition behind the pensioner row.** Microcosm's 1,089,000 exceeds the Enhanced
+  FRS's 824,000, which is within 6% of RF's 780,000. The gap comes mainly from household
   composition, not the counting unit.
   - Multi-family households are 21% of Microcosm's households against 9% in the Enhanced
     FRS.
-  - 11% of Microcosm's gaining pensioner units live in one, against 1% in the Enhanced FRS.
-    A pensioner living with an adult child in work passes the individual test and can
-    fail the household one.
+  - 17% of Microcosm's pensioner units on RF's basis live in one, against 2% in the
+    Enhanced FRS. A pensioner living with an adult child in work passes the individual
+    test and can fail the household one.
+- **Small samples in the couples rows.** The poorest-fifth shares rest on few survey
+  records and move between years. On the Enhanced FRS the policy-count share is 65% in
+  2024-25 and 92% in 2026-27, on 440 and 356 records. `rf_comparison.json` records every
+  row's sample size (`sample_n_*`).
 - **Denominator for the £2bn averages.** Dividing £2bn among all eligible households
   (passported or passing the test) gives £151 / £146. The published £175 matches the
   income-test group.
@@ -190,6 +205,11 @@ Eligibility rates within household types agree across the two datasets; counts d
   - Matching the fixed amounts' averages takes 13.5% off the annual bill in the flat
     option, and 17.1% (below £18,000) and 6.4% (£18,000 to £24,000) in the tiered option
     (Microcosm).
+  - These shares are calibrated on bills at the datasets' stored price levels (2024-25 for
+    Microcosm, April–June 2026 for the Enhanced FRS), which sit about 17% below the
+    October–December 2026 cap. At this winter's prices the same shares would pay about 17%
+    more than shown here; a scheme aiming at RF's averages would need about 11.6% rather
+    than 13.5% in the flat option.
   - Support then follows bills: single adults average £124 and couples with children £252
     (Microcosm, flat option).
   - Dead zones rise from 50k to 85k, because households with high bills lose more at the

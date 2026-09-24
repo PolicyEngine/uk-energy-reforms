@@ -270,7 +270,11 @@ def rf_markdown(comparison: dict) -> str:
         + " | ".join(
             [
                 f["label"],
-                f"{_format(f['rf'], f['unit'])} (p. {f['page']})",
+                (
+                    f"{_format(f['rf'], f['unit'])} (p. {f['page']})"
+                    if f["rf"] is not None
+                    else "not published"
+                ),
                 *[_format(f["policyengine"][d][y], f["unit"]) for d, y in columns],
             ]
         )

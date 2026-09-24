@@ -383,8 +383,9 @@ def breakdown(run: Run, by: str, f: pd.DataFrame | None = None) -> pd.DataFrame:
 
 
 # Winners and losers: change in household net income (HBAI, before housing costs)
-# relative to the baseline, in PolicyEngine's usual bands. Changes smaller than 0.1% of
-# income count as no change. The scheme's funding is not modelled, so nobody loses.
+# relative to the baseline, in the bands and (lower, upper] intervals of
+# policyengine-api's intra_decile_impact: changes within 0.1% of income count as no
+# change. The scheme's funding is not modelled, so nobody loses.
 WINNER_BANDS = [
     ("gain_more_than_5pct", 0.05, np.inf),
     ("gain_less_than_5pct", 0.001, 0.05),
@@ -395,11 +396,9 @@ WINNER_BANDS = [
 
 
 def _relative_change(f: pd.DataFrame) -> np.ndarray:
-    base = f.net_bhc_base.values
-    gain = f.gain.values
-    with np.errstate(divide="ignore", invalid="ignore"):
-        rel = np.where(base > 0, gain / np.maximum(base, 1e-9), np.sign(gain) * np.inf)
-    return np.nan_to_num(rel, nan=0.0)
+    """Change in net income relative to baseline, with the baseline floored at 1 as
+    policyengine-api's ``compute_income_change`` does for zero or negative incomes."""
+    return f.gain.values / np.maximum(f.net_bhc_base.values, 1)
 
 
 def winners_losers(run: Run, f: pd.DataFrame | None = None) -> dict:
