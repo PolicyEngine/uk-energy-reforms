@@ -74,7 +74,7 @@ export default function ReportTab({ data }) {
   const datasets = DATASET_ORDER.filter((d) => rf.figures[0]?.policyengine?.[d]);
   const years = Object.keys(rf.figures[0]?.policyengine?.[datasets[0]] ?? {});
   const dotRows = rf.figures
-    .filter((f) => f.unit === "share")
+    .filter((f) => f.unit === "share" && f.rf != null)
     .map((f) => ({
       label: f.label,
       rf: f.rf,
@@ -83,7 +83,11 @@ export default function ReportTab({ data }) {
         .filter((v) => v.value !== undefined && v.value !== null),
     }));
   const rows = rf.figures.map((f) => {
-    const row = { key: f.id, figure: f.label, rf: `${formatFigure(f.rf, f.unit)} (p. ${f.page})` };
+    const row = {
+      key: f.id,
+      figure: f.label,
+      rf: f.rf == null ? "not published" : `${formatFigure(f.rf, f.unit)} (p. ${f.page})`,
+    };
     for (const d of datasets) {
       for (const y of years) row[`${d}_${y}`] = formatFigure(f.policyengine[d]?.[y], f.unit);
     }

@@ -32,6 +32,17 @@ export default function MethodologyTab({ data }) {
   const datasets = DATASET_ORDER.filter((d) => data.meta.datasets[d]);
   const flatScaled = getResult(data, firstYear, "rf_flat", "budget_2bn", "microcosm_979")?.schedule
     ?.amounts?.[0];
+  const incomeTest = data.rf_comparison.figures.find((f) => f.id === "income_test_share");
+  const coverage = (y) =>
+    datasets
+      .map((d) =>
+        formatShare(
+          y === "2024"
+            ? incomeTest?.policyengine?.[d]?.["2024"] ?? 0
+            : data.baseline?.[y]?.[d]?.income_test_share ?? 0,
+        ),
+      )
+      .join(" / ");
   const cap = (id) => (data.external_sources ?? []).find((x) => x.id === id);
   const capFy24 = cap("ofgem_cap_fy2024_25");
   const capQ2 = cap("ofgem_cap_2026_apr_jun");
@@ -134,8 +145,16 @@ export default function MethodologyTab({ data }) {
             </>,
             <>
               <strong>Nominal thresholds.</strong> The £18,000, £24,000 and £30,000 lines are
-              not uprated between years, so as incomes grow, fewer households pass the income test
-              in 2027-28 than in 2026-27.
+              not uprated between years, so fewer households pass the income test as incomes
+              grow. The £24,000 test covers {coverage("2024")} of households on 2024-25
+              incomes,{" "}
+              {years.map((y, i) => (
+                <span key={y}>
+                  {i > 0 ? " and " : ""}
+                  {coverage(y)} in {yearLabel(data, y)}
+                </span>
+              ))}{" "}
+              ({datasets.map((d) => DATASET_SHORT[d]).join(" / ")}).
             </>,
             <>
               <strong>Full take-up.</strong> Passported households are enrolled automatically.

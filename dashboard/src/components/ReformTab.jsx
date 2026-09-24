@@ -144,6 +144,7 @@ function Controls({ data, state, setState, result, published }) {
           2027, the window the report proposes for this winter.
         </p>
       )}
+      {variant === "bill_share" && result && <BillSharePriceNote data={data} dataset={dataset} result={result} />}
       {dataset === "efrs_1573" && variant === "bill_share" && result && published && (
         <Warning>
           The Enhanced FRS records no energy spend for some households, and a bill share pays
@@ -154,6 +155,38 @@ function Controls({ data, state, setState, result, published }) {
         </Warning>
       )}
     </section>
+  );
+}
+
+// Each dataset's stored price level against this winter's cap, on Ofgem's 2023
+// typical-use basis (the only basis on which the 2024-25 caps are published).
+const PRICE_LEVEL = {
+  microcosm_979: { label: "2024-25 prices", source: "ofgem_cap_fy2024_25", key: "mean" },
+  efrs_1573: {
+    label: "April–June 2026 unit rates",
+    source: "ofgem_cap_2026_apr_jun",
+    key: "at_2023_tdcv",
+  },
+};
+
+function BillSharePriceNote({ data, dataset, result }) {
+  const source = (id) => (data.external_sources ?? []).find((x) => x.id === id);
+  const level = PRICE_LEVEL[dataset];
+  const base = level && source(level.source)?.value?.[level.key];
+  const winter = source("ofgem_cap_2026_oct_dec")?.value?.at_2023_tdcv;
+  if (!base || !winter) return null;
+  const uplift = winter / base;
+  const rate = result.schedule.rates.find((r) => r > 0);
+  return (
+    <Note eyebrow="Bill share and this winter's prices">
+      The percentages are set so the average payment matches RF&apos;s amounts on this
+      dataset&apos;s bills, which are at {level.label}. Ofgem&apos;s cap for October–December
+      2026 is {formatShare(uplift - 1)} above that price level, so at this winter&apos;s prices
+      the same percentages would pay about {formatShare(uplift - 1)} more than shown here.
+      {rate
+        ? ` Matching RF's averages at those prices would take about ${(100 * (rate / uplift)).toFixed(1)}% rather than ${(100 * rate).toFixed(1)}%.`
+        : ""}
+    </Note>
   );
 }
 
@@ -342,7 +375,8 @@ function ReachSection({ result, isPassportOnly }) {
           return (
             <div key={c.group}>
               <p className="mb-2 text-sm font-semibold text-slate-800">
-                {COVERAGE_LABELS[c.group] ?? c.group} ({formatMillions(c.households_m)})
+                {COVERAGE_LABELS[c.group] ?? c.group} ({formatMillions(c.households_m)}):{" "}
+                {formatMillions(c.missed_m, 2)} get nothing
               </p>
               <SplitBar
                 segments={[

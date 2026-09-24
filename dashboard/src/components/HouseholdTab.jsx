@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { targetedEnergyDiscount } from "../lib/calculator";
+import { explain } from "../lib/explain";
 import {
   DATASET_ORDER,
   DATASET_SHORT,
@@ -57,29 +58,6 @@ function NumberField({ label, value, onChange, step = 1000, min = 0, prefix }) {
       </span>
     </label>
   );
-}
-
-function explain(result, schedule) {
-  const gbp = (v) => `£${Math.round(v).toLocaleString("en-GB")}`;
-  if (!result.inScope) {
-    return "Households in Northern Ireland are outside the scheme: their bills are not covered by Ofgem's price cap.";
-  }
-  const line = schedule.thresholds[schedule.thresholds.length - 1];
-  const tested = schedule.household_equivalised
-    ? `equivalised household income (${gbp(result.tested)}, total taxable income divided by ${result.equivalisationFactor.toFixed(2)})`
-    : `highest individual taxable income (${gbp(result.tested)})`;
-  const gap = result.tested - line;
-  const position =
-    gap < 0 ? `${gbp(-gap)} below the ${gbp(line)} line` : `${gbp(gap)} above the ${gbp(line)} line`;
-  if (result.passported) {
-    return `The household receives a means-tested benefit, so it qualifies whatever its income. Its ${tested} is ${position}.`;
-  }
-  if (!schedule.income_test) {
-    return "This option passports benefit recipients only, and the household does not receive a passporting benefit.";
-  }
-  return result.incomeRoute
-    ? `The household qualifies through the income test: its ${tested} is ${position}.`
-    : `The household does not qualify: its ${tested} is ${position}, and it does not receive a passporting benefit.`;
 }
 
 export default function HouseholdTab({ data, calculator }) {

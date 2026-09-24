@@ -29,6 +29,38 @@
     "rf_household_income": 175.0,
     "passport_only": 0.0,
     "rf_tiered_bill_share": 225.0
+   },
+   "routes": {
+    "rf_flat": {
+     "eligible": true,
+     "income_route": true,
+     "tested_income": 17000.0
+    },
+    "rf_tiered": {
+     "eligible": true,
+     "income_route": true,
+     "tested_income": 17000.0
+    },
+    "rf_tiered_own_income": {
+     "eligible": true,
+     "income_route": true,
+     "tested_income": 17000.0
+    },
+    "rf_household_income": {
+     "eligible": true,
+     "income_route": true,
+     "tested_income": 25373.1328125
+    },
+    "passport_only": {
+     "eligible": false,
+     "income_route": false,
+     "tested_income": 17000.0
+    },
+    "rf_tiered_bill_share": {
+     "eligible": true,
+     "income_route": true,
+     "tested_income": 17000.0
+    }
    }
   },
   {
@@ -48,6 +80,38 @@
     "rf_household_income": 175.0,
     "passport_only": 0.0,
     "rf_tiered_bill_share": 90.0
+   },
+   "routes": {
+    "rf_flat": {
+     "eligible": true,
+     "income_route": true,
+     "tested_income": 20000.0
+    },
+    "rf_tiered": {
+     "eligible": true,
+     "income_route": true,
+     "tested_income": 20000.0
+    },
+    "rf_tiered_own_income": {
+     "eligible": true,
+     "income_route": true,
+     "tested_income": 20000.0
+    },
+    "rf_household_income": {
+     "eligible": true,
+     "income_route": true,
+     "tested_income": 29850.74609375
+    },
+    "passport_only": {
+     "eligible": false,
+     "income_route": false,
+     "tested_income": 20000.0
+    },
+    "rf_tiered_bill_share": {
+     "eligible": true,
+     "income_route": true,
+     "tested_income": 20000.0
+    }
    }
   },
   {
@@ -67,6 +131,38 @@
     "rf_household_income": 0.0,
     "passport_only": 0.0,
     "rf_tiered_bill_share": 0.0
+   },
+   "routes": {
+    "rf_flat": {
+     "eligible": false,
+     "income_route": false,
+     "tested_income": 24000.0
+    },
+    "rf_tiered": {
+     "eligible": false,
+     "income_route": false,
+     "tested_income": 24000.0
+    },
+    "rf_tiered_own_income": {
+     "eligible": false,
+     "income_route": false,
+     "tested_income": 24000.0
+    },
+    "rf_household_income": {
+     "eligible": false,
+     "income_route": false,
+     "tested_income": 35820.89453125
+    },
+    "passport_only": {
+     "eligible": false,
+     "income_route": false,
+     "tested_income": 24000.0
+    },
+    "rf_tiered_bill_share": {
+     "eligible": false,
+     "income_route": false,
+     "tested_income": 24000.0
+    }
    }
   },
   {
@@ -87,6 +183,38 @@
     "rf_household_income": 0.0,
     "passport_only": 0.0,
     "rf_tiered_bill_share": 90.0
+   },
+   "routes": {
+    "rf_flat": {
+     "eligible": true,
+     "income_route": true,
+     "tested_income": 23000.0
+    },
+    "rf_tiered": {
+     "eligible": true,
+     "income_route": true,
+     "tested_income": 23000.0
+    },
+    "rf_tiered_own_income": {
+     "eligible": true,
+     "income_route": true,
+     "tested_income": 23000.0
+    },
+    "rf_household_income": {
+     "eligible": false,
+     "income_route": false,
+     "tested_income": 46000.0
+    },
+    "passport_only": {
+     "eligible": false,
+     "income_route": false,
+     "tested_income": 23000.0
+    },
+    "rf_tiered_bill_share": {
+     "eligible": true,
+     "income_route": true,
+     "tested_income": 23000.0
+    }
    }
   },
   {
@@ -107,6 +235,38 @@
     "rf_household_income": 175.0,
     "passport_only": 0.0,
     "rf_tiered_bill_share": 0.0
+   },
+   "routes": {
+    "rf_flat": {
+     "eligible": false,
+     "income_route": false,
+     "tested_income": 29000.0
+    },
+    "rf_tiered": {
+     "eligible": false,
+     "income_route": false,
+     "tested_income": 29000.0
+    },
+    "rf_tiered_own_income": {
+     "eligible": false,
+     "income_route": false,
+     "tested_income": 29000.0
+    },
+    "rf_household_income": {
+     "eligible": true,
+     "income_route": true,
+     "tested_income": 20714.28515625
+    },
+    "passport_only": {
+     "eligible": false,
+     "income_route": false,
+     "tested_income": 29000.0
+    },
+    "rf_tiered_bill_share": {
+     "eligible": false,
+     "income_route": false,
+     "tested_income": 29000.0
+    }
    }
   },
   {
@@ -127,6 +287,38 @@
     "rf_household_income": 175.0,
     "passport_only": 175.0,
     "rf_tiered_bill_share": 225.0
+   },
+   "routes": {
+    "rf_flat": {
+     "eligible": true,
+     "income_route": false,
+     "tested_income": 29000.0
+    },
+    "rf_tiered": {
+     "eligible": true,
+     "income_route": false,
+     "tested_income": 29000.0
+    },
+    "rf_tiered_own_income": {
+     "eligible": true,
+     "income_route": false,
+     "tested_income": 29000.0
+    },
+    "rf_household_income": {
+     "eligible": true,
+     "income_route": true,
+     "tested_income": 21804.509765625
+    },
+    "passport_only": {
+     "eligible": true,
+     "income_route": false,
+     "tested_income": 29000.0
+    },
+    "rf_tiered_bill_share": {
+     "eligible": true,
+     "income_route": false,
+     "tested_income": 29000.0
+    }
    }
   },
   {
@@ -146,6 +338,38 @@
     "rf_household_income": 175.0,
     "passport_only": 0.0,
     "rf_tiered_bill_share": 225.0
+   },
+   "routes": {
+    "rf_flat": {
+     "eligible": true,
+     "income_route": true,
+     "tested_income": 15000.0
+    },
+    "rf_tiered": {
+     "eligible": true,
+     "income_route": true,
+     "tested_income": 15000.0
+    },
+    "rf_tiered_own_income": {
+     "eligible": true,
+     "income_route": true,
+     "tested_income": 15000.0
+    },
+    "rf_household_income": {
+     "eligible": true,
+     "income_route": true,
+     "tested_income": 22388.05859375
+    },
+    "passport_only": {
+     "eligible": false,
+     "income_route": false,
+     "tested_income": 15000.0
+    },
+    "rf_tiered_bill_share": {
+     "eligible": true,
+     "income_route": true,
+     "tested_income": 15000.0
+    }
    }
   },
   {
@@ -166,6 +390,38 @@
     "rf_household_income": 0.0,
     "passport_only": 0.0,
     "rf_tiered_bill_share": 90.0
+   },
+   "routes": {
+    "rf_flat": {
+     "eligible": true,
+     "income_route": true,
+     "tested_income": 22000.0
+    },
+    "rf_tiered": {
+     "eligible": true,
+     "income_route": true,
+     "tested_income": 22000.0
+    },
+    "rf_tiered_own_income": {
+     "eligible": true,
+     "income_route": true,
+     "tested_income": 22000.0
+    },
+    "rf_household_income": {
+     "eligible": false,
+     "income_route": false,
+     "tested_income": 42000.0
+    },
+    "passport_only": {
+     "eligible": false,
+     "income_route": false,
+     "tested_income": 22000.0
+    },
+    "rf_tiered_bill_share": {
+     "eligible": true,
+     "income_route": true,
+     "tested_income": 22000.0
+    }
    }
   },
   {
@@ -185,6 +441,38 @@
     "rf_household_income": 175.0,
     "passport_only": 175.0,
     "rf_tiered_bill_share": 225.0
+   },
+   "routes": {
+    "rf_flat": {
+     "eligible": true,
+     "income_route": false,
+     "tested_income": 30000.0
+    },
+    "rf_tiered": {
+     "eligible": true,
+     "income_route": false,
+     "tested_income": 30000.0
+    },
+    "rf_tiered_own_income": {
+     "eligible": true,
+     "income_route": false,
+     "tested_income": 30000.0
+    },
+    "rf_household_income": {
+     "eligible": true,
+     "income_route": false,
+     "tested_income": 44776.1171875
+    },
+    "passport_only": {
+     "eligible": true,
+     "income_route": false,
+     "tested_income": 30000.0
+    },
+    "rf_tiered_bill_share": {
+     "eligible": true,
+     "income_route": false,
+     "tested_income": 30000.0
+    }
    }
   },
   {
@@ -204,6 +492,38 @@
     "rf_household_income": 175.0,
     "passport_only": 175.0,
     "rf_tiered_bill_share": 225.0
+   },
+   "routes": {
+    "rf_flat": {
+     "eligible": true,
+     "income_route": true,
+     "tested_income": 10000.0
+    },
+    "rf_tiered": {
+     "eligible": true,
+     "income_route": true,
+     "tested_income": 10000.0
+    },
+    "rf_tiered_own_income": {
+     "eligible": true,
+     "income_route": true,
+     "tested_income": 10000.0
+    },
+    "rf_household_income": {
+     "eligible": true,
+     "income_route": true,
+     "tested_income": 14925.373046875
+    },
+    "passport_only": {
+     "eligible": true,
+     "income_route": false,
+     "tested_income": 10000.0
+    },
+    "rf_tiered_bill_share": {
+     "eligible": true,
+     "income_route": true,
+     "tested_income": 10000.0
+    }
    }
   },
   {
@@ -225,6 +545,38 @@
     "rf_household_income": 175.0,
     "passport_only": 175.0,
     "rf_tiered_bill_share": 225.0
+   },
+   "routes": {
+    "rf_flat": {
+     "eligible": true,
+     "income_route": false,
+     "tested_income": 26000.0
+    },
+    "rf_tiered": {
+     "eligible": true,
+     "income_route": false,
+     "tested_income": 26000.0
+    },
+    "rf_tiered_own_income": {
+     "eligible": true,
+     "income_route": false,
+     "tested_income": 26000.0
+    },
+    "rf_household_income": {
+     "eligible": true,
+     "income_route": false,
+     "tested_income": 31578.947265625
+    },
+    "passport_only": {
+     "eligible": true,
+     "income_route": false,
+     "tested_income": 26000.0
+    },
+    "rf_tiered_bill_share": {
+     "eligible": true,
+     "income_route": false,
+     "tested_income": 26000.0
+    }
    }
   },
   {
@@ -244,6 +596,38 @@
     "rf_household_income": 0.0,
     "passport_only": 0.0,
     "rf_tiered_bill_share": 0.0
+   },
+   "routes": {
+    "rf_flat": {
+     "eligible": false,
+     "income_route": true,
+     "tested_income": 17000.0
+    },
+    "rf_tiered": {
+     "eligible": false,
+     "income_route": true,
+     "tested_income": 17000.0
+    },
+    "rf_tiered_own_income": {
+     "eligible": false,
+     "income_route": true,
+     "tested_income": 17000.0
+    },
+    "rf_household_income": {
+     "eligible": false,
+     "income_route": true,
+     "tested_income": 25373.1328125
+    },
+    "passport_only": {
+     "eligible": false,
+     "income_route": false,
+     "tested_income": 17000.0
+    },
+    "rf_tiered_bill_share": {
+     "eligible": false,
+     "income_route": true,
+     "tested_income": 17000.0
+    }
    }
   },
   {
@@ -263,6 +647,38 @@
     "rf_household_income": 175.0,
     "passport_only": 0.0,
     "rf_tiered_bill_share": 192.0
+   },
+   "routes": {
+    "rf_flat": {
+     "eligible": true,
+     "income_route": true,
+     "tested_income": 19000.0
+    },
+    "rf_tiered": {
+     "eligible": true,
+     "income_route": true,
+     "tested_income": 19000.0
+    },
+    "rf_tiered_own_income": {
+     "eligible": true,
+     "income_route": true,
+     "tested_income": 19000.0
+    },
+    "rf_household_income": {
+     "eligible": true,
+     "income_route": true,
+     "tested_income": 28358.208984375
+    },
+    "passport_only": {
+     "eligible": false,
+     "income_route": false,
+     "tested_income": 19000.0
+    },
+    "rf_tiered_bill_share": {
+     "eligible": true,
+     "income_route": true,
+     "tested_income": 19000.0
+    }
    }
   }
  ]
