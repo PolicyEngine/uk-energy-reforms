@@ -45,12 +45,3 @@ export const series = {
   neutral: "#E2E8F0",
   ink: "#101828",
 };
-
-// Ordered bands (winners and losers): one hue, dark to light, then neutral.
-export const bands = {
-  gain_more_than_5pct: "#285E61",
-  gain_less_than_5pct: "#4FD1C5",
-  no_change: "#E2E8F0",
-  lose_less_than_5pct: "#FCA5A5",
-  lose_more_than_5pct: "#B91C1C",
-};

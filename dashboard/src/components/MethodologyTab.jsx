@@ -1,17 +1,9 @@
 "use client";
 
-import {
-  DATASET_ORDER,
-  DATASET_SHORT,
-  PRESET_ORDER,
-  describeSchedule,
-  getBaseline,
-  getResult,
-  yearLabel,
-} from "../lib/dataHelpers";
-import { formatCurrency } from "../lib/formatters";
+import { DATASET_ORDER, DATASET_SHORT, getResult, yearLabel } from "../lib/dataHelpers";
+import { formatCurrency, formatShare } from "../lib/formatters";
 import SectionHeading from "./SectionHeading";
-import { Note, SourceLink, Table } from "./ui";
+import { Note, SourceLink } from "./ui";
 
 const REPO = "https://github.com/PolicyEngine/uk-energy-reforms";
 
@@ -38,18 +30,12 @@ export default function MethodologyTab({ data }) {
   const years = data.meta.years;
   const firstYear = years[0];
   const datasets = DATASET_ORDER.filter((d) => data.meta.datasets[d]);
-  const scheduleRows = PRESET_ORDER.flatMap((preset) =>
-    ["published", "budget_2bn", "bill_share"].map((variant) => {
-      const r = getResult(data, firstYear, preset, variant, datasets[0]);
-      return {
-        key: `${preset}-${variant}`,
-        option: data.meta.presets[preset],
-        variant: data.meta.variants[variant],
-        schedule: r ? describeSchedule(r.schedule) : "n/a",
-      };
-    }),
-  );
-  const bill = (d, y) => formatCurrency(getBaseline(data, y, d)?.mean_bill ?? 0);
+  const flatScaled = getResult(data, firstYear, "rf_flat", "budget_2bn", "microcosm_979")?.schedule
+    ?.amounts?.[0];
+  const cap = (id) => (data.external_sources ?? []).find((x) => x.id === id);
+  const capFy24 = cap("ofgem_cap_fy2024_25");
+  const capQ2 = cap("ofgem_cap_2026_apr_jun");
+  const capQ4 = cap("ofgem_cap_2026_oct_dec");
 
   return (
     <div className="space-y-6">
@@ -75,26 +61,38 @@ export default function MethodologyTab({ data }) {
           £2bn, which it puts at an average of £175 per eligible household, and sets out a tiered
           version paying about £220 below £18,000 and £85 from £18,000 to £24,000. The model adds
           a discount per household to the household&apos;s income for the year; nothing else in
-          the tax and benefit system changes.
+          the tax and benefit system changes. Two comparators sit beside the flat and tiered
+          options: the report&apos;s household-income test, and passporting alone, as the Warm
+          Home Discount does.
         </p>
         <p>
-          Each option comes in three sets of amounts. RF&apos;s amounts are the report&apos;s
-          averages paid as fixed sums. Scaled to £2bn multiplies every amount by the same factor
-          so the scheme costs £2bn in Great Britain on the chosen dataset and year. Bill share
-          pays a percentage of each household&apos;s annual gas and electricity spend, with the
-          percentage set so the average payment matches RF&apos;s amounts; it is the nearest the
-          data allow to a unit-price cut, since they record spend, not kilowatt-hours. Spend
-          includes standing charges, so a bill share gives low-use households more than a
-          per-kWh cut would.
+          The Resolution Foundation publishes average amounts, not the pay-out rule itself, so
+          each option can be run with three sets of amounts, chosen with the &ldquo;Support
+          amounts&rdquo; buttons:
         </p>
-        <Table
-          minWidth={760}
-          columns={[
-            { key: "option", header: "Option" },
-            { key: "variant", header: "Amounts" },
-            { key: "schedule", header: `Schedule (${DATASET_SHORT[datasets[0]]}, ${yearLabel(data, firstYear)})` },
+        <Bullets
+          items={[
+            <>
+              <strong>RF&apos;s amounts</strong> pay the report&apos;s averages as fixed sums:
+              £175 per household in the flat option, and £220 or £85 in the tiered one. The cost
+              is whatever those amounts add up to on our data, which is not exactly £2bn.
+            </>,
+            <>
+              <strong>Scaled to £2bn</strong> keeps the same shape but scales every amount by
+              one factor so the scheme costs exactly £2bn in Great Britain. On Microcosm in{" "}
+              {yearLabel(data, firstYear)} the flat option then pays{" "}
+              {flatScaled ? formatCurrency(flatScaled) : "n/a"} per household. The factor
+              depends on the dataset and year.
+            </>,
+            <>
+              <strong>Bill share</strong> pays a percentage of each household&apos;s annual gas
+              and electricity spend instead of a fixed sum, with the percentage set so the
+              average payment matches RF&apos;s amounts. It is the nearest the data allow to the
+              report&apos;s cut in unit prices, because the data record spend, not kilowatt-hours.
+              Spend includes standing charges, so a bill share gives low-use households more
+              than a per-kWh cut would.
+            </>,
           ]}
-          rows={scheduleRows}
         />
       </Section>
 
@@ -222,17 +220,20 @@ export default function MethodologyTab({ data }) {
             <>
               <strong>Uprating.</strong> Incomes, benefits and taxes are projected from the
               2024-25 survey year with policyengine-uk {data.meta.policyengine_uk}&apos;s
-              forecasts. policyengine-uk no longer uprates gas and electricity spend between years,
-              so spend stays at the price level each dataset stores:{" "}
-              {datasets.map((d, i) => (
-                <span key={d}>
-                  {i > 0 ? "; " : ""}
-                  {DATASET_SHORT[d]} averages {years.map((y) => `${bill(d, y)} in ${yearLabel(data, y)}`).join(" and ")}
-                </span>
-              ))}
-              . Microcosm&apos;s spend is at 2024-25 prices, so its bills, bill-share payments and
-              energy burden are understated in the scheme years relative to the Ofgem cap. Fixed
-              amounts and eligibility do not depend on spend and are unaffected.
+              forecasts. Gas and electricity spend is not uprated between years: policyengine-uk
+              holds it at the price level each dataset stores, April–June 2026 unit rates for the
+              Enhanced FRS and 2024-25 prices for Microcosm. Those two price levels are close:
+              Ofgem&apos;s cap for typical use averaged{" "}
+              {capFy24 ? formatCurrency(capFy24.value.mean) : "n/a"} over 2024-25 against{" "}
+              {capQ2 ? formatCurrency(capQ2.value.at_2023_tdcv) : "n/a"} in April–June 2026. So
+              the gap between the datasets&apos; average bills comes from consumption, not price.
+              Both sit below this winter&apos;s prices: the October–December 2026 cap is{" "}
+              {capQ2 && capQ4
+                ? formatShare(capQ4.value.at_2026_tdcv / capQ2.value.at_2026_tdcv - 1)
+                : "n/a"}{" "}
+              above April–June 2026. Bill levels, bill-share payments and energy-burden shares are
+              therefore understated in the scheme years on both datasets. Fixed amounts and
+              eligibility do not depend on spend.
             </>,
             ...datasets.map((d) => (
               <>

@@ -12,7 +12,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { bands, colors, series } from "../lib/colors";
+import { colors, series } from "../lib/colors";
 import {
   DATASET_ORDER,
   DATASET_SHORT,
@@ -32,6 +32,8 @@ import {
   formatThousands,
 } from "../lib/formatters";
 import ChartLogo from "./ChartLogo";
+import PEImpactBarChart from "./charts/PEImpactBarChart";
+import PEWinnersLosersChart from "./charts/PEWinnersLosersChart";
 import SectionHeading from "./SectionHeading";
 import { Legend, MetricCard, Note, SplitBar, Table, Toggle, Warning } from "./ui";
 
@@ -60,22 +62,32 @@ const POVERTY_GROUPS = {
   pensioners: "Pensioners",
 };
 
-const BAND_LABELS = {
-  gain_more_than_5pct: "Gain more than 5%",
-  gain_less_than_5pct: "Gain less than 5%",
-  no_change: "No change",
-  lose_less_than_5pct: "Lose less than 5%",
-  lose_more_than_5pct: "Lose more than 5%",
-};
 
 const DECILE_METRICS = [
-  { value: "average_gain", label: "Average gain (£)", format: (v) => formatCurrency(v) },
+  {
+    value: "average_gain",
+    label: "Average gain (£)",
+    axis: "Average change in net income",
+    format: (v) => formatCurrency(v),
+    tick: (v) => formatCurrency(v),
+    hover: (v) => `${formatCurrency(v)} a year on average`,
+  },
   {
     value: "gain_pct_net_income",
     label: "% of net income",
+    axis: "Change in net income",
     format: (v) => `${(100 * v).toFixed(2)}%`,
+    tick: (v) => `${(100 * v).toFixed(2)}%`,
+    hover: (v) => `${(100 * v).toFixed(2)}% of net income`,
   },
-  { value: "share_receiving", label: "Share receiving", format: (v) => formatShare(v) },
+  {
+    value: "share_receiving",
+    label: "Share receiving",
+    axis: "Households receiving",
+    format: (v) => formatShare(v),
+    tick: (v) => formatShare(v),
+    hover: (v) => `${formatShare(v)} of households receive the discount`,
+  },
 ];
 
 function Controls({ data, state, setState, result, published }) {
@@ -174,7 +186,11 @@ function Headline({ result, levels }) {
 function DecileSection({ result }) {
   const [metric, setMetric] = useState("average_gain");
   const m = DECILE_METRICS.find((x) => x.value === metric);
-  const rows = result.deciles.map((d) => ({ ...d, group: String(d.decile) }));
+  const data = result.deciles.map((d) => ({
+    name: String(d.decile),
+    value: d[metric],
+    hoverText: `${m.hover(d[metric])} in decile ${d.decile}`,
+  }));
   return (
     <section className="section-card">
       <SectionHeading
@@ -184,54 +200,45 @@ function DecileSection({ result }) {
       <div className="mb-4">
         <Toggle value={metric} onChange={setMetric} options={DECILE_METRICS} />
       </div>
-      <div className="h-[320px] w-full">
-        <ResponsiveContainer>
-          <BarChart data={rows} margin={{ top: 20, right: 20, bottom: 20, left: 10 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke={colors.border.light} />
-            <XAxis
-              dataKey="group"
-              tick={AXIS_STYLE}
-              label={{ value: "Income decile", position: "insideBottom", offset: -12, ...AXIS_STYLE }}
-            />
-            <YAxis tick={AXIS_STYLE} tickFormatter={m.format} tickLine={false} axisLine={false} />
-            <Tooltip formatter={(v) => [m.format(v), m.label]} labelFormatter={(l) => `Decile ${l}`} />
-            <Bar dataKey={metric} name={m.label} fill={colors.primary[600]} radius={[6, 6, 0, 0]}>
-              <LabelList dataKey={metric} position="top" formatter={m.format} style={{ fontSize: 11, fill: colors.gray[700] }} />
-            </Bar>
-          </BarChart>
-        </ResponsiveContainer>
-      </div>
+      <PEImpactBarChart
+        data={data}
+        height={360}
+        xAxisLabel="Income decile"
+        yAxisLabel={m.axis}
+        yTickFormatter={m.tick}
+        barLabelFormatter={m.format}
+      />
       <ChartLogo />
     </section>
   );
 }
 
+const WINNER_KEYS = {
+  gainMore5: "gain_more_than_5pct",
+  gainLess5: "gain_less_than_5pct",
+  noChange: "no_change",
+  loseLess5: "lose_less_than_5pct",
+  loseMore5: "lose_more_than_5pct",
+};
+
+function toSegments(row) {
+  return Object.fromEntries(Object.entries(WINNER_KEYS).map(([k, v]) => [k, row[v] ?? 0]));
+}
+
 function WinnersSection({ result }) {
   const wl = result.winners_losers;
-  const present = Object.keys(BAND_LABELS).filter(
-    (k) => wl.all[k] > 0 || wl.by_decile.some((d) => d[k] > 0),
-  );
-  const segments = (row) =>
-    present.map((k) => ({ key: k, label: BAND_LABELS[k], value: row[k], color: bands[k] }));
+  const ahead = wl.all.gain_more_than_5pct + wl.all.gain_less_than_5pct;
   return (
-    <section className="section-card space-y-4">
+    <section className="section-card">
       <SectionHeading
         title="Winners and losers"
-        description="Share of people whose household net income changes, by the size of the change. The analysis does not model how the scheme is paid for, so no household loses; a discount smaller than 0.1% of net income counts as no change."
+        description={`This option would increase the net income of ${formatShare(ahead)} of people in Great Britain. People are grouped into ten equally sized deciles by equivalised household income after housing costs. The analysis does not model how the scheme is paid for, so nobody loses; a change smaller than 0.1% of net income counts as no change.`}
       />
-      <Legend items={present.map((k) => ({ label: BAND_LABELS[k], color: bands[k] }))} />
-      <div className="space-y-2">
-        <div className="grid grid-cols-[88px_1fr] items-center gap-3">
-          <span className="text-sm font-semibold text-slate-800">All people</span>
-          <SplitBar segments={segments(wl.all)} />
-        </div>
-        {wl.by_decile.map((d) => (
-          <div key={d.decile} className="grid grid-cols-[88px_1fr] items-center gap-3">
-            <span className="text-sm text-slate-600">Decile {d.decile}</span>
-            <SplitBar segments={segments(d)} />
-          </div>
-        ))}
-      </div>
+      <PEWinnersLosersChart
+        allData={toSegments(wl.all)}
+        data={wl.by_decile.map((d) => ({ name: String(d.decile), ...toSegments(d) }))}
+      />
+      <ChartLogo />
     </section>
   );
 }
@@ -263,13 +270,41 @@ function InequalitySection({ result }) {
   );
 }
 
+const POVERTY_CHART_GROUPS = ["children", "working_age_adults", "pensioners", "people"];
+
 function PovertySection({ result }) {
+  const [measure, setMeasure] = useState("rel_pov_ahc");
+  const rows = result.poverty.filter((p) => p.measure === measure);
+  const data = POVERTY_CHART_GROUPS.map((g) => rows.find((p) => p.group === g))
+    .filter(Boolean)
+    .map((p) => {
+      const change = p.baseline_rate ? p.reform_rate / p.baseline_rate - 1 : 0;
+      return {
+        name: POVERTY_GROUPS[p.group],
+        value: change,
+        hoverText: `${change <= 0 ? "Falls" : "Rises"} by ${formatShare(Math.abs(change), 1)}, from ${formatShare(p.baseline_rate, 1)} to ${formatShare(p.reform_rate, 1)} (${formatSignedThousands(p.change_k)} people)`,
+      };
+    });
   return (
-    <section className="section-card">
+    <section className="section-card space-y-4">
       <SectionHeading
         title="Poverty"
-        description="Change in the number of people in poverty, counting the discount as household income, as DWP counts the Warm Home Discount. Relative poverty uses 60% of the baseline median; absolute poverty uses the 2010-11 line uprated by CPI."
+        description="Relative change in the poverty rate by age group, counting the discount as household income, as DWP counts the Warm Home Discount. Relative poverty uses 60% of the baseline median; absolute poverty uses the 2010-11 line uprated by CPI."
       />
+      <Toggle
+        value={measure}
+        onChange={setMeasure}
+        options={Object.entries(POVERTY_MEASURES).map(([value, label]) => ({ value, label }))}
+      />
+      <PEImpactBarChart
+        data={data}
+        height={360}
+        invertColors
+        yAxisLabel="Relative change in poverty rate"
+        yTickFormatter={(v) => `${(100 * v).toFixed(1)}%`}
+        barLabelFormatter={(v) => `${v > 0 ? "+" : v < 0 ? "−" : ""}${Math.abs(100 * v).toFixed(1)}%`}
+      />
+      <ChartLogo />
       <Table
         minWidth={640}
         columns={[
@@ -306,14 +341,8 @@ function ReachSection({ result, isPassportOnly }) {
           const missed = Math.max(1 - c.covered, 0);
           return (
             <div key={c.group}>
-              <p className="text-sm font-semibold text-slate-800">
+              <p className="mb-2 text-sm font-semibold text-slate-800">
                 {COVERAGE_LABELS[c.group] ?? c.group} ({formatMillions(c.households_m)})
-              </p>
-              <p className="mb-2 text-sm leading-6 text-slate-600">
-                {formatShare(c.covered)} get the discount: {formatShare(passport)} because they
-                receive a means-tested benefit
-                {isPassportOnly ? "" : ` and ${formatShare(incomeOnly)} through the income test alone`}
-                . {formatMillions(c.missed_m, 2)} households ({formatShare(missed)}) get nothing.
               </p>
               <SplitBar
                 segments={[

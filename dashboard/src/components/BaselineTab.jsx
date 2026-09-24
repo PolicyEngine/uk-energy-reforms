@@ -36,9 +36,9 @@ const BILL_GROUPS = [
 
 const PRICE_BASIS = {
   microcosm_979:
-    "priced at 2024-25 DESNZ energy prices; policyengine-uk 2.100 does not uprate energy spend between years, so later years keep 2024-25 price levels",
+    "priced at 2024-25 DESNZ prices; policyengine-uk does not uprate energy spend between years, so every year keeps that price level",
   efrs_1573:
-    "stored at Ofgem April–June 2026 unit rates, so every year carries 2026-27 price levels",
+    "priced at Ofgem April–June 2026 unit rates; policyengine-uk does not uprate energy spend between years, so every year keeps that price level",
 };
 
 function sourceCell(source, text) {
@@ -71,6 +71,8 @@ export default function BaselineTab({ data }) {
   const desnzHouseholds = src("desnz_households_gb_2024");
   const whd = src("whd_rebates_2025_26");
   const cap = src("ofgem_cap_2026_oct_dec");
+  const capFy24 = src("ofgem_cap_fy2024_25");
+  const capQ2 = src("ofgem_cap_2026_apr_jun");
   const elecWeekly = src("lcf_weekly_electricity_spend_fye2025");
   const gasWeekly = src("lcf_weekly_gas_spend_fye2025");
   const offGrid = src("desnz_off_gas_grid_share_gb_2024");
@@ -125,7 +127,7 @@ export default function BaselineTab({ data }) {
           )}
         </>
       ),
-      notes: `The Ofgem figure is the October–December 2026 cap for typical consumption (2,500 kWh electricity, 9,500 kWh gas) paid by direct debit, with electricity VAT at 0% from October 2026 to March 2027; Family Spending averages all UK households in 2024-25, when prices were lower. Microcosm is ${PRICE_BASIS.microcosm_979}; the Enhanced FRS is ${PRICE_BASIS.efrs_1573}.`,
+      notes: `The Ofgem figure is the October–December 2026 cap for typical consumption (2,500 kWh electricity, 9,500 kWh gas) paid by direct debit, with electricity VAT at 0% from October 2026 to March 2027. Family Spending averages all UK households in 2024-25. Microcosm is ${PRICE_BASIS.microcosm_979}; the Enhanced FRS is ${PRICE_BASIS.efrs_1573}. Ofgem's cap for typical use averaged ${capFy24 ? formatCurrency(capFy24.value.mean) : "n/a"} over 2024-25 and ${capQ2 ? formatCurrency(capQ2.value.at_2023_tdcv) : "n/a"} in April–June 2026 on the same consumption basis, so the two datasets sit at about the same price level and the gap between them is consumption. Both sit below the October–December 2026 cap.`,
     },
     {
       key: "gas",
