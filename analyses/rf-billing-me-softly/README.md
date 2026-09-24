@@ -206,10 +206,11 @@ Eligibility rates within household types agree across the two datasets; counts d
     option, and 17.1% (below £18,000) and 6.4% (£18,000 to £24,000) in the tiered option
     (Microcosm).
   - These shares are calibrated on bills at the datasets' stored price levels (2024-25 for
-    Microcosm, April–June 2026 for the Enhanced FRS), which sit about 17% below the
-    October–December 2026 cap. At this winter's prices the same shares would pay about 17%
-    more than shown here; a scheme aiming at RF's averages would need about 11.6% rather
-    than 13.5% in the flat option.
+    Microcosm, April–June 2026 for the Enhanced FRS). On Ofgem's 2023 typical-use basis,
+    the October–December 2026 cap is 15% above the first and 18% above the second. At this
+    winter's prices the same shares would pay that much more than shown here; a scheme
+    aiming at RF's averages would need about 11.7% rather than 13.5% in the flat option
+    (Microcosm).
   - Support then follows bills: single adults average £124 and couples with children £252
     (Microcosm, flat option).
   - Dead zones rise from 50k to 85k, because households with high bills lose more at the
