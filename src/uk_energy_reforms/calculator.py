@@ -96,9 +96,19 @@ def _situation(case: dict) -> dict:
     }
 
 
-def _discount(situation: dict, changes: dict) -> float:
+def _outcome(situation: dict, changes: dict) -> dict:
+    """The model's discount and the route it took, for the dashboard's sentence."""
     sim = Simulation(situation=situation, scenario=scenario(changes))
-    return float(sim.calculate("targeted_energy_discount", YEAR)[0])
+
+    def value(name):
+        return sim.calculate(name, YEAR)[0]
+
+    return {
+        "amount": float(value("targeted_energy_discount")),
+        "eligible": bool(value("targeted_energy_discount_eligible")),
+        "income_route": bool(value("targeted_energy_discount_income_route")),
+        "tested_income": float(value("targeted_energy_discount_tested_income")),
+    }
 
 
 def _passported(situation: dict) -> bool:
@@ -131,10 +141,13 @@ def build() -> dict:
     cases = []
     for case in CASES:
         situation = _situation(case)
-        expected = {name: _discount(situation, preset(name)) for name in PRESETS}
-        expected["rf_tiered_bill_share"] = _discount(
-            situation, _bill_share("rf_tiered")
-        )
+        outcomes = {name: _outcome(situation, preset(name)) for name in PRESETS}
+        outcomes["rf_tiered_bill_share"] = _outcome(situation, _bill_share("rf_tiered"))
+        expected = {name: o["amount"] for name, o in outcomes.items()}
+        routes = {
+            name: {k: o[k] for k in ("eligible", "income_route", "tested_income")}
+            for name, o in outcomes.items()
+        }
         cases.append(
             {
                 "id": case["id"],
@@ -145,6 +158,7 @@ def build() -> dict:
                 "region": case.get("region", "NORTH_WEST"),
                 "bill": case.get("bill", 1_500),
                 "expected": expected,
+                "routes": routes,
             }
         )
     return {
