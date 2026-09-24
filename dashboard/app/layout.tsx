@@ -11,6 +11,9 @@ const description =
   "estimates beside the Resolution Foundation's figures.";
 
 export const metadata: Metadata = {
+  // Resolves the generated Open Graph image URL (including the base path) against the
+  // live deployment, so link previews work before the policyengine.org rewrite exists.
+  metadataBase: new URL("https://uk-targeted-energy-discount.vercel.app/uk/targeted-energy-discount"),
   title: "Targeted energy discount | PolicyEngine",
   description,
   alternates: { canonical: "https://policyengine.org/uk/targeted-energy-discount" },

@@ -104,11 +104,37 @@ function describeSchedule(s: Schedule): string {
   return `${parts.join("; ")}; ${passport}.`;
 }
 
+const rfFigure = (id: string) => data.rf_comparison.figures.find((f) => f.id === id);
+
+/** Household totals by dataset, from the flat option's receipt. */
+function householdLevels() {
+  const total = (d: string) => data.results.rf_flat?.[d]?.headline.gb_households_m;
+  const efrs = total("efrs_1573");
+  const micro = total("microcosm_979");
+  const report = rfFigure("gb_households_m")?.rf;
+  return {
+    efrs,
+    micro,
+    report,
+    vsMicro: efrs && micro ? efrs / micro - 1 : undefined,
+    vsReport: efrs && report ? efrs / report - 1 : undefined,
+  };
+}
+
+function multiFamilyShare(dataset: string) {
+  const rows = data.results.rf_flat?.[dataset]?.by_household_type ?? [];
+  const total = rows.reduce((sum, r) => sum + r.households_m, 0);
+  const multi = rows.find((r) => r.group === "Multi-family household")?.households_m;
+  return total && multi !== undefined ? multi / total : undefined;
+}
+
 function breakdownColumns(groupHeader: string) {
   return [
     { key: "group", header: groupHeader },
     { key: "households_m", header: "Households", align: "right" as const, format: (v: unknown) => millions(Number(v)) },
     { key: "eligible_rate", header: "Eligible", align: "right" as const, format: (v: unknown) => pct(Number(v)) },
+    { key: "passported_rate", header: "Passported", align: "right" as const, format: (v: unknown) => pct(Number(v)) },
+    { key: "income_only_rate", header: "Income test only", align: "right" as const, format: (v: unknown) => pct(Number(v)) },
     { key: "cost_share", header: "Share of cost", align: "right" as const, format: (v: unknown) => pct(Number(v), 1) },
     { key: "average_per_recipient", header: "Avg per recipient", align: "right" as const, format: (v: unknown) => gbp(Number(v)) },
     { key: "gain_pct_net_income", header: "Gain, % income", align: "right" as const, format: (v: unknown) => pct(Number(v), 2) },
@@ -145,8 +171,13 @@ function Breakdown({ rows, groupHeader }: { rows: BreakdownRow[]; groupHeader: s
         <div className="overflow-x-auto">
           <DataTable
             columns={breakdownColumns(groupHeader)}
-            data={rows as unknown as Record<string, unknown>[]}
-            styles={{ table: { minWidth: 1040 } }}
+            data={
+              rows.map((r) => ({
+                ...r,
+                income_only_rate: Math.max(r.eligible_rate - r.passported_rate, 0),
+              })) as unknown as Record<string, unknown>[]
+            }
+            styles={{ table: { minWidth: 1180 } }}
           />
         </div>
       </Section>
@@ -156,6 +187,7 @@ function Breakdown({ rows, groupHeader }: { rows: BreakdownRow[]; groupHeader: s
 
 function Overview({ result, dataset }: { result: Result; dataset: string }) {
   const h = result.headline;
+  const levels = householdLevels();
   const rel = result.poverty.find((p) => p.measure === "rel_pov_ahc" && p.group === "people");
   const relKids = result.poverty.find((p) => p.measure === "rel_pov_ahc" && p.group === "children");
   const coverage = result.coverage.map((c) => ({
@@ -168,8 +200,9 @@ function Overview({ result, dataset }: { result: Result; dataset: string }) {
     <>
       {dataset === "efrs_1573" && (
         <p className="text-sm text-muted-foreground">
-          Enhanced FRS weights sum to {millions(h.gb_households_m, 1)} GB households, about
-          7-10% more than Microcosm and the report, so its counts run high; shares are
+          Enhanced FRS weights sum to {millions(h.gb_households_m, 1)} GB households,{" "}
+          {pct(levels.vsMicro ?? 0)} more than Microcosm and {pct(levels.vsReport ?? 0)} more
+          than the report&apos;s {levels.report}m, so its counts run high; shares are
           comparable.
         </p>
       )}
@@ -245,7 +278,10 @@ function Overview({ result, dataset }: { result: Result; dataset: string }) {
   );
 }
 
-function Thresholds({ result, dataset }: { result: Result; dataset: string }) {
+// Below this effective sample size a band estimate rests on very few survey records.
+const THIN_ESS = 30;
+
+function Thresholds({ result }: { result: Result }) {
   if (result.cliffs.length === 0) {
     return (
       <Section title="Income thresholds">
@@ -258,13 +294,6 @@ function Thresholds({ result, dataset }: { result: Result; dataset: string }) {
   }
   return (
     <>
-      {dataset === "efrs_1573" && (
-        <p className="rounded-md border border-border bg-muted p-3 text-sm text-foreground">
-          The Enhanced FRS puts an effective sample of about 10 households within £1,000 of
-          each line, so these band figures are shown for completeness only; the written
-          analysis quotes Microcosm&apos;s.
-        </p>
-      )}
       {result.cliffs.map((c) => {
         const b = c.bands;
         const rows = [
@@ -285,6 +314,14 @@ function Thresholds({ result, dataset }: { result: Result; dataset: string }) {
             title={`The ${gbp(c.threshold)} threshold`}
             subtitle={`Non-passported households whose tested income is within £1,000 of the line. Crossing it lowers support by ${gbp(c.mean_drop)} on average for households just above.`}
           >
+            {b["1000_above"].ess < THIN_ESS && (
+              <p className="rounded-md border border-border bg-muted p-3 text-sm text-foreground">
+                The effective sample within £1,000 above this line is{" "}
+                {Math.round(b["1000_above"].ess)} households in this dataset, so these band
+                figures are shown for completeness; the written analysis quotes
+                Microcosm&apos;s.
+              </p>
+            )}
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
               <MetricCard label="Households within £1,000 above" value={thousands(b["1000_above"].households_k)} />
               <MetricCard
@@ -403,6 +440,12 @@ function RfComparison() {
 
 function Methodology() {
   const m = data.meta;
+  const levels = householdLevels();
+  const incomeTest = rfFigure("income_test_share")?.policyengine.microcosm_979;
+  const reported = rfFigure("passport_share_reported")?.policyengine.microcosm_979?.["2024"];
+  const modelled = rfFigure("passport_share")?.policyengine.microcosm_979?.["2024"];
+  const multiMicro = multiFamilyShare("microcosm_979");
+  const multiEfrs = multiFamilyShare("efrs_1573");
   return (
     <Section title="Methodology">
       <ul className="list-disc space-y-2 pl-5 text-sm text-foreground">
@@ -418,6 +461,19 @@ function Methodology() {
           including the State Pension, property, savings, dividends and taxable benefits) is below
           the threshold. Incomes are annual; the proposal assesses the three months before the
           scheme.
+        </li>
+        <li>
+          The £24,000, £18,000 and £30,000 thresholds are held at their nominal values while
+          incomes are uprated to 2026-27, so in Microcosm the £24,000 test covers{" "}
+          {incomeTest ? pct(incomeTest["2024"]) : "n/a"} of GB households on 2024-25 incomes
+          and {incomeTest ? pct(incomeTest["2026"]) : "n/a"} in 2026-27.
+        </li>
+        <li>
+          Passporting uses modelled receipt, including the datasets&apos; take-up. The report
+          uses receipt reported in the Family Resources Survey; on that basis Microcosm
+          passports {reported !== undefined ? pct(reported) : "n/a"} of households in 2024-25
+          ({modelled !== undefined ? pct(modelled) : "n/a"} modelled), against the
+          report&apos;s &quot;around a quarter&quot;.
         </li>
         <li>
           Support: &quot;RF&apos;s amounts&quot; pays the report&apos;s averages to every eligible
@@ -441,11 +497,11 @@ function Methodology() {
         </li>
         <li>
           Levels differ between the datasets: the Enhanced FRS weights sum to{" "}
-          {data.results.rf_flat?.efrs_1573?.headline.gb_households_m.toFixed(1)}m GB households
-          in 2026-27, against{" "}
-          {data.results.rf_flat?.microcosm_979?.headline.gb_households_m.toFixed(1)}m in
-          Microcosm and about 28m in the report, so its counts run about 7-10% high. Shares
-          and rates are comparable across datasets; counts are not.
+          {levels.efrs?.toFixed(1)}m GB households in 2026-27, against{" "}
+          {levels.micro?.toFixed(1)}m in Microcosm and {levels.report}m in the report, so its
+          counts run {pct(levels.vsMicro ?? 0)} above Microcosm&apos;s and{" "}
+          {pct(levels.vsReport ?? 0)} above the report&apos;s. Shares and rates are comparable
+          across datasets; counts are not.
         </li>
         <li>
           Dead zones gross the lost support up at the household top earner&apos;s marginal
@@ -453,9 +509,10 @@ function Methodology() {
           the top earner is over State Pension age.
         </li>
         <li>
-          The two datasets weight household types differently (multi-family households are 21%
-          of households in Microcosm and 9% in the Enhanced FRS), so counts by household type
-          differ more than rates.
+          The two datasets weight household types differently (multi-family households are{" "}
+          {multiMicro !== undefined ? pct(multiMicro) : "n/a"} of households in Microcosm and{" "}
+          {multiEfrs !== undefined ? pct(multiEfrs) : "n/a"} in the Enhanced FRS), so counts by
+          household type differ more than rates.
         </li>
         <li>
           Source proposal: {m.rf.authors}, &quot;{m.rf.title}&quot;, {m.rf.publisher},{" "}
@@ -484,6 +541,7 @@ export default function Dashboard() {
     [preset, variant],
   );
   const result = data.results[scenarioId(preset, variant)]?.[dataset];
+  const published = data.results[preset]?.[dataset]?.headline;
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -548,6 +606,15 @@ export default function Dashboard() {
           {scenario && result && (
             <p className="text-sm text-muted-foreground">{describeSchedule(result.schedule)}</p>
           )}
+          {dataset === "efrs_1573" && variant === "bill_share" && result && published && (
+            <p className="rounded-md border border-border bg-background p-3 text-sm text-foreground">
+              The Enhanced FRS records no energy spend for some households, and a bill share
+              pays them nothing: recipients fall from {millions(published.recipients_m)} to{" "}
+              {millions(result.headline.recipients_m)} and the average per recipient rises to{" "}
+              {gbp(result.headline.average_per_recipient)}. The written analysis sets these
+              results aside; use Microcosm for the bill-share option.
+            </p>
+          )}
         </div>
 
         {result ? (
@@ -570,7 +637,7 @@ export default function Dashboard() {
               <Breakdown rows={result.by_household_type} groupHeader="Household type" />
             </TabsContent>
             <TabsContent value="thresholds" className="flex flex-col gap-4">
-              <Thresholds result={result} dataset={dataset} />
+              <Thresholds result={result} />
             </TabsContent>
             <TabsContent value="rf" className="flex flex-col gap-4">
               <RfComparison />

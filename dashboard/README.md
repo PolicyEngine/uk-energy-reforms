@@ -24,6 +24,9 @@ The file holds aggregate estimates only; no microdata is committed.
 
 ## Develop
 
+Needs bun 1.4 or later: `bun.lock` is a v2 lockfile, which bun 1.3 refuses (CI's
+`setup-bun` reads the version from `packageManager` in `package.json`).
+
 ```bash
 bun install
 bun run dev      # http://localhost:3000/uk/targeted-energy-discount
