@@ -50,7 +50,9 @@ DATASETS: dict[str, DatasetSpec] = {
             sha256="ef34c1ae28219367981fbc3c1144f58ea1f8a77554165fe02ff395b04c5ffea5",
             notes=(
                 "Energy spend imputed from LCFS and raked to NEED 2023 at Ofgem Q2-2026 "
-                "unit rates. Weights are highly concentrated (Kish ESS about 1,100)."
+                "unit rates. Weights are highly concentrated (Kish ESS about 1,100) and "
+                "sum to 30.7m GB households in 2026-27, about 7% above Microcosm (28.6m) "
+                "and 10% above RF's 28m, so its counts run high."
             ),
         ),
     ]

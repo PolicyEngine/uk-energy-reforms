@@ -46,7 +46,11 @@ REGION_LABELS = {
 }
 
 GROUPS = {"region": REGIONS, "household_type": HOUSEHOLD_TYPES}
-MARGINAL_RATE = 0.28  # basic-rate income tax plus employee NI, for dead zones
+# Dead zones: the marginal rate on the extra gross income needed to make up lost
+# support. Basic-rate income tax plus 8% employee NI, or basic rate alone where the
+# household's highest-income member is over State Pension age (no employee NI).
+BASIC_RATE = 0.20
+EMPLOYEE_NI = 0.08
 HIGH_BURDEN = 0.10  # energy spend above 10% of net income (old fuel-poverty test)
 
 
@@ -107,7 +111,7 @@ def _ess(weights):
 
 
 def paid_bracket(f: pd.DataFrame, schedule: dict) -> np.ndarray:
-    thresholds = schedule["rate_thresholds" if schedule["unit_rate"] else "thresholds"]
+    thresholds = schedule["rate_thresholds" if schedule["bill_share"] else "thresholds"]
     return np.searchsorted(np.asarray(thresholds), f.assessed_income, side="right") - 1
 
 
@@ -224,7 +228,7 @@ def coverage(run: Run, f: pd.DataFrame | None = None) -> list:
 
 def _support_below(f: pd.DataFrame, schedule: dict, threshold: float) -> np.ndarray:
     """Support each household would get if its assessed income were just below."""
-    if schedule["unit_rate"]:
+    if schedule["bill_share"]:
         t = np.asarray(schedule["rate_thresholds"])
         rate = np.asarray(schedule["rates"])[np.searchsorted(t, threshold, "right") - 2]
         return rate * f.bill.values
@@ -241,16 +245,27 @@ def cliff_thresholds(schedule: dict) -> list:
     """
     if not schedule.get("income_test", True):
         return []
-    t = schedule["rate_thresholds" if schedule["unit_rate"] else "thresholds"]
-    v = schedule["rates" if schedule["unit_rate"] else "amounts"]
+    t = schedule["rate_thresholds" if schedule["bill_share"] else "thresholds"]
+    v = schedule["rates" if schedule["bill_share"] else "amounts"]
     return [t[i] for i in range(1, len(t)) if v[i] < v[i - 1]]
 
 
-def cliffs(
-    run: Run,
-    f: pd.DataFrame | None = None,
-    marginal_rate: float = MARGINAL_RATE,
-) -> list:
+def dead_zone_width(f: pd.DataFrame, drop: np.ndarray, schedule: dict) -> np.ndarray:
+    """Width, in tested income, of the range above a line where crossing leaves the
+    household worse off: the support lost, grossed up at the top earner's marginal rate.
+
+    Under the household-income test, a pound of extra gross income raises tested income
+    by one pound divided by the household's equivalisation factor.
+    """
+    pensioner = f.top_earner_pensioner.values.astype(bool)
+    rate = np.where(pensioner, BASIC_RATE, BASIC_RATE + EMPLOYEE_NI)
+    scale = (
+        f.equivalisation_bhc.values if schedule.get("household_equivalised") else 1.0
+    )
+    return drop / (1 - rate) / scale
+
+
+def cliffs(run: Run, f: pd.DataFrame | None = None) -> list:
     """Households just above each threshold where support drops.
 
     Only households placed on the schedule by their own income can cross a threshold;
@@ -288,7 +303,7 @@ def cliffs(
             }
         above = exposed & (income >= t)
         near = above & (income < t + 1000)
-        width = drop / (1 - marginal_rate)
+        width = dead_zone_width(f, drop, run.schedule)
         dead = above & (income < t + width) & (drop > 0)
         row["mean_drop"] = (
             float(np.average(drop[near], weights=f.weight[near])) if near.any() else 0.0
@@ -316,7 +331,7 @@ def breakdown(run: Run, by: str, f: pd.DataFrame | None = None) -> pd.DataFrame:
     dead = (
         exposed
         & (f.tested_income >= top)
-        & (f.tested_income < top + drop / (1 - MARGINAL_RATE))
+        & (f.tested_income < top + dead_zone_width(f, drop, run.schedule))
         & (drop > 0)
     )
     people = f.weight * f.n_people

@@ -38,21 +38,21 @@ def scenarios(
     datasets: list[str],
     year: int,
     presets: list[str],
-    unit_rate: bool = False,
+    bill_share: bool = False,
     budget: float | None = None,
     take_up: float = 1.0,
 ) -> dict:
-    """Run every preset (and its unit-rate and budget variants) on every dataset."""
+    """Run every preset (and its bill-share and budget variants) on every dataset."""
     out: dict = {}
     for dataset in datasets:
         for name in presets:
             fixed = run(dataset, year, preset(name), take_up=take_up)
             out.setdefault(name, {})[dataset] = results_for(fixed)
-            if unit_rate:
+            if bill_share:
                 rate = run(
-                    dataset, year, calibrate.unit_rate_changes(fixed), take_up=take_up
+                    dataset, year, calibrate.bill_share_changes(fixed), take_up=take_up
                 )
-                out.setdefault(f"{name}_unit_rate", {})[dataset] = results_for(rate)
+                out.setdefault(f"{name}_bill_share", {})[dataset] = results_for(rate)
             if budget:
                 scaled = run(
                     dataset,
@@ -144,7 +144,7 @@ def markdown(results: dict, year: int) -> str:
         )
     lines += ["", "## Headlines", ""]
     for name, by_dataset in results.items():
-        base = name.split("_unit_rate")[0].split("_budget")[0]
+        base = name.split("_bill_share")[0].split("_budget")[0]
         lines.append(f"**{name}**: {DESCRIPTIONS.get(base, name)}.")
         for dataset, r in by_dataset.items():
             h = r["headline"]

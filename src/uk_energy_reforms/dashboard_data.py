@@ -26,7 +26,7 @@ PRESET_LABELS = {
 VARIANT_LABELS = {
     "published": "RF's amounts",
     "budget_2bn": "Scaled to £2bn",
-    "unit_rate": "Unit rate",
+    "bill_share": "Bill share",
 }
 
 HEADLINE_KEYS = [
@@ -69,8 +69,8 @@ BREAKDOWN_KEYS = [
 
 
 def _split(key: str) -> tuple[str, str]:
-    if key.endswith("_unit_rate"):
-        return key[: -len("_unit_rate")], "unit_rate"
+    if key.endswith("_bill_share"):
+        return key[: -len("_bill_share")], "bill_share"
     if "_budget_" in key:
         return key.split("_budget_")[0], "budget_2bn"
     return key, "published"

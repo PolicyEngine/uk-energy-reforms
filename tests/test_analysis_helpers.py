@@ -52,7 +52,7 @@ def fixed_run():
         }
     )
     schedule = {
-        "unit_rate": False,
+        "bill_share": False,
         "thresholds": [0.0, 18_000.0, 24_000.0],
         "amounts": [220.0, 85.0, 0.0],
         "rate_thresholds": [0.0, 18_000.0, 24_000.0],
@@ -61,13 +61,13 @@ def fixed_run():
     return Run("test", 2026, {f"{P}.in_effect": True}, frame, schedule)
 
 
-def test_unit_rates_reproduce_tier_averages():
-    changes = calibrate.unit_rate_changes(fixed_run())
+def test_bill_shares_reproduce_tier_averages():
+    changes = calibrate.bill_share_changes(fixed_run())
     # Tier 1: weighted mean bill (3 x 1,000 + 1 x 3,000) / 4 = 1,500 -> 220 / 1,500.
-    assert changes[f"{P}.unit_rate.rate[0].amount"] == pytest.approx(220 / 1_500)
-    assert changes[f"{P}.unit_rate.rate[1].amount"] == pytest.approx(85 / 1_700)
-    assert changes[f"{P}.unit_rate.rate[2].amount"] == 0
-    assert changes[f"{P}.unit_rate.in_effect"] is True
+    assert changes[f"{P}.bill_share.rate[0].amount"] == pytest.approx(220 / 1_500)
+    assert changes[f"{P}.bill_share.rate[1].amount"] == pytest.approx(85 / 1_700)
+    assert changes[f"{P}.bill_share.rate[2].amount"] == 0
+    assert changes[f"{P}.bill_share.in_effect"] is True
 
 
 def test_budget_rescaling():
@@ -84,7 +84,7 @@ def test_cliff_thresholds_and_support_below():
     frame = pd.DataFrame({"bill": [1_000.0]})
     assert analysis._support_below(frame, schedule, 24_000.0)[0] == 85
     assert analysis._support_below(frame, schedule, 18_000.0)[0] == 220
-    unit = {**schedule, "unit_rate": True, "rates": [0.2, 0.1, 0.0]}
+    unit = {**schedule, "bill_share": True, "rates": [0.2, 0.1, 0.0]}
     assert analysis._support_below(frame, unit, 24_000.0)[0] == pytest.approx(100)
 
 
@@ -98,3 +98,21 @@ def test_deciles_are_person_weighted():
 def test_no_cliffs_without_an_income_test():
     schedule = {**fixed_run().schedule, "income_test": False}
     assert analysis.cliff_thresholds(schedule) == []
+
+
+def test_dead_zone_width_uses_the_top_earners_marginal_rate():
+    """£175 lost: a pensioner top earner (basic rate, no NI) needs £175 / 0.80 = £218.75
+    more gross income; a working-age one (basic rate + 8% NI) £175 / 0.72 = £243.06.
+    Under the household-income test the width is in equivalised income."""
+    frame = pd.DataFrame(
+        {
+            "top_earner_pensioner": [True, False, False],
+            "equivalisation_bhc": [1, 1, 1.4],
+        }
+    )
+    drop = np.array([175.0, 175.0, 175.0])
+    widths = analysis.dead_zone_width(frame, drop, {"household_equivalised": False})
+    assert widths[0] == pytest.approx(218.75)
+    assert widths[1] == pytest.approx(175 / 0.72)
+    household = analysis.dead_zone_width(frame, drop, {"household_equivalised": True})
+    assert household[2] == pytest.approx(175 / 0.72 / 1.4)

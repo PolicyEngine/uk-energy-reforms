@@ -12,7 +12,7 @@
    },
    "schedule": {
     "in_effect": true,
-    "unit_rate": false,
+    "bill_share": false,
     "thresholds": [
      0.0,
      18000.0,
@@ -430,7 +430,7 @@
       }
      },
      "mean_drop": 175.0,
-     "dead_zone_k": 161.796,
+     "dead_zone_k": 149.1695625,
      "dead_zone_struggling_k": 14.635421875,
      "dead_zone_median_width": 243.05555555555557
     }
@@ -534,7 +534,7 @@
      "people_out_of_abs_ahc_poverty_k": 8.79803210797906,
      "just_above_top_threshold_k": 37.35829296875,
      "just_above_bottom4_k": 10.4752275390625,
-     "dead_zone_k": 25.20605078125
+     "dead_zone_k": 12.9897216796875
     },
     {
      "region": "West Midlands",
@@ -584,7 +584,7 @@
      "people_out_of_abs_ahc_poverty_k": 9.628049365580083,
      "just_above_top_threshold_k": 51.34143359375,
      "just_above_bottom4_k": 16.45217578125,
-     "dead_zone_k": 27.81683984375
+     "dead_zone_k": 27.463138671875
     },
     {
      "region": "London",
@@ -634,7 +634,7 @@
      "people_out_of_abs_ahc_poverty_k": 14.601132661297918,
      "just_above_top_threshold_k": 71.6324140625,
      "just_above_bottom4_k": 15.9454677734375,
-     "dead_zone_k": 43.944046875
+     "dead_zone_k": 43.887609375
     },
     {
      "region": "South West",
@@ -736,7 +736,7 @@
      "people_out_of_abs_ahc_poverty_k": 37.27366222341359,
      "just_above_top_threshold_k": 56.988171875,
      "just_above_bottom4_k": 18.3989609375,
-     "dead_zone_k": 7.1905458984375
+     "dead_zone_k": 6.7804130859375
     },
     {
      "household_type": "Pensioner couple",
@@ -761,7 +761,7 @@
      "people_out_of_abs_ahc_poverty_k": 16.26234373064339,
      "just_above_top_threshold_k": 92.816328125,
      "just_above_bottom4_k": 13.645625,
-     "dead_zone_k": 52.43478125
+     "dead_zone_k": 40.2184453125
     },
     {
      "household_type": "Single, no children",
@@ -902,7 +902,7 @@
    },
    "schedule": {
     "in_effect": true,
-    "unit_rate": false,
+    "bill_share": false,
     "thresholds": [
      0.0,
      18000.0,
@@ -1320,7 +1320,7 @@
       }
      },
      "mean_drop": 175.0,
-     "dead_zone_k": 187.525,
+     "dead_zone_k": 187.272828125,
      "dead_zone_struggling_k": 69.547078125,
      "dead_zone_median_width": 243.05555555555557
     }
@@ -1474,7 +1474,7 @@
      "people_out_of_abs_ahc_poverty_k": 3.8346367859840393,
      "just_above_top_threshold_k": 74.4439921875,
      "just_above_bottom4_k": 19.7295078125,
-     "dead_zone_k": 37.74220703125
+     "dead_zone_k": 37.490015625
     },
     {
      "region": "London",
@@ -1626,7 +1626,7 @@
      "people_out_of_abs_ahc_poverty_k": 72.26497740447522,
      "just_above_top_threshold_k": 82.506640625,
      "just_above_bottom4_k": 6.77978369140625,
-     "dead_zone_k": 6.40260302734375
+     "dead_zone_k": 6.1504140625
     },
     {
      "household_type": "Pensioner couple",
@@ -1795,7 +1795,7 @@
    },
    "schedule": {
     "in_effect": true,
-    "unit_rate": false,
+    "bill_share": false,
     "thresholds": [
      0.0,
      18000.0,
@@ -2213,8 +2213,8 @@
       }
      },
      "mean_drop": 135.0,
-     "dead_zone_k": 46.800859375,
-     "dead_zone_struggling_k": 28.78928515625,
+     "dead_zone_k": 42.7134921875,
+     "dead_zone_struggling_k": 27.324583984375,
      "dead_zone_median_width": 305.55555555555554
     },
     {
@@ -2262,8 +2262,8 @@
       }
      },
      "mean_drop": 85.0,
-     "dead_zone_k": 107.1501875,
-     "dead_zone_struggling_k": 11.2260791015625,
+     "dead_zone_k": 106.5923515625,
+     "dead_zone_struggling_k": 10.9678115234375,
      "dead_zone_median_width": 118.05555555555556
     }
    ],
@@ -2316,7 +2316,7 @@
      "people_out_of_abs_ahc_poverty_k": 27.11322725711763,
      "just_above_top_threshold_k": 36.2776171875,
      "just_above_bottom4_k": 21.05602734375,
-     "dead_zone_k": 1.56548583984375
+     "dead_zone_k": 1.2659200439453124
     },
     {
      "region": "Yorkshire and the Humber",
@@ -2541,7 +2541,7 @@
      "people_out_of_abs_ahc_poverty_k": 7.325402984425425,
      "just_above_top_threshold_k": 61.10909375,
      "just_above_bottom4_k": 37.178875,
-     "dead_zone_k": 11.187947265625
+     "dead_zone_k": 10.9296787109375
     }
    ],
    "by_household_type": [
@@ -2568,7 +2568,7 @@
      "people_out_of_abs_ahc_poverty_k": 54.68091806483269,
      "just_above_top_threshold_k": 56.988171875,
      "just_above_bottom4_k": 18.3989609375,
-     "dead_zone_k": 2.179592041015625
+     "dead_zone_k": 1.880026123046875
     },
     {
      "household_type": "Pensioner couple",
@@ -2593,7 +2593,7 @@
      "people_out_of_abs_ahc_poverty_k": 26.102326232984662,
      "just_above_top_threshold_k": 92.816328125,
      "just_above_bottom4_k": 13.645625,
-     "dead_zone_k": 16.5978515625
+     "dead_zone_k": 16.33958203125
     },
     {
      "household_type": "Single, no children",
@@ -2735,7 +2735,7 @@
    },
    "schedule": {
     "in_effect": true,
-    "unit_rate": false,
+    "bill_share": false,
     "thresholds": [
      0.0,
      18000.0,
@@ -3153,8 +3153,8 @@
       }
      },
      "mean_drop": 135.0,
-     "dead_zone_k": 232.00165625,
-     "dead_zone_struggling_k": 173.751359375,
+     "dead_zone_k": 228.81309375,
+     "dead_zone_struggling_k": 173.461359375,
      "dead_zone_median_width": 305.55555555555554
     },
     {
@@ -3202,7 +3202,7 @@
       }
      },
      "mean_drop": 85.0,
-     "dead_zone_k": 104.8638984375,
+     "dead_zone_k": 101.8825,
      "dead_zone_struggling_k": 43.37055078125,
      "dead_zone_median_width": 118.05555555555556
     }
@@ -3256,7 +3256,7 @@
      "people_out_of_abs_ahc_poverty_k": 33.3380699095726,
      "just_above_top_threshold_k": 102.13984375,
      "just_above_bottom4_k": 90.21878125,
-     "dead_zone_k": 6.8609208984375
+     "dead_zone_k": 4.7496337890625
     },
     {
      "region": "Yorkshire and the Humber",
@@ -3281,7 +3281,7 @@
      "people_out_of_abs_ahc_poverty_k": 3.7059106783866884,
      "just_above_top_threshold_k": 21.75225,
      "just_above_bottom4_k": 4.743615234375,
-     "dead_zone_k": 2.9327802734375
+     "dead_zone_k": 2.1965498046875
     },
     {
      "region": "East Midlands",
@@ -3481,7 +3481,7 @@
      "people_out_of_abs_ahc_poverty_k": 26.59637647420168,
      "just_above_top_threshold_k": 27.128046875,
      "just_above_bottom4_k": 8.3938857421875,
-     "dead_zone_k": 1.4071058349609376
+     "dead_zone_k": 1.273222412109375
     }
    ],
    "by_household_type": [
@@ -3508,7 +3508,7 @@
      "people_out_of_abs_ahc_poverty_k": 75.27912498414517,
      "just_above_top_threshold_k": 82.506640625,
      "just_above_bottom4_k": 6.77978369140625,
-     "dead_zone_k": 1.39985107421875
+     "dead_zone_k": 0.6757824096679688
     },
     {
      "household_type": "Pensioner couple",
@@ -3533,7 +3533,7 @@
      "people_out_of_abs_ahc_poverty_k": 18.373294023513793,
      "just_above_top_threshold_k": 215.76828125,
      "just_above_bottom4_k": 17.5715,
-     "dead_zone_k": 11.6698369140625
+     "dead_zone_k": 9.41250390625
     },
     {
      "household_type": "Single, no children",
@@ -3677,7 +3677,7 @@
    },
    "schedule": {
     "in_effect": true,
-    "unit_rate": false,
+    "bill_share": false,
     "thresholds": [
      0.0,
      18000.0,
@@ -4095,8 +4095,8 @@
       }
      },
      "mean_drop": 175.0,
-     "dead_zone_k": 69.3734453125,
-     "dead_zone_struggling_k": 8.1233857421875,
+     "dead_zone_k": 71.5398203125,
+     "dead_zone_struggling_k": 6.544001953125,
      "dead_zone_median_width": 243.05555555555557
     }
    ],
@@ -4124,7 +4124,7 @@
      "people_out_of_abs_ahc_poverty_k": 7.5528607720136645,
      "just_above_top_threshold_k": 19.516841796875,
      "just_above_bottom4_k": 3.24491162109375,
-     "dead_zone_k": 0.6333917236328125
+     "dead_zone_k": 0.6937489624023437
     },
     {
      "region": "North West",
@@ -4174,7 +4174,7 @@
      "people_out_of_abs_ahc_poverty_k": 5.655938047111034,
      "just_above_top_threshold_k": 23.058580078125,
      "just_above_bottom4_k": 17.0925625,
-     "dead_zone_k": 1.439107421875
+     "dead_zone_k": 2.709362548828125
     },
     {
      "region": "East Midlands",
@@ -4224,7 +4224,7 @@
      "people_out_of_abs_ahc_poverty_k": 40.01128422370553,
      "just_above_top_threshold_k": 33.707578125,
      "just_above_bottom4_k": 27.523015625,
-     "dead_zone_k": 7.8371953125
+     "dead_zone_k": 7.45051416015625
     },
     {
      "region": "East of England",
@@ -4274,7 +4274,7 @@
      "people_out_of_abs_ahc_poverty_k": 7.314594703018665,
      "just_above_top_threshold_k": 43.2333359375,
      "just_above_bottom4_k": 17.67591015625,
-     "dead_zone_k": 31.584396484375
+     "dead_zone_k": 31.0681953125
     },
     {
      "region": "South East",
@@ -4299,7 +4299,7 @@
      "people_out_of_abs_ahc_poverty_k": 14.601132661297918,
      "just_above_top_threshold_k": 13.92634375,
      "just_above_bottom4_k": 12.6137490234375,
-     "dead_zone_k": 5.75704443359375
+     "dead_zone_k": 4.5236630859375
     },
     {
      "region": "South West",
@@ -4324,7 +4324,7 @@
      "people_out_of_abs_ahc_poverty_k": 4.815581086039543,
      "just_above_top_threshold_k": 33.7527890625,
      "just_above_bottom4_k": 29.1256171875,
-     "dead_zone_k": 1.7988624267578126
+     "dead_zone_k": 3.746184814453125
     },
     {
      "region": "Wales",
@@ -4374,7 +4374,7 @@
      "people_out_of_abs_ahc_poverty_k": 6.485060770973563,
      "just_above_top_threshold_k": 14.486060546875,
      "just_above_bottom4_k": 9.353810546875,
-     "dead_zone_k": 1.3391666259765624
+     "dead_zone_k": 2.363879150390625
     }
    ],
    "by_household_type": [
@@ -4401,7 +4401,7 @@
      "people_out_of_abs_ahc_poverty_k": 37.27366222341359,
      "just_above_top_threshold_k": 67.392765625,
      "just_above_bottom4_k": 11.0957236328125,
-     "dead_zone_k": 32.071076171875
+     "dead_zone_k": 33.47546484375
     },
     {
      "household_type": "Pensioner couple",
@@ -4426,7 +4426,7 @@
      "people_out_of_abs_ahc_poverty_k": 16.26234373064339,
      "just_above_top_threshold_k": 48.46553125,
      "just_above_bottom4_k": 35.73931640625,
-     "dead_zone_k": 20.326265625
+     "dead_zone_k": 19.45024609375
     },
     {
      "household_type": "Single, no children",
@@ -4451,7 +4451,7 @@
      "people_out_of_abs_ahc_poverty_k": 10.800058345109225,
      "just_above_top_threshold_k": 39.13626171875,
      "just_above_bottom4_k": 20.954,
-     "dead_zone_k": 0.8235071411132813
+     "dead_zone_k": 4.56171923828125
     },
     {
      "household_type": "Couple, no children",
@@ -4476,7 +4476,7 @@
      "people_out_of_abs_ahc_poverty_k": 7.385450036287308,
      "just_above_top_threshold_k": 49.15475,
      "just_above_bottom4_k": 46.7204375,
-     "dead_zone_k": 8.03911376953125
+     "dead_zone_k": 7.57865625
     },
     {
      "household_type": "Lone parent",
@@ -4526,7 +4526,7 @@
      "people_out_of_abs_ahc_poverty_k": 15.39055099529028,
      "just_above_top_threshold_k": 32.260478515625,
      "just_above_bottom4_k": 32.260478515625,
-     "dead_zone_k": 3.056356201171875
+     "dead_zone_k": 1.8229744873046876
     },
     {
      "household_type": "Multi-family household",
@@ -4551,7 +4551,7 @@
      "people_out_of_abs_ahc_poverty_k": 22.811249190539122,
      "just_above_top_threshold_k": 39.17443359375,
      "just_above_bottom4_k": 38.4785078125,
-     "dead_zone_k": 5.0571259765625
+     "dead_zone_k": 4.6507666015625
     }
    ]
   },
@@ -4568,7 +4568,7 @@
    },
    "schedule": {
     "in_effect": true,
-    "unit_rate": false,
+    "bill_share": false,
     "thresholds": [
      0.0,
      18000.0,
@@ -4986,9 +4986,9 @@
       }
      },
      "mean_drop": 175.0,
-     "dead_zone_k": 55.73259375,
-     "dead_zone_struggling_k": 24.5247109375,
-     "dead_zone_median_width": 243.05555555555557
+     "dead_zone_k": 50.0710625,
+     "dead_zone_struggling_k": 28.542494140625,
+     "dead_zone_median_width": 227.15471368300624
     }
    ],
    "by_region": [
@@ -5015,7 +5015,7 @@
      "people_out_of_abs_ahc_poverty_k": 1.7963079481124877,
      "just_above_top_threshold_k": 17.952080078125,
      "just_above_bottom4_k": 14.9634384765625,
-     "dead_zone_k": 2.414139892578125
+     "dead_zone_k": 6.0619423828125
     },
     {
      "region": "North West",
@@ -5040,7 +5040,7 @@
      "people_out_of_abs_ahc_poverty_k": 25.58399476480484,
      "just_above_top_threshold_k": 39.67316015625,
      "just_above_bottom4_k": 35.79258984375,
-     "dead_zone_k": 4.1971640625
+     "dead_zone_k": 4.095434814453125
     },
     {
      "region": "Yorkshire and the Humber",
@@ -5065,7 +5065,7 @@
      "people_out_of_abs_ahc_poverty_k": 4.084812953472137,
      "just_above_top_threshold_k": 90.659671875,
      "just_above_bottom4_k": 84.1062578125,
-     "dead_zone_k": 8.3079296875
+     "dead_zone_k": 7.6116982421875
     },
     {
      "region": "East Midlands",
@@ -5090,7 +5090,7 @@
      "people_out_of_abs_ahc_poverty_k": 2.124636375427246,
      "just_above_top_threshold_k": 14.88169140625,
      "just_above_bottom4_k": 14.020830078125,
-     "dead_zone_k": 2.23915478515625
+     "dead_zone_k": 1.841755126953125
     },
     {
      "region": "West Midlands",
@@ -5115,7 +5115,7 @@
      "people_out_of_abs_ahc_poverty_k": 64.3959062347412,
      "just_above_top_threshold_k": 17.014564453125,
      "just_above_bottom4_k": 15.5936171875,
-     "dead_zone_k": 5.45813134765625
+     "dead_zone_k": 6.62128271484375
     },
     {
      "region": "East of England",
@@ -5140,7 +5140,7 @@
      "people_out_of_abs_ahc_poverty_k": 3.8346367859840393,
      "just_above_top_threshold_k": 26.3440703125,
      "just_above_bottom4_k": 19.892931640625,
-     "dead_zone_k": 10.1856982421875
+     "dead_zone_k": 10.3990732421875
     },
     {
      "region": "London",
@@ -5190,7 +5190,7 @@
      "people_out_of_abs_ahc_poverty_k": 4.446005791187287,
      "just_above_top_threshold_k": 26.12578515625,
      "just_above_bottom4_k": 25.34241015625,
-     "dead_zone_k": 9.2880400390625
+     "dead_zone_k": 8.970533203125
     },
     {
      "region": "South West",
@@ -5240,7 +5240,7 @@
      "people_out_of_abs_ahc_poverty_k": 43.83934504270554,
      "just_above_top_threshold_k": 17.97301953125,
      "just_above_bottom4_k": 6.49453076171875,
-     "dead_zone_k": 1.94709033203125
+     "dead_zone_k": 1.875249755859375
     },
     {
      "region": "Scotland",
@@ -5265,7 +5265,7 @@
      "people_out_of_abs_ahc_poverty_k": 20.385421823322773,
      "just_above_top_threshold_k": 17.12409765625,
      "just_above_bottom4_k": 14.47845703125,
-     "dead_zone_k": 10.91641796875
+     "dead_zone_k": 1.815264404296875
     }
    ],
    "by_household_type": [
@@ -5292,7 +5292,7 @@
      "people_out_of_abs_ahc_poverty_k": 72.26497740447522,
      "just_above_top_threshold_k": 36.82037109375,
      "just_above_bottom4_k": 25.67106640625,
-     "dead_zone_k": 11.9408916015625
+     "dead_zone_k": 16.867
     },
     {
      "household_type": "Pensioner couple",
@@ -5317,7 +5317,7 @@
      "people_out_of_abs_ahc_poverty_k": 13.895295069217681,
      "just_above_top_threshold_k": 57.189546875,
      "just_above_bottom4_k": 32.548859375,
-     "dead_zone_k": 12.6086337890625
+     "dead_zone_k": 9.294732421875
     },
     {
      "household_type": "Single, no children",
@@ -5342,7 +5342,7 @@
      "people_out_of_abs_ahc_poverty_k": 10.340953376710415,
      "just_above_top_threshold_k": 17.7166015625,
      "just_above_bottom4_k": 15.054947265625,
-     "dead_zone_k": 4.52722802734375
+     "dead_zone_k": 6.2449072265625
     },
     {
      "household_type": "Couple, no children",
@@ -5367,7 +5367,7 @@
      "people_out_of_abs_ahc_poverty_k": 3.6011622867584228,
      "just_above_top_threshold_k": 99.55971875,
      "just_above_bottom4_k": 98.3808515625,
-     "dead_zone_k": 14.41323828125
+     "dead_zone_k": 14.2373046875
     },
     {
      "household_type": "Lone parent",
@@ -5417,7 +5417,7 @@
      "people_out_of_abs_ahc_poverty_k": 61.12046827912331,
      "just_above_top_threshold_k": 49.89416796875,
      "just_above_bottom4_k": 49.79514453125,
-     "dead_zone_k": 10.5329921875
+     "dead_zone_k": 2.216634521484375
     },
     {
      "household_type": "Multi-family household",
@@ -5442,7 +5442,7 @@
      "people_out_of_abs_ahc_poverty_k": 30.279071888923646,
      "just_above_top_threshold_k": 19.294037109375,
      "just_above_bottom4_k": 19.17284375,
-     "dead_zone_k": 1.7096123046875
+     "dead_zone_k": 1.210483154296875
     }
    ]
   }

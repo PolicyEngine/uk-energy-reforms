@@ -3,9 +3,9 @@
 Amounts are RF's published averages for a 2 billion GBP scheme ("Billing me softly",
 p. 9): a flat 175 GBP for households whose highest individual income is below
 24,000 GBP, or a tiered 220 GBP below 18,000 GBP and 85 GBP from 18,000 GBP to
-24,000 GBP. RF's scheme is a unit-rate discount, so these are averages; the analysis
-layer can turn them into unit rates (``calibrate.unit_rate_changes``) or rescale them to
-a budget (``calibrate.budget_changes``).
+24,000 GBP. RF's scheme cuts unit prices, so these are averages; the analysis layer can
+turn them into a bill-share discount (``calibrate.bill_share_changes``) or rescale them
+to a budget (``calibrate.budget_changes``).
 """
 
 P = "gov.contrib.targeted_energy_discount"

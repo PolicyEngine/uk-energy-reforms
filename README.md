@@ -27,8 +27,11 @@ The parameters live under `gov.contrib.targeted_energy_discount` (see `parameter
 - `in_effect` switches the scheme on. It is off by default, which leaves the system
   numerically identical to the policyengine-uk baseline.
 - `amount` is a three-bracket schedule by assessed income, in GBP per household.
-- `unit_rate.in_effect` with `unit_rate.rate` switches to a discount paid as a share of
-  the household's gas and electricity bill.
+- `bill_share.in_effect` with `bill_share.rate` switches to a bill-share discount: a
+  percentage off the household's annual gas and electricity spend. RF proposes a cut in
+  unit prices (pence per kWh); the microdata hold annual spend, not kWh, so this also
+  discounts standing charges and gives low-consumption households relatively more than a
+  per-kWh cut would. The rates default to zero; each run's receipt records the rates used.
 - `passport.in_effect`, `passport.benefits` and `passport.assessed_income` control
   passporting.
 - `income_test.in_effect` and `income_test.sources` control the income test.
@@ -55,9 +58,9 @@ Presets (`presets.py`) use RF's published averages for a £2bn scheme:
   £30,000, or passported.
 - `passport_only`: passporting alone at £175, a Warm-Home-Discount-style comparator.
 
-`calibrate.py` turns any fixed-amount run into a unit-rate schedule with the same average
-payment in each tier (RF's scheme is a unit-rate discount). It also rescales any schedule
-to a budget.
+`calibrate.py` turns any fixed-amount run into a bill-share schedule. Brackets paying the
+same amount share one rate, so the average payment matches across those brackets
+combined. It also rescales any schedule to a budget.
 
 ## Usage
 
@@ -89,11 +92,11 @@ poverty impacts, coverage of struggling households and cliff edges):
 
 ```bash
 uv run uk-energy-reforms run --datasets microcosm_979 efrs_1573 --year 2026 \
-  --presets rf_flat rf_tiered --unit-rate --budget 2e9 --out analyses/<name>/results
+  --presets rf_flat rf_tiered --bill-share --budget 2e9 --out analyses/<name>/results
 ```
 
 Our estimates beside the figures RF publishes (2024-25 like-for-like, and 2026-27), and the
-pre-computed data file the dashboard reads:
+pre-computed data file for the dashboard (added in a follow-up PR):
 
 ```bash
 uv run uk-energy-reforms rf-compare --out analyses/<name>
@@ -132,13 +135,12 @@ src/uk_energy_reforms/
   reforms/targeted_energy_discount/   parameters.yaml, variables.py, reform.py, presets.py
   datasets.py        pinned microdata
   simulate.py        baseline + reform household frames
-  calibrate.py       unit rates and budget scaling
+  calibrate.py       bill shares and budget scaling
   household_types.py RF-aligned household types
   analysis.py        impacts, coverage, cliffs, breakdowns
   report.py, cli.py  results receipt
   rf_comparison.py   RF's published figures beside ours
   dashboard_data.py  compact results for the dashboard
 analyses/            one folder per analysis (results and write-ups)
-dashboard/           Next.js dashboard reading pre-computed results
 tests/               household-level reform tests and helper unit tests
 ```
