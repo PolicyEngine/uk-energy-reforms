@@ -21,3 +21,18 @@ jobs:
         run: uv run ruff check .
       - name: Test
         run: uv run pytest -q
+
+  dashboard:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: dashboard
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - name: Install
+        run: bun install --frozen-lockfile
+      - name: Lint
+        run: bun run lint
+      - name: Build
+        run: bun run build
