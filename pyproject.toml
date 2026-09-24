@@ -1,0 +1,43 @@
+[project]
+name = "uk-energy-reforms"
+version = "0.1.0"
+description = "PolicyEngine UK reforms and analysis for household energy bill support"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "policyengine-uk>=2.99.1,<3",
+    "huggingface-hub>=0.24",
+    "numpy",
+    "pandas",
+    "pyyaml",
+    "tables",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "ruff>=0.6",
+]
+
+[project.scripts]
+uk-energy-reforms = "uk_energy_reforms.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/uk_energy_reforms"]
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint.per-file-ignores]
+# policyengine variable modules use the model_api star import by convention.
+"src/uk_energy_reforms/reforms/*/variables.py" = ["F403", "F405"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "data: needs the private UK microdata (HF_TOKEN with access to the pinned repos)",
+]
