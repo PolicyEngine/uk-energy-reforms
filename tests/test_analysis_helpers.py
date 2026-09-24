@@ -27,6 +27,8 @@ def test_household_types():
             (6, 6, True, False),  # couple with children
             (7, 7, False, True),
             (7, 8, False, False),  # parent and adult child: two benefit units
+            (8, 9, False, True),
+            (8, 9, True, False),  # pensioner with a dependent child
         ],
         columns=["household_id", "benunit_id", "is_child", "sp_age"],
     )
@@ -38,6 +40,7 @@ def test_household_types():
         5: "Lone parent",
         6: "Couple with children",
         7: "Multi-family household",
+        8: "Lone parent",
     }
 
 

@@ -14,6 +14,7 @@ import pandas as pd
 
 from uk_energy_reforms import analysis, calibrate
 from uk_energy_reforms.reforms.targeted_energy_discount import preset
+from uk_energy_reforms.reforms.targeted_energy_discount.presets import P
 from uk_energy_reforms.simulate import benunit_frame, run
 
 BUDGET = 2e9
@@ -29,7 +30,15 @@ RF_FIGURES = [
     },
     {
         "id": "passport_share",
-        "label": "Share of households passported by means-tested benefits",
+        "label": "Share of households passported (modelled receipt, with take-up)",
+        "rf": 0.25,
+        "rf_statement": "Passporting reaches around a quarter of households",
+        "page": 1,
+        "unit": "share",
+    },
+    {
+        "id": "passport_share_reported",
+        "label": "Share of households passported (reported receipt, RF's basis)",
         "rf": 0.25,
         "rf_statement": "Passporting reaches around a quarter of households",
         "page": 1,
@@ -69,7 +78,7 @@ RF_FIGURES = [
     },
     {
         "id": "couples_children_household_eligible_m",
-        "label": "Couples with children (benefit units) eligible under the household test (m)",
+        "label": "Couples with children (benefit units) passing the household test (m)",
         "rf": 1.8,
         "rf_statement": "1.8 million such families eligible under the household option",
         "page": 7,
@@ -77,7 +86,7 @@ RF_FIGURES = [
     },
     {
         "id": "couples_children_lose_k",
-        "label": "Of those, not eligible under the individual test (thousands)",
+        "label": "Of those, not eligible under the individual option (fail the test, not passported; thousands)",
         "rf": 490,
         "rf_statement": "490,000 would not be eligible under the individual option",
         "page": 7,
@@ -85,7 +94,7 @@ RF_FIGURES = [
     },
     {
         "id": "couples_children_lose_bottom_quintile",
-        "label": "Share of those couples with children in the poorest fifth of households",
+        "label": "Share of those couples in the poorest fifth (person-weighted AHC deciles)",
         "rf": 0.71,
         "rf_statement": "71% of them are in the poorest fifth",
         "page": 7,
@@ -93,7 +102,7 @@ RF_FIGURES = [
     },
     {
         "id": "pensioners_gain_k",
-        "label": "Pensioner benefit units eligible only under the individual test (thousands)",
+        "label": "Pensioner units eligible only under the individual option (not passported; thousands)",
         "rf": 780,
         "rf_statement": "780,000 pensioner households would become eligible",
         "page": 8,
@@ -101,7 +110,7 @@ RF_FIGURES = [
     },
     {
         "id": "pensioners_gain_decile5plus",
-        "label": "Share of those pensioner units in household decile five or above",
+        "label": "Share of those pensioner units in decile five or above (person-weighted)",
         "rf": 0.81,
         "rf_statement": "81% of them (630,000) are in decile five or above",
         "page": 8,
@@ -179,6 +188,16 @@ NOT_MODELLED = [
 
 PENSIONER_TYPES = ["Single pensioner", "Pensioner couple"]
 
+# Reported receipt of the Warm Home Discount benefits, as RF's Figures 1, 3 and 4 use.
+REPORTED_PASSPORT = [
+    "universal_credit_reported",
+    "pension_credit_reported",
+    "housing_benefit_reported",
+    "esa_income_reported",
+    "jsa_income_reported",
+    "income_support_reported",
+]
+
 
 def _w(f, mask):
     return float(f.weight[np.asarray(mask)].sum())
@@ -195,33 +214,55 @@ def estimates(dataset: str, year: int) -> dict:
     household = run(dataset, year, preset("rf_household_income"))
     tiered = run(dataset, year, preset("rf_tiered"))
     tiered_own = run(dataset, year, preset("rf_tiered_own_income"))
+    # RF's passporting is reported receipt in the FRS; ours is modelled receipt.
+    reported = run(
+        dataset,
+        year,
+        {**preset("rf_flat"), f"{P}.passport.benefits": REPORTED_PASSPORT},
+    )
 
     fi = analysis.prepare(individual)
     fh = analysis.prepare(household)
+    fr = analysis.prepare(reported)
     everyone = np.ones(len(fi), bool)
     ind_route = fi.income_route.values
     hh_route = fh.income_route.values
-    couples = (fi.household_type == "Couple with children").values
-    pensioners = fi.household_type.isin(PENSIONER_TYPES).values
-    lose = couples & hh_route & ~ind_route
-    gain = pensioners & ind_route & ~hh_route
+    passported = fi.passported.values
 
-    # RF's family-type figures count benefit units wherever they live, and read deciles
-    # of households; our household-level counts are kept as *_households.
-    hh_decile = pd.Series(
-        analysis._deciles(fi.eq_ahc_base.values, fi.weight.values),
-        index=fi.household_id.values,
-    )
+    # Family-type rows are policy counts: a unit loses (or gains) only if its household
+    # is eligible under one option and not the other, and passported households are
+    # eligible under both. Main basis: benefit units wherever they live (RF's Figure 4
+    # unit) and person-weighted AHC deciles (the HBAI convention RF's fn 6 cites).
+    by_id = fi.set_index("household_id")
     units = benunit_frame(dataset, year)
     units = units[units.household_id.isin(fi.household_id)]
     hid = units.household_id.values
-    u_ind = fi.set_index("household_id").income_route.reindex(hid).values.astype(bool)
+    u_ind = by_id.income_route.reindex(hid).values.astype(bool)
     u_hh = fh.set_index("household_id").income_route.reindex(hid).values.astype(bool)
-    u_dec = hh_decile.reindex(hid).values
+    u_pass = by_id.passported.reindex(hid).values.astype(bool)
+    u_multi = by_id.household_type.reindex(hid).values == "Multi-family household"
+    u_dec = by_id.decile_ahc.reindex(hid).values
+    u_dec_hhw = (
+        pd.Series(
+            analysis._deciles(fi.eq_ahc_base.values, fi.weight.values),
+            index=fi.household_id.values,
+        )
+        .reindex(hid)
+        .values
+    )
     u_w = units.weight.values
     u_couples = units.couple_with_children.values & u_hh
-    u_lose = u_couples & ~u_ind
-    u_gain = units.pensioner.values & u_ind & ~u_hh
+    u_lose = u_couples & ~u_ind & ~u_pass
+    u_gain = units.pensioner.values & u_ind & ~u_hh & ~u_pass
+
+    def u_share(mask, base):
+        return float(u_w[mask & base].sum() / u_w[base].sum())
+
+    # The same rows counted as households with a single benefit unit.
+    couples = (fi.household_type == "Couple with children").values
+    pensioners = fi.household_type.isin(PENSIONER_TYPES).values
+    lose = couples & hh_route & ~ind_route & ~passported
+    gain = pensioners & ind_route & ~hh_route & ~passported
 
     # RF's averages look costed over households passing the income test (about 40% of
     # households), so also divide the budget among those alone, tiered by own income.
@@ -234,20 +275,23 @@ def estimates(dataset: str, year: int) -> dict:
     own_factor = BUDGET / calibrate.cost(tiered_own)
     amounts = tiered.schedule["amounts"]
     own_amounts = tiered_own.schedule["amounts"]
+    multi = (fi.household_type == "Multi-family household").values
     return {
         "gb_households_m": _w(fi, everyone) / 1e6,
         "passport_share": _share(fi, fi.passported, everyone),
+        "passport_share_reported": _share(fr, fr.passported, everyone),
         "income_test_share": _share(fi, ind_route, everyone),
         "income_test_bottom4": _share(fi, ind_route, fi.bottom4),
         "household_test_share": _share(fh, hh_route, everyone),
         "household_test_bottom4": _share(fh, hh_route, fh.bottom4),
         "couples_children_household_eligible_m": u_w[u_couples].sum() / 1e6,
         "couples_children_lose_k": u_w[u_lose].sum() / 1e3,
-        "couples_children_lose_bottom_quintile": u_w[u_lose & (u_dec <= 2)].sum()
-        / u_w[u_lose].sum(),
+        "couples_children_lose_bottom_quintile": u_share(u_dec <= 2, u_lose),
         "pensioners_gain_k": u_w[u_gain].sum() / 1e3,
-        "pensioners_gain_decile5plus": u_w[u_gain & (u_dec >= 5)].sum()
-        / u_w[u_gain].sum(),
+        "pensioners_gain_decile5plus": u_share(u_dec >= 5, u_gain),
+        # Alternatives: household-weighted deciles, and single-unit households.
+        "couples_children_lose_bottom_quintile_hhw": u_share(u_dec_hhw <= 2, u_lose),
+        "pensioners_gain_decile5plus_hhw": u_share(u_dec_hhw >= 5, u_gain),
         "couples_children_household_eligible_m_households": _w(fi, couples & hh_route)
         / 1e6,
         "couples_children_lose_k_households": _w(fi, lose) / 1e3,
@@ -258,6 +302,11 @@ def estimates(dataset: str, year: int) -> dict:
         "pensioners_gain_decile5plus_households": _share(
             fi, fi.decile_ahc.values >= 5, gain
         ),
+        # Composition behind the pensioner row: pensioner units living with other
+        # benefit units (for example adult children in work) pass the individual test
+        # and can fail the household one.
+        "multi_family_household_share": _share(fi, multi, everyone),
+        "pensioners_gain_in_multi_family_share": u_share(u_multi, u_gain),
         "flat_average_at_budget": BUDGET / _w(fi, fi.recipient),
         "flat_average_at_budget_income_test": BUDGET / _w(fi, ind_route),
         "tiered_low_at_budget_income_test": 220 * income_test_factor,
@@ -295,10 +344,20 @@ def compare(datasets: list[str], years: list[int]) -> dict:
             "RF: Family Resources Survey 2024-25, GB, with the IPPR tax-benefit model.",
             "Eligibility shares are for the income test alone; passporting is separate.",
             (
-                "Family-type rows count benefit units wherever they live (including "
-                "multi-family households) and use household-weighted income deciles, "
-                "as RF's figures do; household-level versions are in `extra` "
-                "(*_households, person-weighted deciles)."
+                "Passporting uses modelled receipt with the datasets' take-up draws; "
+                "RF uses receipt reported in the FRS, which is also shown."
+            ),
+            (
+                "Family-type rows are policy counts: units whose household is eligible "
+                "under one option and not the other, with passported households "
+                "eligible under both. They count benefit units wherever they live, as "
+                "RF's Figure 4 does."
+            ),
+            (
+                "Deciles are person-weighted equivalised AHC household income deciles "
+                "(the HBAI convention; our choice, as RF does not say). "
+                "Household-weighted versions are in `extra` (*_hhw), and counts of "
+                "households with a single benefit unit in `extra` (*_households)."
             ),
             (
                 "£2bn averages divide £2bn among all recipients (passported or passing "
