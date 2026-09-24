@@ -27,6 +27,8 @@ def test_household_types():
             (6, 6, True, False),  # couple with children
             (7, 7, False, True),
             (7, 8, False, False),  # parent and adult child: two benefit units
+            (8, 9, False, True),
+            (8, 9, True, False),  # pensioner with a dependent child
         ],
         columns=["household_id", "benunit_id", "is_child", "sp_age"],
     )
@@ -38,6 +40,7 @@ def test_household_types():
         5: "Lone parent",
         6: "Couple with children",
         7: "Multi-family household",
+        8: "Lone parent",
     }
 
 
@@ -116,3 +119,39 @@ def test_dead_zone_width_uses_the_top_earners_marginal_rate():
     assert widths[1] == pytest.approx(175 / 0.72)
     household = analysis.dead_zone_width(frame, drop, {"household_equivalised": True})
     assert household[2] == pytest.approx(175 / 0.72 / 1.4)
+
+
+def test_gini_and_top_share():
+    """Equal incomes give 0; one person with everything out of four gives 1 - 1/4."""
+    equal = np.array([10.0, 10.0, 10.0, 10.0])
+    weights = np.ones(4)
+    assert analysis._gini(equal, weights) == pytest.approx(0.0)
+    assert analysis._gini(np.array([0.0, 0.0, 0.0, 1.0]), weights) == pytest.approx(
+        0.75
+    )
+    # Ten people, the richest holds 10 of 19: top 10% share = 10 / 19.
+    values = np.array([1.0] * 9 + [10.0])
+    assert analysis._top_share(values, np.ones(10), 0.10) == pytest.approx(10 / 19)
+    # Two equally weighted people with 2 and 1: the top 25% is half of the richer one.
+    assert analysis._top_share(np.array([2.0, 1.0]), np.ones(2), 0.25) == pytest.approx(
+        1 / 3
+    )
+
+
+def test_winner_bands():
+    """Relative change in net income: 10% and 0.44% gains, a 0.05% gain (no change)
+    and a household with no income that gains (more than 5%)."""
+    frame = pd.DataFrame(
+        {"net_bhc_base": [1_000.0, 40_000.0, 40_000.0, 0.0], "gain": [100, 175, 20, 50]}
+    )
+    rel = analysis._relative_change(frame)
+    bands = [
+        next(name for name, lo, hi in analysis.WINNER_BANDS if lo < r <= hi)
+        for r in rel
+    ]
+    assert bands == [
+        "gain_more_than_5pct",
+        "gain_less_than_5pct",
+        "no_change",
+        "gain_more_than_5pct",
+    ]

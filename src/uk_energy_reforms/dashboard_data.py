@@ -8,12 +8,14 @@ time. Only aggregate estimates leave this module; no microdata.
 from __future__ import annotations
 
 import json
+from dataclasses import asdict
 from datetime import UTC, datetime
 from importlib.metadata import version
 from pathlib import Path
 
 from uk_energy_reforms.datasets import DATASETS
 from uk_energy_reforms.reforms.targeted_energy_discount import DESCRIPTIONS
+from uk_energy_reforms.sources import EXTERNAL_SOURCES
 
 PRESET_LABELS = {
     "rf_flat": "Flat £175",
@@ -97,6 +99,8 @@ def _result(r: dict) -> dict:
             for c in r["coverage"]
         ],
         "cliffs": r["cliffs"],
+        "inequality": r["inequality"],
+        "winners_losers": r["winners_losers"],
         "by_region": [
             {"group": row["region"], **{k: row[k] for k in BREAKDOWN_KEYS}}
             for row in r["by_region"]
@@ -108,15 +112,32 @@ def _result(r: dict) -> dict:
     }
 
 
+YEAR_LABELS = {"2024": "2024-25", "2026": "2026-27", "2027": "2027-28"}
+
+
+def _years(analysis_dir: Path) -> list[str]:
+    """Scheme years with results, e.g. results-2026 and results-2027 (2024-25 is the
+    replication year and is exported separately)."""
+    return sorted(
+        p.name.split("-")[1]
+        for p in analysis_dir.glob("results-20*")
+        if p.name != "results-2024" and (p / "results.json").exists()
+    )
+
+
 def build(analysis_dir: Path) -> dict:
-    results = json.loads((analysis_dir / "results-2026" / "results.json").read_text())
+    years = _years(analysis_dir)
+    by_year = {
+        y: json.loads((analysis_dir / f"results-{y}" / "results.json").read_text())
+        for y in years
+    }
     replication = json.loads(
         (analysis_dir / "results-2024" / "results.json").read_text()
     )
     comparison = json.loads((analysis_dir / "rf_comparison.json").read_text())
 
-    scenarios, data = [], {}
-    for key, by_dataset in results.items():
+    scenarios = []
+    for key in by_year[years[0]]:
         preset, variant = _split(key)
         scenarios.append(
             {
@@ -127,13 +148,27 @@ def build(analysis_dir: Path) -> dict:
                 "description": DESCRIPTIONS.get(preset, preset),
             }
         )
-        data[key] = {dataset: _result(r) for dataset, r in by_dataset.items()}
-
-    datasets = sorted({d for by_dataset in results.values() for d in by_dataset})
+    results = {
+        y: {
+            key: {dataset: _result(r) for dataset, r in by_dataset.items()}
+            for key, by_dataset in by_year[y].items()
+        }
+        for y in years
+    }
+    # The pre-reform picture, taken from the flat option's run (passporting and the
+    # income test flags follow its rules).
+    baseline = {
+        y: {dataset: r["baseline"] for dataset, r in by_year[y]["rf_flat"].items()}
+        for y in years
+    }
+    datasets = sorted(
+        {d for by_dataset in by_year[years[0]].values() for d in by_dataset}
+    )
     return {
         "meta": {
             "generated": datetime.now(UTC).date().isoformat(),
-            "year": "2026-27",
+            "years": years,
+            "year_labels": {y: YEAR_LABELS.get(y, y) for y in years},
             "policyengine_uk": version("policyengine-uk"),
             "datasets": {
                 d: {
@@ -156,15 +191,21 @@ def build(analysis_dir: Path) -> dict:
             },
         },
         "scenarios": scenarios,
-        "results": data,
+        "results": results,
+        "baseline": baseline,
         "replication_2024": {
             key: {dataset: _result(r) for dataset, r in by_dataset.items()}
             for key, by_dataset in replication.items()
         },
         "rf_comparison": comparison,
+        "external_sources": [asdict(source) for source in EXTERNAL_SOURCES],
     }
 
 
-def write(analysis_dir: Path, out: Path) -> None:
+def write(analysis_dir: Path, out: Path, calculator_out: Path | None = None) -> None:
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(build(analysis_dir), separators=(",", ":")))
+    if calculator_out is not None:
+        from uk_energy_reforms import calculator
+
+        calculator.write(calculator_out)

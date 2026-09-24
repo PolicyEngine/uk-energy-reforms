@@ -1,7 +1,8 @@
 """Household types for breakdowns, aligned with RF's family types (Figure 4).
 
 A household with one benefit unit takes that unit's type; pensioner units are those
-with an adult over State Pension age (the HBAI pensioner-family rule). Households with
+with an adult over State Pension age and no dependent children (a pensioner with a
+dependent child counts as a lone parent or couple with children). Households with
 more than one benefit unit (adult children living with parents, sharers) are grouped
 separately: the highest-individual-income test treats them very differently from a
 household-income test.
@@ -41,8 +42,8 @@ def classify(person: pd.DataFrame) -> pd.Series:
     kind = np.select(
         [
             n_benunits > 1,
-            pensioner & (adults <= 1),
-            pensioner,
+            pensioner & (children == 0) & (adults <= 1),
+            pensioner & (children == 0),
             (children == 0) & (adults <= 1),
             children == 0,
             adults <= 1,

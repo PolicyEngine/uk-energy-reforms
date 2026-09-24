@@ -380,3 +380,144 @@ def breakdown(run: Run, by: str, f: pd.DataFrame | None = None) -> pd.DataFrame:
             }
         )
     return pd.DataFrame(rows)
+
+
+# Winners and losers: change in household net income (HBAI, before housing costs)
+# relative to the baseline, in PolicyEngine's usual bands. Changes smaller than 0.1% of
+# income count as no change. The scheme's funding is not modelled, so nobody loses.
+WINNER_BANDS = [
+    ("gain_more_than_5pct", 0.05, np.inf),
+    ("gain_less_than_5pct", 0.001, 0.05),
+    ("no_change", -0.001, 0.001),
+    ("lose_less_than_5pct", -0.05, -0.001),
+    ("lose_more_than_5pct", -np.inf, -0.05),
+]
+
+
+def _relative_change(f: pd.DataFrame) -> np.ndarray:
+    base = f.net_bhc_base.values
+    gain = f.gain.values
+    with np.errstate(divide="ignore", invalid="ignore"):
+        rel = np.where(base > 0, gain / np.maximum(base, 1e-9), np.sign(gain) * np.inf)
+    return np.nan_to_num(rel, nan=0.0)
+
+
+def winners_losers(run: Run, f: pd.DataFrame | None = None) -> dict:
+    """Share of people in each band of net income change, overall and by AHC decile."""
+    f = prepare(run) if f is None else f
+    rel = _relative_change(f)
+    people = (f.weight * f.n_people).values
+
+    def bands(mask):
+        total = people[mask].sum()
+        return {
+            name: float(people[mask & (rel > lo) & (rel <= hi)].sum() / total)
+            if total
+            else 0.0
+            for name, lo, hi in WINNER_BANDS
+        }
+
+    everyone = np.ones(len(f), bool)
+    return {
+        "all": bands(everyone),
+        "by_decile": [
+            {"decile": d, **bands(f.decile_ahc.values == d)} for d in range(1, 11)
+        ],
+    }
+
+
+def _gini(values: np.ndarray, weights: np.ndarray) -> float:
+    order = np.argsort(values, kind="stable")
+    x, w = values[order], weights[order]
+    cum_w = np.cumsum(w)
+    cum_xw = np.cumsum(x * w)
+    area = np.sum(w * (cum_xw - x * w / 2)) / (cum_w[-1] * cum_xw[-1])
+    return float(1 - 2 * area)
+
+
+def _top_share(values: np.ndarray, weights: np.ndarray, top: float) -> float:
+    """Share of total income held by the richest ``top`` of the weighted population.
+
+    The record straddling the cut-off counts in proportion to the part of its weight
+    that falls inside it; dropping or keeping it whole makes the share jump when a
+    heavily weighted record is re-ranked.
+    """
+    order = np.argsort(values, kind="stable")[::-1]
+    x, w = values[order], weights[order]
+    share = w / w.sum()
+    start = np.cumsum(share) - share
+    inside = np.clip((top - start) / np.where(share > 0, share, 1.0), 0.0, 1.0)
+    return float((x * w * inside).sum() / (x * w).sum())
+
+
+def inequality(run: Run, f: pd.DataFrame | None = None) -> dict:
+    """Gini index and top-income shares of equivalised household net income (GB
+    people), before and after the reform."""
+    f = prepare(run) if f is None else f
+    people = (f.weight * f.n_people).values
+    out = {}
+    for basis in ["bhc", "ahc"]:
+        for metric, fn in [
+            ("gini", _gini),
+            ("top_10_share", lambda v, w: _top_share(v, w, 0.10)),
+            ("top_1_share", lambda v, w: _top_share(v, w, 0.01)),
+        ]:
+            base = fn(f[f"eq_{basis}_base"].values, people)
+            reform = fn(f[f"eq_{basis}_reform"].values, people)
+            out[f"{metric}_{basis}"] = {
+                "baseline": base,
+                "reform": reform,
+                "change": reform - base,
+                "change_pct": (reform - base) / base if base else 0.0,
+            }
+    return out
+
+
+def _bill_by(f: pd.DataFrame, column: str, groups) -> list:
+    rows = []
+    for group in groups:
+        g = f[f[column] == group]
+        if not len(g):
+            continue
+        rows.append(
+            {
+                "group": REGION_LABELS.get(group, group)
+                if isinstance(group, str)
+                else group,
+                "households_m": _w(g) / 1e6,
+                "mean_bill": float(np.average(g.bill, weights=g.weight)),
+                "mean_electricity": float(np.average(g.elec, weights=g.weight)),
+                "mean_gas": float(np.average(g.gas, weights=g.weight)),
+                "energy_over_10pct_share": _share(g, g.high_burden),
+            }
+        )
+    return rows
+
+
+def baseline_summary(run: Run, f: pd.DataFrame | None = None) -> dict:
+    """The pre-reform picture the scheme acts on: households, energy bills, the
+    eligibility routes and poverty, for GB."""
+    f = prepare(run) if f is None else f
+    w = f.weight.values
+    pov = poverty(run, f)
+    return {
+        "households_m": _w(f) / 1e6,
+        "people_m": float((f.weight * f.n_people).sum() / 1e6),
+        "mean_bill": float(np.average(f.bill, weights=w)),
+        "median_bill": _weighted_quantile(f.bill.values, w, 0.5),
+        "total_bill_bn": float((f.bill * f.weight).sum() / 1e9),
+        "mean_electricity": float(np.average(f.elec, weights=w)),
+        "mean_gas": float(np.average(f.gas, weights=w)),
+        "no_electricity_spend_share": _share(f, f.elec <= 0),
+        "gas_spend_share": _share(f, f.gas > 0),
+        "energy_over_10pct_share": _share(f, f.high_burden),
+        "passported_share": _share(f, f.passported),
+        "income_test_share": _share(f, f.income_route),
+        "poverty_rates": [
+            {k: p[k] for k in ["measure", "group", "baseline_rate"]} for p in pov
+        ],
+        "bill_by_decile": _bill_by(f, "decile_ahc", range(1, 11)),
+        "bill_by_region": _bill_by(f, "region", REGIONS),
+        "bill_by_household_type": _bill_by(f, "household_type", HOUSEHOLD_TYPES),
+        "bill_by_tenure": _bill_by(f, "tenure", sorted(f.tenure.unique())),
+    }

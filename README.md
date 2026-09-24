@@ -88,7 +88,8 @@ r = run("microcosm_979", 2026, preset("rf_tiered"))  # r.frame: one row per hous
 ```
 
 Full receipt (JSON plus markdown with breakdowns by region, household type and decile,
-poverty impacts, coverage of struggling households and cliff edges):
+poverty impacts, winners and losers, inequality, coverage of struggling households, cliff
+edges and the baseline the scheme acts on):
 
 ```bash
 uv run uk-energy-reforms run --datasets microcosm_979 efrs_1573 --year 2026 \
@@ -96,12 +97,15 @@ uv run uk-energy-reforms run --datasets microcosm_979 efrs_1573 --year 2026 \
 ```
 
 Our estimates beside the figures RF publishes (2024-25 like-for-like, and 2026-27), and the
-pre-computed data file for the dashboard (added in a follow-up PR):
+pre-computed data files for the dashboard (added in a follow-up PR): the results for every
+`results-<year>` folder in the analysis, and the household-calculator cases the dashboard's
+JavaScript calculator is tested against:
 
 ```bash
 uv run uk-energy-reforms rf-compare --out analyses/<name>
 uv run uk-energy-reforms export-dashboard --analysis analyses/<name> \
-  --out dashboard/data/results.json
+  --out dashboard/public/data/targeted_energy_discount_results.json \
+  --calculator-out dashboard/public/data/calculator.json
 ```
 
 `--take-up` sets take-up among households eligible only through the income test (they
@@ -118,6 +122,14 @@ and are set as an input, because policyengine-core forbids randomness inside for
 
 Use Microcosm for anything below national totals. eFRS weights are highly concentrated
 (Kish effective sample size about 1,100).
+
+policyengine-uk 2.100 does not uprate `electricity_consumption` or `gas_consumption`
+between years (its uprating file notes that policyengine-uk-data stores them at 2026-27
+prices). The Enhanced FRS stores Ofgem April–June 2026 rates, so its spend is at 2026-27
+prices in every year. Microcosm prices spend at 2024-25 DESNZ prices, so its bills stay at
+2024-25 levels in 2026-27 and 2027-28. Fixed amounts and eligibility are unaffected; bill
+levels, bill-share payments and energy-burden shares on Microcosm are understated in the
+scheme years.
 
 ## Notes
 
@@ -137,9 +149,13 @@ src/uk_energy_reforms/
   simulate.py        baseline + reform household frames
   calibrate.py       bill shares and budget scaling
   household_types.py RF-aligned household types
-  analysis.py        impacts, coverage, cliffs, breakdowns
+  analysis.py        impacts, winners and losers, inequality, coverage, cliffs,
+                     breakdowns, baseline
   report.py, cli.py  results receipt
   rf_comparison.py   RF's published figures beside ours
+  sources.py         official statistics and other organisations' figures
+                     (external_sources.json) shown beside the baseline
+  calculator.py      household cases the dashboard calculator is tested against
   dashboard_data.py  compact results for the dashboard
 analyses/            one folder per analysis (results and write-ups)
 tests/               household-level reform tests and helper unit tests
