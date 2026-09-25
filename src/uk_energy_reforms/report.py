@@ -14,9 +14,12 @@ from uk_energy_reforms.reforms.targeted_energy_discount import DESCRIPTIONS, pre
 from uk_energy_reforms.simulate import Run, run
 
 
-def results_for(r: Run) -> dict:
+def results_for(r: Run, distributions: bool = False) -> dict:
+    """Every measure for one run. ``distributions`` adds eligibility across income
+    measures, which depends only on eligibility, so it is computed for the run at the
+    published amounts and not repeated for the bill-share and budget variants."""
     f = analysis.prepare(r)
-    return {
+    out = {
         "dataset": r.dataset,
         "year": r.year,
         "take_up": r.take_up,
@@ -35,6 +38,9 @@ def results_for(r: Run) -> dict:
             orient="records"
         ),
     }
+    if distributions:
+        out["income_distributions"] = analysis.income_distributions(r, f)
+    return out
 
 
 def scenarios(
@@ -50,7 +56,7 @@ def scenarios(
     for dataset in datasets:
         for name in presets:
             fixed = run(dataset, year, preset(name), take_up=take_up)
-            out.setdefault(name, {})[dataset] = results_for(fixed)
+            out.setdefault(name, {})[dataset] = results_for(fixed, distributions=True)
             if bill_share:
                 rate = run(
                     dataset, year, calibrate.bill_share_changes(fixed), take_up=take_up
@@ -119,13 +125,67 @@ BREAKDOWN_COLUMNS = {
     "average_per_recipient": "Avg per recipient (GBP)",
     "gain_pct_net_income": "Gain, % net income",
     "mean_bill": "Mean bill (GBP)",
-    "abs_ahc_poor_covered": "Abs. AHC-poor covered",
-    "abs_ahc_poor_missed_k": "Abs. AHC-poor missed (k)",
-    "bottom4_missed_k": "Poorest-4-decile missed (k)",
+    "abs_ahc_poverty_reached": "In abs. AHC poverty, reached",
+    "abs_ahc_poverty_not_reached_k": "In abs. AHC poverty, not reached (k)",
+    "bottom4_not_reached_k": "Lowest-4-decile, not reached (k)",
     "people_out_of_rel_ahc_poverty_k": "People out of rel. AHC poverty (k)",
     "just_above_top_threshold_k": "Within GBP 1k above top line (k)",
-    "dead_zone_k": "Dead zone (k)",
+    "offset_range_k": "Offset range (k)",
 }
+
+
+DISTRIBUTION_LABELS = {
+    "eq_bhc": "equivalised net income, before housing costs",
+    "eq_ahc": "equivalised net income, after housing costs",
+    "net_bhc": "household net income, before housing costs (not equivalised)",
+    "net_ahc": "household net income, after housing costs (not equivalised)",
+    "taxable": "household taxable income (members' total_income summed)",
+}
+
+
+def _distribution_lines(d: dict) -> list:
+    """Eligibility by household decile on two measures, and the two groups where
+    eligibility and income diverge on every measure."""
+    lines = []
+    for key in ["eq_ahc", "taxable"]:
+        lines += [
+            "",
+            f"Eligibility by household decile of {DISTRIBUTION_LABELS[key]}:",
+            "",
+        ]
+        lines.append(
+            _table(
+                d["distributions"][key]["deciles"],
+                {
+                    "decile": "Decile",
+                    "households_m": "Households (m)",
+                    "passported": "Passported share",
+                    "income_only": "Income test only share",
+                    "not_eligible": "Not eligible share",
+                    "cost_share": "Share of cost",
+                    "ess": "ESS",
+                },
+            )
+        )
+    lines += ["", "Where eligibility and income diverge (household deciles):", ""]
+    for key, label in DISTRIBUTION_LABELS.items():
+        low = d["distributions"][key]["low_not_eligible"]
+        top = d["distributions"][key]["top_income_only"]
+        passported = d["distributions"][key]["top_passported"]
+        share = top["cost_share"] or 0
+        lines.append(
+            f"- {label}: not eligible in deciles 1-3 {low['households_m']:.2f}m "
+            f"({100 * (low['share_of_base'] or 0):.0f}% of those deciles; ESS "
+            f"{low['ess']:.0f}); eligible through the income test alone in deciles "
+            f"6-10 {top['households_m']:.2f}m ({100 * (top['share_of_base'] or 0):.0f}% "
+            f"of income-test-only households, {100 * share:.1f}% of cost; ESS "
+            f"{top['ess']:.0f}); passported in deciles 6-10 "
+            f"{passported['households_m']:.2f}m "
+            f"({100 * (passported['share_of_base'] or 0):.0f}% of passported households, "
+            f"{100 * (passported['cost_share'] or 0):.1f}% of cost; ESS "
+            f"{passported['ess']:.0f})."
+        )
+    return lines
 
 
 def markdown(results: dict, year: int) -> str:
@@ -212,7 +272,11 @@ def markdown(results: dict, year: int) -> str:
                     },
                 )
             )
-            lines += ["", "Coverage of struggling households:", ""]
+            lines += [
+                "",
+                "Coverage of households in poverty or with high energy costs:",
+                "",
+            ]
             lines.append(
                 _table(
                     r["coverage"],
@@ -221,23 +285,25 @@ def markdown(results: dict, year: int) -> str:
                         "households_m": "Households (m)",
                         "covered_by_passport": "Covered by passport",
                         "covered": "Covered",
-                        "missed_m": "Missed (m)",
+                        "missed_m": "Not reached (m)",
                     },
                 )
             )
+            if "income_distributions" in r:
+                lines += _distribution_lines(r["income_distributions"])
             lines += ["", "Cliff edges (households on the schedule by own income):", ""]
             for c in r["cliffs"]:
                 b = c["bands"]
                 lines.append(
                     f"- GBP {c['threshold']:,.0f}: mean drop GBP {c['mean_drop']:.0f}; "
                     f"GBP 1k below {b['1000_below']['households_k']:.0f}k "
-                    f"({b['1000_below']['bottom4_k']:.0f}k poorest-4); GBP 1k above "
+                    f"({b['1000_below']['bottom4_k']:.0f}k lowest-4); GBP 1k above "
                     f"{b['1000_above']['households_k']:.0f}k "
-                    f"({b['1000_above']['bottom4_k']:.0f}k poorest-4, "
-                    f"{b['1000_above']['rel_ahc_poor_k']:.0f}k rel. AHC-poor; "
-                    f"ESS {b['1000_above']['ess']:.0f}); dead zone "
-                    f"{c['dead_zone_k']:.0f}k (median width GBP "
-                    f"{c['dead_zone_median_width']:.0f})."
+                    f"({b['1000_above']['bottom4_k']:.0f}k lowest-4, "
+                    f"{b['1000_above']['rel_ahc_poverty_k']:.0f}k in rel. AHC poverty; "
+                    f"ESS {b['1000_above']['ess']:.0f}); offset range "
+                    f"{c['offset_range_k']:.0f}k (median width GBP "
+                    f"{c['offset_range_median_width']:.0f})."
                 )
             lines.append("")
     return "\n".join(lines)

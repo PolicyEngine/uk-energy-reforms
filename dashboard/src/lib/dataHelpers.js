@@ -43,6 +43,14 @@ export function getResult(data, year, preset, variant, dataset) {
   return data.results?.[year]?.[scenarioId(preset, variant)]?.[dataset];
 }
 
+/** Eligibility across income measures, for a preset's published amounts. */
+export function getDistributions(data, year, preset, dataset) {
+  return data.distributions?.[year]?.[preset]?.[dataset];
+}
+
+// Below this effective sample size an estimate rests on very few survey records.
+export const THIN_ESS = 30;
+
 export function getBaseline(data, year, dataset) {
   return data.baseline?.[year]?.[dataset];
 }
