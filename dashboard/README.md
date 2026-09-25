@@ -8,11 +8,12 @@ dashboards. Four tabs:
   inequality, poverty, reach among low-income households and those with high energy costs,
   eligibility across income measures (equivalised and unequivalised household income and
   household taxable income, with a cross-tabulation and the households where eligibility and
-  income diverge), breakdowns by region and household type, and the income cut-offs, for each
-  option, set of amounts and year.
+  income diverge), and breakdowns by region and household type, for each option, set of
+  amounts and year.
 - **Your household:** the discount a household would get under each option, from its
   region, adults' taxable incomes, children, benefits and energy bill, recalculated when the
-  reader presses Calculate.
+  reader presses Calculate, and a chart of how that support changes as one adult's income
+  changes.
 - **Baseline and comparisons:** households, bills and eligibility before the scheme, data
   coverage, the model beside official statistics and other organisations' estimates, and
   every figure the Resolution Foundation publishes beside PolicyEngine's.

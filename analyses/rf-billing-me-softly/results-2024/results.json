@@ -823,7 +823,7 @@
      }
     },
     {
-     "group": "poorest four AHC deciles",
+     "group": "lowest four AHC deciles",
      "households_m": 11.773614,
      "covered_by_passport": 0.428067147731781,
      "covered": 0.791140079498291,
@@ -890,8 +890,8 @@
        "sample_n": 634,
        "ess": 49.74365269578446,
        "bottom4_k": 219.847640625,
-       "abs_ahc_poor_k": 43.2548515625,
-       "rel_ahc_poor_k": 66.0755078125,
+       "abs_ahc_poverty_k": 43.2548515625,
+       "rel_ahc_poverty_k": 66.0755078125,
        "mean_eq_ahc": 28666.701171875,
        "mean_bill": 1033.109130859375
       },
@@ -900,8 +900,8 @@
        "sample_n": 429,
        "ess": 38.54242817274579,
        "bottom4_k": 77.1263125,
-       "abs_ahc_poor_k": 7.6762119140625,
-       "rel_ahc_poor_k": 16.743072265625,
+       "abs_ahc_poverty_k": 7.6762119140625,
+       "rel_ahc_poverty_k": 16.743072265625,
        "mean_eq_ahc": 31560.765625,
        "mean_bill": 1302.5950927734375
       },
@@ -910,8 +910,8 @@
        "sample_n": 808,
        "ess": 76.70030326682813,
        "bottom4_k": 191.2668125,
-       "abs_ahc_poor_k": 22.170451171875,
-       "rel_ahc_poor_k": 35.169203125,
+       "abs_ahc_poverty_k": 22.170451171875,
+       "rel_ahc_poverty_k": 35.169203125,
        "mean_eq_ahc": 30181.470703125,
        "mean_bill": 1225.4979248046875
       },
@@ -920,16 +920,16 @@
        "sample_n": 1647,
        "ess": 162.45260122059406,
        "bottom4_k": 403.0781875,
-       "abs_ahc_poor_k": 77.49446875,
-       "rel_ahc_poor_k": 129.2037421875,
+       "abs_ahc_poverty_k": 77.49446875,
+       "rel_ahc_poverty_k": 129.2037421875,
        "mean_eq_ahc": 29981.322265625,
        "mean_bill": 1456.4453125
       }
      },
      "mean_drop": 175.0,
-     "dead_zone_k": 149.1695625,
-     "dead_zone_struggling_k": 14.635421875,
-     "dead_zone_median_width": 243.05555555555557
+     "offset_range_k": 149.1695625,
+     "offset_range_poverty_or_burden_k": 14.635421875,
+     "offset_range_median_width": 243.05555555555557
     }
    ],
    "by_region": [
@@ -948,15 +948,15 @@
      "gain_pct_net_income": 0.002039268147200346,
      "mean_bill": 1404.680419921875,
      "abs_ahc_poverty_rate": 0.1354023516178131,
-     "abs_ahc_poor_covered": 0.8271480202674866,
-     "abs_ahc_poor_missed_k": 28.303884765625,
-     "rel_ahc_poor_missed_k": 34.15691796875,
-     "bottom4_missed_k": 84.2034453125,
+     "abs_ahc_poverty_reached": 0.8271480202674866,
+     "abs_ahc_poverty_not_reached_k": 28.303884765625,
+     "rel_ahc_poverty_not_reached_k": 34.15691796875,
+     "bottom4_not_reached_k": 84.2034453125,
      "people_out_of_rel_ahc_poverty_k": 9.459395227134229,
      "people_out_of_abs_ahc_poverty_k": 7.5528607720136645,
      "just_above_top_threshold_k": 10.3161103515625,
      "just_above_bottom4_k": 4.25116845703125,
-     "dead_zone_k": 1.401491943359375
+     "offset_range_k": 1.401491943359375
     },
     {
      "region": "North West",
@@ -973,15 +973,15 @@
      "gain_pct_net_income": 0.0021136789582669735,
      "mean_bill": 1393.7349853515625,
      "abs_ahc_poverty_rate": 0.11974432319402695,
-     "abs_ahc_poor_covered": 0.9570364952087402,
-     "abs_ahc_poor_missed_k": 16.770359375,
-     "rel_ahc_poor_missed_k": 42.8724140625,
-     "bottom4_missed_k": 222.14971875,
+     "abs_ahc_poverty_reached": 0.9570364952087402,
+     "abs_ahc_poverty_not_reached_k": 16.770359375,
+     "rel_ahc_poverty_not_reached_k": 42.8724140625,
+     "bottom4_not_reached_k": 222.14971875,
      "people_out_of_rel_ahc_poverty_k": 8.389824695497751,
      "people_out_of_abs_ahc_poverty_k": 25.425487528085707,
      "just_above_top_threshold_k": 36.2776171875,
      "just_above_bottom4_k": 21.05602734375,
-     "dead_zone_k": 5.37653564453125
+     "offset_range_k": 5.37653564453125
     },
     {
      "region": "Yorkshire and the Humber",
@@ -998,15 +998,15 @@
      "gain_pct_net_income": 0.001969947712495923,
      "mean_bill": 1470.673828125,
      "abs_ahc_poverty_rate": 0.12327903509140015,
-     "abs_ahc_poor_covered": 0.9344194531440735,
-     "abs_ahc_poor_missed_k": 19.274234375,
-     "rel_ahc_poor_missed_k": 39.277203125,
-     "bottom4_missed_k": 202.622328125,
+     "abs_ahc_poverty_reached": 0.9344194531440735,
+     "abs_ahc_poverty_not_reached_k": 19.274234375,
+     "rel_ahc_poverty_not_reached_k": 39.277203125,
+     "bottom4_not_reached_k": 202.622328125,
      "people_out_of_rel_ahc_poverty_k": 20.84390224444866,
      "people_out_of_abs_ahc_poverty_k": 5.655938047111034,
      "just_above_top_threshold_k": 42.525375,
      "just_above_bottom4_k": 9.3368017578125,
-     "dead_zone_k": 9.3580703125
+     "offset_range_k": 9.3580703125
     },
     {
      "region": "East Midlands",
@@ -1023,15 +1023,15 @@
      "gain_pct_net_income": 0.0020007288549095392,
      "mean_bill": 1592.7413330078125,
      "abs_ahc_poverty_rate": 0.1274814009666443,
-     "abs_ahc_poor_covered": 0.9544205665588379,
-     "abs_ahc_poor_missed_k": 12.2257451171875,
-     "rel_ahc_poor_missed_k": 42.743140625,
-     "bottom4_missed_k": 171.8384375,
+     "abs_ahc_poverty_reached": 0.9544205665588379,
+     "abs_ahc_poverty_not_reached_k": 12.2257451171875,
+     "rel_ahc_poverty_not_reached_k": 42.743140625,
+     "bottom4_not_reached_k": 171.8384375,
      "people_out_of_rel_ahc_poverty_k": 22.871262709245087,
      "people_out_of_abs_ahc_poverty_k": 8.79803210797906,
      "just_above_top_threshold_k": 37.35829296875,
      "just_above_bottom4_k": 10.4752275390625,
-     "dead_zone_k": 12.9897216796875
+     "offset_range_k": 12.9897216796875
     },
     {
      "region": "West Midlands",
@@ -1048,15 +1048,15 @@
      "gain_pct_net_income": 0.002168662380427122,
      "mean_bill": 1467.919921875,
      "abs_ahc_poverty_rate": 0.1412210911512375,
-     "abs_ahc_poor_covered": 0.7900170087814331,
-     "abs_ahc_poor_missed_k": 74.20725,
-     "rel_ahc_poor_missed_k": 93.644421875,
-     "bottom4_missed_k": 239.99875,
+     "abs_ahc_poverty_reached": 0.7900170087814331,
+     "abs_ahc_poverty_not_reached_k": 74.20725,
+     "rel_ahc_poverty_not_reached_k": 93.644421875,
+     "bottom4_not_reached_k": 239.99875,
      "people_out_of_rel_ahc_poverty_k": 7.275929506659508,
      "people_out_of_abs_ahc_poverty_k": 40.01128422370553,
      "just_above_top_threshold_k": 27.48598046875,
      "just_above_bottom4_k": 9.834373046875,
-     "dead_zone_k": 14.16097265625
+     "offset_range_k": 14.16097265625
     },
     {
      "region": "East of England",
@@ -1073,15 +1073,15 @@
      "gain_pct_net_income": 0.0014250893145799637,
      "mean_bill": 1442.83740234375,
      "abs_ahc_poverty_rate": 0.11270689219236374,
-     "abs_ahc_poor_covered": 0.9460800886154175,
-     "abs_ahc_poor_missed_k": 16.528546875,
-     "rel_ahc_poor_missed_k": 51.040625,
-     "bottom4_missed_k": 188.0714375,
+     "abs_ahc_poverty_reached": 0.9460800886154175,
+     "abs_ahc_poverty_not_reached_k": 16.528546875,
+     "rel_ahc_poverty_not_reached_k": 51.040625,
+     "bottom4_not_reached_k": 188.0714375,
      "people_out_of_rel_ahc_poverty_k": 39.76030807518959,
      "people_out_of_abs_ahc_poverty_k": 9.628049365580083,
      "just_above_top_threshold_k": 51.34143359375,
      "just_above_bottom4_k": 16.45217578125,
-     "dead_zone_k": 27.463138671875
+     "offset_range_k": 27.463138671875
     },
     {
      "region": "London",
@@ -1098,15 +1098,15 @@
      "gain_pct_net_income": 0.0013155858032405376,
      "mean_bill": 1427.77587890625,
      "abs_ahc_poverty_rate": 0.21723327040672302,
-     "abs_ahc_poor_covered": 0.7935848832130432,
-     "abs_ahc_poor_missed_k": 161.47853125,
-     "rel_ahc_poor_missed_k": 174.627546875,
-     "bottom4_missed_k": 402.0184375,
+     "abs_ahc_poverty_reached": 0.7935848832130432,
+     "abs_ahc_poverty_not_reached_k": 161.47853125,
+     "rel_ahc_poverty_not_reached_k": 174.627546875,
+     "bottom4_not_reached_k": 402.0184375,
      "people_out_of_rel_ahc_poverty_k": 9.711100924566388,
      "people_out_of_abs_ahc_poverty_k": 7.314594703018665,
      "just_above_top_threshold_k": 37.9987890625,
      "just_above_bottom4_k": 29.30852734375,
-     "dead_zone_k": 13.1150361328125
+     "offset_range_k": 13.1150361328125
     },
     {
      "region": "South East",
@@ -1123,15 +1123,15 @@
      "gain_pct_net_income": 0.0013710020575672388,
      "mean_bill": 1521.819091796875,
      "abs_ahc_poverty_rate": 0.1452576369047165,
-     "abs_ahc_poor_covered": 0.9012401700019836,
-     "abs_ahc_poor_missed_k": 56.66953515625,
-     "rel_ahc_poor_missed_k": 82.0123203125,
-     "bottom4_missed_k": 350.368625,
+     "abs_ahc_poverty_reached": 0.9012401700019836,
+     "abs_ahc_poverty_not_reached_k": 56.66953515625,
+     "rel_ahc_poverty_not_reached_k": 82.0123203125,
+     "bottom4_not_reached_k": 350.368625,
      "people_out_of_rel_ahc_poverty_k": 5.465512269854545,
      "people_out_of_abs_ahc_poverty_k": 14.601132661297918,
      "just_above_top_threshold_k": 71.6324140625,
      "just_above_bottom4_k": 15.9454677734375,
-     "dead_zone_k": 43.887609375
+     "offset_range_k": 43.887609375
     },
     {
      "region": "South West",
@@ -1148,15 +1148,15 @@
      "gain_pct_net_income": 0.0017004041001200676,
      "mean_bill": 1313.8221435546875,
      "abs_ahc_poverty_rate": 0.14482960104942322,
-     "abs_ahc_poor_covered": 0.8461611866950989,
-     "abs_ahc_poor_missed_k": 56.180828125,
-     "rel_ahc_poor_missed_k": 89.43178125,
-     "bottom4_missed_k": 303.932,
+     "abs_ahc_poverty_reached": 0.8461611866950989,
+     "abs_ahc_poverty_not_reached_k": 56.180828125,
+     "rel_ahc_poverty_not_reached_k": 89.43178125,
+     "bottom4_not_reached_k": 303.932,
      "people_out_of_rel_ahc_poverty_k": 78.43907587870956,
      "people_out_of_abs_ahc_poverty_k": 4.815581086039543,
      "just_above_top_threshold_k": 42.33744140625,
      "just_above_bottom4_k": 30.13403515625,
-     "dead_zone_k": 5.15252197265625
+     "offset_range_k": 5.15252197265625
     },
     {
      "region": "Wales",
@@ -1173,15 +1173,15 @@
      "gain_pct_net_income": 0.0019196310313418508,
      "mean_bill": 1457.140380859375,
      "abs_ahc_poverty_rate": 0.13350054621696472,
-     "abs_ahc_poor_covered": 0.9295578598976135,
-     "abs_ahc_poor_missed_k": 12.9500986328125,
-     "rel_ahc_poor_missed_k": 27.956294921875,
-     "bottom4_missed_k": 109.9228203125,
+     "abs_ahc_poverty_reached": 0.9295578598976135,
+     "abs_ahc_poverty_not_reached_k": 12.9500986328125,
+     "rel_ahc_poverty_not_reached_k": 27.956294921875,
+     "bottom4_not_reached_k": 109.9228203125,
      "people_out_of_rel_ahc_poverty_k": 11.311858769774437,
      "people_out_of_abs_ahc_poverty_k": 17.798235261112453,
      "just_above_top_threshold_k": 25.982931640625,
      "just_above_bottom4_k": 7.2941240234375,
-     "dead_zone_k": 2.46869677734375
+     "offset_range_k": 2.46869677734375
     },
     {
      "region": "Scotland",
@@ -1198,15 +1198,15 @@
      "gain_pct_net_income": 0.002037649042904377,
      "mean_bill": 1339.330810546875,
      "abs_ahc_poverty_rate": 0.15767282247543335,
-     "abs_ahc_poor_covered": 0.9569093585014343,
-     "abs_ahc_poor_missed_k": 17.82910546875,
-     "rel_ahc_poor_missed_k": 28.439041015625,
-     "bottom4_missed_k": 183.909375,
+     "abs_ahc_poverty_reached": 0.9569093585014343,
+     "abs_ahc_poverty_not_reached_k": 17.82910546875,
+     "rel_ahc_poverty_not_reached_k": 28.439041015625,
+     "bottom4_not_reached_k": 183.909375,
      "people_out_of_rel_ahc_poverty_k": 3.312795658290386,
      "people_out_of_abs_ahc_poverty_k": 6.485060770973563,
      "just_above_top_threshold_k": 61.10909375,
      "just_above_bottom4_k": 37.178875,
-     "dead_zone_k": 13.79576171875
+     "offset_range_k": 13.79576171875
     }
    ],
    "by_household_type": [
@@ -1225,15 +1225,15 @@
      "gain_pct_net_income": 0.006198598071932793,
      "mean_bill": 1076.3460693359375,
      "abs_ahc_poverty_rate": 0.1485779732465744,
-     "abs_ahc_poor_covered": 0.9989609718322754,
-     "abs_ahc_poor_missed_k": 0.614999755859375,
-     "rel_ahc_poor_missed_k": 2.531508056640625,
-     "bottom4_missed_k": 58.1211171875,
+     "abs_ahc_poverty_reached": 0.9989609718322754,
+     "abs_ahc_poverty_not_reached_k": 0.614999755859375,
+     "rel_ahc_poverty_not_reached_k": 2.531508056640625,
+     "bottom4_not_reached_k": 58.1211171875,
      "people_out_of_rel_ahc_poverty_k": 60.61383221273124,
      "people_out_of_abs_ahc_poverty_k": 37.27366222341359,
      "just_above_top_threshold_k": 56.988171875,
      "just_above_bottom4_k": 18.3989609375,
-     "dead_zone_k": 6.7804130859375
+     "offset_range_k": 6.7804130859375
     },
     {
      "household_type": "Pensioner couple",
@@ -1250,15 +1250,15 @@
      "gain_pct_net_income": 0.0017882506363093853,
      "mean_bill": 1519.1676025390625,
      "abs_ahc_poverty_rate": 0.0570596307516098,
-     "abs_ahc_poor_covered": 0.9813529849052429,
-     "abs_ahc_poor_missed_k": 3.75236083984375,
-     "rel_ahc_poor_missed_k": 8.37445703125,
-     "bottom4_missed_k": 107.535328125,
+     "abs_ahc_poverty_reached": 0.9813529849052429,
+     "abs_ahc_poverty_not_reached_k": 3.75236083984375,
+     "rel_ahc_poverty_not_reached_k": 8.37445703125,
+     "bottom4_not_reached_k": 107.535328125,
      "people_out_of_rel_ahc_poverty_k": 14.420888224959374,
      "people_out_of_abs_ahc_poverty_k": 16.26234373064339,
      "just_above_top_threshold_k": 91.22675,
      "just_above_bottom4_k": 12.0560458984375,
-     "dead_zone_k": 40.2184453125
+     "offset_range_k": 40.2184453125
     },
     {
      "household_type": "Single, no children",
@@ -1275,15 +1275,15 @@
      "gain_pct_net_income": 0.0042629060335457325,
      "mean_bill": 944.323486328125,
      "abs_ahc_poverty_rate": 0.30380114912986755,
-     "abs_ahc_poor_covered": 0.9752256274223328,
-     "abs_ahc_poor_missed_k": 32.98778515625,
-     "rel_ahc_poor_missed_k": 60.92131640625,
-     "bottom4_missed_k": 279.6550625,
+     "abs_ahc_poverty_reached": 0.9752256274223328,
+     "abs_ahc_poverty_not_reached_k": 32.98778515625,
+     "rel_ahc_poverty_not_reached_k": 60.92131640625,
+     "bottom4_not_reached_k": 279.6550625,
      "people_out_of_rel_ahc_poverty_k": 12.416250130012632,
      "people_out_of_abs_ahc_poverty_k": 10.820013526231051,
      "just_above_top_threshold_k": 110.511578125,
      "just_above_bottom4_k": 72.13609375,
-     "dead_zone_k": 14.785775390625
+     "offset_range_k": 14.785775390625
     },
     {
      "household_type": "Couple, no children",
@@ -1300,15 +1300,15 @@
      "gain_pct_net_income": 0.0006439421558752656,
      "mean_bill": 1422.3714599609375,
      "abs_ahc_poverty_rate": 0.10905847698450089,
-     "abs_ahc_poor_covered": 0.7499898076057434,
-     "abs_ahc_poor_missed_k": 114.4201328125,
-     "rel_ahc_poor_missed_k": 156.8978125,
-     "bottom4_missed_k": 500.34575,
+     "abs_ahc_poverty_reached": 0.7499898076057434,
+     "abs_ahc_poverty_not_reached_k": 114.4201328125,
+     "rel_ahc_poverty_not_reached_k": 156.8978125,
+     "bottom4_not_reached_k": 500.34575,
      "people_out_of_rel_ahc_poverty_k": 1.0424198760986327,
      "people_out_of_abs_ahc_poverty_k": 7.385450036287308,
      "just_above_top_threshold_k": 89.77796875,
      "just_above_bottom4_k": 40.5409375,
-     "dead_zone_k": 41.146
+     "offset_range_k": 41.146
     },
     {
      "household_type": "Lone parent",
@@ -1325,15 +1325,15 @@
      "gain_pct_net_income": 0.004780183080583811,
      "mean_bill": 1290.652099609375,
      "abs_ahc_poverty_rate": 0.2275492548942566,
-     "abs_ahc_poor_covered": 0.9944055080413818,
-     "abs_ahc_poor_missed_k": 1.7091702880859374,
-     "rel_ahc_poor_missed_k": 3.80867041015625,
-     "bottom4_missed_k": 20.99133203125,
+     "abs_ahc_poverty_reached": 0.9944055080413818,
+     "abs_ahc_poverty_not_reached_k": 1.7091702880859374,
+     "rel_ahc_poverty_not_reached_k": 3.80867041015625,
+     "bottom4_not_reached_k": 20.99133203125,
      "people_out_of_rel_ahc_poverty_k": 98.72405262678862,
      "people_out_of_abs_ahc_poverty_k": 38.142986824512484,
      "just_above_top_threshold_k": 1.2792706298828125,
      "just_above_bottom4_k": 1.277978515625,
-     "dead_zone_k": 0.0569404296875
+     "offset_range_k": 0.0569404296875
     },
     {
      "household_type": "Couple with children",
@@ -1350,15 +1350,15 @@
      "gain_pct_net_income": 0.0007108109421096742,
      "mean_bill": 1846.18994140625,
      "abs_ahc_poverty_rate": 0.14497415721416473,
-     "abs_ahc_poor_covered": 0.6918336749076843,
-     "abs_ahc_poor_missed_k": 214.71759375,
-     "rel_ahc_poor_missed_k": 338.13809375,
-     "bottom4_missed_k": 993.3370625,
+     "abs_ahc_poverty_reached": 0.6918336749076843,
+     "abs_ahc_poverty_not_reached_k": 214.71759375,
+     "rel_ahc_poverty_not_reached_k": 338.13809375,
+     "bottom4_not_reached_k": 993.3370625,
      "people_out_of_rel_ahc_poverty_k": 11.56385063970089,
      "people_out_of_abs_ahc_poverty_k": 15.39055099529028,
      "just_above_top_threshold_k": 25.8268984375,
      "just_above_bottom4_k": 23.246029296875,
-     "dead_zone_k": 8.26212890625
+     "offset_range_k": 8.26212890625
     },
     {
      "household_type": "Multi-family household",
@@ -1375,15 +1375,15 @@
      "gain_pct_net_income": 0.0011185099137946963,
      "mean_bill": 1716.56005859375,
      "abs_ahc_poverty_rate": 0.0848596841096878,
-     "abs_ahc_poor_covered": 0.795822024345398,
-     "abs_ahc_poor_missed_k": 104.2160703125,
-     "rel_ahc_poor_missed_k": 135.52984375,
-     "bottom4_missed_k": 499.0496875,
+     "abs_ahc_poverty_reached": 0.795822024345398,
+     "abs_ahc_poverty_not_reached_k": 104.2160703125,
+     "rel_ahc_poverty_not_reached_k": 135.52984375,
+     "bottom4_not_reached_k": 499.0496875,
      "people_out_of_rel_ahc_poverty_k": 18.05967224907875,
      "people_out_of_abs_ahc_poverty_k": 22.811249190539122,
      "just_above_top_threshold_k": 68.7548359375,
      "just_above_bottom4_k": 23.6107578125,
-     "dead_zone_k": 37.9198515625
+     "offset_range_k": 37.9198515625
     }
    ],
    "income_distributions": {
@@ -4628,7 +4628,7 @@
      }
     },
     {
-     "group": "poorest four AHC deciles",
+     "group": "lowest four AHC deciles",
      "households_m": 12.680531,
      "covered_by_passport": 0.4587847590446472,
      "covered": 0.8246819972991943,
@@ -4695,8 +4695,8 @@
        "sample_n": 792,
        "ess": 30.74637997848834,
        "bottom4_k": 181.10128125,
-       "abs_ahc_poor_k": 58.1621015625,
-       "rel_ahc_poor_k": 73.338,
+       "abs_ahc_poverty_k": 58.1621015625,
+       "rel_ahc_poverty_k": 73.338,
        "mean_eq_ahc": 23482.958984375,
        "mean_bill": 2282.884033203125
       },
@@ -4705,8 +4705,8 @@
        "sample_n": 495,
        "ess": 19.581317077718374,
        "bottom4_k": 136.65928125,
-       "abs_ahc_poor_k": 58.0343359375,
-       "rel_ahc_poor_k": 66.4186796875,
+       "abs_ahc_poverty_k": 58.0343359375,
+       "rel_ahc_poverty_k": 66.4186796875,
        "mean_eq_ahc": 27938.345703125,
        "mean_bill": 2001.3448486328125
       },
@@ -4715,8 +4715,8 @@
        "sample_n": 1044,
        "ess": 37.599212623308404,
        "bottom4_k": 332.7768125,
-       "abs_ahc_poor_k": 108.9336015625,
-       "rel_ahc_poor_k": 125.692109375,
+       "abs_ahc_poverty_k": 108.9336015625,
+       "rel_ahc_poverty_k": 125.692109375,
        "mean_eq_ahc": 29122.322265625,
        "mean_bill": 1975.505859375
       },
@@ -4725,16 +4725,16 @@
        "sample_n": 1981,
        "ess": 68.30917844256096,
        "bottom4_k": 485.57825,
-       "abs_ahc_poor_k": 133.5164375,
-       "rel_ahc_poor_k": 204.3346875,
+       "abs_ahc_poverty_k": 133.5164375,
+       "rel_ahc_poverty_k": 204.3346875,
        "mean_eq_ahc": 30091.5546875,
        "mean_bill": 1850.0244140625
       }
      },
      "mean_drop": 175.0,
-     "dead_zone_k": 187.272828125,
-     "dead_zone_struggling_k": 69.547078125,
-     "dead_zone_median_width": 243.05555555555557
+     "offset_range_k": 187.272828125,
+     "offset_range_poverty_or_burden_k": 69.547078125,
+     "offset_range_median_width": 243.05555555555557
     }
    ],
    "by_region": [
@@ -4753,15 +4753,15 @@
      "gain_pct_net_income": 0.002326259156689048,
      "mean_bill": 2146.225341796875,
      "abs_ahc_poverty_rate": 0.18436716496944427,
-     "abs_ahc_poor_covered": 0.9943949580192566,
-     "abs_ahc_poor_missed_k": 1.34601123046875,
-     "rel_ahc_poor_missed_k": 5.86811376953125,
-     "bottom4_missed_k": 31.73440234375,
+     "abs_ahc_poverty_reached": 0.9943949580192566,
+     "abs_ahc_poverty_not_reached_k": 1.34601123046875,
+     "rel_ahc_poverty_not_reached_k": 5.86811376953125,
+     "bottom4_not_reached_k": 31.73440234375,
      "people_out_of_rel_ahc_poverty_k": 1.9466179313659668,
      "people_out_of_abs_ahc_poverty_k": 1.7963079481124877,
      "just_above_top_threshold_k": 8.5421171875,
      "just_above_bottom4_k": 3.235615234375,
-     "dead_zone_k": 1.8682666015625
+     "offset_range_k": 1.8682666015625
     },
     {
      "region": "North West",
@@ -4778,15 +4778,15 @@
      "gain_pct_net_income": 0.001990772783756256,
      "mean_bill": 1595.3499755859375,
      "abs_ahc_poverty_rate": 0.1466015726327896,
-     "abs_ahc_poor_covered": 0.9779815673828125,
-     "abs_ahc_poor_missed_k": 11.2964580078125,
-     "rel_ahc_poor_missed_k": 86.5921015625,
-     "bottom4_missed_k": 369.9135625,
+     "abs_ahc_poverty_reached": 0.9779815673828125,
+     "abs_ahc_poverty_not_reached_k": 11.2964580078125,
+     "rel_ahc_poverty_not_reached_k": 86.5921015625,
+     "bottom4_not_reached_k": 369.9135625,
      "people_out_of_rel_ahc_poverty_k": 7.252337595462799,
      "people_out_of_abs_ahc_poverty_k": 25.58399476480484,
      "just_above_top_threshold_k": 102.13984375,
      "just_above_bottom4_k": 90.21878125,
-     "dead_zone_k": 7.59157275390625
+     "offset_range_k": 7.59157275390625
     },
     {
      "region": "Yorkshire and the Humber",
@@ -4803,15 +4803,15 @@
      "gain_pct_net_income": 0.001903199008665979,
      "mean_bill": 1917.7437744140625,
      "abs_ahc_poverty_rate": 0.1571274846792221,
-     "abs_ahc_poor_covered": 0.9768553376197815,
-     "abs_ahc_poor_missed_k": 9.292994140625,
-     "rel_ahc_poor_missed_k": 23.9083046875,
-     "bottom4_missed_k": 172.819234375,
+     "abs_ahc_poverty_reached": 0.9768553376197815,
+     "abs_ahc_poverty_not_reached_k": 9.292994140625,
+     "rel_ahc_poverty_not_reached_k": 23.9083046875,
+     "bottom4_not_reached_k": 172.819234375,
      "people_out_of_rel_ahc_poverty_k": 33.65991859817505,
      "people_out_of_abs_ahc_poverty_k": 3.7059106783866884,
      "just_above_top_threshold_k": 21.75225,
      "just_above_bottom4_k": 4.743615234375,
-     "dead_zone_k": 3.35264453125
+     "offset_range_k": 3.35264453125
     },
     {
      "region": "East Midlands",
@@ -4828,15 +4828,15 @@
      "gain_pct_net_income": 0.001840475364588201,
      "mean_bill": 1948.3974609375,
      "abs_ahc_poverty_rate": 0.16582772135734558,
-     "abs_ahc_poor_covered": 0.9629860520362854,
-     "abs_ahc_poor_missed_k": 13.884642578125,
-     "rel_ahc_poor_missed_k": 27.0809140625,
-     "bottom4_missed_k": 101.1280625,
+     "abs_ahc_poverty_reached": 0.9629860520362854,
+     "abs_ahc_poverty_not_reached_k": 13.884642578125,
+     "rel_ahc_poverty_not_reached_k": 27.0809140625,
+     "bottom4_not_reached_k": 101.1280625,
      "people_out_of_rel_ahc_poverty_k": 4.569948149681092,
      "people_out_of_abs_ahc_poverty_k": 2.124636375427246,
      "just_above_top_threshold_k": 75.798734375,
      "just_above_bottom4_k": 7.48263916015625,
-     "dead_zone_k": 5.20340771484375
+     "offset_range_k": 5.20340771484375
     },
     {
      "region": "West Midlands",
@@ -4853,15 +4853,15 @@
      "gain_pct_net_income": 0.0018413279904052615,
      "mean_bill": 1401.102783203125,
      "abs_ahc_poverty_rate": 0.2092793583869934,
-     "abs_ahc_poor_covered": 0.8770530819892883,
-     "abs_ahc_poor_missed_k": 68.7424375,
-     "rel_ahc_poor_missed_k": 127.6780546875,
-     "bottom4_missed_k": 224.756640625,
+     "abs_ahc_poverty_reached": 0.8770530819892883,
+     "abs_ahc_poverty_not_reached_k": 68.7424375,
+     "rel_ahc_poverty_not_reached_k": 127.6780546875,
+     "bottom4_not_reached_k": 224.756640625,
      "people_out_of_rel_ahc_poverty_k": 3.57408953666687,
      "people_out_of_abs_ahc_poverty_k": 64.3959062347412,
      "just_above_top_threshold_k": 65.4680390625,
      "just_above_bottom4_k": 54.61222265625,
-     "dead_zone_k": 7.03494287109375
+     "offset_range_k": 7.03494287109375
     },
     {
      "region": "East of England",
@@ -4878,15 +4878,15 @@
      "gain_pct_net_income": 0.0011756104649975896,
      "mean_bill": 1338.9261474609375,
      "abs_ahc_poverty_rate": 0.12231917679309845,
-     "abs_ahc_poor_covered": 0.9493289589881897,
-     "abs_ahc_poor_missed_k": 17.991904296875,
-     "rel_ahc_poor_missed_k": 42.08733203125,
-     "bottom4_missed_k": 207.11696875,
+     "abs_ahc_poverty_reached": 0.9493289589881897,
+     "abs_ahc_poverty_not_reached_k": 17.991904296875,
+     "rel_ahc_poverty_not_reached_k": 42.08733203125,
+     "bottom4_not_reached_k": 207.11696875,
      "people_out_of_rel_ahc_poverty_k": 7.761123966693878,
      "people_out_of_abs_ahc_poverty_k": 3.8346367859840393,
      "just_above_top_threshold_k": 74.4439921875,
      "just_above_bottom4_k": 19.7295078125,
-     "dead_zone_k": 37.490015625
+     "offset_range_k": 37.490015625
     },
     {
      "region": "London",
@@ -4903,15 +4903,15 @@
      "gain_pct_net_income": 0.0013334763934835792,
      "mean_bill": 1084.5228271484375,
      "abs_ahc_poverty_rate": 0.17392964661121368,
-     "abs_ahc_poor_covered": 0.8774561882019043,
-     "abs_ahc_poor_missed_k": 83.538640625,
-     "rel_ahc_poor_missed_k": 126.79934375,
-     "bottom4_missed_k": 250.21140625,
+     "abs_ahc_poverty_reached": 0.8774561882019043,
+     "abs_ahc_poverty_not_reached_k": 83.538640625,
+     "rel_ahc_poverty_not_reached_k": 126.79934375,
+     "bottom4_not_reached_k": 250.21140625,
      "people_out_of_rel_ahc_poverty_k": 11.728089295387267,
      "people_out_of_abs_ahc_poverty_k": 31.961988027095796,
      "just_above_top_threshold_k": 95.1456328125,
      "just_above_bottom4_k": 44.033828125,
-     "dead_zone_k": 23.209416015625
+     "offset_range_k": 23.209416015625
     },
     {
      "region": "South East",
@@ -4928,15 +4928,15 @@
      "gain_pct_net_income": 0.0015520565211772919,
      "mean_bill": 1573.05517578125,
      "abs_ahc_poverty_rate": 0.19153261184692383,
-     "abs_ahc_poor_covered": 0.7535089254379272,
-     "abs_ahc_poor_missed_k": 198.89096875,
-     "rel_ahc_poor_missed_k": 246.998796875,
-     "bottom4_missed_k": 469.12678125,
+     "abs_ahc_poverty_reached": 0.7535089254379272,
+     "abs_ahc_poverty_not_reached_k": 198.89096875,
+     "rel_ahc_poverty_not_reached_k": 246.998796875,
+     "bottom4_not_reached_k": 469.12678125,
      "people_out_of_rel_ahc_poverty_k": 55.28134300041199,
      "people_out_of_abs_ahc_poverty_k": 4.446005791187287,
      "just_above_top_threshold_k": 74.6188203125,
      "just_above_bottom4_k": 56.661421875,
-     "dead_zone_k": 24.42880859375
+     "offset_range_k": 24.42880859375
     },
     {
      "region": "South West",
@@ -4953,15 +4953,15 @@
      "gain_pct_net_income": 0.0017008314607664943,
      "mean_bill": 1317.458984375,
      "abs_ahc_poverty_rate": 0.11467929184436798,
-     "abs_ahc_poor_covered": 0.9626306295394897,
-     "abs_ahc_poor_missed_k": 11.7259423828125,
-     "rel_ahc_poor_missed_k": 27.810265625,
-     "bottom4_missed_k": 158.888296875,
+     "abs_ahc_poverty_reached": 0.9626306295394897,
+     "abs_ahc_poverty_not_reached_k": 11.7259423828125,
+     "rel_ahc_poverty_not_reached_k": 27.810265625,
+     "bottom4_not_reached_k": 158.888296875,
      "people_out_of_rel_ahc_poverty_k": 83.25231982183456,
      "people_out_of_abs_ahc_poverty_k": 11.86262857723236,
      "just_above_top_threshold_k": 115.7187734375,
      "just_above_bottom4_k": 24.8932109375,
-     "dead_zone_k": 45.00590625
+     "offset_range_k": 45.00590625
     },
     {
      "region": "Wales",
@@ -4978,15 +4978,15 @@
      "gain_pct_net_income": 0.002182864351198077,
      "mean_bill": 1845.1556396484375,
      "abs_ahc_poverty_rate": 0.19086603820323944,
-     "abs_ahc_poor_covered": 0.9826323986053467,
-     "abs_ahc_poor_missed_k": 5.18767529296875,
-     "rel_ahc_poor_missed_k": 18.33794140625,
-     "bottom4_missed_k": 102.41903125,
+     "abs_ahc_poverty_reached": 0.9826323986053467,
+     "abs_ahc_poverty_not_reached_k": 5.18767529296875,
+     "rel_ahc_poverty_not_reached_k": 18.33794140625,
+     "bottom4_not_reached_k": 102.41903125,
      "people_out_of_rel_ahc_poverty_k": 14.080955829620361,
      "people_out_of_abs_ahc_poverty_k": 43.74048576259613,
      "just_above_top_threshold_k": 68.1327578125,
      "just_above_bottom4_k": 18.772064453125,
-     "dead_zone_k": 30.450365234375
+     "offset_range_k": 30.450365234375
     },
     {
      "region": "Scotland",
@@ -5003,15 +5003,15 @@
      "gain_pct_net_income": 0.0018770669121295214,
      "mean_bill": 2003.169921875,
      "abs_ahc_poverty_rate": 0.15082940459251404,
-     "abs_ahc_poor_covered": 0.9287160634994507,
-     "abs_ahc_poor_missed_k": 29.1411875,
-     "rel_ahc_poor_missed_k": 80.84003125,
-     "bottom4_missed_k": 135.01159375,
+     "abs_ahc_poverty_reached": 0.9287160634994507,
+     "abs_ahc_poverty_not_reached_k": 29.1411875,
+     "rel_ahc_poverty_not_reached_k": 80.84003125,
+     "bottom4_not_reached_k": 135.01159375,
      "people_out_of_rel_ahc_poverty_k": 26.353941830635073,
      "people_out_of_abs_ahc_poverty_k": 20.385421823322773,
      "just_above_top_threshold_k": 27.128046875,
      "just_above_bottom4_k": 8.3938857421875,
-     "dead_zone_k": 1.6374642333984375
+     "offset_range_k": 1.6374642333984375
     }
    ],
    "by_household_type": [
@@ -5030,15 +5030,15 @@
      "gain_pct_net_income": 0.005807512905448675,
      "mean_bill": 1315.21142578125,
      "abs_ahc_poverty_rate": 0.14117249846458435,
-     "abs_ahc_poor_covered": 0.9967915415763855,
-     "abs_ahc_poor_missed_k": 1.831843505859375,
-     "rel_ahc_poor_missed_k": 5.4707255859375,
-     "bottom4_missed_k": 18.978189453125,
+     "abs_ahc_poverty_reached": 0.9967915415763855,
+     "abs_ahc_poverty_not_reached_k": 1.831843505859375,
+     "rel_ahc_poverty_not_reached_k": 5.4707255859375,
+     "bottom4_not_reached_k": 18.978189453125,
      "people_out_of_rel_ahc_poverty_k": 34.0599205391407,
      "people_out_of_abs_ahc_poverty_k": 72.26497740447522,
      "just_above_top_threshold_k": 82.506640625,
      "just_above_bottom4_k": 6.77978369140625,
-     "dead_zone_k": 6.1504140625
+     "offset_range_k": 6.1504140625
     },
     {
      "household_type": "Pensioner couple",
@@ -5055,15 +5055,15 @@
      "gain_pct_net_income": 0.0016695421654731035,
      "mean_bill": 2365.772216796875,
      "abs_ahc_poverty_rate": 0.04714852571487427,
-     "abs_ahc_poor_covered": 0.9873218536376953,
-     "abs_ahc_poor_missed_k": 2.29647314453125,
-     "rel_ahc_poor_missed_k": 16.437703125,
-     "bottom4_missed_k": 81.0733125,
+     "abs_ahc_poverty_reached": 0.9873218536376953,
+     "abs_ahc_poverty_not_reached_k": 2.29647314453125,
+     "rel_ahc_poverty_not_reached_k": 16.437703125,
+     "bottom4_not_reached_k": 81.0733125,
      "people_out_of_rel_ahc_poverty_k": 14.576527027606964,
      "people_out_of_abs_ahc_poverty_k": 13.895295069217681,
      "just_above_top_threshold_k": 215.114484375,
      "just_above_bottom4_k": 17.5715,
-     "dead_zone_k": 53.3666015625
+     "offset_range_k": 53.3666015625
     },
     {
      "household_type": "Single, no children",
@@ -5080,15 +5080,15 @@
      "gain_pct_net_income": 0.0051740179769694805,
      "mean_bill": 1163.6591796875,
      "abs_ahc_poverty_rate": 0.35208213329315186,
-     "abs_ahc_poor_covered": 0.9162198901176453,
-     "abs_ahc_poor_missed_k": 164.653859375,
-     "rel_ahc_poor_missed_k": 216.26525,
-     "bottom4_missed_k": 336.415375,
+     "abs_ahc_poverty_reached": 0.9162198901176453,
+     "abs_ahc_poverty_not_reached_k": 164.653859375,
+     "rel_ahc_poverty_not_reached_k": 216.26525,
+     "bottom4_not_reached_k": 336.415375,
      "people_out_of_rel_ahc_poverty_k": 31.46772844016552,
      "people_out_of_abs_ahc_poverty_k": 10.55938924497366,
      "just_above_top_threshold_k": 49.9019140625,
      "just_above_bottom4_k": 38.845359375,
-     "dead_zone_k": 29.113849609375
+     "offset_range_k": 29.113849609375
     },
     {
      "household_type": "Couple, no children",
@@ -5105,15 +5105,15 @@
      "gain_pct_net_income": 0.0004969479632563889,
      "mean_bill": 1725.6365966796875,
      "abs_ahc_poverty_rate": 0.10836948454380035,
-     "abs_ahc_poor_covered": 0.8796542286872864,
-     "abs_ahc_poor_missed_k": 92.664078125,
-     "rel_ahc_poor_missed_k": 173.66321875,
-     "bottom4_missed_k": 704.508,
+     "abs_ahc_poverty_reached": 0.8796542286872864,
+     "abs_ahc_poverty_not_reached_k": 92.664078125,
+     "rel_ahc_poverty_not_reached_k": 173.66321875,
+     "bottom4_not_reached_k": 704.508,
      "people_out_of_rel_ahc_poverty_k": 4.38862343788147,
      "people_out_of_abs_ahc_poverty_k": 3.2838671383857725,
      "just_above_top_threshold_k": 205.563921875,
      "just_above_bottom4_k": 132.2410625,
-     "dead_zone_k": 82.193375
+     "offset_range_k": 82.193375
     },
     {
      "household_type": "Lone parent",
@@ -5130,15 +5130,15 @@
      "gain_pct_net_income": 0.005164070520550013,
      "mean_bill": 740.9887084960938,
      "abs_ahc_poverty_rate": 0.27452269196510315,
-     "abs_ahc_poor_covered": 0.9933631420135498,
-     "abs_ahc_poor_missed_k": 3.82064453125,
-     "rel_ahc_poor_missed_k": 8.724951171875,
-     "bottom4_missed_k": 24.33823828125,
+     "abs_ahc_poverty_reached": 0.9933631420135498,
+     "abs_ahc_poverty_not_reached_k": 3.82064453125,
+     "rel_ahc_poverty_not_reached_k": 8.724951171875,
+     "bottom4_not_reached_k": 24.33823828125,
      "people_out_of_rel_ahc_poverty_k": 111.89696461105346,
      "people_out_of_abs_ahc_poverty_k": 22.90940726399422,
      "just_above_top_threshold_k": 4.37281494140625,
      "just_above_bottom4_k": 1.8851263427734375,
-     "dead_zone_k": 0.5002665710449219
+     "offset_range_k": 0.5002665710449219
     },
     {
      "household_type": "Couple with children",
@@ -5155,15 +5155,15 @@
      "gain_pct_net_income": 0.0007170973112806678,
      "mean_bill": 1629.059814453125,
      "abs_ahc_poverty_rate": 0.11919690668582916,
-     "abs_ahc_poor_covered": 0.7947410345077515,
-     "abs_ahc_poor_missed_k": 120.52609375,
-     "rel_ahc_poor_missed_k": 286.873875,
-     "bottom4_missed_k": 690.28525,
+     "abs_ahc_poverty_reached": 0.7947410345077515,
+     "abs_ahc_poverty_not_reached_k": 120.52609375,
+     "rel_ahc_poverty_not_reached_k": 286.873875,
+     "bottom4_not_reached_k": 690.28525,
      "people_out_of_rel_ahc_poverty_k": 30.349427122950555,
      "people_out_of_abs_ahc_poverty_k": 61.02481703400612,
      "just_above_top_threshold_k": 61.46883984375,
      "just_above_bottom4_k": 31.452142578125,
-     "dead_zone_k": 8.3940419921875
+     "offset_range_k": 8.3940419921875
     },
     {
      "household_type": "Multi-family household",
@@ -5180,15 +5180,15 @@
      "gain_pct_net_income": 0.0005345707177184522,
      "mean_bill": 1959.8533935546875,
      "abs_ahc_poverty_rate": 0.11077027767896652,
-     "abs_ahc_poor_covered": 0.7851266860961914,
-     "abs_ahc_poor_missed_k": 65.24586328125,
-     "rel_ahc_poor_missed_k": 106.5654375,
-     "bottom4_missed_k": 367.5275625,
+     "abs_ahc_poverty_reached": 0.7851266860961914,
+     "abs_ahc_poverty_not_reached_k": 65.24586328125,
+     "rel_ahc_poverty_not_reached_k": 106.5654375,
+     "bottom4_not_reached_k": 367.5275625,
      "people_out_of_rel_ahc_poverty_k": 22.72149437713623,
      "people_out_of_abs_ahc_poverty_k": 29.900169613838194,
      "just_above_top_threshold_k": 109.9603984375,
      "just_above_bottom4_k": 104.001796875,
-     "dead_zone_k": 7.55427685546875
+     "offset_range_k": 7.55427685546875
     }
    ],
    "income_distributions": {
@@ -8436,7 +8436,7 @@
      }
     },
     {
-     "group": "poorest four AHC deciles",
+     "group": "lowest four AHC deciles",
      "households_m": 11.773614,
      "covered_by_passport": 0.428067147731781,
      "covered": 0.791140079498291,
@@ -8503,8 +8503,8 @@
        "sample_n": 731,
        "ess": 69.20728766120457,
        "bottom4_k": 323.16346875,
-       "abs_ahc_poor_k": 79.0646796875,
-       "rel_ahc_poor_k": 122.845796875,
+       "abs_ahc_poverty_k": 79.0646796875,
+       "rel_ahc_poverty_k": 122.845796875,
        "mean_eq_ahc": 23000.486328125,
        "mean_bill": 1164.7513427734375
       },
@@ -8513,8 +8513,8 @@
        "sample_n": 358,
        "ess": 34.960481987117205,
        "bottom4_k": 170.083671875,
-       "abs_ahc_poor_k": 57.24541796875,
-       "rel_ahc_poor_k": 82.6261640625,
+       "abs_ahc_poverty_k": 57.24541796875,
+       "rel_ahc_poverty_k": 82.6261640625,
        "mean_eq_ahc": 20957.361328125,
        "mean_bill": 1326.0821533203125
       },
@@ -8523,8 +8523,8 @@
        "sample_n": 708,
        "ess": 60.6328002223691,
        "bottom4_k": 356.3461875,
-       "abs_ahc_poor_k": 106.917875,
-       "rel_ahc_poor_k": 176.5646875,
+       "abs_ahc_poverty_k": 106.917875,
+       "rel_ahc_poverty_k": 176.5646875,
        "mean_eq_ahc": 21581.193359375,
        "mean_bill": 1319.9371337890625
       },
@@ -8533,16 +8533,16 @@
        "sample_n": 1423,
        "ess": 112.11909348776638,
        "bottom4_k": 608.7233125,
-       "abs_ahc_poor_k": 177.6443125,
-       "rel_ahc_poor_k": 282.2339375,
+       "abs_ahc_poverty_k": 177.6443125,
+       "rel_ahc_poverty_k": 282.2339375,
        "mean_eq_ahc": 23036.236328125,
        "mean_bill": 1430.3321533203125
       }
      },
      "mean_drop": 135.0,
-     "dead_zone_k": 42.7134921875,
-     "dead_zone_struggling_k": 27.324583984375,
-     "dead_zone_median_width": 305.55555555555554
+     "offset_range_k": 42.7134921875,
+     "offset_range_poverty_or_burden_k": 27.324583984375,
+     "offset_range_median_width": 305.55555555555554
     },
     {
      "threshold": 24000.0,
@@ -8552,8 +8552,8 @@
        "sample_n": 634,
        "ess": 49.74365269578446,
        "bottom4_k": 219.847640625,
-       "abs_ahc_poor_k": 43.2548515625,
-       "rel_ahc_poor_k": 66.0755078125,
+       "abs_ahc_poverty_k": 43.2548515625,
+       "rel_ahc_poverty_k": 66.0755078125,
        "mean_eq_ahc": 28666.701171875,
        "mean_bill": 1033.109130859375
       },
@@ -8562,8 +8562,8 @@
        "sample_n": 429,
        "ess": 38.54242817274579,
        "bottom4_k": 77.1263125,
-       "abs_ahc_poor_k": 7.6762119140625,
-       "rel_ahc_poor_k": 16.743072265625,
+       "abs_ahc_poverty_k": 7.6762119140625,
+       "rel_ahc_poverty_k": 16.743072265625,
        "mean_eq_ahc": 31560.765625,
        "mean_bill": 1302.5950927734375
       },
@@ -8572,8 +8572,8 @@
        "sample_n": 808,
        "ess": 76.70030326682813,
        "bottom4_k": 191.2668125,
-       "abs_ahc_poor_k": 22.170451171875,
-       "rel_ahc_poor_k": 35.169203125,
+       "abs_ahc_poverty_k": 22.170451171875,
+       "rel_ahc_poverty_k": 35.169203125,
        "mean_eq_ahc": 30181.470703125,
        "mean_bill": 1225.4979248046875
       },
@@ -8582,16 +8582,16 @@
        "sample_n": 1647,
        "ess": 162.45260122059406,
        "bottom4_k": 403.0781875,
-       "abs_ahc_poor_k": 77.49446875,
-       "rel_ahc_poor_k": 129.2037421875,
+       "abs_ahc_poverty_k": 77.49446875,
+       "rel_ahc_poverty_k": 129.2037421875,
        "mean_eq_ahc": 29981.322265625,
        "mean_bill": 1456.4453125
       }
      },
      "mean_drop": 85.0,
-     "dead_zone_k": 106.5923515625,
-     "dead_zone_struggling_k": 10.9678115234375,
-     "dead_zone_median_width": 118.05555555555556
+     "offset_range_k": 106.5923515625,
+     "offset_range_poverty_or_burden_k": 10.9678115234375,
+     "offset_range_median_width": 118.05555555555556
     }
    ],
    "by_region": [
@@ -8610,15 +8610,15 @@
      "gain_pct_net_income": 0.0022386449854820967,
      "mean_bill": 1404.680419921875,
      "abs_ahc_poverty_rate": 0.1354023516178131,
-     "abs_ahc_poor_covered": 0.8271480202674866,
-     "abs_ahc_poor_missed_k": 28.303884765625,
-     "rel_ahc_poor_missed_k": 34.15691796875,
-     "bottom4_missed_k": 84.2034453125,
+     "abs_ahc_poverty_reached": 0.8271480202674866,
+     "abs_ahc_poverty_not_reached_k": 28.303884765625,
+     "rel_ahc_poverty_not_reached_k": 34.15691796875,
+     "bottom4_not_reached_k": 84.2034453125,
      "people_out_of_rel_ahc_poverty_k": 9.342112641453744,
      "people_out_of_abs_ahc_poverty_k": 8.67964872252941,
      "just_above_top_threshold_k": 10.3161103515625,
      "just_above_bottom4_k": 4.25116845703125,
-     "dead_zone_k": 1.1508369140625
+     "offset_range_k": 1.1508369140625
     },
     {
      "region": "North West",
@@ -8635,15 +8635,15 @@
      "gain_pct_net_income": 0.0024007302708923817,
      "mean_bill": 1393.7349853515625,
      "abs_ahc_poverty_rate": 0.11974432319402695,
-     "abs_ahc_poor_covered": 0.9570364952087402,
-     "abs_ahc_poor_missed_k": 16.770359375,
-     "rel_ahc_poor_missed_k": 42.8724140625,
-     "bottom4_missed_k": 222.14971875,
+     "abs_ahc_poverty_reached": 0.9570364952087402,
+     "abs_ahc_poverty_not_reached_k": 16.770359375,
+     "rel_ahc_poverty_not_reached_k": 42.8724140625,
+     "bottom4_not_reached_k": 222.14971875,
      "people_out_of_rel_ahc_poverty_k": 8.769572786569595,
      "people_out_of_abs_ahc_poverty_k": 27.11322725711763,
      "just_above_top_threshold_k": 36.2776171875,
      "just_above_bottom4_k": 21.05602734375,
-     "dead_zone_k": 1.2659200439453124
+     "offset_range_k": 1.2659200439453124
     },
     {
      "region": "Yorkshire and the Humber",
@@ -8660,15 +8660,15 @@
      "gain_pct_net_income": 0.0022224097047001123,
      "mean_bill": 1470.673828125,
      "abs_ahc_poverty_rate": 0.12327903509140015,
-     "abs_ahc_poor_covered": 0.9344194531440735,
-     "abs_ahc_poor_missed_k": 19.274234375,
-     "rel_ahc_poor_missed_k": 39.277203125,
-     "bottom4_missed_k": 202.622328125,
+     "abs_ahc_poverty_reached": 0.9344194531440735,
+     "abs_ahc_poverty_not_reached_k": 19.274234375,
+     "rel_ahc_poverty_not_reached_k": 39.277203125,
+     "bottom4_not_reached_k": 202.622328125,
      "people_out_of_rel_ahc_poverty_k": 21.066811874687673,
      "people_out_of_abs_ahc_poverty_k": 9.540050975561142,
      "just_above_top_threshold_k": 42.525375,
      "just_above_bottom4_k": 9.3368017578125,
-     "dead_zone_k": 8.90219921875
+     "offset_range_k": 8.90219921875
     },
     {
      "region": "East Midlands",
@@ -8685,15 +8685,15 @@
      "gain_pct_net_income": 0.0022029229439795017,
      "mean_bill": 1592.7413330078125,
      "abs_ahc_poverty_rate": 0.1274814009666443,
-     "abs_ahc_poor_covered": 0.9544205665588379,
-     "abs_ahc_poor_missed_k": 12.2257451171875,
-     "rel_ahc_poor_missed_k": 42.743140625,
-     "bottom4_missed_k": 171.8384375,
+     "abs_ahc_poverty_reached": 0.9544205665588379,
+     "abs_ahc_poverty_not_reached_k": 12.2257451171875,
+     "rel_ahc_poverty_not_reached_k": 42.743140625,
+     "bottom4_not_reached_k": 171.8384375,
      "people_out_of_rel_ahc_poverty_k": 17.854649930998683,
      "people_out_of_abs_ahc_poverty_k": 18.10054104247689,
      "just_above_top_threshold_k": 37.35829296875,
      "just_above_bottom4_k": 10.4752275390625,
-     "dead_zone_k": 5.71172509765625
+     "offset_range_k": 5.71172509765625
     },
     {
      "region": "West Midlands",
@@ -8710,15 +8710,15 @@
      "gain_pct_net_income": 0.0024852899368852377,
      "mean_bill": 1467.919921875,
      "abs_ahc_poverty_rate": 0.1412210911512375,
-     "abs_ahc_poor_covered": 0.7900170087814331,
-     "abs_ahc_poor_missed_k": 74.20725,
-     "rel_ahc_poor_missed_k": 93.644421875,
-     "bottom4_missed_k": 239.99875,
+     "abs_ahc_poverty_reached": 0.7900170087814331,
+     "abs_ahc_poverty_not_reached_k": 74.20725,
+     "rel_ahc_poverty_not_reached_k": 93.644421875,
+     "bottom4_not_reached_k": 239.99875,
      "people_out_of_rel_ahc_poverty_k": 12.288492149412631,
      "people_out_of_abs_ahc_poverty_k": 40.12946435949206,
      "just_above_top_threshold_k": 27.48598046875,
      "just_above_bottom4_k": 9.834373046875,
-     "dead_zone_k": 12.5429716796875
+     "offset_range_k": 12.5429716796875
     },
     {
      "region": "East of England",
@@ -8735,15 +8735,15 @@
      "gain_pct_net_income": 0.0016251255292445421,
      "mean_bill": 1442.83740234375,
      "abs_ahc_poverty_rate": 0.11270689219236374,
-     "abs_ahc_poor_covered": 0.9460800886154175,
-     "abs_ahc_poor_missed_k": 16.528546875,
-     "rel_ahc_poor_missed_k": 51.040625,
-     "bottom4_missed_k": 188.0714375,
+     "abs_ahc_poverty_reached": 0.9460800886154175,
+     "abs_ahc_poverty_not_reached_k": 16.528546875,
+     "rel_ahc_poverty_not_reached_k": 51.040625,
+     "bottom4_not_reached_k": 188.0714375,
      "people_out_of_rel_ahc_poverty_k": 41.18700433802605,
      "people_out_of_abs_ahc_poverty_k": 17.46187109321356,
      "just_above_top_threshold_k": 51.34143359375,
      "just_above_bottom4_k": 16.45217578125,
-     "dead_zone_k": 25.968357421875
+     "offset_range_k": 25.968357421875
     },
     {
      "region": "London",
@@ -8760,15 +8760,15 @@
      "gain_pct_net_income": 0.001504015177488327,
      "mean_bill": 1427.77587890625,
      "abs_ahc_poverty_rate": 0.21723327040672302,
-     "abs_ahc_poor_covered": 0.7935848832130432,
-     "abs_ahc_poor_missed_k": 161.47853125,
-     "rel_ahc_poor_missed_k": 174.627546875,
-     "bottom4_missed_k": 402.0184375,
+     "abs_ahc_poverty_reached": 0.7935848832130432,
+     "abs_ahc_poverty_not_reached_k": 161.47853125,
+     "rel_ahc_poverty_not_reached_k": 174.627546875,
+     "bottom4_not_reached_k": 402.0184375,
      "people_out_of_rel_ahc_poverty_k": 0.3269573698788881,
      "people_out_of_abs_ahc_poverty_k": 7.314594703018665,
      "just_above_top_threshold_k": 37.9987890625,
      "just_above_bottom4_k": 29.30852734375,
-     "dead_zone_k": 7.7677578125
+     "offset_range_k": 7.7677578125
     },
     {
      "region": "South East",
@@ -8785,15 +8785,15 @@
      "gain_pct_net_income": 0.0015329993329942226,
      "mean_bill": 1521.819091796875,
      "abs_ahc_poverty_rate": 0.1452576369047165,
-     "abs_ahc_poor_covered": 0.9012401700019836,
-     "abs_ahc_poor_missed_k": 56.66953515625,
-     "rel_ahc_poor_missed_k": 82.0123203125,
-     "bottom4_missed_k": 350.368625,
+     "abs_ahc_poverty_reached": 0.9012401700019836,
+     "abs_ahc_poverty_not_reached_k": 56.66953515625,
+     "rel_ahc_poverty_not_reached_k": 82.0123203125,
+     "bottom4_not_reached_k": 350.368625,
      "people_out_of_rel_ahc_poverty_k": 14.995220537304878,
      "people_out_of_abs_ahc_poverty_k": 29.005047206684946,
      "just_above_top_threshold_k": 71.6324140625,
      "just_above_bottom4_k": 15.9454677734375,
-     "dead_zone_k": 26.8114296875
+     "offset_range_k": 26.8114296875
     },
     {
      "region": "South West",
@@ -8810,15 +8810,15 @@
      "gain_pct_net_income": 0.0019269499462097883,
      "mean_bill": 1313.8221435546875,
      "abs_ahc_poverty_rate": 0.14482960104942322,
-     "abs_ahc_poor_covered": 0.8461611866950989,
-     "abs_ahc_poor_missed_k": 56.180828125,
-     "rel_ahc_poor_missed_k": 89.43178125,
-     "bottom4_missed_k": 303.932,
+     "abs_ahc_poverty_reached": 0.8461611866950989,
+     "abs_ahc_poverty_not_reached_k": 56.180828125,
+     "rel_ahc_poverty_not_reached_k": 89.43178125,
+     "bottom4_not_reached_k": 303.932,
      "people_out_of_rel_ahc_poverty_k": 81.14713523712754,
      "people_out_of_abs_ahc_poverty_k": 6.711460236907005,
      "just_above_top_threshold_k": 42.33744140625,
      "just_above_bottom4_k": 30.13403515625,
-     "dead_zone_k": 3.66357568359375
+     "offset_range_k": 3.66357568359375
     },
     {
      "region": "Wales",
@@ -8835,15 +8835,15 @@
      "gain_pct_net_income": 0.0022035925649106503,
      "mean_bill": 1457.140380859375,
      "abs_ahc_poverty_rate": 0.13350054621696472,
-     "abs_ahc_poor_covered": 0.9295578598976135,
-     "abs_ahc_poor_missed_k": 12.9500986328125,
-     "rel_ahc_poor_missed_k": 27.956294921875,
-     "bottom4_missed_k": 109.9228203125,
+     "abs_ahc_poverty_reached": 0.9295578598976135,
+     "abs_ahc_poverty_not_reached_k": 12.9500986328125,
+     "rel_ahc_poverty_not_reached_k": 27.956294921875,
+     "bottom4_not_reached_k": 109.9228203125,
      "people_out_of_rel_ahc_poverty_k": 12.737135029032826,
      "people_out_of_abs_ahc_poverty_k": 19.096592955216764,
      "just_above_top_threshold_k": 25.982931640625,
      "just_above_bottom4_k": 7.2941240234375,
-     "dead_zone_k": 1.8779061279296876
+     "offset_range_k": 1.8779061279296876
     },
     {
      "region": "Scotland",
@@ -8860,15 +8860,15 @@
      "gain_pct_net_income": 0.0021958514116704464,
      "mean_bill": 1339.330810546875,
      "abs_ahc_poverty_rate": 0.15767282247543335,
-     "abs_ahc_poor_covered": 0.9569093585014343,
-     "abs_ahc_poor_missed_k": 17.82910546875,
-     "rel_ahc_poor_missed_k": 28.439041015625,
-     "bottom4_missed_k": 183.909375,
+     "abs_ahc_poverty_reached": 0.9569093585014343,
+     "abs_ahc_poverty_not_reached_k": 17.82910546875,
+     "rel_ahc_poverty_not_reached_k": 28.439041015625,
+     "bottom4_not_reached_k": 183.909375,
      "people_out_of_rel_ahc_poverty_k": 5.020303446680307,
      "people_out_of_abs_ahc_poverty_k": 7.325402984425425,
      "just_above_top_threshold_k": 61.10909375,
      "just_above_bottom4_k": 37.178875,
-     "dead_zone_k": 10.9296787109375
+     "offset_range_k": 10.9296787109375
     }
    ],
    "by_household_type": [
@@ -8887,15 +8887,15 @@
      "gain_pct_net_income": 0.0068388935178518295,
      "mean_bill": 1076.3460693359375,
      "abs_ahc_poverty_rate": 0.1485779732465744,
-     "abs_ahc_poor_covered": 0.9989609718322754,
-     "abs_ahc_poor_missed_k": 0.614999755859375,
-     "rel_ahc_poor_missed_k": 2.531508056640625,
-     "bottom4_missed_k": 58.1211171875,
+     "abs_ahc_poverty_reached": 0.9989609718322754,
+     "abs_ahc_poverty_not_reached_k": 0.614999755859375,
+     "rel_ahc_poverty_not_reached_k": 2.531508056640625,
+     "bottom4_not_reached_k": 58.1211171875,
      "people_out_of_rel_ahc_poverty_k": 64.3786265797913,
      "people_out_of_abs_ahc_poverty_k": 54.68091806483269,
      "just_above_top_threshold_k": 56.988171875,
      "just_above_bottom4_k": 18.3989609375,
-     "dead_zone_k": 1.880026123046875
+     "offset_range_k": 1.880026123046875
     },
     {
      "household_type": "Pensioner couple",
@@ -8912,15 +8912,15 @@
      "gain_pct_net_income": 0.0017641517333686352,
      "mean_bill": 1519.1676025390625,
      "abs_ahc_poverty_rate": 0.0570596307516098,
-     "abs_ahc_poor_covered": 0.9813529849052429,
-     "abs_ahc_poor_missed_k": 3.75236083984375,
-     "rel_ahc_poor_missed_k": 8.37445703125,
-     "bottom4_missed_k": 107.535328125,
+     "abs_ahc_poverty_reached": 0.9813529849052429,
+     "abs_ahc_poverty_not_reached_k": 3.75236083984375,
+     "rel_ahc_poverty_not_reached_k": 8.37445703125,
+     "bottom4_not_reached_k": 107.535328125,
      "people_out_of_rel_ahc_poverty_k": 15.223858856558799,
      "people_out_of_abs_ahc_poverty_k": 26.102326232984662,
      "just_above_top_threshold_k": 91.22675,
      "just_above_bottom4_k": 12.0560458984375,
-     "dead_zone_k": 16.33958203125
+     "offset_range_k": 16.33958203125
     },
     {
      "household_type": "Single, no children",
@@ -8937,15 +8937,15 @@
      "gain_pct_net_income": 0.0049124411307275295,
      "mean_bill": 944.323486328125,
      "abs_ahc_poverty_rate": 0.30380114912986755,
-     "abs_ahc_poor_covered": 0.9752256274223328,
-     "abs_ahc_poor_missed_k": 32.98778515625,
-     "rel_ahc_poor_missed_k": 60.92131640625,
-     "bottom4_missed_k": 279.6550625,
+     "abs_ahc_poverty_reached": 0.9752256274223328,
+     "abs_ahc_poverty_not_reached_k": 32.98778515625,
+     "rel_ahc_poverty_not_reached_k": 60.92131640625,
+     "bottom4_not_reached_k": 279.6550625,
      "people_out_of_rel_ahc_poverty_k": 7.685404480054975,
      "people_out_of_abs_ahc_poverty_k": 10.47640291455388,
      "just_above_top_threshold_k": 110.511578125,
      "just_above_bottom4_k": 72.13609375,
-     "dead_zone_k": 12.704763671875
+     "offset_range_k": 12.704763671875
     },
     {
      "household_type": "Couple, no children",
@@ -8962,15 +8962,15 @@
      "gain_pct_net_income": 0.0006130786496214569,
      "mean_bill": 1422.3714599609375,
      "abs_ahc_poverty_rate": 0.10905847698450089,
-     "abs_ahc_poor_covered": 0.7499898076057434,
-     "abs_ahc_poor_missed_k": 114.4201328125,
-     "rel_ahc_poor_missed_k": 156.8978125,
-     "bottom4_missed_k": 500.34575,
+     "abs_ahc_poverty_reached": 0.7499898076057434,
+     "abs_ahc_poverty_not_reached_k": 114.4201328125,
+     "rel_ahc_poverty_not_reached_k": 156.8978125,
+     "bottom4_not_reached_k": 500.34575,
      "people_out_of_rel_ahc_poverty_k": 2.2196982549130917,
      "people_out_of_abs_ahc_poverty_k": 7.832807052373886,
      "just_above_top_threshold_k": 89.77796875,
      "just_above_bottom4_k": 40.5409375,
-     "dead_zone_k": 30.959265625
+     "offset_range_k": 30.959265625
     },
     {
      "household_type": "Lone parent",
@@ -8987,15 +8987,15 @@
      "gain_pct_net_income": 0.005996408872306347,
      "mean_bill": 1290.652099609375,
      "abs_ahc_poverty_rate": 0.2275492548942566,
-     "abs_ahc_poor_covered": 0.9944055080413818,
-     "abs_ahc_poor_missed_k": 1.7091702880859374,
-     "rel_ahc_poor_missed_k": 3.80867041015625,
-     "bottom4_missed_k": 20.99133203125,
+     "abs_ahc_poverty_reached": 0.9944055080413818,
+     "abs_ahc_poverty_not_reached_k": 1.7091702880859374,
+     "rel_ahc_poverty_not_reached_k": 3.80867041015625,
+     "bottom4_not_reached_k": 20.99133203125,
      "people_out_of_rel_ahc_poverty_k": 108.05315434378386,
      "people_out_of_abs_ahc_poverty_k": 38.564060004115106,
      "just_above_top_threshold_k": 1.2792706298828125,
      "just_above_bottom4_k": 1.277978515625,
-     "dead_zone_k": 0.0569404296875
+     "offset_range_k": 0.0569404296875
     },
     {
      "household_type": "Couple with children",
@@ -9012,15 +9012,15 @@
      "gain_pct_net_income": 0.0008224738412536681,
      "mean_bill": 1846.18994140625,
      "abs_ahc_poverty_rate": 0.14497415721416473,
-     "abs_ahc_poor_covered": 0.6918336749076843,
-     "abs_ahc_poor_missed_k": 214.71759375,
-     "rel_ahc_poor_missed_k": 338.13809375,
-     "bottom4_missed_k": 993.3370625,
+     "abs_ahc_poverty_reached": 0.6918336749076843,
+     "abs_ahc_poverty_not_reached_k": 214.71759375,
+     "rel_ahc_poverty_not_reached_k": 338.13809375,
+     "bottom4_not_reached_k": 993.3370625,
      "people_out_of_rel_ahc_poverty_k": 17.6397568192482,
      "people_out_of_abs_ahc_poverty_k": 28.995416145265104,
      "just_above_top_threshold_k": 25.8268984375,
      "just_above_bottom4_k": 23.246029296875,
-     "dead_zone_k": 7.7070732421875
+     "offset_range_k": 7.7070732421875
     },
     {
      "household_type": "Multi-family household",
@@ -9037,15 +9037,15 @@
      "gain_pct_net_income": 0.0013313355157151818,
      "mean_bill": 1716.56005859375,
      "abs_ahc_poverty_rate": 0.0848596841096878,
-     "abs_ahc_poor_covered": 0.795822024345398,
-     "abs_ahc_poor_missed_k": 104.2160703125,
-     "rel_ahc_poor_missed_k": 135.52984375,
-     "bottom4_missed_k": 499.0496875,
+     "abs_ahc_poverty_reached": 0.795822024345398,
+     "abs_ahc_poverty_not_reached_k": 104.2160703125,
+     "rel_ahc_poverty_not_reached_k": 135.52984375,
+     "bottom4_not_reached_k": 499.0496875,
      "people_out_of_rel_ahc_poverty_k": 9.534896006822587,
      "people_out_of_abs_ahc_poverty_k": 23.825971122518183,
      "just_above_top_threshold_k": 68.7548359375,
      "just_above_bottom4_k": 23.6107578125,
-     "dead_zone_k": 36.94469921875
+     "offset_range_k": 36.94469921875
     }
    ],
    "income_distributions": {
@@ -12291,7 +12291,7 @@
      }
     },
     {
-     "group": "poorest four AHC deciles",
+     "group": "lowest four AHC deciles",
      "households_m": 12.680531,
      "covered_by_passport": 0.4587847590446472,
      "covered": 0.8246819972991943,
@@ -12358,8 +12358,8 @@
        "sample_n": 737,
        "ess": 27.808279553060597,
        "bottom4_k": 278.12746875,
-       "abs_ahc_poor_k": 33.22458203125,
-       "rel_ahc_poor_k": 51.6727578125,
+       "abs_ahc_poverty_k": 33.22458203125,
+       "rel_ahc_poverty_k": 51.6727578125,
        "mean_eq_ahc": 25251.26953125,
        "mean_bill": 2433.28076171875
       },
@@ -12368,8 +12368,8 @@
        "sample_n": 401,
        "ess": 10.71444313143767,
        "bottom4_k": 271.824875,
-       "abs_ahc_poor_k": 91.379140625,
-       "rel_ahc_poor_k": 177.7916875,
+       "abs_ahc_poverty_k": 91.379140625,
+       "rel_ahc_poverty_k": 177.7916875,
        "mean_eq_ahc": 21449.33984375,
        "mean_bill": 1761.9796142578125
       },
@@ -12378,8 +12378,8 @@
        "sample_n": 831,
        "ess": 14.814838515167615,
        "bottom4_k": 407.02928125,
-       "abs_ahc_poor_k": 106.531546875,
-       "rel_ahc_poor_k": 203.435953125,
+       "abs_ahc_poverty_k": 106.531546875,
+       "rel_ahc_poverty_k": 203.435953125,
        "mean_eq_ahc": 25002.05859375,
        "mean_bill": 1714.4356689453125
       },
@@ -12388,16 +12388,16 @@
        "sample_n": 1650,
        "ess": 31.9084415018547,
        "bottom4_k": 604.8684375,
-       "abs_ahc_poor_k": 163.495984375,
-       "rel_ahc_poor_k": 276.45265625,
+       "abs_ahc_poverty_k": 163.495984375,
+       "rel_ahc_poverty_k": 276.45265625,
        "mean_eq_ahc": 25240.708984375,
        "mean_bill": 1848.01904296875
       }
      },
      "mean_drop": 135.0,
-     "dead_zone_k": 228.81309375,
-     "dead_zone_struggling_k": 173.461359375,
-     "dead_zone_median_width": 305.55555555555554
+     "offset_range_k": 228.81309375,
+     "offset_range_poverty_or_burden_k": 173.461359375,
+     "offset_range_median_width": 305.55555555555554
     },
     {
      "threshold": 24000.0,
@@ -12407,8 +12407,8 @@
        "sample_n": 792,
        "ess": 30.74637997848834,
        "bottom4_k": 181.10128125,
-       "abs_ahc_poor_k": 58.1621015625,
-       "rel_ahc_poor_k": 73.338,
+       "abs_ahc_poverty_k": 58.1621015625,
+       "rel_ahc_poverty_k": 73.338,
        "mean_eq_ahc": 23482.958984375,
        "mean_bill": 2282.884033203125
       },
@@ -12417,8 +12417,8 @@
        "sample_n": 495,
        "ess": 19.581317077718374,
        "bottom4_k": 136.65928125,
-       "abs_ahc_poor_k": 58.0343359375,
-       "rel_ahc_poor_k": 66.4186796875,
+       "abs_ahc_poverty_k": 58.0343359375,
+       "rel_ahc_poverty_k": 66.4186796875,
        "mean_eq_ahc": 27938.345703125,
        "mean_bill": 2001.3448486328125
       },
@@ -12427,8 +12427,8 @@
        "sample_n": 1044,
        "ess": 37.599212623308404,
        "bottom4_k": 332.7768125,
-       "abs_ahc_poor_k": 108.9336015625,
-       "rel_ahc_poor_k": 125.692109375,
+       "abs_ahc_poverty_k": 108.9336015625,
+       "rel_ahc_poverty_k": 125.692109375,
        "mean_eq_ahc": 29122.322265625,
        "mean_bill": 1975.505859375
       },
@@ -12437,16 +12437,16 @@
        "sample_n": 1981,
        "ess": 68.30917844256096,
        "bottom4_k": 485.57825,
-       "abs_ahc_poor_k": 133.5164375,
-       "rel_ahc_poor_k": 204.3346875,
+       "abs_ahc_poverty_k": 133.5164375,
+       "rel_ahc_poverty_k": 204.3346875,
        "mean_eq_ahc": 30091.5546875,
        "mean_bill": 1850.0244140625
       }
      },
      "mean_drop": 85.0,
-     "dead_zone_k": 101.8825,
-     "dead_zone_struggling_k": 43.37055078125,
-     "dead_zone_median_width": 118.05555555555556
+     "offset_range_k": 101.8825,
+     "offset_range_poverty_or_burden_k": 43.37055078125,
+     "offset_range_median_width": 118.05555555555556
     }
    ],
    "by_region": [
@@ -12465,15 +12465,15 @@
      "gain_pct_net_income": 0.0026947720907628536,
      "mean_bill": 2146.225341796875,
      "abs_ahc_poverty_rate": 0.18436716496944427,
-     "abs_ahc_poor_covered": 0.9943949580192566,
-     "abs_ahc_poor_missed_k": 1.34601123046875,
-     "rel_ahc_poor_missed_k": 5.86811376953125,
-     "bottom4_missed_k": 31.73440234375,
+     "abs_ahc_poverty_reached": 0.9943949580192566,
+     "abs_ahc_poverty_not_reached_k": 1.34601123046875,
+     "rel_ahc_poverty_not_reached_k": 5.86811376953125,
+     "bottom4_not_reached_k": 31.73440234375,
      "people_out_of_rel_ahc_poverty_k": 0.9970135898590088,
      "people_out_of_abs_ahc_poverty_k": 3.4946641855239866,
      "just_above_top_threshold_k": 8.5421171875,
      "just_above_bottom4_k": 3.235615234375,
-     "dead_zone_k": 0.6645285034179688
+     "offset_range_k": 0.6645285034179688
     },
     {
      "region": "North West",
@@ -12490,15 +12490,15 @@
      "gain_pct_net_income": 0.0021908876951783895,
      "mean_bill": 1595.3499755859375,
      "abs_ahc_poverty_rate": 0.1466015726327896,
-     "abs_ahc_poor_covered": 0.9779815673828125,
-     "abs_ahc_poor_missed_k": 11.2964580078125,
-     "rel_ahc_poor_missed_k": 86.5921015625,
-     "bottom4_missed_k": 369.9135625,
+     "abs_ahc_poverty_reached": 0.9779815673828125,
+     "abs_ahc_poverty_not_reached_k": 11.2964580078125,
+     "rel_ahc_poverty_not_reached_k": 86.5921015625,
+     "bottom4_not_reached_k": 369.9135625,
      "people_out_of_rel_ahc_poverty_k": 6.902027658939361,
      "people_out_of_abs_ahc_poverty_k": 33.3380699095726,
      "just_above_top_threshold_k": 102.13984375,
      "just_above_bottom4_k": 90.21878125,
-     "dead_zone_k": 4.7496337890625
+     "offset_range_k": 4.7496337890625
     },
     {
      "region": "Yorkshire and the Humber",
@@ -12515,15 +12515,15 @@
      "gain_pct_net_income": 0.0021367184817790985,
      "mean_bill": 1917.7437744140625,
      "abs_ahc_poverty_rate": 0.1571274846792221,
-     "abs_ahc_poor_covered": 0.9768553376197815,
-     "abs_ahc_poor_missed_k": 9.292994140625,
-     "rel_ahc_poor_missed_k": 23.9083046875,
-     "bottom4_missed_k": 172.819234375,
+     "abs_ahc_poverty_reached": 0.9768553376197815,
+     "abs_ahc_poverty_not_reached_k": 9.292994140625,
+     "rel_ahc_poverty_not_reached_k": 23.9083046875,
+     "bottom4_not_reached_k": 172.819234375,
      "people_out_of_rel_ahc_poverty_k": 42.35621672725677,
      "people_out_of_abs_ahc_poverty_k": 3.7059106783866884,
      "just_above_top_threshold_k": 21.75225,
      "just_above_bottom4_k": 4.743615234375,
-     "dead_zone_k": 2.1965498046875
+     "offset_range_k": 2.1965498046875
     },
     {
      "region": "East Midlands",
@@ -12540,15 +12540,15 @@
      "gain_pct_net_income": 0.0020109685137867928,
      "mean_bill": 1948.3974609375,
      "abs_ahc_poverty_rate": 0.16582772135734558,
-     "abs_ahc_poor_covered": 0.9629860520362854,
-     "abs_ahc_poor_missed_k": 13.884642578125,
-     "rel_ahc_poor_missed_k": 27.0809140625,
-     "bottom4_missed_k": 101.1280625,
+     "abs_ahc_poverty_reached": 0.9629860520362854,
+     "abs_ahc_poverty_not_reached_k": 13.884642578125,
+     "rel_ahc_poverty_not_reached_k": 27.0809140625,
+     "bottom4_not_reached_k": 101.1280625,
      "people_out_of_rel_ahc_poverty_k": 10.545367520332336,
      "people_out_of_abs_ahc_poverty_k": 5.6499594287872315,
      "just_above_top_threshold_k": 75.798734375,
      "just_above_bottom4_k": 7.48263916015625,
-     "dead_zone_k": 2.18109033203125
+     "offset_range_k": 2.18109033203125
     },
     {
      "region": "West Midlands",
@@ -12565,15 +12565,15 @@
      "gain_pct_net_income": 0.002096461830660701,
      "mean_bill": 1401.102783203125,
      "abs_ahc_poverty_rate": 0.2092793583869934,
-     "abs_ahc_poor_covered": 0.8770530819892883,
-     "abs_ahc_poor_missed_k": 68.7424375,
-     "rel_ahc_poor_missed_k": 127.6780546875,
-     "bottom4_missed_k": 224.756640625,
+     "abs_ahc_poverty_reached": 0.8770530819892883,
+     "abs_ahc_poverty_not_reached_k": 68.7424375,
+     "rel_ahc_poverty_not_reached_k": 127.6780546875,
+     "bottom4_not_reached_k": 224.756640625,
      "people_out_of_rel_ahc_poverty_k": 9.151342181205749,
      "people_out_of_abs_ahc_poverty_k": 76.51423286771774,
      "just_above_top_threshold_k": 65.4680390625,
      "just_above_bottom4_k": 54.61222265625,
-     "dead_zone_k": 3.67791455078125
+     "offset_range_k": 3.67791455078125
     },
     {
      "region": "East of England",
@@ -12590,15 +12590,15 @@
      "gain_pct_net_income": 0.0012149219401180744,
      "mean_bill": 1338.9261474609375,
      "abs_ahc_poverty_rate": 0.12231917679309845,
-     "abs_ahc_poor_covered": 0.9493289589881897,
-     "abs_ahc_poor_missed_k": 17.991904296875,
-     "rel_ahc_poor_missed_k": 42.08733203125,
-     "bottom4_missed_k": 207.11696875,
+     "abs_ahc_poverty_reached": 0.9493289589881897,
+     "abs_ahc_poverty_not_reached_k": 17.991904296875,
+     "rel_ahc_poverty_not_reached_k": 42.08733203125,
+     "bottom4_not_reached_k": 207.11696875,
      "people_out_of_rel_ahc_poverty_k": 5.7965856137275695,
      "people_out_of_abs_ahc_poverty_k": 4.209860769748688,
      "just_above_top_threshold_k": 74.4439921875,
      "just_above_bottom4_k": 19.7295078125,
-     "dead_zone_k": 2.66586328125
+     "offset_range_k": 2.66586328125
     },
     {
      "region": "London",
@@ -12615,15 +12615,15 @@
      "gain_pct_net_income": 0.0015126782236620784,
      "mean_bill": 1084.5228271484375,
      "abs_ahc_poverty_rate": 0.17392964661121368,
-     "abs_ahc_poor_covered": 0.8774561882019043,
-     "abs_ahc_poor_missed_k": 83.538640625,
-     "rel_ahc_poor_missed_k": 126.79934375,
-     "bottom4_missed_k": 250.21140625,
+     "abs_ahc_poverty_reached": 0.8774561882019043,
+     "abs_ahc_poverty_not_reached_k": 83.538640625,
+     "rel_ahc_poverty_not_reached_k": 126.79934375,
+     "bottom4_not_reached_k": 250.21140625,
      "people_out_of_rel_ahc_poverty_k": 17.38949359226227,
      "people_out_of_abs_ahc_poverty_k": 31.961988027095796,
      "just_above_top_threshold_k": 95.1456328125,
      "just_above_bottom4_k": 44.033828125,
-     "dead_zone_k": 19.918890625
+     "offset_range_k": 19.918890625
     },
     {
      "region": "South East",
@@ -12640,15 +12640,15 @@
      "gain_pct_net_income": 0.001696706865914166,
      "mean_bill": 1573.05517578125,
      "abs_ahc_poverty_rate": 0.19153261184692383,
-     "abs_ahc_poor_covered": 0.7535089254379272,
-     "abs_ahc_poor_missed_k": 198.89096875,
-     "rel_ahc_poor_missed_k": 246.998796875,
-     "bottom4_missed_k": 469.12678125,
+     "abs_ahc_poverty_reached": 0.7535089254379272,
+     "abs_ahc_poverty_not_reached_k": 198.89096875,
+     "rel_ahc_poverty_not_reached_k": 246.998796875,
+     "bottom4_not_reached_k": 469.12678125,
      "people_out_of_rel_ahc_poverty_k": 55.28134300041199,
      "people_out_of_abs_ahc_poverty_k": 44.19061209154129,
      "just_above_top_threshold_k": 74.6188203125,
      "just_above_bottom4_k": 56.661421875,
-     "dead_zone_k": 19.046751953125
+     "offset_range_k": 19.046751953125
     },
     {
      "region": "South West",
@@ -12665,15 +12665,15 @@
      "gain_pct_net_income": 0.0019330650102347136,
      "mean_bill": 1317.458984375,
      "abs_ahc_poverty_rate": 0.11467929184436798,
-     "abs_ahc_poor_covered": 0.9626306295394897,
-     "abs_ahc_poor_missed_k": 11.7259423828125,
-     "rel_ahc_poor_missed_k": 27.810265625,
-     "bottom4_missed_k": 158.888296875,
+     "abs_ahc_poverty_reached": 0.9626306295394897,
+     "abs_ahc_poverty_not_reached_k": 11.7259423828125,
+     "rel_ahc_poverty_not_reached_k": 27.810265625,
+     "bottom4_not_reached_k": 158.888296875,
      "people_out_of_rel_ahc_poverty_k": 83.80041492033004,
      "people_out_of_abs_ahc_poverty_k": 12.576855526924133,
      "just_above_top_threshold_k": 115.7187734375,
      "just_above_bottom4_k": 24.8932109375,
-     "dead_zone_k": 41.21625390625
+     "offset_range_k": 41.21625390625
     },
     {
      "region": "Wales",
@@ -12690,15 +12690,15 @@
      "gain_pct_net_income": 0.0025233086198568344,
      "mean_bill": 1845.1556396484375,
      "abs_ahc_poverty_rate": 0.19086603820323944,
-     "abs_ahc_poor_covered": 0.9826323986053467,
-     "abs_ahc_poor_missed_k": 5.18767529296875,
-     "rel_ahc_poor_missed_k": 18.33794140625,
-     "bottom4_missed_k": 102.41903125,
+     "abs_ahc_poverty_reached": 0.9826323986053467,
+     "abs_ahc_poverty_not_reached_k": 5.18767529296875,
+     "rel_ahc_poverty_not_reached_k": 18.33794140625,
+     "bottom4_not_reached_k": 102.41903125,
      "people_out_of_rel_ahc_poverty_k": 14.359983146429062,
      "people_out_of_abs_ahc_poverty_k": 43.37603382730484,
      "just_above_top_threshold_k": 68.1327578125,
      "just_above_bottom4_k": 18.772064453125,
-     "dead_zone_k": 4.2917998046875
+     "offset_range_k": 4.2917998046875
     },
     {
      "region": "Scotland",
@@ -12715,15 +12715,15 @@
      "gain_pct_net_income": 0.0021410216577351093,
      "mean_bill": 2003.169921875,
      "abs_ahc_poverty_rate": 0.15082940459251404,
-     "abs_ahc_poor_covered": 0.9287160634994507,
-     "abs_ahc_poor_missed_k": 29.1411875,
-     "rel_ahc_poor_missed_k": 80.84003125,
-     "bottom4_missed_k": 135.01159375,
+     "abs_ahc_poverty_reached": 0.9287160634994507,
+     "abs_ahc_poverty_not_reached_k": 29.1411875,
+     "rel_ahc_poverty_not_reached_k": 80.84003125,
+     "bottom4_not_reached_k": 135.01159375,
      "people_out_of_rel_ahc_poverty_k": 44.94858609616757,
      "people_out_of_abs_ahc_poverty_k": 26.59637647420168,
      "just_above_top_threshold_k": 27.128046875,
      "just_above_bottom4_k": 8.3938857421875,
-     "dead_zone_k": 1.273222412109375
+     "offset_range_k": 1.273222412109375
     }
    ],
    "by_household_type": [
@@ -12742,15 +12742,15 @@
      "gain_pct_net_income": 0.006763076409697533,
      "mean_bill": 1315.21142578125,
      "abs_ahc_poverty_rate": 0.14117249846458435,
-     "abs_ahc_poor_covered": 0.9967915415763855,
-     "abs_ahc_poor_missed_k": 1.831843505859375,
-     "rel_ahc_poor_missed_k": 5.4707255859375,
-     "bottom4_missed_k": 18.978189453125,
+     "abs_ahc_poverty_reached": 0.9967915415763855,
+     "abs_ahc_poverty_not_reached_k": 1.831843505859375,
+     "rel_ahc_poverty_not_reached_k": 5.4707255859375,
+     "bottom4_not_reached_k": 18.978189453125,
      "people_out_of_rel_ahc_poverty_k": 40.50254423463345,
      "people_out_of_abs_ahc_poverty_k": 75.27912498414517,
      "just_above_top_threshold_k": 82.506640625,
      "just_above_bottom4_k": 6.77978369140625,
-     "dead_zone_k": 0.6757824096679688
+     "offset_range_k": 0.6757824096679688
     },
     {
      "household_type": "Pensioner couple",
@@ -12767,15 +12767,15 @@
      "gain_pct_net_income": 0.0016116045881062746,
      "mean_bill": 2365.772216796875,
      "abs_ahc_poverty_rate": 0.04714852571487427,
-     "abs_ahc_poor_covered": 0.9873218536376953,
-     "abs_ahc_poor_missed_k": 2.29647314453125,
-     "rel_ahc_poor_missed_k": 16.437703125,
-     "bottom4_missed_k": 81.0733125,
+     "abs_ahc_poverty_reached": 0.9873218536376953,
+     "abs_ahc_poverty_not_reached_k": 2.29647314453125,
+     "rel_ahc_poverty_not_reached_k": 16.437703125,
+     "bottom4_not_reached_k": 81.0733125,
      "people_out_of_rel_ahc_poverty_k": 20.29781930398941,
      "people_out_of_abs_ahc_poverty_k": 18.373294023513793,
      "just_above_top_threshold_k": 215.114484375,
      "just_above_bottom4_k": 17.5715,
-     "dead_zone_k": 9.41250390625
+     "offset_range_k": 9.41250390625
     },
     {
      "household_type": "Single, no children",
@@ -12792,15 +12792,15 @@
      "gain_pct_net_income": 0.006129773799329996,
      "mean_bill": 1163.6591796875,
      "abs_ahc_poverty_rate": 0.35208213329315186,
-     "abs_ahc_poor_covered": 0.9162198901176453,
-     "abs_ahc_poor_missed_k": 164.653859375,
-     "rel_ahc_poor_missed_k": 216.26525,
-     "bottom4_missed_k": 336.415375,
+     "abs_ahc_poverty_reached": 0.9162198901176453,
+     "abs_ahc_poverty_not_reached_k": 164.653859375,
+     "rel_ahc_poverty_not_reached_k": 216.26525,
+     "bottom4_not_reached_k": 336.415375,
      "people_out_of_rel_ahc_poverty_k": 41.62782770144939,
      "people_out_of_abs_ahc_poverty_k": 13.715805748879909,
      "just_above_top_threshold_k": 49.9019140625,
      "just_above_bottom4_k": 38.845359375,
-     "dead_zone_k": 21.930814453125
+     "offset_range_k": 21.930814453125
     },
     {
      "household_type": "Couple, no children",
@@ -12817,15 +12817,15 @@
      "gain_pct_net_income": 0.0004123251710552722,
      "mean_bill": 1725.6365966796875,
      "abs_ahc_poverty_rate": 0.10836948454380035,
-     "abs_ahc_poor_covered": 0.8796542286872864,
-     "abs_ahc_poor_missed_k": 92.664078125,
-     "rel_ahc_poor_missed_k": 173.66321875,
-     "bottom4_missed_k": 704.508,
+     "abs_ahc_poverty_reached": 0.8796542286872864,
+     "abs_ahc_poverty_not_reached_k": 92.664078125,
+     "rel_ahc_poverty_not_reached_k": 173.66321875,
+     "bottom4_not_reached_k": 704.508,
      "people_out_of_rel_ahc_poverty_k": 1.860770149230957,
      "people_out_of_abs_ahc_poverty_k": 3.2838671383857725,
      "just_above_top_threshold_k": 205.563921875,
      "just_above_bottom4_k": 132.2410625,
-     "dead_zone_k": 58.9125703125
+     "offset_range_k": 58.9125703125
     },
     {
      "household_type": "Lone parent",
@@ -12842,15 +12842,15 @@
      "gain_pct_net_income": 0.006458919029682875,
      "mean_bill": 740.9887084960938,
      "abs_ahc_poverty_rate": 0.27452269196510315,
-     "abs_ahc_poor_covered": 0.9933631420135498,
-     "abs_ahc_poor_missed_k": 3.82064453125,
-     "rel_ahc_poor_missed_k": 8.724951171875,
-     "bottom4_missed_k": 24.33823828125,
+     "abs_ahc_poverty_reached": 0.9933631420135498,
+     "abs_ahc_poverty_not_reached_k": 3.82064453125,
+     "rel_ahc_poverty_not_reached_k": 8.724951171875,
+     "bottom4_not_reached_k": 24.33823828125,
      "people_out_of_rel_ahc_poverty_k": 111.89696461105346,
      "people_out_of_abs_ahc_poverty_k": 36.93168192219734,
      "just_above_top_threshold_k": 4.37281494140625,
      "just_above_bottom4_k": 1.8851263427734375,
-     "dead_zone_k": 0.5002665710449219
+     "offset_range_k": 0.5002665710449219
     },
     {
      "household_type": "Couple with children",
@@ -12867,15 +12867,15 @@
      "gain_pct_net_income": 0.0007394799031317234,
      "mean_bill": 1629.059814453125,
      "abs_ahc_poverty_rate": 0.11919690668582916,
-     "abs_ahc_poor_covered": 0.7947410345077515,
-     "abs_ahc_poor_missed_k": 120.52609375,
-     "rel_ahc_poor_missed_k": 286.873875,
-     "bottom4_missed_k": 690.28525,
+     "abs_ahc_poverty_reached": 0.7947410345077515,
+     "abs_ahc_poverty_not_reached_k": 120.52609375,
+     "rel_ahc_poverty_not_reached_k": 286.873875,
+     "bottom4_not_reached_k": 690.28525,
      "people_out_of_rel_ahc_poverty_k": 52.69037927138805,
      "people_out_of_abs_ahc_poverty_k": 107.47640343689919,
      "just_above_top_threshold_k": 61.46883984375,
      "just_above_bottom4_k": 31.452142578125,
-     "dead_zone_k": 6.5212646484375
+     "offset_range_k": 6.5212646484375
     },
     {
      "household_type": "Multi-family household",
@@ -12892,15 +12892,15 @@
      "gain_pct_net_income": 0.000606936460826546,
      "mean_bill": 1959.8533935546875,
      "abs_ahc_poverty_rate": 0.11077027767896652,
-     "abs_ahc_poor_covered": 0.7851266860961914,
-     "abs_ahc_poor_missed_k": 65.24586328125,
-     "rel_ahc_poor_missed_k": 106.5654375,
-     "bottom4_missed_k": 367.5275625,
+     "abs_ahc_poverty_reached": 0.7851266860961914,
+     "abs_ahc_poverty_not_reached_k": 65.24586328125,
+     "rel_ahc_poverty_not_reached_k": 106.5654375,
+     "bottom4_not_reached_k": 367.5275625,
      "people_out_of_rel_ahc_poverty_k": 22.652068775177003,
      "people_out_of_abs_ahc_poverty_k": 30.554386532783507,
      "just_above_top_threshold_k": 109.9603984375,
      "just_above_bottom4_k": 104.001796875,
-     "dead_zone_k": 3.92929345703125
+     "offset_range_k": 3.92929345703125
     }
    ],
    "income_distributions": {
@@ -16148,7 +16148,7 @@
      }
     },
     {
-     "group": "poorest four AHC deciles",
+     "group": "lowest four AHC deciles",
      "households_m": 11.773614,
      "covered_by_passport": 0.428067147731781,
      "covered": 0.7702577710151672,
@@ -16215,8 +16215,8 @@
        "sample_n": 502,
        "ess": 47.48133557293418,
        "bottom4_k": 219.383578125,
-       "abs_ahc_poor_k": 31.892923828125,
-       "rel_ahc_poor_k": 45.5781640625,
+       "abs_ahc_poverty_k": 31.892923828125,
+       "rel_ahc_poverty_k": 45.5781640625,
        "mean_eq_ahc": 25092.466796875,
        "mean_bill": 1473.611328125
       },
@@ -16225,8 +16225,8 @@
        "sample_n": 267,
        "ess": 17.5150370155182,
        "bottom4_k": 103.73790625,
-       "abs_ahc_poor_k": 7.09071435546875,
-       "rel_ahc_poor_k": 12.613005859375,
+       "abs_ahc_poverty_k": 7.09071435546875,
+       "rel_ahc_poverty_k": 12.613005859375,
        "mean_eq_ahc": 27574.484375,
        "mean_bill": 1388.787353515625
       },
@@ -16235,8 +16235,8 @@
        "sample_n": 549,
        "ess": 41.412436400743395,
        "bottom4_k": 188.888125,
-       "abs_ahc_poor_k": 11.9390224609375,
-       "rel_ahc_poor_k": 41.235640625,
+       "abs_ahc_poverty_k": 11.9390224609375,
+       "rel_ahc_poverty_k": 41.235640625,
        "mean_eq_ahc": 26888.296875,
        "mean_bill": 1442.3458251953125
       },
@@ -16245,16 +16245,16 @@
        "sample_n": 1163,
        "ess": 87.63147749192626,
        "bottom4_k": 402.08340625,
-       "abs_ahc_poor_k": 38.18501953125,
-       "rel_ahc_poor_k": 92.7205390625,
+       "abs_ahc_poverty_k": 38.18501953125,
+       "rel_ahc_poverty_k": 92.7205390625,
        "mean_eq_ahc": 25235.400390625,
        "mean_bill": 1310.747802734375
       }
      },
      "mean_drop": 175.0,
-     "dead_zone_k": 71.5398203125,
-     "dead_zone_struggling_k": 6.544001953125,
-     "dead_zone_median_width": 243.05555555555557
+     "offset_range_k": 71.5398203125,
+     "offset_range_poverty_or_burden_k": 6.544001953125,
+     "offset_range_median_width": 243.05555555555557
     }
    ],
    "by_region": [
@@ -16273,15 +16273,15 @@
      "gain_pct_net_income": 0.0018783592386171222,
      "mean_bill": 1404.680419921875,
      "abs_ahc_poverty_rate": 0.1354023516178131,
-     "abs_ahc_poor_covered": 0.9085028171539307,
-     "abs_ahc_poor_missed_k": 14.9823154296875,
-     "rel_ahc_poor_missed_k": 19.969146484375,
-     "bottom4_missed_k": 80.7815,
+     "abs_ahc_poverty_reached": 0.9085028171539307,
+     "abs_ahc_poverty_not_reached_k": 14.9823154296875,
+     "rel_ahc_poverty_not_reached_k": 19.969146484375,
+     "bottom4_not_reached_k": 80.7815,
      "people_out_of_rel_ahc_poverty_k": 9.559591645896434,
      "people_out_of_abs_ahc_poverty_k": 7.5528607720136645,
      "just_above_top_threshold_k": 19.516841796875,
      "just_above_bottom4_k": 3.24491162109375,
-     "dead_zone_k": 0.6937489624023437
+     "offset_range_k": 0.6937489624023437
     },
     {
      "region": "North West",
@@ -16298,15 +16298,15 @@
      "gain_pct_net_income": 0.001947339391335845,
      "mean_bill": 1393.7349853515625,
      "abs_ahc_poverty_rate": 0.11974432319402695,
-     "abs_ahc_poor_covered": 0.9720616936683655,
-     "abs_ahc_poor_missed_k": 10.90538671875,
-     "rel_ahc_poor_missed_k": 25.370365234375,
-     "bottom4_missed_k": 236.3709375,
+     "abs_ahc_poverty_reached": 0.9720616936683655,
+     "abs_ahc_poverty_not_reached_k": 10.90538671875,
+     "rel_ahc_poverty_not_reached_k": 25.370365234375,
+     "bottom4_not_reached_k": 236.3709375,
      "people_out_of_rel_ahc_poverty_k": 8.389824695497751,
      "people_out_of_abs_ahc_poverty_k": 25.425487528085707,
      "just_above_top_threshold_k": 28.31323046875,
      "just_above_bottom4_k": 16.1859765625,
-     "dead_zone_k": 2.16857421875
+     "offset_range_k": 2.16857421875
     },
     {
      "region": "Yorkshire and the Humber",
@@ -16323,15 +16323,15 @@
      "gain_pct_net_income": 0.0017710143001750112,
      "mean_bill": 1470.673828125,
      "abs_ahc_poverty_rate": 0.12327903509140015,
-     "abs_ahc_poor_covered": 0.9709547162055969,
-     "abs_ahc_poor_missed_k": 8.53647265625,
-     "rel_ahc_poor_missed_k": 21.425931640625,
-     "bottom4_missed_k": 218.33659375,
+     "abs_ahc_poverty_reached": 0.9709547162055969,
+     "abs_ahc_poverty_not_reached_k": 8.53647265625,
+     "rel_ahc_poverty_not_reached_k": 21.425931640625,
+     "bottom4_not_reached_k": 218.33659375,
      "people_out_of_rel_ahc_poverty_k": 24.826955619215965,
      "people_out_of_abs_ahc_poverty_k": 5.655938047111034,
      "just_above_top_threshold_k": 23.058580078125,
      "just_above_bottom4_k": 17.0925625,
-     "dead_zone_k": 2.709362548828125
+     "offset_range_k": 2.709362548828125
     },
     {
      "region": "East Midlands",
@@ -16348,15 +16348,15 @@
      "gain_pct_net_income": 0.0017441926756873727,
      "mean_bill": 1592.7413330078125,
      "abs_ahc_poverty_rate": 0.1274814009666443,
-     "abs_ahc_poor_covered": 0.9758098125457764,
-     "abs_ahc_poor_missed_k": 6.488517578125,
-     "rel_ahc_poor_missed_k": 33.25958203125,
-     "bottom4_missed_k": 238.8953125,
+     "abs_ahc_poverty_reached": 0.9758098125457764,
+     "abs_ahc_poverty_not_reached_k": 6.488517578125,
+     "rel_ahc_poverty_not_reached_k": 33.25958203125,
+     "bottom4_not_reached_k": 238.8953125,
      "people_out_of_rel_ahc_poverty_k": 18.3282326913923,
      "people_out_of_abs_ahc_poverty_k": 8.79803210797906,
      "just_above_top_threshold_k": 48.8678828125,
      "just_above_bottom4_k": 45.18112109375,
-     "dead_zone_k": 14.7271513671875
+     "offset_range_k": 14.7271513671875
     },
     {
      "region": "West Midlands",
@@ -16373,15 +16373,15 @@
      "gain_pct_net_income": 0.002068014582619071,
      "mean_bill": 1467.919921875,
      "abs_ahc_poverty_rate": 0.1412210911512375,
-     "abs_ahc_poor_covered": 0.9453249573707581,
-     "abs_ahc_poor_missed_k": 19.3219296875,
-     "rel_ahc_poor_missed_k": 24.552529296875,
-     "bottom4_missed_k": 251.195640625,
+     "abs_ahc_poverty_reached": 0.9453249573707581,
+     "abs_ahc_poverty_not_reached_k": 19.3219296875,
+     "rel_ahc_poverty_not_reached_k": 24.552529296875,
+     "bottom4_not_reached_k": 251.195640625,
      "people_out_of_rel_ahc_poverty_k": 7.275929506659508,
      "people_out_of_abs_ahc_poverty_k": 40.01128422370553,
      "just_above_top_threshold_k": 33.707578125,
      "just_above_bottom4_k": 27.523015625,
-     "dead_zone_k": 7.45051416015625
+     "offset_range_k": 7.45051416015625
     },
     {
      "region": "East of England",
@@ -16398,15 +16398,15 @@
      "gain_pct_net_income": 0.001350795733742416,
      "mean_bill": 1442.83740234375,
      "abs_ahc_poverty_rate": 0.11270689219236374,
-     "abs_ahc_poor_covered": 0.9663910269737244,
-     "abs_ahc_poor_missed_k": 10.3024443359375,
-     "rel_ahc_poor_missed_k": 28.4697109375,
-     "bottom4_missed_k": 190.917625,
+     "abs_ahc_poverty_reached": 0.9663910269737244,
+     "abs_ahc_poverty_not_reached_k": 10.3024443359375,
+     "rel_ahc_poverty_not_reached_k": 28.4697109375,
+     "bottom4_not_reached_k": 190.917625,
      "people_out_of_rel_ahc_poverty_k": 39.76030807518959,
      "people_out_of_abs_ahc_poverty_k": 9.628049365580083,
      "just_above_top_threshold_k": 6.25576708984375,
      "just_above_bottom4_k": 3.605298828125,
-     "dead_zone_k": 0.572025390625
+     "offset_range_k": 0.572025390625
     },
     {
      "region": "London",
@@ -16423,15 +16423,15 @@
      "gain_pct_net_income": 0.001217436045408249,
      "mean_bill": 1427.77587890625,
      "abs_ahc_poverty_rate": 0.21723327040672302,
-     "abs_ahc_poor_covered": 0.8001166582107544,
-     "abs_ahc_poor_missed_k": 156.368703125,
-     "rel_ahc_poor_missed_k": 172.548609375,
-     "bottom4_missed_k": 477.40553125,
+     "abs_ahc_poverty_reached": 0.8001166582107544,
+     "abs_ahc_poverty_not_reached_k": 156.368703125,
+     "rel_ahc_poverty_not_reached_k": 172.548609375,
+     "bottom4_not_reached_k": 477.40553125,
      "people_out_of_rel_ahc_poverty_k": 0.13722425086796283,
      "people_out_of_abs_ahc_poverty_k": 7.314594703018665,
      "just_above_top_threshold_k": 43.2333359375,
      "just_above_bottom4_k": 17.67591015625,
-     "dead_zone_k": 31.0681953125
+     "offset_range_k": 31.0681953125
     },
     {
      "region": "South East",
@@ -16448,15 +16448,15 @@
      "gain_pct_net_income": 0.0012570798862725496,
      "mean_bill": 1521.819091796875,
      "abs_ahc_poverty_rate": 0.1452576369047165,
-     "abs_ahc_poor_covered": 0.9249220490455627,
-     "abs_ahc_poor_missed_k": 43.08058203125,
-     "rel_ahc_poor_missed_k": 70.1919140625,
-     "bottom4_missed_k": 345.71840625,
+     "abs_ahc_poverty_reached": 0.9249220490455627,
+     "abs_ahc_poverty_not_reached_k": 43.08058203125,
+     "rel_ahc_poverty_not_reached_k": 70.1919140625,
+     "bottom4_not_reached_k": 345.71840625,
      "people_out_of_rel_ahc_poverty_k": 5.465512269854545,
      "people_out_of_abs_ahc_poverty_k": 14.601132661297918,
      "just_above_top_threshold_k": 13.92634375,
      "just_above_bottom4_k": 12.6137490234375,
-     "dead_zone_k": 4.5236630859375
+     "offset_range_k": 4.5236630859375
     },
     {
      "region": "South West",
@@ -16473,15 +16473,15 @@
      "gain_pct_net_income": 0.001563600148074329,
      "mean_bill": 1313.8221435546875,
      "abs_ahc_poverty_rate": 0.14482960104942322,
-     "abs_ahc_poor_covered": 0.926038384437561,
-     "abs_ahc_poor_missed_k": 27.0102265625,
-     "rel_ahc_poor_missed_k": 46.56072265625,
-     "bottom4_missed_k": 306.1266875,
+     "abs_ahc_poverty_reached": 0.926038384437561,
+     "abs_ahc_poverty_not_reached_k": 27.0102265625,
+     "rel_ahc_poverty_not_reached_k": 46.56072265625,
+     "bottom4_not_reached_k": 306.1266875,
      "people_out_of_rel_ahc_poverty_k": 77.18697617557645,
      "people_out_of_abs_ahc_poverty_k": 4.815581086039543,
      "just_above_top_threshold_k": 33.7527890625,
      "just_above_bottom4_k": 29.1256171875,
-     "dead_zone_k": 3.746184814453125
+     "offset_range_k": 3.746184814453125
     },
     {
      "region": "Wales",
@@ -16498,15 +16498,15 @@
      "gain_pct_net_income": 0.0018103894544765353,
      "mean_bill": 1457.140380859375,
      "abs_ahc_poverty_rate": 0.13350054621696472,
-     "abs_ahc_poor_covered": 0.9380205273628235,
-     "abs_ahc_poor_missed_k": 11.3943115234375,
-     "rel_ahc_poor_missed_k": 20.93204296875,
-     "bottom4_missed_k": 118.3848828125,
+     "abs_ahc_poverty_reached": 0.9380205273628235,
+     "abs_ahc_poverty_not_reached_k": 11.3943115234375,
+     "rel_ahc_poverty_not_reached_k": 20.93204296875,
+     "bottom4_not_reached_k": 118.3848828125,
      "people_out_of_rel_ahc_poverty_k": 13.644885605573654,
      "people_out_of_abs_ahc_poverty_k": 17.778280079990626,
      "just_above_top_threshold_k": 15.47240625,
      "just_above_bottom4_k": 7.28615380859375,
-     "dead_zone_k": 1.5165262451171875
+     "offset_range_k": 1.5165262451171875
     },
     {
      "region": "Scotland",
@@ -16523,15 +16523,15 @@
      "gain_pct_net_income": 0.0017628142377361655,
      "mean_bill": 1339.330810546875,
      "abs_ahc_poverty_rate": 0.15767282247543335,
-     "abs_ahc_poor_covered": 0.9875789880752563,
-     "abs_ahc_poor_missed_k": 5.13930078125,
-     "rel_ahc_poor_missed_k": 45.0365546875,
-     "bottom4_missed_k": 240.7639375,
+     "abs_ahc_poverty_reached": 0.9875789880752563,
+     "abs_ahc_poverty_not_reached_k": 5.13930078125,
+     "rel_ahc_poverty_not_reached_k": 45.0365546875,
+     "bottom4_not_reached_k": 240.7639375,
      "people_out_of_rel_ahc_poverty_k": 2.5367683755755426,
      "people_out_of_abs_ahc_poverty_k": 6.485060770973563,
      "just_above_top_threshold_k": 14.486060546875,
      "just_above_bottom4_k": 9.353810546875,
-     "dead_zone_k": 2.363879150390625
+     "offset_range_k": 2.363879150390625
     }
    ],
    "by_household_type": [
@@ -16550,15 +16550,15 @@
      "gain_pct_net_income": 0.005497573409229517,
      "mean_bill": 1076.3460693359375,
      "abs_ahc_poverty_rate": 0.1485779732465744,
-     "abs_ahc_poor_covered": 0.9892457127571106,
-     "abs_ahc_poor_missed_k": 6.36599951171875,
-     "rel_ahc_poor_missed_k": 12.2126455078125,
-     "bottom4_missed_k": 115.4531640625,
+     "abs_ahc_poverty_reached": 0.9892457127571106,
+     "abs_ahc_poverty_not_reached_k": 6.36599951171875,
+     "rel_ahc_poverty_not_reached_k": 12.2126455078125,
+     "bottom4_not_reached_k": 115.4531640625,
      "people_out_of_rel_ahc_poverty_k": 59.17199939058721,
      "people_out_of_abs_ahc_poverty_k": 37.27366222341359,
      "just_above_top_threshold_k": 67.392765625,
      "just_above_bottom4_k": 11.0957236328125,
-     "dead_zone_k": 33.47546484375
+     "offset_range_k": 33.47546484375
     },
     {
      "household_type": "Pensioner couple",
@@ -16575,15 +16575,15 @@
      "gain_pct_net_income": 0.0012297231005504727,
      "mean_bill": 1519.1676025390625,
      "abs_ahc_poverty_rate": 0.0570596307516098,
-     "abs_ahc_poor_covered": 0.9744851589202881,
-     "abs_ahc_poor_missed_k": 5.13439404296875,
-     "rel_ahc_poor_missed_k": 8.070564453125,
-     "bottom4_missed_k": 259.999140625,
+     "abs_ahc_poverty_reached": 0.9744851589202881,
+     "abs_ahc_poverty_not_reached_k": 5.13439404296875,
+     "rel_ahc_poverty_not_reached_k": 8.070564453125,
+     "bottom4_not_reached_k": 259.999140625,
      "people_out_of_rel_ahc_poverty_k": 16.1890055488348,
      "people_out_of_abs_ahc_poverty_k": 16.26234373064339,
      "just_above_top_threshold_k": 48.46553125,
      "just_above_bottom4_k": 35.73931640625,
-     "dead_zone_k": 19.45024609375
+     "offset_range_k": 19.45024609375
     },
     {
      "household_type": "Single, no children",
@@ -16600,15 +16600,15 @@
      "gain_pct_net_income": 0.0038630457129329443,
      "mean_bill": 944.323486328125,
      "abs_ahc_poverty_rate": 0.30380114912986755,
-     "abs_ahc_poor_covered": 0.9476759433746338,
-     "abs_ahc_poor_missed_k": 69.67109375,
-     "rel_ahc_poor_missed_k": 124.1229765625,
-     "bottom4_missed_k": 451.6734375,
+     "abs_ahc_poverty_reached": 0.9476759433746338,
+     "abs_ahc_poverty_not_reached_k": 69.67109375,
+     "rel_ahc_poverty_not_reached_k": 124.1229765625,
+     "bottom4_not_reached_k": 451.6734375,
      "people_out_of_rel_ahc_poverty_k": 5.208432436898351,
      "people_out_of_abs_ahc_poverty_k": 10.800058345109225,
      "just_above_top_threshold_k": 39.13626171875,
      "just_above_bottom4_k": 20.954,
-     "dead_zone_k": 4.56171923828125
+     "offset_range_k": 4.56171923828125
     },
     {
      "household_type": "Couple, no children",
@@ -16625,15 +16625,15 @@
      "gain_pct_net_income": 0.0005134964594617486,
      "mean_bill": 1422.3714599609375,
      "abs_ahc_poverty_rate": 0.10905847698450089,
-     "abs_ahc_poor_covered": 0.7797825336456299,
-     "abs_ahc_poor_missed_k": 100.785171875,
-     "rel_ahc_poor_missed_k": 158.994921875,
-     "bottom4_missed_k": 599.11825,
+     "abs_ahc_poverty_reached": 0.7797825336456299,
+     "abs_ahc_poverty_not_reached_k": 100.785171875,
+     "rel_ahc_poverty_not_reached_k": 158.994921875,
+     "bottom4_not_reached_k": 599.11825,
      "people_out_of_rel_ahc_poverty_k": 1.0465577774047852,
      "people_out_of_abs_ahc_poverty_k": 7.385450036287308,
      "just_above_top_threshold_k": 49.15475,
      "just_above_bottom4_k": 46.7204375,
-     "dead_zone_k": 7.57865625
+     "offset_range_k": 7.57865625
     },
     {
      "household_type": "Lone parent",
@@ -16650,15 +16650,15 @@
      "gain_pct_net_income": 0.004796595312654972,
      "mean_bill": 1290.652099609375,
      "abs_ahc_poverty_rate": 0.2275492548942566,
-     "abs_ahc_poor_covered": 0.9951276779174805,
-     "abs_ahc_poor_missed_k": 1.48850927734375,
-     "rel_ahc_poor_missed_k": 3.1095615234375,
-     "bottom4_missed_k": 19.23232421875,
+     "abs_ahc_poverty_reached": 0.9951276779174805,
+     "abs_ahc_poverty_not_reached_k": 1.48850927734375,
+     "rel_ahc_poverty_not_reached_k": 3.1095615234375,
+     "bottom4_not_reached_k": 19.23232421875,
      "people_out_of_rel_ahc_poverty_k": 98.72405262678862,
      "people_out_of_abs_ahc_poverty_k": 38.142986824512484,
      "just_above_top_threshold_k": 5.006595703125,
      "just_above_bottom4_k": 3.63966943359375,
-     "dead_zone_k": 0.0
+     "offset_range_k": 0.0
     },
     {
      "household_type": "Couple with children",
@@ -16675,15 +16675,15 @@
      "gain_pct_net_income": 0.0008838732610456645,
      "mean_bill": 1846.18994140625,
      "abs_ahc_poverty_rate": 0.14497415721416473,
-     "abs_ahc_poor_covered": 0.9140414595603943,
-     "abs_ahc_poor_missed_k": 59.89240625,
-     "rel_ahc_poor_missed_k": 98.0605,
-     "bottom4_missed_k": 690.7830625,
+     "abs_ahc_poverty_reached": 0.9140414595603943,
+     "abs_ahc_poverty_not_reached_k": 59.89240625,
+     "rel_ahc_poverty_not_reached_k": 98.0605,
+     "bottom4_not_reached_k": 690.7830625,
      "people_out_of_rel_ahc_poverty_k": 18.096632436394692,
      "people_out_of_abs_ahc_poverty_k": 15.39055099529028,
      "just_above_top_threshold_k": 32.260478515625,
      "just_above_bottom4_k": 32.260478515625,
-     "dead_zone_k": 1.8229744873046876
+     "offset_range_k": 1.8229744873046876
     },
     {
      "household_type": "Multi-family household",
@@ -16700,15 +16700,15 @@
      "gain_pct_net_income": 0.001058012479916215,
      "mean_bill": 1716.56005859375,
      "abs_ahc_poverty_rate": 0.0848596841096878,
-     "abs_ahc_poor_covered": 0.862480103969574,
-     "abs_ahc_poor_missed_k": 70.1926484375,
-     "rel_ahc_poor_missed_k": 103.7459453125,
-     "bottom4_missed_k": 568.637625,
+     "abs_ahc_poverty_reached": 0.862480103969574,
+     "abs_ahc_poverty_not_reached_k": 70.1926484375,
+     "rel_ahc_poverty_not_reached_k": 103.7459453125,
+     "bottom4_not_reached_k": 568.637625,
      "people_out_of_rel_ahc_poverty_k": 8.67552869439125,
      "people_out_of_abs_ahc_poverty_k": 22.811249190539122,
      "just_above_top_threshold_k": 39.17443359375,
      "just_above_bottom4_k": 38.4785078125,
-     "dead_zone_k": 4.6507666015625
+     "offset_range_k": 4.6507666015625
     }
    ],
    "income_distributions": {
@@ -19975,7 +19975,7 @@
      }
     },
     {
-     "group": "poorest four AHC deciles",
+     "group": "lowest four AHC deciles",
      "households_m": 12.680531,
      "covered_by_passport": 0.4587847590446472,
      "covered": 0.7871087789535522,
@@ -20042,8 +20042,8 @@
        "sample_n": 547,
        "ess": 10.915002135433028,
        "bottom4_k": 198.040625,
-       "abs_ahc_poor_k": 16.48205078125,
-       "rel_ahc_poor_k": 68.99115625,
+       "abs_ahc_poverty_k": 16.48205078125,
+       "rel_ahc_poverty_k": 68.99115625,
        "mean_eq_ahc": 25907.361328125,
        "mean_bill": 1043.8453369140625
       },
@@ -20052,8 +20052,8 @@
        "sample_n": 310,
        "ess": 40.303482576730914,
        "bottom4_k": 77.53646875,
-       "abs_ahc_poor_k": 13.4834619140625,
-       "rel_ahc_poor_k": 24.132830078125,
+       "abs_ahc_poverty_k": 13.4834619140625,
+       "rel_ahc_poverty_k": 24.132830078125,
        "mean_eq_ahc": 24090.59375,
        "mean_bill": 2194.864990234375
       },
@@ -20062,8 +20062,8 @@
        "sample_n": 642,
        "ess": 13.711846688072175,
        "bottom4_k": 242.777203125,
-       "abs_ahc_poor_k": 20.174294921875,
-       "rel_ahc_poor_k": 46.83546875,
+       "abs_ahc_poverty_k": 20.174294921875,
+       "rel_ahc_poverty_k": 46.83546875,
        "mean_eq_ahc": 25087.759765625,
        "mean_bill": 2504.1240234375
       },
@@ -20072,16 +20072,16 @@
        "sample_n": 1301,
        "ess": 34.48886296842016,
        "bottom4_k": 434.71365625,
-       "abs_ahc_poor_k": 36.01940625,
-       "rel_ahc_poor_k": 77.2961953125,
+       "abs_ahc_poverty_k": 36.01940625,
+       "rel_ahc_poverty_k": 77.2961953125,
        "mean_eq_ahc": 25803.78125,
        "mean_bill": 2321.482666015625
       }
      },
      "mean_drop": 175.0,
-     "dead_zone_k": 50.0710625,
-     "dead_zone_struggling_k": 28.542494140625,
-     "dead_zone_median_width": 227.15471368300624
+     "offset_range_k": 50.0710625,
+     "offset_range_poverty_or_burden_k": 28.542494140625,
+     "offset_range_median_width": 227.15471368300624
     }
    ],
    "by_region": [
@@ -20100,15 +20100,15 @@
      "gain_pct_net_income": 0.002088311593979597,
      "mean_bill": 2146.225341796875,
      "abs_ahc_poverty_rate": 0.18436716496944427,
-     "abs_ahc_poor_covered": 0.9988246560096741,
-     "abs_ahc_poor_missed_k": 0.28225112915039063,
-     "rel_ahc_poor_missed_k": 7.9662900390625,
-     "bottom4_missed_k": 58.753796875,
+     "abs_ahc_poverty_reached": 0.9988246560096741,
+     "abs_ahc_poverty_not_reached_k": 0.28225112915039063,
+     "rel_ahc_poverty_not_reached_k": 7.9662900390625,
+     "bottom4_not_reached_k": 58.753796875,
      "people_out_of_rel_ahc_poverty_k": 0.9970135898590088,
      "people_out_of_abs_ahc_poverty_k": 1.7963079481124877,
      "just_above_top_threshold_k": 17.952080078125,
      "just_above_bottom4_k": 14.9634384765625,
-     "dead_zone_k": 6.0619423828125
+     "offset_range_k": 6.0619423828125
     },
     {
      "region": "North West",
@@ -20125,15 +20125,15 @@
      "gain_pct_net_income": 0.0018755547935143113,
      "mean_bill": 1595.3499755859375,
      "abs_ahc_poverty_rate": 0.1466015726327896,
-     "abs_ahc_poor_covered": 0.9936473369598389,
-     "abs_ahc_poor_missed_k": 3.259208251953125,
-     "rel_ahc_poor_missed_k": 23.869666015625,
-     "bottom4_missed_k": 373.52534375,
+     "abs_ahc_poverty_reached": 0.9936473369598389,
+     "abs_ahc_poverty_not_reached_k": 3.259208251953125,
+     "rel_ahc_poverty_not_reached_k": 23.869666015625,
+     "bottom4_not_reached_k": 373.52534375,
      "people_out_of_rel_ahc_poverty_k": 6.390716379642487,
      "people_out_of_abs_ahc_poverty_k": 25.58399476480484,
      "just_above_top_threshold_k": 39.67316015625,
      "just_above_bottom4_k": 35.79258984375,
-     "dead_zone_k": 4.095434814453125
+     "offset_range_k": 4.095434814453125
     },
     {
      "region": "Yorkshire and the Humber",
@@ -20150,15 +20150,15 @@
      "gain_pct_net_income": 0.0017318242462351918,
      "mean_bill": 1917.7437744140625,
      "abs_ahc_poverty_rate": 0.1571274846792221,
-     "abs_ahc_poor_covered": 0.9899113178253174,
-     "abs_ahc_poor_missed_k": 4.0507958984375,
-     "rel_ahc_poor_missed_k": 14.1184716796875,
-     "bottom4_missed_k": 207.152515625,
+     "abs_ahc_poverty_reached": 0.9899113178253174,
+     "abs_ahc_poverty_not_reached_k": 4.0507958984375,
+     "rel_ahc_poverty_not_reached_k": 14.1184716796875,
+     "bottom4_not_reached_k": 207.152515625,
      "people_out_of_rel_ahc_poverty_k": 32.55119149684906,
      "people_out_of_abs_ahc_poverty_k": 4.084812953472137,
      "just_above_top_threshold_k": 90.659671875,
      "just_above_bottom4_k": 84.1062578125,
-     "dead_zone_k": 7.6116982421875
+     "offset_range_k": 7.6116982421875
     },
     {
      "region": "East Midlands",
@@ -20175,15 +20175,15 @@
      "gain_pct_net_income": 0.0015287608839571476,
      "mean_bill": 1948.3974609375,
      "abs_ahc_poverty_rate": 0.16582772135734558,
-     "abs_ahc_poor_covered": 0.9793483018875122,
-     "abs_ahc_poor_missed_k": 7.74686328125,
-     "rel_ahc_poor_missed_k": 20.389333984375,
-     "bottom4_missed_k": 131.965453125,
+     "abs_ahc_poverty_reached": 0.9793483018875122,
+     "abs_ahc_poverty_not_reached_k": 7.74686328125,
+     "rel_ahc_poverty_not_reached_k": 20.389333984375,
+     "bottom4_not_reached_k": 131.965453125,
      "people_out_of_rel_ahc_poverty_k": 4.58153405380249,
      "people_out_of_abs_ahc_poverty_k": 2.124636375427246,
      "just_above_top_threshold_k": 14.88169140625,
      "just_above_bottom4_k": 14.020830078125,
-     "dead_zone_k": 1.841755126953125
+     "offset_range_k": 1.841755126953125
     },
     {
      "region": "West Midlands",
@@ -20200,15 +20200,15 @@
      "gain_pct_net_income": 0.0018623907817527652,
      "mean_bill": 1401.102783203125,
      "abs_ahc_poverty_rate": 0.2092793583869934,
-     "abs_ahc_poor_covered": 0.9648668169975281,
-     "abs_ahc_poor_missed_k": 19.643798828125,
-     "rel_ahc_poor_missed_k": 39.90928125,
-     "bottom4_missed_k": 174.1716875,
+     "abs_ahc_poverty_reached": 0.9648668169975281,
+     "abs_ahc_poverty_not_reached_k": 19.643798828125,
+     "rel_ahc_poverty_not_reached_k": 39.90928125,
+     "bottom4_not_reached_k": 174.1716875,
      "people_out_of_rel_ahc_poverty_k": 34.47026336479187,
      "people_out_of_abs_ahc_poverty_k": 64.3959062347412,
      "just_above_top_threshold_k": 17.014564453125,
      "just_above_bottom4_k": 15.5936171875,
-     "dead_zone_k": 6.62128271484375
+     "offset_range_k": 6.62128271484375
     },
     {
      "region": "East of England",
@@ -20225,15 +20225,15 @@
      "gain_pct_net_income": 0.0010614177444949746,
      "mean_bill": 1338.9261474609375,
      "abs_ahc_poverty_rate": 0.12231917679309845,
-     "abs_ahc_poor_covered": 0.9590244889259338,
-     "abs_ahc_poor_missed_k": 14.5492373046875,
-     "rel_ahc_poor_missed_k": 42.18087109375,
-     "bottom4_missed_k": 287.18259375,
+     "abs_ahc_poverty_reached": 0.9590244889259338,
+     "abs_ahc_poverty_not_reached_k": 14.5492373046875,
+     "rel_ahc_poverty_not_reached_k": 42.18087109375,
+     "bottom4_not_reached_k": 287.18259375,
      "people_out_of_rel_ahc_poverty_k": 5.821858871936798,
      "people_out_of_abs_ahc_poverty_k": 3.8346367859840393,
      "just_above_top_threshold_k": 26.3440703125,
      "just_above_bottom4_k": 19.892931640625,
-     "dead_zone_k": 10.3990732421875
+     "offset_range_k": 10.3990732421875
     },
     {
      "region": "London",
@@ -20250,15 +20250,15 @@
      "gain_pct_net_income": 0.001202620449475944,
      "mean_bill": 1084.5228271484375,
      "abs_ahc_poverty_rate": 0.17392964661121368,
-     "abs_ahc_poor_covered": 0.8097154498100281,
-     "abs_ahc_poor_missed_k": 129.7178828125,
-     "rel_ahc_poor_missed_k": 161.034484375,
-     "bottom4_missed_k": 405.6875625,
+     "abs_ahc_poverty_reached": 0.8097154498100281,
+     "abs_ahc_poverty_not_reached_k": 129.7178828125,
+     "rel_ahc_poverty_not_reached_k": 161.034484375,
+     "bottom4_not_reached_k": 405.6875625,
      "people_out_of_rel_ahc_poverty_k": 11.728089295387267,
      "people_out_of_abs_ahc_poverty_k": 31.961988027095796,
      "just_above_top_threshold_k": 5.20344970703125,
      "just_above_bottom4_k": 3.368654052734375,
-     "dead_zone_k": 0.17980667114257812
+     "offset_range_k": 0.17980667114257812
     },
     {
      "region": "South East",
@@ -20275,15 +20275,15 @@
      "gain_pct_net_income": 0.0013558977516368032,
      "mean_bill": 1573.05517578125,
      "abs_ahc_poverty_rate": 0.19153261184692383,
-     "abs_ahc_poor_covered": 0.6455802917480469,
-     "abs_ahc_poor_missed_k": 285.97740625,
-     "rel_ahc_poor_missed_k": 339.13165625,
-     "bottom4_missed_k": 608.084125,
+     "abs_ahc_poverty_reached": 0.6455802917480469,
+     "abs_ahc_poverty_not_reached_k": 285.97740625,
+     "rel_ahc_poverty_not_reached_k": 339.13165625,
+     "bottom4_not_reached_k": 608.084125,
      "people_out_of_rel_ahc_poverty_k": 55.28134300041199,
      "people_out_of_abs_ahc_poverty_k": 4.446005791187287,
      "just_above_top_threshold_k": 26.12578515625,
      "just_above_bottom4_k": 25.34241015625,
-     "dead_zone_k": 8.970533203125
+     "offset_range_k": 8.970533203125
     },
     {
      "region": "South West",
@@ -20300,15 +20300,15 @@
      "gain_pct_net_income": 0.0015311184106394649,
      "mean_bill": 1317.458984375,
      "abs_ahc_poverty_rate": 0.11467929184436798,
-     "abs_ahc_poor_covered": 0.9746798872947693,
-     "abs_ahc_poor_missed_k": 7.9450517578125,
-     "rel_ahc_poor_missed_k": 20.198029296875,
-     "bottom4_missed_k": 197.18825,
+     "abs_ahc_poverty_reached": 0.9746798872947693,
+     "abs_ahc_poverty_not_reached_k": 7.9450517578125,
+     "rel_ahc_poverty_not_reached_k": 20.198029296875,
+     "bottom4_not_reached_k": 197.18825,
      "people_out_of_rel_ahc_poverty_k": 83.66643440771102,
      "people_out_of_abs_ahc_poverty_k": 11.958279822349548,
      "just_above_top_threshold_k": 9.6763486328125,
      "just_above_bottom4_k": 8.7234736328125,
-     "dead_zone_k": 0.5990225830078125
+     "offset_range_k": 0.5990225830078125
     },
     {
      "region": "Wales",
@@ -20325,15 +20325,15 @@
      "gain_pct_net_income": 0.002002998720854521,
      "mean_bill": 1845.1556396484375,
      "abs_ahc_poverty_rate": 0.19086603820323944,
-     "abs_ahc_poor_covered": 0.9820361733436584,
-     "abs_ahc_poor_missed_k": 5.3657822265625,
-     "rel_ahc_poor_missed_k": 10.8701044921875,
-     "bottom4_missed_k": 123.0210625,
+     "abs_ahc_poverty_reached": 0.9820361733436584,
+     "abs_ahc_poverty_not_reached_k": 5.3657822265625,
+     "rel_ahc_poverty_not_reached_k": 10.8701044921875,
+     "bottom4_not_reached_k": 123.0210625,
      "people_out_of_rel_ahc_poverty_k": 16.921425800323487,
      "people_out_of_abs_ahc_poverty_k": 43.83934504270554,
      "just_above_top_threshold_k": 17.97301953125,
      "just_above_bottom4_k": 6.49453076171875,
-     "dead_zone_k": 1.875249755859375
+     "offset_range_k": 1.875249755859375
     },
     {
      "region": "Scotland",
@@ -20350,15 +20350,15 @@
      "gain_pct_net_income": 0.0017351522110402584,
      "mean_bill": 2003.169921875,
      "abs_ahc_poverty_rate": 0.15082940459251404,
-     "abs_ahc_poor_covered": 0.9497668147087097,
-     "abs_ahc_poor_missed_k": 20.535560546875,
-     "rel_ahc_poor_missed_k": 33.15783203125,
-     "bottom4_missed_k": 132.8426875,
+     "abs_ahc_poverty_reached": 0.9497668147087097,
+     "abs_ahc_poverty_not_reached_k": 20.535560546875,
+     "rel_ahc_poverty_not_reached_k": 33.15783203125,
+     "bottom4_not_reached_k": 132.8426875,
      "people_out_of_rel_ahc_poverty_k": 26.38433608663082,
      "people_out_of_abs_ahc_poverty_k": 20.385421823322773,
      "just_above_top_threshold_k": 17.12409765625,
      "just_above_bottom4_k": 14.47845703125,
-     "dead_zone_k": 1.815264404296875
+     "offset_range_k": 1.815264404296875
     }
    ],
    "by_household_type": [
@@ -20377,15 +20377,15 @@
      "gain_pct_net_income": 0.0054588401690125465,
      "mean_bill": 1315.21142578125,
      "abs_ahc_poverty_rate": 0.14117249846458435,
-     "abs_ahc_poor_covered": 0.9881523251533508,
-     "abs_ahc_poor_missed_k": 6.764482421875,
-     "rel_ahc_poor_missed_k": 24.020390625,
-     "bottom4_missed_k": 85.6745234375,
+     "abs_ahc_poverty_reached": 0.9881523251533508,
+     "abs_ahc_poverty_not_reached_k": 6.764482421875,
+     "rel_ahc_poverty_not_reached_k": 24.020390625,
+     "bottom4_not_reached_k": 85.6745234375,
      "people_out_of_rel_ahc_poverty_k": 33.715532336473466,
      "people_out_of_abs_ahc_poverty_k": 72.26497740447522,
      "just_above_top_threshold_k": 36.82037109375,
      "just_above_bottom4_k": 25.67106640625,
-     "dead_zone_k": 16.867
+     "offset_range_k": 16.867
     },
     {
      "household_type": "Pensioner couple",
@@ -20402,15 +20402,15 @@
      "gain_pct_net_income": 0.001082451082766056,
      "mean_bill": 2365.772216796875,
      "abs_ahc_poverty_rate": 0.04714852571487427,
-     "abs_ahc_poor_covered": 0.9879608154296875,
-     "abs_ahc_poor_missed_k": 2.180734375,
-     "rel_ahc_poor_missed_k": 4.28184912109375,
-     "bottom4_missed_k": 318.64903125,
+     "abs_ahc_poverty_reached": 0.9879608154296875,
+     "abs_ahc_poverty_not_reached_k": 2.180734375,
+     "rel_ahc_poverty_not_reached_k": 4.28184912109375,
+     "bottom4_not_reached_k": 318.64903125,
      "people_out_of_rel_ahc_poverty_k": 14.898947001695634,
      "people_out_of_abs_ahc_poverty_k": 13.895295069217681,
      "just_above_top_threshold_k": 57.189546875,
      "just_above_bottom4_k": 32.548859375,
-     "dead_zone_k": 9.294732421875
+     "offset_range_k": 9.294732421875
     },
     {
      "household_type": "Single, no children",
@@ -20427,15 +20427,15 @@
      "gain_pct_net_income": 0.004851531237363815,
      "mean_bill": 1163.6591796875,
      "abs_ahc_poverty_rate": 0.35208213329315186,
-     "abs_ahc_poor_covered": 0.9058441519737244,
-     "abs_ahc_poor_missed_k": 185.045375,
-     "rel_ahc_poor_missed_k": 254.69325,
-     "bottom4_missed_k": 536.8705,
+     "abs_ahc_poverty_reached": 0.9058441519737244,
+     "abs_ahc_poverty_not_reached_k": 185.045375,
+     "rel_ahc_poverty_not_reached_k": 254.69325,
+     "bottom4_not_reached_k": 536.8705,
      "people_out_of_rel_ahc_poverty_k": 28.610957948207854,
      "people_out_of_abs_ahc_poverty_k": 10.340953376710415,
      "just_above_top_threshold_k": 17.7166015625,
      "just_above_bottom4_k": 15.054947265625,
-     "dead_zone_k": 6.2449072265625
+     "offset_range_k": 6.2449072265625
     },
     {
      "household_type": "Couple, no children",
@@ -20452,15 +20452,15 @@
      "gain_pct_net_income": 0.00031933889840729535,
      "mean_bill": 1725.6365966796875,
      "abs_ahc_poverty_rate": 0.10836948454380035,
-     "abs_ahc_poor_covered": 0.6359696984291077,
-     "abs_ahc_poor_missed_k": 280.29690625,
-     "rel_ahc_poor_missed_k": 329.74,
-     "bottom4_missed_k": 1028.970125,
+     "abs_ahc_poverty_reached": 0.6359696984291077,
+     "abs_ahc_poverty_not_reached_k": 280.29690625,
+     "rel_ahc_poverty_not_reached_k": 329.74,
+     "bottom4_not_reached_k": 1028.970125,
      "people_out_of_rel_ahc_poverty_k": 2.450124565124512,
      "people_out_of_abs_ahc_poverty_k": 3.6011622867584228,
      "just_above_top_threshold_k": 99.55971875,
      "just_above_bottom4_k": 98.3808515625,
-     "dead_zone_k": 14.2373046875
+     "offset_range_k": 14.2373046875
     },
     {
      "household_type": "Lone parent",
@@ -20477,15 +20477,15 @@
      "gain_pct_net_income": 0.005160883069038391,
      "mean_bill": 740.9887084960938,
      "abs_ahc_poverty_rate": 0.27452269196510315,
-     "abs_ahc_poor_covered": 0.9967966079711914,
-     "abs_ahc_poor_missed_k": 1.84408154296875,
-     "rel_ahc_poor_missed_k": 6.2559248046875,
-     "bottom4_missed_k": 21.252650390625,
+     "abs_ahc_poverty_reached": 0.9967966079711914,
+     "abs_ahc_poverty_not_reached_k": 1.84408154296875,
+     "rel_ahc_poverty_not_reached_k": 6.2559248046875,
+     "bottom4_not_reached_k": 21.252650390625,
      "people_out_of_rel_ahc_poverty_k": 112.31107919692994,
      "people_out_of_abs_ahc_poverty_k": 22.90940726399422,
      "just_above_top_threshold_k": 2.15350146484375,
      "just_above_bottom4_k": 2.15350146484375,
-     "dead_zone_k": 0.0
+     "offset_range_k": 0.0
     },
     {
      "household_type": "Couple with children",
@@ -20502,15 +20502,15 @@
      "gain_pct_net_income": 0.0007517740014009178,
      "mean_bill": 1629.059814453125,
      "abs_ahc_poverty_rate": 0.11919690668582916,
-     "abs_ahc_poor_covered": 0.9703630208969116,
-     "abs_ahc_poor_missed_k": 17.402607421875,
-     "rel_ahc_poor_missed_k": 59.84194140625,
-     "bottom4_missed_k": 445.45590625,
+     "abs_ahc_poverty_reached": 0.9703630208969116,
+     "abs_ahc_poverty_not_reached_k": 17.402607421875,
+     "rel_ahc_poverty_not_reached_k": 59.84194140625,
+     "bottom4_not_reached_k": 445.45590625,
      "people_out_of_rel_ahc_poverty_k": 64.08607092177868,
      "people_out_of_abs_ahc_poverty_k": 61.12046827912331,
      "just_above_top_threshold_k": 49.89416796875,
      "just_above_bottom4_k": 49.79514453125,
-     "dead_zone_k": 2.216634521484375
+     "offset_range_k": 2.216634521484375
     },
     {
      "household_type": "Multi-family household",
@@ -20527,15 +20527,15 @@
      "gain_pct_net_income": 0.0006121106562204659,
      "mean_bill": 1959.8533935546875,
      "abs_ahc_poverty_rate": 0.11077027767896652,
-     "abs_ahc_poor_covered": 0.9817562103271484,
-     "abs_ahc_poor_missed_k": 5.5396923828125,
-     "rel_ahc_poor_missed_k": 33.9926640625,
-     "bottom4_missed_k": 262.702375,
+     "abs_ahc_poverty_reached": 0.9817562103271484,
+     "abs_ahc_poverty_not_reached_k": 5.5396923828125,
+     "rel_ahc_poverty_not_reached_k": 33.9926640625,
+     "bottom4_not_reached_k": 262.702375,
      "people_out_of_rel_ahc_poverty_k": 22.72149437713623,
      "people_out_of_abs_ahc_poverty_k": 30.279071888923646,
      "just_above_top_threshold_k": 19.294037109375,
      "just_above_bottom4_k": 19.17284375,
-     "dead_zone_k": 1.210483154296875
+     "offset_range_k": 1.210483154296875
     }
    ],
    "income_distributions": {

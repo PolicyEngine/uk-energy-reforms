@@ -46,7 +46,7 @@ REGION_LABELS = {
 }
 
 GROUPS = {"region": REGIONS, "household_type": HOUSEHOLD_TYPES}
-# Dead zones: the marginal rate on the extra gross income needed to make up lost
+# Offset range: the marginal rate on the extra gross income needed to make up lost
 # support. Basic-rate income tax plus 8% employee NI, or basic rate alone where the
 # household's highest-income member is over State Pension age (no employee NI).
 BASIC_RATE = 0.20
@@ -71,7 +71,8 @@ def _deciles(values, weights):
 
 
 def prepare(run: Run) -> pd.DataFrame:
-    """The run's frame with deciles, relative poverty and struggling flags added."""
+    """The run's frame with deciles, relative poverty and hardship flags (poverty or
+    energy spend above 10% of income) added."""
     f = run.frame.copy()
     people = (f.weight * f.n_people).values
     for basis in ["bhc", "ahc"]:
@@ -88,7 +89,9 @@ def prepare(run: Run) -> pd.DataFrame:
     f["bottom4"] = f.decile_ahc.between(1, 4)
     net = f.net_bhc_base.values
     f["high_burden"] = np.where(net > 0, f.bill / np.maximum(net, 1), 1.0) > HIGH_BURDEN
-    f["struggling"] = f.abs_pov_ahc_base | f.rel_pov_ahc_base | f.high_burden
+    f["poverty_or_high_burden"] = (
+        f.abs_pov_ahc_base | f.rel_pov_ahc_base | f.high_burden
+    )
     f["gain"] = f.net_bhc_reform - f.net_bhc_base
     f["recipient"] = f.discount > 0
     f["income_only"] = f.eligible & ~f.passported
@@ -197,13 +200,14 @@ def poverty(run: Run, f: pd.DataFrame | None = None) -> list:
 
 
 def coverage(run: Run, f: pd.DataFrame | None = None) -> list:
-    """How much of each struggling group the scheme reaches, and how many it misses."""
+    """How much of each group in poverty or with high energy costs the scheme reaches,
+    and how many it does not."""
     f = prepare(run) if f is None else f
     rows = []
     for label, mask in {
         "absolute AHC poverty": f.abs_pov_ahc_base,
         "relative AHC poverty": f.rel_pov_ahc_base,
-        "poorest four AHC deciles": f.bottom4,
+        "lowest four AHC deciles": f.bottom4,
         "energy over 10% of net income": f.high_burden,
     }.items():
         rows.append(
@@ -250,9 +254,10 @@ def cliff_thresholds(schedule: dict) -> list:
     return [t[i] for i in range(1, len(t)) if v[i] < v[i - 1]]
 
 
-def dead_zone_width(f: pd.DataFrame, drop: np.ndarray, schedule: dict) -> np.ndarray:
-    """Width, in tested income, of the range above a line where crossing leaves the
-    household worse off: the support lost, grossed up at the top earner's marginal rate.
+def offset_width(f: pd.DataFrame, drop: np.ndarray, schedule: dict) -> np.ndarray:
+    """Width, in tested income, of the range above a line over which the extra income,
+    after tax, is smaller than the support lost: the support lost, grossed up at the top
+    earner's marginal rate.
 
     Under the household-income test, a pound of extra gross income raises tested income
     by one pound divided by the household's equivalisation factor.
@@ -292,8 +297,8 @@ def cliffs(run: Run, f: pd.DataFrame | None = None) -> list:
                 "sample_n": int(m.sum()),
                 "ess": _ess(g.weight),
                 "bottom4_k": _w(g, g.bottom4) / 1e3,
-                "abs_ahc_poor_k": _w(g, g.abs_pov_ahc_base) / 1e3,
-                "rel_ahc_poor_k": _w(g, g.rel_pov_ahc_base) / 1e3,
+                "abs_ahc_poverty_k": _w(g, g.abs_pov_ahc_base) / 1e3,
+                "rel_ahc_poverty_k": _w(g, g.rel_pov_ahc_base) / 1e3,
                 "mean_eq_ahc": float(np.average(g.eq_ahc_base, weights=g.weight))
                 if len(g)
                 else np.nan,
@@ -303,14 +308,16 @@ def cliffs(run: Run, f: pd.DataFrame | None = None) -> list:
             }
         above = exposed & (income >= t)
         near = above & (income < t + 1000)
-        width = dead_zone_width(f, drop, run.schedule)
-        dead = above & (income < t + width) & (drop > 0)
+        width = offset_width(f, drop, run.schedule)
+        offset = above & (income < t + width) & (drop > 0)
         row["mean_drop"] = (
             float(np.average(drop[near], weights=f.weight[near])) if near.any() else 0.0
         )
-        row["dead_zone_k"] = _w(f, dead) / 1e3
-        row["dead_zone_struggling_k"] = _w(f, dead & f.struggling.values) / 1e3
-        row["dead_zone_median_width"] = (
+        row["offset_range_k"] = _w(f, offset) / 1e3
+        row["offset_range_poverty_or_burden_k"] = (
+            _w(f, offset & f.poverty_or_high_burden.values) / 1e3
+        )
+        row["offset_range_median_width"] = (
             float(np.median(width[above & (drop > 0)]))
             if (above & (drop > 0)).any()
             else 0.0
@@ -328,10 +335,10 @@ def breakdown(run: Run, by: str, f: pd.DataFrame | None = None) -> pd.DataFrame:
     near_top = exposed & (f.tested_income >= top) & (f.tested_income < top + 1000)
     below_top = _support_below(f, run.schedule, top) if np.isfinite(top) else 0
     drop = np.maximum(below_top - f.discount.values, 0)
-    dead = (
+    offset = (
         exposed
         & (f.tested_income >= top)
-        & (f.tested_income < top + dead_zone_width(f, drop, run.schedule))
+        & (f.tested_income < top + offset_width(f, drop, run.schedule))
         & (drop > 0)
     )
     people = f.weight * f.n_people
@@ -341,7 +348,7 @@ def breakdown(run: Run, by: str, f: pd.DataFrame | None = None) -> pd.DataFrame:
         g = f[m]
         cost = float((g.discount * g.weight).sum())
         recipients = _w(g, g.recipient)
-        poor = g.abs_pov_ahc_base
+        in_poverty = g.abs_pov_ahc_base
         rows.append(
             {
                 by: REGION_LABELS.get(group, group),
@@ -359,11 +366,14 @@ def breakdown(run: Run, by: str, f: pd.DataFrame | None = None) -> pd.DataFrame:
                     (g.gain * g.weight).sum() / (g.net_bhc_base * g.weight).sum()
                 ),
                 "mean_bill": float(np.average(g.bill, weights=g.weight)),
-                "abs_ahc_poverty_rate": _share(g, poor),
-                "abs_ahc_poor_covered": _share(g, g.recipient, poor),
-                "abs_ahc_poor_missed_k": _w(g, poor & ~g.recipient) / 1e3,
-                "rel_ahc_poor_missed_k": _w(g, g.rel_pov_ahc_base & ~g.recipient) / 1e3,
-                "bottom4_missed_k": _w(g, g.bottom4 & ~g.recipient) / 1e3,
+                "abs_ahc_poverty_rate": _share(g, in_poverty),
+                "abs_ahc_poverty_reached": _share(g, g.recipient, in_poverty),
+                "abs_ahc_poverty_not_reached_k": _w(g, in_poverty & ~g.recipient) / 1e3,
+                "rel_ahc_poverty_not_reached_k": _w(
+                    g, g.rel_pov_ahc_base & ~g.recipient
+                )
+                / 1e3,
+                "bottom4_not_reached_k": _w(g, g.bottom4 & ~g.recipient) / 1e3,
                 "people_out_of_rel_ahc_poverty_k": float(
                     (people[m] * (g.rel_pov_ahc_base & ~g.rel_pov_ahc_reform)).sum()
                     - (people[m] * (~g.rel_pov_ahc_base & g.rel_pov_ahc_reform)).sum()
@@ -376,7 +386,7 @@ def breakdown(run: Run, by: str, f: pd.DataFrame | None = None) -> pd.DataFrame:
                 / 1e3,
                 "just_above_top_threshold_k": _w(f, m & near_top) / 1e3,
                 "just_above_bottom4_k": _w(f, m & near_top & f.bottom4.values) / 1e3,
-                "dead_zone_k": _w(f, m & dead) / 1e3,
+                "offset_range_k": _w(f, m & offset) / 1e3,
             }
         )
     return pd.DataFrame(rows)

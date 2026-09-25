@@ -59,15 +59,12 @@ BREAKDOWN_KEYS = [
     "gain_pct_net_income",
     "mean_bill",
     "abs_ahc_poverty_rate",
-    "abs_ahc_poor_covered",
-    "abs_ahc_poor_missed_k",
-    "rel_ahc_poor_missed_k",
-    "bottom4_missed_k",
+    "abs_ahc_poverty_reached",
+    "abs_ahc_poverty_not_reached_k",
+    "rel_ahc_poverty_not_reached_k",
+    "bottom4_not_reached_k",
     "people_out_of_rel_ahc_poverty_k",
     "people_out_of_abs_ahc_poverty_k",
-    "just_above_top_threshold_k",
-    "just_above_bottom4_k",
-    "dead_zone_k",
 ]
 
 
@@ -195,7 +192,6 @@ def _result(r: dict) -> dict:
             }
             for c in r["coverage"]
         ],
-        "cliffs": r["cliffs"],
         "inequality": r["inequality"],
         "winners_losers": r["winners_losers"],
         "by_region": [

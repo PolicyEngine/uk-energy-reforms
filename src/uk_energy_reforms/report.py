@@ -125,12 +125,12 @@ BREAKDOWN_COLUMNS = {
     "average_per_recipient": "Avg per recipient (GBP)",
     "gain_pct_net_income": "Gain, % net income",
     "mean_bill": "Mean bill (GBP)",
-    "abs_ahc_poor_covered": "Abs. AHC-poor covered",
-    "abs_ahc_poor_missed_k": "Abs. AHC-poor missed (k)",
-    "bottom4_missed_k": "Poorest-4-decile missed (k)",
+    "abs_ahc_poverty_reached": "In abs. AHC poverty, reached",
+    "abs_ahc_poverty_not_reached_k": "In abs. AHC poverty, not reached (k)",
+    "bottom4_not_reached_k": "Lowest-4-decile, not reached (k)",
     "people_out_of_rel_ahc_poverty_k": "People out of rel. AHC poverty (k)",
     "just_above_top_threshold_k": "Within GBP 1k above top line (k)",
-    "dead_zone_k": "Dead zone (k)",
+    "offset_range_k": "Offset range (k)",
 }
 
 
@@ -272,7 +272,11 @@ def markdown(results: dict, year: int) -> str:
                     },
                 )
             )
-            lines += ["", "Coverage of struggling households:", ""]
+            lines += [
+                "",
+                "Coverage of households in poverty or with high energy costs:",
+                "",
+            ]
             lines.append(
                 _table(
                     r["coverage"],
@@ -281,7 +285,7 @@ def markdown(results: dict, year: int) -> str:
                         "households_m": "Households (m)",
                         "covered_by_passport": "Covered by passport",
                         "covered": "Covered",
-                        "missed_m": "Missed (m)",
+                        "missed_m": "Not reached (m)",
                     },
                 )
             )
@@ -293,13 +297,13 @@ def markdown(results: dict, year: int) -> str:
                 lines.append(
                     f"- GBP {c['threshold']:,.0f}: mean drop GBP {c['mean_drop']:.0f}; "
                     f"GBP 1k below {b['1000_below']['households_k']:.0f}k "
-                    f"({b['1000_below']['bottom4_k']:.0f}k poorest-4); GBP 1k above "
+                    f"({b['1000_below']['bottom4_k']:.0f}k lowest-4); GBP 1k above "
                     f"{b['1000_above']['households_k']:.0f}k "
-                    f"({b['1000_above']['bottom4_k']:.0f}k poorest-4, "
-                    f"{b['1000_above']['rel_ahc_poor_k']:.0f}k rel. AHC-poor; "
-                    f"ESS {b['1000_above']['ess']:.0f}); dead zone "
-                    f"{c['dead_zone_k']:.0f}k (median width GBP "
-                    f"{c['dead_zone_median_width']:.0f})."
+                    f"({b['1000_above']['bottom4_k']:.0f}k lowest-4, "
+                    f"{b['1000_above']['rel_ahc_poverty_k']:.0f}k in rel. AHC poverty; "
+                    f"ESS {b['1000_above']['ess']:.0f}); offset range "
+                    f"{c['offset_range_k']:.0f}k (median width GBP "
+                    f"{c['offset_range_median_width']:.0f})."
                 )
             lines.append("")
     return "\n".join(lines)

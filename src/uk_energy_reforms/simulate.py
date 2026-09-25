@@ -114,7 +114,7 @@ def baseline_frame(dataset: str, year: int) -> pd.DataFrame:
         }
     )
     # Whether the highest-income member is over State Pension age (pays no employee
-    # NI), which sets the marginal rate used for dead zones.
+    # NI), which sets the marginal rate used for the offset range.
     top = person.sort_values("total_income", ascending=False, kind="stable")
     counts["top_earner_pensioner"] = top.groupby("household_id").sp_age.first()
     counts["household_type"] = classify(person)

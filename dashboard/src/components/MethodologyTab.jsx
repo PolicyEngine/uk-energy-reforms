@@ -219,12 +219,11 @@ export default function MethodologyTab({ data, dataset }) {
               energy efficiency ratings the data do not have.
             </>,
             <>
-              <strong>Cut-offs.</strong> A household just above a threshold loses the support below
-              it. The dead zone is the range above the line where the household is worse off than
-              one just below it: the support lost, grossed up at 28% (basic-rate tax and employee
-              National Insurance), or 20% where the highest earner is over State Pension age. Counts
-              in narrow income bands rest on few survey records, and the tab flags bands with an
-              effective sample below 30.
+              <strong>Support by income.</strong> The &ldquo;Your household&rdquo; tab plots the
+              discount a described household would receive as one adult&apos;s taxable income
+              changes, with everything else held fixed. Support stops, or drops to a lower tier,
+              where the tested income reaches a line. A passported household qualifies at any
+              income, so its line is flat.
             </>,
           ]}
         />

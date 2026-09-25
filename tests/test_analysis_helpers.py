@@ -103,7 +103,7 @@ def test_no_cliffs_without_an_income_test():
     assert analysis.cliff_thresholds(schedule) == []
 
 
-def test_dead_zone_width_uses_the_top_earners_marginal_rate():
+def test_offset_width_uses_the_top_earners_marginal_rate():
     """£175 lost: a pensioner top earner (basic rate, no NI) needs £175 / 0.80 = £218.75
     more gross income; a working-age one (basic rate + 8% NI) £175 / 0.72 = £243.06.
     Under the household-income test the width is in equivalised income."""
@@ -114,10 +114,10 @@ def test_dead_zone_width_uses_the_top_earners_marginal_rate():
         }
     )
     drop = np.array([175.0, 175.0, 175.0])
-    widths = analysis.dead_zone_width(frame, drop, {"household_equivalised": False})
+    widths = analysis.offset_width(frame, drop, {"household_equivalised": False})
     assert widths[0] == pytest.approx(218.75)
     assert widths[1] == pytest.approx(175 / 0.72)
-    household = analysis.dead_zone_width(frame, drop, {"household_equivalised": True})
+    household = analysis.offset_width(frame, drop, {"household_equivalised": True})
     assert household[2] == pytest.approx(175 / 0.72 / 1.4)
 
 

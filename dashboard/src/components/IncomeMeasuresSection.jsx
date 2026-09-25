@@ -118,7 +118,7 @@ export default function IncomeMeasuresSection({ data, dataset, year, preset, var
         <SectionHeading
           size="lg"
           title="Eligibility across income measures"
-          description="The income test looks at the highest taxable income of anyone in the household. These charts rank households by three wider measures of household income instead, to show which households the rules reach or leave out across each distribution."
+          description="The income test looks at the highest taxable income of anyone in the household. These charts rank households by three wider measures of household income instead, to show which households the rules reach, and which they do not, across each distribution."
         />
       </div>
 

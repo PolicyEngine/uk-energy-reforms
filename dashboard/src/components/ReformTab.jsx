@@ -1,20 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import {
-  Bar,
-  BarChart,
-  CartesianGrid,
-  LabelList,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
-import { colors, series } from "../lib/colors";
+import { series } from "../lib/colors";
 import {
   DEFAULT_DATASET,
-  THIN_ESS,
   DATASET_SHORT,
   PRESET_NOTES,
   PRESET_ORDER,
@@ -33,7 +22,6 @@ import {
 } from "../lib/formatters";
 import ChartLogo from "./ChartLogo";
 import IncomeMeasuresSection from "./IncomeMeasuresSection";
-import { AXIS_STYLE, GRID_STYLE, TOOLTIP_CONTAINER_STYLE } from "./charts/chartDefaults";
 import PEImpactBarChart from "./charts/PEImpactBarChart";
 import PEWinnersLosersChart from "./charts/PEWinnersLosersChart";
 import SectionHeading from "./SectionHeading";
@@ -42,7 +30,7 @@ import { Legend, MetricCard, Note, SplitBar, Table, TableToggle, Toggle, Warning
 const COVERAGE_LABELS = {
   "absolute AHC poverty": "Households in absolute poverty after housing costs",
   "relative AHC poverty": "Households in relative poverty after housing costs",
-  "poorest four AHC deciles": "Households in the four lowest income deciles",
+  "lowest four AHC deciles": "Households in the four lowest income deciles",
   "energy over 10% of net income": "Households spending over 10% of net income on energy",
 };
 
@@ -182,8 +170,8 @@ function BillSharePriceNote({ data, dataset, result }) {
 
 function Headline({ result, levels }) {
   const h = result.headline;
-  const rel = result.poverty.find((p) => p.measure === "rel_pov_ahc" && p.group === "people");
-  const kids = result.poverty.find((p) => p.measure === "rel_pov_ahc" && p.group === "children");
+  const pov = result.poverty.find((p) => p.measure === "abs_pov_bhc" && p.group === "people");
+  const kids = result.poverty.find((p) => p.measure === "abs_pov_bhc" && p.group === "children");
   return (
     <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
       <MetricCard label="Cost" value={formatBn(h.cost_bn)} note="Total support paid in the year." />
@@ -198,8 +186,8 @@ function Headline({ result, levels }) {
         note={`${formatShare(h.passported_share)} passported by a benefit; ${formatShare(h.income_only_share)} through the income test alone.`}
       />
       <MetricCard
-        label="People in relative poverty (after housing costs)"
-        value={rel ? formatSignedThousands(rel.change_k) : "n/a"}
+        label="People in absolute poverty (before housing costs)"
+        value={pov ? formatSignedThousands(pov.change_k) : "n/a"}
         note={kids ? `${formatSignedThousands(kids.change_k)} children.` : undefined}
       />
     </div>
@@ -313,8 +301,20 @@ function InequalitySection({ result }) {
 
 const POVERTY_CHART_GROUPS = ["children", "working_age_adults", "pensioners", "people"];
 
+const POVERTY_TYPES = [
+  { value: "abs", label: "Absolute poverty" },
+  { value: "rel", label: "Relative poverty" },
+];
+
+const HOUSING_BASES = [
+  { value: "bhc", label: "Before housing costs" },
+  { value: "ahc", label: "After housing costs" },
+];
+
 function PovertySection({ result }) {
-  const [measure, setMeasure] = useState("rel_pov_ahc");
+  const [type, setType] = useState("abs");
+  const [basis, setBasis] = useState("bhc");
+  const measure = `${type}_pov_${basis}`;
   const rows = result.poverty.filter((p) => p.measure === measure);
   const data = POVERTY_CHART_GROUPS.map((g) => rows.find((p) => p.group === g))
     .filter(Boolean)
@@ -333,11 +333,10 @@ function PovertySection({ result }) {
         title="Poverty"
         description="How far the poverty rate falls for each age group, relative to its level before the discount. The discount counts as household income, as DWP counts the Warm Home Discount. Relative poverty uses 60% of the baseline median; absolute poverty uses the 2010-11 line uprated by CPI."
       />
-      <Toggle
-        value={measure}
-        onChange={setMeasure}
-        options={Object.entries(POVERTY_MEASURES).map(([value, label]) => ({ value, label }))}
-      />
+      <div className="grid gap-5 md:grid-cols-2">
+        <Toggle label="Poverty line" value={type} onChange={setType} options={POVERTY_TYPES} />
+        <Toggle label="Housing costs" value={basis} onChange={setBasis} options={HOUSING_BASES} />
+      </div>
       <PEImpactBarChart
         data={data}
         horizontal
@@ -383,13 +382,13 @@ function ReachSection({ result, isPassportOnly }) {
     <section className="section-card space-y-5">
       <SectionHeading
         title="Who the discount reaches among low-income households and those with high energy costs"
-        description="Each bar below is one group of households, such as those in poverty. The bar is split by how households in that group fare under the option: the dark teal part receives the discount because it gets a means-tested benefit, the light teal part qualifies through the income test alone, and the grey part gets nothing."
+        description="Each bar below is one group of households, such as those in poverty. The bar is split by how households in that group fare under the option: the dark teal part receives the discount because it gets a means-tested benefit, the light teal part qualifies through the income test alone, and the grey part does not qualify."
       />
       <Legend
         items={[
           { label: "Passported by a means-tested benefit", color: series.a },
           { label: "Qualifies through the income test alone", color: series.b },
-          { label: "Gets nothing", color: series.neutral },
+          { label: "Does not qualify", color: series.neutral },
         ]}
       />
       <div className="space-y-5">
@@ -401,13 +400,13 @@ function ReachSection({ result, isPassportOnly }) {
             <div key={c.group}>
               <p className="mb-2 text-sm font-semibold text-slate-800">
                 {COVERAGE_LABELS[c.group] ?? c.group} ({formatMillions(c.households_m)}):{" "}
-                {formatMillions(c.missed_m, 2)} get nothing
+                {formatMillions(c.missed_m, 2)} do not qualify
               </p>
               <SplitBar
                 segments={[
                   { key: "p", label: "Passported", value: passport, color: series.a },
                   { key: "i", label: "Income test alone", value: incomeOnly, color: series.b },
-                  { key: "n", label: "Gets nothing", value: missed, color: series.neutral },
+                  { key: "n", label: "Does not qualify", value: missed, color: series.neutral },
                 ]}
               />
             </div>
@@ -420,11 +419,14 @@ function ReachSection({ result, isPassportOnly }) {
 
 function BreakdownSection({ result }) {
   const [by, setBy] = useState("region");
-  const rows = (by === "region" ? result.by_region : result.by_household_type).map((r) => ({
-    ...r,
-    key: r.group,
-    income_only_rate: Math.max(r.eligible_rate - r.passported_rate, 0),
-  }));
+  // Ordered by the share passported, the first segment of each bar, highest first.
+  const rows = (by === "region" ? result.by_region : result.by_household_type)
+    .map((r) => ({
+      ...r,
+      key: r.group,
+      income_only_rate: Math.max(r.eligible_rate - r.passported_rate, 0),
+    }))
+    .sort((a, b) => b.passported_rate - a.passported_rate);
   return (
     <section className="section-card space-y-5">
       <SectionHeading
@@ -518,13 +520,13 @@ function BreakdownSection({ result }) {
               format: (v) => `${(100 * v).toFixed(2)}%`,
             },
             {
-              key: "abs_ahc_poor_covered",
+              key: "abs_ahc_poverty_reached",
               header: "In poverty, reached",
               align: "right",
               format: (v) => formatShare(v),
             },
             {
-              key: "abs_ahc_poor_missed_k",
+              key: "abs_ahc_poverty_not_reached_k",
               header: "In poverty, not reached",
               align: "right",
               format: (v) => formatThousands(v),
@@ -547,139 +549,6 @@ function BreakdownSection({ result }) {
       </TableToggle>
     </section>
   );
-}
-
-function ThresholdSection({ result }) {
-  if (!result.cliffs.length) {
-    return (
-      <section className="section-card">
-        <SectionHeading
-          title="Income cut-offs"
-          description="This option has no income test, so no household gains or loses support by crossing an income line."
-        />
-      </section>
-    );
-  }
-  return result.cliffs.map((c) => {
-    const b = c.bands;
-    const gbp = (v) => `£${Math.round(v).toLocaleString("en-GB")}`;
-    const rows = [
-      {
-        group: `${gbp(c.threshold - 1000)} to ${gbp(c.threshold - 1)}`,
-        households: b["1000_below"].households_k,
-        lowest: b["1000_below"].bottom4_k,
-      },
-      {
-        group: `${gbp(c.threshold)} to ${gbp(c.threshold + 999)}`,
-        households: b["1000_above"].households_k,
-        lowest: b["1000_above"].bottom4_k,
-      },
-    ];
-    return (
-      <section key={c.threshold} className="section-card space-y-4">
-        <SectionHeading
-          title={`The ${gbp(c.threshold)} cut-off`}
-          description={`Households not on a passporting benefit whose tested income is within £1,000 of the line. Crossing it lowers support by ${formatCurrency(c.mean_drop)} on average for households just above.`}
-        />
-        {b["1000_above"].ess < THIN_ESS && (
-          <Warning>
-            The effective sample within £1,000 above this line is {Math.round(b["1000_above"].ess)}{" "}
-            households in this dataset, so these figures are shown for completeness; the written
-            analysis quotes Microcosm&apos;s.
-          </Warning>
-        )}
-        <div className="grid gap-4 md:grid-cols-3">
-          <MetricCard
-            label="Households within £1,000 above"
-            value={formatThousands(b["1000_above"].households_k)}
-          />
-          <MetricCard
-            label="…of which in the four lowest income deciles"
-            value={formatThousands(b["1000_above"].bottom4_k)}
-            note={`${formatThousands(b["1000_above"].rel_ahc_poor_k)} in relative poverty after housing costs.`}
-          />
-          <MetricCard
-            label="Households in the dead zone"
-            value={formatThousands(c.dead_zone_k)}
-            note={`Median width ${formatCurrency(c.dead_zone_median_width)} of extra income.`}
-          />
-        </div>
-        <div className="h-[220px] w-full">
-          <ResponsiveContainer>
-            <BarChart
-              layout="vertical"
-              data={rows}
-              margin={{ top: 10, right: 56, bottom: 10, left: 4 }}
-              barGap={2}
-              barCategoryGap={14}
-            >
-              <CartesianGrid {...GRID_STYLE} horizontal={false} />
-              <XAxis
-                type="number"
-                tick={AXIS_STYLE}
-                tickFormatter={formatThousands}
-                tickLine={false}
-                axisLine={{ stroke: colors.border.light }}
-              />
-              <YAxis
-                type="category"
-                dataKey="group"
-                tick={AXIS_STYLE}
-                tickLine={false}
-                axisLine={{ stroke: colors.border.light }}
-                width={150}
-              />
-              <Tooltip
-                contentStyle={TOOLTIP_CONTAINER_STYLE}
-                formatter={(v, name) => [formatThousands(v), name]}
-              />
-              <Bar
-                dataKey="households"
-                name="Households not passported"
-                fill={series.a}
-                radius={[0, 4, 4, 0]}
-                isAnimationActive={false}
-              >
-                <LabelList
-                  dataKey="households"
-                  position="right"
-                  formatter={formatThousands}
-                  style={{ fontSize: 12, fill: colors.gray[700] }}
-                />
-              </Bar>
-              <Bar
-                dataKey="lowest"
-                name="Of which in the four lowest income deciles"
-                fill={series.b}
-                radius={[0, 4, 4, 0]}
-                isAnimationActive={false}
-              >
-                <LabelList
-                  dataKey="lowest"
-                  position="right"
-                  formatter={formatThousands}
-                  style={{ fontSize: 12, fill: colors.gray[700] }}
-                />
-              </Bar>
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
-        <Legend
-          items={[
-            { label: "Households not passported", color: series.a },
-            { label: "Of which in the four lowest income deciles", color: series.b },
-          ]}
-        />
-        <ChartLogo />
-        <p className="text-xs leading-5 text-slate-500">
-          The dead zone is the income range just above the line where the household&apos;s top
-          earner would need more extra gross pay than the support lost to break even: 20% income tax
-          plus 8% National Insurance, or 20% for a top earner over State Pension age. Effective
-          sample size within £1,000 above: {Math.round(b["1000_above"].ess)}.
-        </p>
-      </section>
-    );
-  });
 }
 
 export default function ReformTab({ data, dataset }) {
@@ -737,14 +606,6 @@ export default function ReformTab({ data, dataset }) {
             schedule={result.schedule}
           />
           <BreakdownSection result={result} />
-          <div className="pt-2">
-            <SectionHeading
-              size="lg"
-              title="Income cut-offs"
-              description="Support stops (or drops a tier) as soon as tested income reaches a line, so households just above a line lose the whole amount."
-            />
-          </div>
-          <ThresholdSection result={result} />
         </>
       )}
     </div>

@@ -1,10 +1,12 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { targetedEnergyDiscount } from "../lib/calculator";
+import { supportCurve, supportSteps, targetedEnergyDiscount } from "../lib/calculator";
 import { explain } from "../lib/explain";
 import { PRESET_ORDER, getBaseline, getResult, yearLabel } from "../lib/dataHelpers";
 import { formatCurrency } from "../lib/formatters";
+import SupportByIncomeChart from "./charts/SupportByIncomeChart";
+import ChartLogo from "./ChartLogo";
 import SectionHeading from "./SectionHeading";
 import { Note, Table, Toggle } from "./ui";
 
@@ -53,6 +55,24 @@ function NumberField({ label, value, onChange, step = 1000, min = 0, prefix }) {
   );
 }
 
+const gbp = (v) => `£${Math.round(v).toLocaleString("en-GB")}`;
+
+/** Plain description of the steps along a support curve. */
+function describeSteps(steps) {
+  if (steps.length === 1) {
+    return steps[0].amount > 0
+      ? `${gbp(steps[0].amount)} at every income shown.`
+      : "No support at any income shown.";
+  }
+  const parts = steps.map((s, i) => {
+    const value = s.amount > 0 ? gbp(s.amount) : "no support";
+    if (i === 0) return `${value} up to ${gbp(steps[1].from - 1)}`;
+    if (s.to == null) return `${value} from ${gbp(s.from)}`;
+    return `${value} from ${gbp(s.from)} to ${gbp(steps[i + 1].from - 1)}`;
+  });
+  return `${parts.join("; ")}.`;
+}
+
 function sameHousehold(a, b) {
   return JSON.stringify(a) === JSON.stringify(b);
 }
@@ -71,6 +91,7 @@ export default function HouseholdTab({ data, calculator, dataset }) {
   // Results follow the household as last calculated, not every keystroke.
   const [household, setHousehold] = useState(draft);
   const [focus, setFocus] = useState("rf_flat");
+  const [varied, setVaried] = useState(0);
   const edit = (patch) => setDraft((d) => ({ ...d, ...patch }));
   const pending = !sameHousehold(draft, household);
   const scale = calculator?.equivalisation;
@@ -98,6 +119,12 @@ export default function HouseholdTab({ data, calculator, dataset }) {
   const focusSchedule = getResult(data, year, focus, "published", dataset)?.schedule;
   const focusResult =
     focusSchedule && scale ? targetedEnergyDiscount(inputs, focusSchedule, scale) : null;
+  const adult = Math.min(varied, household.adultIncomes.length - 1);
+  const current = household.adultIncomes[adult] ?? 0;
+  const maxIncome = Math.max(60_000, Math.ceil((current * 1.5) / 10_000) * 10_000);
+  const curve =
+    focusSchedule && scale ? supportCurve(inputs, focusSchedule, scale, adult, maxIncome) : [];
+  const steps = supportSteps(curve);
 
   if (!scale) {
     return <p className="section-card text-sm text-slate-500">Calculator data not loaded.</p>;
@@ -267,6 +294,48 @@ export default function HouseholdTab({ data, calculator, dataset }) {
           The model assesses annual income; the proposal assesses the three months before the scheme
           starts. The discount would be paid through energy bills, and the amounts are the
           proposal&apos;s averages for a unit-price cut.
+        </p>
+      </section>
+
+      <section className="section-card space-y-5">
+        <SectionHeading
+          title="How support changes with income"
+          description="The discount this household would receive under the chosen option, at RF's amounts, as one adult's taxable income changes and everything else stays the same."
+        />
+        <div className="grid gap-5 md:grid-cols-2">
+          <Toggle
+            label="Option"
+            value={focus}
+            onChange={setFocus}
+            options={PRESET_ORDER.map((p) => ({ value: p, label: data.meta.presets[p] }))}
+          />
+          {household.adultIncomes.length > 1 && (
+            <Toggle
+              label="Change the income of"
+              value={adult}
+              onChange={setVaried}
+              options={household.adultIncomes.map((_, i) => ({
+                value: i,
+                label: `Adult ${i + 1}`,
+              }))}
+            />
+          )}
+        </div>
+        {curve.length > 0 && (
+          <>
+            <SupportByIncomeChart
+              curve={curve}
+              current={current}
+              maxIncome={maxIncome}
+              who={`Adult ${adult + 1}`}
+            />
+            <ChartLogo />
+            <Note eyebrow="Along the line">{describeSteps(steps)}</Note>
+          </>
+        )}
+        <p className="text-xs leading-5 text-slate-500">
+          Benefit receipt is held fixed. In practice means-tested benefits fall as income rises, so
+          a household passported at its current income may not be at a higher one.
         </p>
       </section>
     </div>

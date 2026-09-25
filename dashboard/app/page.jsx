@@ -119,9 +119,9 @@ function Dashboard() {
             UK microsimulation to estimate each option. The{" "}
             <TabLink onSelect={() => handleTabChange("reform")}>Targeted energy discount</TabLink>{" "}
             tab shows cost, reach, gains by income, winners and losers, inequality, poverty,
-            regional and household breakdowns and the income cut-offs. The{" "}
+            eligibility across income measures, and regional and household breakdowns. The{" "}
             <TabLink onSelect={() => handleTabChange("household")}>Your household</TabLink> tab
-            works out the discount for a household you describe. The{" "}
+            works out the discount for a household you describe and how it changes with income. The{" "}
             <TabLink onSelect={() => handleTabChange("baseline")}>Baseline and comparisons</TabLink>{" "}
             tab sets out the households and energy bills in the model and compares them with
             official statistics and with the Resolution Foundation&apos;s own figures, and the{" "}

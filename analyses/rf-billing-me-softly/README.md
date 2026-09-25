@@ -252,10 +252,12 @@ cross-tabulation of equivalised against unequivalised income, and the make-up of
   - Households either side of a line look alike. On Microcosm, 44% of non-passported
     households within £1,000 below £24,000 are in the four lowest income deciles, against 49%
     within £1,000 above.
-- **Dead zones** (Microcosm). These are households whose top earner would need more extra
-  gross pay than the support lost to break even. The marginal rate is 28% (basic-rate tax
-  plus 8% employee NI), or 20% where the top earner is over State Pension age and pays no
-  NI; a pensioner's zone is £219 wide rather than £243 for £175 of support.
+- **Offset range** (Microcosm). Just above a line, a household's extra income after tax is
+  smaller than the support it no longer receives. The offset range is the band of tested
+  income over which that holds: the support lost grossed up at the top earner's marginal
+  rate of 28% (basic-rate tax plus 8% employee NI), or 20% where the top earner is over
+  State Pension age and pays no NI. For £175 of support it is £243 wide, or £219 for a
+  pensioner. Households in that band:
   - flat option: 50k households at £24,000;
   - tiered option: 64k at £18,000 plus 26k at £24,000.
 - **Bill-share delivery.** The report proposes a cut in unit prices (pence per kWh). The
@@ -274,8 +276,8 @@ cross-tabulation of equivalised against unequivalised income, and the make-up of
     (Microcosm).
   - Support then follows bills: single adults average £124 and couples with children £252
     (Microcosm, flat option).
-  - Dead zones rise from 50k to 85k, because households with high bills lose more at the
-    line.
+  - Households in the offset range rise from 50k to 85k, because households with high bills
+    receive more below the line.
   - Brackets paying the same fixed amount share one rate, so averages match across those
     brackets combined, not within each. On the Enhanced FRS the two flat brackets average
     £169 and £281.
