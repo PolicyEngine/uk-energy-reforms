@@ -14,6 +14,7 @@ import {
 import { colors, series } from "../lib/colors";
 import {
   DEFAULT_DATASET,
+  THIN_ESS,
   DATASET_SHORT,
   PRESET_NOTES,
   PRESET_ORDER,
@@ -31,14 +32,12 @@ import {
   formatThousands,
 } from "../lib/formatters";
 import ChartLogo from "./ChartLogo";
+import IncomeMeasuresSection from "./IncomeMeasuresSection";
 import { AXIS_STYLE, GRID_STYLE, TOOLTIP_CONTAINER_STYLE } from "./charts/chartDefaults";
 import PEImpactBarChart from "./charts/PEImpactBarChart";
 import PEWinnersLosersChart from "./charts/PEWinnersLosersChart";
 import SectionHeading from "./SectionHeading";
 import { Legend, MetricCard, Note, SplitBar, Table, TableToggle, Toggle, Warning } from "./ui";
-
-// Below this effective sample size a band estimate rests on very few survey records.
-const THIN_ESS = 30;
 
 const COVERAGE_LABELS = {
   "absolute AHC poverty": "Households in absolute poverty after housing costs",
@@ -729,6 +728,14 @@ export default function ReformTab({ data, dataset }) {
             <SectionHeading size="lg" title="Reach and targeting" />
           </div>
           <ReachSection result={result} isPassportOnly={!result.schedule.income_test} />
+          <IncomeMeasuresSection
+            data={data}
+            dataset={dataset}
+            year={state.year}
+            preset={state.preset}
+            variant={state.variant}
+            schedule={result.schedule}
+          />
           <BreakdownSection result={result} />
           <div className="pt-2">
             <SectionHeading

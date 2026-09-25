@@ -230,6 +230,54 @@ export default function MethodologyTab({ data, dataset }) {
         />
       </Section>
 
+      <Section title="Income measures">
+        <Bullets
+          items={[
+            <>
+              <strong>How PolicyEngine equivalises.</strong> Equivalised income divides household
+              net income by the modified OECD scale that DWP uses in Households Below Average
+              Income. Before housing costs the first adult counts 0.67, each other adult and each
+              child aged 14 to 17 counts 0.33, and each child under 14 counts 0.2. After housing
+              costs the weights are 0.58, 0.42, 0.42 and 0.2. Adults and children are told apart by
+              age alone (18 and over is an adult). The scale is centred on a childless couple (0.67
+              + 0.33 = 1), so a single adult&apos;s income is divided by 0.67.
+            </>,
+            <>
+              <strong>What is equivalised.</strong> Only net income is: household net income under
+              the HBAI definition, before and after housing costs. Gross, market and taxable income
+              are never equivalised in policyengine-uk. The household-income option&apos;s test
+              divides household taxable income by the before-housing-costs scale.
+            </>,
+            <>
+              <strong>Measures compared.</strong> The section on eligibility across income measures
+              ranks households by five incomes before the discount: equivalised net income before
+              and after housing costs; the same net income without the size adjustment; and
+              household taxable income, the sum of everyone&apos;s taxable income (the income the
+              test looks at for one person).
+            </>,
+            <>
+              <strong>Household deciles.</strong> In that section each decile holds a tenth of GB
+              households, because eligibility and payment are per household; it is the convention of
+              the ONS&apos;s Effects of taxes and benefits. PolicyEngine&apos;s own
+              household_income_decile, HBAI and the other decile charts on this page hold a tenth of
+              people instead. Households with the same income always share a decile, so the lowest
+              taxable-income decile, which holds every household without taxable income, can hold
+              more than a tenth.
+            </>,
+            <>
+              <strong>Three groups.</strong> &ldquo;Do not qualify, lowest three deciles&rdquo;
+              counts households in deciles 1 to 3 of the chosen measure that neither receive a
+              passporting benefit nor pass the income test. &ldquo;Income test alone, top
+              half&rdquo; counts households in deciles 6 to 10 that qualify only because their
+              highest earner is below the line, and &ldquo;Passported, top half&rdquo; those in
+              deciles 6 to 10 that qualify because someone in them receives a passporting benefit.
+              Some patterns follow from the rule itself rather than the data: under the individual
+              test, a household whose combined taxable income is below £24,000 always qualifies.
+            </>,
+          ]}
+        />
+      </Section>
+
       <Section title="Years and data">
         <Bullets
           items={[

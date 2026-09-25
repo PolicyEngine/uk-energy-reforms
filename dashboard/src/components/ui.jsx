@@ -62,7 +62,7 @@ export function Warning({ children }) {
 }
 
 // Dark ink on light fills, white on dark ones (relative luminance above 0.3 counts as light).
-function textOn(hex) {
+export function textOn(hex) {
   const channel = (i) => {
     const c = parseInt(hex.slice(i, i + 2), 16) / 255;
     return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
