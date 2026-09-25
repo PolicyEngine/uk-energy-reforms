@@ -170,6 +170,67 @@ Eligibility rates within household types agree across the two datasets; counts d
 - **Couples without children:** 16% / 15% eligible. 599k / 757k of them are in the four
   lowest income deciles and unreached.
 
+## Eligibility across income measures (flat option)
+
+The income test looks at one person's taxable income. To see which households that reaches
+or leaves out, households are ranked by five wider measures of household income before the
+discount:
+
+- equivalised household net income, before and after housing costs, using the modified
+  OECD scale policyengine-uk shares with DWP's HBAI;
+- the same net income without the size adjustment;
+- household taxable income, summed over members.
+
+Each decile holds a tenth of GB households, because eligibility and payment are per
+household. Figures are 2026-27, Microcosm / Enhanced FRS.
+
+- **Eligibility across the distribution.** On equivalised income before housing costs,
+  eligibility falls from 96% / 97% of households in the lowest decile to 6% / 3% in the
+  highest. The lowest three deciles receive 59% / 62% of spending and the top half 19% /
+  15%.
+- **Households in the lowest three deciles that do not qualify:** 1.16m / 1.01m, or 13% /
+  11% of those deciles.
+  - They include 1.12m / 0.96m children, and 51% / 67% of them are in relative poverty after
+    housing costs.
+  - Most are couples with children (44% on both datasets).
+  - In 69% of them (both datasets) two or more members have taxable income, and the highest
+    earner averages £32,700 / £36,300, above the line.
+  - After housing costs the group is 1.59m / 1.38m (19% / 15% of the lowest three deciles).
+  - Counted the HBAI way, with deciles of people rather than households, 1.61m households
+    in the lowest three deciles do not qualify: 22% of the people in them (Microcosm).
+- **Households in the top half that qualify through the income test alone:** few.
+  - 0.17m / 0.21m households: 4% of those qualifying through the income test alone, and
+    1.4% / 2% of spending.
+  - Most are pensioner couples (57%, Microcosm).
+  - 61% / 43% have two or more members with taxable income above £12,570.
+  - These figures rest on few survey records (effective samples of 29 / 5).
+- **Households in the top half that qualify through passporting:** many more.
+  - 2.22m / 1.74m households: 28% / 22% of passported households, and 18% / 13% of
+    spending.
+  - On Microcosm, 46% are multi-family households. There, one benefit unit's Universal
+    Credit, Pension Credit or Housing Benefit passports a household whose combined taxable
+    income averages £54,200.
+  - On the Enhanced FRS the group is mostly single pensioners and single adults, and rests
+    on few records (effective sample 27). The difference follows the datasets' share of
+    multi-family households (21% / 9%).
+- **Unequivalised income changes who looks low-income.**
+  - Ranked by household net income without the size adjustment, the households left out in
+    the lowest three deciles are mostly single adults and single pensioners (79% / 78%) with
+    one income (85% / 83%). A single earner just above £24,000 has a low household income,
+    but not once household size is counted.
+  - Ranked by household taxable income, almost no household in the lowest three deciles is
+    left out (0.10m / none). That follows from the rule: if combined taxable income is below
+    £24,000, every member's is too.
+- **Other rules, on equivalised income before housing costs.**
+  - The household-income test leaves out more households in the lowest three deciles
+    (1.53m / 1.20m, against 1.16m / 1.01m).
+  - It all but removes top-half households qualifying through the income test (0.03m /
+    0.04m).
+  - Passporting alone leaves out 4.99m / 4.91m, or 58% / 53% of the lowest three deciles.
+
+The dashboard section "Eligibility across income measures" shows every measure, a
+cross-tabulation of equivalised against unequivalised income, and the make-up of each group.
+
 ## The tiered option and income thresholds
 
 - **Targeting at equal cost (£2bn).** The share of spending that reaches the four lowest income
@@ -272,6 +333,19 @@ uv run uk-energy-reforms export-dashboard --analysis analyses/rf-billing-me-soft
   change). Gini coefficients and top-10% and top-1% income shares use equivalised household
   net income, weighted by people in Great Britain; the record straddling a top-share
   cut-off counts in proportion to the weight inside it.
+- **Income measures.** Households are ranked by baseline (pre-discount) income.
+  - Equivalised HBAI net income is divided by the modified OECD scale:
+    - before housing costs: 0.67 for the first adult, 0.33 for each other adult and each
+      child aged 14 to 17, and 0.2 for each younger child;
+    - after housing costs: 0.58, 0.42 and 0.2.
+  - Household taxable income sums members' `total_income`.
+  - Deciles are household-weighted, and tied incomes share a decile.
+  - The three groups are:
+    - households in deciles 1–3 that neither are passported nor pass the income test;
+    - households in deciles 6–10 that qualify through the income test alone;
+    - households in deciles 6–10 that qualify through passporting.
+  - Means are withheld below an effective sample of 30. `analysis.income_distributions`
+    writes every figure.
 - **Receipts.** `results-2026/report.md`, `results-2027/report.md` and
   `results-2024/report.md` hold every table,
   including effective sample sizes. `results.json` holds the raw numbers.

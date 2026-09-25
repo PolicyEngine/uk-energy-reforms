@@ -14,9 +14,12 @@ from uk_energy_reforms.reforms.targeted_energy_discount import DESCRIPTIONS, pre
 from uk_energy_reforms.simulate import Run, run
 
 
-def results_for(r: Run) -> dict:
+def results_for(r: Run, distributions: bool = False) -> dict:
+    """Every measure for one run. ``distributions`` adds eligibility across income
+    measures, which depends only on eligibility, so it is computed for the run at the
+    published amounts and not repeated for the bill-share and budget variants."""
     f = analysis.prepare(r)
-    return {
+    out = {
         "dataset": r.dataset,
         "year": r.year,
         "take_up": r.take_up,
@@ -35,6 +38,9 @@ def results_for(r: Run) -> dict:
             orient="records"
         ),
     }
+    if distributions:
+        out["income_distributions"] = analysis.income_distributions(r, f)
+    return out
 
 
 def scenarios(
@@ -50,7 +56,7 @@ def scenarios(
     for dataset in datasets:
         for name in presets:
             fixed = run(dataset, year, preset(name), take_up=take_up)
-            out.setdefault(name, {})[dataset] = results_for(fixed)
+            out.setdefault(name, {})[dataset] = results_for(fixed, distributions=True)
             if bill_share:
                 rate = run(
                     dataset, year, calibrate.bill_share_changes(fixed), take_up=take_up
@@ -126,6 +132,60 @@ BREAKDOWN_COLUMNS = {
     "just_above_top_threshold_k": "Within GBP 1k above top line (k)",
     "dead_zone_k": "Dead zone (k)",
 }
+
+
+DISTRIBUTION_LABELS = {
+    "eq_bhc": "equivalised net income, before housing costs",
+    "eq_ahc": "equivalised net income, after housing costs",
+    "net_bhc": "household net income, before housing costs (not equivalised)",
+    "net_ahc": "household net income, after housing costs (not equivalised)",
+    "taxable": "household taxable income (members' total_income summed)",
+}
+
+
+def _distribution_lines(d: dict) -> list:
+    """Eligibility by household decile on two measures, and the two groups where
+    eligibility and income diverge on every measure."""
+    lines = []
+    for key in ["eq_ahc", "taxable"]:
+        lines += [
+            "",
+            f"Eligibility by household decile of {DISTRIBUTION_LABELS[key]}:",
+            "",
+        ]
+        lines.append(
+            _table(
+                d["distributions"][key]["deciles"],
+                {
+                    "decile": "Decile",
+                    "households_m": "Households (m)",
+                    "passported": "Passported share",
+                    "income_only": "Income test only share",
+                    "not_eligible": "Not eligible share",
+                    "cost_share": "Share of cost",
+                    "ess": "ESS",
+                },
+            )
+        )
+    lines += ["", "Where eligibility and income diverge (household deciles):", ""]
+    for key, label in DISTRIBUTION_LABELS.items():
+        low = d["distributions"][key]["low_not_eligible"]
+        top = d["distributions"][key]["top_income_only"]
+        passported = d["distributions"][key]["top_passported"]
+        share = top["cost_share"] or 0
+        lines.append(
+            f"- {label}: not eligible in deciles 1-3 {low['households_m']:.2f}m "
+            f"({100 * (low['share_of_base'] or 0):.0f}% of those deciles; ESS "
+            f"{low['ess']:.0f}); eligible through the income test alone in deciles "
+            f"6-10 {top['households_m']:.2f}m ({100 * (top['share_of_base'] or 0):.0f}% "
+            f"of income-test-only households, {100 * share:.1f}% of cost; ESS "
+            f"{top['ess']:.0f}); passported in deciles 6-10 "
+            f"{passported['households_m']:.2f}m "
+            f"({100 * (passported['share_of_base'] or 0):.0f}% of passported households, "
+            f"{100 * (passported['cost_share'] or 0):.1f}% of cost; ESS "
+            f"{passported['ess']:.0f})."
+        )
+    return lines
 
 
 def markdown(results: dict, year: int) -> str:
@@ -225,6 +285,8 @@ def markdown(results: dict, year: int) -> str:
                     },
                 )
             )
+            if "income_distributions" in r:
+                lines += _distribution_lines(r["income_distributions"])
             lines += ["", "Cliff edges (households on the schedule by own income):", ""]
             for c in r["cliffs"]:
                 b = c["bands"]

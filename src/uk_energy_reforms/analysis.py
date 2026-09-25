@@ -520,3 +520,231 @@ def baseline_summary(run: Run, f: pd.DataFrame | None = None) -> dict:
         "bill_by_household_type": _bill_by(f, "household_type", HOUSEHOLD_TYPES),
         "bill_by_tenure": _bill_by(f, "tenure", sorted(f.tenure.unique())),
     }
+
+
+# Eligibility across income measures. Five baseline (pre-discount) income distributions,
+# each cut into household-weighted groups (a decile holds a tenth of GB households):
+# equivalised HBAI net income before and after housing costs, the same income not
+# equivalised, and household taxable income (members' total_income summed: the income
+# test's own concept applied to the whole household, with no housing-cost version).
+# Households are weighted once because eligibility and payment are per household; the
+# person-weighted deciles elsewhere in this module follow the HBAI convention instead.
+DISTRIBUTIONS = {
+    "eq_bhc": "eq_bhc_base",
+    "eq_ahc": "eq_ahc_base",
+    "net_bhc": "net_bhc_base",
+    "net_ahc": "net_ahc_base",
+    "taxable": "taxable_income",
+}
+CROSSTABS = [
+    ("eq_bhc", "net_bhc"),
+    ("eq_bhc", "taxable"),
+    ("eq_ahc", "net_ahc"),
+    ("eq_ahc", "taxable"),
+]
+LOW_DECILES = 3  # "the lowest three deciles"
+TOP_HALF_FROM = 6  # deciles 6 to 10
+PERSONAL_ALLOWANCE = 12_570
+THIN_ESS = 30  # below this effective sample size, means are withheld
+INCOME_COUNTS = ["0", "1", "2", "3+"]
+
+
+def _quantile_groups(values, weights, n: int) -> np.ndarray:
+    """Groups 1..n by the weight share strictly below each value, so tied values (for
+    example the many households with no taxable income) always share a group."""
+    values = np.asarray(values, dtype=float)
+    weights = np.asarray(weights, dtype=float)
+    order = np.argsort(values, kind="stable")
+    v, w = values[order], weights[order]
+    cum = np.cumsum(w)
+    first = np.searchsorted(v, v, side="left")
+    below = np.where(first > 0, cum[np.maximum(first - 1, 0)], 0.0) / cum[-1]
+    out = np.empty(len(values), dtype=int)
+    out[order] = np.minimum((below * n + 1e-9).astype(int) + 1, n)
+    return out
+
+
+def _cut_points(values, weights, n: int) -> list:
+    """Weighted quantiles at 1/n … (n-1)/n, rounded to £100 (no single record's
+    income is exported)."""
+    values = np.asarray(values, dtype=float)
+    weights = np.asarray(weights, dtype=float)
+    return [
+        float(round(_weighted_quantile(values, weights, k / n), -2))
+        for k in range(1, n)
+    ]
+
+
+def _shares_by(f: pd.DataFrame, column: str, groups) -> dict:
+    total = f.weight.sum()
+    return {
+        str(g): float(f.weight[f[column] == g].sum() / total) if total else None
+        for g in groups
+    }
+
+
+def _income_count(f: pd.DataFrame) -> pd.Series:
+    return f.n_incomes.clip(upper=3).map({0: "0", 1: "1", 2: "2", 3: "3+"})
+
+
+def _decile_rows(f: pd.DataFrame, groups: np.ndarray, n: int, total_cost: float):
+    rows = []
+    for g in range(1, n + 1):
+        d = f[groups == g]
+        w = d.weight
+        hh = float(w.sum())
+        rows.append(
+            {
+                "decile": g,
+                "households_m": hh / 1e6,
+                "people_m": float((w * d.n_people).sum() / 1e6),
+                "sample_n": len(d),
+                "ess": _ess(w),
+                "passported": _share(d, d.eligible & d.passported) if hh else None,
+                "income_only": _share(d, d.income_only) if hh else None,
+                "not_eligible": _share(d, ~d.eligible.astype(bool)) if hh else None,
+                "average_gain": float(np.average(d.gain, weights=w)) if hh else None,
+                "cost_share": float((w * d.discount).sum() / total_cost)
+                if total_cost
+                else None,
+            }
+        )
+    return rows
+
+
+def _crosstab(f, rows: np.ndarray, cols: np.ndarray, n: int, total_cost: float):
+    total = float(f.weight.sum())
+    cells = []
+    for r in range(1, n + 1):
+        for c in range(1, n + 1):
+            d = f[(rows == r) & (cols == c)]
+            w = d.weight
+            hh = float(w.sum())
+            cells.append(
+                {
+                    "row": r,
+                    "col": c,
+                    "households_m": hh / 1e6,
+                    "household_share": hh / total if total else None,
+                    "eligible": _share(d, d.eligible.astype(bool)) if hh else None,
+                    "passported": _share(d, d.eligible & d.passported) if hh else None,
+                    "income_only": _share(d, d.income_only) if hh else None,
+                    "cost_share": float((w * d.discount).sum() / total_cost)
+                    if total_cost
+                    else None,
+                    "sample_n": len(d),
+                    "ess": _ess(w),
+                }
+            )
+    return cells
+
+
+def _profile(f, mask, base, total_cost: float, schedule: dict) -> dict:
+    """Who is in a group: size and precision, spending, poverty, incomes and make-up."""
+    mask = np.asarray(mask, dtype=bool)
+    base = np.asarray(base, dtype=bool)
+    d = f[mask]
+    w = d.weight
+    hh = float(w.sum())
+    base_hh = float(f.weight[base].sum())
+    ess = _ess(w)
+    out = {
+        "households_m": hh / 1e6,
+        "people_m": float((w * d.n_people).sum() / 1e6),
+        "children_m": float((w * d.n_children).sum() / 1e6),
+        "sample_n": int(mask.sum()),
+        "ess": ess,
+        "share_of_base": hh / base_hh if base_hh else None,
+        "cost_m": float((w * d.discount).sum() / 1e6),
+        "cost_share": float((w * d.discount).sum() / total_cost)
+        if total_cost
+        else None,
+    }
+    if not hh:
+        return out
+    thin = ess < THIN_ESS
+
+    def mean(column):
+        return None if thin else float(round(np.average(d[column], weights=w), -2))
+
+    individual = schedule.get("income_test") and not schedule.get(
+        "household_equivalised"
+    )
+    line = schedule["thresholds"][-1] if schedule.get("thresholds") else None
+    out.update(
+        {
+            "rel_pov_bhc": _share(d, d.rel_pov_bhc_base),
+            "rel_pov_ahc": _share(d, d.rel_pov_ahc_base),
+            "mean_taxable": mean("taxable_income"),
+            "mean_highest_income": mean("highest_income"),
+            "two_incomes_over_pa": _share(d, d.second_income >= PERSONAL_ALLOWANCE),
+            "taxable_at_or_above_line": _share(d, d.taxable_income >= line)
+            if individual and line
+            else None,
+            "by_household_type": _shares_by(d, "household_type", HOUSEHOLD_TYPES),
+            "by_incomes": _shares_by(
+                d.assign(incomes=_income_count(d)), "incomes", INCOME_COUNTS
+            ),
+        }
+    )
+    return out
+
+
+def income_distributions(run: Run, f: pd.DataFrame | None = None) -> dict:
+    """Who qualifies across five income distributions, their cross-tabulation, and
+    the households where eligibility and income diverge: those not eligible in the
+    lowest three deciles, and those in the top half who qualify, either through the
+    income test alone or through passporting."""
+    f = prepare(run) if f is None else f
+    w = f.weight.values
+    total_cost = float((w * f.discount).sum())
+    deciles_by = {
+        k: _quantile_groups(f[c].values, w, 10) for k, c in DISTRIBUTIONS.items()
+    }
+    quintiles_by = {
+        k: _quantile_groups(f[c].values, w, 5) for k, c in DISTRIBUTIONS.items()
+    }
+    eligible = f.eligible.values.astype(bool)
+    income_only = f.income_only.values.astype(bool)
+    passported = eligible & f.passported.values.astype(bool)
+    out = {
+        "gb_households_m": _w(f) / 1e6,
+        "ess": _ess(w),
+        "population": {
+            "by_household_type": _shares_by(f, "household_type", HOUSEHOLD_TYPES),
+            "by_incomes": _shares_by(
+                f.assign(incomes=_income_count(f)), "incomes", INCOME_COUNTS
+            ),
+        },
+        "distributions": {},
+        "crosstabs": {},
+    }
+    for key, column in DISTRIBUTIONS.items():
+        values = f[column].values
+        groups = deciles_by[key]
+        low = groups <= LOW_DECILES
+        top = groups >= TOP_HALF_FROM
+        out["distributions"][key] = {
+            "cut_points": _cut_points(values, w, 10),
+            "negative_share": _share(f, values < 0),
+            "zero_share": _share(f, values == 0),
+            "deciles": _decile_rows(f, groups, 10, total_cost),
+            "low_not_eligible": _profile(
+                f, low & ~eligible, low, total_cost, run.schedule
+            ),
+            "top_income_only": _profile(
+                f, top & income_only, income_only, total_cost, run.schedule
+            ),
+            "top_passported": _profile(
+                f, top & passported, passported, total_cost, run.schedule
+            ),
+        }
+    for rows, cols in CROSSTABS:
+        out["crosstabs"][f"{rows}|{cols}"] = {
+            "row_cut_points": _cut_points(f[DISTRIBUTIONS[rows]].values, w, 5),
+            "col_cut_points": _cut_points(f[DISTRIBUTIONS[cols]].values, w, 5),
+            "cells": _crosstab(
+                f, quintiles_by[rows], quintiles_by[cols], 5, total_cost
+            ),
+        }
+    return out

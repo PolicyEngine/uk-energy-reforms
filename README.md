@@ -88,8 +88,9 @@ r = run("microcosm_979", 2026, preset("rf_tiered"))  # r.frame: one row per hous
 ```
 
 Full receipt (JSON plus markdown with breakdowns by region, household type and decile,
-poverty impacts, winners and losers, inequality, coverage of households in poverty or with high energy costs, cliff
-edges and the baseline the scheme acts on):
+poverty impacts, winners and losers, inequality, coverage of households in poverty or with
+high energy costs, eligibility across five income measures, cliff edges and the baseline the
+scheme acts on):
 
 ```bash
 uv run uk-energy-reforms run --datasets microcosm_979 efrs_1573 --year 2026 \
@@ -152,7 +153,7 @@ src/uk_energy_reforms/
   calibrate.py       bill shares and budget scaling
   household_types.py RF-aligned household types
   analysis.py        impacts, winners and losers, inequality, coverage, cliffs,
-                     breakdowns, baseline
+                     breakdowns, baseline, eligibility across income measures
   report.py, cli.py  results receipt
   rf_comparison.py   RF's published figures beside ours
   sources.py         official statistics and other organisations' figures
