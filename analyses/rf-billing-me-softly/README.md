@@ -27,7 +27,7 @@ are comparable.
   households below the line. It misses 0.56m in both datasets, almost all of them
   working-age.
 - **Winners and inequality (flat option):** 40% / 37% of people in Great Britain live in a
-  household that gains, from 82% / 85% in the poorest decile to 5% / 2% in the richest.
+  household that gains, from 82% / 85% in the lowest income decile to 5% / 2% in the highest.
   0.4% / 1.0% of people gain more than 5% of net income. Nobody loses, because the analysis
   does not model how the scheme is paid for. The Gini coefficient of equivalised household
   income falls by 0.0010 / 0.0011 before housing costs (0.3% on both) and by 0.0012 /
@@ -49,14 +49,14 @@ estimates the following, set beside the Resolution Foundation's published figure
 | Households passported, modelled receipt with take-up (our basis) | around 25% (p. 1) | 27% | 26% |
 | Households passported, reported receipt (RF's basis) | around 25% (p. 1) | 24% | 26% |
 | Households whose highest individual income is below £24,000 | around 40% (p. 1) | 40% | 41% |
-| Poorest four deciles passing the £24,000 individual test | 75% (p. 6) | 73% | 77% |
+| Four lowest income deciles passing the £24,000 individual test | 75% (p. 6) | 73% | 77% |
 | Households with equivalised household income below £30,000 | around 40% (p. 6) | 38% | 38% |
-| Poorest four deciles passing the £30,000 household test | 78% (p. 6) | 74% | 76% |
+| Four lowest income deciles passing the £30,000 household test | 78% (p. 6) | 74% | 76% |
 | Couples with children (benefit units) passing the household income test | 1.8m (p. 7) | 1.6m | 1.5m |
 | …of which failing the individual income test (RF's basis) | 490,000 (p. 7) | 653,000 | 676,000 |
-| …of which in the poorest fifth (RF's basis) | 71% (p. 7) | 61% | 55% |
+| …of which in the lowest income fifth (RF's basis) | 71% (p. 7) | 61% | 55% |
 | …of which losing the discount, as not passported (policy count) | not published | 342,000 | 344,000 |
-| …of which in the poorest fifth (policy count) | not published | 77% | 65% |
+| …of which in the lowest income fifth (policy count) | not published | 77% | 65% |
 | Pensioner units passing the individual test but not the household one (RF's basis) | 780,000 (p. 8) | 1,089,000 | 824,000 |
 | …of which in decile five or above (RF's basis) | 81% (p. 8) | 71% | 60% |
 | Pensioner units gaining the discount only under the individual option (policy count) | not published | 982,000 | 815,000 |
@@ -87,7 +87,7 @@ How to read the table, and what explains the gaps:
 - **Decile basis.** Deciles are person-weighted AHC deciles, the HBAI convention. RF's
   footnote 6 names the income measure but not the weighting, so this is our choice.
   - With household-weighted deciles, 54% / 51% of the couples on RF's basis are in the
-    poorest fifth (69% / 62% as a policy count), against RF's 71%.
+    lowest income fifth (69% / 62% as a policy count), against RF's 71%.
   - On the same basis, 76% / 69% of the pensioner units are in decile five or above (76%
     / 69% as a policy count), against RF's 81%.
 - **Composition behind the pensioner row.** Microcosm's 1,089,000 exceeds the Enhanced
@@ -98,7 +98,7 @@ How to read the table, and what explains the gaps:
   - 17% of Microcosm's pensioner units on RF's basis live in one, against 2% in the
     Enhanced FRS. A pensioner living with an adult child in work passes the individual
     test and can fail the household one.
-- **Small samples in the couples rows.** The poorest-fifth shares rest on few survey
+- **Small samples in the couples rows.** The lowest-income-fifth shares rest on few survey
   records and move between years. On the Enhanced FRS the policy-count share is 65% in
   2024-25 and 92% in 2026-27, on 440 and 356 records. `rf_comparison.json` records every
   row's sample size (`sample_n_*`).
@@ -166,30 +166,30 @@ Eligibility rates within household types agree across the two datasets; counts d
   income is tested separately.
 - **Couples with children:** 24% / 26% eligible. The scheme reaches 67% / 69% of those in
   absolute poverty after housing costs, the lowest share of any type. It misses 239k / 183k
-  such households in poverty, and 1.08m / 0.77m in the poorest four deciles.
-- **Couples without children:** 16% / 15% eligible. 599k / 757k of them are in the poorest
-  four deciles and unreached.
+  such households in poverty, and 1.08m / 0.77m in the four lowest income deciles.
+- **Couples without children:** 16% / 15% eligible. 599k / 757k of them are in the four
+  lowest income deciles and unreached.
 
 ## The tiered option and income thresholds
 
-- **Targeting at equal cost (£2bn).** The share of spending that reaches the poorest four
+- **Targeting at equal cost (£2bn).** The share of spending that reaches the four lowest income
   deciles is:
   - flat option: 71% / 78%;
   - tiered, with passported households in the top tier: 72% / 79%;
   - tiered, with passported households on their own income: 77% / 81%;
   - household-income test: 74% / 81%;
-  - passporting alone: 65% / 74%. It reaches 43% / 46% of households in the poorest four
+  - passporting alone: 65% / 74%. It reaches 43% / 46% of households in the four lowest income
     deciles, against 76% / 80% under the flat option.
 - **Cliffs** (Microcosm only; the Enhanced FRS rests on an effective sample of about 10
   households within £1,000 of each line). Support falls to zero at £24,000, and in the
   tiered option it also drops by £135 at £18,000.
   - 410k non-passported households have tested income within £1,000 above £24,000. 200k
-    of them are in the poorest four deciles and 64k in relative poverty after housing
+    of them are in the four lowest income deciles and 64k in relative poverty after housing
     costs (effective sample size 53).
   - 386k households sit within £1,000 above £18,000, and 318k (82%) of them are in the
-    poorest four deciles.
+    four lowest income deciles.
   - Households either side of a line look alike. On Microcosm, 44% of non-passported
-    households within £1,000 below £24,000 are in the poorest four deciles, against 49%
+    households within £1,000 below £24,000 are in the four lowest income deciles, against 49%
     within £1,000 above.
 - **Dead zones** (Microcosm). These are households whose top earner would need more extra
   gross pay than the support lost to break even. The marginal rate is 28% (basic-rate tax

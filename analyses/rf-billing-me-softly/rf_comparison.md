@@ -6,14 +6,14 @@
 | Share of households passported (modelled receipt, with take-up) | 25% (p. 1) | 27% | 27% | 26% | 26% |
 | Share of households passported (reported receipt, RF's basis) | 25% (p. 1) | 24% | 24% | 26% | 26% |
 | Share of households whose highest individual income is below £24,000 | 40% (p. 1) | 40% | 36% | 41% | 38% |
-| Share of the poorest four deciles passing the £24,000 individual test | 75% (p. 6) | 73% | 68% | 77% | 73% |
+| Share of the four lowest income deciles passing the £24,000 individual test | 75% (p. 6) | 73% | 68% | 77% | 73% |
 | Share of households with equivalised household income below £30,000 | 40% (p. 6) | 38% | 34% | 38% | 35% |
-| Share of the poorest four deciles passing the £30,000 household test | 78% (p. 6) | 74% | 68% | 76% | 71% |
+| Share of the four lowest income deciles passing the £30,000 household test | 78% (p. 6) | 74% | 68% | 76% | 71% |
 | Couples with children (benefit units) passing the household income test (m) | 1.8m (p. 7) | 1.6m | 1.4m | 1.5m | 1.3m |
 | Of those, failing the individual income test (RF's basis: passporting not netted out; thousands) | 490k (p. 7) | 653k | 536k | 676k | 608k |
-| Share of those couples in the poorest fifth (RF's basis) | 71% (p. 7) | 61% | 61% | 55% | 72% |
+| Share of those couples in the lowest income fifth (RF's basis) | 71% (p. 7) | 61% | 61% | 55% | 72% |
 | Of those, losing the discount under the individual option (policy count: not passported; thousands) | not published | 342k | 248k | 344k | 314k |
-| Share of those couples in the poorest fifth (policy count) | not published | 77% | 77% | 65% | 92% |
+| Share of those couples in the lowest income fifth (policy count) | not published | 77% | 77% | 65% | 92% |
 | Pensioner units passing the individual test but not the household one (RF's basis; thousands) | 780k (p. 8) | 1,089k | 1,092k | 824k | 832k |
 | Share of those pensioner units in decile five or above (RF's basis) | 81% (p. 8) | 71% | 59% | 60% | 49% |
 | Pensioner units gaining the discount only under the individual option (policy count: not passported; thousands) | not published | 982k | 981k | 815k | 820k |
@@ -36,5 +36,5 @@ Notes:
 
 Not modelled:
 
-- More than 15% of second-quintile households could not afford to keep their home warm in 2022-23 (p. 5): The HBAI material-deprivation item is not in either microdata file, so this analysis proxies hardship with poverty, the poorest four deciles and energy spend above 10% of net income.
+- More than 15% of second-quintile households could not afford to keep their home warm in 2022-23 (p. 5): The HBAI material-deprivation item is not in either microdata file, so this analysis proxies hardship with poverty, the four lowest income deciles and energy spend above 10% of net income.
 - Income is assessed over the three months before the scheme (p. 8): The microdata carry annual incomes only.
