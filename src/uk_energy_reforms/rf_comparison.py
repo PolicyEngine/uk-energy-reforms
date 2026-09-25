@@ -60,7 +60,7 @@ RF_FIGURES = [
     },
     {
         "id": "income_test_bottom4",
-        "label": "Share of the poorest four deciles passing the £24,000 individual test",
+        "label": "Share of the four lowest income deciles passing the £24,000 individual test",
         "rf": 0.75,
         "rf_statement": "The individual option covers 75% of the poorest four deciles",
         "page": 6,
@@ -76,7 +76,7 @@ RF_FIGURES = [
     },
     {
         "id": "household_test_bottom4",
-        "label": "Share of the poorest four deciles passing the £30,000 household test",
+        "label": "Share of the four lowest income deciles passing the £30,000 household test",
         "rf": 0.78,
         "rf_statement": "The household option covers 78% of the poorest four deciles",
         "page": 6,
@@ -100,7 +100,7 @@ RF_FIGURES = [
     },
     {
         "id": "couples_children_lose_bottom_quintile",
-        "label": "Share of those couples in the poorest fifth (RF's basis)",
+        "label": "Share of those couples in the lowest income fifth (RF's basis)",
         "rf": 0.71,
         "rf_statement": "71% of them are in the poorest fifth",
         "page": 7,
@@ -116,7 +116,7 @@ RF_FIGURES = [
     },
     {
         "id": "couples_children_lose_policy_bottom_quintile",
-        "label": "Share of those couples in the poorest fifth (policy count)",
+        "label": "Share of those couples in the lowest income fifth (policy count)",
         "rf": None,
         "rf_statement": "Not published",
         "page": 7,
@@ -213,7 +213,7 @@ NOT_MODELLED = [
         "page": 5,
         "reason": (
             "The HBAI material-deprivation item is not in either microdata file, so "
-            "this analysis proxies hardship with poverty, the poorest four deciles and "
+            "this analysis proxies hardship with poverty, the four lowest income deciles and "
             "energy spend above 10% of net income."
         ),
     },

@@ -88,7 +88,7 @@ r = run("microcosm_979", 2026, preset("rf_tiered"))  # r.frame: one row per hous
 ```
 
 Full receipt (JSON plus markdown with breakdowns by region, household type and decile,
-poverty impacts, winners and losers, inequality, coverage of struggling households, cliff
+poverty impacts, winners and losers, inequality, coverage of households in poverty or with high energy costs, cliff
 edges and the baseline the scheme acts on):
 
 ```bash
@@ -139,7 +139,7 @@ on both. Fixed amounts and eligibility do not depend on spend.
   `claims_targeted_energy_discount`, because policyengine-uk rebuilds a baseline from the
   same situation. Set them with `sim.set_input(...)` instead.
 - Neither dataset records prepayment meters, off-grid heating fuel, EPC bands or the
-  HBAI heating-affordability item. "Struggling" is proxied by poverty, the poorest four
+  HBAI heating-affordability item. Hardship is proxied by poverty, the four lowest income
   deciles and energy spend above 10% of net income.
 
 ## Layout
