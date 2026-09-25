@@ -1,0 +1,519 @@
+[
+ {
+  "id": "ons_households_uk_2025",
+  "quantity": "Number of households in the UK",
+  "value": 29003000,
+  "unit": "households",
+  "period": "2025 (LFS April-June quarter)",
+  "geography": "UK",
+  "publisher": "ONS",
+  "title": "Families and households in the UK: 2025 (released 17 April 2026)",
+  "url": "https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/families/bulletins/familiesandhouseholds/2025",
+  "note": "Bulletin headline is 29.0 million; exact 29,003 thousand (95% CI +/-155 thousand; 2024: 28,609 thousand) read from Table 5 of https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/birthsdeathsandmarriages/families/datasets/familiesandhouseholdsfamiliesandhouseholds/current/familiesandhouseholdsuk2025.xlsx . Labour Force Survey based; excludes most communal establishments. Average household size 2.36."
+ },
+ {
+  "id": "ons_households_gb_2025_sum_of_countries",
+  "quantity": "Number of households in Great Britain (sum of published England, Wales and Scotland LFS estimates)",
+  "value": {
+   "england": 24329000,
+   "wales": 1404000,
+   "scotland": 2520000,
+   "gb_sum": 28253000
+  },
+  "unit": "households",
+  "period": "2025 (LFS April-June quarter)",
+  "geography": "GB",
+  "publisher": "ONS",
+  "title": "Households by household size, regions of England and GB constituent countries: 2025 (released 17 April 2026)",
+  "url": "https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/birthsdeathsandmarriages/families/datasets/householdsbyhouseholdsizeregionsofenglandandgbconstituentcountries/2025/householdsizebyregionscountries2025.xlsx",
+  "note": "ONS does not publish a GB total in this release; gb_sum is my addition of the three country 'All households' rows (England CI +/-159k, Wales +/-51k, Scotland +/-71k). Northern Ireland LFS household estimates are no longer published by ONS."
+ },
+ {
+  "id": "desnz_households_gb_2024",
+  "quantity": "Number of households in Great Britain used by DESNZ as the denominator for domestic meters",
+  "value": 28200000,
+  "unit": "households",
+  "period": "2024",
+  "geography": "GB",
+  "publisher": "DESNZ",
+  "title": "Subnational electricity and gas consumption summary report 2024 (updated 19 December 2025), footnote 3",
+  "url": "https://www.gov.uk/government/statistics/subnational-electricity-and-gas-consumption-summary-report-2024/subnational-electricity-and-gas-consumption-summary-report-2024--2",
+  "note": "Compiled from ONS, Welsh Government and Scottish Government household estimates; Welsh 2024 figures are extrapolated from 2023 with 2021-23 growth rates. Stated to one decimal place (28.2 million)."
+ },
+ {
+  "id": "hbai_individuals_low_income_rates_fye2025",
+  "quantity": "Share of all individuals in low income (relative and absolute, BHC and AHC)",
+  "value": {
+   "relative_bhc": 0.15911572,
+   "relative_ahc": 0.19640844,
+   "absolute_bhc": 0.15911572,
+   "absolute_ahc": 0.19640844
+  },
+  "unit": "share",
+  "period": "2024-25 (FYE 2025)",
+  "geography": "UK",
+  "publisher": "DWP",
+  "title": "Households below average income: for financial years ending 1995 to 2025 (DWP, published 26 March 2026), Table 1.3a",
+  "url": "https://www.gov.uk/government/statistics/households-below-average-income-for-financial-years-ending-1995-to-2025",
+  "note": "Accredited official statistics from the Family Resources Survey. FYE 2025 introduces admin-linked benefit data (series break from 2021/22) and resets the absolute low-income reference year to FYE 2025, so in 2024/25 the absolute and relative rates are identical by construction. Relative = below 60% of contemporary median equivalised net household income. Unrounded values read from HBAI summary results ODS (https://assets.publishing.service.gov.uk/media/69c28ffcb920af63be1c7767/summary-hbai-1994-95-2024-25-tables.ods); the report text rounds to whole percentages. DWP notes a minor error in the 2024/25 Council Tax variable (GROSSCT), to be corrected in March 2027; assessed as not material. Report text: 16% BHC, 20% AHC. Year-on-year changes not statistically significant."
+ },
+ {
+  "id": "hbai_individuals_low_income_counts_fye2025",
+  "quantity": "Number of individuals in low income (relative and absolute, BHC and AHC), and all individuals",
+  "value": {
+   "relative_bhc": 10859363,
+   "relative_ahc": 13404524,
+   "absolute_bhc": 10859363,
+   "absolute_ahc": 13404524,
+   "all_individuals": 68248209
+  },
+  "unit": "people",
+  "period": "2024-25 (FYE 2025)",
+  "geography": "UK",
+  "publisher": "DWP",
+  "title": "Households below average income: for financial years ending 1995 to 2025 (DWP, published 26 March 2026), Table 1.3b",
+  "url": "https://www.gov.uk/government/statistics/households-below-average-income-for-financial-years-ending-1995-to-2025",
+  "note": "Accredited official statistics from the Family Resources Survey. FYE 2025 introduces admin-linked benefit data (series break from 2021/22) and resets the absolute low-income reference year to FYE 2025, so in 2024/25 the absolute and relative rates are identical by construction. Relative = below 60% of contemporary median equivalised net household income. Unrounded values read from HBAI summary results ODS (https://assets.publishing.service.gov.uk/media/69c28ffcb920af63be1c7767/summary-hbai-1994-95-2024-25-tables.ods); the report text rounds to whole percentages. DWP notes a minor error in the 2024/25 Council Tax variable (GROSSCT), to be corrected in March 2027; assessed as not material. Published in millions to six decimals (e.g. 10.859363); converted to persons."
+ },
+ {
+  "id": "hbai_children_low_income_rates_fye2025",
+  "quantity": "Share of children in low income (relative and absolute, BHC and AHC)",
+  "value": {
+   "relative_bhc": 0.20519181,
+   "relative_ahc": 0.2741076,
+   "absolute_bhc": 0.20519181,
+   "absolute_ahc": 0.2741076
+  },
+  "unit": "share",
+  "period": "2024-25 (FYE 2025)",
+  "geography": "UK",
+  "publisher": "DWP",
+  "title": "Households below average income: for financial years ending 1995 to 2025 (DWP, published 26 March 2026), Table 1.4a",
+  "url": "https://www.gov.uk/government/statistics/households-below-average-income-for-financial-years-ending-1995-to-2025",
+  "note": "Accredited official statistics from the Family Resources Survey. FYE 2025 introduces admin-linked benefit data (series break from 2021/22) and resets the absolute low-income reference year to FYE 2025, so in 2024/25 the absolute and relative rates are identical by construction. Relative = below 60% of contemporary median equivalised net household income. Unrounded values read from HBAI summary results ODS (https://assets.publishing.service.gov.uk/media/69c28ffcb920af63be1c7767/summary-hbai-1994-95-2024-25-tables.ods); the report text rounds to whole percentages. DWP notes a minor error in the 2024/25 Council Tax variable (GROSSCT), to be corrected in March 2027; assessed as not material. HBAI 'children' are dependent children (under 16, or 16-19 in non-advanced education). Report text: 21% BHC, 27% AHC."
+ },
+ {
+  "id": "hbai_children_low_income_counts_fye2025",
+  "quantity": "Number of children in low income (relative and absolute, BHC and AHC), and all children",
+  "value": {
+   "relative_bhc": 3014235,
+   "relative_ahc": 4026597,
+   "absolute_bhc": 3014235,
+   "absolute_ahc": 4026597,
+   "all_children": 14689841
+  },
+  "unit": "people",
+  "period": "2024-25 (FYE 2025)",
+  "geography": "UK",
+  "publisher": "DWP",
+  "title": "Households below average income: for financial years ending 1995 to 2025 (DWP, published 26 March 2026), Table 1.4b",
+  "url": "https://www.gov.uk/government/statistics/households-below-average-income-for-financial-years-ending-1995-to-2025",
+  "note": "Accredited official statistics from the Family Resources Survey. FYE 2025 introduces admin-linked benefit data (series break from 2021/22) and resets the absolute low-income reference year to FYE 2025, so in 2024/25 the absolute and relative rates are identical by construction. Relative = below 60% of contemporary median equivalised net household income. Unrounded values read from HBAI summary results ODS (https://assets.publishing.service.gov.uk/media/69c28ffcb920af63be1c7767/summary-hbai-1994-95-2024-25-tables.ods); the report text rounds to whole percentages. DWP notes a minor error in the 2024/25 Council Tax variable (GROSSCT), to be corrected in March 2027; assessed as not material."
+ },
+ {
+  "id": "hbai_pensioners_low_income_rates_fye2025",
+  "quantity": "Share of pensioners in low income (relative and absolute, BHC and AHC)",
+  "value": {
+   "relative_bhc": 0.15895071,
+   "relative_ahc": 0.13866371,
+   "absolute_bhc": 0.15895071,
+   "absolute_ahc": 0.13866371
+  },
+  "unit": "share",
+  "period": "2024-25 (FYE 2025)",
+  "geography": "UK",
+  "publisher": "DWP",
+  "title": "Households below average income: for financial years ending 1995 to 2025 (DWP, published 26 March 2026), Table 1.6a",
+  "url": "https://www.gov.uk/government/statistics/households-below-average-income-for-financial-years-ending-1995-to-2025",
+  "note": "Accredited official statistics from the Family Resources Survey. FYE 2025 introduces admin-linked benefit data (series break from 2021/22) and resets the absolute low-income reference year to FYE 2025, so in 2024/25 the absolute and relative rates are identical by construction. Relative = below 60% of contemporary median equivalised net household income. Unrounded values read from HBAI summary results ODS (https://assets.publishing.service.gov.uk/media/69c28ffcb920af63be1c7767/summary-hbai-1994-95-2024-25-tables.ods); the report text rounds to whole percentages. DWP notes a minor error in the 2024/25 Council Tax variable (GROSSCT), to be corrected in March 2027; assessed as not material. Report text: 16% BHC, 14% AHC."
+ },
+ {
+  "id": "hbai_pensioners_low_income_counts_fye2025",
+  "quantity": "Number of pensioners in low income (relative and absolute, BHC and AHC), and all pensioners",
+  "value": {
+   "relative_bhc": 1932606,
+   "relative_ahc": 1685946,
+   "absolute_bhc": 1932606,
+   "absolute_ahc": 1685946,
+   "all_pensioners": 12158524
+  },
+  "unit": "people",
+  "period": "2024-25 (FYE 2025)",
+  "geography": "UK",
+  "publisher": "DWP",
+  "title": "Households below average income: for financial years ending 1995 to 2025 (DWP, published 26 March 2026), Table 1.6b",
+  "url": "https://www.gov.uk/government/statistics/households-below-average-income-for-financial-years-ending-1995-to-2025",
+  "note": "Accredited official statistics from the Family Resources Survey. FYE 2025 introduces admin-linked benefit data (series break from 2021/22) and resets the absolute low-income reference year to FYE 2025, so in 2024/25 the absolute and relative rates are identical by construction. Relative = below 60% of contemporary median equivalised net household income. Unrounded values read from HBAI summary results ODS (https://assets.publishing.service.gov.uk/media/69c28ffcb920af63be1c7767/summary-hbai-1994-95-2024-25-tables.ods); the report text rounds to whole percentages. DWP notes a minor error in the 2024/25 Council Tax variable (GROSSCT), to be corrected in March 2027; assessed as not material."
+ },
+ {
+  "id": "hbai_median_equivalised_income_fye2025",
+  "quantity": "Median equivalised net household income (BHC and AHC)",
+  "value": {
+   "bhc": 719,
+   "ahc": 623
+  },
+  "unit": "gbp_per_week",
+  "period": "2024-25 (FYE 2025)",
+  "geography": "UK",
+  "publisher": "DWP",
+  "title": "Households Below Average Income: An analysis of the UK income distribution: FYE 1995 to FYE 2025, section 1 (Main stories)",
+  "url": "https://www.gov.uk/government/statistics/households-below-average-income-for-financial-years-ending-1995-to-2025/households-below-average-income-an-analysis-of-the-uk-income-distribution-fye-1995-to-fye-2025",
+  "note": "Real-terms rise of 5% BHC and 5% AHC on FYE 2024, statistically significant. The relative low-income line is 60% of these medians."
+ },
+ {
+  "id": "ofgem_cap_fy2024_25",
+  "quantity": "Ofgem price cap, typical dual-fuel Direct Debit annual bill, each quarter of 2024-25",
+  "value": {
+   "apr_jun_2024": 1690,
+   "jul_sep_2024": 1568,
+   "oct_dec_2024": 1717,
+   "jan_mar_2025": 1738,
+   "mean": 1678.25
+  },
+  "unit": "gbp_per_year",
+  "period": "2024-04-01 to 2025-03-31",
+  "geography": "GB",
+  "publisher": "Ofgem",
+  "title": "Changes to energy price cap between 1 July to 30 September 2024",
+  "url": "https://www.ofgem.gov.uk/news/changes-energy-price-cap-between-1-july-30-september-2024",
+  "note": "At the 2023 TDCV (2,700 kWh electricity, 11,500 kWh gas), the basis of ofgem_cap_2026_apr_jun.at_2023_tdcv (1,641). The July-September 2024 figure (1,568, down from 1,690) is from the cited page; April-June 2024 from https://www.ofgem.gov.uk/publications/new-energy-price-cap-level-april-june-2024-starts-today , October-December 2024 from https://www.ofgem.gov.uk/news/changes-energy-price-cap-between-1-october-31-december-2024 , January-March 2025 from https://www.ofgem.gov.uk/news/changes-energy-price-cap-between-1-january-and-31-march-2025 . The mean is the simple average of the four quarters (my derivation)."
+ },
+ {
+  "id": "ofgem_cap_2026_apr_jun",
+  "quantity": "Ofgem price cap, typical dual-fuel Direct Debit annual bill, 1 April - 30 June 2026",
+  "value": {
+   "at_2023_tdcv": 1641,
+   "at_2026_tdcv": 1477
+  },
+  "unit": "gbp_per_year",
+  "period": "2026-04-01 to 2026-06-30",
+  "geography": "GB",
+  "publisher": "Ofgem",
+  "title": "Energy price cap (default tariff) update from 1 April 2026 (25 February 2026)",
+  "url": "https://www.ofgem.gov.uk/sites/default/files/2026-02/Summary-of-changes-to-energy-price-cap-1-April-to-30-June-2026.pdf",
+  "note": "£1,641 was the published headline at the 2023 TDCV (2,700 kWh electricity, 11,500 kWh gas). £1,477 is the same cap restated at the 2026 TDCV (2,500 / 9,500 kWh), read from page 3 of the July summary letter https://www.ofgem.gov.uk/sites/default/files/2026-06/Summary-of-changes-to-energy-price-cap-1-July-to-30-September-2026.pdf. DD unit rates (news page https://www.ofgem.gov.uk/news/changes-energy-price-cap-between-1-april-and-30-june-2026): electricity 24.67p/kWh, standing charge 57.21p/day; gas 5.74p/kWh, standing charge 29.09p/day (incl. 5% VAT). Other methods at 2023 TDCV: standard credit £1,772, PPM £1,597."
+ },
+ {
+  "id": "ofgem_cap_2026_jul_sep",
+  "quantity": "Ofgem price cap, typical dual-fuel Direct Debit annual bill, 1 July - 30 September 2026",
+  "value": {
+   "at_2026_tdcv": 1663,
+   "at_2023_tdcv": 1862
+  },
+  "unit": "gbp_per_year",
+  "period": "2026-07-01 to 2026-09-30",
+  "geography": "GB",
+  "publisher": "Ofgem",
+  "title": "Energy price cap (default tariff) update from 1 July 2026 (27 May 2026)",
+  "url": "https://www.ofgem.gov.uk/sites/default/files/2026-06/Summary-of-changes-to-energy-price-cap-1-July-to-30-September-2026.pdf",
+  "note": "New TDCV takes effect from 1 July 2026: 2,500 kWh electricity, 9,500 kWh gas, 3,400 kWh multi-register (E7). Headline is £1,663 at the new TDCV (+13% vs £1,477 restated Apr-Jun); £1,862 at the old 2023 TDCV. DD unit rates (https://www.ofgem.gov.uk/news/changes-energy-price-cap-between-1-july-and-30-september-2026): electricity 26.11p/kWh, SC 57.19p/day; gas 7.33p/kWh, SC 29.04p/day (incl. 5% VAT). At 2026 TDCV: standard credit £1,796, PPM £1,620, E7 DD £1,039."
+ },
+ {
+  "id": "ofgem_cap_2026_oct_dec",
+  "quantity": "Ofgem price cap, typical dual-fuel Direct Debit annual bill, 1 October - 31 December 2026",
+  "value": {
+   "at_2026_tdcv": 1723,
+   "at_2023_tdcv": 1935
+  },
+  "unit": "gbp_per_year",
+  "period": "2026-10-01 to 2026-12-31",
+  "geography": "GB",
+  "publisher": "Ofgem",
+  "title": "Energy price cap (default tariff) update from 1 October 2026 (26 August 2026); press release 'Energy price cap will rise by 4% from October 2026'",
+  "url": "https://www.ofgem.gov.uk/sites/default/files/2026-08/Summary-of-changes-to-energy-price-cap-1-October-to-31-December-2026.pdf",
+  "note": "At 2026 TDCV (2,500 kWh electricity, 9,500 kWh gas); +4% (+£60) on £1,663. £1,935 at the old 2023 TDCV is from the press release https://www.ofgem.gov.uk/press-release/energy-price-cap-will-rise-4-october-2026 . Reflects 0% VAT on domestic electricity from 1 Oct 2026 to 31 Mar 2027 (gas stays at 5%); Ofgem says the cap would be around £45 higher without it. DD unit rates (https://www.ofgem.gov.uk/news/changes-energy-price-cap-between-1-october-and-31-december-2026): electricity 26.32p/kWh excl. VAT, SC 54.83p/day; gas 7.97p/kWh, SC 29.68p/day (incl. 5% VAT). Other methods: standard credit £1,861, PPM £1,678, E7 DD £1,046. Ofgem will announce the Jan-Mar 2027 cap by 25 November 2026, so it is not yet published."
+ },
+ {
+  "id": "ofgem_tdcv_2026",
+  "quantity": "Ofgem Typical Domestic Consumption Values (medium), used for price cap bill illustrations from 1 July 2026",
+  "value": {
+   "electricity_kwh": 2500,
+   "gas_kwh": 9500,
+   "multi_register_e7_kwh": 3400,
+   "previous_2023_electricity_kwh": 2700,
+   "previous_2023_gas_kwh": 11500,
+   "previous_2023_e7_kwh": 3900
+  },
+  "unit": "kwh_per_year",
+  "period": "from 2026-07-01",
+  "geography": "GB",
+  "publisher": "Ofgem",
+  "title": "Energy price cap (default tariff) update from 1 October 2026, page 2; update from 1 April 2026, page 2 (previous TDCV)",
+  "url": "https://www.ofgem.gov.uk/sites/default/files/2026-08/Summary-of-changes-to-energy-price-cap-1-October-to-31-December-2026.pdf",
+  "note": "TDCV decision: https://www.ofgem.gov.uk/sites/default/files/2026-05/Review%20of%20typical%20domestic%20consumption%20values%20decision.pdf . Ofgem calls TDCV a presentational tool, but it also shifts the unit rate slightly."
+ },
+ {
+  "id": "whd_rebates_2025_26",
+  "quantity": "Households receiving a Warm Home Discount Core Group rebate",
+  "value": {
+   "households_gb_core_groups": 5520000,
+   "share_of_gb_households": 0.186,
+   "core_group_1_gb": 983000,
+   "core_group_1_england_wales": 889000,
+   "core_group_scotland": 94000,
+   "core_group_2_england_wales": 4530000,
+   "share_of_england_wales_households": 0.2,
+   "core_group_spend_gbp": 827600000
+  },
+  "unit": "households",
+  "period": "2025-26 scheme year (winter 2025-26)",
+  "geography": "GB",
+  "publisher": "DESNZ",
+  "title": "Warm Home Discount statistics, 2025 to 2026 (published 18 June 2026)",
+  "url": "https://www.gov.uk/government/statistics/warm-home-discount-statistics-2025-to-2026/warm-home-discount-statistics-2025-to-2026",
+  "note": "Excludes the Scotland Broader Group and industry initiatives; DESNZ says including an estimate for the Broader Group (about 186k in 2024/25) would bring the 2025/26 total to around 5.7 million. First year of the expanded scheme, which removed the high-cost-to-heat test for Core Group 2. Spend excludes the Scotland Broader Group and industry initiatives. 96% of rebates paid automatically."
+ },
+ {
+  "id": "whd_rebates_2024_25",
+  "quantity": "Households receiving a Warm Home Discount Core Group rebate (pre-expansion year)",
+  "value": {
+   "households_gb_core_groups": 3220000,
+   "core_group_2_england_wales": 2270000,
+   "core_group_spend_gbp": 483000000
+  },
+  "unit": "households",
+  "period": "2024-25 scheme year",
+  "geography": "GB",
+  "publisher": "DESNZ",
+  "title": "Warm Home Discount statistics, 2024 to 2025 (published 26 June 2025)",
+  "url": "https://www.gov.uk/government/statistics/warm-home-discount-statistics-2024-to-2025/warm-home-discount-statistics-2024-to-2025",
+  "note": "Official Statistics in Development at the time. Excludes the Scotland Broader Group. Useful as the pre-expansion baseline."
+ },
+ {
+  "id": "whd_rebate_amount",
+  "quantity": "Warm Home Discount rebate per eligible household",
+  "value": 150,
+  "unit": "gbp_per_year",
+  "period": "winter 2026-27 (scheme reopens October 2026)",
+  "geography": "GB",
+  "publisher": "GOV.UK (DESNZ)",
+  "title": "Warm Home Discount Scheme: Overview",
+  "url": "https://www.gov.uk/the-warm-home-discount-scheme",
+  "note": "One-off £150 off the electricity bill. Page says the scheme reopens in October 2026 for winter 2026-27. The WHD statistics glossary also defines the rebate as £150. Not available in Northern Ireland."
+ },
+ {
+  "id": "fuel_poverty_england_2025",
+  "quantity": "Households in fuel poverty in England (LILEE metric), 2025 provisional estimate",
+  "value": {
+   "share": 0.094,
+   "households": 2360000,
+   "average_gap_gbp": 379,
+   "aggregate_gap_gbp": 896000000
+  },
+  "unit": "households",
+  "period": "2025",
+  "geography": "England",
+  "publisher": "DESNZ",
+  "title": "Annual Fuel Poverty Statistics in England, 2026 (2025 data) (published 26 March 2026, republished 7 August 2026)",
+  "url": "https://assets.publishing.service.gov.uk/media/6a733816201b38b4dc3c2854/2026-fuel-poverty-statistics-report.pdf",
+  "note": "Landing page: https://www.gov.uk/government/statistics/annual-fuel-poverty-statistics-report-2026 . DESNZ labels the 2025 headline as provisional, projection-based figures, to be finalised in 2027. Based mainly on the English Housing Survey (two pooled financial years). The fuel poverty gap is in 2025 prices. The 7 Aug 2026 republication corrected a benefit-receipt calculation and the description of the median affordability indicator. Values here are read from the republished PDF linked on the landing page."
+ },
+ {
+  "id": "fuel_poverty_england_2024_final",
+  "quantity": "Households in fuel poverty in England (LILEE metric), 2024 final estimate",
+  "value": {
+   "share": 0.099,
+   "households": 2470000,
+   "average_gap_gbp_2025_prices": 381,
+   "aggregate_gap_gbp_2025_prices": 941000000
+  },
+  "unit": "households",
+  "period": "2024",
+  "geography": "England",
+  "publisher": "DESNZ",
+  "title": "Annual Fuel Poverty Statistics in England, 2026 (2025 data), headline statistics and Table 4.1",
+  "url": "https://assets.publishing.service.gov.uk/media/6a733816201b38b4dc3c2854/2026-fuel-poverty-statistics-report.pdf",
+  "note": "Final estimates, superseding the provisional 2024 figures published in 2025. Survey data April 2023 to March 2025."
+ },
+ {
+  "id": "fuel_poverty_england_2026_projection",
+  "quantity": "Households in fuel poverty in England (LILEE metric), 2026 projection",
+  "value": {
+   "share": 0.084,
+   "households": 2130000,
+   "average_gap_gbp_2025_prices": 381,
+   "aggregate_gap_gbp_2025_prices": 812000000
+  },
+  "unit": "households",
+  "period": "2026",
+  "geography": "England",
+  "publisher": "DESNZ",
+  "title": "Annual Fuel Poverty Statistics in England, 2026 (2025 data), Table 4.1",
+  "url": "https://assets.publishing.service.gov.uk/media/6a733816201b38b4dc3c2854/2026-fuel-poverty-statistics-report.pdf",
+  "note": "DESNZ says this projection is indicative and uses energy price projections from early 2026, before the Middle East conflict. It therefore does not reflect the 2026 price cap rises."
+ },
+ {
+  "id": "energy_cost_over_10pct_ahc_income_england_2025",
+  "quantity": "Households in England required to spend more than 10% of after-housing-costs income on energy",
+  "value": {
+   "share": 0.304,
+   "households": 7630000,
+   "share_2024": 0.344,
+   "households_2024": 8550000
+  },
+  "unit": "households",
+  "period": "2025 (provisional); 2024 (final)",
+  "geography": "England",
+  "publisher": "DESNZ",
+  "title": "Annual Fuel Poverty Statistics in England, 2026 (2025 data), headline statistics",
+  "url": "https://assets.publishing.service.gov.uk/media/6a733816201b38b4dc3c2854/2026-fuel-poverty-statistics-report.pdf",
+  "note": "Based on required (modelled) energy costs, not actual spending. DESNZ also reports median required energy costs of 6.8% of AHC income for all households and 14.9% for low-income households in 2025."
+ },
+ {
+  "id": "lcf_weekly_electricity_spend_fye2025",
+  "quantity": "Average weekly household expenditure on electricity (all UK households)",
+  "value": 20.0,
+  "unit": "gbp_per_week",
+  "period": "2024-25 (FYE 2025, April 2024 - March 2025)",
+  "geography": "UK",
+  "publisher": "ONS",
+  "title": "Family spending workbook 1: detailed expenditure and trends, FYE 2025, Table A1, line 4.4.1 (released 11 June 2026)",
+  "url": "https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/personalandhouseholdfinances/expenditure/datasets/familyspendingworkbook1detailedexpenditureandtrends/fye2025/workbook1detailedexpenditureandtrends.xlsx",
+  "note": "Living Costs and Food Survey (~5,000 households). Table A1 numbers its categories sequentially: 4.4.1 Electricity, which is not the COICOP 4.5.1 code (ONS: 'The numbering is sequential, it does not use actual COICOP codes'). This is an average over all households, including non-recording ones (4,940 of 5,000 recorded). Aggregate £574m per week. Percentage standard error 1.1%. Times 52 = £1,040 per year (my derivation). Covers April 2024 to March 2025, when prices were lower than 2026 cap levels. Bulletin: https://www.ons.gov.uk/peoplepopulationandcommunity/personalandhouseholdfinances/expenditure/bulletins/familyspendingintheuk/april2024tomarch2025"
+ },
+ {
+  "id": "lcf_weekly_gas_spend_fye2025",
+  "quantity": "Average weekly household expenditure on gas (all UK households)",
+  "value": 14.1,
+  "unit": "gbp_per_week",
+  "period": "2024-25 (FYE 2025, April 2024 - March 2025)",
+  "geography": "UK",
+  "publisher": "ONS",
+  "title": "Family spending workbook 1: detailed expenditure and trends, FYE 2025, Table A1, line 4.4.2 (released 11 June 2026)",
+  "url": "https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/personalandhouseholdfinances/expenditure/datasets/familyspendingworkbook1detailedexpenditureandtrends/fye2025/workbook1detailedexpenditureandtrends.xlsx",
+  "note": "Sequential line 4.4.2 Gas (COICOP 4.5.2 equivalent). This is an average over all households, including those recording no gas spending (4,030 of the 5,000 sample households recorded gas expenditure). Aggregate £404m per week; percentage SE 1.6%. Times 52 = £733.20 per year (my derivation). Same line group: 4.4 Electricity, gas and other fuels £35.90 per week; 4.4.3 Other fuels £1.80 per week."
+ },
+ {
+  "id": "dwp_uc_households_may2026",
+  "quantity": "Households (benefit units) on Universal Credit",
+  "value": {
+   "households_on_uc": 7200000,
+   "households_with_payment": 6700000,
+   "people_on_uc": 8400000
+  },
+  "unit": "households",
+  "period": "May 2026 (provisional)",
+  "geography": "GB",
+  "publisher": "DWP",
+  "title": "Universal Credit quarterly statistics, 29 April 2013 to 14 May 2026 (published 18 August 2026)",
+  "url": "https://www.gov.uk/government/statistics/universal-credit-quarterly-statistics-29-april-2013-to-14-may-2026/universal-credit-quarterly-statistics-29-april-2013-to-14-may-2026",
+  "note": "DWP's UC 'household' is a single person or couple with or without dependent children, i.e. a benefit unit, not an ONS household. The bulletin rounds to 0.1 million; exact counts are on Stat-Xplore, which I did not query. 94% of UC households had a payment; 44% of those with a payment had children. Next quarterly release in November 2026."
+ },
+ {
+  "id": "dwp_pension_credit_mar2026",
+  "quantity": "Pension Credit claimants",
+  "value": {
+   "claimants": 1381700,
+   "beneficiaries_incl_partners": 1500000,
+   "guarantee_credit_only": 833000,
+   "savings_credit_only": 151000,
+   "both_guarantee_and_savings": 398000
+  },
+  "unit": "benefit_units",
+  "period": "March 2026",
+  "geography": "GB",
+  "publisher": "DWP",
+  "title": "Annual DWP Benefits Statistics Compendium: 2026 (published 15 September 2026), Figure 2 and Figure 5",
+  "url": "https://www.gov.uk/government/statistics/annual-dwp-benefits-statistics-compendium-2026/annual-dwp-benefits-statistics-compendium-2026",
+  "note": "One claimant per benefit unit (couples claim jointly). Beneficiaries including partners is stated as 1.5 million, rounded. The type split is my addition of the published male and female counts (GC only 297k + 536k; SC only 52k + 99k; both 119k + 279k), each rounded to the nearest thousand. Guarantee Credit recipients (GC only plus both) = 1,231,000, derived. Change: -7,200 vs November 2025, -14,200 vs February 2025. The same compendium gives UC claimants (people) at March 2026 as 8,289,200."
+ },
+ {
+  "id": "desnz_domestic_electricity_meters_gb_2024",
+  "quantity": "Number of consuming domestic electricity meters",
+  "value": {
+   "all_domestic": 29344362,
+   "standard": 25859165,
+   "economy7": 3485197,
+   "mean_kwh_per_meter": 3323,
+   "median_kwh_per_meter": 2471
+  },
+  "unit": "meters",
+  "period": "2024 (non-half-hourly meters Feb 2024 - Jan 2025)",
+  "geography": "GB",
+  "publisher": "DESNZ",
+  "title": "Subnational electricity consumption statistics 2005 to 2024, sheet 2024, Great Britain (inc unallocated) row (updated 18 December 2025)",
+  "url": "https://assets.publishing.service.gov.uk/media/69426e905431f4f94d7f0b5e/Subnational_electricity_consumption_statistics_2005-2024.xlsx",
+  "note": "Published in thousands (29,344.362). The summary report says '29.3 million consuming domestic electricity meters' against an estimated 28.2 million GB households; the gap is partly misclassified non-domestic meters and properties with more than one meter point. Profile classes 1-2 are treated as domestic. Consumption from on-site generation is not captured. Summary report: https://www.gov.uk/government/statistics/subnational-electricity-and-gas-consumption-summary-report-2024/subnational-electricity-and-gas-consumption-summary-report-2024--2"
+ },
+ {
+  "id": "desnz_domestic_gas_meters_gb_2024",
+  "quantity": "Number of domestic gas meters",
+  "value": {
+   "domestic": 24702708,
+   "mean_kwh_per_meter_weather_corrected": 11359,
+   "median_kwh_per_meter_weather_corrected": 9859
+  },
+  "unit": "meters",
+  "period": "2024 gas year (mid-May 2024 to mid-May 2025)",
+  "geography": "GB",
+  "publisher": "DESNZ",
+  "title": "Subnational gas consumption statistics 2005 to 2024, sheet 2024, Great Britain (inc unallocated) row (updated 5 May 2026)",
+  "url": "https://assets.publishing.service.gov.uk/media/69f9bf208f3213f7384ecae6/Subnational_gas_consumption_statistics_2005-2024.xlsx",
+  "note": "Published in thousands (24,702.708). Meters using under 73,200 kWh a year count as domestic, so some small commercial sites are included. Consumption is weather-corrected. The summary report gives 16% of GB domestic properties not connected to the gas grid in 2024 (see desnz_off_gas_grid_share_gb_2024). The same sheet lists 376,875 non-consuming meters."
+ },
+ {
+  "id": "desnz_off_gas_grid_share_gb_2024",
+  "quantity": "Share of domestic properties not connected to the gas grid",
+  "value": 0.16,
+  "unit": "share",
+  "period": "2024",
+  "geography": "GB",
+  "publisher": "DESNZ",
+  "title": "Subnational electricity and gas consumption summary report 2024, section 4",
+  "url": "https://www.gov.uk/government/statistics/subnational-electricity-and-gas-consumption-summary-report-2024/subnational-electricity-and-gas-consumption-summary-report-2024--2",
+  "note": "Estimated as domestic properties minus domestic gas meters. Range runs from 7% in the North East to 24% in the South West. Consistent with RF's '84 per cent of homes on the gas grid'."
+ },
+ {
+  "id": "rf_billing_me_softly_eligibility_reach",
+  "quantity": "RF targeted energy discount: share of households eligible under a £24,000 highest-individual-income threshold (plus means-tested benefit passporting)",
+  "value": {
+   "share_of_all_households": 0.4,
+   "share_of_poorest_four_ahc_deciles_covered": 0.75,
+   "share_of_poorest_fifth_covered_press_release": 0.83,
+   "total_household_income_alt_poorest_four_deciles": 0.78
+  },
+  "unit": "share",
+  "period": "2024-25 FRS (published 10 August 2026)",
+  "geography": "GB",
+  "publisher": "Resolution Foundation",
+  "title": "Billing me softly (10 August 2026)",
+  "url": "https://www.resolutionfoundation.org/publications/billing-me-softly/",
+  "note": "All values 'around'. The report states 75% coverage of the poorest four deciles of equivalised AHC income; the press release (https://www.resolutionfoundation.org/press-releases/government-must-be-ready-to-provide-targeted-energy-support-if-further-price-spikes-cause-more-families-to-struggle-this-winter/) states 83% of the poorest fifth. These are different populations, not a contradiction. Eligibility is tested on taxable income, while deciles use HBAI AHC income, so coverage is below 100% even in the poorest decile. The alternative total household income test (under £30,000, OECD BHC-equivalised) also reaches about 40% of households. Source data: RF analysis of the FRS, GB, 2024-25."
+ },
+ {
+  "id": "rf_billing_me_softly_cost_and_discount",
+  "quantity": "RF targeted energy discount: scheme cost and average discount per eligible household",
+  "value": {
+   "scheme_cost_gbp": 2000000000,
+   "flat_average_discount_gbp": 175,
+   "tiered_below_18k_gbp": 220,
+   "tiered_18k_to_24k_gbp": 85
+  },
+  "unit": "gbp_per_year",
+  "period": "illustrative scheme for winter 2026-27 / early 2027",
+  "geography": "GB",
+  "publisher": "Resolution Foundation",
+  "title": "Billing me softly (10 August 2026)",
+  "url": "https://www.resolutionfoundation.org/publications/billing-me-softly/",
+  "note": "Delivered as a unit-rate discount on gas and electricity, so the value varies with consumption. £175 is the average over eligible households. The tiered amounts are 'around' values within the same £2bn envelope. RF says the cost should be met from public funds, not a bill levy. Implied eligible households at £2bn / £175 is about 11.4 million (my derivation, not stated by RF)."
+ },
+ {
+  "id": "rf_billing_me_softly_context",
+  "quantity": "RF contextual figures: passporting reach, 2022 universal support cost, VAT cut value, gas-grid share, composition effects",
+  "value": {
+   "means_tested_passporting_share_of_households": 0.25,
+   "universal_support_2022_cost_gbp": 44000000000,
+   "vat_cut_value_typical_household_gbp_per_year": 45,
+   "homes_on_gas_grid_share": 0.84,
+   "wa_couples_with_children_losing_eligibility_vs_total_income_test": 490000,
+   "pensioner_households_gaining_eligibility_vs_total_income_test": 780000
+  },
+  "unit": "mixed",
+  "period": "2024-25 FRS / 2026",
+  "geography": "GB",
+  "publisher": "Resolution Foundation",
+  "title": "Billing me softly (10 August 2026)",
+  "url": "https://www.resolutionfoundation.org/publications/billing-me-softly/",
+  "note": "Passporting reach is stated as 'around a quarter' of British households. The VAT figure (about £45 a year) matches Ofgem's statement for the Oct-Dec 2026 cap. Of the 490,000 working-age couples with children who lose out, 71% are in the poorest fifth; of the 780,000 pensioner households who gain, 81% (630,000) are in decile five or above. Also stated: more than 15% of second-quintile households could not afford to keep their home warm in 2022-23. The press release says 'second income quartile', but the report says quintile."
+ }
+]
