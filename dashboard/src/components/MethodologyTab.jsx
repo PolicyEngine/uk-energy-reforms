@@ -284,7 +284,7 @@ export default function MethodologyTab({ data, dataset }) {
           not in the repository.
         </p>
         <Note eyebrow="Commands">
-          <code className="block whitespace-pre-wrap text-xs">
+          <code className="block overflow-x-auto whitespace-pre text-xs">
             {`uv run uk-energy-reforms run --datasets microcosm_979 efrs_1573 --year 2026 \\
   --presets rf_flat rf_tiered rf_tiered_own_income rf_household_income passport_only \\
   --bill-share --budget 2e9 --out analyses/rf-billing-me-softly/results-2026

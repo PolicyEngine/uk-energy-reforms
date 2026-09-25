@@ -82,6 +82,8 @@ const GROUP_LABELS = {
 export function formatGroup(group) {
   if (typeof group !== "string") return group;
   if (GROUP_LABELS[group]) return GROUP_LABELS[group];
+  // Already a readable label (e.g. "East Midlands"): leave its capitals alone.
+  if (!/^[A-Z0-9_]+$/.test(group)) return group;
   const words = group.toLowerCase().replace(/_/g, " ");
   return words.charAt(0).toUpperCase() + words.slice(1);
 }

@@ -68,7 +68,7 @@ function categoryWidth(names) {
   const ctx = document.createElement("canvas").getContext("2d");
   if (!ctx) return 120;
   ctx.font = "12px Inter, system-ui, sans-serif";
-  return Math.ceil(Math.max(...names.map((n) => ctx.measureText(n).width))) + 12;
+  return Math.ceil(Math.max(...names.map((n) => ctx.measureText(n).width))) + 28;
 }
 
 function ImpactTooltip({ active, payload, formatter }) {

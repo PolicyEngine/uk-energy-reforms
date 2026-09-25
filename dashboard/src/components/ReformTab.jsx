@@ -630,7 +630,7 @@ function ThresholdSection({ result }) {
                 tick={AXIS_STYLE}
                 tickLine={false}
                 axisLine={{ stroke: colors.border.light }}
-                width={130}
+                width={150}
               />
               <Tooltip
                 contentStyle={TOOLTIP_CONTAINER_STYLE}

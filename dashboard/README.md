@@ -2,17 +2,22 @@
 
 A static dashboard for the Resolution Foundation's targeted energy discount proposal
 (*Billing me softly*, August 2026), built on the template of PolicyEngine's published UK
-dashboards. Five tabs:
+dashboards. Four tabs:
 
 - **Targeted energy discount:** cost, reach, gains by income decile, winners and losers,
-  inequality, poverty, reach among struggling households, breakdowns by region and household
-  type, and the income cut-offs, for each option, set of amounts, year and dataset.
+  inequality, poverty, reach among low-income households and those with high energy costs,
+  breakdowns by region and household type, and the income cut-offs, for each option, set of
+  amounts and year.
 - **Your household:** the discount a household would get under each option, from its
-  region, adults' taxable incomes, children, benefits and energy bill.
-- **Baseline:** households, bills and eligibility before the scheme, data coverage, and the
-  model's figures beside official statistics and other organisations' estimates.
-- **Comparison with the report:** every figure the report publishes beside PolicyEngine's.
+  region, adults' taxable incomes, children, benefits and energy bill, recalculated when the
+  reader presses Calculate.
+- **Baseline and comparisons:** households, bills and eligibility before the scheme, data
+  coverage, the model beside official statistics and other organisations' estimates, and
+  every figure the Resolution Foundation publishes beside PolicyEngine's.
 - **Methodology:** the assumptions behind every figure.
+
+The page shows the Microcosm dataset. The exported data also carry the Enhanced FRS for
+internal use: add `?dataset=efrs_1573` to the URL to switch every tab to it.
 
 Stack: Next.js 14 (App Router), React 18, Tailwind 3 with `@policyengine/design-system`
 tokens, Recharts, bun. It is path-mounted for the policyengine.org multizone at
