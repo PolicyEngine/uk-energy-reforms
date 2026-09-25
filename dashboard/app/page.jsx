@@ -6,20 +6,23 @@ import BaselineTab from "../src/components/BaselineTab";
 import HouseholdTab from "../src/components/HouseholdTab";
 import MethodologyTab from "../src/components/MethodologyTab";
 import ReformTab from "../src/components/ReformTab";
-import ReportTab from "../src/components/ReportTab";
+import { datasetFromQuery } from "../src/lib/dataHelpers";
 
 const TAB_OPTIONS = [
   { id: "reform", label: "Targeted energy discount" },
   { id: "household", label: "Your household" },
-  { id: "baseline", label: "Baseline" },
-  { id: "report", label: "Comparison with the report" },
+  { id: "baseline", label: "Baseline and comparisons" },
   { id: "methodology", label: "Methodology" },
 ];
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
+// The comparison with the report now sits in the baseline tab; keep its old links working.
+const TAB_ALIASES = { report: "baseline" };
+
 function getInitialTab(tabParam) {
-  return TAB_OPTIONS.some((tab) => tab.id === tabParam) ? tabParam : "reform";
+  const tab = TAB_ALIASES[tabParam] ?? tabParam;
+  return TAB_OPTIONS.some((option) => option.id === tab) ? tab : "reform";
 }
 
 function TabLink({ onSelect, children }) {
@@ -69,9 +72,16 @@ function Dashboard() {
     loadData();
   }, []);
 
+  const datasetParam = searchParams.get("dataset");
+  const dataset = datasetFromQuery(datasetParam, data);
+
   function handleTabChange(tab) {
     setActiveTab(tab);
-    router.replace(tab === "reform" ? "/" : `/?tab=${tab}`, { scroll: false });
+    const params = new URLSearchParams();
+    if (tab !== "reform") params.set("tab", tab);
+    if (datasetParam) params.set("dataset", datasetParam);
+    const query = params.toString();
+    router.replace(query ? `/?${query}` : "/", { scroll: false });
   }
 
   return (
@@ -94,11 +104,16 @@ function Dashboard() {
             >
               Resolution Foundation
             </a>{" "}
-            proposes discounting gas and electricity unit prices this winter for households
-            in Great Britain that receive a means-tested benefit or whose highest-income
-            member has taxable income below £24,000 a year, with a tiered version paying about
-            £220 below £18,000 and £85 from £18,000 to £24,000. This dashboard uses{" "}
-            <a href="https://policyengine.org" target="_blank" rel="noreferrer" className="underline">
+            proposes discounting gas and electricity unit prices this winter for households in Great
+            Britain that receive a means-tested benefit or whose highest-income member has taxable
+            income below £24,000 a year, with a tiered version paying about £220 below £18,000 and
+            £85 from £18,000 to £24,000. This dashboard uses{" "}
+            <a
+              href="https://policyengine.org"
+              target="_blank"
+              rel="noreferrer"
+              className="underline"
+            >
               PolicyEngine
             </a>{" "}
             UK microsimulation to estimate each option. The{" "}
@@ -107,12 +122,9 @@ function Dashboard() {
             regional and household breakdowns and the income cut-offs. The{" "}
             <TabLink onSelect={() => handleTabChange("household")}>Your household</TabLink> tab
             works out the discount for a household you describe. The{" "}
-            <TabLink onSelect={() => handleTabChange("baseline")}>Baseline</TabLink> tab sets
-            out the households and energy bills in the model and compares them with official
-            statistics. The{" "}
-            <TabLink onSelect={() => handleTabChange("report")}>Comparison with the report</TabLink>{" "}
-            tab sets PolicyEngine&apos;s estimates beside the Resolution Foundation&apos;s, and
-            the{" "}
+            <TabLink onSelect={() => handleTabChange("baseline")}>Baseline and comparisons</TabLink>{" "}
+            tab sets out the households and energy bills in the model and compares them with
+            official statistics and with the Resolution Foundation&apos;s own figures, and the{" "}
             <TabLink onSelect={() => handleTabChange("methodology")}>Methodology</TabLink> tab
             explains every assumption.
           </p>
@@ -143,11 +155,12 @@ function Dashboard() {
 
         {!loading && !error && data && (
           <>
-            {activeTab === "reform" && <ReformTab data={data} />}
-            {activeTab === "household" && <HouseholdTab data={data} calculator={calculator} />}
-            {activeTab === "baseline" && <BaselineTab data={data} />}
-            {activeTab === "report" && <ReportTab data={data} />}
-            {activeTab === "methodology" && <MethodologyTab data={data} />}
+            {activeTab === "reform" && <ReformTab data={data} dataset={dataset} />}
+            {activeTab === "household" && (
+              <HouseholdTab data={data} calculator={calculator} dataset={dataset} />
+            )}
+            {activeTab === "baseline" && <BaselineTab data={data} dataset={dataset} />}
+            {activeTab === "methodology" && <MethodologyTab data={data} dataset={dataset} />}
           </>
         )}
 

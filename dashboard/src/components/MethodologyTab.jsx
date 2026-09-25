@@ -1,6 +1,6 @@
 "use client";
 
-import { DATASET_ORDER, DATASET_SHORT, getResult, yearLabel } from "../lib/dataHelpers";
+import { getResult, yearLabel } from "../lib/dataHelpers";
 import { formatCurrency, formatShare } from "../lib/formatters";
 import SectionHeading from "./SectionHeading";
 import { Note, SourceLink } from "./ui";
@@ -26,11 +26,21 @@ function Bullets({ items }) {
   );
 }
 
-export default function MethodologyTab({ data }) {
+// Each dataset's stored price level on Ofgem's 2023 typical-use basis.
+const PRICE_LEVEL = {
+  microcosm_979: { label: "2024-25 prices", source: "ofgem_cap_fy2024_25", key: "mean" },
+  efrs_1573: {
+    label: "Ofgem April–June 2026 unit rates",
+    source: "ofgem_cap_2026_apr_jun",
+    key: "at_2023_tdcv",
+  },
+};
+
+export default function MethodologyTab({ data, dataset }) {
   const years = data.meta.years;
   const firstYear = years[0];
-  const datasets = DATASET_ORDER.filter((d) => data.meta.datasets[d]);
-  const flatScaled = getResult(data, firstYear, "rf_flat", "budget_2bn", "microcosm_979")?.schedule
+  const datasets = [dataset];
+  const flatScaled = getResult(data, firstYear, "rf_flat", "budget_2bn", dataset)?.schedule
     ?.amounts?.[0];
   const incomeTest = data.rf_comparison.figures.find((f) => f.id === "income_test_share");
   const coverage = (y) =>
@@ -38,15 +48,16 @@ export default function MethodologyTab({ data }) {
       .map((d) =>
         formatShare(
           y === "2024"
-            ? incomeTest?.policyengine?.[d]?.["2024"] ?? 0
-            : data.baseline?.[y]?.[d]?.income_test_share ?? 0,
+            ? (incomeTest?.policyengine?.[d]?.["2024"] ?? 0)
+            : (data.baseline?.[y]?.[d]?.income_test_share ?? 0),
         ),
       )
       .join(" / ");
   const cap = (id) => (data.external_sources ?? []).find((x) => x.id === id);
-  const capFy24 = cap("ofgem_cap_fy2024_25");
-  const capQ2 = cap("ofgem_cap_2026_apr_jun");
-  const capQ4 = cap("ofgem_cap_2026_oct_dec");
+  const level = PRICE_LEVEL[dataset] ?? PRICE_LEVEL.microcosm_979;
+  const levelValue = cap(level.source)?.value?.[level.key];
+  const winter = cap("ofgem_cap_2026_oct_dec")?.value?.at_2023_tdcv;
+  const winterGap = levelValue && winter ? winter / levelValue - 1 : null;
 
   return (
     <div className="space-y-6">
@@ -56,8 +67,8 @@ export default function MethodologyTab({ data }) {
           title="Methodology"
           description={
             <>
-              How the options are modelled, what the figures measure and what they leave out.
-              The reform code, the analysis and every published figure are in{" "}
+              How the options are modelled, what the figures measure and what they leave out. The
+              reform code, the analysis and every published figure are in{" "}
               <SourceLink href={REPO}>PolicyEngine/uk-energy-reforms</SourceLink>.
             </>
           }
@@ -68,40 +79,40 @@ export default function MethodologyTab({ data }) {
         <p>
           The Resolution Foundation proposes a discount on gas and electricity unit prices for
           households in Great Britain that either receive a means-tested benefit or whose
-          highest-income member has taxable income below £24,000. It sizes the scheme at about
-          £2bn, which it puts at an average of £175 per eligible household, and sets out a tiered
-          version paying about £220 below £18,000 and £85 from £18,000 to £24,000. The model adds
-          a discount per household to the household&apos;s income for the year; nothing else in
-          the tax and benefit system changes. Two comparators sit beside the flat and tiered
-          options: the report&apos;s household-income test, and passporting alone, as the Warm
-          Home Discount does.
+          highest-income member has taxable income below £24,000. It sizes the scheme at about £2bn,
+          which it puts at an average of £175 per eligible household, and sets out a tiered version
+          paying about £220 below £18,000 and £85 from £18,000 to £24,000. The model adds a discount
+          per household to the household&apos;s income for the year; nothing else in the tax and
+          benefit system changes. Two comparators sit beside the flat and tiered options: the
+          report&apos;s household-income test, and passporting alone, as the Warm Home Discount
+          does.
         </p>
         <p>
-          The Resolution Foundation publishes average amounts, not the pay-out rule itself, so
-          each option can be run with three sets of amounts, chosen with the &ldquo;Support
+          The Resolution Foundation publishes average amounts, not the pay-out rule itself, so each
+          option can be run with three sets of amounts, chosen with the &ldquo;Support
           amounts&rdquo; buttons:
         </p>
         <Bullets
           items={[
             <>
-              <strong>RF&apos;s amounts</strong> pay the report&apos;s averages as fixed sums:
-              £175 per household in the flat option, and £220 or £85 in the tiered one. The cost
-              is whatever those amounts add up to on our data, which is not exactly £2bn.
+              <strong>RF&apos;s amounts</strong> pay the report&apos;s averages as fixed sums: £175
+              per household in the flat option, and £220 or £85 in the tiered one. The cost is
+              whatever those amounts add up to on our data, which is not exactly £2bn.
             </>,
             <>
-              <strong>Scaled to £2bn</strong> keeps the same shape but scales every amount by
-              one factor so the scheme costs exactly £2bn in Great Britain. On Microcosm in{" "}
+              <strong>Scaled to £2bn</strong> keeps the same shape but scales every amount by one
+              factor so the scheme costs exactly £2bn in Great Britain. In{" "}
               {yearLabel(data, firstYear)} the flat option then pays{" "}
-              {flatScaled ? formatCurrency(flatScaled) : "n/a"} per household. The factor
-              depends on the dataset and year.
+              {flatScaled ? formatCurrency(flatScaled) : "n/a"} per household. The factor depends on
+              the year.
             </>,
             <>
-              <strong>Bill share</strong> pays a percentage of each household&apos;s annual gas
-              and electricity spend instead of a fixed sum, with the percentage set so the
-              average payment matches RF&apos;s amounts. It is the nearest the data allow to the
+              <strong>Bill share</strong> pays a percentage of each household&apos;s annual gas and
+              electricity spend instead of a fixed sum, with the percentage set so the average
+              payment matches RF&apos;s amounts. It is the nearest the data allow to the
               report&apos;s cut in unit prices, because the data record spend, not kilowatt-hours.
-              Spend includes standing charges, so a bill share gives low-use households more
-              than a per-kWh cut would.
+              Spend includes standing charges, so a bill share gives low-use households more than a
+              per-kWh cut would.
             </>,
           ]}
         />
@@ -113,48 +124,47 @@ export default function MethodologyTab({ data }) {
             <>
               <strong>Passporting.</strong> A household is passported if anyone in it receives
               Universal Credit, Pension Credit, Housing Benefit, income-related Employment and
-              Support Allowance, income-based Jobseeker&apos;s Allowance or Income Support (the
-              Warm Home Discount list, RF footnote 2). The main results use receipt as
-              PolicyEngine models it, with its take-up assumptions; the report&apos;s comparison
-              also shows receipt as survey respondents report it, which is the Resolution
-              Foundation&apos;s basis.
+              Support Allowance, income-based Jobseeker&apos;s Allowance or Income Support (the Warm
+              Home Discount list, RF footnote 2). The main results use receipt as PolicyEngine
+              models it, with its take-up assumptions; the report&apos;s comparison also shows
+              receipt as survey respondents report it, which is the Resolution Foundation&apos;s
+              basis.
             </>,
             <>
               <strong>Income test.</strong> Each adult&apos;s taxable income is PolicyEngine&apos;s
               total income: earnings, private and State Pensions, property, savings and dividend
               income and taxable benefits (RF footnote 5). The household passes if its
-              highest-income member is below the line. The comparator option instead divides
-              total household taxable income by the modified OECD equivalence scale (first adult
-              0.67, other adults and children 14 and over 0.33, younger children 0.2) and tests
-              it against £30,000.
+              highest-income member is below the line. The comparator option instead divides total
+              household taxable income by the modified OECD equivalence scale (first adult 0.67,
+              other adults and children 14 and over 0.33, younger children 0.2) and tests it against
+              £30,000.
             </>,
             <>
-              <strong>Tiers.</strong> The report does not say which tier passported households
-              get. The tiered option gives them the top tier (£220) whatever their income; the
-              own-income variant places them by their own income instead, with £85 as the floor.
+              <strong>Tiers.</strong> The report does not say which tier passported households get.
+              The tiered option gives them the top tier (£220) whatever their income; the own-income
+              variant places them by their own income instead, with £85 as the floor.
             </>,
             <>
               <strong>Great Britain only.</strong> Northern Ireland bills sit outside the Ofgem
-              price cap (RF footnote 1), so Northern Irish households are excluded throughout,
-              and all totals and shares are for Great Britain.
+              price cap (RF footnote 1), so Northern Irish households are excluded throughout, and
+              all totals and shares are for Great Britain.
             </>,
             <>
-              <strong>Annual income.</strong> The proposal would test income over the three
-              months before the scheme starts; the data record annual income, so the model tests
-              that. Households with volatile incomes may qualify in one and not the other.
+              <strong>Annual income.</strong> The proposal would test income over the three months
+              before the scheme starts; the data record annual income, so the model tests that.
+              Households with volatile incomes may qualify in one and not the other.
             </>,
             <>
-              <strong>Nominal thresholds.</strong> The £18,000, £24,000 and £30,000 lines are
-              not uprated between years, so fewer households pass the income test as incomes
-              grow. The £24,000 test covers {coverage("2024")} of households on 2024-25
-              incomes,{" "}
+              <strong>Nominal thresholds.</strong> The £18,000, £24,000 and £30,000 lines are not
+              uprated between years, so fewer households pass the income test as incomes grow. The
+              £24,000 test covers {coverage("2024")} of households on 2024-25 incomes,{" "}
               {years.map((y, i) => (
                 <span key={y}>
                   {i > 0 ? " and " : ""}
                   {coverage(y)} in {yearLabel(data, y)}
                 </span>
-              ))}{" "}
-              ({datasets.map((d) => DATASET_SHORT[d]).join(" / ")}).
+              ))}
+              .
             </>,
             <>
               <strong>Full take-up.</strong> Passported households are enrolled automatically.
@@ -171,25 +181,25 @@ export default function MethodologyTab({ data }) {
             <>
               <strong>Income.</strong> The discount is added to household net income, before and
               after housing costs. DWP counts the Warm Home Discount, a bill credit paid through
-              suppliers, as household income in Households Below Average Income, and the model
-              does the same for this discount.
+              suppliers, as household income in Households Below Average Income, and the model does
+              the same for this discount.
             </>,
             <>
-              <strong>Static, unfunded.</strong> Nobody changes their behaviour: energy use,
-              work and benefit claims stay as they are. The cost is not offset by any tax rise
-              or spending cut, so every change in income is a gain.
+              <strong>Static, unfunded.</strong> Nobody changes their behaviour: energy use, work
+              and benefit claims stay as they are. The cost is not offset by any tax rise or
+              spending cut, so every change in income is a gain.
             </>,
             <>
               <strong>Income deciles.</strong> People in Great Britain are ranked by equivalised
-              household income after housing costs before the reform, as in the report&apos;s
-              Figure 3, and split into ten groups of equal population.
+              household income after housing costs before the reform, as in the report&apos;s Figure
+              3, and split into ten groups of equal population, from the lowest income decile to the
+              highest.
             </>,
             <>
-              <strong>Winners and losers.</strong> Each person is placed in a band by the change
-              in their household&apos;s net income before housing costs, as a share of that income
-              before the reform:
-              gains above 5%, gains of 0.1% to 5%, and no change (within 0.1%). An unfunded
-              discount creates no losers.
+              <strong>Winners and losers.</strong> Each person is placed in a band by the change in
+              their household&apos;s net income before housing costs, as a share of that income
+              before the reform: gains above 5%, gains of 0.1% to 5%, and no change (within 0.1%).
+              An unfunded discount creates no losers.
             </>,
             <>
               <strong>Inequality.</strong> Gini coefficients and the shares of income held by the
@@ -197,10 +207,10 @@ export default function MethodologyTab({ data }) {
               costs, weighted by people, for Great Britain.
             </>,
             <>
-              <strong>Poverty.</strong> Absolute poverty uses PolicyEngine&apos;s fixed line
-              (the 2010-11 HBAI line uprated by CPI). Relative poverty uses 60% of the UK median
-              equivalised income before the reform, held fixed so the discount moves people
-              across the line without also moving the line.
+              <strong>Poverty.</strong> Absolute poverty uses PolicyEngine&apos;s fixed line (the
+              2010-11 HBAI line uprated by CPI). Relative poverty uses 60% of the UK median
+              equivalised income before the reform, held fixed so the discount moves people across
+              the line without also moving the line.
             </>,
             <>
               <strong>Energy burden.</strong> A household spends more than 10% of its net income
@@ -209,12 +219,12 @@ export default function MethodologyTab({ data }) {
               energy efficiency ratings the data do not have.
             </>,
             <>
-              <strong>Cut-offs.</strong> A household just above a threshold loses the support
-              below it. The dead zone is the range above the line where the household is worse
-              off than one just below it: the support lost, grossed up at 28% (basic-rate tax and
-              employee National Insurance), or 20% where the highest earner is over State Pension
-              age. Counts in narrow income bands rest on few survey records, and the tab flags
-              bands with an effective sample below 30.
+              <strong>Cut-offs.</strong> A household just above a threshold loses the support below
+              it. The dead zone is the range above the line where the household is worse off than
+              one just below it: the support lost, grossed up at 28% (basic-rate tax and employee
+              National Insurance), or 20% where the highest earner is over State Pension age. Counts
+              in narrow income bands rest on few survey records, and the tab flags bands with an
+              effective sample below 30.
             </>,
           ]}
         />
@@ -224,9 +234,9 @@ export default function MethodologyTab({ data }) {
         <Bullets
           items={[
             <>
-              <strong>Years.</strong> PolicyEngine models fiscal years.{" "}
-              {yearLabel(data, "2026")} runs from April 2026 to March 2027 and contains January to
-              March 2027, the winter the report proposes the discount for; it is the main year.
+              <strong>Years.</strong> PolicyEngine models fiscal years. {yearLabel(data, "2026")}{" "}
+              runs from April 2026 to March 2027 and contains January to March 2027, the winter the
+              report proposes the discount for; it is the main year.
               {years.includes("2027") ? (
                 <>
                   {" "}
@@ -237,34 +247,17 @@ export default function MethodologyTab({ data }) {
               Like-for-like comparisons with the report use 2024-25, the year of its survey.
             </>,
             <>
-              <strong>Uprating.</strong> Incomes, benefits and taxes are projected from the
-              2024-25 survey year with policyengine-uk {data.meta.policyengine_uk}&apos;s
-              forecasts. Gas and electricity spend is not uprated between years: policyengine-uk
-              holds it at the price level each dataset stores, April–June 2026 unit rates for the
-              Enhanced FRS and 2024-25 prices for Microcosm. Those two price levels are close:
-              Ofgem&apos;s cap for typical use averaged{" "}
-              {capFy24 ? formatCurrency(capFy24.value.mean) : "n/a"} over 2024-25 against{" "}
-              {capQ2 ? formatCurrency(capQ2.value.at_2023_tdcv) : "n/a"} in April–June 2026. So
-              the gap between the datasets&apos; average bills comes from consumption, not price.
-              Both sit below this winter&apos;s prices: the October–December 2026 cap is{" "}
-              {capQ2 && capQ4
-                ? formatShare(capQ4.value.at_2026_tdcv / capQ2.value.at_2026_tdcv - 1)
-                : "n/a"}{" "}
-              above April–June 2026. Bill levels, bill-share payments and energy-burden shares are
-              therefore understated in the scheme years on both datasets. Fixed amounts and
-              eligibility do not depend on spend.
+              <strong>Uprating.</strong> Incomes, benefits and taxes are projected from the 2024-25
+              survey year with policyengine-uk {data.meta.policyengine_uk}&apos;s forecasts. Gas and
+              electricity spend is not uprated between years: policyengine-uk holds it at the price
+              level the data store, here {level.label}. Ofgem&apos;s cap for October–December 2026
+              is {winterGap != null ? formatShare(winterGap) : "n/a"} above that level on its 2023
+              typical-use basis, so bill levels, bill-share payments and energy-burden shares are
+              understated in the scheme years. Fixed amounts and eligibility do not depend on spend.
             </>,
-            ...datasets.map((d) => (
-              <>
-                <strong>{DATASET_SHORT[d]}.</strong> {data.meta.datasets[d].label}.{" "}
-                {data.meta.datasets[d].notes}
-              </>
-            )),
             <>
-              Where the two datasets disagree, neither is taken as right. Microcosm&apos;s
-              household count sits closer to official totals and its weights are far less
-              concentrated, so the charts open on it; every figure can be switched to the
-              Enhanced FRS.
+              <strong>Data.</strong> {data.meta.datasets[dataset].label}.{" "}
+              {data.meta.datasets[dataset].notes}
             </>,
           ]}
         />
@@ -286,9 +279,9 @@ export default function MethodologyTab({ data }) {
         <p>
           Every figure on this page is pre-computed. The{" "}
           <SourceLink href={REPO}>repository</SourceLink> holds the reform (as a policyengine-uk
-          parameter tree and variables), the analysis code, the published outputs and the
-          Resolution Foundation&apos;s figures with page references. The survey microdata are
-          licensed and are not in the repository.
+          parameter tree and variables), the analysis code, the published outputs and the Resolution
+          Foundation&apos;s figures with page references. The survey microdata are licensed and are
+          not in the repository.
         </p>
         <Note eyebrow="Commands">
           <code className="block whitespace-pre-wrap text-xs">

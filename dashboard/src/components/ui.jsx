@@ -133,3 +133,17 @@ export function Table({ columns, rows, minWidth }) {
     </div>
   );
 }
+
+/** A table under a chart, collapsed until the reader asks for the numbers. */
+export function TableToggle({ label = "Show the numbers", children }) {
+  return (
+    <details className="table-toggle group">
+      <summary className="toggle-button inline-flex cursor-pointer list-none items-center gap-2">
+        <span aria-hidden className="transition-transform group-open:rotate-90">›</span>
+        <span className="group-open:hidden">{label}</span>
+        <span className="hidden group-open:inline">Hide the numbers</span>
+      </summary>
+      <div className="mt-3">{children}</div>
+    </details>
+  );
+}

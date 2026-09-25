@@ -3,14 +3,7 @@
 import { useMemo, useState } from "react";
 import { targetedEnergyDiscount } from "../lib/calculator";
 import { explain } from "../lib/explain";
-import {
-  DATASET_ORDER,
-  DATASET_SHORT,
-  PRESET_ORDER,
-  getBaseline,
-  getResult,
-  yearLabel,
-} from "../lib/dataHelpers";
+import { PRESET_ORDER, getBaseline, getResult, yearLabel } from "../lib/dataHelpers";
 import { formatCurrency } from "../lib/formatters";
 import SectionHeading from "./SectionHeading";
 import { Note, Table, Toggle } from "./ui";
@@ -60,27 +53,32 @@ function NumberField({ label, value, onChange, step = 1000, min = 0, prefix }) {
   );
 }
 
-export default function HouseholdTab({ data, calculator }) {
-  const [year, setYear] = useState(data.meta.years[0]);
-  const [dataset, setDataset] = useState(DATASET_ORDER[0]);
-  const [region, setRegion] = useState("NORTH_WEST");
-  const [adults, setAdults] = useState([19_000]);
-  const [youngChildren, setYoungChildren] = useState(0);
-  const [olderChildren, setOlderChildren] = useState(0);
-  const [benefits, setBenefits] = useState({});
-  const baseline = getBaseline(data, year, dataset);
-  const [bill, setBill] = useState(() => Math.round(baseline?.mean_bill ?? 1_500));
-  const [focus, setFocus] = useState("rf_flat");
+function sameHousehold(a, b) {
+  return JSON.stringify(a) === JSON.stringify(b);
+}
 
-  const household = {
-    adultIncomes: adults,
-    youngChildren,
-    olderChildren,
-    passported: Object.values(benefits).some(Boolean),
-    region,
-    bill,
-  };
+export default function HouseholdTab({ data, calculator, dataset }) {
+  const [year, setYear] = useState(data.meta.years[0]);
+  const baseline = getBaseline(data, year, dataset);
+  const [draft, setDraft] = useState(() => ({
+    region: "NORTH_WEST",
+    adultIncomes: [19_000],
+    youngChildren: 0,
+    olderChildren: 0,
+    benefits: {},
+    bill: Math.round(baseline?.mean_bill ?? 1_500),
+  }));
+  // Results follow the household as last calculated, not every keystroke.
+  const [household, setHousehold] = useState(draft);
+  const [focus, setFocus] = useState("rf_flat");
+  const edit = (patch) => setDraft((d) => ({ ...d, ...patch }));
+  const pending = !sameHousehold(draft, household);
   const scale = calculator?.equivalisation;
+
+  const inputs = {
+    ...household,
+    passported: Object.values(household.benefits).some(Boolean),
+  };
 
   const rows = useMemo(
     () =>
@@ -88,17 +86,18 @@ export default function HouseholdTab({ data, calculator }) {
         const row = { key: preset, preset: data.meta.presets[preset] };
         for (const variant of VARIANT_ORDER) {
           const r = getResult(data, year, preset, variant, dataset);
-          row[variant] = r && scale ? targetedEnergyDiscount(household, r.schedule, scale).amount : null;
+          row[variant] =
+            r && scale ? targetedEnergyDiscount(inputs, r.schedule, scale).amount : null;
         }
         return row;
       }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [data, year, dataset, JSON.stringify(household), scale],
+    [data, year, dataset, household, scale],
   );
 
   const focusSchedule = getResult(data, year, focus, "published", dataset)?.schedule;
   const focusResult =
-    focusSchedule && scale ? targetedEnergyDiscount(household, focusSchedule, scale) : null;
+    focusSchedule && scale ? targetedEnergyDiscount(inputs, focusSchedule, scale) : null;
 
   if (!scale) {
     return <p className="section-card text-sm text-slate-500">Calculator data not loaded.</p>;
@@ -122,8 +121,8 @@ export default function HouseholdTab({ data, calculator }) {
               <span className="mb-1 block font-medium">Where you live</span>
               <select
                 className="w-full rounded-md border border-slate-300 bg-white px-3 py-2"
-                value={region}
-                onChange={(e) => setRegion(e.target.value)}
+                value={draft.region}
+                onChange={(e) => edit({ region: e.target.value })}
               >
                 {REGIONS.map(([value, label]) => (
                   <option key={value} value={value}>
@@ -132,37 +131,55 @@ export default function HouseholdTab({ data, calculator }) {
                 ))}
               </select>
             </label>
-            {adults.map((income, i) => (
+            {draft.adultIncomes.map((income, i) => (
               <div key={i} className="flex items-end gap-2">
                 <div className="flex-1">
                   <NumberField
                     label={`Adult ${i + 1}: taxable income (£ a year)`}
                     value={income}
                     prefix="£"
-                    onChange={(v) => setAdults(adults.map((x, j) => (j === i ? v : x)))}
+                    onChange={(v) =>
+                      edit({ adultIncomes: draft.adultIncomes.map((x, j) => (j === i ? v : x)) })
+                    }
                   />
                 </div>
-                {adults.length > 1 && (
+                {draft.adultIncomes.length > 1 && (
                   <button
                     type="button"
                     className="toggle-button"
-                    onClick={() => setAdults(adults.filter((_, j) => j !== i))}
+                    onClick={() =>
+                      edit({ adultIncomes: draft.adultIncomes.filter((_, j) => j !== i) })
+                    }
                   >
                     Remove
                   </button>
                 )}
               </div>
             ))}
-            {adults.length < 6 && (
-              <button type="button" className="toggle-button" onClick={() => setAdults([...adults, 0])}>
+            {draft.adultIncomes.length < 6 && (
+              <button
+                type="button"
+                className="toggle-button"
+                onClick={() => edit({ adultIncomes: [...draft.adultIncomes, 0] })}
+              >
                 Add another adult
               </button>
             )}
           </div>
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-3">
-              <NumberField label="Children under 14" value={youngChildren} step={1} onChange={setYoungChildren} />
-              <NumberField label="Children aged 14 to 17" value={olderChildren} step={1} onChange={setOlderChildren} />
+              <NumberField
+                label="Children under 14"
+                value={draft.youngChildren}
+                step={1}
+                onChange={(v) => edit({ youngChildren: v })}
+              />
+              <NumberField
+                label="Children aged 14 to 17"
+                value={draft.olderChildren}
+                step={1}
+                onChange={(v) => edit({ olderChildren: v })}
+              />
             </div>
             <fieldset className="space-y-2 text-sm text-slate-700">
               <legend className="mb-1 font-medium">Does anyone in the household receive…</legend>
@@ -170,45 +187,56 @@ export default function HouseholdTab({ data, calculator }) {
                 <label key={key} className="flex items-center gap-2">
                   <input
                     type="checkbox"
-                    checked={Boolean(benefits[key])}
-                    onChange={(e) => setBenefits({ ...benefits, [key]: e.target.checked })}
+                    checked={Boolean(draft.benefits[key])}
+                    onChange={(e) =>
+                      edit({ benefits: { ...draft.benefits, [key]: e.target.checked } })
+                    }
                   />
                   {label}
                 </label>
               ))}
             </fieldset>
-            <NumberField label="Annual gas and electricity bill" value={bill} step={50} prefix="£" onChange={setBill} />
+            <NumberField
+              label="Annual gas and electricity bill"
+              value={draft.bill}
+              step={50}
+              prefix="£"
+              onChange={(v) => edit({ bill: v })}
+            />
             <p className="text-xs leading-5 text-slate-500">
-              The bill only matters for the bill-share amounts. It starts at the average GB
-              bill in the model ({formatCurrency(baseline?.mean_bill ?? 0)}, {DATASET_SHORT[dataset]},{" "}
-              {yearLabel(data, year)}).
+              The bill only matters for the bill-share amounts. It starts at the average GB bill in
+              the model ({formatCurrency(baseline?.mean_bill ?? 0)}, {yearLabel(data, year)}).
             </p>
           </div>
+        </div>
+        <div className="flex flex-wrap items-center gap-4 border-t border-slate-100 pt-4">
+          <button
+            type="button"
+            className="primary-button"
+            disabled={!pending}
+            onClick={() => setHousehold(draft)}
+          >
+            Calculate
+          </button>
+          <p className="text-sm text-slate-500" aria-live="polite">
+            {pending
+              ? "You have changed the household. Press Calculate to update the results below."
+              : "The results below are for this household."}
+          </p>
         </div>
       </section>
 
       <section className="section-card space-y-5">
         <SectionHeading
           title="Your discount under each option"
-          description="Pounds for the year. Scaled-to-£2bn and bill-share amounts depend on the dataset and year they are calibrated on."
+          description="Pounds for the year. Scaled-to-£2bn and bill-share amounts depend on the year they are calibrated on."
         />
-        <div className="grid gap-5 md:grid-cols-2">
-          <Toggle
-            label="Year"
-            value={year}
-            onChange={setYear}
-            options={data.meta.years.map((y) => ({ value: y, label: yearLabel(data, y) }))}
-          />
-          <Toggle
-            label="Calibrated on"
-            value={dataset}
-            onChange={setDataset}
-            options={DATASET_ORDER.filter((d) => data.meta.datasets[d]).map((d) => ({
-              value: d,
-              label: DATASET_SHORT[d],
-            }))}
-          />
-        </div>
+        <Toggle
+          label="Year"
+          value={year}
+          onChange={setYear}
+          options={data.meta.years.map((y) => ({ value: y, label: yearLabel(data, y) }))}
+        />
         <Table
           columns={[
             { key: "preset", header: "Option" },
@@ -236,9 +264,9 @@ export default function HouseholdTab({ data, calculator }) {
           )}
         </div>
         <p className="text-xs leading-5 text-slate-500">
-          The model assesses annual income; the proposal assesses the three months before the
-          scheme starts. The discount would be paid through energy bills, and the amounts are
-          the proposal&apos;s averages for a unit-price cut.
+          The model assesses annual income; the proposal assesses the three months before the scheme
+          starts. The discount would be paid through energy bills, and the amounts are the
+          proposal&apos;s averages for a unit-price cut.
         </p>
       </section>
     </div>

@@ -6,7 +6,6 @@ import {
   BarChart,
   CartesianGrid,
   LabelList,
-  Legend as ChartLegend,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -14,7 +13,7 @@ import {
 } from "recharts";
 import { colors, series } from "../lib/colors";
 import {
-  DATASET_ORDER,
+  DEFAULT_DATASET,
   DATASET_SHORT,
   PRESET_NOTES,
   PRESET_ORDER,
@@ -32,19 +31,19 @@ import {
   formatThousands,
 } from "../lib/formatters";
 import ChartLogo from "./ChartLogo";
+import { AXIS_STYLE, GRID_STYLE, TOOLTIP_CONTAINER_STYLE } from "./charts/chartDefaults";
 import PEImpactBarChart from "./charts/PEImpactBarChart";
 import PEWinnersLosersChart from "./charts/PEWinnersLosersChart";
 import SectionHeading from "./SectionHeading";
-import { Legend, MetricCard, Note, SplitBar, Table, Toggle, Warning } from "./ui";
+import { Legend, MetricCard, Note, SplitBar, Table, TableToggle, Toggle, Warning } from "./ui";
 
-const AXIS_STYLE = { fontSize: 12, fill: colors.gray[500] };
 // Below this effective sample size a band estimate rests on very few survey records.
 const THIN_ESS = 30;
 
 const COVERAGE_LABELS = {
   "absolute AHC poverty": "Households in absolute poverty after housing costs",
   "relative AHC poverty": "Households in relative poverty after housing costs",
-  "poorest four AHC deciles": "Households in the poorest four income deciles",
+  "poorest four AHC deciles": "Households in the four lowest income deciles",
   "energy over 10% of net income": "Households spending over 10% of net income on energy",
 };
 
@@ -61,7 +60,6 @@ const POVERTY_GROUPS = {
   working_age_adults: "Working-age adults",
   pensioners: "Pensioners",
 };
-
 
 const DECILE_METRICS = [
   {
@@ -90,8 +88,8 @@ const DECILE_METRICS = [
   },
 ];
 
-function Controls({ data, state, setState, result, published }) {
-  const { preset, variant, year, dataset } = state;
+function Controls({ data, state, setState, result, published, dataset }) {
+  const { preset, variant, year } = state;
   return (
     <section className="section-card space-y-5">
       <SectionHeading
@@ -111,7 +109,7 @@ function Controls({ data, state, setState, result, published }) {
           </button>
         ))}
       </div>
-      <div className="grid gap-5 md:grid-cols-3">
+      <div className="grid gap-5 md:grid-cols-2">
         <Toggle
           label="Support amounts"
           value={variant}
@@ -127,31 +125,24 @@ function Controls({ data, state, setState, result, published }) {
           onChange={(v) => setState({ year: v })}
           options={data.meta.years.map((y) => ({ value: y, label: yearLabel(data, y) }))}
         />
-        <Toggle
-          label="Data"
-          value={dataset}
-          onChange={(v) => setState({ dataset: v })}
-          options={DATASET_ORDER.filter((d) => data.meta.datasets[d]).map((d) => ({
-            value: d,
-            label: DATASET_SHORT[d],
-          }))}
-        />
       </div>
       {result && <Note eyebrow="Schedule">{describeSchedule(result.schedule)}</Note>}
       {year === data.meta.years[0] && (
         <p className="text-xs leading-5 text-slate-500">
-          {yearLabel(data, year)} runs from April to March, so it covers January to March
-          2027, the window the report proposes for this winter.
+          {yearLabel(data, year)} runs from April to March, so it covers January to March 2027, the
+          window the report proposes for this winter.
         </p>
       )}
-      {variant === "bill_share" && result && <BillSharePriceNote data={data} dataset={dataset} result={result} />}
+      {variant === "bill_share" && result && (
+        <BillSharePriceNote data={data} dataset={dataset} result={result} />
+      )}
       {dataset === "efrs_1573" && variant === "bill_share" && result && published && (
         <Warning>
-          The Enhanced FRS records no energy spend for some households, and a bill share pays
-          them nothing: recipients fall from {formatMillions(published.headline.recipients_m, 2)}{" "}
-          to {formatMillions(result.headline.recipients_m, 2)} and the average per recipient
-          rises to {formatCurrency(result.headline.average_per_recipient)}. The written analysis
-          sets these results aside; use Microcosm for the bill share.
+          The Enhanced FRS records no energy spend for some households, and a bill share pays them
+          nothing: recipients fall from {formatMillions(published.headline.recipients_m, 2)} to{" "}
+          {formatMillions(result.headline.recipients_m, 2)} and the average per recipient rises to{" "}
+          {formatCurrency(result.headline.average_per_recipient)}. The written analysis sets these
+          results aside; use Microcosm for the bill share.
         </Warning>
       )}
     </section>
@@ -180,9 +171,9 @@ function BillSharePriceNote({ data, dataset, result }) {
   return (
     <Note eyebrow="Bill share and this winter's prices">
       The percentages are set so the average payment matches RF&apos;s amounts on this
-      dataset&apos;s bills, which are at {level.label}. Ofgem&apos;s cap for October–December
-      2026 is {formatShare(uplift - 1)} above that price level, so at this winter&apos;s prices
-      the same percentages would pay about {formatShare(uplift - 1)} more than shown here.
+      dataset&apos;s bills, which are at {level.label}. Ofgem&apos;s cap for October–December 2026
+      is {formatShare(uplift - 1)} above that price level, so at this winter&apos;s prices the same
+      percentages would pay about {formatShare(uplift - 1)} more than shown here.
       {rate
         ? ` Matching RF's averages at those prices would take about ${(100 * (rate / uplift)).toFixed(1)}% rather than ${(100 * rate).toFixed(1)}%.`
         : ""}
@@ -228,7 +219,7 @@ function DecileSection({ result }) {
     <section className="section-card">
       <SectionHeading
         title="Gains by income decile"
-        description="Average change in household net income across all households in each decile, receiving or not. Deciles rank people by equivalised household income after housing costs, poorest first."
+        description="Average change in household net income across all households in each decile, receiving or not. Deciles rank people by equivalised household income after housing costs, from the lowest income decile (1) to the highest (10)."
       />
       <div className="mb-4">
         <Toggle value={metric} onChange={setMetric} options={DECILE_METRICS} />
@@ -278,16 +269,19 @@ function WinnersSection({ result }) {
 
 function InequalitySection({ result }) {
   const q = result.inequality;
-  const card = (label, key, digits, note) => {
+  const signedPct = (v) => `${v > 0 ? "+" : v < 0 ? "−" : ""}${Math.abs(100 * v).toFixed(2)}%`;
+  const card = (label, key, format, note) => {
     const v = q[key];
     return (
       <MetricCard
         label={label}
-        value={`${v.reform.toFixed(digits)}`}
-        note={`${note} Baseline ${v.baseline.toFixed(digits)}; change ${v.change >= 0 ? "+" : "−"}${Math.abs(v.change).toFixed(digits + 1)} (${v.change_pct >= 0 ? "+" : "−"}${Math.abs(100 * v.change_pct).toFixed(2)}%).`}
+        value={format(v.reform)}
+        note={`${note} Baseline ${format(v.baseline)}; relative change ${signedPct(v.change_pct)}.`}
       />
     );
   };
+  const gini = (v) => v.toFixed(2);
+  const share = (v) => `${(100 * v).toFixed(1)}%`;
   return (
     <section className="section-card space-y-4">
       <SectionHeading
@@ -295,9 +289,24 @@ function InequalitySection({ result }) {
         description="Measures of equivalised household net income across people in Great Britain, before and after the discount."
       />
       <div className="grid gap-4 md:grid-cols-3">
-        {card("Gini index, before housing costs", "gini_bhc", 4, "0 is perfect equality and 1 is perfect inequality.")}
-        {card("Gini index, after housing costs", "gini_ahc", 4, "Income after rent, mortgage interest and water charges.")}
-        {card("Top 10% share of income", "top_10_share_bhc", 4, "Share of income held by the richest tenth, before housing costs.")}
+        {card(
+          "Gini index, before housing costs",
+          "gini_bhc",
+          gini,
+          "0 is perfect equality and 1 is perfect inequality.",
+        )}
+        {card(
+          "Gini index, after housing costs",
+          "gini_ahc",
+          gini,
+          "Income after rent, mortgage interest and water charges.",
+        )}
+        {card(
+          "Top 10% share of income",
+          "top_10_share_bhc",
+          share,
+          "Share of income held by the highest-income tenth, before housing costs.",
+        )}
       </div>
     </section>
   );
@@ -331,24 +340,43 @@ function PovertySection({ result }) {
       />
       <PEImpactBarChart
         data={data}
-        height={360}
+        horizontal
         invertColors
         yAxisLabel="Relative change in poverty rate"
         yTickFormatter={(v) => `${(100 * v).toFixed(1)}%`}
-        barLabelFormatter={(v) => `${v > 0 ? "+" : v < 0 ? "−" : ""}${Math.abs(100 * v).toFixed(1)}%`}
+        barLabelFormatter={(v) =>
+          `${v > 0 ? "+" : v < 0 ? "−" : ""}${Math.abs(100 * v).toFixed(1)}%`
+        }
       />
       <ChartLogo />
-      <Table
-        minWidth={640}
-        columns={[
-          { key: "measure", header: "Measure", format: (v) => POVERTY_MEASURES[v] ?? v },
-          { key: "group", header: "Group", format: (v) => POVERTY_GROUPS[v] ?? v },
-          { key: "baseline_rate", header: "Baseline rate", align: "right", format: (v) => formatShare(v, 1) },
-          { key: "change_pp", header: "Change", align: "right", format: (v) => formatSignedPp(v) },
-          { key: "change_k", header: "Change in people", align: "right", format: (v) => formatSignedThousands(v) },
-        ]}
-        rows={result.poverty}
-      />
+      <TableToggle>
+        <Table
+          minWidth={640}
+          columns={[
+            { key: "measure", header: "Measure", format: (v) => POVERTY_MEASURES[v] ?? v },
+            { key: "group", header: "Group", format: (v) => POVERTY_GROUPS[v] ?? v },
+            {
+              key: "baseline_rate",
+              header: "Baseline rate",
+              align: "right",
+              format: (v) => formatShare(v, 1),
+            },
+            {
+              key: "change_pp",
+              header: "Change",
+              align: "right",
+              format: (v) => formatSignedPp(v),
+            },
+            {
+              key: "change_k",
+              header: "Change in people",
+              align: "right",
+              format: (v) => formatSignedThousands(v),
+            },
+          ]}
+          rows={result.poverty}
+        />
+      </TableToggle>
     </section>
   );
 }
@@ -357,7 +385,7 @@ function ReachSection({ result, isPassportOnly }) {
   return (
     <section className="section-card space-y-5">
       <SectionHeading
-        title="Who the discount reaches among households that are struggling"
+        title="Who the discount reaches among low-income households and those with high energy costs"
         description="Each bar below is one group of households, such as those in poverty. The bar is split by how households in that group fare under the option: the teal part receives the discount because it gets a means-tested benefit, the blue part qualifies through the income test alone, and the grey part gets nothing."
       />
       <Legend
@@ -404,7 +432,7 @@ function BreakdownSection({ result }) {
     <section className="section-card space-y-5">
       <SectionHeading
         title="By region and household type"
-        description="Share of households eligible through a benefit or through the income test alone, then cost, gains and the households in poverty the option does not reach. Poor: households in absolute poverty after housing costs. ESS: effective sample size; small groups rest on few survey records."
+        description="Share of households eligible through a benefit or through the income test alone, then cost, gains and the households in poverty the option does not reach. In poverty: households in absolute poverty after housing costs. ESS: effective sample size; small groups rest on few survey records."
       />
       <Toggle
         value={by}
@@ -428,31 +456,98 @@ function BreakdownSection({ result }) {
             <SplitBar
               segments={[
                 { key: "p", label: "Passported", value: r.passported_rate, color: series.a },
-                { key: "i", label: "Income test alone", value: r.income_only_rate, color: series.b },
-                { key: "n", label: "Not eligible", value: 1 - r.eligible_rate, color: series.neutral },
+                {
+                  key: "i",
+                  label: "Income test alone",
+                  value: r.income_only_rate,
+                  color: series.b,
+                },
+                {
+                  key: "n",
+                  label: "Not eligible",
+                  value: 1 - r.eligible_rate,
+                  color: series.neutral,
+                },
               ]}
             />
           </div>
         ))}
       </div>
-      <Table
-        minWidth={1180}
-        columns={[
-          { key: "group", header: by === "region" ? "Region" : "Household type" },
-          { key: "households_m", header: "Households", align: "right", format: (v) => formatMillions(v, 2) },
-          { key: "eligible_rate", header: "Eligible", align: "right", format: (v) => formatShare(v) },
-          { key: "passported_rate", header: "Passported", align: "right", format: (v) => formatShare(v) },
-          { key: "income_only_rate", header: "Income test only", align: "right", format: (v) => formatShare(v) },
-          { key: "cost_share", header: "Share of cost", align: "right", format: (v) => formatShare(v, 1) },
-          { key: "average_per_recipient", header: "Avg per recipient", align: "right", format: (v) => formatCurrency(v) },
-          { key: "gain_pct_net_income", header: "Gain, % income", align: "right", format: (v) => `${(100 * v).toFixed(2)}%` },
-          { key: "abs_ahc_poor_covered", header: "Poor reached", align: "right", format: (v) => formatShare(v) },
-          { key: "abs_ahc_poor_missed_k", header: "Poor not reached", align: "right", format: (v) => formatThousands(v) },
-          { key: "people_out_of_rel_ahc_poverty_k", header: "People out of rel. poverty", align: "right", format: (v) => formatThousands(v) },
-          { key: "ess", header: "ESS", align: "right", format: (v) => Math.round(v).toLocaleString("en-GB") },
-        ]}
-        rows={rows}
-      />
+      <TableToggle>
+        <Table
+          minWidth={1180}
+          columns={[
+            { key: "group", header: by === "region" ? "Region" : "Household type" },
+            {
+              key: "households_m",
+              header: "Households",
+              align: "right",
+              format: (v) => formatMillions(v, 2),
+            },
+            {
+              key: "eligible_rate",
+              header: "Eligible",
+              align: "right",
+              format: (v) => formatShare(v),
+            },
+            {
+              key: "passported_rate",
+              header: "Passported",
+              align: "right",
+              format: (v) => formatShare(v),
+            },
+            {
+              key: "income_only_rate",
+              header: "Income test only",
+              align: "right",
+              format: (v) => formatShare(v),
+            },
+            {
+              key: "cost_share",
+              header: "Share of cost",
+              align: "right",
+              format: (v) => formatShare(v, 1),
+            },
+            {
+              key: "average_per_recipient",
+              header: "Avg per recipient",
+              align: "right",
+              format: (v) => formatCurrency(v),
+            },
+            {
+              key: "gain_pct_net_income",
+              header: "Gain, % income",
+              align: "right",
+              format: (v) => `${(100 * v).toFixed(2)}%`,
+            },
+            {
+              key: "abs_ahc_poor_covered",
+              header: "In poverty, reached",
+              align: "right",
+              format: (v) => formatShare(v),
+            },
+            {
+              key: "abs_ahc_poor_missed_k",
+              header: "In poverty, not reached",
+              align: "right",
+              format: (v) => formatThousands(v),
+            },
+            {
+              key: "people_out_of_rel_ahc_poverty_k",
+              header: "People out of rel. poverty",
+              align: "right",
+              format: (v) => formatThousands(v),
+            },
+            {
+              key: "ess",
+              header: "ESS",
+              align: "right",
+              format: (v) => Math.round(v).toLocaleString("en-GB"),
+            },
+          ]}
+          rows={rows}
+        />
+      </TableToggle>
     </section>
   );
 }
@@ -472,8 +567,16 @@ function ThresholdSection({ result }) {
     const b = c.bands;
     const gbp = (v) => `£${Math.round(v).toLocaleString("en-GB")}`;
     const rows = [
-      { group: `${gbp(c.threshold - 1000)} to ${gbp(c.threshold - 1)}`, households: b["1000_below"].households_k, poorest: b["1000_below"].bottom4_k },
-      { group: `${gbp(c.threshold)} to ${gbp(c.threshold + 999)}`, households: b["1000_above"].households_k, poorest: b["1000_above"].bottom4_k },
+      {
+        group: `${gbp(c.threshold - 1000)} to ${gbp(c.threshold - 1)}`,
+        households: b["1000_below"].households_k,
+        lowest: b["1000_below"].bottom4_k,
+      },
+      {
+        group: `${gbp(c.threshold)} to ${gbp(c.threshold + 999)}`,
+        households: b["1000_above"].households_k,
+        lowest: b["1000_above"].bottom4_k,
+      },
     ];
     return (
       <section key={c.threshold} className="section-card space-y-4">
@@ -483,15 +586,18 @@ function ThresholdSection({ result }) {
         />
         {b["1000_above"].ess < THIN_ESS && (
           <Warning>
-            The effective sample within £1,000 above this line is{" "}
-            {Math.round(b["1000_above"].ess)} households in this dataset, so these figures are
-            shown for completeness; the written analysis quotes Microcosm&apos;s.
+            The effective sample within £1,000 above this line is {Math.round(b["1000_above"].ess)}{" "}
+            households in this dataset, so these figures are shown for completeness; the written
+            analysis quotes Microcosm&apos;s.
           </Warning>
         )}
         <div className="grid gap-4 md:grid-cols-3">
-          <MetricCard label="Households within £1,000 above" value={formatThousands(b["1000_above"].households_k)} />
           <MetricCard
-            label="…of which in the poorest four deciles"
+            label="Households within £1,000 above"
+            value={formatThousands(b["1000_above"].households_k)}
+          />
+          <MetricCard
+            label="…of which in the four lowest income deciles"
             value={formatThousands(b["1000_above"].bottom4_k)}
             note={`${formatThousands(b["1000_above"].rel_ahc_poor_k)} in relative poverty after housing costs.`}
           />
@@ -501,62 +607,121 @@ function ThresholdSection({ result }) {
             note={`Median width ${formatCurrency(c.dead_zone_median_width)} of extra income.`}
           />
         </div>
-        <div className="h-[280px] w-full">
+        <div className="h-[220px] w-full">
           <ResponsiveContainer>
-            <BarChart data={rows} margin={{ top: 20, right: 20, bottom: 5, left: 10 }} barGap={4}>
-              <CartesianGrid strokeDasharray="3 3" stroke={colors.border.light} />
-              <XAxis dataKey="group" tick={AXIS_STYLE} />
-              <YAxis tick={AXIS_STYLE} tickFormatter={formatThousands} tickLine={false} axisLine={false} />
-              <Tooltip formatter={(v, name) => [formatThousands(v), name]} />
-              <ChartLegend wrapperStyle={{ fontSize: 12 }} formatter={(v) => <span style={{ color: colors.gray[700] }}>{v}</span>} />
-              <Bar dataKey="households" name="Households not passported" fill={series.a} radius={[6, 6, 0, 0]}>
-                <LabelList dataKey="households" position="top" formatter={formatThousands} style={{ fontSize: 11, fill: colors.gray[700] }} />
+            <BarChart
+              layout="vertical"
+              data={rows}
+              margin={{ top: 10, right: 56, bottom: 10, left: 4 }}
+              barGap={2}
+              barCategoryGap={14}
+            >
+              <CartesianGrid {...GRID_STYLE} horizontal={false} />
+              <XAxis
+                type="number"
+                tick={AXIS_STYLE}
+                tickFormatter={formatThousands}
+                tickLine={false}
+                axisLine={{ stroke: colors.border.light }}
+              />
+              <YAxis
+                type="category"
+                dataKey="group"
+                tick={AXIS_STYLE}
+                tickLine={false}
+                axisLine={{ stroke: colors.border.light }}
+                width={130}
+              />
+              <Tooltip
+                contentStyle={TOOLTIP_CONTAINER_STYLE}
+                formatter={(v, name) => [formatThousands(v), name]}
+              />
+              <Bar
+                dataKey="households"
+                name="Households not passported"
+                fill={series.a}
+                radius={[0, 4, 4, 0]}
+                isAnimationActive={false}
+              >
+                <LabelList
+                  dataKey="households"
+                  position="right"
+                  formatter={formatThousands}
+                  style={{ fontSize: 12, fill: colors.gray[700] }}
+                />
               </Bar>
-              <Bar dataKey="poorest" name="Of which in the poorest four deciles" fill={series.b} radius={[6, 6, 0, 0]}>
-                <LabelList dataKey="poorest" position="top" formatter={formatThousands} style={{ fontSize: 11, fill: colors.gray[700] }} />
+              <Bar
+                dataKey="lowest"
+                name="Of which in the four lowest income deciles"
+                fill={series.b}
+                radius={[0, 4, 4, 0]}
+                isAnimationActive={false}
+              >
+                <LabelList
+                  dataKey="lowest"
+                  position="right"
+                  formatter={formatThousands}
+                  style={{ fontSize: 12, fill: colors.gray[700] }}
+                />
               </Bar>
             </BarChart>
           </ResponsiveContainer>
         </div>
+        <Legend
+          items={[
+            { label: "Households not passported", color: series.a },
+            { label: "Of which in the four lowest income deciles", color: series.b },
+          ]}
+        />
         <ChartLogo />
         <p className="text-xs leading-5 text-slate-500">
           The dead zone is the income range just above the line where the household&apos;s top
-          earner would need more extra gross pay than the support lost to break even: 20%
-          income tax plus 8% National Insurance, or 20% for a top earner over State Pension age.
-          Effective sample size within £1,000 above: {Math.round(b["1000_above"].ess)}.
+          earner would need more extra gross pay than the support lost to break even: 20% income tax
+          plus 8% National Insurance, or 20% for a top earner over State Pension age. Effective
+          sample size within £1,000 above: {Math.round(b["1000_above"].ess)}.
         </p>
       </section>
     );
   });
 }
 
-export default function ReformTab({ data }) {
+export default function ReformTab({ data, dataset }) {
   const [state, setFullState] = useState({
     preset: "rf_flat",
     variant: "published",
     year: data.meta.years[0],
-    dataset: DATASET_ORDER[0],
   });
   const setState = (patch) => setFullState((s) => ({ ...s, ...patch }));
-  const result = getResult(data, state.year, state.preset, state.variant, state.dataset);
-  const published = getResult(data, state.year, state.preset, "published", state.dataset);
+  const result = getResult(data, state.year, state.preset, state.variant, dataset);
+  const published = getResult(data, state.year, state.preset, "published", dataset);
   const efrs = data.results[state.year]?.rf_flat?.efrs_1573?.headline.gb_households_m;
   const micro = data.results[state.year]?.rf_flat?.microcosm_979?.headline.gb_households_m;
   const levels =
-    state.dataset === "efrs_1573" && efrs && micro
+    dataset === "efrs_1573" && efrs && micro
       ? `; Enhanced FRS counts run ${formatShare(efrs / micro - 1)} above Microcosm's.`
       : ".";
 
   return (
     <div className="space-y-6">
-      <Controls data={data} state={state} setState={setState} result={result} published={published} />
+      <Controls
+        data={data}
+        state={state}
+        setState={setState}
+        result={result}
+        published={published}
+        dataset={dataset}
+      />
       {!result ? (
         <p className="section-card text-sm text-slate-500">No results for this combination.</p>
       ) : (
         <>
           <Headline result={result} levels={levels} />
           <div className="pt-2">
-            <SectionHeading size="lg" title="Distributional impact" description={`${data.meta.presets[state.preset]}, ${data.meta.variants[state.variant]}, ${yearLabel(data, state.year)}, ${DATASET_SHORT[state.dataset]}.`} />
+            <SectionHeading
+              size="lg"
+              title="Distributional impact"
+              description={`${data.meta.presets[state.preset]}, ${data.meta.variants[state.variant]}, ${yearLabel(data, state.year)}${dataset === DEFAULT_DATASET ? "" : `, ${DATASET_SHORT[dataset]}`}.`}
+            />
           </div>
           <DecileSection result={result} />
           <WinnersSection result={result} />
@@ -568,7 +733,11 @@ export default function ReformTab({ data }) {
           <ReachSection result={result} isPassportOnly={!result.schedule.income_test} />
           <BreakdownSection result={result} />
           <div className="pt-2">
-            <SectionHeading size="lg" title="Income cut-offs" description="Support stops (or drops a tier) as soon as tested income reaches a line, so households just above a line lose the whole amount." />
+            <SectionHeading
+              size="lg"
+              title="Income cut-offs"
+              description="Support stops (or drops a tier) as soon as tested income reaches a line, so households just above a line lose the whole amount."
+            />
           </div>
           <ThresholdSection result={result} />
         </>

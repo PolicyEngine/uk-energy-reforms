@@ -175,6 +175,26 @@
     color: var(--pe-color-text-inverse);
   }
 
+  .primary-button {
+    border-radius: 999px;
+    background: var(--pe-color-primary-600);
+    padding: 10px 22px;
+    font-size: var(--pe-font-size-sm);
+    font-weight: var(--pe-font-weight-semibold);
+    color: var(--pe-color-text-inverse);
+    transition: background 180ms ease;
+  }
+
+  .primary-button:hover {
+    background: var(--pe-color-primary-700);
+  }
+
+  .primary-button:disabled {
+    background: var(--pe-color-gray-200);
+    color: var(--pe-color-gray-500);
+    cursor: default;
+  }
+
   .note-card {
     border-left: 3px solid var(--pe-color-border-light);
     background: var(--pe-color-bg-secondary);
@@ -261,6 +281,10 @@
 
   .data-table tbody tr:hover {
     background: var(--pe-color-bg-secondary);
+  }
+
+  .table-toggle > summary::-webkit-details-marker {
+    display: none;
   }
 
   @media (max-width: 640px) {

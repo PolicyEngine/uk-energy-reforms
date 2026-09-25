@@ -35,13 +35,25 @@ export const colors = {
   error: "#EF4444",
 };
 
-// Two-category series (passported / income test only). Teal-only pairs fail the
-// colour-vision checks, so the second series uses PolicyEngine's chart dark blue.
-// Validated pair (dataviz validator, light surface): all checks pass; teal-400 sits
-// below 3:1 contrast, so these series always carry direct labels or a table.
-export const series = {
-  a: "#38B2AC",
-  b: "#026AA2",
+// PolicyEngine chart palette (@policyengine/ui-kit --chart-1 … --chart-5).
+export const pe = {
+  chart1: "#319795",
+  chart2: "#0EA5E9",
+  chart3: "#285E61",
+  chart4: "#026AA2",
+  chart5: "#64748B",
   neutral: "#E2E8F0",
   ink: "#101828",
+};
+
+// Single-series charts use chart-1, as the standard impact charts do. Two-category splits
+// (passported / income test alone / not reached) use PE teal-400 with chart-4: the only
+// pairing from the PE palette that passes the dataviz validator on a light surface
+// (chart-1 with chart-4 falls just under the normal-vision floor, ΔE 14.8 < 15). Teal-400
+// sits below 3:1 contrast, so these series always carry direct labels or a table.
+export const series = {
+  a: colors.primary[400],
+  b: pe.chart4,
+  neutral: pe.neutral,
+  ink: pe.ink,
 };
