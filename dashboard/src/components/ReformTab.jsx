@@ -321,9 +321,10 @@ function PovertySection({ result }) {
     .filter(Boolean)
     .map((p) => {
       const change = p.baseline_rate ? p.reform_rate / p.baseline_rate - 1 : 0;
+      // Bars show the fall, so they grow from left to right like the other charts.
       return {
         name: POVERTY_GROUPS[p.group],
-        value: change,
+        value: -change,
         hoverText: `${change <= 0 ? "Falls" : "Rises"} by ${formatShare(Math.abs(change), 1)}, from ${formatShare(p.baseline_rate, 1)} to ${formatShare(p.reform_rate, 1)} (${formatSignedThousands(p.change_k)} people)`,
       };
     });
@@ -331,7 +332,7 @@ function PovertySection({ result }) {
     <section className="section-card space-y-4">
       <SectionHeading
         title="Poverty"
-        description="Relative change in the poverty rate by age group, counting the discount as household income, as DWP counts the Warm Home Discount. Relative poverty uses 60% of the baseline median; absolute poverty uses the 2010-11 line uprated by CPI."
+        description="How far the poverty rate falls for each age group, relative to its level before the discount. The discount counts as household income, as DWP counts the Warm Home Discount. Relative poverty uses 60% of the baseline median; absolute poverty uses the 2010-11 line uprated by CPI."
       />
       <Toggle
         value={measure}
@@ -341,12 +342,9 @@ function PovertySection({ result }) {
       <PEImpactBarChart
         data={data}
         horizontal
-        invertColors
-        yAxisLabel="Relative change in poverty rate"
+        yAxisLabel="Fall in the poverty rate, relative to its baseline level"
         yTickFormatter={(v) => `${(100 * v).toFixed(1)}%`}
-        barLabelFormatter={(v) =>
-          `${v > 0 ? "+" : v < 0 ? "−" : ""}${Math.abs(100 * v).toFixed(1)}%`
-        }
+        barLabelFormatter={(v) => `${(100 * v).toFixed(1)}%`}
       />
       <ChartLogo />
       <TableToggle>
@@ -386,7 +384,7 @@ function ReachSection({ result, isPassportOnly }) {
     <section className="section-card space-y-5">
       <SectionHeading
         title="Who the discount reaches among low-income households and those with high energy costs"
-        description="Each bar below is one group of households, such as those in poverty. The bar is split by how households in that group fare under the option: the teal part receives the discount because it gets a means-tested benefit, the blue part qualifies through the income test alone, and the grey part gets nothing."
+        description="Each bar below is one group of households, such as those in poverty. The bar is split by how households in that group fare under the option: the dark teal part receives the discount because it gets a means-tested benefit, the light teal part qualifies through the income test alone, and the grey part gets nothing."
       />
       <Legend
         items={[

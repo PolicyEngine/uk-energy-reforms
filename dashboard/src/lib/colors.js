@@ -47,13 +47,13 @@ export const pe = {
 };
 
 // Single-series charts use chart-1, as the standard impact charts do. Two-category splits
-// (passported / income test alone / not reached) use PE teal-400 with chart-4: the only
-// pairing from the PE palette that passes the dataviz validator on a light surface
-// (chart-1 with chart-4 falls just under the normal-vision floor, ΔE 14.8 < 15). Teal-400
-// sits below 3:1 contrast, so these series always carry direct labels or a table.
+// (passported / income test alone / not reached) use the winners-and-losers chart's dark
+// teal (chart-3, teal-700) with teal-400, so the page stays in one hue family. The dataviz
+// validator separates the pair well (ΔE 25 for normal and colour-blind vision) but flags
+// teal-700 as low-chroma, so these series always carry direct labels and a legend.
 export const series = {
-  a: colors.primary[400],
-  b: pe.chart4,
+  a: pe.chart3,
+  b: colors.primary[400],
   neutral: pe.neutral,
   ink: pe.ink,
 };

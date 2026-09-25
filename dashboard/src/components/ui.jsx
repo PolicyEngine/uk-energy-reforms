@@ -61,6 +61,16 @@ export function Warning({ children }) {
   );
 }
 
+// Dark ink on light fills, white on dark ones (relative luminance above 0.3 counts as light).
+function textOn(hex) {
+  const channel = (i) => {
+    const c = parseInt(hex.slice(i, i + 2), 16) / 255;
+    return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+  };
+  const luminance = 0.2126 * channel(1) + 0.7152 * channel(3) + 0.0722 * channel(5);
+  return luminance > 0.3 ? series.ink : "#FFFFFF";
+}
+
 /**
  * Horizontal bar split into labelled segments that add up to 100% of a group.
  * Every segment carries its own value label, so identity never rests on colour.
@@ -78,7 +88,7 @@ export function SplitBar({ segments }) {
             style={{
               width: `${100 * s.value}%`,
               background: s.color,
-              color: s.color === series.neutral ? series.ink : "#FFFFFF",
+              color: textOn(s.color),
             }}
           >
             {s.value >= 0.06 ? `${(100 * s.value).toFixed(0)}%` : ""}
@@ -139,7 +149,9 @@ export function TableToggle({ label = "Show the numbers", children }) {
   return (
     <details className="table-toggle group">
       <summary className="toggle-button inline-flex cursor-pointer list-none items-center gap-2">
-        <span aria-hidden className="transition-transform group-open:rotate-90">›</span>
+        <span aria-hidden className="transition-transform group-open:rotate-90">
+          ›
+        </span>
         <span className="group-open:hidden">{label}</span>
         <span className="hidden group-open:inline">Hide the numbers</span>
       </summary>
