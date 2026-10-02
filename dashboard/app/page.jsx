@@ -1,181 +1,233 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import BaselineTab from "../src/components/BaselineTab";
 import HouseholdTab from "../src/components/HouseholdTab";
 import MethodologyTab from "../src/components/MethodologyTab";
 import ReformTab from "../src/components/ReformTab";
+import NavigationTabs from "../src/components/NavigationTabs";
+import ScenarioControls from "../src/components/ScenarioControls";
 import { datasetFromQuery } from "../src/lib/dataHelpers";
-
-const TAB_OPTIONS = [
-  { id: "reform", label: "Targeted energy discount" },
-  { id: "household", label: "Your household" },
-  { id: "baseline", label: "Baseline and comparisons" },
-  { id: "methodology", label: "Methodology" },
-];
+import {
+  dashboardQuery,
+  dashboardState,
+  TABS,
+} from "../src/lib/dashboardState";
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-
-// The comparison with the report now sits in the baseline tab; keep its old links working.
-const TAB_ALIASES = { report: "baseline" };
-
-function getInitialTab(tabParam) {
-  const tab = TAB_ALIASES[tabParam] ?? tabParam;
-  return TAB_OPTIONS.some((option) => option.id === tab) ? tab : "reform";
-}
-
-function TabLink({ onSelect, children }) {
-  return (
-    <button
-      type="button"
-      onClick={onSelect}
-      className="font-semibold text-[color:var(--pe-color-primary-600)] underline decoration-1 underline-offset-2 transition-opacity hover:opacity-80"
-    >
-      {children}
-    </button>
-  );
-}
 
 function Dashboard() {
   const searchParams = useSearchParams();
   const router = useRouter();
-
-  const [activeTab, setActiveTab] = useState(() => getInitialTab(searchParams.get("tab")));
+  const currentQuery = useRef(searchParams.toString());
+  useEffect(() => {
+    currentQuery.current = searchParams.toString();
+  }, [searchParams]);
   const [data, setData] = useState(null);
   const [calculator, setCalculator] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  // Kept above the tabs so navigating away never discards an entered household.
+  const [householdState, setHouseholdState] = useState(null);
+  const dataset = datasetFromQuery(searchParams.get("dataset"), data);
+  const { tab, view, scenario } = dashboardState(searchParams, data, dataset);
+
+  const previousView = useRef({ tab, view });
+  useEffect(() => {
+    if (
+      (previousView.current.tab !== tab ||
+        previousView.current.view !== view) &&
+      !window.location.hash
+    )
+      window.scrollTo(0, 0);
+    previousView.current = { tab, view };
+  }, [tab, view]);
 
   useEffect(() => {
-    setActiveTab(getInitialTab(searchParams.get("tab")));
-  }, [searchParams]);
-
-  useEffect(() => {
+    let cancelled = false;
     async function loadData() {
       try {
         const [results, calc] = await Promise.all(
-          ["targeted_energy_discount_results.json", "calculator.json"].map(async (name) => {
-            const response = await fetch(`${BASE}/data/${name}`);
-            if (!response.ok) throw new Error(`${name} not found; run export-dashboard first`);
-            return response.json();
-          }),
+          ["targeted_energy_discount_results.json", "calculator.json"].map(
+            async (name) => {
+              const response = await fetch(`${BASE}/data/${name}`);
+              if (!response.ok)
+                throw new Error(
+                  "The analysis could not be loaded. Please refresh to try again.",
+                );
+              return response.json();
+            },
+          ),
         );
-        setData(results);
-        setCalculator(calc);
+        if (!cancelled) {
+          setData(results);
+          setCalculator(calc);
+        }
       } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
+        if (!cancelled) setError(err.message);
       }
     }
     loadData();
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
-  const datasetParam = searchParams.get("dataset");
-  const dataset = datasetFromQuery(datasetParam, data);
-
-  function handleTabChange(tab) {
-    setActiveTab(tab);
-    const params = new URLSearchParams();
-    if (tab !== "reform") params.set("tab", tab);
-    if (datasetParam) params.set("dataset", datasetParam);
-    const query = params.toString();
-    router.replace(query ? `/?${query}` : "/", { scroll: false });
+  function navigate(patch, anchor = "") {
+    const query = dashboardQuery(currentQuery.current, patch);
+    currentQuery.current = query;
+    router.push(`/?${query}${anchor ? `#${anchor}` : ""}`, { scroll: false });
   }
+  const methodology = (anchor = "") => navigate({ tab: "methodology" }, anchor);
 
   return (
     <div className="app-shell min-h-screen">
       <header className="title-row">
-        <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-4 md:px-8">
-          <h1>Targeted energy discount analysis</h1>
+        <div className="mx-auto max-w-[1280px] px-4 py-4 md:px-8">
+          <h1>The targeted energy bill discount</h1>
         </div>
       </header>
-
-      <main className="relative z-[1] mx-auto max-w-[1400px] px-6 py-10 md:px-8 md:py-12">
-        <div className="animate-[fadeIn_0.4s_ease-out]">
-          <p className="mb-3 text-[1.05rem] leading-relaxed text-slate-600">
-            The{" "}
-            <a
-              href="https://www.resolutionfoundation.org/publications/billing-me-softly/"
-              target="_blank"
-              rel="noreferrer"
-              className="underline"
-            >
-              Resolution Foundation
-            </a>{" "}
-            proposes discounting gas and electricity unit prices this winter for households in Great
-            Britain that receive a means-tested benefit or whose highest-income member has taxable
-            income below £24,000 a year, with a tiered version paying about £220 below £18,000 and
-            £85 from £18,000 to £24,000. This dashboard uses{" "}
-            <a
-              href="https://policyengine.org"
-              target="_blank"
-              rel="noreferrer"
-              className="underline"
-            >
-              PolicyEngine
-            </a>{" "}
-            UK microsimulation to estimate each option. The{" "}
-            <TabLink onSelect={() => handleTabChange("reform")}>Targeted energy discount</TabLink>{" "}
-            tab shows cost, reach, gains by income, winners and losers, inequality, poverty,
-            eligibility across income measures, and regional and household breakdowns. The{" "}
-            <TabLink onSelect={() => handleTabChange("household")}>Your household</TabLink> tab
-            works out the discount for a household you describe and how it changes with income. The{" "}
-            <TabLink onSelect={() => handleTabChange("baseline")}>Baseline and comparisons</TabLink>{" "}
-            tab sets out the households and energy bills in the model and compares them with
-            official statistics and with the Resolution Foundation&apos;s own figures, and the{" "}
-            <TabLink onSelect={() => handleTabChange("methodology")}>Methodology</TabLink> tab
-            explains every assumption.
-          </p>
-        </div>
-
-        <div className="mb-8 mt-8 flex w-fit max-w-full flex-wrap border-b-2 border-slate-200">
-          {TAB_OPTIONS.map((tab) => (
-            <button
-              key={tab.id}
-              className={`tab-button ${activeTab === tab.id ? "active" : ""}`}
-              onClick={() => handleTabChange(tab.id)}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
-
+      <main
+        id="main-content"
+        className="relative mx-auto max-w-[1280px] px-4 py-7 md:px-8 md:py-9"
+      >
+        <header className="mb-5">
+          <div className="space-y-2 text-base leading-7 text-slate-700">
+            <p>
+              This dashboard estimates the cost and household effects of the
+              Resolution Foundation&apos;s proposal for a targeted energy
+              discount in Great Britain, set out in{" "}
+              <a
+                className="underline"
+                href="https://www.resolutionfoundation.org/publications/billing-me-softly/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <em>Billing me softly</em>
+              </a>{" "}
+              (August 2026). Under the proposal, a household qualifies if anyone
+              in it receives a means-tested benefit or if its highest individual
+              taxable income is below a threshold. It then receives a discount
+              on its energy bill over the winter.
+            </p>
+            <p>
+              We model five versions of the design, each paid in three ways, in
+              2026-27 and 2027-28, using the{" "}
+              <a
+                className="underline"
+                href="https://policyengine.org/uk/model"
+                target="_blank"
+                rel="noreferrer"
+              >
+                PolicyEngine UK
+              </a>{" "}
+              microsimulation model on survey data for GB households. See the
+              total cost, who gains across the income distribution, the effect
+              on poverty and inequality, and who qualifies. You can also
+              calculate what your own household would get. The{" "}
+              <button className="underline" onClick={() => methodology()}>
+                methodology
+              </button>{" "}
+              covers the data and assumptions, and the code is on{" "}
+              <a
+                className="underline"
+                href="https://github.com/PolicyEngine/uk-energy-reforms"
+                target="_blank"
+                rel="noreferrer"
+              >
+                GitHub
+              </a>
+              .
+            </p>
+          </div>
+        </header>
+        <NavigationTabs
+          id="dashboard"
+          label="Dashboard sections"
+          options={TABS}
+          value={tab}
+          onChange={(value) => navigate({ tab: value })}
+        />
         {error && (
-          <p className="rounded-2xl border border-red-200 bg-red-50 p-6 text-sm text-red-700">
-            Error: {error}
+          <p role="alert" className="section-card mt-6 text-red-700">
+            {error}
           </p>
         )}
-        {loading && !error && (
-          <p className="rounded-2xl border border-slate-200 bg-white p-6 text-sm text-slate-500">
-            Loading data...
+        {!data && !error && (
+          <p role="status" className="section-card mt-6 text-slate-500">
+            Loading the analysis…
           </p>
         )}
-
-        {!loading && !error && data && (
+        {data && !error && (
           <>
-            {activeTab === "reform" && <ReformTab data={data} dataset={dataset} />}
-            {activeTab === "household" && (
-              <HouseholdTab data={data} calculator={calculator} dataset={dataset} />
+            {(tab === "reform" || tab === "household") && (
+              <ScenarioControls
+                data={data}
+                dataset={dataset}
+                scenario={scenario}
+                onChange={navigate}
+                onMethodology={() => methodology("method-payments")}
+              />
             )}
-            {activeTab === "baseline" && <BaselineTab data={data} dataset={dataset} />}
-            {activeTab === "methodology" && <MethodologyTab data={data} dataset={dataset} />}
+            {TABS.filter((item) => item.value !== tab).map((item) => (
+              <div
+                key={item.value}
+                hidden
+                role="tabpanel"
+                id={`dashboard-panel-${item.value}`}
+                aria-labelledby={`dashboard-tab-${item.value}`}
+              />
+            ))}
+            <div
+              role="tabpanel"
+              id={`dashboard-panel-${tab}`}
+              aria-labelledby={`dashboard-tab-${tab}`}
+              tabIndex={0}
+              className="mt-6"
+            >
+              {tab === "reform" && (
+                <ReformTab
+                  data={data}
+                  dataset={dataset}
+                  scenario={scenario}
+                  onMethodology={methodology}
+                />
+              )}
+              {tab === "household" && (
+                <HouseholdTab
+                  data={data}
+                  calculator={calculator}
+                  dataset={dataset}
+                  scenario={scenario}
+                  savedState={householdState}
+                  onSaveState={setHouseholdState}
+                  onMethodology={methodology}
+                />
+              )}
+              {tab === "baseline" && (
+                <BaselineTab data={data} dataset={dataset} />
+              )}
+              {tab === "methodology" && (
+                <MethodologyTab data={data} dataset={dataset} />
+              )}
+            </div>
           </>
         )}
-
-        <footer className="mt-12 border-t border-slate-200 pt-8 text-center text-sm text-slate-500">
+        <footer className="mt-12 border-t border-slate-200 pt-8 text-center text-sm leading-6 text-slate-500">
           <p>
-            Replication code:{" "}
+            Estimates for Great Britain.{" "}
             <a
+              className="underline"
               href="https://github.com/PolicyEngine/uk-energy-reforms"
               target="_blank"
               rel="noreferrer"
             >
-              PolicyEngine/uk-energy-reforms
+              Replication code
             </a>
-            {data?.meta ? `, run on policyengine-uk ${data.meta.policyengine_uk}` : ""}. Results
-            last generated {data?.meta?.generated ?? ""}.
+            {data?.meta
+              ? ` · policyengine-uk ${data.meta.policyengine_uk} · Results generated ${data.meta.generated}`
+              : ""}
+            .
           </p>
         </footer>
       </main>
@@ -185,7 +237,9 @@ function Dashboard() {
 
 export default function Page() {
   return (
-    <Suspense fallback={<p className="p-12 text-center text-slate-500">Loading...</p>}>
+    <Suspense
+      fallback={<p className="p-12 text-center text-slate-500">Loading…</p>}
+    >
       <Dashboard />
     </Suspense>
   );

@@ -1,0 +1,3 @@
+# Keep generated aggregate data collapsed in code review; it remains available to inspect.
+analyses/**/results.json linguist-generated=true
+dashboard/public/data/*.json linguist-generated=true

@@ -4,19 +4,21 @@ A static dashboard for the Resolution Foundation's targeted energy discount prop
 (*Billing me softly*, August 2026), built on the template of PolicyEngine's published UK
 dashboards. Four tabs:
 
-- **Targeted energy discount:** cost, reach, gains by income decile, winners and losers,
-  inequality, poverty, reach among low-income households and those with high energy costs,
-  eligibility across income measures (who qualifies by household decile of equivalised and
-  unequivalised household income and household taxable income), and breakdowns by region
-  and household type, for each option, set of amounts and year.
-- **Your household:** the discount a household would get under each option, from its
-  region, adults' taxable incomes, children, benefits and energy bill, recalculated when the
-  reader presses Calculate, and a chart of how that support changes as one adult's income
-  changes.
+- **General impacts:** an Overview of cost, reach, gains, poverty and inequality, including
+  region and household-type breakdowns. A separate **Eligibility across income measures**
+  view explores qualification, spending and gains by different household income rankings.
+- **Your household:** the selected scenario's discount and support curve first, with a
+  collapsed comparison of all options. Household inputs persist when switching tabs;
+  Calculate applies edited inputs to the estimate.
 - **Baseline and comparisons:** households, bills and eligibility before the scheme, data
   coverage, the model beside official statistics and other organisations' estimates, and
   every figure the Resolution Foundation publishes beside PolicyEngine's.
-- **Methodology:** the assumptions behind every figure.
+- **Methodology:** a guided data → eligibility → payments → income effects explanation,
+  with expandable technical detail, assumptions, sources and reproduction instructions.
+
+General impacts and Your household share visible reform option, payment basis and year
+controls. The URL preserves these selections and the active tab/view for sharing; household
+inputs remain in browser memory and are not included in the URL.
 
 The page shows the Microcosm dataset. The exported data also carry the Enhanced FRS for
 internal use: add `?dataset=efrs_1573` to the URL to switch every tab to it.
@@ -31,6 +33,8 @@ Everything the page shows is pre-computed and served from `public/data/`:
 
 - `targeted_energy_discount_results.json`: every option, set of amounts, year and dataset,
   the baseline, the 2024-25 replication, the report comparison and the external sources.
+  Income distributions cover all 60 combinations of five reforms, three payment bases,
+  two years and two datasets. Spending and gains use each scenario's household outcomes.
 - `calculator.json`: the equivalence scale and household cases computed with
   policyengine-uk, which the JavaScript calculator in `src/lib/calculator.js` is tested
   against (`bun run test`).

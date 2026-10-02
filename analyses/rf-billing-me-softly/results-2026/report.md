@@ -399,6 +399,49 @@ Coverage of households in poverty or with high energy costs:
 | relative BHC poverty | 4.98 | 41.8% | 92.7% | 0.36 |
 | lowest four BHC deciles | 12.5 | 39.9% | 75.6% | 3.06 |
 
+Eligibility by household decile of equivalised net income, after housing costs:
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 2.86 | 0.47 | 0.41 | 0.12 | 19.4% | 404 |
+| 2 | 2.86 | 0.50 | 0.35 | 0.15 | 19.1% | 487 |
+| 3 | 2.85 | 0.41 | 0.31 | 0.29 | 16.0% | 432 |
+| 4 | 2.86 | 0.34 | 0.26 | 0.40 | 14.2% | 458 |
+| 5 | 2.86 | 0.29 | 0.21 | 0.50 | 10.7% | 486 |
+| 6 | 2.86 | 0.27 | 0.06 | 0.67 | 8.0% | 458 |
+| 7 | 2.85 | 0.20 | 0.05 | 0.75 | 6.1% | 440 |
+| 8 | 2.86 | 0.12 | 0.01 | 0.87 | 2.8% | 508 |
+| 9 | 2.86 | 0.07 | 0.00 | 0.92 | 1.8% | 459 |
+| 10 | 2.86 | 0.06 | 0.00 | 0.94 | 1.7% | 583 |
+
+Eligibility by household decile of household taxable income (members' total_income summed):
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 2.86 | 0.86 | 0.14 | 0.00 | 19.7% | 420 |
+| 2 | 2.85 | 0.58 | 0.42 | 0.00 | 19.5% | 473 |
+| 3 | 2.86 | 0.36 | 0.60 | 0.04 | 21.0% | 450 |
+| 4 | 2.85 | 0.24 | 0.26 | 0.50 | 12.1% | 438 |
+| 5 | 2.86 | 0.19 | 0.20 | 0.61 | 11.1% | 516 |
+| 6 | 2.86 | 0.15 | 0.04 | 0.82 | 5.3% | 517 |
+| 7 | 2.86 | 0.11 | 0.01 | 0.88 | 3.6% | 462 |
+| 8 | 2.85 | 0.07 | 0.00 | 0.93 | 2.9% | 491 |
+| 9 | 2.86 | 0.08 | 0.00 | 0.92 | 2.5% | 510 |
+| 10 | 2.86 | 0.08 | 0.00 | 0.92 | 2.3% | 425 |
+
+Where eligibility and income diverge (household deciles):
+
+- equivalised net income, before housing costs: not eligible in deciles 1-3 1.16m (13% of those deciles; ESS 168); eligible through the income test alone in deciles 6-10 0.17m (4% of income-test-only households, 1.5% of cost; ESS 29); passported in deciles 6-10 2.22m (29% of passported households, 18.9% of cost; ESS 317).
+- equivalised net income, after housing costs: not eligible in deciles 1-3 1.59m (19% of those deciles; ESS 195); eligible through the income test alone in deciles 6-10 0.37m (8% of income-test-only households, 3.0% of cost; ESS 60); passported in deciles 6-10 2.04m (26% of passported households, 17.5% of cost; ESS 310).
+- household net income, before housing costs (not equivalised): not eligible in deciles 1-3 1.63m (19% of those deciles; ESS 233); eligible through the income test alone in deciles 6-10 0.15m (3% of income-test-only households, 1.5% of cost; ESS 20); passported in deciles 6-10 2.54m (33% of passported households, 25.9% of cost; ESS 416).
+- household net income, after housing costs (not equivalised): not eligible in deciles 1-3 1.55m (18% of those deciles; ESS 192); eligible through the income test alone in deciles 6-10 0.25m (5% of income-test-only households, 2.5% of cost; ESS 38); passported in deciles 6-10 2.36m (30% of passported households, 24.5% of cost; ESS 370).
+- household taxable income (members' total_income summed): not eligible in deciles 1-3 0.10m (1% of those deciles; ESS 13); eligible through the income test alone in deciles 6-10 0.12m (3% of income-test-only households, 1.2% of cost; ESS 15); passported in deciles 6-10 1.40m (18% of passported households, 15.3% of cost; ESS 221).
+
+The same lowest-three-decile group with deciles of people (HBAI):
+
+- equivalised net income, before housing costs: not eligible 1.61m (17% of households in those deciles; ESS 212), 22% of the people in them.
+- equivalised net income, after housing costs: not eligible 1.80m (20% of households in those deciles; ESS 214), 25% of the people in them.
+
 Cliff edges (households on the schedule by own income):
 
 - GBP 24,000: mean drop GBP 178; GBP 1k below 308k (136k lowest-4); GBP 1k above 410k (200k lowest-4, 64k in rel. AHC poverty; ESS 53); offset range 85k (median width GBP 271).
@@ -480,6 +523,49 @@ Coverage of households in poverty or with high energy costs:
 | absolute BHC poverty | 4.09 | 47.7% | 87.0% | 0.53 |
 | relative BHC poverty | 6.75 | 44.5% | 85.9% | 0.95 |
 | lowest four BHC deciles | 13.2 | 41.8% | 71.3% | 3.80 |
+
+Eligibility by household decile of equivalised net income, after housing costs:
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 3.07 | 0.54 | 0.35 | 0.10 | 19.2% | 181 |
+| 2 | 3.07 | 0.49 | 0.36 | 0.15 | 22.1% | 143 |
+| 3 | 3.09 | 0.49 | 0.32 | 0.20 | 17.5% | 192 |
+| 4 | 3.04 | 0.34 | 0.31 | 0.35 | 19.7% | 151 |
+| 5 | 3.07 | 0.32 | 0.23 | 0.45 | 11.6% | 71.5 |
+| 6 | 3.07 | 0.15 | 0.07 | 0.78 | 5.1% | 114 |
+| 7 | 3.07 | 0.15 | 0.02 | 0.83 | 2.8% | 72.0 |
+| 8 | 3.12 | 0.07 | 0.02 | 0.91 | 1.5% | 157 |
+| 9 | 3.01 | 0.02 | 0.00 | 0.98 | 0.2% | 171 |
+| 10 | 3.06 | 0.03 | 0.00 | 0.97 | 0.3% | 62.0 |
+
+Eligibility by household decile of household taxable income (members' total_income summed):
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 3.34 | 0.92 | 0.08 | 0.00 | 18.7% | 360 |
+| 2 | 2.93 | 0.75 | 0.25 | 0.00 | 22.7% | 52.0 |
+| 3 | 2.94 | 0.30 | 0.70 | 0.00 | 27.4% | 230 |
+| 4 | 3.07 | 0.30 | 0.29 | 0.41 | 14.2% | 199 |
+| 5 | 3.07 | 0.13 | 0.30 | 0.57 | 11.8% | 106 |
+| 6 | 3.07 | 0.07 | 0.09 | 0.84 | 4.2% | 140 |
+| 7 | 3.08 | 0.03 | 0.01 | 0.97 | 0.4% | 53.2 |
+| 8 | 3.06 | 0.02 | 0.00 | 0.98 | 0.2% | 128 |
+| 9 | 3.06 | 0.02 | 0.00 | 0.98 | 0.1% | 118 |
+| 10 | 3.07 | 0.02 | 0.00 | 0.98 | 0.2% | 130 |
+
+Where eligibility and income diverge (household deciles):
+
+- equivalised net income, before housing costs: not eligible in deciles 1-3 1.01m (11% of those deciles; ESS 78); eligible through the income test alone in deciles 6-10 0.21m (4% of income-test-only households, 1.5% of cost; ESS 5); passported in deciles 6-10 1.74m (22% of passported households, 6.9% of cost; ESS 27).
+- equivalised net income, after housing costs: not eligible in deciles 1-3 1.38m (15% of those deciles; ESS 49); eligible through the income test alone in deciles 6-10 0.33m (7% of income-test-only households, 3.6% of cost; ESS 17); passported in deciles 6-10 1.27m (16% of passported households, 6.2% of cost; ESS 43).
+- household net income, before housing costs (not equivalised): not eligible in deciles 1-3 1.48m (16% of those deciles; ESS 46); eligible through the income test alone in deciles 6-10 0.28m (5% of income-test-only households, 3.3% of cost; ESS 5); passported in deciles 6-10 1.40m (18% of passported households, 5.3% of cost; ESS 189).
+- household net income, after housing costs (not equivalised): not eligible in deciles 1-3 1.08m (12% of those deciles; ESS 37); eligible through the income test alone in deciles 6-10 0.45m (9% of income-test-only households, 6.1% of cost; ESS 11); passported in deciles 6-10 1.07m (13% of passported households, 4.3% of cost; ESS 171).
+- household taxable income (members' total_income summed): not eligible in deciles 1-3 none; eligible through the income test alone in deciles 6-10 0.30m (6% of income-test-only households, 3.8% of cost; ESS 6); passported in deciles 6-10 0.50m (6% of passported households, 1.5% of cost; ESS 96).
+
+The same lowest-three-decile group with deciles of people (HBAI):
+
+- equivalised net income, before housing costs: not eligible 1.28m (13% of households in those deciles; ESS 103), 19% of the people in them.
+- equivalised net income, after housing costs: not eligible 1.58m (16% of households in those deciles; ESS 54), 21% of the people in them.
 
 Cliff edges (households on the schedule by own income):
 
@@ -565,6 +651,49 @@ Coverage of households in poverty or with high energy costs:
 | relative BHC poverty | 4.98 | 41.8% | 92.7% | 0.36 |
 | lowest four BHC deciles | 12.5 | 39.9% | 75.6% | 3.06 |
 
+Eligibility by household decile of equivalised net income, after housing costs:
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 2.86 | 0.47 | 0.41 | 0.12 | 20.1% | 404 |
+| 2 | 2.86 | 0.50 | 0.35 | 0.15 | 19.4% | 487 |
+| 3 | 2.85 | 0.41 | 0.31 | 0.29 | 16.2% | 432 |
+| 4 | 2.86 | 0.34 | 0.26 | 0.40 | 13.8% | 458 |
+| 5 | 2.86 | 0.29 | 0.21 | 0.50 | 11.3% | 486 |
+| 6 | 2.86 | 0.27 | 0.06 | 0.67 | 7.6% | 458 |
+| 7 | 2.85 | 0.20 | 0.05 | 0.75 | 5.7% | 440 |
+| 8 | 2.86 | 0.12 | 0.01 | 0.87 | 2.9% | 508 |
+| 9 | 2.86 | 0.07 | 0.00 | 0.92 | 1.7% | 459 |
+| 10 | 2.86 | 0.06 | 0.00 | 0.94 | 1.4% | 583 |
+
+Eligibility by household decile of household taxable income (members' total_income summed):
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 2.86 | 0.86 | 0.14 | 0.00 | 22.8% | 420 |
+| 2 | 2.85 | 0.58 | 0.42 | 0.00 | 22.8% | 473 |
+| 3 | 2.86 | 0.36 | 0.60 | 0.04 | 22.0% | 450 |
+| 4 | 2.85 | 0.24 | 0.26 | 0.50 | 11.4% | 438 |
+| 5 | 2.86 | 0.19 | 0.20 | 0.61 | 8.9% | 516 |
+| 6 | 2.86 | 0.15 | 0.04 | 0.82 | 4.2% | 517 |
+| 7 | 2.86 | 0.11 | 0.01 | 0.88 | 2.7% | 462 |
+| 8 | 2.85 | 0.07 | 0.00 | 0.93 | 1.7% | 491 |
+| 9 | 2.86 | 0.08 | 0.00 | 0.92 | 1.8% | 510 |
+| 10 | 2.86 | 0.08 | 0.00 | 0.92 | 1.8% | 425 |
+
+Where eligibility and income diverge (household deciles):
+
+- equivalised net income, before housing costs: not eligible in deciles 1-3 1.16m (13% of those deciles; ESS 168); eligible through the income test alone in deciles 6-10 0.17m (4% of income-test-only households, 1.4% of cost; ESS 29); passported in deciles 6-10 2.22m (29% of passported households, 17.7% of cost; ESS 317).
+- equivalised net income, after housing costs: not eligible in deciles 1-3 1.59m (19% of those deciles; ESS 195); eligible through the income test alone in deciles 6-10 0.37m (8% of income-test-only households, 3.0% of cost; ESS 60); passported in deciles 6-10 2.04m (26% of passported households, 16.3% of cost; ESS 310).
+- household net income, before housing costs (not equivalised): not eligible in deciles 1-3 1.63m (19% of those deciles; ESS 233); eligible through the income test alone in deciles 6-10 0.15m (3% of income-test-only households, 1.2% of cost; ESS 20); passported in deciles 6-10 2.54m (33% of passported households, 20.3% of cost; ESS 416).
+- household net income, after housing costs (not equivalised): not eligible in deciles 1-3 1.55m (18% of those deciles; ESS 192); eligible through the income test alone in deciles 6-10 0.25m (5% of income-test-only households, 2.0% of cost; ESS 38); passported in deciles 6-10 2.36m (30% of passported households, 18.8% of cost; ESS 370).
+- household taxable income (members' total_income summed): not eligible in deciles 1-3 0.10m (1% of those deciles; ESS 13); eligible through the income test alone in deciles 6-10 0.12m (3% of income-test-only households, 1.0% of cost; ESS 15); passported in deciles 6-10 1.40m (18% of passported households, 11.2% of cost; ESS 221).
+
+The same lowest-three-decile group with deciles of people (HBAI):
+
+- equivalised net income, before housing costs: not eligible 1.61m (17% of households in those deciles; ESS 212), 22% of the people in them.
+- equivalised net income, after housing costs: not eligible 1.80m (20% of households in those deciles; ESS 214), 25% of the people in them.
+
 Cliff edges (households on the schedule by own income):
 
 - GBP 24,000: mean drop GBP 160; GBP 1k below 308k (136k lowest-4); GBP 1k above 410k (200k lowest-4, 64k in rel. AHC poverty; ESS 53); offset range 43k (median width GBP 222).
@@ -646,6 +775,49 @@ Coverage of households in poverty or with high energy costs:
 | absolute BHC poverty | 4.09 | 47.7% | 95.0% | 0.21 |
 | relative BHC poverty | 6.75 | 44.5% | 92.6% | 0.50 |
 | lowest four BHC deciles | 13.2 | 41.8% | 77.5% | 2.97 |
+
+Eligibility by household decile of equivalised net income, after housing costs:
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 3.07 | 0.54 | 0.35 | 0.10 | 21.0% | 181 |
+| 2 | 3.07 | 0.49 | 0.36 | 0.15 | 19.9% | 143 |
+| 3 | 3.09 | 0.49 | 0.32 | 0.20 | 18.9% | 192 |
+| 4 | 3.04 | 0.34 | 0.31 | 0.35 | 15.1% | 151 |
+| 5 | 3.07 | 0.32 | 0.23 | 0.45 | 12.8% | 71.5 |
+| 6 | 3.07 | 0.15 | 0.07 | 0.78 | 5.3% | 114 |
+| 7 | 3.07 | 0.15 | 0.02 | 0.83 | 4.0% | 72.0 |
+| 8 | 3.12 | 0.07 | 0.02 | 0.91 | 2.0% | 157 |
+| 9 | 3.01 | 0.02 | 0.00 | 0.98 | 0.4% | 171 |
+| 10 | 3.06 | 0.03 | 0.00 | 0.97 | 0.6% | 62.0 |
+
+Eligibility by household decile of household taxable income (members' total_income summed):
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 3.34 | 0.92 | 0.08 | 0.00 | 25.4% | 360 |
+| 2 | 2.93 | 0.75 | 0.25 | 0.00 | 22.3% | 52.0 |
+| 3 | 2.94 | 0.30 | 0.70 | 0.00 | 22.4% | 230 |
+| 4 | 3.07 | 0.30 | 0.29 | 0.41 | 13.7% | 199 |
+| 5 | 3.07 | 0.13 | 0.30 | 0.57 | 10.0% | 106 |
+| 6 | 3.07 | 0.07 | 0.09 | 0.84 | 3.8% | 140 |
+| 7 | 3.08 | 0.03 | 0.01 | 0.97 | 0.8% | 53.2 |
+| 8 | 3.06 | 0.02 | 0.00 | 0.98 | 0.6% | 128 |
+| 9 | 3.06 | 0.02 | 0.00 | 0.98 | 0.4% | 118 |
+| 10 | 3.07 | 0.02 | 0.00 | 0.98 | 0.5% | 130 |
+
+Where eligibility and income diverge (household deciles):
+
+- equivalised net income, before housing costs: not eligible in deciles 1-3 1.01m (11% of those deciles; ESS 78); eligible through the income test alone in deciles 6-10 0.21m (4% of income-test-only households, 1.6% of cost; ESS 5); passported in deciles 6-10 1.74m (22% of passported households, 13.3% of cost; ESS 27).
+- equivalised net income, after housing costs: not eligible in deciles 1-3 1.38m (15% of those deciles; ESS 49); eligible through the income test alone in deciles 6-10 0.33m (7% of income-test-only households, 2.5% of cost; ESS 17); passported in deciles 6-10 1.27m (16% of passported households, 9.7% of cost; ESS 43).
+- household net income, before housing costs (not equivalised): not eligible in deciles 1-3 1.48m (16% of those deciles; ESS 46); eligible through the income test alone in deciles 6-10 0.28m (5% of income-test-only households, 2.1% of cost; ESS 5); passported in deciles 6-10 1.40m (18% of passported households, 10.7% of cost; ESS 189).
+- household net income, after housing costs (not equivalised): not eligible in deciles 1-3 1.08m (12% of those deciles; ESS 37); eligible through the income test alone in deciles 6-10 0.45m (9% of income-test-only households, 3.5% of cost; ESS 11); passported in deciles 6-10 1.07m (13% of passported households, 8.2% of cost; ESS 171).
+- household taxable income (members' total_income summed): not eligible in deciles 1-3 none; eligible through the income test alone in deciles 6-10 0.30m (6% of income-test-only households, 2.3% of cost; ESS 6); passported in deciles 6-10 0.50m (6% of passported households, 3.8% of cost; ESS 96).
+
+The same lowest-three-decile group with deciles of people (HBAI):
+
+- equivalised net income, before housing costs: not eligible 1.28m (13% of households in those deciles; ESS 103), 19% of the people in them.
+- equivalised net income, after housing costs: not eligible 1.58m (16% of households in those deciles; ESS 54), 21% of the people in them.
 
 Cliff edges (households on the schedule by own income):
 
@@ -985,6 +1157,49 @@ Coverage of households in poverty or with high energy costs:
 | relative BHC poverty | 4.98 | 41.8% | 92.7% | 0.36 |
 | lowest four BHC deciles | 12.5 | 39.9% | 75.6% | 3.06 |
 
+Eligibility by household decile of equivalised net income, after housing costs:
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 2.86 | 0.47 | 0.41 | 0.12 | 20.1% | 404 |
+| 2 | 2.86 | 0.50 | 0.35 | 0.15 | 19.6% | 487 |
+| 3 | 2.85 | 0.41 | 0.31 | 0.29 | 16.4% | 432 |
+| 4 | 2.86 | 0.34 | 0.26 | 0.40 | 13.2% | 458 |
+| 5 | 2.86 | 0.29 | 0.21 | 0.50 | 9.6% | 486 |
+| 6 | 2.86 | 0.27 | 0.06 | 0.67 | 8.1% | 458 |
+| 7 | 2.85 | 0.20 | 0.05 | 0.75 | 6.0% | 440 |
+| 8 | 2.86 | 0.12 | 0.01 | 0.87 | 3.0% | 508 |
+| 9 | 2.86 | 0.07 | 0.00 | 0.92 | 2.0% | 459 |
+| 10 | 2.86 | 0.06 | 0.00 | 0.94 | 1.9% | 583 |
+
+Eligibility by household decile of household taxable income (members' total_income summed):
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 2.86 | 0.86 | 0.14 | 0.00 | 22.1% | 420 |
+| 2 | 2.85 | 0.58 | 0.42 | 0.00 | 21.8% | 473 |
+| 3 | 2.86 | 0.36 | 0.60 | 0.04 | 18.1% | 450 |
+| 4 | 2.85 | 0.24 | 0.26 | 0.50 | 11.7% | 438 |
+| 5 | 2.86 | 0.19 | 0.20 | 0.61 | 8.7% | 516 |
+| 6 | 2.86 | 0.15 | 0.04 | 0.82 | 5.2% | 517 |
+| 7 | 2.86 | 0.11 | 0.01 | 0.88 | 4.0% | 462 |
+| 8 | 2.85 | 0.07 | 0.00 | 0.93 | 3.3% | 491 |
+| 9 | 2.86 | 0.08 | 0.00 | 0.92 | 2.7% | 510 |
+| 10 | 2.86 | 0.08 | 0.00 | 0.92 | 2.5% | 425 |
+
+Where eligibility and income diverge (household deciles):
+
+- equivalised net income, before housing costs: not eligible in deciles 1-3 1.16m (13% of those deciles; ESS 168); eligible through the income test alone in deciles 6-10 0.17m (4% of income-test-only households, 0.7% of cost; ESS 29); passported in deciles 6-10 2.22m (29% of passported households, 21.2% of cost; ESS 317).
+- equivalised net income, after housing costs: not eligible in deciles 1-3 1.59m (19% of those deciles; ESS 195); eligible through the income test alone in deciles 6-10 0.37m (8% of income-test-only households, 1.5% of cost; ESS 60); passported in deciles 6-10 2.04m (26% of passported households, 19.6% of cost; ESS 310).
+- household net income, before housing costs (not equivalised): not eligible in deciles 1-3 1.63m (19% of those deciles; ESS 233); eligible through the income test alone in deciles 6-10 0.15m (3% of income-test-only households, 0.7% of cost; ESS 20); passported in deciles 6-10 2.54m (33% of passported households, 29.0% of cost; ESS 416).
+- household net income, after housing costs (not equivalised): not eligible in deciles 1-3 1.55m (18% of those deciles; ESS 192); eligible through the income test alone in deciles 6-10 0.25m (5% of income-test-only households, 1.3% of cost; ESS 38); passported in deciles 6-10 2.36m (30% of passported households, 27.4% of cost; ESS 370).
+- household taxable income (members' total_income summed): not eligible in deciles 1-3 0.10m (1% of those deciles; ESS 13); eligible through the income test alone in deciles 6-10 0.12m (3% of income-test-only households, 0.6% of cost; ESS 15); passported in deciles 6-10 1.40m (18% of passported households, 17.1% of cost; ESS 221).
+
+The same lowest-three-decile group with deciles of people (HBAI):
+
+- equivalised net income, before housing costs: not eligible 1.61m (17% of households in those deciles; ESS 212), 22% of the people in them.
+- equivalised net income, after housing costs: not eligible 1.80m (20% of households in those deciles; ESS 214), 25% of the people in them.
+
 Cliff edges (households on the schedule by own income):
 
 - GBP 18,000: mean drop GBP 140; GBP 1k below 311k (283k lowest-4); GBP 1k above 386k (318k lowest-4, 94k in rel. AHC poverty; ESS 70); offset range 83k (median width GBP 319).
@@ -1067,6 +1282,49 @@ Coverage of households in poverty or with high energy costs:
 | absolute BHC poverty | 4.09 | 47.7% | 87.0% | 0.53 |
 | relative BHC poverty | 6.75 | 44.5% | 85.9% | 0.95 |
 | lowest four BHC deciles | 13.2 | 41.8% | 71.3% | 3.80 |
+
+Eligibility by household decile of equivalised net income, after housing costs:
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 3.07 | 0.54 | 0.35 | 0.10 | 23.0% | 181 |
+| 2 | 3.07 | 0.49 | 0.36 | 0.15 | 23.5% | 143 |
+| 3 | 3.09 | 0.49 | 0.32 | 0.20 | 19.6% | 192 |
+| 4 | 3.04 | 0.34 | 0.31 | 0.35 | 15.5% | 151 |
+| 5 | 3.07 | 0.32 | 0.23 | 0.45 | 8.6% | 71.5 |
+| 6 | 3.07 | 0.15 | 0.07 | 0.78 | 4.5% | 114 |
+| 7 | 3.07 | 0.15 | 0.02 | 0.83 | 3.4% | 72.0 |
+| 8 | 3.12 | 0.07 | 0.02 | 0.91 | 1.3% | 157 |
+| 9 | 3.01 | 0.02 | 0.00 | 0.98 | 0.2% | 171 |
+| 10 | 3.06 | 0.03 | 0.00 | 0.97 | 0.3% | 62.0 |
+
+Eligibility by household decile of household taxable income (members' total_income summed):
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 3.34 | 0.92 | 0.08 | 0.00 | 24.0% | 360 |
+| 2 | 2.93 | 0.75 | 0.25 | 0.00 | 29.1% | 52.0 |
+| 3 | 2.94 | 0.30 | 0.70 | 0.00 | 23.7% | 230 |
+| 4 | 3.07 | 0.30 | 0.29 | 0.41 | 13.6% | 199 |
+| 5 | 3.07 | 0.13 | 0.30 | 0.57 | 6.7% | 106 |
+| 6 | 3.07 | 0.07 | 0.09 | 0.84 | 1.9% | 140 |
+| 7 | 3.08 | 0.03 | 0.01 | 0.97 | 0.3% | 53.2 |
+| 8 | 3.06 | 0.02 | 0.00 | 0.98 | 0.3% | 128 |
+| 9 | 3.06 | 0.02 | 0.00 | 0.98 | 0.2% | 118 |
+| 10 | 3.07 | 0.02 | 0.00 | 0.98 | 0.2% | 130 |
+
+Where eligibility and income diverge (household deciles):
+
+- equivalised net income, before housing costs: not eligible in deciles 1-3 1.01m (11% of those deciles; ESS 78); eligible through the income test alone in deciles 6-10 0.21m (4% of income-test-only households, 0.7% of cost; ESS 5); passported in deciles 6-10 1.74m (22% of passported households, 8.9% of cost; ESS 27).
+- equivalised net income, after housing costs: not eligible in deciles 1-3 1.38m (15% of those deciles; ESS 49); eligible through the income test alone in deciles 6-10 0.33m (7% of income-test-only households, 1.8% of cost; ESS 17); passported in deciles 6-10 1.27m (16% of passported households, 8.0% of cost; ESS 43).
+- household net income, before housing costs (not equivalised): not eligible in deciles 1-3 1.48m (16% of those deciles; ESS 46); eligible through the income test alone in deciles 6-10 0.28m (5% of income-test-only households, 1.0% of cost; ESS 5); passported in deciles 6-10 1.40m (18% of passported households, 6.8% of cost; ESS 189).
+- household net income, after housing costs (not equivalised): not eligible in deciles 1-3 1.08m (12% of those deciles; ESS 37); eligible through the income test alone in deciles 6-10 0.45m (9% of income-test-only households, 3.2% of cost; ESS 11); passported in deciles 6-10 1.07m (13% of passported households, 5.5% of cost; ESS 171).
+- household taxable income (members' total_income summed): not eligible in deciles 1-3 none; eligible through the income test alone in deciles 6-10 0.30m (6% of income-test-only households, 1.0% of cost; ESS 6); passported in deciles 6-10 0.50m (6% of passported households, 1.9% of cost; ESS 96).
+
+The same lowest-three-decile group with deciles of people (HBAI):
+
+- equivalised net income, before housing costs: not eligible 1.28m (13% of households in those deciles; ESS 103), 19% of the people in them.
+- equivalised net income, after housing costs: not eligible 1.58m (16% of households in those deciles; ESS 54), 21% of the people in them.
 
 Cliff edges (households on the schedule by own income):
 
@@ -1153,6 +1411,49 @@ Coverage of households in poverty or with high energy costs:
 | relative BHC poverty | 4.98 | 41.8% | 92.7% | 0.36 |
 | lowest four BHC deciles | 12.5 | 39.9% | 75.6% | 3.06 |
 
+Eligibility by household decile of equivalised net income, after housing costs:
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 2.86 | 0.47 | 0.41 | 0.12 | 21.2% | 404 |
+| 2 | 2.86 | 0.50 | 0.35 | 0.15 | 19.8% | 487 |
+| 3 | 2.85 | 0.41 | 0.31 | 0.29 | 16.5% | 432 |
+| 4 | 2.86 | 0.34 | 0.26 | 0.40 | 12.8% | 458 |
+| 5 | 2.86 | 0.29 | 0.21 | 0.50 | 10.1% | 486 |
+| 6 | 2.86 | 0.27 | 0.06 | 0.67 | 7.6% | 458 |
+| 7 | 2.85 | 0.20 | 0.05 | 0.75 | 5.5% | 440 |
+| 8 | 2.86 | 0.12 | 0.01 | 0.87 | 3.1% | 508 |
+| 9 | 2.86 | 0.07 | 0.00 | 0.92 | 1.9% | 459 |
+| 10 | 2.86 | 0.06 | 0.00 | 0.94 | 1.5% | 583 |
+
+Eligibility by household decile of household taxable income (members' total_income summed):
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 2.86 | 0.86 | 0.14 | 0.00 | 25.3% | 420 |
+| 2 | 2.85 | 0.58 | 0.42 | 0.00 | 25.3% | 473 |
+| 3 | 2.86 | 0.36 | 0.60 | 0.04 | 18.4% | 450 |
+| 4 | 2.85 | 0.24 | 0.26 | 0.50 | 10.9% | 438 |
+| 5 | 2.86 | 0.19 | 0.20 | 0.61 | 7.1% | 516 |
+| 6 | 2.86 | 0.15 | 0.04 | 0.82 | 4.2% | 517 |
+| 7 | 2.86 | 0.11 | 0.01 | 0.88 | 2.9% | 462 |
+| 8 | 2.85 | 0.07 | 0.00 | 0.93 | 1.9% | 491 |
+| 9 | 2.86 | 0.08 | 0.00 | 0.92 | 2.0% | 510 |
+| 10 | 2.86 | 0.08 | 0.00 | 0.92 | 2.0% | 425 |
+
+Where eligibility and income diverge (household deciles):
+
+- equivalised net income, before housing costs: not eligible in deciles 1-3 1.16m (13% of those deciles; ESS 168); eligible through the income test alone in deciles 6-10 0.17m (4% of income-test-only households, 0.7% of cost; ESS 29); passported in deciles 6-10 2.22m (29% of passported households, 19.6% of cost; ESS 317).
+- equivalised net income, after housing costs: not eligible in deciles 1-3 1.59m (19% of those deciles; ESS 195); eligible through the income test alone in deciles 6-10 0.37m (8% of income-test-only households, 1.5% of cost; ESS 60); passported in deciles 6-10 2.04m (26% of passported households, 18.1% of cost; ESS 310).
+- household net income, before housing costs (not equivalised): not eligible in deciles 1-3 1.63m (19% of those deciles; ESS 233); eligible through the income test alone in deciles 6-10 0.15m (3% of income-test-only households, 0.6% of cost; ESS 20); passported in deciles 6-10 2.54m (33% of passported households, 22.5% of cost; ESS 416).
+- household net income, after housing costs (not equivalised): not eligible in deciles 1-3 1.55m (18% of those deciles; ESS 192); eligible through the income test alone in deciles 6-10 0.25m (5% of income-test-only households, 1.1% of cost; ESS 38); passported in deciles 6-10 2.36m (30% of passported households, 20.9% of cost; ESS 370).
+- household taxable income (members' total_income summed): not eligible in deciles 1-3 0.10m (1% of those deciles; ESS 13); eligible through the income test alone in deciles 6-10 0.12m (3% of income-test-only households, 0.5% of cost; ESS 15); passported in deciles 6-10 1.40m (18% of passported households, 12.4% of cost; ESS 221).
+
+The same lowest-three-decile group with deciles of people (HBAI):
+
+- equivalised net income, before housing costs: not eligible 1.61m (17% of households in those deciles; ESS 212), 22% of the people in them.
+- equivalised net income, after housing costs: not eligible 1.80m (20% of households in those deciles; ESS 214), 25% of the people in them.
+
 Cliff edges (households on the schedule by own income):
 
 - GBP 18,000: mean drop GBP 109; GBP 1k below 311k (283k lowest-4); GBP 1k above 386k (318k lowest-4, 94k in rel. AHC poverty; ESS 70); offset range 49k (median width GBP 246).
@@ -1235,6 +1536,49 @@ Coverage of households in poverty or with high energy costs:
 | absolute BHC poverty | 4.09 | 47.7% | 95.0% | 0.21 |
 | relative BHC poverty | 6.75 | 44.5% | 92.6% | 0.50 |
 | lowest four BHC deciles | 13.2 | 41.8% | 77.5% | 2.97 |
+
+Eligibility by household decile of equivalised net income, after housing costs:
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 3.07 | 0.54 | 0.35 | 0.10 | 22.5% | 181 |
+| 2 | 3.07 | 0.49 | 0.36 | 0.15 | 20.5% | 143 |
+| 3 | 3.09 | 0.49 | 0.32 | 0.20 | 19.8% | 192 |
+| 4 | 3.04 | 0.34 | 0.31 | 0.35 | 13.5% | 151 |
+| 5 | 3.07 | 0.32 | 0.23 | 0.45 | 11.2% | 71.5 |
+| 6 | 3.07 | 0.15 | 0.07 | 0.78 | 5.1% | 114 |
+| 7 | 3.07 | 0.15 | 0.02 | 0.83 | 4.3% | 72.0 |
+| 8 | 3.12 | 0.07 | 0.02 | 0.91 | 2.0% | 157 |
+| 9 | 3.01 | 0.02 | 0.00 | 0.98 | 0.4% | 171 |
+| 10 | 3.06 | 0.03 | 0.00 | 0.97 | 0.7% | 62.0 |
+
+Eligibility by household decile of household taxable income (members' total_income summed):
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 3.34 | 0.92 | 0.08 | 0.00 | 28.6% | 360 |
+| 2 | 2.93 | 0.75 | 0.25 | 0.00 | 25.1% | 52.0 |
+| 3 | 2.94 | 0.30 | 0.70 | 0.00 | 20.8% | 230 |
+| 4 | 3.07 | 0.30 | 0.29 | 0.41 | 13.4% | 199 |
+| 5 | 3.07 | 0.13 | 0.30 | 0.57 | 6.9% | 106 |
+| 6 | 3.07 | 0.07 | 0.09 | 0.84 | 2.9% | 140 |
+| 7 | 3.08 | 0.03 | 0.01 | 0.97 | 0.8% | 53.2 |
+| 8 | 3.06 | 0.02 | 0.00 | 0.98 | 0.6% | 128 |
+| 9 | 3.06 | 0.02 | 0.00 | 0.98 | 0.4% | 118 |
+| 10 | 3.07 | 0.02 | 0.00 | 0.98 | 0.6% | 130 |
+
+Where eligibility and income diverge (household deciles):
+
+- equivalised net income, before housing costs: not eligible in deciles 1-3 1.01m (11% of those deciles; ESS 78); eligible through the income test alone in deciles 6-10 0.21m (4% of income-test-only households, 0.9% of cost; ESS 5); passported in deciles 6-10 1.74m (22% of passported households, 14.9% of cost; ESS 27).
+- equivalised net income, after housing costs: not eligible in deciles 1-3 1.38m (15% of those deciles; ESS 49); eligible through the income test alone in deciles 6-10 0.33m (7% of income-test-only households, 1.6% of cost; ESS 17); passported in deciles 6-10 1.27m (16% of passported households, 10.9% of cost; ESS 43).
+- household net income, before housing costs (not equivalised): not eligible in deciles 1-3 1.48m (16% of those deciles; ESS 46); eligible through the income test alone in deciles 6-10 0.28m (5% of income-test-only households, 1.0% of cost; ESS 5); passported in deciles 6-10 1.40m (18% of passported households, 12.0% of cost; ESS 189).
+- household net income, after housing costs (not equivalised): not eligible in deciles 1-3 1.08m (12% of those deciles; ESS 37); eligible through the income test alone in deciles 6-10 0.45m (9% of income-test-only households, 1.9% of cost; ESS 11); passported in deciles 6-10 1.07m (13% of passported households, 9.2% of cost; ESS 171).
+- household taxable income (members' total_income summed): not eligible in deciles 1-3 none; eligible through the income test alone in deciles 6-10 0.30m (6% of income-test-only households, 1.0% of cost; ESS 6); passported in deciles 6-10 0.50m (6% of passported households, 4.3% of cost; ESS 96).
+
+The same lowest-three-decile group with deciles of people (HBAI):
+
+- equivalised net income, before housing costs: not eligible 1.28m (13% of households in those deciles; ESS 103), 19% of the people in them.
+- equivalised net income, after housing costs: not eligible 1.58m (16% of households in those deciles; ESS 54), 21% of the people in them.
 
 Cliff edges (households on the schedule by own income):
 
@@ -1575,6 +1919,49 @@ Coverage of households in poverty or with high energy costs:
 | relative BHC poverty | 4.98 | 41.8% | 92.7% | 0.36 |
 | lowest four BHC deciles | 12.5 | 39.9% | 75.6% | 3.06 |
 
+Eligibility by household decile of equivalised net income, after housing costs:
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 2.86 | 0.47 | 0.41 | 0.12 | 25.0% | 404 |
+| 2 | 2.86 | 0.50 | 0.35 | 0.15 | 21.8% | 487 |
+| 3 | 2.85 | 0.41 | 0.31 | 0.29 | 17.7% | 432 |
+| 4 | 2.86 | 0.34 | 0.26 | 0.40 | 11.7% | 458 |
+| 5 | 2.86 | 0.29 | 0.21 | 0.50 | 8.9% | 486 |
+| 6 | 2.86 | 0.27 | 0.06 | 0.67 | 6.2% | 458 |
+| 7 | 2.85 | 0.20 | 0.05 | 0.75 | 4.7% | 440 |
+| 8 | 2.86 | 0.12 | 0.01 | 0.87 | 2.1% | 508 |
+| 9 | 2.86 | 0.07 | 0.00 | 0.92 | 1.1% | 459 |
+| 10 | 2.86 | 0.06 | 0.00 | 0.94 | 0.8% | 583 |
+
+Eligibility by household decile of household taxable income (members' total_income summed):
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 2.86 | 0.86 | 0.14 | 0.00 | 28.7% | 420 |
+| 2 | 2.85 | 0.58 | 0.42 | 0.00 | 28.4% | 473 |
+| 3 | 2.86 | 0.36 | 0.60 | 0.04 | 19.1% | 450 |
+| 4 | 2.85 | 0.24 | 0.26 | 0.50 | 10.4% | 438 |
+| 5 | 2.86 | 0.19 | 0.20 | 0.61 | 6.0% | 516 |
+| 6 | 2.86 | 0.15 | 0.04 | 0.82 | 2.5% | 517 |
+| 7 | 2.86 | 0.11 | 0.01 | 0.88 | 1.6% | 462 |
+| 8 | 2.85 | 0.07 | 0.00 | 0.93 | 1.3% | 491 |
+| 9 | 2.86 | 0.08 | 0.00 | 0.92 | 1.1% | 510 |
+| 10 | 2.86 | 0.08 | 0.00 | 0.92 | 1.0% | 425 |
+
+Where eligibility and income diverge (household deciles):
+
+- equivalised net income, before housing costs: not eligible in deciles 1-3 1.16m (13% of those deciles; ESS 168); eligible through the income test alone in deciles 6-10 0.17m (4% of income-test-only households, 0.8% of cost; ESS 29); passported in deciles 6-10 2.22m (29% of passported households, 13.9% of cost; ESS 317).
+- equivalised net income, after housing costs: not eligible in deciles 1-3 1.59m (19% of those deciles; ESS 195); eligible through the income test alone in deciles 6-10 0.37m (8% of income-test-only households, 1.7% of cost; ESS 60); passported in deciles 6-10 2.04m (26% of passported households, 13.3% of cost; ESS 310).
+- household net income, before housing costs (not equivalised): not eligible in deciles 1-3 1.63m (19% of those deciles; ESS 233); eligible through the income test alone in deciles 6-10 0.15m (3% of income-test-only households, 0.8% of cost; ESS 20); passported in deciles 6-10 2.54m (33% of passported households, 17.2% of cost; ESS 416).
+- household net income, after housing costs (not equivalised): not eligible in deciles 1-3 1.55m (18% of those deciles; ESS 192); eligible through the income test alone in deciles 6-10 0.25m (5% of income-test-only households, 1.5% of cost; ESS 38); passported in deciles 6-10 2.36m (30% of passported households, 16.4% of cost; ESS 370).
+- household taxable income (members' total_income summed): not eligible in deciles 1-3 0.10m (1% of those deciles; ESS 13); eligible through the income test alone in deciles 6-10 0.12m (3% of income-test-only households, 0.7% of cost; ESS 15); passported in deciles 6-10 1.40m (18% of passported households, 6.9% of cost; ESS 221).
+
+The same lowest-three-decile group with deciles of people (HBAI):
+
+- equivalised net income, before housing costs: not eligible 1.61m (17% of households in those deciles; ESS 212), 22% of the people in them.
+- equivalised net income, after housing costs: not eligible 1.80m (20% of households in those deciles; ESS 214), 25% of the people in them.
+
 Cliff edges (households on the schedule by own income):
 
 - GBP 18,000: mean drop GBP 165; GBP 1k below 456k (379k lowest-4); GBP 1k above 533k (405k lowest-4, 147k in rel. AHC poverty; ESS 103); offset range 103k (median width GBP 347).
@@ -1657,6 +2044,49 @@ Coverage of households in poverty or with high energy costs:
 | absolute BHC poverty | 4.09 | 47.7% | 87.0% | 0.53 |
 | relative BHC poverty | 6.75 | 44.5% | 85.9% | 0.95 |
 | lowest four BHC deciles | 13.2 | 41.8% | 71.3% | 3.80 |
+
+Eligibility by household decile of equivalised net income, after housing costs:
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 3.07 | 0.54 | 0.35 | 0.10 | 23.0% | 181 |
+| 2 | 3.07 | 0.49 | 0.36 | 0.15 | 23.8% | 143 |
+| 3 | 3.09 | 0.49 | 0.32 | 0.20 | 18.8% | 192 |
+| 4 | 3.04 | 0.34 | 0.31 | 0.35 | 16.3% | 151 |
+| 5 | 3.07 | 0.32 | 0.23 | 0.45 | 9.3% | 71.5 |
+| 6 | 3.07 | 0.15 | 0.07 | 0.78 | 4.5% | 114 |
+| 7 | 3.07 | 0.15 | 0.02 | 0.83 | 3.0% | 72.0 |
+| 8 | 3.12 | 0.07 | 0.02 | 0.91 | 1.1% | 157 |
+| 9 | 3.01 | 0.02 | 0.00 | 0.98 | 0.1% | 171 |
+| 10 | 3.06 | 0.03 | 0.00 | 0.97 | 0.2% | 62.0 |
+
+Eligibility by household decile of household taxable income (members' total_income summed):
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 3.34 | 0.92 | 0.08 | 0.00 | 23.9% | 360 |
+| 2 | 2.93 | 0.75 | 0.25 | 0.00 | 29.1% | 52.0 |
+| 3 | 2.94 | 0.30 | 0.70 | 0.00 | 25.1% | 230 |
+| 4 | 3.07 | 0.30 | 0.29 | 0.41 | 12.7% | 199 |
+| 5 | 3.07 | 0.13 | 0.30 | 0.57 | 6.9% | 106 |
+| 6 | 3.07 | 0.07 | 0.09 | 0.84 | 2.0% | 140 |
+| 7 | 3.08 | 0.03 | 0.01 | 0.97 | 0.2% | 53.2 |
+| 8 | 3.06 | 0.02 | 0.00 | 0.98 | 0.1% | 128 |
+| 9 | 3.06 | 0.02 | 0.00 | 0.98 | 0.1% | 118 |
+| 10 | 3.07 | 0.02 | 0.00 | 0.98 | 0.1% | 130 |
+
+Where eligibility and income diverge (household deciles):
+
+- equivalised net income, before housing costs: not eligible in deciles 1-3 1.01m (11% of those deciles; ESS 78); eligible through the income test alone in deciles 6-10 0.21m (4% of income-test-only households, 1.0% of cost; ESS 5); passported in deciles 6-10 1.74m (22% of passported households, 7.0% of cost; ESS 27).
+- equivalised net income, after housing costs: not eligible in deciles 1-3 1.38m (15% of those deciles; ESS 49); eligible through the income test alone in deciles 6-10 0.33m (7% of income-test-only households, 2.3% of cost; ESS 17); passported in deciles 6-10 1.27m (16% of passported households, 6.5% of cost; ESS 43).
+- household net income, before housing costs (not equivalised): not eligible in deciles 1-3 1.48m (16% of those deciles; ESS 46); eligible through the income test alone in deciles 6-10 0.28m (5% of income-test-only households, 1.6% of cost; ESS 5); passported in deciles 6-10 1.40m (18% of passported households, 4.1% of cost; ESS 189).
+- household net income, after housing costs (not equivalised): not eligible in deciles 1-3 1.08m (12% of those deciles; ESS 37); eligible through the income test alone in deciles 6-10 0.45m (9% of income-test-only households, 4.0% of cost; ESS 11); passported in deciles 6-10 1.07m (13% of passported households, 3.5% of cost; ESS 171).
+- household taxable income (members' total_income summed): not eligible in deciles 1-3 none; eligible through the income test alone in deciles 6-10 0.30m (6% of income-test-only households, 1.7% of cost; ESS 6); passported in deciles 6-10 0.50m (6% of passported households, 0.7% of cost; ESS 96).
+
+The same lowest-three-decile group with deciles of people (HBAI):
+
+- equivalised net income, before housing costs: not eligible 1.28m (13% of households in those deciles; ESS 103), 19% of the people in them.
+- equivalised net income, after housing costs: not eligible 1.58m (16% of households in those deciles; ESS 54), 21% of the people in them.
 
 Cliff edges (households on the schedule by own income):
 
@@ -1743,6 +2173,49 @@ Coverage of households in poverty or with high energy costs:
 | relative BHC poverty | 4.98 | 41.8% | 92.7% | 0.36 |
 | lowest four BHC deciles | 12.5 | 39.9% | 75.6% | 3.06 |
 
+Eligibility by household decile of equivalised net income, after housing costs:
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 2.86 | 0.47 | 0.41 | 0.12 | 24.7% | 404 |
+| 2 | 2.86 | 0.50 | 0.35 | 0.15 | 21.1% | 487 |
+| 3 | 2.85 | 0.41 | 0.31 | 0.29 | 17.2% | 432 |
+| 4 | 2.86 | 0.34 | 0.26 | 0.40 | 11.9% | 458 |
+| 5 | 2.86 | 0.29 | 0.21 | 0.50 | 9.9% | 486 |
+| 6 | 2.86 | 0.27 | 0.06 | 0.67 | 6.4% | 458 |
+| 7 | 2.85 | 0.20 | 0.05 | 0.75 | 4.7% | 440 |
+| 8 | 2.86 | 0.12 | 0.01 | 0.87 | 2.4% | 508 |
+| 9 | 2.86 | 0.07 | 0.00 | 0.92 | 1.1% | 459 |
+| 10 | 2.86 | 0.06 | 0.00 | 0.94 | 0.7% | 583 |
+
+Eligibility by household decile of household taxable income (members' total_income summed):
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 2.86 | 0.86 | 0.14 | 0.00 | 30.1% | 420 |
+| 2 | 2.85 | 0.58 | 0.42 | 0.00 | 30.1% | 473 |
+| 3 | 2.86 | 0.36 | 0.60 | 0.04 | 18.8% | 450 |
+| 4 | 2.85 | 0.24 | 0.26 | 0.50 | 9.6% | 438 |
+| 5 | 2.86 | 0.19 | 0.20 | 0.61 | 5.1% | 516 |
+| 6 | 2.86 | 0.15 | 0.04 | 0.82 | 2.2% | 517 |
+| 7 | 2.86 | 0.11 | 0.01 | 0.88 | 1.4% | 462 |
+| 8 | 2.85 | 0.07 | 0.00 | 0.93 | 0.9% | 491 |
+| 9 | 2.86 | 0.08 | 0.00 | 0.92 | 0.9% | 510 |
+| 10 | 2.86 | 0.08 | 0.00 | 0.92 | 0.9% | 425 |
+
+Where eligibility and income diverge (household deciles):
+
+- equivalised net income, before housing costs: not eligible in deciles 1-3 1.16m (13% of those deciles; ESS 168); eligible through the income test alone in deciles 6-10 0.17m (4% of income-test-only households, 0.8% of cost; ESS 29); passported in deciles 6-10 2.22m (29% of passported households, 14.3% of cost; ESS 317).
+- equivalised net income, after housing costs: not eligible in deciles 1-3 1.59m (19% of those deciles; ESS 195); eligible through the income test alone in deciles 6-10 0.37m (8% of income-test-only households, 1.8% of cost; ESS 60); passported in deciles 6-10 2.04m (26% of passported households, 13.5% of cost; ESS 310).
+- household net income, before housing costs (not equivalised): not eligible in deciles 1-3 1.63m (19% of those deciles; ESS 233); eligible through the income test alone in deciles 6-10 0.15m (3% of income-test-only households, 0.7% of cost; ESS 20); passported in deciles 6-10 2.54m (33% of passported households, 14.0% of cost; ESS 416).
+- household net income, after housing costs (not equivalised): not eligible in deciles 1-3 1.55m (18% of those deciles; ESS 192); eligible through the income test alone in deciles 6-10 0.25m (5% of income-test-only households, 1.4% of cost; ESS 38); passported in deciles 6-10 2.36m (30% of passported households, 13.1% of cost; ESS 370).
+- household taxable income (members' total_income summed): not eligible in deciles 1-3 0.10m (1% of those deciles; ESS 13); eligible through the income test alone in deciles 6-10 0.12m (3% of income-test-only households, 0.6% of cost; ESS 15); passported in deciles 6-10 1.40m (18% of passported households, 5.7% of cost; ESS 221).
+
+The same lowest-three-decile group with deciles of people (HBAI):
+
+- equivalised net income, before housing costs: not eligible 1.61m (17% of households in those deciles; ESS 212), 22% of the people in them.
+- equivalised net income, after housing costs: not eligible 1.80m (20% of households in those deciles; ESS 214), 25% of the people in them.
+
 Cliff edges (households on the schedule by own income):
 
 - GBP 18,000: mean drop GBP 129; GBP 1k below 456k (379k lowest-4); GBP 1k above 533k (405k lowest-4, 147k in rel. AHC poverty; ESS 103); offset range 61k (median width GBP 293).
@@ -1825,6 +2298,49 @@ Coverage of households in poverty or with high energy costs:
 | absolute BHC poverty | 4.09 | 47.7% | 95.0% | 0.21 |
 | relative BHC poverty | 6.75 | 44.5% | 92.6% | 0.50 |
 | lowest four BHC deciles | 13.2 | 41.8% | 77.5% | 2.97 |
+
+Eligibility by household decile of equivalised net income, after housing costs:
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 3.07 | 0.54 | 0.35 | 0.10 | 24.7% | 181 |
+| 2 | 3.07 | 0.49 | 0.36 | 0.15 | 21.2% | 143 |
+| 3 | 3.09 | 0.49 | 0.32 | 0.20 | 19.2% | 192 |
+| 4 | 3.04 | 0.34 | 0.31 | 0.35 | 13.3% | 151 |
+| 5 | 3.07 | 0.32 | 0.23 | 0.45 | 11.1% | 71.5 |
+| 6 | 3.07 | 0.15 | 0.07 | 0.78 | 4.8% | 114 |
+| 7 | 3.07 | 0.15 | 0.02 | 0.83 | 3.7% | 72.0 |
+| 8 | 3.12 | 0.07 | 0.02 | 0.91 | 1.5% | 157 |
+| 9 | 3.01 | 0.02 | 0.00 | 0.98 | 0.2% | 171 |
+| 10 | 3.06 | 0.03 | 0.00 | 0.97 | 0.3% | 62.0 |
+
+Eligibility by household decile of household taxable income (members' total_income summed):
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 3.34 | 0.92 | 0.08 | 0.00 | 31.8% | 360 |
+| 2 | 2.93 | 0.75 | 0.25 | 0.00 | 27.9% | 52.0 |
+| 3 | 2.94 | 0.30 | 0.70 | 0.00 | 21.6% | 230 |
+| 4 | 3.07 | 0.30 | 0.29 | 0.41 | 10.4% | 199 |
+| 5 | 3.07 | 0.13 | 0.30 | 0.57 | 5.4% | 106 |
+| 6 | 3.07 | 0.07 | 0.09 | 0.84 | 1.9% | 140 |
+| 7 | 3.08 | 0.03 | 0.01 | 0.97 | 0.4% | 53.2 |
+| 8 | 3.06 | 0.02 | 0.00 | 0.98 | 0.3% | 128 |
+| 9 | 3.06 | 0.02 | 0.00 | 0.98 | 0.2% | 118 |
+| 10 | 3.07 | 0.02 | 0.00 | 0.98 | 0.2% | 130 |
+
+Where eligibility and income diverge (household deciles):
+
+- equivalised net income, before housing costs: not eligible in deciles 1-3 1.01m (11% of those deciles; ESS 78); eligible through the income test alone in deciles 6-10 0.21m (4% of income-test-only households, 1.0% of cost; ESS 5); passported in deciles 6-10 1.74m (22% of passported households, 12.2% of cost; ESS 27).
+- equivalised net income, after housing costs: not eligible in deciles 1-3 1.38m (15% of those deciles; ESS 49); eligible through the income test alone in deciles 6-10 0.33m (7% of income-test-only households, 1.8% of cost; ESS 17); passported in deciles 6-10 1.27m (16% of passported households, 8.7% of cost; ESS 43).
+- household net income, before housing costs (not equivalised): not eligible in deciles 1-3 1.48m (16% of those deciles; ESS 46); eligible through the income test alone in deciles 6-10 0.28m (5% of income-test-only households, 1.1% of cost; ESS 5); passported in deciles 6-10 1.40m (18% of passported households, 7.7% of cost; ESS 189).
+- household net income, after housing costs (not equivalised): not eligible in deciles 1-3 1.08m (12% of those deciles; ESS 37); eligible through the income test alone in deciles 6-10 0.45m (9% of income-test-only households, 2.1% of cost; ESS 11); passported in deciles 6-10 1.07m (13% of passported households, 6.0% of cost; ESS 171).
+- household taxable income (members' total_income summed): not eligible in deciles 1-3 none; eligible through the income test alone in deciles 6-10 0.30m (6% of income-test-only households, 1.1% of cost; ESS 6); passported in deciles 6-10 0.50m (6% of passported households, 1.8% of cost; ESS 96).
+
+The same lowest-three-decile group with deciles of people (HBAI):
+
+- equivalised net income, before housing costs: not eligible 1.28m (13% of households in those deciles; ESS 103), 19% of the people in them.
+- equivalised net income, after housing costs: not eligible 1.58m (16% of households in those deciles; ESS 54), 21% of the people in them.
 
 Cliff edges (households on the schedule by own income):
 
@@ -2163,6 +2679,49 @@ Coverage of households in poverty or with high energy costs:
 | relative BHC poverty | 4.98 | 41.8% | 97.0% | 0.15 |
 | lowest four BHC deciles | 12.5 | 39.9% | 69.0% | 3.87 |
 
+Eligibility by household decile of equivalised net income, after housing costs:
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 2.86 | 0.47 | 0.44 | 0.09 | 21.6% | 404 |
+| 2 | 2.86 | 0.50 | 0.35 | 0.15 | 21.2% | 487 |
+| 3 | 2.85 | 0.41 | 0.26 | 0.33 | 16.7% | 432 |
+| 4 | 2.86 | 0.34 | 0.16 | 0.50 | 12.8% | 458 |
+| 5 | 2.86 | 0.29 | 0.06 | 0.65 | 8.0% | 486 |
+| 6 | 2.86 | 0.27 | 0.02 | 0.72 | 7.5% | 458 |
+| 7 | 2.85 | 0.20 | 0.01 | 0.80 | 5.5% | 440 |
+| 8 | 2.86 | 0.12 | 0.00 | 0.88 | 2.9% | 508 |
+| 9 | 2.86 | 0.07 | 0.00 | 0.93 | 2.0% | 459 |
+| 10 | 2.86 | 0.06 | 0.00 | 0.94 | 1.9% | 583 |
+
+Eligibility by household decile of household taxable income (members' total_income summed):
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 2.86 | 0.86 | 0.14 | 0.00 | 21.4% | 420 |
+| 2 | 2.85 | 0.58 | 0.42 | 0.00 | 21.2% | 473 |
+| 3 | 2.86 | 0.36 | 0.41 | 0.23 | 18.9% | 450 |
+| 4 | 2.85 | 0.24 | 0.25 | 0.51 | 13.2% | 438 |
+| 5 | 2.86 | 0.19 | 0.07 | 0.75 | 7.7% | 516 |
+| 6 | 2.86 | 0.15 | 0.02 | 0.84 | 5.6% | 517 |
+| 7 | 2.86 | 0.11 | 0.00 | 0.89 | 3.8% | 462 |
+| 8 | 2.85 | 0.07 | 0.00 | 0.93 | 3.2% | 491 |
+| 9 | 2.86 | 0.08 | 0.00 | 0.92 | 2.6% | 510 |
+| 10 | 2.86 | 0.08 | 0.00 | 0.92 | 2.5% | 425 |
+
+Where eligibility and income diverge (household deciles):
+
+- equivalised net income, before housing costs: not eligible in deciles 1-3 1.53m (18% of those deciles; ESS 234); eligible through the income test alone in deciles 6-10 0.03m (1% of income-test-only households, 0.3% of cost; ESS 7); passported in deciles 6-10 2.22m (29% of passported households, 20.6% of cost; ESS 317).
+- equivalised net income, after housing costs: not eligible in deciles 1-3 1.64m (19% of those deciles; ESS 201); eligible through the income test alone in deciles 6-10 0.07m (2% of income-test-only households, 0.6% of cost; ESS 27); passported in deciles 6-10 2.04m (26% of passported households, 19.0% of cost; ESS 310).
+- household net income, before housing costs (not equivalised): not eligible in deciles 1-3 2.11m (25% of those deciles; ESS 312); eligible through the income test alone in deciles 6-10 0.06m (2% of income-test-only households, 1.0% of cost; ESS 8); passported in deciles 6-10 2.54m (33% of passported households, 28.2% of cost; ESS 416).
+- household net income, after housing costs (not equivalised): not eligible in deciles 1-3 1.96m (23% of those deciles; ESS 260); eligible through the income test alone in deciles 6-10 0.06m (2% of income-test-only households, 1.1% of cost; ESS 9); passported in deciles 6-10 2.36m (30% of passported households, 26.6% of cost; ESS 370).
+- household taxable income (members' total_income summed): not eligible in deciles 1-3 0.67m (8% of those deciles; ESS 100); eligible through the income test alone in deciles 6-10 0.05m (1% of income-test-only households, 1.1% of cost; ESS 7); passported in deciles 6-10 1.40m (18% of passported households, 16.6% of cost; ESS 221).
+
+The same lowest-three-decile group with deciles of people (HBAI):
+
+- equivalised net income, before housing costs: not eligible 2.14m (22% of households in those deciles; ESS 298), 23% of the people in them.
+- equivalised net income, after housing costs: not eligible 1.85m (20% of households in those deciles; ESS 224), 23% of the people in them.
+
 Cliff edges (households on the schedule by own income):
 
 - GBP 30,000: mean drop GBP 189; GBP 1k below 255k (233k lowest-4); GBP 1k above 314k (286k lowest-4, 121k in rel. AHC poverty; ESS 50); offset range 77k (median width GBP 264).
@@ -2244,6 +2803,49 @@ Coverage of households in poverty or with high energy costs:
 | absolute BHC poverty | 4.09 | 47.7% | 88.1% | 0.49 |
 | relative BHC poverty | 6.75 | 44.5% | 87.5% | 0.84 |
 | lowest four BHC deciles | 13.2 | 41.8% | 65.0% | 4.62 |
+
+Eligibility by household decile of equivalised net income, after housing costs:
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 3.07 | 0.54 | 0.34 | 0.11 | 21.8% | 181 |
+| 2 | 3.07 | 0.49 | 0.40 | 0.11 | 28.1% | 143 |
+| 3 | 3.09 | 0.49 | 0.30 | 0.21 | 19.5% | 192 |
+| 4 | 3.04 | 0.34 | 0.18 | 0.48 | 17.3% | 151 |
+| 5 | 3.07 | 0.32 | 0.02 | 0.66 | 5.2% | 71.5 |
+| 6 | 3.07 | 0.15 | 0.03 | 0.82 | 3.6% | 114 |
+| 7 | 3.07 | 0.15 | 0.01 | 0.84 | 3.0% | 72.0 |
+| 8 | 3.12 | 0.07 | 0.00 | 0.93 | 1.0% | 157 |
+| 9 | 3.01 | 0.02 | 0.00 | 0.98 | 0.2% | 171 |
+| 10 | 3.06 | 0.03 | 0.00 | 0.97 | 0.3% | 62.0 |
+
+Eligibility by household decile of household taxable income (members' total_income summed):
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 3.34 | 0.92 | 0.08 | 0.00 | 21.2% | 360 |
+| 2 | 2.93 | 0.75 | 0.25 | 0.00 | 25.7% | 52.0 |
+| 3 | 2.94 | 0.30 | 0.58 | 0.12 | 27.6% | 230 |
+| 4 | 3.07 | 0.30 | 0.28 | 0.42 | 16.6% | 199 |
+| 5 | 3.07 | 0.13 | 0.08 | 0.79 | 5.5% | 106 |
+| 6 | 3.07 | 0.07 | 0.04 | 0.89 | 2.5% | 140 |
+| 7 | 3.08 | 0.03 | 0.00 | 0.97 | 0.4% | 53.2 |
+| 8 | 3.06 | 0.02 | 0.00 | 0.98 | 0.2% | 128 |
+| 9 | 3.06 | 0.02 | 0.00 | 0.98 | 0.2% | 118 |
+| 10 | 3.07 | 0.02 | 0.00 | 0.98 | 0.2% | 130 |
+
+Where eligibility and income diverge (household deciles):
+
+- equivalised net income, before housing costs: not eligible in deciles 1-3 1.20m (13% of those deciles; ESS 70); eligible through the income test alone in deciles 6-10 0.04m (1% of income-test-only households, 0.4% of cost; ESS 3); passported in deciles 6-10 1.74m (22% of passported households, 7.9% of cost; ESS 27).
+- equivalised net income, after housing costs: not eligible in deciles 1-3 1.34m (15% of those deciles; ESS 33); eligible through the income test alone in deciles 6-10 0.12m (3% of income-test-only households, 1.1% of cost; ESS 4); passported in deciles 6-10 1.27m (16% of passported households, 7.1% of cost; ESS 43).
+- household net income, before housing costs (not equivalised): not eligible in deciles 1-3 1.83m (20% of those deciles; ESS 55); eligible through the income test alone in deciles 6-10 0.15m (4% of income-test-only households, 3.0% of cost; ESS 6); passported in deciles 6-10 1.40m (18% of passported households, 6.0% of cost; ESS 189).
+- household net income, after housing costs (not equivalised): not eligible in deciles 1-3 1.53m (17% of those deciles; ESS 41); eligible through the income test alone in deciles 6-10 0.18m (5% of income-test-only households, 3.4% of cost; ESS 9); passported in deciles 6-10 1.07m (13% of passported households, 4.9% of cost; ESS 171).
+- household taxable income (members' total_income summed): not eligible in deciles 1-3 0.34m (4% of those deciles; ESS 18); eligible through the income test alone in deciles 6-10 0.13m (3% of income-test-only households, 1.8% of cost; ESS 5); passported in deciles 6-10 0.50m (6% of passported households, 1.6% of cost; ESS 96).
+
+The same lowest-three-decile group with deciles of people (HBAI):
+
+- equivalised net income, before housing costs: not eligible 1.60m (16% of households in those deciles; ESS 105), 17% of the people in them.
+- equivalised net income, after housing costs: not eligible 1.60m (16% of households in those deciles; ESS 41), 17% of the people in them.
 
 Cliff edges (households on the schedule by own income):
 
@@ -2329,6 +2931,49 @@ Coverage of households in poverty or with high energy costs:
 | relative BHC poverty | 4.98 | 41.8% | 97.0% | 0.15 |
 | lowest four BHC deciles | 12.5 | 39.9% | 69.0% | 3.87 |
 
+Eligibility by household decile of equivalised net income, after housing costs:
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 2.86 | 0.47 | 0.44 | 0.09 | 22.6% | 404 |
+| 2 | 2.86 | 0.50 | 0.35 | 0.15 | 21.2% | 487 |
+| 3 | 2.85 | 0.41 | 0.26 | 0.33 | 16.7% | 432 |
+| 4 | 2.86 | 0.34 | 0.16 | 0.50 | 12.4% | 458 |
+| 5 | 2.86 | 0.29 | 0.06 | 0.65 | 8.7% | 486 |
+| 6 | 2.86 | 0.27 | 0.02 | 0.72 | 7.1% | 458 |
+| 7 | 2.85 | 0.20 | 0.01 | 0.80 | 5.0% | 440 |
+| 8 | 2.86 | 0.12 | 0.00 | 0.88 | 3.0% | 508 |
+| 9 | 2.86 | 0.07 | 0.00 | 0.93 | 1.9% | 459 |
+| 10 | 2.86 | 0.06 | 0.00 | 0.94 | 1.5% | 583 |
+
+Eligibility by household decile of household taxable income (members' total_income summed):
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 2.86 | 0.86 | 0.14 | 0.00 | 24.9% | 420 |
+| 2 | 2.85 | 0.58 | 0.42 | 0.00 | 24.9% | 473 |
+| 3 | 2.86 | 0.36 | 0.41 | 0.23 | 19.1% | 450 |
+| 4 | 2.85 | 0.24 | 0.25 | 0.51 | 12.1% | 438 |
+| 5 | 2.86 | 0.19 | 0.07 | 0.75 | 6.3% | 516 |
+| 6 | 2.86 | 0.15 | 0.02 | 0.84 | 4.1% | 517 |
+| 7 | 2.86 | 0.11 | 0.00 | 0.89 | 2.8% | 462 |
+| 8 | 2.85 | 0.07 | 0.00 | 0.93 | 1.8% | 491 |
+| 9 | 2.86 | 0.08 | 0.00 | 0.92 | 1.9% | 510 |
+| 10 | 2.86 | 0.08 | 0.00 | 0.92 | 1.9% | 425 |
+
+Where eligibility and income diverge (household deciles):
+
+- equivalised net income, before housing costs: not eligible in deciles 1-3 1.53m (18% of those deciles; ESS 234); eligible through the income test alone in deciles 6-10 0.03m (1% of income-test-only households, 0.3% of cost; ESS 7); passported in deciles 6-10 2.22m (29% of passported households, 19.3% of cost; ESS 317).
+- equivalised net income, after housing costs: not eligible in deciles 1-3 1.64m (19% of those deciles; ESS 201); eligible through the income test alone in deciles 6-10 0.07m (2% of income-test-only households, 0.6% of cost; ESS 27); passported in deciles 6-10 2.04m (26% of passported households, 17.8% of cost; ESS 310).
+- household net income, before housing costs (not equivalised): not eligible in deciles 1-3 2.11m (25% of those deciles; ESS 312); eligible through the income test alone in deciles 6-10 0.06m (2% of income-test-only households, 0.5% of cost; ESS 8); passported in deciles 6-10 2.54m (33% of passported households, 22.1% of cost; ESS 416).
+- household net income, after housing costs (not equivalised): not eligible in deciles 1-3 1.96m (23% of those deciles; ESS 260); eligible through the income test alone in deciles 6-10 0.06m (2% of income-test-only households, 0.5% of cost; ESS 9); passported in deciles 6-10 2.36m (30% of passported households, 20.6% of cost; ESS 370).
+- household taxable income (members' total_income summed): not eligible in deciles 1-3 0.67m (8% of those deciles; ESS 100); eligible through the income test alone in deciles 6-10 0.05m (1% of income-test-only households, 0.4% of cost; ESS 7); passported in deciles 6-10 1.40m (18% of passported households, 12.2% of cost; ESS 221).
+
+The same lowest-three-decile group with deciles of people (HBAI):
+
+- equivalised net income, before housing costs: not eligible 2.14m (22% of households in those deciles; ESS 298), 23% of the people in them.
+- equivalised net income, after housing costs: not eligible 1.85m (20% of households in those deciles; ESS 224), 23% of the people in them.
+
 Cliff edges (households on the schedule by own income):
 
 - GBP 30,000: mean drop GBP 174; GBP 1k below 255k (233k lowest-4); GBP 1k above 314k (286k lowest-4, 121k in rel. AHC poverty; ESS 50); offset range 99k (median width GBP 242).
@@ -2410,6 +3055,49 @@ Coverage of households in poverty or with high energy costs:
 | absolute BHC poverty | 4.09 | 47.7% | 96.0% | 0.16 |
 | relative BHC poverty | 6.75 | 44.5% | 94.2% | 0.39 |
 | lowest four BHC deciles | 13.2 | 41.8% | 71.2% | 3.80 |
+
+Eligibility by household decile of equivalised net income, after housing costs:
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 3.07 | 0.54 | 0.34 | 0.11 | 22.9% | 181 |
+| 2 | 3.07 | 0.49 | 0.40 | 0.11 | 22.9% | 143 |
+| 3 | 3.09 | 0.49 | 0.30 | 0.21 | 20.4% | 192 |
+| 4 | 3.04 | 0.34 | 0.18 | 0.48 | 13.3% | 151 |
+| 5 | 3.07 | 0.32 | 0.02 | 0.66 | 8.8% | 71.5 |
+| 6 | 3.07 | 0.15 | 0.03 | 0.82 | 4.6% | 114 |
+| 7 | 3.07 | 0.15 | 0.01 | 0.84 | 4.2% | 72.0 |
+| 8 | 3.12 | 0.07 | 0.00 | 0.93 | 1.9% | 157 |
+| 9 | 3.01 | 0.02 | 0.00 | 0.98 | 0.4% | 171 |
+| 10 | 3.06 | 0.03 | 0.00 | 0.97 | 0.7% | 62.0 |
+
+Eligibility by household decile of household taxable income (members' total_income summed):
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 3.34 | 0.92 | 0.08 | 0.00 | 28.0% | 360 |
+| 2 | 2.93 | 0.75 | 0.25 | 0.00 | 24.6% | 52.0 |
+| 3 | 2.94 | 0.30 | 0.58 | 0.12 | 21.8% | 230 |
+| 4 | 3.07 | 0.30 | 0.28 | 0.42 | 14.9% | 199 |
+| 5 | 3.07 | 0.13 | 0.08 | 0.79 | 5.5% | 106 |
+| 6 | 3.07 | 0.07 | 0.04 | 0.89 | 2.9% | 140 |
+| 7 | 3.08 | 0.03 | 0.00 | 0.97 | 0.7% | 53.2 |
+| 8 | 3.06 | 0.02 | 0.00 | 0.98 | 0.6% | 128 |
+| 9 | 3.06 | 0.02 | 0.00 | 0.98 | 0.4% | 118 |
+| 10 | 3.07 | 0.02 | 0.00 | 0.98 | 0.6% | 130 |
+
+Where eligibility and income diverge (household deciles):
+
+- equivalised net income, before housing costs: not eligible in deciles 1-3 1.20m (13% of those deciles; ESS 70); eligible through the income test alone in deciles 6-10 0.04m (1% of income-test-only households, 0.3% of cost; ESS 3); passported in deciles 6-10 1.74m (22% of passported households, 14.7% of cost; ESS 27).
+- equivalised net income, after housing costs: not eligible in deciles 1-3 1.34m (15% of those deciles; ESS 33); eligible through the income test alone in deciles 6-10 0.12m (3% of income-test-only households, 1.0% of cost; ESS 4); passported in deciles 6-10 1.27m (16% of passported households, 10.7% of cost; ESS 43).
+- household net income, before housing costs (not equivalised): not eligible in deciles 1-3 1.83m (20% of those deciles; ESS 55); eligible through the income test alone in deciles 6-10 0.15m (4% of income-test-only households, 1.3% of cost; ESS 6); passported in deciles 6-10 1.40m (18% of passported households, 11.8% of cost; ESS 189).
+- household net income, after housing costs (not equivalised): not eligible in deciles 1-3 1.53m (17% of those deciles; ESS 41); eligible through the income test alone in deciles 6-10 0.18m (5% of income-test-only households, 1.5% of cost; ESS 9); passported in deciles 6-10 1.07m (13% of passported households, 9.0% of cost; ESS 171).
+- household taxable income (members' total_income summed): not eligible in deciles 1-3 0.34m (4% of those deciles; ESS 18); eligible through the income test alone in deciles 6-10 0.13m (3% of income-test-only households, 1.1% of cost; ESS 5); passported in deciles 6-10 0.50m (6% of passported households, 4.2% of cost; ESS 96).
+
+The same lowest-three-decile group with deciles of people (HBAI):
+
+- equivalised net income, before housing costs: not eligible 1.60m (16% of households in those deciles; ESS 105), 17% of the people in them.
+- equivalised net income, after housing costs: not eligible 1.60m (16% of households in those deciles; ESS 41), 17% of the people in them.
 
 Cliff edges (households on the schedule by own income):
 
@@ -2745,6 +3433,49 @@ Coverage of households in poverty or with high energy costs:
 | relative BHC poverty | 4.98 | 41.8% | 41.8% | 2.90 |
 | lowest four BHC deciles | 12.5 | 39.9% | 39.9% | 7.52 |
 
+Eligibility by household decile of equivalised net income, after housing costs:
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 2.86 | 0.47 | 0.00 | 0.53 | 15.3% | 404 |
+| 2 | 2.86 | 0.50 | 0.00 | 0.50 | 18.9% | 487 |
+| 3 | 2.85 | 0.41 | 0.00 | 0.59 | 14.6% | 432 |
+| 4 | 2.86 | 0.34 | 0.00 | 0.66 | 13.4% | 458 |
+| 5 | 2.86 | 0.29 | 0.00 | 0.71 | 10.0% | 486 |
+| 6 | 2.86 | 0.27 | 0.00 | 0.73 | 10.4% | 458 |
+| 7 | 2.85 | 0.20 | 0.00 | 0.80 | 7.7% | 440 |
+| 8 | 2.86 | 0.12 | 0.00 | 0.88 | 4.2% | 508 |
+| 9 | 2.86 | 0.07 | 0.00 | 0.93 | 2.9% | 459 |
+| 10 | 2.86 | 0.06 | 0.00 | 0.94 | 2.8% | 583 |
+
+Eligibility by household decile of household taxable income (members' total_income summed):
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 2.86 | 0.86 | 0.00 | 0.14 | 26.8% | 420 |
+| 2 | 2.85 | 0.58 | 0.00 | 0.42 | 18.2% | 473 |
+| 3 | 2.86 | 0.36 | 0.00 | 0.64 | 13.1% | 450 |
+| 4 | 2.85 | 0.24 | 0.00 | 0.76 | 9.7% | 438 |
+| 5 | 2.86 | 0.19 | 0.00 | 0.81 | 8.0% | 516 |
+| 6 | 2.86 | 0.15 | 0.00 | 0.85 | 6.6% | 517 |
+| 7 | 2.86 | 0.11 | 0.00 | 0.89 | 5.6% | 462 |
+| 8 | 2.85 | 0.07 | 0.00 | 0.93 | 4.6% | 491 |
+| 9 | 2.86 | 0.08 | 0.00 | 0.92 | 3.8% | 510 |
+| 10 | 2.86 | 0.08 | 0.00 | 0.92 | 3.6% | 425 |
+
+Where eligibility and income diverge (household deciles):
+
+- equivalised net income, before housing costs: not eligible in deciles 1-3 4.99m (58% of those deciles; ESS 761); eligible through the income test alone in deciles 6-10 none; passported in deciles 6-10 2.22m (29% of passported households, 30.0% of cost; ESS 317).
+- equivalised net income, after housing costs: not eligible in deciles 1-3 4.64m (54% of those deciles; ESS 645); eligible through the income test alone in deciles 6-10 none; passported in deciles 6-10 2.04m (26% of passported households, 27.8% of cost; ESS 310).
+- household net income, before housing costs (not equivalised): not eligible in deciles 1-3 5.27m (61% of those deciles; ESS 792); eligible through the income test alone in deciles 6-10 none; passported in deciles 6-10 2.54m (33% of passported households, 41.1% of cost; ESS 416).
+- household net income, after housing costs (not equivalised): not eligible in deciles 1-3 4.89m (57% of those deciles; ESS 693); eligible through the income test alone in deciles 6-10 none; passported in deciles 6-10 2.36m (30% of passported households, 38.9% of cost; ESS 370).
+- household taxable income (members' total_income summed): not eligible in deciles 1-3 3.42m (40% of those deciles; ESS 508); eligible through the income test alone in deciles 6-10 none; passported in deciles 6-10 1.40m (18% of passported households, 24.2% of cost; ESS 221).
+
+The same lowest-three-decile group with deciles of people (HBAI):
+
+- equivalised net income, before housing costs: not eligible 5.67m (59% of households in those deciles; ESS 829), 54% of the people in them.
+- equivalised net income, after housing costs: not eligible 4.98m (55% of households in those deciles; ESS 690), 52% of the people in them.
+
 Cliff edges (households on the schedule by own income):
 
 
@@ -2825,6 +3556,49 @@ Coverage of households in poverty or with high energy costs:
 | absolute BHC poverty | 4.09 | 47.7% | 41.0% | 2.41 |
 | relative BHC poverty | 6.75 | 44.5% | 39.1% | 4.11 |
 | lowest four BHC deciles | 13.2 | 41.8% | 36.4% | 8.40 |
+
+Eligibility by household decile of equivalised net income, after housing costs:
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 3.07 | 0.54 | 0.00 | 0.46 | 16.6% | 181 |
+| 2 | 3.07 | 0.49 | 0.00 | 0.51 | 21.9% | 143 |
+| 3 | 3.09 | 0.49 | 0.00 | 0.51 | 16.8% | 192 |
+| 4 | 3.04 | 0.34 | 0.00 | 0.66 | 18.1% | 151 |
+| 5 | 3.07 | 0.32 | 0.00 | 0.68 | 9.9% | 71.5 |
+| 6 | 3.07 | 0.15 | 0.00 | 0.85 | 6.7% | 114 |
+| 7 | 3.07 | 0.15 | 0.00 | 0.85 | 6.6% | 72.0 |
+| 8 | 3.12 | 0.07 | 0.00 | 0.93 | 2.3% | 157 |
+| 9 | 3.01 | 0.02 | 0.00 | 0.98 | 0.5% | 171 |
+| 10 | 3.06 | 0.03 | 0.00 | 0.97 | 0.6% | 62.0 |
+
+Eligibility by household decile of household taxable income (members' total_income summed):
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 3.34 | 0.92 | 0.00 | 0.08 | 41.0% | 360 |
+| 2 | 2.93 | 0.75 | 0.00 | 0.25 | 35.8% | 52.0 |
+| 3 | 2.94 | 0.30 | 0.00 | 0.70 | 8.5% | 230 |
+| 4 | 3.07 | 0.30 | 0.00 | 0.70 | 6.4% | 199 |
+| 5 | 3.07 | 0.13 | 0.00 | 0.87 | 4.5% | 106 |
+| 6 | 3.07 | 0.07 | 0.00 | 0.93 | 2.0% | 140 |
+| 7 | 3.08 | 0.03 | 0.00 | 0.97 | 0.5% | 53.2 |
+| 8 | 3.06 | 0.02 | 0.00 | 0.98 | 0.6% | 128 |
+| 9 | 3.06 | 0.02 | 0.00 | 0.98 | 0.4% | 118 |
+| 10 | 3.07 | 0.02 | 0.00 | 0.98 | 0.5% | 130 |
+
+Where eligibility and income diverge (household deciles):
+
+- equivalised net income, before housing costs: not eligible in deciles 1-3 4.91m (53% of those deciles; ESS 312); eligible through the income test alone in deciles 6-10 none; passported in deciles 6-10 1.74m (22% of passported households, 18.6% of cost; ESS 27).
+- equivalised net income, after housing costs: not eligible in deciles 1-3 4.54m (49% of those deciles; ESS 210); eligible through the income test alone in deciles 6-10 none; passported in deciles 6-10 1.27m (16% of passported households, 16.7% of cost; ESS 43).
+- household net income, before housing costs (not equivalised): not eligible in deciles 1-3 5.13m (56% of those deciles; ESS 245); eligible through the income test alone in deciles 6-10 none; passported in deciles 6-10 1.40m (18% of passported households, 14.3% of cost; ESS 189).
+- household net income, after housing costs (not equivalised): not eligible in deciles 1-3 4.43m (48% of those deciles; ESS 202); eligible through the income test alone in deciles 6-10 none; passported in deciles 6-10 1.07m (13% of passported households, 11.5% of cost; ESS 171).
+- household taxable income (members' total_income summed): not eligible in deciles 1-3 3.04m (33% of those deciles; ESS 202); eligible through the income test alone in deciles 6-10 none; passported in deciles 6-10 0.50m (6% of passported households, 3.9% of cost; ESS 96).
+
+The same lowest-three-decile group with deciles of people (HBAI):
+
+- equivalised net income, before housing costs: not eligible 5.35m (54% of households in those deciles; ESS 352), 53% of the people in them.
+- equivalised net income, after housing costs: not eligible 5.01m (51% of households in those deciles; ESS 221), 50% of the people in them.
 
 Cliff edges (households on the schedule by own income):
 
@@ -2909,6 +3683,49 @@ Coverage of households in poverty or with high energy costs:
 | relative BHC poverty | 4.98 | 41.8% | 41.8% | 2.90 |
 | lowest four BHC deciles | 12.5 | 39.9% | 39.9% | 7.52 |
 
+Eligibility by household decile of equivalised net income, after housing costs:
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 2.86 | 0.47 | 0.00 | 0.53 | 17.2% | 404 |
+| 2 | 2.86 | 0.50 | 0.00 | 0.50 | 18.4% | 487 |
+| 3 | 2.85 | 0.41 | 0.00 | 0.59 | 15.0% | 432 |
+| 4 | 2.86 | 0.34 | 0.00 | 0.66 | 12.6% | 458 |
+| 5 | 2.86 | 0.29 | 0.00 | 0.71 | 10.5% | 486 |
+| 6 | 2.86 | 0.27 | 0.00 | 0.73 | 9.8% | 458 |
+| 7 | 2.85 | 0.20 | 0.00 | 0.80 | 7.2% | 440 |
+| 8 | 2.86 | 0.12 | 0.00 | 0.88 | 4.3% | 508 |
+| 9 | 2.86 | 0.07 | 0.00 | 0.93 | 2.7% | 459 |
+| 10 | 2.86 | 0.06 | 0.00 | 0.94 | 2.2% | 583 |
+
+Eligibility by household decile of household taxable income (members' total_income summed):
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 2.86 | 0.86 | 0.00 | 0.14 | 31.8% | 420 |
+| 2 | 2.85 | 0.58 | 0.00 | 0.42 | 21.3% | 473 |
+| 3 | 2.86 | 0.36 | 0.00 | 0.64 | 13.3% | 450 |
+| 4 | 2.85 | 0.24 | 0.00 | 0.76 | 8.7% | 438 |
+| 5 | 2.86 | 0.19 | 0.00 | 0.81 | 6.9% | 516 |
+| 6 | 2.86 | 0.15 | 0.00 | 0.85 | 5.4% | 517 |
+| 7 | 2.86 | 0.11 | 0.00 | 0.89 | 4.1% | 462 |
+| 8 | 2.85 | 0.07 | 0.00 | 0.93 | 2.7% | 491 |
+| 9 | 2.86 | 0.08 | 0.00 | 0.92 | 2.9% | 510 |
+| 10 | 2.86 | 0.08 | 0.00 | 0.92 | 2.9% | 425 |
+
+Where eligibility and income diverge (household deciles):
+
+- equivalised net income, before housing costs: not eligible in deciles 1-3 4.99m (58% of those deciles; ESS 761); eligible through the income test alone in deciles 6-10 none; passported in deciles 6-10 2.22m (29% of passported households, 28.5% of cost; ESS 317).
+- equivalised net income, after housing costs: not eligible in deciles 1-3 4.64m (54% of those deciles; ESS 645); eligible through the income test alone in deciles 6-10 none; passported in deciles 6-10 2.04m (26% of passported households, 26.3% of cost; ESS 310).
+- household net income, before housing costs (not equivalised): not eligible in deciles 1-3 5.27m (61% of those deciles; ESS 792); eligible through the income test alone in deciles 6-10 none; passported in deciles 6-10 2.54m (33% of passported households, 32.7% of cost; ESS 416).
+- household net income, after housing costs (not equivalised): not eligible in deciles 1-3 4.89m (57% of those deciles; ESS 693); eligible through the income test alone in deciles 6-10 none; passported in deciles 6-10 2.36m (30% of passported households, 30.4% of cost; ESS 370).
+- household taxable income (members' total_income summed): not eligible in deciles 1-3 3.42m (40% of those deciles; ESS 508); eligible through the income test alone in deciles 6-10 none; passported in deciles 6-10 1.40m (18% of passported households, 18.0% of cost; ESS 221).
+
+The same lowest-three-decile group with deciles of people (HBAI):
+
+- equivalised net income, before housing costs: not eligible 5.67m (59% of households in those deciles; ESS 829), 54% of the people in them.
+- equivalised net income, after housing costs: not eligible 4.98m (55% of households in those deciles; ESS 690), 52% of the people in them.
+
 Cliff edges (households on the schedule by own income):
 
 
@@ -2989,6 +3806,49 @@ Coverage of households in poverty or with high energy costs:
 | absolute BHC poverty | 4.09 | 47.7% | 47.7% | 2.14 |
 | relative BHC poverty | 6.75 | 44.5% | 44.5% | 3.75 |
 | lowest four BHC deciles | 13.2 | 41.8% | 41.8% | 7.68 |
+
+Eligibility by household decile of equivalised net income, after housing costs:
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 3.07 | 0.54 | 0.00 | 0.46 | 21.0% | 181 |
+| 2 | 3.07 | 0.49 | 0.00 | 0.51 | 18.9% | 143 |
+| 3 | 3.09 | 0.49 | 0.00 | 0.51 | 18.9% | 192 |
+| 4 | 3.04 | 0.34 | 0.00 | 0.66 | 13.1% | 151 |
+| 5 | 3.07 | 0.32 | 0.00 | 0.68 | 12.1% | 71.5 |
+| 6 | 3.07 | 0.15 | 0.00 | 0.85 | 5.8% | 114 |
+| 7 | 3.07 | 0.15 | 0.00 | 0.85 | 5.9% | 72.0 |
+| 8 | 3.12 | 0.07 | 0.00 | 0.93 | 2.7% | 157 |
+| 9 | 3.01 | 0.02 | 0.00 | 0.98 | 0.6% | 171 |
+| 10 | 3.06 | 0.03 | 0.00 | 0.97 | 1.0% | 62.0 |
+
+Eligibility by household decile of household taxable income (members' total_income summed):
+
+| Decile | Households (m) | Passported share | Income test only share | Not eligible share | Share of cost | ESS |
+|---|---|---|---|---|---|---|
+| 1 | 3.34 | 0.92 | 0.00 | 0.08 | 38.5% | 360 |
+| 2 | 2.93 | 0.75 | 0.00 | 0.25 | 27.6% | 52.0 |
+| 3 | 2.94 | 0.30 | 0.00 | 0.70 | 11.1% | 230 |
+| 4 | 3.07 | 0.30 | 0.00 | 0.70 | 11.5% | 199 |
+| 5 | 3.07 | 0.13 | 0.00 | 0.87 | 5.0% | 106 |
+| 6 | 3.07 | 0.07 | 0.00 | 0.93 | 2.9% | 140 |
+| 7 | 3.08 | 0.03 | 0.00 | 0.97 | 1.0% | 53.2 |
+| 8 | 3.06 | 0.02 | 0.00 | 0.98 | 0.9% | 128 |
+| 9 | 3.06 | 0.02 | 0.00 | 0.98 | 0.6% | 118 |
+| 10 | 3.07 | 0.02 | 0.00 | 0.98 | 0.8% | 130 |
+
+Where eligibility and income diverge (household deciles):
+
+- equivalised net income, before housing costs: not eligible in deciles 1-3 4.91m (53% of those deciles; ESS 312); eligible through the income test alone in deciles 6-10 none; passported in deciles 6-10 1.74m (22% of passported households, 21.9% of cost; ESS 27).
+- equivalised net income, after housing costs: not eligible in deciles 1-3 4.54m (49% of those deciles; ESS 210); eligible through the income test alone in deciles 6-10 none; passported in deciles 6-10 1.27m (16% of passported households, 16.0% of cost; ESS 43).
+- household net income, before housing costs (not equivalised): not eligible in deciles 1-3 5.13m (56% of those deciles; ESS 245); eligible through the income test alone in deciles 6-10 none; passported in deciles 6-10 1.40m (18% of passported households, 17.6% of cost; ESS 189).
+- household net income, after housing costs (not equivalised): not eligible in deciles 1-3 4.43m (48% of those deciles; ESS 202); eligible through the income test alone in deciles 6-10 none; passported in deciles 6-10 1.07m (13% of passported households, 13.5% of cost; ESS 171).
+- household taxable income (members' total_income summed): not eligible in deciles 1-3 3.04m (33% of those deciles; ESS 202); eligible through the income test alone in deciles 6-10 none; passported in deciles 6-10 0.50m (6% of passported households, 6.2% of cost; ESS 96).
+
+The same lowest-three-decile group with deciles of people (HBAI):
+
+- equivalised net income, before housing costs: not eligible 5.35m (54% of households in those deciles; ESS 352), 53% of the people in them.
+- equivalised net income, after housing costs: not eligible 5.01m (51% of households in those deciles; ESS 221), 50% of the people in them.
 
 Cliff edges (households on the schedule by own income):
 
