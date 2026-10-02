@@ -279,11 +279,7 @@ export default function MethodologyTab({ data, dataset }) {
                 </li>
               ))}
           </ol>
-          <div className="flex flex-wrap items-center justify-between gap-3 text-sm">
-            <p className="text-slate-500">
-              Model: policyengine-uk {data.meta.policyengine_uk} · Results:{" "}
-              {data.meta.generated}
-            </p>
+          <div className="flex justify-end text-sm">
             <button
               type="button"
               className="text-link"
