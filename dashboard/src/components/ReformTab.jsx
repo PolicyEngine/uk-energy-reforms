@@ -107,7 +107,7 @@ function Headline({ result, levels }) {
     (p) => p.measure === "abs_pov_bhc" && p.group === "children",
   );
   return (
-    <div className="grid grid-cols-2 gap-3 xl:grid-cols-4">
+    <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
       <MetricCard
         label="Cost"
         icon="cost"
@@ -266,7 +266,7 @@ function InequalitySection({ result, onMethodology }) {
         height={280}
         data={data}
         horizontal
-        yAxisLabel="Fall in the measure, relative to its baseline level"
+        yAxisLabel="Fall in measure (% of baseline)"
         yTickFormatter={(v) => `${(100 * v).toFixed(2)}%`}
         barLabelFormatter={(v) => `${(100 * v).toFixed(2)}%`}
       />
@@ -374,7 +374,7 @@ function PovertySection({ result, onMethodology }) {
         height={280}
         data={data}
         horizontal
-        yAxisLabel="Fall in the poverty rate, relative to its baseline level"
+        yAxisLabel="Fall in poverty rate (% of baseline)"
         yTickFormatter={(v) => `${(100 * v).toFixed(1)}%`}
         barLabelFormatter={(v) => `${(100 * v).toFixed(1)}%`}
       />
