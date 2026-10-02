@@ -234,8 +234,9 @@ household. Figures are 2026-27, Microcosm / Enhanced FRS.
     0.04m).
   - Passporting alone leaves out 4.99m / 4.91m, or 58% / 53% of the lowest three deciles.
 
-The dashboard section "Eligibility across income measures" shows every measure, a
-cross-tabulation of equivalised against unequivalised income, and the make-up of each group.
+The dashboard section "Eligibility across income measures" shows who qualifies by decile on
+every measure. The cross-tabulations of equivalised against unequivalised income and the
+make-up of each group are in the receipts and `results.json`, not on the dashboard.
 
 ## The tiered option and income thresholds
 

@@ -68,8 +68,9 @@ BREAKDOWN_KEYS = [
 ]
 
 
-# Eligibility across income measures (analysis.income_distributions): the keys the
-# dashboard reads. Record counts stay out; effective sample sizes stay in.
+# Eligibility across income measures (analysis.income_distributions): the decile keys the
+# dashboard reads. Record counts stay out; effective sample sizes stay in. The
+# cross-tabulations and the divergence groups stay in the results and receipts only.
 DECILE_KEYS = [
     "decile",
     "households_m",
@@ -80,36 +81,6 @@ DECILE_KEYS = [
     "not_eligible",
     "average_gain",
     "cost_share",
-]
-CELL_KEYS = [
-    "row",
-    "col",
-    "households_m",
-    "household_share",
-    "eligible",
-    "passported",
-    "income_only",
-    "cost_share",
-    "ess",
-    "suppressed",
-]
-PROFILE_KEYS = [
-    "households_m",
-    "people_m",
-    "children_m",
-    "ess",
-    "share_of_base",
-    "cost_m",
-    "cost_share",
-    "rel_pov_bhc",
-    "rel_pov_ahc",
-    "mean_taxable",
-    "mean_highest_income",
-    "two_incomes_over_pa",
-    "taxable_at_or_above_line",
-    "by_household_type",
-    "by_incomes",
-    "suppressed",
 ]
 
 
@@ -133,7 +104,6 @@ def _distributions(d: dict) -> dict:
     return _round(
         {
             "gb_households_m": d["gb_households_m"],
-            "population": d["population"],
             "distributions": {
                 key: {
                     "cut_points": m["cut_points"],
@@ -142,25 +112,8 @@ def _distributions(d: dict) -> dict:
                     "deciles": [
                         {k: row[k] for k in DECILE_KEYS} for row in m["deciles"]
                     ],
-                    "low_not_eligible": {
-                        k: m["low_not_eligible"].get(k) for k in PROFILE_KEYS
-                    },
-                    "top_income_only": {
-                        k: m["top_income_only"].get(k) for k in PROFILE_KEYS
-                    },
-                    "top_passported": {
-                        k: m["top_passported"].get(k) for k in PROFILE_KEYS
-                    },
                 }
                 for key, m in d["distributions"].items()
-            },
-            "crosstabs": {
-                key: {
-                    "row_cut_points": c["row_cut_points"],
-                    "col_cut_points": c["col_cut_points"],
-                    "cells": [{k: cell[k] for k in CELL_KEYS} for cell in c["cells"]],
-                }
-                for key, c in d["crosstabs"].items()
             },
         }
     )

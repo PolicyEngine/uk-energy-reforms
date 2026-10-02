@@ -627,7 +627,6 @@ export default function ReformTab({ data, dataset }) {
             year={state.year}
             preset={state.preset}
             variant={state.variant}
-            schedule={result.schedule}
           />
           <BreakdownSection result={result} />
         </>

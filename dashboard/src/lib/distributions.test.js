@@ -1,7 +1,7 @@
 import { describe, expect, test } from "bun:test";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { boundLabel, crosstabKey, distributionKey, heatBin } from "./distributions";
+import { boundLabel, distributionKey } from "./distributions";
 
 const DATA = join(import.meta.dir, "..", "..", "public", "data");
 const data = JSON.parse(readFileSync(join(DATA, "targeted_energy_discount_results.json")));
@@ -10,16 +10,6 @@ describe("distribution helpers", () => {
   test("keys", () => {
     expect(distributionKey("eq", "ahc")).toBe("eq_ahc");
     expect(distributionKey("taxable", "ahc")).toBe("taxable");
-    expect(crosstabKey("bhc", "taxable")).toBe("eq_bhc|taxable");
-    expect(crosstabKey("ahc", "net")).toBe("eq_ahc|net_ahc");
-  });
-
-  test("heat bins", () => {
-    expect(heatBin(0, 1)).toBe(0);
-    expect(heatBin(0.5, 1)).toBe(2);
-    expect(heatBin(1, 1)).toBe(4);
-    expect(heatBin(null, 1)).toBe(null);
-    expect(heatBin(0.2, 0)).toBe(null);
   });
 
   test("income ranges", () => {
@@ -55,17 +45,6 @@ describe("exported income distributions", () => {
         }
         const spending = dist.deciles.reduce((sum, d) => sum + (d.cost_share ?? 0), 0);
         expect(spending).toBeCloseTo(1, 2);
-      }
-      for (const crosstab of Object.values(block.crosstabs)) {
-        // Blanked cells hold a handful of records, so the rest still sum to about 1.
-        const households = crosstab.cells.reduce((sum, c) => sum + (c.household_share ?? 0), 0);
-        expect(households).toBeCloseTo(1, 2);
-        expect(crosstab.cells).toHaveLength(25);
-        for (const cell of crosstab.cells) {
-          const figures = [cell.households_m, cell.household_share, cell.eligible, cell.ess];
-          if (cell.suppressed) expect(figures.every((v) => v == null)).toBe(true);
-          else expect(typeof cell.households_m).toBe("number");
-        }
       }
     });
   }

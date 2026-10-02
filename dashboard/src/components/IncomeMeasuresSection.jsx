@@ -2,23 +2,20 @@
 
 import { useState } from "react";
 import { series } from "../lib/colors";
-import { MIN_RECORDS, THIN_ESS, getDistributions, yearLabel } from "../lib/dataHelpers";
+import { getDistributions, yearLabel } from "../lib/dataHelpers";
 import {
   BASIS_OPTIONS,
-  INCOME_COUNT_LABELS,
   MEASURE_NAMES,
   MEASURE_OPTIONS,
   boundLabel,
-  crosstabKey,
   distributionKey,
   groupLabel,
 } from "../lib/distributions";
 import { formatCurrency, formatMillions, formatShare } from "../lib/formatters";
 import ChartLogo from "./ChartLogo";
-import CrossTabHeatmap from "./charts/CrossTabHeatmap";
 import PEImpactBarChart from "./charts/PEImpactBarChart";
 import SectionHeading from "./SectionHeading";
-import { Legend, MetricCard, Note, SplitBar, Table, TableToggle, Toggle, Warning } from "./ui";
+import { Legend, Note, SplitBar, Table, TableToggle, Toggle } from "./ui";
 
 const DECILE_METRICS = [
   {
@@ -35,67 +32,16 @@ const DECILE_METRICS = [
   },
 ];
 
-const HEAT_METRICS = [
-  { value: "eligible", label: "Share eligible" },
-  { value: "household_share", label: "Share of households" },
-  { value: "cost_share", label: "Share of spending" },
-];
-
-const HEAT_COLUMNS = [
-  { value: "taxable", label: "Household taxable income" },
-  { value: "net", label: "Household net income" },
-];
-
-const RULES = [
-  { preset: "rf_flat", label: "Highest individual income below £24,000 (flat and tiered)" },
-  { preset: "rf_household_income", label: "Equivalised household income below £30,000" },
-  { preset: "passport_only", label: "Passporting only" },
-];
-
-const GROUPS = [
-  { value: "low", label: "Do not qualify, lowest three deciles" },
-  { value: "top", label: "Income test alone, top half" },
-  { value: "passported", label: "Passported, top half" },
-];
-
 const SEGMENTS = [
   { key: "passported", label: "Passported by a means-tested benefit", color: series.a },
   { key: "income_only", label: "Qualifies through the income test alone", color: series.b },
   { key: "not_eligible", label: "Does not qualify", color: series.neutral },
 ];
 
-function thinNote(profile) {
-  return profile && profile.households_m > 0 && profile.ess < THIN_ESS
-    ? " Rests on few survey records."
-    : "";
-}
-
-const NOT_SHOWN = `Not shown: fewer than ${MIN_RECORDS} survey records.`;
-
-// A group's household count, or "not shown" when it rests on too few records.
-function groupMillions(profile) {
-  return profile?.suppressed ? "not shown" : formatMillions(profile?.households_m ?? 0, 2);
-}
-
-function composition(profile, population, by) {
-  if (!profile?.households_m) return [];
-  const shares = by === "household_type" ? profile.by_household_type : profile.by_incomes;
-  const reference = by === "household_type" ? population.by_household_type : population.by_incomes;
-  return Object.entries(shares ?? {}).map(([group, share]) => ({
-    name: by === "household_type" ? group : INCOME_COUNT_LABELS[group],
-    value: share ?? 0,
-    hoverText: `${formatShare(share ?? 0)} of this group; ${formatShare(reference?.[group] ?? 0)} of all GB households`,
-  }));
-}
-
-export default function IncomeMeasuresSection({ data, dataset, year, preset, variant, schedule }) {
+export default function IncomeMeasuresSection({ data, dataset, year, preset, variant }) {
   const [measure, setMeasure] = useState("eq");
   const [basis, setBasis] = useState("bhc");
   const [decileMetric, setDecileMetric] = useState("cost_share");
-  const [heatColumn, setHeatColumn] = useState("taxable");
-  const [heatMetric, setHeatMetric] = useState("eligible");
-  const [makeUp, setMakeUp] = useState("household_type");
-  const [group, setGroup] = useState("low");
 
   const block = getDistributions(data, year, preset, dataset);
   if (!block) {
@@ -109,15 +55,9 @@ export default function IncomeMeasuresSection({ data, dataset, year, preset, var
   const dist = block.distributions[key];
   const cuts = dist.cut_points;
   const m = DECILE_METRICS.find((x) => x.value === decileMetric);
-  const crosstab = block.crosstabs[crosstabKey(basis, heatColumn)];
-  const low = dist.low_not_eligible;
-  const top = dist.top_income_only;
-  const passported = dist.top_passported;
-  const profiles = { low, top, passported };
   const basisLabel = BASIS_OPTIONS.find((b) => b.value === basis).label.toLowerCase();
   const measureName =
     measure === "taxable" ? MEASURE_NAMES.taxable : `${MEASURE_NAMES[measure]} ${basisLabel}`;
-  const individualTest = schedule?.income_test && !schedule?.household_equivalised;
 
   return (
     <>
@@ -287,187 +227,6 @@ export default function IncomeMeasuresSection({ data, dataset, year, preset, var
               key: d.decile,
               range: boundLabel(cuts, d.decile, 10),
             }))}
-          />
-        </TableToggle>
-      </section>
-
-      <section className="section-card space-y-4">
-        <SectionHeading
-          title="Equivalised income against household income"
-          description={`Households split into fifths twice: by equivalised household income ${basisLabel} (rows) and by household income without the size adjustment (columns). Households on the diagonal from bottom left to top right rank the same on both; large households tend to sit below it (higher household income, lower once adjusted for size) and single adults above it.`}
-        />
-        <div className="grid gap-5 md:grid-cols-2">
-          <Toggle
-            label="Columns"
-            value={heatColumn}
-            onChange={setHeatColumn}
-            options={HEAT_COLUMNS}
-          />
-          <Toggle
-            label="Cells show"
-            value={heatMetric}
-            onChange={setHeatMetric}
-            options={HEAT_METRICS}
-          />
-        </div>
-        {measure === "taxable" && (
-          <p className="text-xs leading-5 text-slate-500">
-            Rows use equivalised income {basisLabel}; switch the housing-cost basis with an
-            equivalised or net income measure selected above.
-          </p>
-        )}
-        <CrossTabHeatmap
-          cells={crosstab.cells}
-          rowCuts={crosstab.row_cut_points}
-          colCuts={crosstab.col_cut_points}
-          metric={heatMetric}
-          rowTitle={`Equivalised household income, ${basisLabel}`}
-          colTitle={
-            heatColumn === "taxable"
-              ? "Household taxable income"
-              : `Household net income, ${basisLabel}`
-          }
-        />
-        <TableToggle>
-          <Table
-            minWidth={680}
-            columns={[
-              { key: "row", header: "Equivalised quintile" },
-              { key: "col", header: "Household quintile" },
-              {
-                key: "households_m",
-                header: "Households",
-                align: "right",
-                format: (v) => (v == null ? "–" : formatMillions(v, 2)),
-              },
-              {
-                key: "eligible",
-                header: "Eligible",
-                align: "right",
-                format: (v) => (v == null ? "–" : formatShare(v)),
-              },
-              {
-                key: "income_only",
-                header: "Income test alone",
-                align: "right",
-                format: (v) => (v == null ? "–" : formatShare(v)),
-              },
-              {
-                key: "cost_share",
-                header: "Share of spending",
-                align: "right",
-                format: (v) => (v == null ? "–" : formatShare(v, 1)),
-              },
-              {
-                key: "ess",
-                header: "ESS",
-                align: "right",
-                format: (v) => (v == null ? "–" : Math.round(v).toLocaleString("en-GB")),
-              },
-            ]}
-            rows={crosstab.cells.map((c) => ({ ...c, key: `${c.row}-${c.col}` }))}
-          />
-        </TableToggle>
-      </section>
-
-      <section className="section-card space-y-4">
-        <SectionHeading
-          title="Where eligibility and income diverge"
-          description={`Three groups, ranking households by ${measureName}: households in the lowest three deciles that do not qualify, and households in the top half that qualify, either through the income test alone or through a passporting benefit.`}
-        />
-        <div className="grid gap-4 md:grid-cols-3">
-          <MetricCard
-            label="Do not qualify, in the lowest three deciles"
-            value={groupMillions(low)}
-            note={
-              low.suppressed
-                ? NOT_SHOWN
-                : low.households_m
-                ? `${formatShare(low.share_of_base ?? 0)} of households in those deciles, with ${formatMillions(low.children_m, 2)} children; ${formatShare(low.rel_pov_ahc ?? 0)} are in relative poverty after housing costs.${thinNote(low)}`
-                : measure === "taxable" && individualTest
-                  ? "Almost none by construction: if the household's combined taxable income is below £24,000, every member's is too."
-                  : "None in this option."
-            }
-          />
-          <MetricCard
-            label="Qualify through the income test alone, in the top half"
-            value={groupMillions(top)}
-            note={
-              !schedule?.income_test
-                ? "This option has no income test."
-                : top.suppressed
-                  ? NOT_SHOWN
-                  : top.households_m
-                  ? `${formatShare(top.share_of_base ?? 0)} of households qualifying through the income test alone; ${formatShare(top.cost_share ?? 0, 1)} of spending. ${formatShare(top.two_incomes_over_pa ?? 0)} have two or more members with taxable income above £12,570${top.taxable_at_or_above_line != null ? `, and ${formatShare(top.taxable_at_or_above_line)} have combined taxable income of £24,000 or more` : ""}.${thinNote(top)}`
-                  : "None in this option."
-            }
-          />
-          <MetricCard
-            label="Qualify through a passporting benefit, in the top half"
-            value={groupMillions(passported)}
-            note={
-              passported.suppressed
-                ? NOT_SHOWN
-                : passported.households_m
-                ? `${formatShare(passported.share_of_base ?? 0)} of passported households; ${formatShare(passported.cost_share ?? 0, 1)} of spending. Someone in the household receives a means-tested benefit even though the household as a whole sits in the top half.${thinNote(passported)}`
-                : "None in this option."
-            }
-          />
-        </div>
-        {[low, top, passported].some((g) => thinNote(g)) && dataset !== "microcosm_979" && (
-          <Warning>
-            At least one group rests on fewer than {THIN_ESS} effective survey records in this
-            dataset; treat its make-up as indicative.
-          </Warning>
-        )}
-        <div className="grid gap-5 md:grid-cols-2">
-          <Toggle label="Make-up of" value={group} onChange={setGroup} options={GROUPS} />
-          <Toggle
-            label="By"
-            value={makeUp}
-            onChange={setMakeUp}
-            options={[
-              { value: "household_type", label: "Household type" },
-              { value: "incomes", label: "Members with taxable income" },
-            ]}
-          />
-        </div>
-        {profiles[group].households_m ? (
-          <PEImpactBarChart
-            horizontal
-            data={composition(profiles[group], block.population, makeUp)}
-            yAxisLabel="Share of the group (hover for the share of all GB households)"
-            yTickFormatter={(v) => formatShare(v)}
-            barLabelFormatter={(v) => formatShare(v)}
-          />
-        ) : (
-          <p className="text-sm text-slate-500">No households in this group.</p>
-        )}
-        <TableToggle label="Compare with the other rules">
-          <Table
-            minWidth={640}
-            columns={[
-              { key: "rule", header: "Rule" },
-              { key: "low", header: "Do not qualify, lowest three deciles", align: "right" },
-              { key: "top", header: "Income test alone, top half", align: "right" },
-              { key: "topCost", header: "Their share of spending", align: "right" },
-              { key: "passported", header: "Passported, top half", align: "right" },
-            ]}
-            rows={RULES.map(({ preset: p, label }) => {
-              const other = getDistributions(data, year, p, dataset)?.distributions?.[key];
-              return {
-                key: p,
-                rule: label,
-                low: other ? groupMillions(other.low_not_eligible) : "n/a",
-                top: other ? groupMillions(other.top_income_only) : "n/a",
-                topCost: !other
-                  ? "n/a"
-                  : other.top_income_only.suppressed
-                    ? "not shown"
-                    : formatShare(other.top_income_only.cost_share ?? 0, 1),
-                passported: other ? groupMillions(other.top_passported) : "n/a",
-              };
-            })}
           />
         </TableToggle>
       </section>

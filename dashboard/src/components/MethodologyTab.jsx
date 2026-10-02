@@ -264,19 +264,10 @@ export default function MethodologyTab({ data, dataset }) {
               more than a tenth.
             </>,
             <>
-              <strong>Three groups.</strong> &ldquo;Do not qualify, lowest three deciles&rdquo;
-              counts households in deciles 1 to 3 of the chosen measure that neither receive a
-              passporting benefit nor pass the income test. &ldquo;Income test alone, top
-              half&rdquo; counts households in deciles 6 to 10 that qualify only because their
-              highest earner is below the line, and &ldquo;Passported, top half&rdquo; those in
-              deciles 6 to 10 that qualify because someone in them receives a passporting benefit.
-              Some patterns follow from the rule itself rather than the data: under the individual
-              test, a household whose combined taxable income is below £24,000 always qualifies.
-            </>,
-            <>
-              <strong>Small samples.</strong> Figures resting on an effective sample below 30 are
-              marked. Cells and groups with fewer than 10 survey records are not shown, because
-              Microcosm is built from licensed Family Resources Survey records.
+              <strong>Patterns built into the rule.</strong> Some patterns follow from the rule
+              itself rather than the data: under the individual test, a household whose combined
+              taxable income is below £24,000 always qualifies, so almost every household in the
+              lowest taxable-income deciles does.
             </>,
           ]}
         />

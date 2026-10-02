@@ -1,8 +1,6 @@
 // Helpers for the "eligibility across income measures" section. The data come from
 // analysis.income_distributions: household-weighted deciles (a tenth of GB households
-// each) of five baseline income measures, and 5 × 5 quintile cross-tabulations.
-
-import { colors } from "./colors";
+// each) of five baseline income measures.
 
 export const MEASURE_OPTIONS = [
   { value: "eq", label: "Equivalised household income" },
@@ -26,27 +24,6 @@ export function distributionKey(measure, basis) {
   return measure === "taxable" ? "taxable" : `${measure}_${basis}`;
 }
 
-/** Key of a cross-tabulation: equivalised rows against household columns. */
-export function crosstabKey(basis, columnMeasure) {
-  return `eq_${basis}|${distributionKey(columnMeasure, basis)}`;
-}
-
-// Single-hue sequential ramp (light to dark) for the heatmap.
-export const HEAT_RAMP = [
-  colors.primary[50],
-  colors.primary[100],
-  colors.primary[300],
-  colors.primary[500],
-  colors.primary[700],
-];
-
-/** Index into HEAT_RAMP for a value on [0, max]; null values have no bin. */
-export function heatBin(value, max, steps = HEAT_RAMP.length) {
-  if (value == null || !max) return null;
-  const t = Math.min(Math.max(value / max, 0), 1);
-  return Math.min(Math.floor(t * steps), steps - 1);
-}
-
 const gbp = (v) => `£${Math.round(v).toLocaleString("en-GB")}`;
 
 /**
@@ -65,10 +42,3 @@ export function groupLabel(i, n) {
   if (i === n) return `${n} (highest)`;
   return String(i);
 }
-
-export const INCOME_COUNT_LABELS = {
-  0: "No member with taxable income",
-  1: "One member",
-  2: "Two members",
-  "3+": "Three or more",
-};
