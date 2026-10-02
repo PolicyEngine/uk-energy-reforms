@@ -102,7 +102,7 @@ function DotPlot({ rows }) {
           );
         })}
       </div>
-      <div className="legend-box">
+      <div className="legend-box legend-plain">
         <span className="flex items-center gap-1.5">
           <span aria-hidden className="inline-block h-2.5 w-2.5 rotate-45" style={RF_MARKER} />
           Resolution Foundation

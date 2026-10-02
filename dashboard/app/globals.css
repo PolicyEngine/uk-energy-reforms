@@ -433,6 +433,11 @@
     font-size: 0.75rem;
     color: var(--pe-color-gray-600);
   }
+  .legend-plain {
+    border: 0;
+    background: transparent;
+    padding: 0;
+  }
   .chart-footer {
     display: flex;
     flex-direction: column;
