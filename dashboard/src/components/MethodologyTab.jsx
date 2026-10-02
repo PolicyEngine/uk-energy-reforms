@@ -199,7 +199,7 @@ const PRICE_LEVEL = {
 };
 
 export default function MethodologyTab({ data, dataset }) {
-  const [expanded, setExpanded] = useState(false);
+  const expanded = false;
   const [target, setTarget] = useState("");
   useEffect(() => {
     function followAnchor() {
@@ -279,18 +279,6 @@ export default function MethodologyTab({ data, dataset }) {
                 </li>
               ))}
           </ol>
-          <div className="flex justify-end text-sm">
-            <button
-              type="button"
-              className="text-link"
-              onClick={() => {
-                setExpanded(!expanded);
-                setTarget("");
-              }}
-            >
-              {expanded ? "Collapse all details" : "Expand all details"}
-            </button>
-          </div>
         </section>
         <div className="reading-layout">
           <div className="reading-body space-y-5">
