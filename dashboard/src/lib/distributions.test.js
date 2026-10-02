@@ -57,9 +57,15 @@ describe("exported income distributions", () => {
         expect(spending).toBeCloseTo(1, 2);
       }
       for (const crosstab of Object.values(block.crosstabs)) {
-        const households = crosstab.cells.reduce((sum, c) => sum + c.household_share, 0);
+        // Blanked cells hold a handful of records, so the rest still sum to about 1.
+        const households = crosstab.cells.reduce((sum, c) => sum + (c.household_share ?? 0), 0);
         expect(households).toBeCloseTo(1, 2);
         expect(crosstab.cells).toHaveLength(25);
+        for (const cell of crosstab.cells) {
+          const figures = [cell.households_m, cell.household_share, cell.eligible, cell.ess];
+          if (cell.suppressed) expect(figures.every((v) => v == null)).toBe(true);
+          else expect(typeof cell.households_m).toBe("number");
+        }
       }
     });
   }

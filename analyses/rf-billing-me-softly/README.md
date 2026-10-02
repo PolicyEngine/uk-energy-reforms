@@ -24,8 +24,9 @@ are comparable.
 - **Poverty (flat option):** 150k / 207k fewer people in relative poverty after housing
   costs, of whom 20k / 75k are children and 77k / 31k pensioners.
 - **Absolute poverty after housing costs:** the scheme reaches 86% / 89% of the 4.1m / 5.0m
-  households below the line. It misses 0.56m in both datasets, almost all of them
-  working-age.
+  households below the line. It does not reach 0.56m in both datasets, almost all of them
+  working-age. Before housing costs it reaches 95% of the 3.2m / 4.1m households below the
+  line and does not reach 0.17m / 0.21m.
 - **Winners and inequality (flat option):** 40% / 37% of people in Great Britain live in a
   household that gains, from 82% / 85% in the lowest income decile to 5% / 2% in the highest.
   0.4% / 1.0% of people gain more than 5% of net income. Nobody loses, because the analysis
@@ -148,7 +149,7 @@ with sources (`src/uk_energy_reforms/external_sources.json`).
     of the lowest income-test pass rates (31% / 33%).
 - **Gain relative to income:** 0.17–0.19% of average net income in the North, the Midlands,
   Wales and Scotland, against 0.11–0.12% in London and the South East.
-- **Households in absolute poverty after housing costs that the scheme misses:**
+- **Households in absolute poverty after housing costs that the scheme does not reach:**
   - London holds 198k / 107k and the South East 65k / 212k. Together they account for about
     half of the total, against 27% of households.
   - London reaches 75% / 84% of its households in poverty, against 92–98% in the North West,
@@ -165,8 +166,9 @@ Eligibility rates within household types agree across the two datasets; counts d
 - **Pensioner couples:** 41% / 35% eligible, 9% / 6% through passporting. Each partner's
   income is tested separately.
 - **Couples with children:** 24% / 26% eligible. The scheme reaches 67% / 69% of those in
-  absolute poverty after housing costs, the lowest share of any type. It misses 239k / 183k
-  such households in poverty, and 1.08m / 0.77m in the four lowest income deciles.
+  absolute poverty after housing costs, the lowest share of any type. It does not reach
+  239k / 183k such households in poverty, and 1.08m / 0.77m in the four lowest income
+  deciles.
 - **Couples without children:** 16% / 15% eligible. 599k / 757k of them are in the four
   lowest income deciles and unreached.
 
@@ -192,12 +194,13 @@ household. Figures are 2026-27, Microcosm / Enhanced FRS.
   11% of those deciles.
   - They include 1.12m / 0.96m children, and 51% / 67% of them are in relative poverty after
     housing costs.
-  - Most are couples with children (44% on both datasets).
+  - Couples with children are the largest group (44% on both datasets).
   - In 69% of them (both datasets) two or more members have taxable income, and the highest
     earner averages £32,700 / £36,300, above the line.
   - After housing costs the group is 1.59m / 1.38m (19% / 15% of the lowest three deciles).
-  - Counted the HBAI way, with deciles of people rather than households, 1.61m households
-    in the lowest three deciles do not qualify: 22% of the people in them (Microcosm).
+  - Counted the HBAI way, with deciles of people rather than households, 1.61m / 1.28m
+    households in the lowest three deciles do not qualify, holding 22% / 19% of the people
+    in them.
 - **Households in the top half that qualify through the income test alone:** few.
   - 0.17m / 0.21m households: 4% of those qualifying through the income test alone, and
     1.4% / 2% of spending.
@@ -220,7 +223,10 @@ household. Figures are 2026-27, Microcosm / Enhanced FRS.
     but not once household size is counted.
   - Ranked by household taxable income, almost no household in the lowest three deciles is
     left out (0.10m / none). That follows from the rule: if combined taxable income is below
-    £24,000, every member's is too.
+    £24,000, every member's is too. On Microcosm the third decile reaches up to £24,500, so
+    the 0.10m are households with combined taxable income between £24,000 and £24,500,
+    including single earners just over the line (an effective sample of 13). On the Enhanced
+    FRS the third decile stops at £23,000.
 - **Other rules, on equivalised income before housing costs.**
   - The household-income test leaves out more households in the lowest three deciles
     (1.53m / 1.20m, against 1.16m / 1.01m).
@@ -243,7 +249,9 @@ cross-tabulation of equivalised against unequivalised income, and the make-up of
     deciles, against 76% / 80% under the flat option.
 - **Cliffs** (Microcosm only; the Enhanced FRS rests on an effective sample of about 10
   households within £1,000 of each line). Support falls to zero at £24,000, and in the
-  tiered option it also drops by £135 at £18,000.
+  tiered option it also drops by £135 at £18,000. The counts below and the offset range are
+  in the receipts ("Cliff edges") and not on the dashboard, whose household tab shows where
+  support changes for one household as its income changes.
   - 410k non-passported households have tested income within £1,000 above £24,000. 200k
     of them are in the four lowest income deciles and 64k in relative poverty after housing
     costs (effective sample size 53).
@@ -346,8 +354,9 @@ uv run uk-energy-reforms export-dashboard --analysis analyses/rf-billing-me-soft
     - households in deciles 1–3 that neither are passported nor pass the income test;
     - households in deciles 6–10 that qualify through the income test alone;
     - households in deciles 6–10 that qualify through passporting.
-  - Means are withheld below an effective sample of 30. `analysis.income_distributions`
-    writes every figure.
+  - Means are withheld below an effective sample of 30. Cross-tabulation cells and groups
+    with fewer than 10 survey records are blanked. `analysis.income_distributions` writes
+    every figure, including the lowest-three-decile group on deciles of people.
 - **Receipts.** `results-2026/report.md`, `results-2027/report.md` and
   `results-2024/report.md` hold every table,
   including effective sample sizes. `results.json` holds the raw numbers.

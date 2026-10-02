@@ -28,10 +28,29 @@ import SectionHeading from "./SectionHeading";
 import { Legend, MetricCard, Note, SplitBar, Table, TableToggle, Toggle, Warning } from "./ui";
 
 const COVERAGE_LABELS = {
+  "absolute BHC poverty": "Households in absolute poverty before housing costs",
+  "relative BHC poverty": "Households in relative poverty before housing costs",
+  "lowest four BHC deciles": "Households in the four lowest income deciles before housing costs",
   "absolute AHC poverty": "Households in absolute poverty after housing costs",
   "relative AHC poverty": "Households in relative poverty after housing costs",
-  "lowest four AHC deciles": "Households in the four lowest income deciles",
+  "lowest four AHC deciles": "Households in the four lowest income deciles after housing costs",
   "energy over 10% of net income": "Households spending over 10% of net income on energy",
+};
+
+// The reach bars for each housing-cost basis; the energy-cost group is the same in both.
+const COVERAGE_GROUPS = {
+  bhc: [
+    "absolute BHC poverty",
+    "relative BHC poverty",
+    "lowest four BHC deciles",
+    "energy over 10% of net income",
+  ],
+  ahc: [
+    "absolute AHC poverty",
+    "relative AHC poverty",
+    "lowest four AHC deciles",
+    "energy over 10% of net income",
+  ],
 };
 
 const POVERTY_MEASURES = {
@@ -377,13 +396,18 @@ function PovertySection({ result }) {
   );
 }
 
-function ReachSection({ result, isPassportOnly }) {
+function ReachSection({ result }) {
+  const [basis, setBasis] = useState("bhc");
+  const rows = COVERAGE_GROUPS[basis]
+    .map((g) => result.coverage.find((c) => c.group === g))
+    .filter(Boolean);
   return (
     <section className="section-card space-y-5">
       <SectionHeading
         title="Who the discount reaches among low-income households and those with high energy costs"
-        description="Each bar below is one group of households, such as those in poverty. The bar is split by how households in that group fare under the option: the dark teal part receives the discount because it gets a means-tested benefit, the light teal part qualifies through the income test alone, and the grey part does not qualify."
+        description="Each bar below is one group of households, such as those in poverty. The bar is split by how households in that group fare under the option: the dark teal part receives the discount because it gets a means-tested benefit, the light teal part qualifies through the income test alone, and the grey part does not qualify. The income deciles rank people by equivalised household income, as DWP does."
       />
+      <Toggle label="Housing costs" value={basis} onChange={setBasis} options={HOUSING_BASES} />
       <Legend
         items={[
           { label: "Passported by a means-tested benefit", color: series.a },
@@ -392,7 +416,7 @@ function ReachSection({ result, isPassportOnly }) {
         ]}
       />
       <div className="space-y-5">
-        {result.coverage.map((c) => {
+        {rows.map((c) => {
           const passport = c.covered_by_passport;
           const incomeOnly = Math.max(c.covered - passport, 0);
           const missed = Math.max(1 - c.covered, 0);
@@ -596,7 +620,7 @@ export default function ReformTab({ data, dataset }) {
           <div className="pt-2">
             <SectionHeading size="lg" title="Reach and targeting" />
           </div>
-          <ReachSection result={result} isPassportOnly={!result.schedule.income_test} />
+          <ReachSection result={result} />
           <IncomeMeasuresSection
             data={data}
             dataset={dataset}

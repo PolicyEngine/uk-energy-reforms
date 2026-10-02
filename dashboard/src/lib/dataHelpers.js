@@ -51,6 +51,9 @@ export function getDistributions(data, year, preset, dataset) {
 // Below this effective sample size an estimate rests on very few survey records.
 export const THIN_ESS = 30;
 
+// Cells and groups with fewer survey records than this arrive blank from the analysis.
+export const MIN_RECORDS = 10;
+
 export function getBaseline(data, year, dataset) {
   return data.baseline?.[year]?.[dataset];
 }

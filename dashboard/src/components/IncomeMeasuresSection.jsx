@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { series } from "../lib/colors";
-import { THIN_ESS, getDistributions, yearLabel } from "../lib/dataHelpers";
+import { MIN_RECORDS, THIN_ESS, getDistributions, yearLabel } from "../lib/dataHelpers";
 import {
   BASIS_OPTIONS,
   INCOME_COUNT_LABELS,
@@ -68,6 +68,13 @@ function thinNote(profile) {
   return profile && profile.households_m > 0 && profile.ess < THIN_ESS
     ? " Rests on few survey records."
     : "";
+}
+
+const NOT_SHOWN = `Not shown: fewer than ${MIN_RECORDS} survey records.`;
+
+// A group's household count, or "not shown" when it rests on too few records.
+function groupMillions(profile) {
+  return profile?.suppressed ? "not shown" : formatMillions(profile?.households_m ?? 0, 2);
 }
 
 function composition(profile, population, by) {
@@ -331,7 +338,7 @@ export default function IncomeMeasuresSection({ data, dataset, year, preset, var
                 key: "households_m",
                 header: "Households",
                 align: "right",
-                format: (v) => formatMillions(v, 2),
+                format: (v) => (v == null ? "–" : formatMillions(v, 2)),
               },
               {
                 key: "eligible",
@@ -349,13 +356,13 @@ export default function IncomeMeasuresSection({ data, dataset, year, preset, var
                 key: "cost_share",
                 header: "Share of spending",
                 align: "right",
-                format: (v) => formatShare(v ?? 0, 1),
+                format: (v) => (v == null ? "–" : formatShare(v, 1)),
               },
               {
                 key: "ess",
                 header: "ESS",
                 align: "right",
-                format: (v) => Math.round(v).toLocaleString("en-GB"),
+                format: (v) => (v == null ? "–" : Math.round(v).toLocaleString("en-GB")),
               },
             ]}
             rows={crosstab.cells.map((c) => ({ ...c, key: `${c.row}-${c.col}` }))}
@@ -371,9 +378,11 @@ export default function IncomeMeasuresSection({ data, dataset, year, preset, var
         <div className="grid gap-4 md:grid-cols-3">
           <MetricCard
             label="Do not qualify, in the lowest three deciles"
-            value={formatMillions(low.households_m, 2)}
+            value={groupMillions(low)}
             note={
-              low.households_m
+              low.suppressed
+                ? NOT_SHOWN
+                : low.households_m
                 ? `${formatShare(low.share_of_base ?? 0)} of households in those deciles, with ${formatMillions(low.children_m, 2)} children; ${formatShare(low.rel_pov_ahc ?? 0)} are in relative poverty after housing costs.${thinNote(low)}`
                 : measure === "taxable" && individualTest
                   ? "Almost none by construction: if the household's combined taxable income is below £24,000, every member's is too."
@@ -382,20 +391,24 @@ export default function IncomeMeasuresSection({ data, dataset, year, preset, var
           />
           <MetricCard
             label="Qualify through the income test alone, in the top half"
-            value={formatMillions(top.households_m, 2)}
+            value={groupMillions(top)}
             note={
               !schedule?.income_test
                 ? "This option has no income test."
-                : top.households_m
+                : top.suppressed
+                  ? NOT_SHOWN
+                  : top.households_m
                   ? `${formatShare(top.share_of_base ?? 0)} of households qualifying through the income test alone; ${formatShare(top.cost_share ?? 0, 1)} of spending. ${formatShare(top.two_incomes_over_pa ?? 0)} have two or more members with taxable income above £12,570${top.taxable_at_or_above_line != null ? `, and ${formatShare(top.taxable_at_or_above_line)} have combined taxable income of £24,000 or more` : ""}.${thinNote(top)}`
                   : "None in this option."
             }
           />
           <MetricCard
             label="Qualify through a passporting benefit, in the top half"
-            value={formatMillions(passported.households_m, 2)}
+            value={groupMillions(passported)}
             note={
-              passported.households_m
+              passported.suppressed
+                ? NOT_SHOWN
+                : passported.households_m
                 ? `${formatShare(passported.share_of_base ?? 0)} of passported households; ${formatShare(passported.cost_share ?? 0, 1)} of spending. Someone in the household receives a means-tested benefit even though the household as a whole sits in the top half.${thinNote(passported)}`
                 : "None in this option."
             }
@@ -445,10 +458,14 @@ export default function IncomeMeasuresSection({ data, dataset, year, preset, var
               return {
                 key: p,
                 rule: label,
-                low: other ? formatMillions(other.low_not_eligible.households_m, 2) : "n/a",
-                top: other ? formatMillions(other.top_income_only.households_m, 2) : "n/a",
-                topCost: other ? formatShare(other.top_income_only.cost_share ?? 0, 1) : "n/a",
-                passported: other ? formatMillions(other.top_passported.households_m, 2) : "n/a",
+                low: other ? groupMillions(other.low_not_eligible) : "n/a",
+                top: other ? groupMillions(other.top_income_only) : "n/a",
+                topCost: !other
+                  ? "n/a"
+                  : other.top_income_only.suppressed
+                    ? "not shown"
+                    : formatShare(other.top_income_only.cost_share ?? 0, 1),
+                passported: other ? groupMillions(other.top_passported) : "n/a",
               };
             })}
           />

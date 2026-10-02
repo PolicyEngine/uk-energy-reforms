@@ -209,6 +209,9 @@ def coverage(run: Run, f: pd.DataFrame | None = None) -> list:
         "relative AHC poverty": f.rel_pov_ahc_base,
         "lowest four AHC deciles": f.bottom4,
         "energy over 10% of net income": f.high_burden,
+        "absolute BHC poverty": f.abs_pov_bhc_base,
+        "relative BHC poverty": f.rel_pov_bhc_base,
+        "lowest four BHC deciles": f.decile_bhc.between(1, 4),
     }.items():
         rows.append(
             {
@@ -556,6 +559,9 @@ LOW_DECILES = 3  # "the lowest three deciles"
 TOP_HALF_FROM = 6  # deciles 6 to 10
 PERSONAL_ALLOWANCE = 12_570
 THIN_ESS = 30  # below this effective sample size, means are withheld
+# Cells and groups resting on fewer survey records than this are blanked rather than
+# shown with a caveat: Microcosm is built from licensed FRS records.
+MIN_RECORDS = 10
 INCOME_COUNTS = ["0", "1", "2", "3+"]
 
 
@@ -622,6 +628,16 @@ def _decile_rows(f: pd.DataFrame, groups: np.ndarray, n: int, total_cost: float)
     return rows
 
 
+def _suppress(out: dict, keep=("row", "col", "sample_n")) -> dict:
+    """Blank every figure of a cell or group with between 1 and MIN_RECORDS - 1
+    records, keeping its position and record count."""
+    small = 0 < out["sample_n"] < MIN_RECORDS
+    if small:
+        out = {k: (v if k in keep else None) for k, v in out.items()}
+    out["suppressed"] = small
+    return out
+
+
 def _crosstab(f, rows: np.ndarray, cols: np.ndarray, n: int, total_cost: float):
     total = float(f.weight.sum())
     cells = []
@@ -631,20 +647,24 @@ def _crosstab(f, rows: np.ndarray, cols: np.ndarray, n: int, total_cost: float):
             w = d.weight
             hh = float(w.sum())
             cells.append(
-                {
-                    "row": r,
-                    "col": c,
-                    "households_m": hh / 1e6,
-                    "household_share": hh / total if total else None,
-                    "eligible": _share(d, d.eligible.astype(bool)) if hh else None,
-                    "passported": _share(d, d.eligible & d.passported) if hh else None,
-                    "income_only": _share(d, d.income_only) if hh else None,
-                    "cost_share": float((w * d.discount).sum() / total_cost)
-                    if total_cost
-                    else None,
-                    "sample_n": len(d),
-                    "ess": _ess(w),
-                }
+                _suppress(
+                    {
+                        "row": r,
+                        "col": c,
+                        "households_m": hh / 1e6,
+                        "household_share": hh / total if total else None,
+                        "eligible": _share(d, d.eligible.astype(bool)) if hh else None,
+                        "passported": _share(d, d.eligible & d.passported)
+                        if hh
+                        else None,
+                        "income_only": _share(d, d.income_only) if hh else None,
+                        "cost_share": float((w * d.discount).sum() / total_cost)
+                        if total_cost
+                        else None,
+                        "sample_n": len(d),
+                        "ess": _ess(w),
+                    }
+                )
             )
     return cells
 
@@ -670,8 +690,8 @@ def _profile(f, mask, base, total_cost: float, schedule: dict) -> dict:
         if total_cost
         else None,
     }
-    if not hh:
-        return out
+    if not hh or out["sample_n"] < MIN_RECORDS:
+        return _suppress(out, keep=("sample_n",))
     thin = ess < THIN_ESS
 
     def mean(column):
@@ -695,16 +715,42 @@ def _profile(f, mask, base, total_cost: float, schedule: dict) -> dict:
             "by_incomes": _shares_by(
                 d.assign(incomes=_income_count(d)), "incomes", INCOME_COUNTS
             ),
+            "suppressed": False,
         }
     )
     return out
+
+
+def _person_decile_check(f, basis: str, eligible: np.ndarray) -> dict:
+    """The lowest-three-deciles group on the HBAI convention: deciles of people
+    (prepare's person-weighted deciles) rather than of households."""
+    low = f[f"decile_{basis}"].between(1, LOW_DECILES).values
+    left_out = low & ~eligible
+    people = f.weight * f.n_people
+    low_people = float(people[low].sum())
+    w = f.weight[left_out]
+    return _suppress(
+        {
+            "households_m": float(w.sum()) / 1e6,
+            "people_m": float(people[left_out].sum()) / 1e6,
+            "children_m": float((w * f.n_children[left_out]).sum()) / 1e6,
+            "share_of_base": _share(f, left_out, low),
+            "people_share": float(people[left_out].sum()) / low_people
+            if low_people
+            else None,
+            "sample_n": int(left_out.sum()),
+            "ess": _ess(w),
+        },
+        keep=("sample_n",),
+    )
 
 
 def income_distributions(run: Run, f: pd.DataFrame | None = None) -> dict:
     """Who qualifies across five income distributions, their cross-tabulation, and
     the households where eligibility and income diverge: those not eligible in the
     lowest three deciles, and those in the top half who qualify, either through the
-    income test alone or through passporting."""
+    income test alone or through passporting. ``person_deciles`` repeats the first group
+    with deciles of people, as HBAI counts them."""
     f = prepare(run) if f is None else f
     w = f.weight.values
     total_cost = float((w * f.discount).sum())
@@ -728,6 +774,10 @@ def income_distributions(run: Run, f: pd.DataFrame | None = None) -> dict:
         },
         "distributions": {},
         "crosstabs": {},
+        "person_deciles": {
+            f"eq_{basis}": _person_decile_check(f, basis, eligible)
+            for basis in ["bhc", "ahc"]
+        },
     }
     for key, column in DISTRIBUTIONS.items():
         values = f[column].values

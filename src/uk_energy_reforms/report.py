@@ -172,20 +172,38 @@ def _distribution_lines(d: dict) -> list:
         low = d["distributions"][key]["low_not_eligible"]
         top = d["distributions"][key]["top_income_only"]
         passported = d["distributions"][key]["top_passported"]
-        share = top["cost_share"] or 0
         lines.append(
-            f"- {label}: not eligible in deciles 1-3 {low['households_m']:.2f}m "
-            f"({100 * (low['share_of_base'] or 0):.0f}% of those deciles; ESS "
-            f"{low['ess']:.0f}); eligible through the income test alone in deciles "
-            f"6-10 {top['households_m']:.2f}m ({100 * (top['share_of_base'] or 0):.0f}% "
-            f"of income-test-only households, {100 * share:.1f}% of cost; ESS "
-            f"{top['ess']:.0f}); passported in deciles 6-10 "
-            f"{passported['households_m']:.2f}m "
-            f"({100 * (passported['share_of_base'] or 0):.0f}% of passported households, "
-            f"{100 * (passported['cost_share'] or 0):.1f}% of cost; ESS "
-            f"{passported['ess']:.0f})."
+            f"- {label}: not eligible in deciles 1-3 "
+            f"{_group(low, 'of those deciles')}; eligible through the income test "
+            f"alone in deciles 6-10 "
+            f"{_group(top, 'of income-test-only households', cost=True)}; passported "
+            f"in deciles 6-10 {_group(passported, 'of passported households', cost=True)}."
+        )
+    lines += [
+        "",
+        "The same lowest-three-decile group with deciles of people (HBAI):",
+        "",
+    ]
+    for key, check in d.get("person_deciles", {}).items():
+        people = check["people_share"]
+        lines.append(
+            f"- {DISTRIBUTION_LABELS[key]}: not eligible "
+            f"{_group(check, 'of households in those deciles')}"
+            + (f", {100 * people:.0f}% of the people in them." if people else ".")
         )
     return lines
+
+
+def _group(g: dict, base: str, cost: bool = False) -> str:
+    """One divergence group for the receipt; groups resting on too few records say so."""
+    if g.get("suppressed"):
+        return f"(fewer than {analysis.MIN_RECORDS} records; not shown)"
+    if not g.get("households_m"):
+        return "none"
+    text = f"{g['households_m']:.2f}m ({100 * (g['share_of_base'] or 0):.0f}% {base}"
+    if cost:
+        text += f", {100 * (g['cost_share'] or 0):.1f}% of cost"
+    return text + f"; ESS {g['ess']:.0f})"
 
 
 def markdown(results: dict, year: int) -> str:

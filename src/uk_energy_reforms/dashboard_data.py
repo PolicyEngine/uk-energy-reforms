@@ -91,6 +91,7 @@ CELL_KEYS = [
     "income_only",
     "cost_share",
     "ess",
+    "suppressed",
 ]
 PROFILE_KEYS = [
     "households_m",
@@ -108,6 +109,7 @@ PROFILE_KEYS = [
     "taxable_at_or_above_line",
     "by_household_type",
     "by_incomes",
+    "suppressed",
 ]
 
 

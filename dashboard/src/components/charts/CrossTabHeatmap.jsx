@@ -4,9 +4,10 @@
 // quintiles (lowest at the bottom), columns are household income quintiles (lowest on the
 // left), so households whose two rankings agree sit on the diagonal. Colour is a
 // single-hue sequential ramp; every cell also carries its value, so colour is never the
-// only cue. Cells resting on few survey records are hatched and starred.
+// only cue. Cells with an effective sample below 30 are hatched and starred; cells with
+// fewer than 10 survey records arrive blank from the analysis and are shown as such.
 
-import { THIN_ESS } from "../../lib/dataHelpers";
+import { MIN_RECORDS, THIN_ESS } from "../../lib/dataHelpers";
 import { HEAT_RAMP, boundLabel, heatBin } from "../../lib/distributions";
 import { formatMillions, formatShare } from "../../lib/formatters";
 import { textOn } from "../ui";
@@ -49,6 +50,20 @@ export default function CrossTabHeatmap({
                 </div>
                 {cols.map((c) => {
                   const x = cell(r, c);
+                  if (x?.suppressed) {
+                    return (
+                      <div
+                        key={c}
+                        role="img"
+                        aria-label={`Equivalised quintile ${r}, household quintile ${c}: not shown, fewer than ${MIN_RECORDS} survey records`}
+                        title={`Not shown: fewer than ${MIN_RECORDS} survey records`}
+                        className="flex h-14 flex-col items-center justify-center rounded-md border border-dashed border-slate-300 bg-slate-50 text-center text-slate-500"
+                      >
+                        <span className="text-sm font-semibold">†</span>
+                        <span className="text-[11px]">not shown</span>
+                      </div>
+                    );
+                  }
                   const value = x?.[metric];
                   const bin = heatBin(value, max);
                   const fill = bin == null ? "#FFFFFF" : HEAT_RAMP[bin];
@@ -100,7 +115,8 @@ export default function CrossTabHeatmap({
           />
         ))}
         <span>Higher</span>
-        <span className="ml-3">* rests on few survey records (effective sample below 30)</span>
+        <span className="ml-3">* rests on few survey records (effective sample below {THIN_ESS})</span>
+        <span>† not shown: fewer than {MIN_RECORDS} survey records</span>
       </div>
     </div>
   );

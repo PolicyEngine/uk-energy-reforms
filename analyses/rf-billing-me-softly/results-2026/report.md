@@ -143,6 +143,9 @@ Coverage of households in poverty or with high energy costs:
 | relative AHC poverty | 6.04 | 48.9% | 86.0% | 0.85 |
 | lowest four AHC deciles | 11.8 | 42.9% | 75.8% | 2.86 |
 | energy over 10% of net income | 2.22 | 32.6% | 80.2% | 0.44 |
+| absolute BHC poverty | 3.22 | 45.3% | 94.8% | 0.17 |
+| relative BHC poverty | 4.98 | 41.8% | 92.7% | 0.36 |
+| lowest four BHC deciles | 12.5 | 39.9% | 75.6% | 3.06 |
 
 Eligibility by household decile of equivalised net income, after housing costs:
 
@@ -181,6 +184,11 @@ Where eligibility and income diverge (household deciles):
 - household net income, before housing costs (not equivalised): not eligible in deciles 1-3 1.63m (19% of those deciles; ESS 233); eligible through the income test alone in deciles 6-10 0.15m (3% of income-test-only households, 1.2% of cost; ESS 20); passported in deciles 6-10 2.54m (33% of passported households, 20.3% of cost; ESS 416).
 - household net income, after housing costs (not equivalised): not eligible in deciles 1-3 1.55m (18% of those deciles; ESS 192); eligible through the income test alone in deciles 6-10 0.25m (5% of income-test-only households, 2.0% of cost; ESS 38); passported in deciles 6-10 2.36m (30% of passported households, 18.8% of cost; ESS 370).
 - household taxable income (members' total_income summed): not eligible in deciles 1-3 0.10m (1% of those deciles; ESS 13); eligible through the income test alone in deciles 6-10 0.12m (3% of income-test-only households, 1.0% of cost; ESS 15); passported in deciles 6-10 1.40m (18% of passported households, 11.2% of cost; ESS 221).
+
+The same lowest-three-decile group with deciles of people (HBAI):
+
+- equivalised net income, before housing costs: not eligible 1.61m (17% of households in those deciles; ESS 212), 22% of the people in them.
+- equivalised net income, after housing costs: not eligible 1.80m (20% of households in those deciles; ESS 214), 25% of the people in them.
 
 Cliff edges (households on the schedule by own income):
 
@@ -260,6 +268,9 @@ Coverage of households in poverty or with high energy costs:
 | relative AHC poverty | 7.73 | 52.5% | 87.7% | 0.95 |
 | lowest four AHC deciles | 12.9 | 45.7% | 79.5% | 2.64 |
 | energy over 10% of net income | 3.99 | 12.1% | 58.2% | 1.67 |
+| absolute BHC poverty | 4.09 | 47.7% | 95.0% | 0.21 |
+| relative BHC poverty | 6.75 | 44.5% | 92.6% | 0.50 |
+| lowest four BHC deciles | 13.2 | 41.8% | 77.5% | 2.97 |
 
 Eligibility by household decile of equivalised net income, after housing costs:
 
@@ -297,7 +308,12 @@ Where eligibility and income diverge (household deciles):
 - equivalised net income, after housing costs: not eligible in deciles 1-3 1.38m (15% of those deciles; ESS 49); eligible through the income test alone in deciles 6-10 0.33m (7% of income-test-only households, 2.5% of cost; ESS 17); passported in deciles 6-10 1.27m (16% of passported households, 9.7% of cost; ESS 43).
 - household net income, before housing costs (not equivalised): not eligible in deciles 1-3 1.48m (16% of those deciles; ESS 46); eligible through the income test alone in deciles 6-10 0.28m (5% of income-test-only households, 2.1% of cost; ESS 5); passported in deciles 6-10 1.40m (18% of passported households, 10.7% of cost; ESS 189).
 - household net income, after housing costs (not equivalised): not eligible in deciles 1-3 1.08m (12% of those deciles; ESS 37); eligible through the income test alone in deciles 6-10 0.45m (9% of income-test-only households, 3.5% of cost; ESS 11); passported in deciles 6-10 1.07m (13% of passported households, 8.2% of cost; ESS 171).
-- household taxable income (members' total_income summed): not eligible in deciles 1-3 0.00m (0% of those deciles; ESS 0); eligible through the income test alone in deciles 6-10 0.30m (6% of income-test-only households, 2.3% of cost; ESS 6); passported in deciles 6-10 0.50m (6% of passported households, 3.8% of cost; ESS 96).
+- household taxable income (members' total_income summed): not eligible in deciles 1-3 none; eligible through the income test alone in deciles 6-10 0.30m (6% of income-test-only households, 2.3% of cost; ESS 6); passported in deciles 6-10 0.50m (6% of passported households, 3.8% of cost; ESS 96).
+
+The same lowest-three-decile group with deciles of people (HBAI):
+
+- equivalised net income, before housing costs: not eligible 1.28m (13% of households in those deciles; ESS 103), 19% of the people in them.
+- equivalised net income, after housing costs: not eligible 1.58m (16% of households in those deciles; ESS 54), 21% of the people in them.
 
 Cliff edges (households on the schedule by own income):
 
@@ -379,6 +395,9 @@ Coverage of households in poverty or with high energy costs:
 | relative AHC poverty | 6.04 | 48.9% | 86.0% | 0.85 |
 | lowest four AHC deciles | 11.8 | 42.9% | 75.8% | 2.86 |
 | energy over 10% of net income | 2.22 | 32.6% | 80.2% | 0.44 |
+| absolute BHC poverty | 3.22 | 45.3% | 94.8% | 0.17 |
+| relative BHC poverty | 4.98 | 41.8% | 92.7% | 0.36 |
+| lowest four BHC deciles | 12.5 | 39.9% | 75.6% | 3.06 |
 
 Cliff edges (households on the schedule by own income):
 
@@ -458,6 +477,9 @@ Coverage of households in poverty or with high energy costs:
 | relative AHC poverty | 7.73 | 52.5% | 80.1% | 1.54 |
 | lowest four AHC deciles | 12.9 | 45.7% | 72.6% | 3.53 |
 | energy over 10% of net income | 3.99 | 12.1% | 58.1% | 1.67 |
+| absolute BHC poverty | 4.09 | 47.7% | 87.0% | 0.53 |
+| relative BHC poverty | 6.75 | 44.5% | 85.9% | 0.95 |
+| lowest four BHC deciles | 13.2 | 41.8% | 71.3% | 3.80 |
 
 Cliff edges (households on the schedule by own income):
 
@@ -539,6 +561,9 @@ Coverage of households in poverty or with high energy costs:
 | relative AHC poverty | 6.04 | 48.9% | 86.0% | 0.85 |
 | lowest four AHC deciles | 11.8 | 42.9% | 75.8% | 2.86 |
 | energy over 10% of net income | 2.22 | 32.6% | 80.2% | 0.44 |
+| absolute BHC poverty | 3.22 | 45.3% | 94.8% | 0.17 |
+| relative BHC poverty | 4.98 | 41.8% | 92.7% | 0.36 |
+| lowest four BHC deciles | 12.5 | 39.9% | 75.6% | 3.06 |
 
 Cliff edges (households on the schedule by own income):
 
@@ -618,6 +643,9 @@ Coverage of households in poverty or with high energy costs:
 | relative AHC poverty | 7.73 | 52.5% | 87.7% | 0.95 |
 | lowest four AHC deciles | 12.9 | 45.7% | 79.5% | 2.64 |
 | energy over 10% of net income | 3.99 | 12.1% | 58.2% | 1.67 |
+| absolute BHC poverty | 4.09 | 47.7% | 95.0% | 0.21 |
+| relative BHC poverty | 6.75 | 44.5% | 92.6% | 0.50 |
+| lowest four BHC deciles | 13.2 | 41.8% | 77.5% | 2.97 |
 
 Cliff edges (households on the schedule by own income):
 
@@ -699,6 +727,9 @@ Coverage of households in poverty or with high energy costs:
 | relative AHC poverty | 6.04 | 48.9% | 86.0% | 0.85 |
 | lowest four AHC deciles | 11.8 | 42.9% | 75.8% | 2.86 |
 | energy over 10% of net income | 2.22 | 32.6% | 80.2% | 0.44 |
+| absolute BHC poverty | 3.22 | 45.3% | 94.8% | 0.17 |
+| relative BHC poverty | 4.98 | 41.8% | 92.7% | 0.36 |
+| lowest four BHC deciles | 12.5 | 39.9% | 75.6% | 3.06 |
 
 Eligibility by household decile of equivalised net income, after housing costs:
 
@@ -737,6 +768,11 @@ Where eligibility and income diverge (household deciles):
 - household net income, before housing costs (not equivalised): not eligible in deciles 1-3 1.63m (19% of those deciles; ESS 233); eligible through the income test alone in deciles 6-10 0.15m (3% of income-test-only households, 0.6% of cost; ESS 20); passported in deciles 6-10 2.54m (33% of passported households, 22.5% of cost; ESS 416).
 - household net income, after housing costs (not equivalised): not eligible in deciles 1-3 1.55m (18% of those deciles; ESS 192); eligible through the income test alone in deciles 6-10 0.25m (5% of income-test-only households, 1.1% of cost; ESS 38); passported in deciles 6-10 2.36m (30% of passported households, 20.9% of cost; ESS 370).
 - household taxable income (members' total_income summed): not eligible in deciles 1-3 0.10m (1% of those deciles; ESS 13); eligible through the income test alone in deciles 6-10 0.12m (3% of income-test-only households, 0.5% of cost; ESS 15); passported in deciles 6-10 1.40m (18% of passported households, 12.4% of cost; ESS 221).
+
+The same lowest-three-decile group with deciles of people (HBAI):
+
+- equivalised net income, before housing costs: not eligible 1.61m (17% of households in those deciles; ESS 212), 22% of the people in them.
+- equivalised net income, after housing costs: not eligible 1.80m (20% of households in those deciles; ESS 214), 25% of the people in them.
 
 Cliff edges (households on the schedule by own income):
 
@@ -817,6 +853,9 @@ Coverage of households in poverty or with high energy costs:
 | relative AHC poverty | 7.73 | 52.5% | 87.7% | 0.95 |
 | lowest four AHC deciles | 12.9 | 45.7% | 79.5% | 2.64 |
 | energy over 10% of net income | 3.99 | 12.1% | 58.2% | 1.67 |
+| absolute BHC poverty | 4.09 | 47.7% | 95.0% | 0.21 |
+| relative BHC poverty | 6.75 | 44.5% | 92.6% | 0.50 |
+| lowest four BHC deciles | 13.2 | 41.8% | 77.5% | 2.97 |
 
 Eligibility by household decile of equivalised net income, after housing costs:
 
@@ -854,7 +893,12 @@ Where eligibility and income diverge (household deciles):
 - equivalised net income, after housing costs: not eligible in deciles 1-3 1.38m (15% of those deciles; ESS 49); eligible through the income test alone in deciles 6-10 0.33m (7% of income-test-only households, 1.6% of cost; ESS 17); passported in deciles 6-10 1.27m (16% of passported households, 10.9% of cost; ESS 43).
 - household net income, before housing costs (not equivalised): not eligible in deciles 1-3 1.48m (16% of those deciles; ESS 46); eligible through the income test alone in deciles 6-10 0.28m (5% of income-test-only households, 1.0% of cost; ESS 5); passported in deciles 6-10 1.40m (18% of passported households, 12.0% of cost; ESS 189).
 - household net income, after housing costs (not equivalised): not eligible in deciles 1-3 1.08m (12% of those deciles; ESS 37); eligible through the income test alone in deciles 6-10 0.45m (9% of income-test-only households, 1.9% of cost; ESS 11); passported in deciles 6-10 1.07m (13% of passported households, 9.2% of cost; ESS 171).
-- household taxable income (members' total_income summed): not eligible in deciles 1-3 0.00m (0% of those deciles; ESS 0); eligible through the income test alone in deciles 6-10 0.30m (6% of income-test-only households, 1.0% of cost; ESS 6); passported in deciles 6-10 0.50m (6% of passported households, 4.3% of cost; ESS 96).
+- household taxable income (members' total_income summed): not eligible in deciles 1-3 none; eligible through the income test alone in deciles 6-10 0.30m (6% of income-test-only households, 1.0% of cost; ESS 6); passported in deciles 6-10 0.50m (6% of passported households, 4.3% of cost; ESS 96).
+
+The same lowest-three-decile group with deciles of people (HBAI):
+
+- equivalised net income, before housing costs: not eligible 1.28m (13% of households in those deciles; ESS 103), 19% of the people in them.
+- equivalised net income, after housing costs: not eligible 1.58m (16% of households in those deciles; ESS 54), 21% of the people in them.
 
 Cliff edges (households on the schedule by own income):
 
@@ -937,6 +981,9 @@ Coverage of households in poverty or with high energy costs:
 | relative AHC poverty | 6.04 | 48.9% | 86.0% | 0.85 |
 | lowest four AHC deciles | 11.8 | 42.9% | 75.8% | 2.86 |
 | energy over 10% of net income | 2.22 | 32.6% | 80.2% | 0.44 |
+| absolute BHC poverty | 3.22 | 45.3% | 94.8% | 0.17 |
+| relative BHC poverty | 4.98 | 41.8% | 92.7% | 0.36 |
+| lowest four BHC deciles | 12.5 | 39.9% | 75.6% | 3.06 |
 
 Cliff edges (households on the schedule by own income):
 
@@ -1017,6 +1064,9 @@ Coverage of households in poverty or with high energy costs:
 | relative AHC poverty | 7.73 | 52.5% | 80.1% | 1.54 |
 | lowest four AHC deciles | 12.9 | 45.7% | 72.6% | 3.53 |
 | energy over 10% of net income | 3.99 | 12.1% | 58.1% | 1.67 |
+| absolute BHC poverty | 4.09 | 47.7% | 87.0% | 0.53 |
+| relative BHC poverty | 6.75 | 44.5% | 85.9% | 0.95 |
+| lowest four BHC deciles | 13.2 | 41.8% | 71.3% | 3.80 |
 
 Cliff edges (households on the schedule by own income):
 
@@ -1099,6 +1149,9 @@ Coverage of households in poverty or with high energy costs:
 | relative AHC poverty | 6.04 | 48.9% | 86.0% | 0.85 |
 | lowest four AHC deciles | 11.8 | 42.9% | 75.8% | 2.86 |
 | energy over 10% of net income | 2.22 | 32.6% | 80.2% | 0.44 |
+| absolute BHC poverty | 3.22 | 45.3% | 94.8% | 0.17 |
+| relative BHC poverty | 4.98 | 41.8% | 92.7% | 0.36 |
+| lowest four BHC deciles | 12.5 | 39.9% | 75.6% | 3.06 |
 
 Cliff edges (households on the schedule by own income):
 
@@ -1179,6 +1232,9 @@ Coverage of households in poverty or with high energy costs:
 | relative AHC poverty | 7.73 | 52.5% | 87.7% | 0.95 |
 | lowest four AHC deciles | 12.9 | 45.7% | 79.5% | 2.64 |
 | energy over 10% of net income | 3.99 | 12.1% | 58.2% | 1.67 |
+| absolute BHC poverty | 4.09 | 47.7% | 95.0% | 0.21 |
+| relative BHC poverty | 6.75 | 44.5% | 92.6% | 0.50 |
+| lowest four BHC deciles | 13.2 | 41.8% | 77.5% | 2.97 |
 
 Cliff edges (households on the schedule by own income):
 
@@ -1261,6 +1317,9 @@ Coverage of households in poverty or with high energy costs:
 | relative AHC poverty | 6.04 | 48.9% | 86.0% | 0.85 |
 | lowest four AHC deciles | 11.8 | 42.9% | 75.8% | 2.86 |
 | energy over 10% of net income | 2.22 | 32.6% | 80.2% | 0.44 |
+| absolute BHC poverty | 3.22 | 45.3% | 94.8% | 0.17 |
+| relative BHC poverty | 4.98 | 41.8% | 92.7% | 0.36 |
+| lowest four BHC deciles | 12.5 | 39.9% | 75.6% | 3.06 |
 
 Eligibility by household decile of equivalised net income, after housing costs:
 
@@ -1299,6 +1358,11 @@ Where eligibility and income diverge (household deciles):
 - household net income, before housing costs (not equivalised): not eligible in deciles 1-3 1.63m (19% of those deciles; ESS 233); eligible through the income test alone in deciles 6-10 0.15m (3% of income-test-only households, 0.7% of cost; ESS 20); passported in deciles 6-10 2.54m (33% of passported households, 14.0% of cost; ESS 416).
 - household net income, after housing costs (not equivalised): not eligible in deciles 1-3 1.55m (18% of those deciles; ESS 192); eligible through the income test alone in deciles 6-10 0.25m (5% of income-test-only households, 1.4% of cost; ESS 38); passported in deciles 6-10 2.36m (30% of passported households, 13.1% of cost; ESS 370).
 - household taxable income (members' total_income summed): not eligible in deciles 1-3 0.10m (1% of those deciles; ESS 13); eligible through the income test alone in deciles 6-10 0.12m (3% of income-test-only households, 0.6% of cost; ESS 15); passported in deciles 6-10 1.40m (18% of passported households, 5.7% of cost; ESS 221).
+
+The same lowest-three-decile group with deciles of people (HBAI):
+
+- equivalised net income, before housing costs: not eligible 1.61m (17% of households in those deciles; ESS 212), 22% of the people in them.
+- equivalised net income, after housing costs: not eligible 1.80m (20% of households in those deciles; ESS 214), 25% of the people in them.
 
 Cliff edges (households on the schedule by own income):
 
@@ -1379,6 +1443,9 @@ Coverage of households in poverty or with high energy costs:
 | relative AHC poverty | 7.73 | 52.5% | 87.7% | 0.95 |
 | lowest four AHC deciles | 12.9 | 45.7% | 79.5% | 2.64 |
 | energy over 10% of net income | 3.99 | 12.1% | 58.2% | 1.67 |
+| absolute BHC poverty | 4.09 | 47.7% | 95.0% | 0.21 |
+| relative BHC poverty | 6.75 | 44.5% | 92.6% | 0.50 |
+| lowest four BHC deciles | 13.2 | 41.8% | 77.5% | 2.97 |
 
 Eligibility by household decile of equivalised net income, after housing costs:
 
@@ -1416,7 +1483,12 @@ Where eligibility and income diverge (household deciles):
 - equivalised net income, after housing costs: not eligible in deciles 1-3 1.38m (15% of those deciles; ESS 49); eligible through the income test alone in deciles 6-10 0.33m (7% of income-test-only households, 1.8% of cost; ESS 17); passported in deciles 6-10 1.27m (16% of passported households, 8.7% of cost; ESS 43).
 - household net income, before housing costs (not equivalised): not eligible in deciles 1-3 1.48m (16% of those deciles; ESS 46); eligible through the income test alone in deciles 6-10 0.28m (5% of income-test-only households, 1.1% of cost; ESS 5); passported in deciles 6-10 1.40m (18% of passported households, 7.7% of cost; ESS 189).
 - household net income, after housing costs (not equivalised): not eligible in deciles 1-3 1.08m (12% of those deciles; ESS 37); eligible through the income test alone in deciles 6-10 0.45m (9% of income-test-only households, 2.1% of cost; ESS 11); passported in deciles 6-10 1.07m (13% of passported households, 6.0% of cost; ESS 171).
-- household taxable income (members' total_income summed): not eligible in deciles 1-3 0.00m (0% of those deciles; ESS 0); eligible through the income test alone in deciles 6-10 0.30m (6% of income-test-only households, 1.1% of cost; ESS 6); passported in deciles 6-10 0.50m (6% of passported households, 1.8% of cost; ESS 96).
+- household taxable income (members' total_income summed): not eligible in deciles 1-3 none; eligible through the income test alone in deciles 6-10 0.30m (6% of income-test-only households, 1.1% of cost; ESS 6); passported in deciles 6-10 0.50m (6% of passported households, 1.8% of cost; ESS 96).
+
+The same lowest-three-decile group with deciles of people (HBAI):
+
+- equivalised net income, before housing costs: not eligible 1.28m (13% of households in those deciles; ESS 103), 19% of the people in them.
+- equivalised net income, after housing costs: not eligible 1.58m (16% of households in those deciles; ESS 54), 21% of the people in them.
 
 Cliff edges (households on the schedule by own income):
 
@@ -1499,6 +1571,9 @@ Coverage of households in poverty or with high energy costs:
 | relative AHC poverty | 6.04 | 48.9% | 86.0% | 0.85 |
 | lowest four AHC deciles | 11.8 | 42.9% | 75.8% | 2.86 |
 | energy over 10% of net income | 2.22 | 32.6% | 80.2% | 0.44 |
+| absolute BHC poverty | 3.22 | 45.3% | 94.8% | 0.17 |
+| relative BHC poverty | 4.98 | 41.8% | 92.7% | 0.36 |
+| lowest four BHC deciles | 12.5 | 39.9% | 75.6% | 3.06 |
 
 Cliff edges (households on the schedule by own income):
 
@@ -1579,6 +1654,9 @@ Coverage of households in poverty or with high energy costs:
 | relative AHC poverty | 7.73 | 52.5% | 80.1% | 1.54 |
 | lowest four AHC deciles | 12.9 | 45.7% | 72.6% | 3.53 |
 | energy over 10% of net income | 3.99 | 12.1% | 58.1% | 1.67 |
+| absolute BHC poverty | 4.09 | 47.7% | 87.0% | 0.53 |
+| relative BHC poverty | 6.75 | 44.5% | 85.9% | 0.95 |
+| lowest four BHC deciles | 13.2 | 41.8% | 71.3% | 3.80 |
 
 Cliff edges (households on the schedule by own income):
 
@@ -1661,6 +1739,9 @@ Coverage of households in poverty or with high energy costs:
 | relative AHC poverty | 6.04 | 48.9% | 86.0% | 0.85 |
 | lowest four AHC deciles | 11.8 | 42.9% | 75.8% | 2.86 |
 | energy over 10% of net income | 2.22 | 32.6% | 80.2% | 0.44 |
+| absolute BHC poverty | 3.22 | 45.3% | 94.8% | 0.17 |
+| relative BHC poverty | 4.98 | 41.8% | 92.7% | 0.36 |
+| lowest four BHC deciles | 12.5 | 39.9% | 75.6% | 3.06 |
 
 Cliff edges (households on the schedule by own income):
 
@@ -1741,6 +1822,9 @@ Coverage of households in poverty or with high energy costs:
 | relative AHC poverty | 7.73 | 52.5% | 87.7% | 0.95 |
 | lowest four AHC deciles | 12.9 | 45.7% | 79.5% | 2.64 |
 | energy over 10% of net income | 3.99 | 12.1% | 58.2% | 1.67 |
+| absolute BHC poverty | 4.09 | 47.7% | 95.0% | 0.21 |
+| relative BHC poverty | 6.75 | 44.5% | 92.6% | 0.50 |
+| lowest four BHC deciles | 13.2 | 41.8% | 77.5% | 2.97 |
 
 Cliff edges (households on the schedule by own income):
 
@@ -1823,6 +1907,9 @@ Coverage of households in poverty or with high energy costs:
 | relative AHC poverty | 6.04 | 48.9% | 87.3% | 0.77 |
 | lowest four AHC deciles | 11.8 | 42.9% | 72.3% | 3.28 |
 | energy over 10% of net income | 2.22 | 32.6% | 76.1% | 0.53 |
+| absolute BHC poverty | 3.22 | 45.3% | 99.5% | 0.02 |
+| relative BHC poverty | 4.98 | 41.8% | 97.0% | 0.15 |
+| lowest four BHC deciles | 12.5 | 39.9% | 69.0% | 3.87 |
 
 Eligibility by household decile of equivalised net income, after housing costs:
 
@@ -1861,6 +1948,11 @@ Where eligibility and income diverge (household deciles):
 - household net income, before housing costs (not equivalised): not eligible in deciles 1-3 2.11m (25% of those deciles; ESS 312); eligible through the income test alone in deciles 6-10 0.06m (2% of income-test-only households, 0.5% of cost; ESS 8); passported in deciles 6-10 2.54m (33% of passported households, 22.1% of cost; ESS 416).
 - household net income, after housing costs (not equivalised): not eligible in deciles 1-3 1.96m (23% of those deciles; ESS 260); eligible through the income test alone in deciles 6-10 0.06m (2% of income-test-only households, 0.5% of cost; ESS 9); passported in deciles 6-10 2.36m (30% of passported households, 20.6% of cost; ESS 370).
 - household taxable income (members' total_income summed): not eligible in deciles 1-3 0.67m (8% of those deciles; ESS 100); eligible through the income test alone in deciles 6-10 0.05m (1% of income-test-only households, 0.4% of cost; ESS 7); passported in deciles 6-10 1.40m (18% of passported households, 12.2% of cost; ESS 221).
+
+The same lowest-three-decile group with deciles of people (HBAI):
+
+- equivalised net income, before housing costs: not eligible 2.14m (22% of households in those deciles; ESS 298), 23% of the people in them.
+- equivalised net income, after housing costs: not eligible 1.85m (20% of households in those deciles; ESS 224), 23% of the people in them.
 
 Cliff edges (households on the schedule by own income):
 
@@ -1940,6 +2032,9 @@ Coverage of households in poverty or with high energy costs:
 | relative AHC poverty | 7.73 | 52.5% | 88.8% | 0.86 |
 | lowest four AHC deciles | 12.9 | 45.7% | 75.0% | 3.22 |
 | energy over 10% of net income | 3.99 | 12.1% | 50.7% | 1.97 |
+| absolute BHC poverty | 4.09 | 47.7% | 96.0% | 0.16 |
+| relative BHC poverty | 6.75 | 44.5% | 94.2% | 0.39 |
+| lowest four BHC deciles | 13.2 | 41.8% | 71.2% | 3.80 |
 
 Eligibility by household decile of equivalised net income, after housing costs:
 
@@ -1978,6 +2073,11 @@ Where eligibility and income diverge (household deciles):
 - household net income, before housing costs (not equivalised): not eligible in deciles 1-3 1.83m (20% of those deciles; ESS 55); eligible through the income test alone in deciles 6-10 0.15m (4% of income-test-only households, 1.3% of cost; ESS 6); passported in deciles 6-10 1.40m (18% of passported households, 11.8% of cost; ESS 189).
 - household net income, after housing costs (not equivalised): not eligible in deciles 1-3 1.53m (17% of those deciles; ESS 41); eligible through the income test alone in deciles 6-10 0.18m (5% of income-test-only households, 1.5% of cost; ESS 9); passported in deciles 6-10 1.07m (13% of passported households, 9.0% of cost; ESS 171).
 - household taxable income (members' total_income summed): not eligible in deciles 1-3 0.34m (4% of those deciles; ESS 18); eligible through the income test alone in deciles 6-10 0.13m (3% of income-test-only households, 1.1% of cost; ESS 5); passported in deciles 6-10 0.50m (6% of passported households, 4.2% of cost; ESS 96).
+
+The same lowest-three-decile group with deciles of people (HBAI):
+
+- equivalised net income, before housing costs: not eligible 1.60m (16% of households in those deciles; ESS 105), 17% of the people in them.
+- equivalised net income, after housing costs: not eligible 1.60m (16% of households in those deciles; ESS 41), 17% of the people in them.
 
 Cliff edges (households on the schedule by own income):
 
@@ -2059,6 +2159,9 @@ Coverage of households in poverty or with high energy costs:
 | relative AHC poverty | 6.04 | 48.9% | 87.3% | 0.77 |
 | lowest four AHC deciles | 11.8 | 42.9% | 72.3% | 3.28 |
 | energy over 10% of net income | 2.22 | 32.6% | 76.1% | 0.53 |
+| absolute BHC poverty | 3.22 | 45.3% | 99.5% | 0.02 |
+| relative BHC poverty | 4.98 | 41.8% | 97.0% | 0.15 |
+| lowest four BHC deciles | 12.5 | 39.9% | 69.0% | 3.87 |
 
 Cliff edges (households on the schedule by own income):
 
@@ -2138,6 +2241,9 @@ Coverage of households in poverty or with high energy costs:
 | relative AHC poverty | 7.73 | 52.5% | 81.2% | 1.46 |
 | lowest four AHC deciles | 12.9 | 45.7% | 68.1% | 4.10 |
 | energy over 10% of net income | 3.99 | 12.1% | 50.6% | 1.97 |
+| absolute BHC poverty | 4.09 | 47.7% | 88.1% | 0.49 |
+| relative BHC poverty | 6.75 | 44.5% | 87.5% | 0.84 |
+| lowest four BHC deciles | 13.2 | 41.8% | 65.0% | 4.62 |
 
 Cliff edges (households on the schedule by own income):
 
@@ -2219,6 +2325,9 @@ Coverage of households in poverty or with high energy costs:
 | relative AHC poverty | 6.04 | 48.9% | 87.3% | 0.77 |
 | lowest four AHC deciles | 11.8 | 42.9% | 72.3% | 3.28 |
 | energy over 10% of net income | 2.22 | 32.6% | 76.1% | 0.53 |
+| absolute BHC poverty | 3.22 | 45.3% | 99.5% | 0.02 |
+| relative BHC poverty | 4.98 | 41.8% | 97.0% | 0.15 |
+| lowest four BHC deciles | 12.5 | 39.9% | 69.0% | 3.87 |
 
 Cliff edges (households on the schedule by own income):
 
@@ -2298,6 +2407,9 @@ Coverage of households in poverty or with high energy costs:
 | relative AHC poverty | 7.73 | 52.5% | 88.8% | 0.86 |
 | lowest four AHC deciles | 12.9 | 45.7% | 75.0% | 3.22 |
 | energy over 10% of net income | 3.99 | 12.1% | 50.7% | 1.97 |
+| absolute BHC poverty | 4.09 | 47.7% | 96.0% | 0.16 |
+| relative BHC poverty | 6.75 | 44.5% | 94.2% | 0.39 |
+| lowest four BHC deciles | 13.2 | 41.8% | 71.2% | 3.80 |
 
 Cliff edges (households on the schedule by own income):
 
@@ -2379,6 +2491,9 @@ Coverage of households in poverty or with high energy costs:
 | relative AHC poverty | 6.04 | 48.9% | 48.9% | 3.08 |
 | lowest four AHC deciles | 11.8 | 42.9% | 42.9% | 6.75 |
 | energy over 10% of net income | 2.22 | 32.6% | 32.6% | 1.49 |
+| absolute BHC poverty | 3.22 | 45.3% | 45.3% | 1.77 |
+| relative BHC poverty | 4.98 | 41.8% | 41.8% | 2.90 |
+| lowest four BHC deciles | 12.5 | 39.9% | 39.9% | 7.52 |
 
 Eligibility by household decile of equivalised net income, after housing costs:
 
@@ -2412,11 +2527,16 @@ Eligibility by household decile of household taxable income (members' total_inco
 
 Where eligibility and income diverge (household deciles):
 
-- equivalised net income, before housing costs: not eligible in deciles 1-3 4.99m (58% of those deciles; ESS 761); eligible through the income test alone in deciles 6-10 0.00m (0% of income-test-only households, 0.0% of cost; ESS 0); passported in deciles 6-10 2.22m (29% of passported households, 28.5% of cost; ESS 317).
-- equivalised net income, after housing costs: not eligible in deciles 1-3 4.64m (54% of those deciles; ESS 645); eligible through the income test alone in deciles 6-10 0.00m (0% of income-test-only households, 0.0% of cost; ESS 0); passported in deciles 6-10 2.04m (26% of passported households, 26.3% of cost; ESS 310).
-- household net income, before housing costs (not equivalised): not eligible in deciles 1-3 5.27m (61% of those deciles; ESS 792); eligible through the income test alone in deciles 6-10 0.00m (0% of income-test-only households, 0.0% of cost; ESS 0); passported in deciles 6-10 2.54m (33% of passported households, 32.7% of cost; ESS 416).
-- household net income, after housing costs (not equivalised): not eligible in deciles 1-3 4.89m (57% of those deciles; ESS 693); eligible through the income test alone in deciles 6-10 0.00m (0% of income-test-only households, 0.0% of cost; ESS 0); passported in deciles 6-10 2.36m (30% of passported households, 30.4% of cost; ESS 370).
-- household taxable income (members' total_income summed): not eligible in deciles 1-3 3.42m (40% of those deciles; ESS 508); eligible through the income test alone in deciles 6-10 0.00m (0% of income-test-only households, 0.0% of cost; ESS 0); passported in deciles 6-10 1.40m (18% of passported households, 18.0% of cost; ESS 221).
+- equivalised net income, before housing costs: not eligible in deciles 1-3 4.99m (58% of those deciles; ESS 761); eligible through the income test alone in deciles 6-10 none; passported in deciles 6-10 2.22m (29% of passported households, 28.5% of cost; ESS 317).
+- equivalised net income, after housing costs: not eligible in deciles 1-3 4.64m (54% of those deciles; ESS 645); eligible through the income test alone in deciles 6-10 none; passported in deciles 6-10 2.04m (26% of passported households, 26.3% of cost; ESS 310).
+- household net income, before housing costs (not equivalised): not eligible in deciles 1-3 5.27m (61% of those deciles; ESS 792); eligible through the income test alone in deciles 6-10 none; passported in deciles 6-10 2.54m (33% of passported households, 32.7% of cost; ESS 416).
+- household net income, after housing costs (not equivalised): not eligible in deciles 1-3 4.89m (57% of those deciles; ESS 693); eligible through the income test alone in deciles 6-10 none; passported in deciles 6-10 2.36m (30% of passported households, 30.4% of cost; ESS 370).
+- household taxable income (members' total_income summed): not eligible in deciles 1-3 3.42m (40% of those deciles; ESS 508); eligible through the income test alone in deciles 6-10 none; passported in deciles 6-10 1.40m (18% of passported households, 18.0% of cost; ESS 221).
+
+The same lowest-three-decile group with deciles of people (HBAI):
+
+- equivalised net income, before housing costs: not eligible 5.67m (59% of households in those deciles; ESS 829), 54% of the people in them.
+- equivalised net income, after housing costs: not eligible 4.98m (55% of households in those deciles; ESS 690), 52% of the people in them.
 
 Cliff edges (households on the schedule by own income):
 
@@ -2495,6 +2615,9 @@ Coverage of households in poverty or with high energy costs:
 | relative AHC poverty | 7.73 | 52.5% | 52.5% | 3.67 |
 | lowest four AHC deciles | 12.9 | 45.7% | 45.7% | 6.98 |
 | energy over 10% of net income | 3.99 | 12.1% | 12.1% | 3.51 |
+| absolute BHC poverty | 4.09 | 47.7% | 47.7% | 2.14 |
+| relative BHC poverty | 6.75 | 44.5% | 44.5% | 3.75 |
+| lowest four BHC deciles | 13.2 | 41.8% | 41.8% | 7.68 |
 
 Eligibility by household decile of equivalised net income, after housing costs:
 
@@ -2528,11 +2651,16 @@ Eligibility by household decile of household taxable income (members' total_inco
 
 Where eligibility and income diverge (household deciles):
 
-- equivalised net income, before housing costs: not eligible in deciles 1-3 4.91m (53% of those deciles; ESS 312); eligible through the income test alone in deciles 6-10 0.00m (0% of income-test-only households, 0.0% of cost; ESS 0); passported in deciles 6-10 1.74m (22% of passported households, 21.9% of cost; ESS 27).
-- equivalised net income, after housing costs: not eligible in deciles 1-3 4.54m (49% of those deciles; ESS 210); eligible through the income test alone in deciles 6-10 0.00m (0% of income-test-only households, 0.0% of cost; ESS 0); passported in deciles 6-10 1.27m (16% of passported households, 16.0% of cost; ESS 43).
-- household net income, before housing costs (not equivalised): not eligible in deciles 1-3 5.13m (56% of those deciles; ESS 245); eligible through the income test alone in deciles 6-10 0.00m (0% of income-test-only households, 0.0% of cost; ESS 0); passported in deciles 6-10 1.40m (18% of passported households, 17.6% of cost; ESS 189).
-- household net income, after housing costs (not equivalised): not eligible in deciles 1-3 4.43m (48% of those deciles; ESS 202); eligible through the income test alone in deciles 6-10 0.00m (0% of income-test-only households, 0.0% of cost; ESS 0); passported in deciles 6-10 1.07m (13% of passported households, 13.5% of cost; ESS 171).
-- household taxable income (members' total_income summed): not eligible in deciles 1-3 3.04m (33% of those deciles; ESS 202); eligible through the income test alone in deciles 6-10 0.00m (0% of income-test-only households, 0.0% of cost; ESS 0); passported in deciles 6-10 0.50m (6% of passported households, 6.2% of cost; ESS 96).
+- equivalised net income, before housing costs: not eligible in deciles 1-3 4.91m (53% of those deciles; ESS 312); eligible through the income test alone in deciles 6-10 none; passported in deciles 6-10 1.74m (22% of passported households, 21.9% of cost; ESS 27).
+- equivalised net income, after housing costs: not eligible in deciles 1-3 4.54m (49% of those deciles; ESS 210); eligible through the income test alone in deciles 6-10 none; passported in deciles 6-10 1.27m (16% of passported households, 16.0% of cost; ESS 43).
+- household net income, before housing costs (not equivalised): not eligible in deciles 1-3 5.13m (56% of those deciles; ESS 245); eligible through the income test alone in deciles 6-10 none; passported in deciles 6-10 1.40m (18% of passported households, 17.6% of cost; ESS 189).
+- household net income, after housing costs (not equivalised): not eligible in deciles 1-3 4.43m (48% of those deciles; ESS 202); eligible through the income test alone in deciles 6-10 none; passported in deciles 6-10 1.07m (13% of passported households, 13.5% of cost; ESS 171).
+- household taxable income (members' total_income summed): not eligible in deciles 1-3 3.04m (33% of those deciles; ESS 202); eligible through the income test alone in deciles 6-10 none; passported in deciles 6-10 0.50m (6% of passported households, 6.2% of cost; ESS 96).
+
+The same lowest-three-decile group with deciles of people (HBAI):
+
+- equivalised net income, before housing costs: not eligible 5.35m (54% of households in those deciles; ESS 352), 53% of the people in them.
+- equivalised net income, after housing costs: not eligible 5.01m (51% of households in those deciles; ESS 221), 50% of the people in them.
 
 Cliff edges (households on the schedule by own income):
 
@@ -2613,6 +2741,9 @@ Coverage of households in poverty or with high energy costs:
 | relative AHC poverty | 6.04 | 48.9% | 48.9% | 3.08 |
 | lowest four AHC deciles | 11.8 | 42.9% | 42.9% | 6.75 |
 | energy over 10% of net income | 2.22 | 32.6% | 32.6% | 1.49 |
+| absolute BHC poverty | 3.22 | 45.3% | 45.3% | 1.77 |
+| relative BHC poverty | 4.98 | 41.8% | 41.8% | 2.90 |
+| lowest four BHC deciles | 12.5 | 39.9% | 39.9% | 7.52 |
 
 Cliff edges (households on the schedule by own income):
 
@@ -2691,6 +2822,9 @@ Coverage of households in poverty or with high energy costs:
 | relative AHC poverty | 7.73 | 52.5% | 45.8% | 4.19 |
 | lowest four AHC deciles | 12.9 | 45.7% | 39.6% | 7.77 |
 | energy over 10% of net income | 3.99 | 12.1% | 12.1% | 3.51 |
+| absolute BHC poverty | 4.09 | 47.7% | 41.0% | 2.41 |
+| relative BHC poverty | 6.75 | 44.5% | 39.1% | 4.11 |
+| lowest four BHC deciles | 13.2 | 41.8% | 36.4% | 8.40 |
 
 Cliff edges (households on the schedule by own income):
 
@@ -2771,6 +2905,9 @@ Coverage of households in poverty or with high energy costs:
 | relative AHC poverty | 6.04 | 48.9% | 48.9% | 3.08 |
 | lowest four AHC deciles | 11.8 | 42.9% | 42.9% | 6.75 |
 | energy over 10% of net income | 2.22 | 32.6% | 32.6% | 1.49 |
+| absolute BHC poverty | 3.22 | 45.3% | 45.3% | 1.77 |
+| relative BHC poverty | 4.98 | 41.8% | 41.8% | 2.90 |
+| lowest four BHC deciles | 12.5 | 39.9% | 39.9% | 7.52 |
 
 Cliff edges (households on the schedule by own income):
 
@@ -2849,6 +2986,9 @@ Coverage of households in poverty or with high energy costs:
 | relative AHC poverty | 7.73 | 52.5% | 52.5% | 3.67 |
 | lowest four AHC deciles | 12.9 | 45.7% | 45.7% | 6.98 |
 | energy over 10% of net income | 3.99 | 12.1% | 12.1% | 3.51 |
+| absolute BHC poverty | 4.09 | 47.7% | 47.7% | 2.14 |
+| relative BHC poverty | 6.75 | 44.5% | 44.5% | 3.75 |
+| lowest four BHC deciles | 13.2 | 41.8% | 41.8% | 7.68 |
 
 Cliff edges (households on the schedule by own income):
 

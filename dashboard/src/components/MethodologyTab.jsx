@@ -273,6 +273,11 @@ export default function MethodologyTab({ data, dataset }) {
               Some patterns follow from the rule itself rather than the data: under the individual
               test, a household whose combined taxable income is below £24,000 always qualifies.
             </>,
+            <>
+              <strong>Small samples.</strong> Figures resting on an effective sample below 30 are
+              marked. Cells and groups with fewer than 10 survey records are not shown, because
+              Microcosm is built from licensed Family Resources Survey records.
+            </>,
           ]}
         />
       </Section>
