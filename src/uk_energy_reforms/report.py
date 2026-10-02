@@ -14,10 +14,12 @@ from uk_energy_reforms.reforms.targeted_energy_discount import DESCRIPTIONS, pre
 from uk_energy_reforms.simulate import Run, run
 
 
-def results_for(r: Run, distributions: bool = False) -> dict:
-    """Every measure for one run. ``distributions`` adds eligibility across income
-    measures, which depends only on eligibility, so it is computed for the run at the
-    published amounts and not repeated for the bill-share and budget variants."""
+def results_for(r: Run, distributions: bool = True) -> dict:
+    """Every measure for one run, including its payment-specific income distributions.
+
+    Eligibility is unchanged across payment bases; spending and gains are recomputed
+    from each run's household outcomes, including zero bills in bill-share scenarios.
+    """
     f = analysis.prepare(r)
     out = {
         "dataset": r.dataset,

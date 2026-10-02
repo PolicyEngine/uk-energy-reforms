@@ -19,11 +19,11 @@ from uk_energy_reforms.reforms.targeted_energy_discount import DESCRIPTIONS
 from uk_energy_reforms.sources import EXTERNAL_SOURCES
 
 PRESET_LABELS = {
-    "rf_flat": "Flat £175",
-    "rf_tiered": "Tiered £220 / £85",
+    "rf_flat": "Flat payment",
+    "rf_tiered": "Tiered payment",
     "rf_tiered_own_income": "Tiered, passported by own income",
     "rf_household_income": "Household income test",
-    "passport_only": "Passporting only",
+    "passport_only": "Benefit recipients only",
 }
 
 VARIANT_LABELS = {
@@ -209,8 +209,8 @@ def build(analysis_dir: Path) -> dict:
         y: {dataset: r["baseline"] for dataset, r in by_year[y]["rf_flat"].items()}
         for y in years
     }
-    # Eligibility across income measures, for the published amounts of each preset
-    # (eligibility does not depend on the amounts).
+    # Every scenario carries its own spending and gains across income measures.
+    # Never substitute the published payment basis for a missing variant.
     distributions = {
         y: {
             key: {

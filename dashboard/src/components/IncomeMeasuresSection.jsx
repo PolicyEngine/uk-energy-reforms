@@ -15,7 +15,7 @@ import { formatCurrency, formatMillions, formatShare } from "../lib/formatters";
 import ChartLogo from "./ChartLogo";
 import PEImpactBarChart from "./charts/PEImpactBarChart";
 import SectionHeading from "./SectionHeading";
-import { Legend, Note, SplitBar, Table, TableToggle, Toggle } from "./ui";
+import { Disclosure, Legend, SplitBar, Table, TableToggle, Toggle } from "./ui";
 
 const DECILE_METRICS = [
   {
@@ -33,21 +33,37 @@ const DECILE_METRICS = [
 ];
 
 const SEGMENTS = [
-  { key: "passported", label: "Passported by a means-tested benefit", color: series.a },
-  { key: "income_only", label: "Qualifies through the income test alone", color: series.b },
+  {
+    key: "passported",
+    label: "Passported by a means-tested benefit",
+    color: series.a,
+  },
+  {
+    key: "income_only",
+    label: "Qualifies through the income test alone",
+    color: series.b,
+  },
   { key: "not_eligible", label: "Does not qualify", color: series.neutral },
 ];
 
-export default function IncomeMeasuresSection({ data, dataset, year, preset, variant }) {
+export default function IncomeMeasuresSection({
+  data,
+  dataset,
+  year,
+  preset,
+  variant,
+  onMethodology,
+}) {
   const [measure, setMeasure] = useState("eq");
   const [basis, setBasis] = useState("bhc");
   const [decileMetric, setDecileMetric] = useState("cost_share");
 
-  const block = getDistributions(data, year, preset, dataset);
+  const block = getDistributions(data, year, preset, variant, dataset);
   if (!block) {
     return (
       <section className="section-card text-sm text-slate-500">
-        Eligibility across income measures is not available for this option and year.
+        Eligibility across income measures is not available for this option and
+        year.
       </section>
     );
   }
@@ -55,17 +71,21 @@ export default function IncomeMeasuresSection({ data, dataset, year, preset, var
   const dist = block.distributions[key];
   const cuts = dist.cut_points;
   const m = DECILE_METRICS.find((x) => x.value === decileMetric);
-  const basisLabel = BASIS_OPTIONS.find((b) => b.value === basis).label.toLowerCase();
+  const basisLabel = BASIS_OPTIONS.find(
+    (b) => b.value === basis,
+  ).label.toLowerCase();
   const measureName =
-    measure === "taxable" ? MEASURE_NAMES.taxable : `${MEASURE_NAMES[measure]} ${basisLabel}`;
+    measure === "taxable"
+      ? MEASURE_NAMES.taxable
+      : `${MEASURE_NAMES[measure]} ${basisLabel}`;
 
   return (
-    <>
+    <div className="space-y-5">
       <div className="pt-2">
         <SectionHeading
           size="lg"
-          title="Eligibility across income measures"
-          description="The income test looks at the highest taxable income of anyone in the household. These charts rank households by three wider measures of household income instead, to show which households the rules reach, and which they do not, across each distribution."
+          title="How does eligibility line up with household income?"
+          description="Compare who qualifies across different ways of measuring household income. Changing the measure changes how households are ranked; the reform rules stay the same."
         />
       </div>
 
@@ -86,37 +106,50 @@ export default function IncomeMeasuresSection({ data, dataset, year, preset, var
             />
           )}
         </div>
-        <Note eyebrow="How the measures differ">
+        <p className="text-sm leading-6 text-slate-600">
+          {measure === "eq"
+            ? "Net income after taxes and benefits, adjusted for household size."
+            : measure === "net"
+              ? "Net income after taxes and benefits, added up for everyone in the household."
+              : "Taxable income added up for everyone in the household; untaxed benefits are excluded."}{" "}
+          These deciles group households; the overview groups people.
+        </p>
+        <Disclosure title="How the income measures differ">
           <ul className="list-disc space-y-1 pl-5">
             <li>
-              <strong>Equivalised household income</strong> is household net income adjusted for
-              household size with the modified OECD scale PolicyEngine and DWP use: the first adult
-              counts 0.67 (0.58 after housing costs), each other adult and each child aged 14 or
-              over 0.33 (0.42), each younger child 0.2. It is expressed for a childless couple, so a
-              single adult on £20,000 counts as about £29,900.
+              <strong>Equivalised household income</strong> is household net
+              income adjusted for household size with the modified OECD scale
+              PolicyEngine and DWP use: the first adult counts 0.67 (0.58 after
+              housing costs), each other adult and each child aged 14 or over
+              0.33 (0.42), each younger child 0.2. It is expressed for a
+              childless couple, so a single adult on £20,000 counts as about
+              £29,900.
             </li>
             <li>
-              <strong>Household net income</strong> is the same income before that adjustment:
-              earnings, pensions and benefits after taxes, for the whole household.
+              <strong>Household net income</strong> is the same income before
+              that adjustment: earnings, pensions and benefits after taxes, for
+              the whole household.
             </li>
             <li>
-              <strong>Household taxable income</strong> adds up the taxable income of everyone in
-              the household, the income the test uses for one person. It leaves out untaxed benefits
-              such as Universal Credit, Pension Credit, Housing Benefit and Child Benefit, and has
+              <strong>Household taxable income</strong> adds up the taxable
+              income of everyone in the household, the income the test uses for
+              one person. It leaves out untaxed benefits such as Universal
+              Credit, Pension Credit, Housing Benefit and Child Benefit, and has
               no after-housing-costs version.
             </li>
             <li>
-              Deciles here hold a tenth of GB households each, ranked by income before the discount,
-              so they differ from the decile charts above, which hold a tenth of people.
+              Deciles here hold a tenth of GB households each, ranked by income
+              before the discount, so they differ from the decile charts above,
+              which hold a tenth of people.
             </li>
           </ul>
-        </Note>
-        {variant !== "published" && (
-          <p className="text-xs leading-5 text-slate-500">
-            Who qualifies does not depend on the amounts, so this section uses the option&apos;s
-            eligibility with RF&apos;s amounts for spending and gains.
-          </p>
-        )}
+        </Disclosure>
+        <button
+          className="text-link"
+          onClick={() => onMethodology("method-income-measures")}
+        >
+          Income definitions and equivalisation →
+        </button>
       </section>
 
       <section className="section-card space-y-4">
@@ -124,10 +157,12 @@ export default function IncomeMeasuresSection({ data, dataset, year, preset, var
           title="Who qualifies across the income distribution"
           description={`Each row is a tenth of GB households, ranked by ${measureName}, split by how they qualify, ${yearLabel(data, year)}.`}
         />
-        <Legend items={SEGMENTS.map((s) => ({ label: s.label, color: s.color }))} />
+        <Legend
+          items={SEGMENTS.map((s) => ({ label: s.label, color: s.color }))}
+        />
         <div className="space-y-2">
           {dist.deciles.map((d) => (
-            <div key={d.decile} className="grid grid-cols-[minmax(0,150px)_1fr] items-center gap-3">
+            <div key={d.decile} className="bar-row">
               <div className="text-xs leading-4 text-slate-600">
                 <span className="block text-sm font-semibold text-slate-800">
                   {groupLabel(d.decile, 10)}
@@ -147,12 +182,23 @@ export default function IncomeMeasuresSection({ data, dataset, year, preset, var
         </div>
         {measure === "taxable" && dist.zero_share > 0.02 && (
           <p className="text-xs leading-5 text-slate-500">
-            {formatShare(dist.zero_share)} of households have no taxable income; they share the
-            lowest decile, which therefore holds more than a tenth of households.
+            {formatShare(dist.zero_share)} of households have no taxable income;
+            they share the lowest decile, which therefore holds more than a
+            tenth of households.
           </p>
         )}
-        <div className="space-y-3 pt-2">
-          <Toggle value={decileMetric} onChange={setDecileMetric} options={DECILE_METRICS} />
+        <div className="space-y-3 border-t border-slate-200 pt-5">
+          <h3 className="font-semibold">Where does the support go?</h3>
+          <p className="text-sm text-slate-600">
+            Spending and gains use {data.meta.variants[variant].toLowerCase()}{" "}
+            in {yearLabel(data, year)}. Average gains include every household in
+            each group.
+          </p>
+          <Toggle
+            value={decileMetric}
+            onChange={setDecileMetric}
+            options={DECILE_METRICS}
+          />
           <PEImpactBarChart
             data={dist.deciles.map((d) => ({
               name: String(d.decile),
@@ -230,6 +276,6 @@ export default function IncomeMeasuresSection({ data, dataset, year, preset, var
           />
         </TableToggle>
       </section>
-    </>
+    </div>
   );
 }

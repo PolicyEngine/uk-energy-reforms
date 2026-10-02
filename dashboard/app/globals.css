@@ -52,10 +52,15 @@
     top: 0;
     z-index: 100;
     width: 100%;
-    background: color-mix(in srgb, var(--pe-color-primary-700) 94%, transparent);
+    background: color-mix(
+      in srgb,
+      var(--pe-color-primary-700) 94%,
+      transparent
+    );
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 2px 12px color-mix(in srgb, var(--pe-color-gray-900) 16%, transparent);
+    box-shadow: 0 2px 12px
+      color-mix(in srgb, var(--pe-color-gray-900) 16%, transparent);
   }
 
   .title-row h1 {
@@ -102,7 +107,8 @@
     background: var(--pe-color-bg-primary);
     border: 1px solid var(--pe-color-border-light);
     border-radius: 24px;
-    box-shadow: 0 10px 24px color-mix(in srgb, var(--pe-color-gray-900) 8%, transparent);
+    box-shadow: 0 10px 24px
+      color-mix(in srgb, var(--pe-color-gray-900) 8%, transparent);
     padding: 24px;
   }
 
@@ -114,7 +120,8 @@
     );
     border: 1px solid var(--pe-color-border-light);
     border-radius: 18px;
-    box-shadow: 0 1px 2px color-mix(in srgb, var(--pe-color-gray-900) 5%, transparent);
+    box-shadow: 0 1px 2px
+      color-mix(in srgb, var(--pe-color-gray-900) 5%, transparent);
     padding: 18px;
   }
 
@@ -130,15 +137,19 @@
 
   .selector-chip:hover {
     border-color: var(--pe-color-primary-alpha-40);
-    box-shadow: 0 1px 2px color-mix(in srgb, var(--pe-color-gray-900) 5%, transparent);
+    box-shadow: 0 1px 2px
+      color-mix(in srgb, var(--pe-color-gray-900) 5%, transparent);
   }
 
   .selector-chip.active {
     border-color: var(--pe-color-primary-alpha-50);
-    background: color-mix(in srgb, var(--pe-color-primary-50) 78%, var(--pe-color-bg-primary));
+    background: color-mix(
+      in srgb,
+      var(--pe-color-primary-50) 78%,
+      var(--pe-color-bg-primary)
+    );
     box-shadow: 0 0 0 1px var(--pe-color-primary-alpha-40);
   }
-
 
   .selector-chip.compact {
     width: auto;
@@ -271,7 +282,8 @@
 
   .data-table td {
     padding: 12px 14px;
-    border-bottom: 1px solid color-mix(in srgb, var(--pe-color-border-light) 70%, transparent);
+    border-bottom: 1px solid
+      color-mix(in srgb, var(--pe-color-border-light) 70%, transparent);
     color: var(--pe-color-gray-800);
   }
 
@@ -323,5 +335,214 @@
   .tab-button {
     padding: 12px 14px;
     font-size: 0.9rem;
+  }
+}
+
+/* A compact reading layout: the selected scenario stays above the results. */
+@layer components {
+  .app-shell {
+    background: var(--pe-color-gray-50);
+  }
+  .app-shell::before {
+    display: none;
+  }
+  .section-card {
+    border-radius: 12px;
+    box-shadow: none;
+    padding: 24px;
+  }
+  .metric-card {
+    border-radius: 10px;
+    box-shadow: none;
+    background: var(--pe-color-bg-primary);
+    padding: 18px;
+  }
+  .dashboard-tabs {
+    display: flex;
+    overflow-x: auto;
+    border-bottom: 1px solid var(--pe-color-border-light);
+  }
+  .tab-button {
+    margin-bottom: 0;
+    padding: 12px 16px;
+    font-size: 0.95rem;
+  }
+  .subtabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .subtabs .tab-button {
+    border: 1px solid transparent;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 0.875rem;
+  }
+  .subtabs .tab-button.active {
+    background: var(--pe-color-primary-50);
+    border-color: var(--pe-color-primary-200);
+  }
+  .scenario-bar {
+    margin-top: 20px;
+    padding: 18px 20px;
+    background: var(--pe-color-bg-primary);
+    border: 1px solid var(--pe-color-border-light);
+    border-radius: 10px;
+  }
+  .control-label {
+    display: block;
+    min-width: 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--pe-color-gray-600);
+  }
+  .control-label select {
+    display: block;
+    width: 100%;
+    margin-top: 6px;
+    padding: 9px 30px 9px 10px;
+    border: 1px solid var(--pe-color-gray-300);
+    border-radius: 6px;
+    background-color: var(--pe-color-bg-primary);
+    font-size: 0.875rem;
+    color: var(--pe-color-gray-900);
+  }
+  .disclosure > summary {
+    width: fit-content;
+    cursor: pointer;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--pe-color-primary-700);
+  }
+  .disclosure {
+    padding-top: 4px;
+  }
+  .text-link {
+    color: var(--pe-color-primary-700);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+  }
+  .section-nav {
+    padding: 12px 0;
+  }
+  .section-nav a {
+    display: block;
+    border-left: 2px solid var(--pe-color-border-light);
+    padding: 7px 12px;
+    color: var(--pe-color-gray-500);
+    font-size: 0.8125rem;
+  }
+  .section-nav a[aria-current] {
+    border-color: var(--pe-color-primary-600);
+    color: var(--pe-color-primary-700);
+    font-weight: 600;
+  }
+  .reading-layout {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 20px;
+  }
+  .reading-body {
+    min-width: 0;
+  }
+  .reading-body > section,
+  .reading-body > div[id] {
+    scroll-margin-top: 84px;
+  }
+  .method-step {
+    border-top: 1px solid var(--pe-color-border-light);
+    padding-top: 28px;
+  }
+  .method-number {
+    display: flex;
+    height: 30px;
+    width: 30px;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--pe-color-primary-50);
+    color: var(--pe-color-primary-700);
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+  .method-detail {
+    margin-top: 12px;
+    background: var(--pe-color-bg-primary);
+    border: 1px solid var(--pe-color-border-light);
+    border-radius: 8px;
+  }
+  .method-detail > summary {
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--pe-color-primary-700);
+  }
+  .method-detail > div {
+    padding: 0 16px 18px;
+  }
+  .bar-row {
+    display: grid;
+    grid-template-columns: minmax(0, 170px) minmax(0, 1fr);
+    align-items: center;
+    gap: 12px;
+  }
+  :is(button, a, select, input, summary, [tabindex]):focus-visible {
+    outline: 2px solid var(--pe-color-primary-600);
+    outline-offset: 3px;
+  }
+  @media (min-width: 1280px) {
+    .reading-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 160px;
+      gap: 28px;
+    }
+    .section-nav {
+      position: sticky;
+      top: 82px;
+      align-self: start;
+    }
+  }
+  @media (max-width: 640px) {
+    .section-card {
+      padding: 16px;
+      border-radius: 10px;
+    }
+    .scenario-bar {
+      padding: 14px;
+    }
+    .bar-row {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 6px;
+    }
+    .metric-card {
+      padding: 14px;
+    }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+@media (max-width: 640px) {
+  .subtabs {
+    gap: 4px;
+  }
+  .subtabs .tab-button {
+    padding: 8px;
+    font-size: 0.8125rem;
+  }
+  .dense-bar-chart .impact-bar-label {
+    display: none;
   }
 }

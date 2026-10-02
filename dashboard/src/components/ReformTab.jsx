@@ -2,15 +2,7 @@
 
 import { useState } from "react";
 import { series } from "../lib/colors";
-import {
-  DEFAULT_DATASET,
-  DATASET_SHORT,
-  PRESET_NOTES,
-  PRESET_ORDER,
-  describeSchedule,
-  getResult,
-  yearLabel,
-} from "../lib/dataHelpers";
+import { getResult } from "../lib/dataHelpers";
 import {
   formatBn,
   formatCurrency,
@@ -22,19 +14,32 @@ import {
 } from "../lib/formatters";
 import ChartLogo from "./ChartLogo";
 import IncomeMeasuresSection from "./IncomeMeasuresSection";
+import NavigationTabs from "./NavigationTabs";
+import OnThisTab from "./OnThisTab";
 import PEImpactBarChart from "./charts/PEImpactBarChart";
 import PEWinnersLosersChart from "./charts/PEWinnersLosersChart";
 import SectionHeading from "./SectionHeading";
-import { Legend, MetricCard, Note, SplitBar, Table, TableToggle, Toggle, Warning } from "./ui";
+import {
+  Legend,
+  MetricCard,
+  Disclosure,
+  SplitBar,
+  Table,
+  TableToggle,
+  Toggle,
+} from "./ui";
 
 const COVERAGE_LABELS = {
   "absolute BHC poverty": "Households in absolute poverty before housing costs",
   "relative BHC poverty": "Households in relative poverty before housing costs",
-  "lowest four BHC deciles": "Households in the four lowest income deciles before housing costs",
+  "lowest four BHC deciles":
+    "Households in the four lowest income deciles before housing costs",
   "absolute AHC poverty": "Households in absolute poverty after housing costs",
   "relative AHC poverty": "Households in relative poverty after housing costs",
-  "lowest four AHC deciles": "Households in the four lowest income deciles after housing costs",
-  "energy over 10% of net income": "Households spending over 10% of net income on energy",
+  "lowest four AHC deciles":
+    "Households in the four lowest income deciles after housing costs",
+  "energy over 10% of net income":
+    "Households spending over 10% of net income on energy",
 };
 
 // The reach bars for each housing-cost basis; the energy-cost group is the same in both.
@@ -94,106 +99,21 @@ const DECILE_METRICS = [
   },
 ];
 
-function Controls({ data, state, setState, result, published, dataset }) {
-  const { preset, variant, year } = state;
-  return (
-    <section className="section-card space-y-5">
-      <SectionHeading
-        title="Choose the option"
-        description="Each option combines an eligibility rule and a set of support amounts. RF's amounts are the report's averages; scaled to £2bn rescales them so the scheme costs £2bn; bill share takes a percentage off each household's gas and electricity bill, closer to the report's cut in unit prices."
-      />
-      <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-5">
-        {PRESET_ORDER.filter((p) => data.results[year]?.[p]).map((p) => (
-          <button
-            key={p}
-            type="button"
-            className={`selector-chip ${preset === p ? "active" : ""}`}
-            onClick={() => setState({ preset: p })}
-          >
-            <p className="text-sm font-semibold text-slate-800">{data.meta.presets[p]}</p>
-            <p className="mt-1 text-xs leading-5 text-slate-500">{PRESET_NOTES[p]}</p>
-          </button>
-        ))}
-      </div>
-      <div className="grid gap-5 md:grid-cols-2">
-        <Toggle
-          label="Support amounts"
-          value={variant}
-          onChange={(v) => setState({ variant: v })}
-          options={Object.entries(data.meta.variants).map(([value, label]) => ({
-            value,
-            label,
-          }))}
-        />
-        <Toggle
-          label="Year"
-          value={year}
-          onChange={(v) => setState({ year: v })}
-          options={data.meta.years.map((y) => ({ value: y, label: yearLabel(data, y) }))}
-        />
-      </div>
-      {result && <Note eyebrow="Schedule">{describeSchedule(result.schedule)}</Note>}
-      {year === data.meta.years[0] && (
-        <p className="text-xs leading-5 text-slate-500">
-          {yearLabel(data, year)} runs from April to March, so it covers January to March 2027, the
-          window the report proposes for this winter.
-        </p>
-      )}
-      {variant === "bill_share" && result && (
-        <BillSharePriceNote data={data} dataset={dataset} result={result} />
-      )}
-      {dataset === "efrs_1573" && variant === "bill_share" && result && published && (
-        <Warning>
-          The Enhanced FRS records no energy spend for some households, and a bill share pays them
-          nothing: recipients fall from {formatMillions(published.headline.recipients_m, 2)} to{" "}
-          {formatMillions(result.headline.recipients_m, 2)} and the average per recipient rises to{" "}
-          {formatCurrency(result.headline.average_per_recipient)}. The written analysis sets these
-          results aside; use Microcosm for the bill share.
-        </Warning>
-      )}
-    </section>
-  );
-}
-
-// Each dataset's stored price level against this winter's cap, on Ofgem's 2023
-// typical-use basis (the only basis on which the 2024-25 caps are published).
-const PRICE_LEVEL = {
-  microcosm_979: { label: "2024-25 prices", source: "ofgem_cap_fy2024_25", key: "mean" },
-  efrs_1573: {
-    label: "April–June 2026 unit rates",
-    source: "ofgem_cap_2026_apr_jun",
-    key: "at_2023_tdcv",
-  },
-};
-
-function BillSharePriceNote({ data, dataset, result }) {
-  const source = (id) => (data.external_sources ?? []).find((x) => x.id === id);
-  const level = PRICE_LEVEL[dataset];
-  const base = level && source(level.source)?.value?.[level.key];
-  const winter = source("ofgem_cap_2026_oct_dec")?.value?.at_2023_tdcv;
-  if (!base || !winter) return null;
-  const uplift = winter / base;
-  const rate = result.schedule.rates.find((r) => r > 0);
-  return (
-    <Note eyebrow="Bill share and this winter's prices">
-      The percentages are set so the average payment matches RF&apos;s amounts on this
-      dataset&apos;s bills, which are at {level.label}. Ofgem&apos;s cap for October–December 2026
-      is {formatShare(uplift - 1)} above that price level, so at this winter&apos;s prices the same
-      percentages would pay about {formatShare(uplift - 1)} more than shown here.
-      {rate
-        ? ` Matching RF's averages at those prices would take about ${(100 * (rate / uplift)).toFixed(1)}% rather than ${(100 * rate).toFixed(1)}%.`
-        : ""}
-    </Note>
-  );
-}
-
 function Headline({ result, levels }) {
   const h = result.headline;
-  const pov = result.poverty.find((p) => p.measure === "abs_pov_bhc" && p.group === "people");
-  const kids = result.poverty.find((p) => p.measure === "abs_pov_bhc" && p.group === "children");
+  const pov = result.poverty.find(
+    (p) => p.measure === "abs_pov_bhc" && p.group === "people",
+  );
+  const kids = result.poverty.find(
+    (p) => p.measure === "abs_pov_bhc" && p.group === "children",
+  );
   return (
-    <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-      <MetricCard label="Cost" value={formatBn(h.cost_bn)} note="Total support paid in the year." />
+    <div className="grid grid-cols-2 gap-3 xl:grid-cols-4">
+      <MetricCard
+        label="Cost"
+        value={formatBn(h.cost_bn)}
+        note="Total support paid in the year."
+      />
       <MetricCard
         label="Households receiving support"
         value={formatMillions(h.recipients_m, 2)}
@@ -202,12 +122,12 @@ function Headline({ result, levels }) {
       <MetricCard
         label="Average per receiving household"
         value={formatCurrency(h.average_per_recipient)}
-        note={`${formatShare(h.passported_share)} passported by a benefit; ${formatShare(h.income_only_share)} through the income test alone.`}
+        note="Total discount per recipient in the selected year."
       />
       <MetricCard
-        label="People in absolute poverty (before housing costs)"
-        value={pov ? formatSignedThousands(pov.change_k) : "n/a"}
-        note={kids ? `${formatSignedThousands(kids.change_k)} children.` : undefined}
+        label="Fewer people in poverty"
+        value={pov ? formatThousands(-pov.change_k) : "n/a"}
+        note={`Absolute poverty, before housing costs.${kids ? ` Includes ${formatThousands(-kids.change_k)} children.` : ""}`}
       />
     </div>
   );
@@ -224,8 +144,8 @@ function DecileSection({ result }) {
   return (
     <section className="section-card">
       <SectionHeading
-        title="Gains by income decile"
-        description="Average change in household net income across all households in each decile, receiving or not. Deciles rank people by equivalised household income after housing costs, from the lowest income decile (1) to the highest (10)."
+        title="Who gains across the income distribution?"
+        description="Average gains across all households in each income group, including those receiving no discount."
       />
       <div className="mb-4">
         <Toggle value={metric} onChange={setMetric} options={DECILE_METRICS} />
@@ -239,6 +159,26 @@ function DecileSection({ result }) {
         barLabelFormatter={m.format}
       />
       <ChartLogo />
+      <TableToggle>
+        <Table
+          columns={[
+            { key: "decile", header: "Income decile" },
+            { key: metric, header: m.label, format: m.format, align: "right" },
+          ]}
+          rows={result.deciles}
+        />
+      </TableToggle>
+      <Disclosure>
+        <p>
+          Deciles rank people by household income adjusted for household size,
+          after housing costs. Each group holds a tenth of people, from the
+          lowest incomes (1) to the highest (10). Average gains include
+          households that receive nothing.
+        </p>
+      </Disclosure>
+      <Disclosure title="How many people gain?" className="mt-3">
+        <WinnersSection result={result} />
+      </Disclosure>
     </section>
   );
 }
@@ -252,41 +192,47 @@ const WINNER_KEYS = {
 };
 
 function toSegments(row) {
-  return Object.fromEntries(Object.entries(WINNER_KEYS).map(([k, v]) => [k, row[v] ?? 0]));
+  return Object.fromEntries(
+    Object.entries(WINNER_KEYS).map(([k, v]) => [k, row[v] ?? 0]),
+  );
 }
 
 function WinnersSection({ result }) {
   const wl = result.winners_losers;
   const ahead = wl.all.gain_more_than_5pct + wl.all.gain_less_than_5pct;
   return (
-    <section className="section-card">
+    <div>
       <SectionHeading
-        title="Winners and losers"
-        description={`This option would increase the net income of ${formatShare(ahead)} of people in Great Britain. People are grouped into ten equally sized deciles by equivalised household income after housing costs. The analysis does not model how the scheme is paid for, so nobody loses; a change smaller than 0.1% of net income counts as no change.`}
+        title="How many people gain?"
+        description={`${formatShare(ahead)} of people gain at least 0.1% of their household net income. Smaller gains count as no change. Funding is not modelled, so there are no losses.`}
       />
       <PEWinnersLosersChart
         allData={toSegments(wl.all)}
-        data={wl.by_decile.map((d) => ({ name: String(d.decile), ...toSegments(d) }))}
+        data={wl.by_decile.map((d) => ({
+          name: String(d.decile),
+          ...toSegments(d),
+        }))}
       />
       <ChartLogo />
-    </section>
+    </div>
   );
 }
 
 function InequalitySection({ result }) {
   const q = result.inequality;
-  const signedPct = (v) => `${v > 0 ? "+" : v < 0 ? "−" : ""}${Math.abs(100 * v).toFixed(2)}%`;
+  const signedPct = (v) =>
+    `${v > 0 ? "+" : v < 0 ? "−" : ""}${Math.abs(100 * v).toFixed(2)}%`;
   const card = (label, key, format, note) => {
     const v = q[key];
     return (
       <MetricCard
         label={label}
-        value={format(v.reform)}
-        note={`${note} Baseline ${format(v.baseline)}; relative change ${signedPct(v.change_pct)}.`}
+        value={signedPct(v.change_pct)}
+        note={`Relative change: ${format(v.baseline)} → ${format(v.reform)}. ${note}`}
       />
     );
   };
-  const gini = (v) => v.toFixed(2);
+  const gini = (v) => v.toFixed(4);
   const share = (v) => `${(100 * v).toFixed(1)}%`;
   return (
     <section className="section-card space-y-4">
@@ -318,7 +264,12 @@ function InequalitySection({ result }) {
   );
 }
 
-const POVERTY_CHART_GROUPS = ["children", "working_age_adults", "pensioners", "people"];
+const POVERTY_CHART_GROUPS = [
+  "children",
+  "working_age_adults",
+  "pensioners",
+  "people",
+];
 
 const POVERTY_TYPES = [
   { value: "abs", label: "Absolute poverty" },
@@ -349,12 +300,22 @@ function PovertySection({ result }) {
   return (
     <section className="section-card space-y-4">
       <SectionHeading
-        title="Poverty"
-        description="How far the poverty rate falls for each age group, relative to its level before the discount. The discount counts as household income, as DWP counts the Warm Home Discount. Relative poverty uses 60% of the baseline median; absolute poverty uses the 2010-11 line uprated by CPI."
+        title="How does poverty change?"
+        description="Percentage reduction in each group’s poverty rate, relative to its rate before the discount."
       />
       <div className="grid gap-5 md:grid-cols-2">
-        <Toggle label="Poverty line" value={type} onChange={setType} options={POVERTY_TYPES} />
-        <Toggle label="Housing costs" value={basis} onChange={setBasis} options={HOUSING_BASES} />
+        <Toggle
+          label="Poverty line"
+          value={type}
+          onChange={setType}
+          options={POVERTY_TYPES}
+        />
+        <Toggle
+          label="Housing costs"
+          value={basis}
+          onChange={setBasis}
+          options={HOUSING_BASES}
+        />
       </div>
       <PEImpactBarChart
         data={data}
@@ -364,12 +325,28 @@ function PovertySection({ result }) {
         barLabelFormatter={(v) => `${(100 * v).toFixed(1)}%`}
       />
       <ChartLogo />
+      <Disclosure>
+        <p>
+          A fall from 20% to 19% is a 5% reduction, or 1 percentage point. The
+          discount counts as household income. Absolute poverty uses the 2010–11
+          line uprated by inflation; relative poverty uses 60% of the baseline
+          median. The table gives the rates and changes in people.
+        </p>
+      </Disclosure>
       <TableToggle>
         <Table
           minWidth={640}
           columns={[
-            { key: "measure", header: "Measure", format: (v) => POVERTY_MEASURES[v] ?? v },
-            { key: "group", header: "Group", format: (v) => POVERTY_GROUPS[v] ?? v },
+            {
+              key: "measure",
+              header: "Measure",
+              format: (v) => POVERTY_MEASURES[v] ?? v,
+            },
+            {
+              key: "group",
+              header: "Group",
+              format: (v) => POVERTY_GROUPS[v] ?? v,
+            },
             {
               key: "baseline_rate",
               header: "Baseline rate",
@@ -389,7 +366,7 @@ function PovertySection({ result }) {
               format: (v) => formatSignedThousands(v),
             },
           ]}
-          rows={result.poverty}
+          rows={rows}
         />
       </TableToggle>
     </section>
@@ -404,10 +381,15 @@ function ReachSection({ result }) {
   return (
     <section className="section-card space-y-5">
       <SectionHeading
-        title="Who the discount reaches among low-income households and those with high energy costs"
-        description="Each bar below is one group of households, such as those in poverty. The bar is split by how households in that group fare under the option: the dark teal part receives the discount because it gets a means-tested benefit, the light teal part qualifies through the income test alone, and the grey part does not qualify. The income deciles rank people by equivalised household income, as DWP does."
+        title="Which households does the reform reach?"
+        description="Eligibility among households in poverty, on low incomes or with high energy costs."
       />
-      <Toggle label="Housing costs" value={basis} onChange={setBasis} options={HOUSING_BASES} />
+      <Toggle
+        label="Housing costs"
+        value={basis}
+        onChange={setBasis}
+        options={HOUSING_BASES}
+      />
       <Legend
         items={[
           { label: "Passported by a means-tested benefit", color: series.a },
@@ -423,14 +405,30 @@ function ReachSection({ result }) {
           return (
             <div key={c.group}>
               <p className="mb-2 text-sm font-semibold text-slate-800">
-                {COVERAGE_LABELS[c.group] ?? c.group} ({formatMillions(c.households_m)}):{" "}
+                {COVERAGE_LABELS[c.group] ?? c.group} (
+                {formatMillions(c.households_m)}):{" "}
                 {formatMillions(c.missed_m, 2)} do not qualify
               </p>
               <SplitBar
                 segments={[
-                  { key: "p", label: "Passported", value: passport, color: series.a },
-                  { key: "i", label: "Income test alone", value: incomeOnly, color: series.b },
-                  { key: "n", label: "Does not qualify", value: missed, color: series.neutral },
+                  {
+                    key: "p",
+                    label: "Passported",
+                    value: passport,
+                    color: series.a,
+                  },
+                  {
+                    key: "i",
+                    label: "Income test alone",
+                    value: incomeOnly,
+                    color: series.b,
+                  },
+                  {
+                    key: "n",
+                    label: "Does not qualify",
+                    value: missed,
+                    color: series.neutral,
+                  },
                 ]}
               />
             </div>
@@ -454,8 +452,8 @@ function BreakdownSection({ result }) {
   return (
     <section className="section-card space-y-5">
       <SectionHeading
-        title="By region and household type"
-        description="Share of households eligible through a benefit or through the income test alone, then cost, gains and the households in poverty the option does not reach. In poverty: households in absolute poverty after housing costs. ESS: effective sample size; small groups rest on few survey records."
+        title="How does eligibility vary by region and household type?"
+        description="Share of households qualifying through benefits or the income test, ordered by the share qualifying through benefits."
       />
       <Toggle
         value={by}
@@ -474,11 +472,16 @@ function BreakdownSection({ result }) {
       />
       <div className="space-y-2">
         {rows.map((r) => (
-          <div key={r.group} className="grid grid-cols-[minmax(0,180px)_1fr] items-center gap-3">
+          <div key={r.group} className="bar-row">
             <span className="text-sm text-slate-700">{r.group}</span>
             <SplitBar
               segments={[
-                { key: "p", label: "Passported", value: r.passported_rate, color: series.a },
+                {
+                  key: "p",
+                  label: "Passported",
+                  value: r.passported_rate,
+                  color: series.a,
+                },
                 {
                   key: "i",
                   label: "Income test alone",
@@ -496,11 +499,22 @@ function BreakdownSection({ result }) {
           </div>
         ))}
       </div>
+      <Disclosure title="Definitions and precision">
+        <p>
+          The table also shows payments and poverty effects. “In poverty,
+          reached” uses absolute poverty after housing costs. ESS is effective
+          sample size: small values indicate that few survey records drive the
+          estimate.
+        </p>
+      </Disclosure>
       <TableToggle>
         <Table
           minWidth={1180}
           columns={[
-            { key: "group", header: by === "region" ? "Region" : "Household type" },
+            {
+              key: "group",
+              header: by === "region" ? "Region" : "Household type",
+            },
             {
               key: "households_m",
               header: "Households",
@@ -575,62 +589,136 @@ function BreakdownSection({ result }) {
   );
 }
 
-export default function ReformTab({ data, dataset }) {
-  const [state, setFullState] = useState({
-    preset: "rf_flat",
-    variant: "published",
-    year: data.meta.years[0],
-  });
-  const setState = (patch) => setFullState((s) => ({ ...s, ...patch }));
-  const result = getResult(data, state.year, state.preset, state.variant, dataset);
-  const published = getResult(data, state.year, state.preset, "published", dataset);
-  const efrs = data.results[state.year]?.rf_flat?.efrs_1573?.headline.gb_households_m;
-  const micro = data.results[state.year]?.rf_flat?.microcosm_979?.headline.gb_households_m;
+const OVERVIEW_SECTIONS = [
+  { id: "overview-headlines", label: "At a glance" },
+  { id: "overview-gains", label: "Who gains" },
+  { id: "overview-poverty", label: "Poverty and inequality" },
+  { id: "overview-reach", label: "Who qualifies" },
+  { id: "overview-groups", label: "Regions and households" },
+];
+
+export default function ReformTab({
+  data,
+  dataset,
+  scenario,
+  view,
+  onViewChange,
+  onMethodology,
+}) {
+  const [outcome, setOutcome] = useState("poverty");
+  const result = getResult(
+    data,
+    scenario.year,
+    scenario.preset,
+    scenario.variant,
+    dataset,
+  );
+  const efrs =
+    data.results[scenario.year]?.rf_flat?.efrs_1573?.headline.gb_households_m;
+  const micro =
+    data.results[scenario.year]?.rf_flat?.microcosm_979?.headline
+      .gb_households_m;
   const levels =
     dataset === "efrs_1573" && efrs && micro
       ? `; Enhanced FRS counts run ${formatShare(efrs / micro - 1)} above Microcosm's.`
       : ".";
-
   return (
-    <div className="space-y-6">
-      <Controls
-        data={data}
-        state={state}
-        setState={setState}
-        result={result}
-        published={published}
-        dataset={dataset}
+    <div className="space-y-5">
+      <NavigationTabs
+        id="impacts"
+        label="General impacts views"
+        compact
+        value={view}
+        onChange={onViewChange}
+        options={[
+          { value: "overview", label: "Overview" },
+          { value: "eligibility", label: "Eligibility across income measures" },
+        ]}
       />
-      {!result ? (
-        <p className="section-card text-sm text-slate-500">No results for this combination.</p>
-      ) : (
-        <>
-          <Headline result={result} levels={levels} />
-          <div className="pt-2">
-            <SectionHeading
-              size="lg"
-              title="Distributional impact"
-              description={`${data.meta.presets[state.preset]}, ${data.meta.variants[state.variant]}, ${yearLabel(data, state.year)}${dataset === DEFAULT_DATASET ? "" : `, ${DATASET_SHORT[dataset]}`}.`}
-            />
-          </div>
-          <DecileSection result={result} />
-          <WinnersSection result={result} />
-          <InequalitySection result={result} />
-          <PovertySection result={result} />
-          <div className="pt-2">
-            <SectionHeading size="lg" title="Reach and targeting" />
-          </div>
-          <ReachSection result={result} />
+      <div
+        hidden
+        role="tabpanel"
+        id={`impacts-panel-${view === "overview" ? "eligibility" : "overview"}`}
+        aria-labelledby={`impacts-tab-${view === "overview" ? "eligibility" : "overview"}`}
+      />
+      <div
+        role="tabpanel"
+        id={`impacts-panel-${view}`}
+        aria-labelledby={`impacts-tab-${view}`}
+        tabIndex={0}
+      >
+        {!result ? (
+          <p className="section-card">No results for this combination.</p>
+        ) : view === "eligibility" ? (
           <IncomeMeasuresSection
             data={data}
             dataset={dataset}
-            year={state.year}
-            preset={state.preset}
-            variant={state.variant}
+            {...scenario}
+            onMethodology={onMethodology}
           />
-          <BreakdownSection result={result} />
-        </>
-      )}
+        ) : (
+          <div className="space-y-6">
+            <section id="overview-headlines" className="scroll-mt-24">
+              <h2 className="mb-3 text-lg font-semibold">
+                The reform at a glance
+              </h2>
+              <Headline result={result} levels={levels} />
+              <p className="mt-3 text-xs leading-5 text-slate-500">
+                The estimate assumes full take-up of the discount. Funding and
+                behavioural changes are not modelled.{" "}
+                <button
+                  className="text-link"
+                  onClick={() => onMethodology("method-limitations")}
+                >
+                  Assumptions and limits
+                </button>
+              </p>
+            </section>
+            <div className="reading-layout">
+              <div className="reading-body space-y-6">
+                <div id="overview-gains">
+                  <DecileSection result={result} />
+                </div>
+                <div id="overview-poverty" className="space-y-3">
+                  <Toggle
+                    label="Income outcomes"
+                    value={outcome}
+                    onChange={setOutcome}
+                    options={[
+                      { value: "poverty", label: "Poverty" },
+                      { value: "inequality", label: "Inequality" },
+                    ]}
+                  />
+                  {outcome === "poverty" ? (
+                    <PovertySection result={result} />
+                  ) : (
+                    <InequalitySection result={result} />
+                  )}
+                  <button
+                    className="text-link"
+                    onClick={() => onMethodology("method-impacts")}
+                  >
+                    How income outcomes are measured
+                  </button>
+                </div>
+                <div id="overview-reach" className="space-y-3">
+                  <ReachSection result={result} />
+                  <button
+                    className="text-link"
+                    onClick={() => onViewChange("eligibility")}
+                  >
+                    Explore eligibility across income measures →
+                  </button>
+                </div>
+                <div id="overview-groups">
+                  <BreakdownSection result={result} />
+                </div>
+              </div>
+              <OnThisTab sections={OVERVIEW_SECTIONS} />
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

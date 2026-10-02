@@ -5,7 +5,9 @@ import { series } from "../lib/colors";
 export function MetricCard({ label, value, note }) {
   return (
     <div className="metric-card">
-      <p className="text-sm font-semibold leading-snug text-slate-700">{label}</p>
+      <p className="text-sm font-semibold leading-snug text-slate-700">
+        {label}
+      </p>
       <p className="mt-1 text-3xl font-bold">{value}</p>
       {note && (
         <p className="mt-2 border-t border-slate-100 pt-2 text-xs leading-5 text-slate-500">
@@ -33,6 +35,7 @@ export function Toggle({ label, options, value, onChange }) {
           <button
             key={option.value}
             type="button"
+            aria-pressed={value === option.value}
             className={`toggle-button ${value === option.value ? "active" : ""}`}
             onClick={() => onChange(option.value)}
           >
@@ -67,7 +70,8 @@ function textOn(hex) {
     const c = parseInt(hex.slice(i, i + 2), 16) / 255;
     return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
   };
-  const luminance = 0.2126 * channel(1) + 0.7152 * channel(3) + 0.0722 * channel(5);
+  const luminance =
+    0.2126 * channel(1) + 0.7152 * channel(3) + 0.0722 * channel(5);
   return luminance > 0.3 ? series.ink : "#FFFFFF";
 }
 
@@ -156,6 +160,21 @@ export function TableToggle({ label = "Show the numbers", children }) {
         <span className="hidden group-open:inline">Hide the numbers</span>
       </summary>
       <div className="mt-3">{children}</div>
+    </details>
+  );
+}
+
+export function Disclosure({
+  title = "How to read this chart",
+  children,
+  className = "",
+}) {
+  return (
+    <details className={`disclosure ${className}`}>
+      <summary>{title}</summary>
+      <div className="mt-3 space-y-3 text-sm leading-6 text-slate-600">
+        {children}
+      </div>
     </details>
   );
 }
