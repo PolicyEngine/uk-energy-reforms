@@ -3,7 +3,7 @@ import { PRESET_ORDER, getResult } from "./dataHelpers";
 export const TABS = [
   { value: "reform", label: "Economic impact" },
   { value: "household", label: "Your household" },
-  { value: "baseline", label: "Baseline and comparisons" },
+  { value: "baseline", label: "Baseline" },
   { value: "methodology", label: "Methodology" },
 ];
 
