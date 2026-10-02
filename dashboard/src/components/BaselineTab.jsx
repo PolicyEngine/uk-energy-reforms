@@ -304,6 +304,10 @@ export default function BaselineTab({ data, dataset }) {
             </div>
           </section>
 
+          <div id="baseline-rf">
+            <ReportComparison data={data} dataset={dataset} />
+          </div>
+
           <section
             id="baseline-benchmarks"
             className="section-card space-y-4 scroll-mt-24"
@@ -313,37 +317,33 @@ export default function BaselineTab({ data, dataset }) {
               description="Each row pairs a PolicyEngine figure with the nearest published figure, so you can judge how closely the model’s starting point matches the real population. Definitions differ row by row, and the notes flag each difference."
             />
             <TableToggle label="Show the comparison table">
-              <Table
-                minWidth={960}
-                columns={[
-                  { key: "quantity", header: "Quantity" },
-                  { key: "model", header: "PolicyEngine" },
-                  { key: "external", header: "Published figure" },
-                  {
-                    key: "notes",
-                    header: "Notes",
-                    format: (v) => (
-                      <span className="text-xs leading-5 text-slate-500">
-                        {v}
-                      </span>
-                    ),
-                  },
-                ]}
-                rows={comparison}
-              />
+              <ul className="benchmark-list">
+                {comparison.map((row) => (
+                  <li key={row.key} className="benchmark-row">
+                    <p className="benchmark-quantity">{row.quantity}</p>
+                    <div className="benchmark-values">
+                      <div>
+                        <p className="benchmark-label">PolicyEngine</p>
+                        <p className="benchmark-model">{row.model}</p>
+                      </div>
+                      <div>
+                        <p className="benchmark-label">Published</p>
+                        <div className="text-sm leading-6">{row.external}</div>
+                      </div>
+                    </div>
+                    <p className="benchmark-note">{row.notes}</p>
+                  </li>
+                ))}
+              </ul>
             </TableToggle>
           </section>
-
-          <div id="baseline-rf">
-            <ReportComparison data={data} dataset={dataset} />
-          </div>
         </div>
         <OnThisTab
           sections={[
             { id: "baseline-headlines", label: "At a glance" },
             { id: "baseline-bills", label: "Energy bills" },
-            { id: "baseline-benchmarks", label: "Official benchmarks" },
             { id: "baseline-rf", label: "Resolution Foundation" },
+            { id: "baseline-benchmarks", label: "Official benchmarks" },
           ]}
         />
       </div>

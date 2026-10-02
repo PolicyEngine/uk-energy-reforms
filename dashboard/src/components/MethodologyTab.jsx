@@ -166,7 +166,7 @@ function Section({ title, children }) {
         onToggle={(event) => setOpen(event.currentTarget.open)}
       >
         <summary>{step.detail}</summary>
-        <div className="max-w-[80ch] space-y-4 text-sm leading-6 text-slate-700">
+        <div className="space-y-4 text-sm leading-6 text-slate-700">
           {children}
         </div>
       </details>

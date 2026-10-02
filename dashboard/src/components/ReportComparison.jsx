@@ -16,8 +16,9 @@ function formatFigure(value, unit) {
 }
 
 const TICKS = [0, 0.25, 0.5, 0.75, 1];
-const RF_MARKER = { background: pe.ink };
-const PE_MARKER = { background: pe.chart1, border: "2px solid #FFFFFF" };
+// RF is a hollow diamond drawn above the solid PE dot, so both stay visible when they overlap.
+const RF_MARKER = { background: "transparent", border: `2px solid ${pe.ink}` };
+const PE_MARKER = { background: pe.chart1 };
 
 function Gridlines() {
   return TICKS.map((t) => (
@@ -67,18 +68,18 @@ function DotPlot({ rows }) {
                   className="absolute top-1/2 h-0.5 -translate-y-1/2 bg-slate-300"
                   style={{ left: `${100 * lo}%`, width: `${100 * (hi - lo)}%` }}
                 />
+                {row.value != null && (
+                  <span
+                    title={`PolicyEngine: ${formatShare(row.value)}`}
+                    className="absolute top-1/2 h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full"
+                    style={{ left: `${100 * row.value}%`, ...PE_MARKER }}
+                  />
+                )}
                 <span
                   title={`Resolution Foundation: ${formatShare(row.rf)}`}
                   className="absolute top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rotate-45"
                   style={{ left: `${100 * row.rf}%`, ...RF_MARKER }}
                 />
-                {row.value != null && (
-                  <span
-                    title={`PolicyEngine: ${formatShare(row.value)}`}
-                    className="absolute top-1/2 h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full ring-2 ring-white"
-                    style={{ left: `${100 * row.value}%`, ...PE_MARKER }}
-                  />
-                )}
               </div>
               <div className="flex gap-4 text-sm tabular-nums md:contents">
                 <span className="md:text-right">

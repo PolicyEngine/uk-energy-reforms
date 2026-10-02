@@ -373,6 +373,51 @@
   .subsection > div:first-child > :is(h2, h3) {
     font-size: 1.0625rem;
   }
+  .benchmark-list > li + li {
+    border-top: 1px solid var(--pe-color-border-light);
+  }
+  .benchmark-row {
+    display: grid;
+    gap: 8px 24px;
+    padding: 16px 0;
+  }
+  .benchmark-quantity {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--pe-color-gray-900);
+  }
+  .benchmark-values {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: 16px;
+  }
+  .benchmark-label {
+    margin-bottom: 2px;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--pe-color-gray-500);
+  }
+  .benchmark-model {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--pe-color-primary-700);
+    font-variant-numeric: tabular-nums;
+  }
+  .benchmark-note {
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    color: var(--pe-color-gray-500);
+  }
+  @media (min-width: 900px) {
+    .benchmark-row {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+    }
+    .benchmark-quantity {
+      grid-row: span 2;
+    }
+  }
   .legend-box {
     display: flex;
     flex-wrap: wrap;
