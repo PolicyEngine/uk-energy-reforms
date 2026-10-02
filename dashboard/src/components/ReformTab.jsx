@@ -14,7 +14,6 @@ import {
 } from "../lib/formatters";
 import ChartLogo from "./ChartLogo";
 import IncomeMeasuresSection from "./IncomeMeasuresSection";
-import NavigationTabs from "./NavigationTabs";
 import OnThisTab from "./OnThisTab";
 import PEImpactBarChart from "./charts/PEImpactBarChart";
 import PEWinnersLosersChart from "./charts/PEWinnersLosersChart";
@@ -111,21 +110,25 @@ function Headline({ result, levels }) {
     <div className="grid grid-cols-2 gap-3 xl:grid-cols-4">
       <MetricCard
         label="Cost"
+        icon="cost"
         value={formatBn(h.cost_bn)}
         note="Total support paid in the year."
       />
       <MetricCard
         label="Households receiving support"
+        icon="households"
         value={formatMillions(h.recipients_m, 2)}
         note={`${formatShare(h.recipient_share, 1)} of ${formatMillions(h.gb_households_m)} GB households${levels}`}
       />
       <MetricCard
         label="Average per receiving household"
+        icon="average"
         value={formatCurrency(h.average_per_recipient)}
         note="Total discount per recipient in the selected year."
       />
       <MetricCard
         label="Fewer people in poverty"
+        icon="poverty"
         value={pov ? formatThousands(-pov.change_k) : "n/a"}
         note={`Absolute poverty, before housing costs.${kids ? ` Includes ${formatThousands(-kids.change_k)} children.` : ""}`}
       />
@@ -145,7 +148,7 @@ function DecileSection({ result }) {
     <section className="section-card">
       <SectionHeading
         title="Who gains across the income distribution?"
-        description="Average gains across all households in each income group, including those receiving no discount."
+        description="Average gain for each tenth of people, ranked from the lowest to the highest income. Averages include households that receive nothing, so they reflect both how many qualify in each group and how much they get. Switch to see gains as a share of net income, or the share of each group receiving support."
       />
       <div className="mb-4">
         <Toggle value={metric} onChange={setMetric} options={DECILE_METRICS} />
@@ -159,26 +162,29 @@ function DecileSection({ result }) {
         barLabelFormatter={m.format}
       />
       <ChartLogo />
-      <TableToggle>
-        <Table
-          columns={[
-            { key: "decile", header: "Income decile" },
-            { key: metric, header: m.label, format: m.format, align: "right" },
-          ]}
-          rows={result.deciles}
-        />
-      </TableToggle>
-      <Disclosure>
-        <p>
-          Deciles rank people by household income adjusted for household size,
-          after housing costs. Each group holds a tenth of people, from the
-          lowest incomes (1) to the highest (10). Average gains include
-          households that receive nothing.
-        </p>
-      </Disclosure>
-      <Disclosure title="How many people gain?" className="mt-3">
-        <WinnersSection result={result} />
-      </Disclosure>
+      <div className="chart-footer">
+        <Disclosure title="Details, numbers and how many people gain">
+          <p>
+            Deciles rank people by household income adjusted for household size,
+            after housing costs. Each group holds a tenth of people, from the
+            lowest incomes (1) to the highest (10). Average gains include
+            households that receive nothing.
+          </p>
+          <Table
+            columns={[
+              { key: "decile", header: "Income decile" },
+              {
+                key: metric,
+                header: m.label,
+                format: m.format,
+                align: "right",
+              },
+            ]}
+            rows={result.deciles}
+          />
+          <WinnersSection result={result} />
+        </Disclosure>
+      </div>
     </section>
   );
 }
@@ -204,7 +210,7 @@ function WinnersSection({ result }) {
     <div>
       <SectionHeading
         title="How many people gain?"
-        description={`${formatShare(ahead)} of people gain at least 0.1% of their household net income. Smaller gains count as no change. Funding is not modelled, so there are no losses.`}
+        description={`${formatShare(ahead)} of people gain at least 0.1% of their household net income. Smaller gains count as no change. Gains are measured against household net income, so the same payment counts for more in a lower-income household. Funding is not modelled, so there are no losses.`}
       />
       <PEWinnersLosersChart
         allData={toSegments(wl.all)}
@@ -218,47 +224,94 @@ function WinnersSection({ result }) {
   );
 }
 
-function InequalitySection({ result }) {
-  const q = result.inequality;
-  const signedPct = (v) =>
-    `${v > 0 ? "+" : v < 0 ? "−" : ""}${Math.abs(100 * v).toFixed(2)}%`;
-  const card = (label, key, format, note) => {
-    const v = q[key];
-    return (
-      <MetricCard
-        label={label}
-        value={signedPct(v.change_pct)}
-        note={`Relative change: ${format(v.baseline)} → ${format(v.reform)}. ${note}`}
-      />
-    );
-  };
-  const gini = (v) => v.toFixed(4);
-  const share = (v) => `${(100 * v).toFixed(1)}%`;
+const INEQUALITY_MEASURES = [
+  { key: "gini", label: "Gini index", format: (v) => v.toFixed(4) },
+  {
+    key: "top_10_share",
+    label: "Top 10% income share",
+    format: (v) => formatShare(v, 1),
+  },
+  {
+    key: "top_1_share",
+    label: "Top 1% income share",
+    format: (v) => formatShare(v, 2),
+  },
+];
+
+function InequalitySection({ result, onMethodology }) {
+  const [basis, setBasis] = useState("bhc");
+  const measures = INEQUALITY_MEASURES.map((m) => ({
+    ...m,
+    value: result.inequality[`${m.key}_${basis}`],
+  })).filter((m) => m.value);
+  const data = measures.map(({ label, format, value }) => ({
+    name: label,
+    // Bars show the fall, so they grow from left to right like the poverty chart.
+    value: -value.change_pct,
+    hoverText: `${value.change_pct <= 0 ? "Falls" : "Rises"} by ${formatShare(Math.abs(value.change_pct), 2)}, from ${format(value.baseline)} to ${format(value.reform)}`,
+  }));
   return (
-    <section className="section-card space-y-4">
+    <section className="section-card paired-card">
       <SectionHeading
-        title="Inequality"
-        description="Measures of equivalised household net income across people in Great Britain, before and after the discount."
+        title="How does inequality change?"
+        description="Percentage fall in each measure, relative to its level before the discount. A lower Gini index or a smaller top income share means income is shared more evenly. Changes are small because the discount is small relative to total household income."
       />
-      <div className="grid gap-4 md:grid-cols-3">
-        {card(
-          "Gini index, before housing costs",
-          "gini_bhc",
-          gini,
-          "0 is perfect equality and 1 is perfect inequality.",
-        )}
-        {card(
-          "Gini index, after housing costs",
-          "gini_ahc",
-          gini,
-          "Income after rent, mortgage interest and water charges.",
-        )}
-        {card(
-          "Top 10% share of income",
-          "top_10_share_bhc",
-          share,
-          "Share of income held by the highest-income tenth, before housing costs.",
-        )}
+      <Toggle
+        label="Housing costs"
+        value={basis}
+        onChange={setBasis}
+        options={HOUSING_BASES}
+      />
+      <PEImpactBarChart
+        height={280}
+        data={data}
+        horizontal
+        yAxisLabel="Fall in the measure, relative to its baseline level"
+        yTickFormatter={(v) => `${(100 * v).toFixed(2)}%`}
+        barLabelFormatter={(v) => `${(100 * v).toFixed(2)}%`}
+      />
+      <ChartLogo />
+      <div className="chart-footer">
+        <Disclosure title="How to read this chart, with the numbers">
+          <p>
+            All measures use household net income adjusted for household size,
+            across people in Great Britain. The Gini index runs from 0 (perfect
+            equality) to 1 (perfect inequality). Income shares are the share
+            held by the highest-income tenth or hundredth of people. After
+            housing costs deducts rent, mortgage interest and water charges.
+          </p>
+          <button
+            className="text-link"
+            onClick={() => onMethodology("method-impacts")}
+          >
+            How income outcomes are measured →
+          </button>
+
+          <Table
+            columns={[
+              { key: "label", header: "Measure" },
+              {
+                key: "baseline",
+                header: "Baseline",
+                align: "right",
+                format: (_, r) => r.format(r.value.baseline),
+              },
+              {
+                key: "reform",
+                header: "With discount",
+                align: "right",
+                format: (_, r) => r.format(r.value.reform),
+              },
+              {
+                key: "change",
+                header: "Relative change",
+                align: "right",
+                format: (_, r) => formatShare(r.value.change_pct, 2),
+              },
+            ]}
+            rows={measures}
+          />
+        </Disclosure>
       </div>
     </section>
   );
@@ -281,7 +334,7 @@ const HOUSING_BASES = [
   { value: "ahc", label: "After housing costs" },
 ];
 
-function PovertySection({ result }) {
+function PovertySection({ result, onMethodology }) {
   const [type, setType] = useState("abs");
   const [basis, setBasis] = useState("bhc");
   const measure = `${type}_pov_${basis}`;
@@ -298,12 +351,12 @@ function PovertySection({ result }) {
       };
     });
   return (
-    <section className="section-card space-y-4">
+    <section className="section-card paired-card">
       <SectionHeading
         title="How does poverty change?"
-        description="Percentage reduction in each group’s poverty rate, relative to its rate before the discount."
+        description="Percentage fall in each group’s poverty rate, relative to its rate before the discount. Choose the poverty line and whether housing costs are deducted; the discount counts as household income. Hover over a bar for the rates before and after, and the change in people."
       />
-      <div className="grid gap-5 md:grid-cols-2">
+      <div className="flex flex-wrap gap-4">
         <Toggle
           label="Poverty line"
           value={type}
@@ -318,6 +371,7 @@ function PovertySection({ result }) {
         />
       </div>
       <PEImpactBarChart
+        height={280}
         data={data}
         horizontal
         yAxisLabel="Fall in the poverty rate, relative to its baseline level"
@@ -325,50 +379,57 @@ function PovertySection({ result }) {
         barLabelFormatter={(v) => `${(100 * v).toFixed(1)}%`}
       />
       <ChartLogo />
-      <Disclosure>
-        <p>
-          A fall from 20% to 19% is a 5% reduction, or 1 percentage point. The
-          discount counts as household income. Absolute poverty uses the 2010–11
-          line uprated by inflation; relative poverty uses 60% of the baseline
-          median. The table gives the rates and changes in people.
-        </p>
-      </Disclosure>
-      <TableToggle>
-        <Table
-          minWidth={640}
-          columns={[
-            {
-              key: "measure",
-              header: "Measure",
-              format: (v) => POVERTY_MEASURES[v] ?? v,
-            },
-            {
-              key: "group",
-              header: "Group",
-              format: (v) => POVERTY_GROUPS[v] ?? v,
-            },
-            {
-              key: "baseline_rate",
-              header: "Baseline rate",
-              align: "right",
-              format: (v) => formatShare(v, 1),
-            },
-            {
-              key: "change_pp",
-              header: "Change",
-              align: "right",
-              format: (v) => formatSignedPp(v),
-            },
-            {
-              key: "change_k",
-              header: "Change in people",
-              align: "right",
-              format: (v) => formatSignedThousands(v),
-            },
-          ]}
-          rows={rows}
-        />
-      </TableToggle>
+      <div className="chart-footer">
+        <Disclosure title="How to read this chart, with the numbers">
+          <p>
+            A fall from 20% to 19% is a 5% reduction, or 1 percentage point. The
+            discount counts as household income. Absolute poverty uses the
+            2010–11 line uprated by inflation; relative poverty uses 60% of the
+            baseline median. The table gives the rates and changes in people.
+          </p>
+          <button
+            className="text-link"
+            onClick={() => onMethodology("method-impacts")}
+          >
+            How income outcomes are measured →
+          </button>
+
+          <Table
+            minWidth={640}
+            columns={[
+              {
+                key: "measure",
+                header: "Measure",
+                format: (v) => POVERTY_MEASURES[v] ?? v,
+              },
+              {
+                key: "group",
+                header: "Group",
+                format: (v) => POVERTY_GROUPS[v] ?? v,
+              },
+              {
+                key: "baseline_rate",
+                header: "Baseline rate",
+                align: "right",
+                format: (v) => formatShare(v, 1),
+              },
+              {
+                key: "change_pp",
+                header: "Change",
+                align: "right",
+                format: (v) => formatSignedPp(v),
+              },
+              {
+                key: "change_k",
+                header: "Change in people",
+                align: "right",
+                format: (v) => formatSignedThousands(v),
+              },
+            ]}
+            rows={rows}
+          />
+        </Disclosure>
+      </div>
     </section>
   );
 }
@@ -382,20 +443,13 @@ function ReachSection({ result }) {
     <section className="section-card space-y-5">
       <SectionHeading
         title="Which households does the reform reach?"
-        description="Eligibility among households in poverty, on low incomes or with high energy costs."
+        description="Share of households in each target group that qualify, split by route: passported by a means-tested benefit, or through the income test alone. It shows how far the eligibility rules reach households in poverty, on low incomes or with high energy costs."
       />
       <Toggle
         label="Housing costs"
         value={basis}
         onChange={setBasis}
         options={HOUSING_BASES}
-      />
-      <Legend
-        items={[
-          { label: "Passported by a means-tested benefit", color: series.a },
-          { label: "Qualifies through the income test alone", color: series.b },
-          { label: "Does not qualify", color: series.neutral },
-        ]}
       />
       <div className="space-y-5">
         {rows.map((c) => {
@@ -413,7 +467,7 @@ function ReachSection({ result }) {
                 segments={[
                   {
                     key: "p",
-                    label: "Passported",
+                    label: "Passported by a benefit",
                     value: passport,
                     color: series.a,
                   },
@@ -435,6 +489,13 @@ function ReachSection({ result }) {
           );
         })}
       </div>
+      <Legend
+        items={[
+          { label: "Passported by a benefit", color: series.a },
+          { label: "Income test alone", color: series.b },
+          { label: "Does not qualify", color: series.neutral },
+        ]}
+      />
     </section>
   );
 }
@@ -453,7 +514,7 @@ function BreakdownSection({ result }) {
     <section className="section-card space-y-5">
       <SectionHeading
         title="How does eligibility vary by region and household type?"
-        description="Share of households qualifying through benefits or the income test, ordered by the share qualifying through benefits."
+        description="Share of households qualifying through benefits or the income test, ordered by the share qualifying through benefits. The table also shows payments and poverty effects. “In poverty, reached” uses absolute poverty after housing costs. ESS is effective sample size: small values indicate that few survey records drive the estimate."
       />
       <Toggle
         value={by}
@@ -461,13 +522,6 @@ function BreakdownSection({ result }) {
         options={[
           { value: "region", label: "Region" },
           { value: "household_type", label: "Household type" },
-        ]}
-      />
-      <Legend
-        items={[
-          { label: "Passported", color: series.a },
-          { label: "Income test alone", color: series.b },
-          { label: "Not eligible", color: series.neutral },
         ]}
       />
       <div className="space-y-2">
@@ -478,7 +532,7 @@ function BreakdownSection({ result }) {
               segments={[
                 {
                   key: "p",
-                  label: "Passported",
+                  label: "Passported by a benefit",
                   value: r.passported_rate,
                   color: series.a,
                 },
@@ -490,7 +544,7 @@ function BreakdownSection({ result }) {
                 },
                 {
                   key: "n",
-                  label: "Not eligible",
+                  label: "Does not qualify",
                   value: 1 - r.eligible_rate,
                   color: series.neutral,
                 },
@@ -499,92 +553,93 @@ function BreakdownSection({ result }) {
           </div>
         ))}
       </div>
-      <Disclosure title="Definitions and precision">
-        <p>
-          The table also shows payments and poverty effects. “In poverty,
-          reached” uses absolute poverty after housing costs. ESS is effective
-          sample size: small values indicate that few survey records drive the
-          estimate.
-        </p>
-      </Disclosure>
-      <TableToggle>
-        <Table
-          minWidth={1180}
-          columns={[
-            {
-              key: "group",
-              header: by === "region" ? "Region" : "Household type",
-            },
-            {
-              key: "households_m",
-              header: "Households",
-              align: "right",
-              format: (v) => formatMillions(v, 2),
-            },
-            {
-              key: "eligible_rate",
-              header: "Eligible",
-              align: "right",
-              format: (v) => formatShare(v),
-            },
-            {
-              key: "passported_rate",
-              header: "Passported",
-              align: "right",
-              format: (v) => formatShare(v),
-            },
-            {
-              key: "income_only_rate",
-              header: "Income test only",
-              align: "right",
-              format: (v) => formatShare(v),
-            },
-            {
-              key: "cost_share",
-              header: "Share of cost",
-              align: "right",
-              format: (v) => formatShare(v, 1),
-            },
-            {
-              key: "average_per_recipient",
-              header: "Avg per recipient",
-              align: "right",
-              format: (v) => formatCurrency(v),
-            },
-            {
-              key: "gain_pct_net_income",
-              header: "Gain, % income",
-              align: "right",
-              format: (v) => `${(100 * v).toFixed(2)}%`,
-            },
-            {
-              key: "abs_ahc_poverty_reached",
-              header: "In poverty, reached",
-              align: "right",
-              format: (v) => formatShare(v),
-            },
-            {
-              key: "abs_ahc_poverty_not_reached_k",
-              header: "In poverty, not reached",
-              align: "right",
-              format: (v) => formatThousands(v),
-            },
-            {
-              key: "people_out_of_rel_ahc_poverty_k",
-              header: "People out of rel. poverty",
-              align: "right",
-              format: (v) => formatThousands(v),
-            },
-            {
-              key: "ess",
-              header: "ESS",
-              align: "right",
-              format: (v) => Math.round(v).toLocaleString("en-GB"),
-            },
-          ]}
-          rows={rows}
-        />
-      </TableToggle>
+      <Legend
+        items={[
+          { label: "Passported by a benefit", color: series.a },
+          { label: "Income test alone", color: series.b },
+          { label: "Does not qualify", color: series.neutral },
+        ]}
+      />
+      <div className="chart-footer">
+        <TableToggle>
+          <Table
+            minWidth={1180}
+            columns={[
+              {
+                key: "group",
+                header: by === "region" ? "Region" : "Household type",
+              },
+              {
+                key: "households_m",
+                header: "Households",
+                align: "right",
+                format: (v) => formatMillions(v, 2),
+              },
+              {
+                key: "eligible_rate",
+                header: "Eligible",
+                align: "right",
+                format: (v) => formatShare(v),
+              },
+              {
+                key: "passported_rate",
+                header: "Passported",
+                align: "right",
+                format: (v) => formatShare(v),
+              },
+              {
+                key: "income_only_rate",
+                header: "Income test only",
+                align: "right",
+                format: (v) => formatShare(v),
+              },
+              {
+                key: "cost_share",
+                header: "Share of cost",
+                align: "right",
+                format: (v) => formatShare(v, 1),
+              },
+              {
+                key: "average_per_recipient",
+                header: "Avg per recipient",
+                align: "right",
+                format: (v) => formatCurrency(v),
+              },
+              {
+                key: "gain_pct_net_income",
+                header: "Gain, % income",
+                align: "right",
+                format: (v) => `${(100 * v).toFixed(2)}%`,
+              },
+              {
+                key: "abs_ahc_poverty_reached",
+                header: "In poverty, reached",
+                align: "right",
+                format: (v) => formatShare(v),
+              },
+              {
+                key: "abs_ahc_poverty_not_reached_k",
+                header: "In poverty, not reached",
+                align: "right",
+                format: (v) => formatThousands(v),
+              },
+              {
+                key: "people_out_of_rel_ahc_poverty_k",
+                header: "People out of rel. poverty",
+                align: "right",
+                format: (v) => formatThousands(v),
+              },
+              {
+                key: "ess",
+                header: "ESS",
+                align: "right",
+                format: (v) => Math.round(v).toLocaleString("en-GB"),
+              },
+            ]}
+            rows={rows}
+          />
+        </TableToggle>
+      </div>
     </section>
   );
 }
@@ -595,17 +650,10 @@ const OVERVIEW_SECTIONS = [
   { id: "overview-poverty", label: "Poverty and inequality" },
   { id: "overview-reach", label: "Who qualifies" },
   { id: "overview-groups", label: "Regions and households" },
+  { id: "overview-targeting", label: "Lower-income reach" },
 ];
 
-export default function ReformTab({
-  data,
-  dataset,
-  scenario,
-  view,
-  onViewChange,
-  onMethodology,
-}) {
-  const [outcome, setOutcome] = useState("poverty");
+export default function ReformTab({ data, dataset, scenario, onMethodology }) {
   const result = getResult(
     data,
     scenario.year,
@@ -624,54 +672,31 @@ export default function ReformTab({
       : ".";
   return (
     <div className="space-y-5">
-      <NavigationTabs
-        id="impacts"
-        label="General impacts views"
-        compact
-        value={view}
-        onChange={onViewChange}
-        options={[
-          { value: "overview", label: "Overview" },
-          { value: "eligibility", label: "Eligibility across income measures" },
-        ]}
-      />
-      <div
-        hidden
-        role="tabpanel"
-        id={`impacts-panel-${view === "overview" ? "eligibility" : "overview"}`}
-        aria-labelledby={`impacts-tab-${view === "overview" ? "eligibility" : "overview"}`}
-      />
-      <div
-        role="tabpanel"
-        id={`impacts-panel-${view}`}
-        aria-labelledby={`impacts-tab-${view}`}
-        tabIndex={0}
-      >
+      <div>
         {!result ? (
           <p className="section-card">No results for this combination.</p>
-        ) : view === "eligibility" ? (
-          <IncomeMeasuresSection
-            data={data}
-            dataset={dataset}
-            {...scenario}
-            onMethodology={onMethodology}
-          />
         ) : (
           <div className="space-y-6">
-            <section id="overview-headlines" className="scroll-mt-24">
-              <h2 className="mb-3 text-lg font-semibold">
-                The reform at a glance
-              </h2>
+            <section
+              id="overview-headlines"
+              className="section-card scroll-mt-24"
+            >
+              <SectionHeading
+                title="The reform at a glance"
+                description="Headline figures for the selected option, payment basis and year. Cost is the total discount paid; the poverty figure counts people lifted above the absolute poverty line, before housing costs."
+              />
               <Headline result={result} levels={levels} />
-              <p className="mt-3 text-xs leading-5 text-slate-500">
-                The estimate assumes full take-up of the discount. Funding and
-                behavioural changes are not modelled.{" "}
-                <button
-                  className="text-link"
-                  onClick={() => onMethodology("method-limitations")}
-                >
-                  Assumptions and limits
-                </button>
+              <p className="chart-footer text-xs leading-5 text-slate-500">
+                <span>
+                  The estimate assumes full take-up of the discount. Funding and
+                  behavioural changes are not modelled.{" "}
+                  <button
+                    className="text-link"
+                    onClick={() => onMethodology("method-limitations")}
+                  >
+                    Assumptions and limits →
+                  </button>
+                </span>
               </p>
             </section>
             <div className="reading-layout">
@@ -680,38 +705,30 @@ export default function ReformTab({
                   <DecileSection result={result} />
                 </div>
                 <div id="overview-poverty" className="space-y-3">
-                  <Toggle
-                    label="Income outcomes"
-                    value={outcome}
-                    onChange={setOutcome}
-                    options={[
-                      { value: "poverty", label: "Poverty" },
-                      { value: "inequality", label: "Inequality" },
-                    ]}
-                  />
-                  {outcome === "poverty" ? (
-                    <PovertySection result={result} />
-                  ) : (
-                    <InequalitySection result={result} />
-                  )}
-                  <button
-                    className="text-link"
-                    onClick={() => onMethodology("method-impacts")}
-                  >
-                    How income outcomes are measured
-                  </button>
+                  <div className="grid gap-6 lg:grid-cols-2">
+                    <PovertySection
+                      result={result}
+                      onMethodology={onMethodology}
+                    />
+                    <InequalitySection
+                      result={result}
+                      onMethodology={onMethodology}
+                    />
+                  </div>
                 </div>
                 <div id="overview-reach" className="space-y-3">
                   <ReachSection result={result} />
-                  <button
-                    className="text-link"
-                    onClick={() => onViewChange("eligibility")}
-                  >
-                    Explore eligibility across income measures →
-                  </button>
                 </div>
                 <div id="overview-groups">
                   <BreakdownSection result={result} />
+                </div>
+                <div id="overview-targeting" className="scroll-mt-24">
+                  <IncomeMeasuresSection
+                    data={data}
+                    dataset={dataset}
+                    {...scenario}
+                    onMethodology={onMethodology}
+                  />
                 </div>
               </div>
               <OnThisTab sections={OVERVIEW_SECTIONS} />

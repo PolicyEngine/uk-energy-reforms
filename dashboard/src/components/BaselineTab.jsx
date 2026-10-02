@@ -53,7 +53,8 @@ function sourceCell(source, text) {
 }
 
 export default function BaselineTab({ data, dataset }) {
-  const [year, setYear] = useState(data.meta.years[0]);
+  // The baseline is shown for the first scheme year only.
+  const year = data.meta.years[0];
   const [groupBy, setGroupBy] = useState("bill_by_decile");
   const b = getBaseline(data, year, dataset);
   const replication = data.replication_2024?.rf_flat?.[dataset];
@@ -193,53 +194,44 @@ export default function BaselineTab({ data, dataset }) {
     // Deciles keep their order; other groups are sorted from the highest bill down.
     .sort((x, y) => (byDecile ? 0 : y.mean_bill - x.mean_bill));
   const chartData = rows.map((r) => ({
-    name: r.group,
+    name: byDecile ? r.key : r.group,
     value: r.mean_bill,
     hoverText: `${formatCurrency(r.mean_bill)} a year on average; ${formatMillions(r.households_m, 2)} households`,
   }));
 
   return (
     <div className="space-y-6">
-      <div className="pt-2">
-        <SectionHeading
-          size="lg"
-          title="The baseline"
-          description="The households, energy bills and benefit receipt the scheme acts on, before any discount, and how the model's figures compare with official statistics and with the Resolution Foundation's own figures."
-        />
-      </div>
-
       <section
         id="baseline-headlines"
         className="section-card space-y-5 scroll-mt-24"
       >
-        <Toggle
-          label="Year"
-          value={year}
-          onChange={setYear}
-          options={data.meta.years.map((y) => ({
-            value: y,
-            label: yearLabel(data, y),
-          }))}
+        <SectionHeading
+          title="The baseline"
+          description={`The households, energy bills and benefit receipt the scheme acts on in ${yl}, before any discount. Further down, the model’s figures are checked against official statistics and against the Resolution Foundation’s own figures.`}
         />
         {b && (
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
             <MetricCard
               label="GB households"
+              icon="households"
               value={formatMillions(b.households_m, 2)}
               note={`${formatMillions(b.people_m)} people.`}
             />
             <MetricCard
               label="Average annual gas and electricity bill"
+              icon="energy"
               value={formatCurrency(b.mean_bill)}
               note={`Median ${formatCurrency(b.median_bill)}; electricity ${formatCurrency(b.mean_electricity)}, gas ${formatCurrency(b.mean_gas)}.`}
             />
             <MetricCard
               label="Passported by a benefit"
+              icon="benefit"
               value={formatShare(b.passported_share)}
               note="Receive Universal Credit, Pension Credit, Housing Benefit, income-related ESA, income-based JSA or Income Support, as modelled."
             />
             <MetricCard
               label="Highest individual income below £24,000"
+              icon="income"
               value={formatShare(b.income_test_share)}
               note="Share of households passing the income test, whether or not passported."
             />
@@ -252,7 +244,7 @@ export default function BaselineTab({ data, dataset }) {
           <section id="baseline-bills" className="section-card space-y-4">
             <SectionHeading
               title="How do energy bills vary?"
-              description="Average annual gas and electricity spend. A unit-price discount pays more to households with higher bills; fixed amounts do not."
+              description="Average annual gas and electricity spend, by the group you choose. This matters for the payment basis: a bill-share discount pays more to households with higher bills, while fixed amounts pay the same whatever the bill."
             />
             <Toggle
               value={groupBy}
@@ -261,117 +253,85 @@ export default function BaselineTab({ data, dataset }) {
             />
             <PEImpactBarChart
               data={chartData}
-              horizontal
+              horizontal={!byDecile}
+              height={byDecile ? 340 : undefined}
+              xAxisLabel={byDecile ? "Income decile (1 = lowest)" : undefined}
               yAxisLabel="Average annual gas and electricity bill"
               yTickFormatter={formatCurrency}
               barLabelFormatter={formatCurrency}
             />
             <ChartLogo />
-            <TableToggle>
+            <div className="chart-footer">
+              <TableToggle>
+                <Table
+                  minWidth={720}
+                  columns={[
+                    { key: "group", header: "Group" },
+                    {
+                      key: "households_m",
+                      header: "Households",
+                      align: "right",
+                      format: (v) => formatMillions(v, 2),
+                    },
+                    {
+                      key: "mean_bill",
+                      header: "Gas and electricity",
+                      align: "right",
+                      format: formatCurrency,
+                    },
+                    {
+                      key: "mean_electricity",
+                      header: "Electricity",
+                      align: "right",
+                      format: formatCurrency,
+                    },
+                    {
+                      key: "mean_gas",
+                      header: "Gas",
+                      align: "right",
+                      format: formatCurrency,
+                    },
+                    {
+                      key: "energy_over_10pct_share",
+                      header: "Energy over 10% of income",
+                      align: "right",
+                      format: (v) => formatShare(v),
+                    },
+                  ]}
+                  rows={rows}
+                />
+              </TableToggle>
+            </div>
+          </section>
+
+          <section
+            id="baseline-benchmarks"
+            className="section-card space-y-4 scroll-mt-24"
+          >
+            <SectionHeading
+              title="Comparison with official statistics and other organisations"
+              description="Each row pairs a PolicyEngine figure with the nearest published figure, so you can judge how closely the model’s starting point matches the real population. Definitions differ row by row, and the notes flag each difference."
+            />
+            <TableToggle label="Show the comparison table">
               <Table
-                minWidth={720}
+                minWidth={960}
                 columns={[
-                  { key: "group", header: "Group" },
+                  { key: "quantity", header: "Quantity" },
+                  { key: "model", header: "PolicyEngine" },
+                  { key: "external", header: "Published figure" },
                   {
-                    key: "households_m",
-                    header: "Households",
-                    align: "right",
-                    format: (v) => formatMillions(v, 2),
-                  },
-                  {
-                    key: "mean_bill",
-                    header: "Gas and electricity",
-                    align: "right",
-                    format: formatCurrency,
-                  },
-                  {
-                    key: "mean_electricity",
-                    header: "Electricity",
-                    align: "right",
-                    format: formatCurrency,
-                  },
-                  {
-                    key: "mean_gas",
-                    header: "Gas",
-                    align: "right",
-                    format: formatCurrency,
-                  },
-                  {
-                    key: "energy_over_10pct_share",
-                    header: "Energy over 10% of income",
-                    align: "right",
-                    format: (v) => formatShare(v),
+                    key: "notes",
+                    header: "Notes",
+                    format: (v) => (
+                      <span className="text-xs leading-5 text-slate-500">
+                        {v}
+                      </span>
+                    ),
                   },
                 ]}
-                rows={rows}
+                rows={comparison}
               />
             </TableToggle>
-          </section>
-
-          <section id="baseline-coverage" className="section-card space-y-4">
-            <SectionHeading
-              title="Data coverage"
-              description="What the data record about energy, and where they fall short."
-            />
-            {b && (
-              <Note eyebrow={short}>
-                <p>{data.meta.datasets[dataset].label}.</p>
-                <p className="mt-1">
-                  Energy spend is priced at {PRICE_BASIS[dataset]};
-                  policyengine-uk does not uprate energy spend between years, so
-                  every year keeps that price level.{" "}
-                  {formatShare(b.gas_spend_share)} of GB households have gas
-                  spend and {formatShare(b.no_electricity_spend_share, 1)} have
-                  no electricity spend recorded; under a bill share, households
-                  with no recorded spend get nothing.
-                </p>
-                <p className="mt-1">{data.meta.datasets[dataset].notes}</p>
-              </Note>
-            )}
-            <p className="text-sm leading-6 text-slate-600">
-              The data do not record prepayment meters, heating fuels off the
-              gas grid, energy efficiency ratings or whether a household can
-              afford to keep warm. The official fuel poverty measure for England
-              (
-              {fuelPoverty ? (
-                <SourceLink href={fuelPoverty.url}>
-                  {formatShare(fuelPoverty.value.share, 1)} of households in{" "}
-                  {fuelPoverty.period}
-                </SourceLink>
-              ) : (
-                "DESNZ"
-              )}
-              ) needs energy efficiency ratings, so the model cannot reproduce
-              it.
-            </p>
-          </section>
-
-          <div id="baseline-benchmarks" className="pt-2">
-            <SectionHeading
-              size="lg"
-              title="Comparison with official statistics and other organisations"
-              description="Each row pairs a PolicyEngine figure with the nearest published figure. Definitions differ row by row, and the notes flag each difference."
-            />
-          </div>
-          <section className="section-card">
-            <Table
-              minWidth={960}
-              columns={[
-                { key: "quantity", header: "Quantity" },
-                { key: "model", header: "PolicyEngine" },
-                { key: "external", header: "Published figure" },
-                {
-                  key: "notes",
-                  header: "Notes",
-                  format: (v) => (
-                    <span className="text-xs leading-5 text-slate-500">
-                      {v}
-                    </span>
-                  ),
-                },
-              ]}
-              rows={comparison}
-            />
           </section>
 
           <div id="baseline-rf">
@@ -382,12 +342,55 @@ export default function BaselineTab({ data, dataset }) {
           sections={[
             { id: "baseline-headlines", label: "At a glance" },
             { id: "baseline-bills", label: "Energy bills" },
-            { id: "baseline-coverage", label: "Data coverage" },
             { id: "baseline-benchmarks", label: "Official benchmarks" },
             { id: "baseline-rf", label: "Resolution Foundation" },
           ]}
         />
       </div>
+    </div>
+  );
+}
+
+/** What the survey data record about energy; shown in the methodology. */
+export function DataCoverage({ data, dataset }) {
+  const b = getBaseline(data, data.meta.years[0], dataset);
+  const short = DATASET_SHORT[dataset];
+  const fuelPoverty = getSource(data, "fuel_poverty_england_2025");
+  return (
+    <div className="space-y-3">
+      <p>
+        <strong>Data coverage.</strong> What the survey data record about energy
+        spending, and where they fall short. These gaps matter most for
+        bill-share payments, which depend on each household’s recorded spend.
+      </p>
+      {b && (
+        <Note eyebrow={short}>
+          <p>{data.meta.datasets[dataset].label}.</p>
+          <p className="mt-1">
+            Energy spend is priced at {PRICE_BASIS[dataset]}; policyengine-uk
+            does not uprate energy spend between years, so every year keeps that
+            price level. {formatShare(b.gas_spend_share)} of GB households have
+            gas spend and {formatShare(b.no_electricity_spend_share, 1)} have no
+            electricity spend recorded; under a bill share, households with no
+            recorded spend get nothing.
+          </p>
+          <p className="mt-1">{data.meta.datasets[dataset].notes}</p>
+        </Note>
+      )}
+      <p className="text-sm leading-6 text-slate-600">
+        The data do not record prepayment meters, heating fuels off the gas
+        grid, energy efficiency ratings or whether a household can afford to
+        keep warm. The official fuel poverty measure for England (
+        {fuelPoverty ? (
+          <SourceLink href={fuelPoverty.url}>
+            {formatShare(fuelPoverty.value.share, 1)} of households in{" "}
+            {fuelPoverty.period}
+          </SourceLink>
+        ) : (
+          "DESNZ"
+        )}
+        ) needs energy efficiency ratings, so the model cannot reproduce it.
+      </p>
     </div>
   );
 }

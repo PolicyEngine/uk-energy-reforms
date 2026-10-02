@@ -33,11 +33,11 @@ export default function OnThisTab({ sections }) {
   ));
   return (
     <nav aria-label="On this tab" className="section-nav">
-      <div className="hidden xl:block">
+      <div className="hidden min-[1680px]:block">
         <p className="mb-3 text-xs font-semibold text-slate-500">On this tab</p>
         <ol className="space-y-1">{links}</ol>
       </div>
-      <details className="disclosure xl:hidden">
+      <details className="disclosure min-[1680px]:hidden">
         <summary>On this tab</summary>
         <ol className="mt-3 flex flex-wrap gap-2">{links}</ol>
       </details>
