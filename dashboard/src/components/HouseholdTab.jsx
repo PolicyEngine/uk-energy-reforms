@@ -47,9 +47,9 @@ const VARIANT_ORDER = ["published", "budget_2bn", "bill_share"];
 
 function NumberField({ label, value, onChange, step = 1000, min = 0, prefix }) {
   return (
-    <label className="block text-sm text-slate-700">
-      <span className="mb-1 block font-medium">{label}</span>
-      <span className="flex items-center rounded-md border border-slate-300 bg-white px-3 py-1.5">
+    <label className="field">
+      <span className="field-label">{label}</span>
+      <span className="field-box">
         {prefix && <span className="mr-1 text-slate-500">{prefix}</span>}
         <input
           type="number"
@@ -162,58 +162,83 @@ export default function HouseholdTab({
 
   return (
     <div className="space-y-6">
-      <div className="pt-2">
+      <section className="section-card space-y-5">
         <SectionHeading
-          size="lg"
           title="What would your household get?"
-          description="See the payment and eligibility rules for the reform selected above. Start with the example household, or enter your own details."
+          description="See the payment and eligibility rules for the reform selected above. Start with the example household, or enter your own details below. The result shows whether the household qualifies, by which route, and its total support for the year."
         />
-      </div>
-
-      {focusResult && (
-        <section
-          aria-label="Selected scenario result"
-          className="section-card border-primary-200"
-          aria-live="polite"
-        >
-          <div className="grid gap-4 md:grid-cols-[220px_1fr]">
-            <div>
-              <p className="text-sm font-medium text-slate-600">
-                {savedState?.calculated
-                  ? "Estimated discount"
-                  : "Example household’s discount"}
-              </p>
-              <p className="mt-1 text-4xl font-bold text-primary-700">
-                {formatCurrency(focusResult.amount)}
-              </p>
-              <p className="mt-1 text-xs text-slate-500">
-                Total support · {yearLabel(data, year)}
-              </p>
-            </div>
-            <div className="space-y-2 text-sm leading-6">
-              <p className="font-semibold">
-                {data.meta.presets[preset]} · {data.meta.variants[variant]}
-              </p>
-              <p>{explain(focusResult, focusSchedule)}</p>
-              {focusResult.eligible && focusSchedule.bill_share && (
-                <p>
-                  {(100 * focusSchedule.rates[focusResult.tier]).toFixed(1)}% of
-                  the household’s {formatCurrency(household.bill)} annual gas
-                  and electricity bill.
+        {focusResult && (
+          <div
+            aria-label="Selected scenario result"
+            role="region"
+            className="household-result"
+            aria-live="polite"
+          >
+            <div className="grid gap-4 md:grid-cols-[240px_1fr]">
+              <div className="household-result-amount">
+                <p className="text-sm font-medium text-slate-600">
+                  {savedState?.calculated
+                    ? "Estimated discount"
+                    : "Example household’s discount"}
                 </p>
-              )}
-              {pending && (
-                <p className="font-semibold text-amber-700">
-                  Inputs have changed. Calculate below to update the household
-                  used for these results.
+                <p className="mt-1 text-4xl font-bold text-primary-700">
+                  {formatCurrency(focusResult.amount)}
                 </p>
-              )}
+                <p className="mt-1 text-xs text-slate-500">
+                  Total support · {yearLabel(data, year)}
+                </p>
+              </div>
+              <div className="space-y-2 text-sm leading-6">
+                <p className="font-semibold">
+                  {data.meta.presets[preset]} · {data.meta.variants[variant]}
+                </p>
+                <p>{explain(focusResult, focusSchedule)}</p>
+                {focusResult.eligible && focusSchedule.bill_share && (
+                  <p>
+                    {(100 * focusSchedule.rates[focusResult.tier]).toFixed(1)}%
+                    of the household’s {formatCurrency(household.bill)} annual
+                    gas and electricity bill.
+                  </p>
+                )}
+                {pending && (
+                  <p className="font-semibold text-amber-700">
+                    Inputs have changed. Calculate below to update the household
+                    used for these results.
+                  </p>
+                )}
+              </div>
             </div>
           </div>
-        </section>
-      )}
+        )}
+        <div className="chart-footer">
+          <Disclosure title="Compare other options">
+            <p>
+              Total support in {yearLabel(data, year)} for the household last
+              calculated. Bill-share payments use an annual bill of{" "}
+              {formatCurrency(household.bill)}; choose Bill share above to edit
+              it.
+            </p>
+            <Table
+              columns={[
+                { key: "preset", header: "Option" },
+                ...VARIANT_ORDER.map((v) => ({
+                  key: v,
+                  header: data.meta.variants[v],
+                  align: "right",
+                  format: (value) =>
+                    value === null ? "n/a" : formatCurrency(value),
+                })),
+              ]}
+              rows={rows}
+            />
+          </Disclosure>
+        </div>
+      </section>
       <section className="section-card space-y-5">
-        <SectionHeading title="Household details" />
+        <SectionHeading
+          title="Household details"
+          description="Enter where you live, each adult’s taxable income, the number of children and any benefits the household receives. Benefit receipt decides whether the household is passported; the highest adult income decides the income test. Press Calculate to update the results."
+        />
         <Disclosure title="What counts as taxable income?">
           <p>
             Enter each adult’s annual taxable income: earnings, pensions
@@ -225,19 +250,35 @@ export default function HouseholdTab({
         </Disclosure>
         <div className="grid gap-5 md:grid-cols-2">
           <div className="space-y-4">
-            <label className="block text-sm text-slate-700">
-              <span className="mb-1 block font-medium">Where you live</span>
-              <select
-                className="w-full rounded-md border border-slate-300 bg-white px-3 py-2"
-                value={draft.region}
-                onChange={(e) => edit({ region: e.target.value })}
-              >
-                {REGIONS.map(([value, label]) => (
-                  <option key={value} value={value}>
-                    {label}
-                  </option>
-                ))}
-              </select>
+            <label className="field">
+              <span className="field-label">Where you live</span>
+              <span className="option-select-box">
+                <select
+                  className="field-select"
+                  value={draft.region}
+                  onChange={(e) => edit({ region: e.target.value })}
+                >
+                  {REGIONS.map(([value, label]) => (
+                    <option key={value} value={value}>
+                      {label}
+                    </option>
+                  ))}
+                </select>
+                <svg
+                  aria-hidden
+                  viewBox="0 0 20 20"
+                  className="option-select-chevron"
+                >
+                  <path
+                    d="M5 7.5l5 5 5-5"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
             </label>
             {draft.adultIncomes.map((income, i) => (
               <div key={i} className="flex items-end gap-2">
@@ -299,27 +340,29 @@ export default function HouseholdTab({
                 onChange={(v) => edit({ olderChildren: v })}
               />
             </div>
-            <fieldset className="space-y-2 text-sm text-slate-700">
-              <legend className="mb-1 font-medium">
+            <fieldset className="text-sm text-slate-700">
+              <legend className="field-label mb-2">
                 Does anyone in the household receive…
               </legend>
-              {BENEFITS.map(([key, label]) => (
-                <label key={key} className="flex items-center gap-2">
-                  <input
-                    type="checkbox"
-                    checked={Boolean(draft.benefits[key])}
-                    onChange={(e) =>
-                      edit({
-                        benefits: {
-                          ...draft.benefits,
-                          [key]: e.target.checked,
-                        },
-                      })
-                    }
-                  />
-                  {label}
-                </label>
-              ))}
+              <div className="grid gap-2 sm:grid-cols-2">
+                {BENEFITS.map(([key, label]) => (
+                  <label key={key} className="check-chip">
+                    <input
+                      type="checkbox"
+                      checked={Boolean(draft.benefits[key])}
+                      onChange={(e) =>
+                        edit({
+                          benefits: {
+                            ...draft.benefits,
+                            [key]: e.target.checked,
+                          },
+                        })
+                      }
+                    />
+                    <span>{label}</span>
+                  </label>
+                ))}
+              </div>
             </fieldset>
             {variant === "bill_share" && (
               <div className="space-y-2">
@@ -361,9 +404,9 @@ export default function HouseholdTab({
       <section className="section-card space-y-5">
         <SectionHeading
           title="How support changes with income"
-          description={`Support under ${data.meta.presets[preset].toLowerCase()}, using ${data.meta.variants[variant].toLowerCase()}, as one adult’s annual taxable income changes.`}
+          description={`Support under ${data.meta.presets[preset].toLowerCase()}, using ${data.meta.variants[variant]}, as one adult’s annual taxable income changes. Steps mark the income thresholds where support falls or stops.`}
         />
-        <div className="grid gap-5 md:grid-cols-2">
+        <div>
           {household.adultIncomes.length > 1 && (
             <Toggle
               label="Change the income of"
@@ -388,41 +431,22 @@ export default function HouseholdTab({
             <Note eyebrow="Along the line">{describeSteps(steps)}</Note>
           </>
         )}
-        <p className="text-xs leading-5 text-slate-500">
-          Benefit receipt is held fixed. In practice means-tested benefits fall
-          as income rises, so a household passported at its current income may
-          not be at a higher one.
-        </p>
+        <div className="chart-footer">
+          <Disclosure>
+            <p>
+              Benefit receipt is held fixed. In practice means-tested benefits
+              fall as income rises, so a household passported at its current
+              income may not be at a higher one.
+            </p>
+            <button
+              className="text-link"
+              onClick={() => onMethodology("method-eligibility")}
+            >
+              How eligibility and payments are modelled →
+            </button>
+          </Disclosure>
+        </div>
       </section>
-      <section className="section-card">
-        <Disclosure title="Compare other options">
-          <p>
-            Total support in {yearLabel(data, year)} for the household last
-            calculated. Bill-share payments use an annual bill of{" "}
-            {formatCurrency(household.bill)}; choose Bill share above to edit
-            it.
-          </p>
-          <Table
-            columns={[
-              { key: "preset", header: "Option" },
-              ...VARIANT_ORDER.map((v) => ({
-                key: v,
-                header: data.meta.variants[v],
-                align: "right",
-                format: (value) =>
-                  value === null ? "n/a" : formatCurrency(value),
-              })),
-            ]}
-            rows={rows}
-          />
-        </Disclosure>
-      </section>
-      <button
-        className="text-link"
-        onClick={() => onMethodology("method-eligibility")}
-      >
-        How eligibility and payments are modelled →
-      </button>
     </div>
   );
 }

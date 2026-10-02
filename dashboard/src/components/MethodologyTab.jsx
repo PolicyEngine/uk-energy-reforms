@@ -4,6 +4,8 @@ import { createContext, useContext, useEffect, useState } from "react";
 import OnThisTab from "./OnThisTab";
 import { getResult, yearLabel } from "../lib/dataHelpers";
 import { formatCurrency, formatShare } from "../lib/formatters";
+import { DataCoverage } from "./BaselineTab";
+import { NotReproduced } from "./ReportComparison";
 import SectionHeading from "./SectionHeading";
 import { Note, SourceLink } from "./ui";
 
@@ -42,7 +44,7 @@ const STEPS = {
   "Income measures": {
     id: "method-income-measures",
     title: "Understand the income comparisons",
-    lead: "The eligibility view ranks households in five ways. Its deciles group households; the overview’s deciles group people.",
+    lead: "The lower-income reach section ranks households in five ways. Its deciles group households; the main decile chart groups people.",
     detail: "Equivalisation, income measures and deciles",
   },
   "What the model leaves out": {
@@ -84,9 +86,7 @@ function Section({ title, children }) {
         {step.number && <span className="method-number">{step.number}</span>}
         <div>
           <h2 className="text-xl font-semibold text-slate-900">{step.title}</h2>
-          <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
-            {step.lead}
-          </p>
+          <p className="mt-2 text-sm leading-6 text-slate-600">{step.lead}</p>
         </div>
       </div>
       {step.id === "method-payments" && (
@@ -112,7 +112,7 @@ function Section({ title, children }) {
         </div>
       )}
       {step.id === "method-income-measures" && (
-        <p className="mt-4 rounded-lg bg-white p-4 text-sm leading-6">
+        <p className="mt-4 rounded-lg bg-slate-50 p-4 text-sm leading-6">
           For example, before housing costs a single adult’s £20,000 net income
           becomes about £29,900 after dividing by 0.67. A childless couple’s
           scale is 1, so their £20,000 stays £20,000.
@@ -166,7 +166,7 @@ function Section({ title, children }) {
         onToggle={(event) => setOpen(event.currentTarget.open)}
       >
         <summary>{step.detail}</summary>
-        <div className="max-w-[80ch] space-y-4 text-sm leading-6 text-slate-700">
+        <div className="space-y-4 text-sm leading-6 text-slate-700">
           {children}
         </div>
       </details>
@@ -199,7 +199,7 @@ const PRICE_LEVEL = {
 };
 
 export default function MethodologyTab({ data, dataset }) {
-  const [expanded, setExpanded] = useState(false);
+  const expanded = false;
   const [target, setTarget] = useState("");
   useEffect(() => {
     function followAnchor() {
@@ -246,57 +246,42 @@ export default function MethodologyTab({ data, dataset }) {
   return (
     <MethodContext.Provider value={{ expanded, target }}>
       <div className="space-y-6">
-        <SectionHeading
-          size="lg"
-          title="How the analysis works"
-          description="Follow a household from the survey to the results. Open each step for the assumptions, definitions and sources."
-        />
-        <ol
-          aria-label="Calculation steps"
-          className="grid grid-cols-2 gap-3 sm:grid-cols-4"
-        >
-          {Object.values(STEPS)
-            .filter((s) => s.number)
-            .map((s) => (
-              <li key={s.id}>
-                <a
-                  href={`#${s.id}`}
-                  className="flex h-full items-center gap-3 rounded-lg border border-slate-200 bg-white p-3 text-sm font-medium"
-                >
-                  <span className="method-number">{s.number}</span>
-                  {
-                    [
-                      "Household data",
-                      "Eligibility rules",
-                      "Payment",
-                      "Income effects",
-                    ][s.number - 1]
-                  }
-                  <span aria-hidden className="ml-auto">
-                    {s.number < 4 ? "→" : ""}
-                  </span>
-                </a>
-              </li>
-            ))}
-        </ol>
-        <div className="flex flex-wrap items-center justify-between gap-3 text-sm">
-          <p className="text-slate-500">
-            Model: policyengine-uk {data.meta.policyengine_uk} · Results:{" "}
-            {data.meta.generated}
-          </p>
-          <button
-            type="button"
-            className="text-link"
-            onClick={() => {
-              setExpanded(!expanded);
-              setTarget("");
-            }}
+        <section className="section-card space-y-4">
+          <SectionHeading
+            title="How the analysis works"
+            description="Follow a household from the survey to the results. Open each step for the assumptions, definitions and sources."
+          />
+          <ol
+            aria-label="Calculation steps"
+            className="grid grid-cols-2 gap-3 sm:grid-cols-4"
           >
-            {expanded ? "Collapse all details" : "Expand all details"}
-          </button>
-        </div>
+            {Object.values(STEPS)
+              .filter((s) => s.number)
+              .map((s) => (
+                <li key={s.id}>
+                  <a
+                    href={`#${s.id}`}
+                    className="flex h-full items-center gap-3 rounded-lg border border-slate-200 bg-white p-3 text-sm font-medium"
+                  >
+                    <span className="method-number">{s.number}</span>
+                    {
+                      [
+                        "Household data",
+                        "Eligibility rules",
+                        "Payment",
+                        "Income effects",
+                      ][s.number - 1]
+                    }
+                    <span aria-hidden className="ml-auto">
+                      {s.number < 4 ? "→" : ""}
+                    </span>
+                  </a>
+                </li>
+              ))}
+          </ol>
+        </section>
         <div className="reading-layout">
-          <div className="reading-body space-y-7">
+          <div className="reading-body space-y-5">
             <Section title="Years and data">
               <Bullets
                 items={[
@@ -341,6 +326,7 @@ export default function MethodologyTab({ data, dataset }) {
                   Dataset versions and checksums
                 </SourceLink>
               </p>
+              <DataCoverage data={data} dataset={dataset} />
             </Section>
 
             <Section title="Who is eligible">
@@ -609,6 +595,7 @@ export default function MethodologyTab({ data, dataset }) {
                   "Behavioural responses: extra energy use when prices fall, or changes in work to stay below the income line.",
                 ]}
               />
+              <NotReproduced data={data} />
             </Section>
 
             <Section title="Reproduce the results">

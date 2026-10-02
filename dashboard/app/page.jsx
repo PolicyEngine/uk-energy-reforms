@@ -82,26 +82,64 @@ function Dashboard() {
 
   return (
     <div className="app-shell min-h-screen">
+      <header className="title-row">
+        <div className="mx-auto max-w-[1280px] px-4 py-4 md:px-8">
+          <h1>The targeted energy bill discount</h1>
+        </div>
+      </header>
       <main
         id="main-content"
         className="relative mx-auto max-w-[1280px] px-4 py-7 md:px-8 md:py-9"
       >
-        <header className="mb-5 max-w-4xl">
-          <h1 className="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">
-            Targeted energy discount
-          </h1>
-          <p className="mt-2 text-base leading-6 text-slate-600">
-            Explore the cost and household effects of the{" "}
-            <a
-              className="underline"
-              href="https://www.resolutionfoundation.org/publications/billing-me-softly/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Resolution Foundation&apos;s proposal
-            </a>{" "}
-            for energy bill support in Great Britain.
-          </p>
+        <header className="mb-5">
+          <div className="space-y-2 text-base leading-7 text-slate-700">
+            <p>
+              This dashboard estimates the cost and household effects of the
+              Resolution Foundation&apos;s proposal for a targeted energy
+              discount in Great Britain, set out in{" "}
+              <a
+                className="underline"
+                href="https://www.resolutionfoundation.org/publications/billing-me-softly/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <em>Billing me softly</em>
+              </a>{" "}
+              (August 2026). Under the proposal, a household qualifies if anyone
+              in it receives a means-tested benefit or if its highest individual
+              taxable income is below a threshold. It then receives a discount
+              on its energy bill over the winter.
+            </p>
+            <p>
+              We model five versions of the design, each paid in three ways, in
+              2026-27 and 2027-28, using the{" "}
+              <a
+                className="underline"
+                href="https://policyengine.org/uk/model"
+                target="_blank"
+                rel="noreferrer"
+              >
+                PolicyEngine UK
+              </a>{" "}
+              microsimulation model on survey data for GB households. See the
+              total cost, who gains across the income distribution, the effect
+              on poverty and inequality, and who qualifies. You can also
+              calculate what your own household would get. The{" "}
+              <button className="underline" onClick={() => methodology()}>
+                methodology
+              </button>{" "}
+              covers the data and assumptions, and the code is on{" "}
+              <a
+                className="underline"
+                href="https://github.com/PolicyEngine/uk-energy-reforms"
+                target="_blank"
+                rel="noreferrer"
+              >
+                GitHub
+              </a>
+              .
+            </p>
+          </div>
         </header>
         <NavigationTabs
           id="dashboard"
@@ -152,8 +190,6 @@ function Dashboard() {
                   data={data}
                   dataset={dataset}
                   scenario={scenario}
-                  view={view}
-                  onViewChange={(value) => navigate({ view: value })}
                   onMethodology={methodology}
                 />
               )}
@@ -177,7 +213,7 @@ function Dashboard() {
             </div>
           </>
         )}
-        <footer className="mt-10 border-t border-slate-200 pt-5 text-sm leading-6 text-slate-500">
+        <footer className="mt-12 border-t border-slate-200 pt-8 text-center text-sm leading-6 text-slate-500">
           <p>
             Estimates for Great Britain.{" "}
             <a

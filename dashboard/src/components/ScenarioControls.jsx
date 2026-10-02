@@ -8,7 +8,36 @@ import {
   yearLabel,
 } from "../lib/dataHelpers";
 import { formatCurrency, formatMillions, formatShare } from "../lib/formatters";
-import { Disclosure, Warning } from "./ui";
+import { Disclosure, Toggle, Warning } from "./ui";
+
+const VARIANT_NOTES = {
+  published:
+    "Fixed payments based on the Resolution Foundation's published averages. Total cost depends on how many households qualify.",
+  budget_2bn:
+    "The same payment pattern, adjusted to a total cost of £2bn in the selected year.",
+  bill_share:
+    "A percentage of each household's gas and electricity bill, calibrated to the published average payments.",
+};
+
+function OptionList({ heading, selected, items }) {
+  return (
+    <div>
+      <p className="eyebrow mb-2 text-slate-500">{heading}</p>
+      <ul className="space-y-2">
+        {items.map(({ value, label, note }) => (
+          <li
+            key={value}
+            className={`option-card ${value === selected ? "active" : ""}`}
+            aria-current={value === selected ? "true" : undefined}
+          >
+            <p className="font-semibold text-slate-800">{label}</p>
+            {note && <p className="mt-0.5">{note}</p>}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 export default function ScenarioControls({
   data,
@@ -22,84 +51,67 @@ export default function ScenarioControls({
   const published = getResult(data, year, preset, "published", dataset);
   return (
     <section aria-label="Selected reform" className="scenario-bar">
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)_minmax(0,0.7fr)]">
-        <label className="control-label col-span-2 sm:col-span-1">
-          Reform option
-          <select
-            value={preset}
-            onChange={(e) => onChange({ preset: e.target.value })}
-          >
-            {PRESET_ORDER.filter((p) => data.results[year]?.[p]).map((p) => (
-              <option key={p} value={p}>
-                {data.meta.presets[p]}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label className="control-label">
-          Payment basis
-          <select
-            value={variant}
-            onChange={(e) => onChange({ variant: e.target.value })}
-          >
-            {Object.entries(data.meta.variants).map(([value, label]) => (
-              <option key={value} value={value}>
-                {label}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label className="control-label">
-          Year
-          <select
-            value={year}
-            onChange={(e) => onChange({ year: e.target.value })}
-          >
-            {data.meta.years.map((y) => (
-              <option key={y} value={y}>
-                {yearLabel(data, y)}
-              </option>
-            ))}
-          </select>
-        </label>
+      <div className="grid gap-4 sm:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_minmax(0,0.7fr)]">
+        <Toggle
+          label="Reform option"
+          value={preset}
+          onChange={(value) => onChange({ preset: value })}
+          options={PRESET_ORDER.filter((p) => data.results[year]?.[p]).map(
+            (p) => ({ value: p, label: data.meta.presets[p] }),
+          )}
+        />
+        <Toggle
+          label="Payment basis"
+          value={variant}
+          onChange={(value) => onChange({ variant: value })}
+          options={Object.entries(data.meta.variants).map(([value, label]) => ({
+            value,
+            label,
+          }))}
+        />
+        <Toggle
+          label="Year"
+          value={year}
+          onChange={(value) => onChange({ year: value })}
+          options={data.meta.years.map((y) => ({
+            value: y,
+            label: yearLabel(data, y),
+          }))}
+        />
       </div>
-      <p aria-live="polite" className="mt-3 text-sm leading-6 text-slate-700">
+      <p aria-live="polite" className="scenario-summary">
         {result && describeSchedule(result.schedule)}
       </p>
       <Disclosure title="How the options differ" className="mt-2">
         <div className="grid gap-6 md:grid-cols-2">
-          <dl className="space-y-3">
-            {PRESET_ORDER.map((p) => (
-              <div key={p}>
-                <dt className="font-semibold">{data.meta.presets[p]}</dt>
-                <dd>{PRESET_NOTES[p]}</dd>
-              </div>
-            ))}
-          </dl>
-          <div className="space-y-3">
-            <p>
-              <strong>RF&apos;s amounts:</strong> fixed payments based on the
-              Resolution Foundation&apos;s published averages. Total cost
-              depends on how many households qualify.
-            </p>
-            <p>
-              <strong>Scaled to £2bn:</strong> the same payment pattern,
-              adjusted to a total cost of £2bn in the selected year.
-            </p>
-            <p>
-              <strong>Bill share:</strong> a percentage of each household&apos;s
-              gas and electricity bill, calibrated to the published average
-              payments.
-            </p>
-            <p>
-              {yearLabel(data, data.meta.years[0])} includes January to March
-              2027, the proposed winter window. Amounts are the total discount,
-              not a monthly payment.
-            </p>
-            <button type="button" onClick={onMethodology} className="text-link">
-              Read the modelling assumptions →
-            </button>
-          </div>
+          <OptionList
+            heading="Reform options"
+            selected={preset}
+            items={PRESET_ORDER.map((p) => ({
+              value: p,
+              label: data.meta.presets[p],
+              note: PRESET_NOTES[p],
+            }))}
+          />
+          <OptionList
+            heading="Payment basis"
+            selected={variant}
+            items={Object.entries(data.meta.variants).map(([v, label]) => ({
+              value: v,
+              label,
+              note: VARIANT_NOTES[v],
+            }))}
+          />
+        </div>
+        <div className="options-footer">
+          <p>
+            {yearLabel(data, data.meta.years[0])} includes January to March
+            2027, the proposed winter window. Amounts are the total discount,
+            not a monthly payment.
+          </p>
+          <button type="button" onClick={onMethodology} className="text-link">
+            Read the modelling assumptions →
+          </button>
         </div>
       </Disclosure>
       {variant === "bill_share" && result && (
