@@ -1,7 +1,7 @@
 import { PRESET_ORDER, getResult } from "./dataHelpers";
 
 export const TABS = [
-  { value: "reform", label: "General impacts" },
+  { value: "reform", label: "Economic impact" },
   { value: "household", label: "Your household" },
   { value: "baseline", label: "Baseline and comparisons" },
   { value: "methodology", label: "Methodology" },
