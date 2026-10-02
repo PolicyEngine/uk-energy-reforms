@@ -16,8 +16,9 @@ function formatFigure(value, unit) {
 }
 
 const TICKS = [0, 0.25, 0.5, 0.75, 1];
-const RF_MARKER = { background: pe.ink };
-const PE_MARKER = { background: pe.chart1, border: "2px solid #FFFFFF" };
+// RF is a hollow diamond drawn above the solid PE dot, so both stay visible when they overlap.
+const RF_MARKER = { background: "transparent", border: `2px solid ${pe.ink}` };
+const PE_MARKER = { background: pe.chart1 };
 
 function Gridlines() {
   return TICKS.map((t) => (
@@ -32,10 +33,76 @@ function Gridlines() {
 
 /** Dot plot of shares on a 0–100% axis, with the Resolution Foundation beside PolicyEngine. */
 function DotPlot({ rows }) {
-  const labelCol = "md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]";
+  const cols = "md:grid-cols-[minmax(0,2.2fr)_minmax(0,2.4fr)_64px_64px_64px]";
   return (
     <div className="space-y-3">
-      <div className="flex flex-wrap gap-5 text-xs text-slate-600">
+      <div className={`hidden gap-4 border-b border-slate-200 pb-2 text-xs font-semibold text-slate-500 md:grid ${cols}`}>
+        <span>Figure</span>
+        <span className="relative h-4">
+          {TICKS.map((t) => (
+            <span
+              key={t}
+              className={`absolute ${t === 0 ? "" : t === 1 ? "-translate-x-full" : "-translate-x-1/2"}`}
+              style={{ left: `${100 * t}%` }}
+            >
+              {formatShare(t)}
+            </span>
+          ))}
+        </span>
+        <span className="text-right">RF</span>
+        <span className="text-right">PE</span>
+        <span className="text-right">Gap</span>
+      </div>
+      <div className="divide-y divide-slate-100">
+        {rows.map((row) => {
+          const gap = row.value != null ? Math.round(100 * (row.value - row.rf)) : null;
+          const lo = Math.min(row.rf, row.value ?? row.rf);
+          const hi = Math.max(row.rf, row.value ?? row.rf);
+          return (
+            <div key={row.label} className={`grid items-center gap-2 py-2.5 md:gap-4 ${cols}`}>
+              <div className="text-sm leading-5 text-slate-800">{row.label}</div>
+              <div className="relative h-6">
+                <Gridlines />
+                <span
+                  aria-hidden
+                  className="absolute top-1/2 h-0.5 -translate-y-1/2 bg-slate-300"
+                  style={{ left: `${100 * lo}%`, width: `${100 * (hi - lo)}%` }}
+                />
+                {row.value != null && (
+                  <span
+                    title={`PolicyEngine: ${formatShare(row.value)}`}
+                    className="absolute top-1/2 h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full"
+                    style={{ left: `${100 * row.value}%`, ...PE_MARKER }}
+                  />
+                )}
+                <span
+                  title={`Resolution Foundation: ${formatShare(row.rf)}`}
+                  className="absolute top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rotate-45"
+                  style={{ left: `${100 * row.rf}%`, ...RF_MARKER }}
+                />
+              </div>
+              <div className="flex gap-4 text-sm tabular-nums md:contents">
+                <span className="md:text-right">
+                  <span className="text-slate-500 md:hidden">RF </span>
+                  {formatShare(row.rf)}
+                </span>
+                <span className="md:text-right">
+                  <span className="text-slate-500 md:hidden">PE </span>
+                  {row.value != null ? formatShare(row.value) : "n/a"}
+                </span>
+                <span
+                  className={`font-semibold md:text-right ${
+                    gap == null || Math.abs(gap) < 5 ? "text-slate-500" : "text-amber-700"
+                  }`}
+                >
+                  {gap == null ? "" : `${gap > 0 ? "+" : gap < 0 ? "−" : ""}${Math.abs(gap)}pp`}
+                </span>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      <div className="legend-box legend-plain">
         <span className="flex items-center gap-1.5">
           <span aria-hidden className="inline-block h-2.5 w-2.5 rotate-45" style={RF_MARKER} />
           Resolution Foundation
@@ -45,53 +112,10 @@ function DotPlot({ rows }) {
           PolicyEngine
         </span>
       </div>
-      <div className="space-y-1">
-        {rows.map((row) => (
-          <div key={row.label} className={`grid gap-1 md:items-center md:gap-4 ${labelCol}`}>
-            <div className="text-sm text-slate-800">{row.label}</div>
-            <div>
-              <div className="relative h-9">
-                <Gridlines />
-                <span
-                  title={`Resolution Foundation: ${formatShare(row.rf)}`}
-                  className="absolute top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rotate-45"
-                  style={{ left: `${100 * row.rf}%`, ...RF_MARKER }}
-                />
-                {row.value != null && (
-                  <span
-                    title={`PolicyEngine: ${formatShare(row.value)}`}
-                    className="absolute top-1/2 h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full"
-                    style={{ left: `${100 * row.value}%`, ...PE_MARKER }}
-                  />
-                )}
-              </div>
-              <div className="text-xs text-slate-500">
-                Resolution Foundation {formatShare(row.rf)} · PolicyEngine{" "}
-                {row.value != null ? formatShare(row.value) : "n/a"}
-              </div>
-            </div>
-          </div>
-        ))}
-        <div className={`grid gap-1 md:gap-4 ${labelCol}`}>
-          <div className="hidden md:block" />
-          <div>
-            <div className="relative h-5">
-              {TICKS.map((t) => (
-                <span
-                  key={t}
-                  className="absolute -translate-x-1/2 text-xs text-slate-500"
-                  style={{ left: `${100 * t}%` }}
-                >
-                  {formatShare(t)}
-                </span>
-              ))}
-            </div>
-            <p className="mt-1 text-center text-xs text-slate-500">
-              Share of the group each row names, 2024-25
-            </p>
-          </div>
-        </div>
-      </div>
+      <p className="text-xs leading-5 text-slate-500">
+        Each row is a share of the group it names, 2024-25. Gap is PolicyEngine minus the
+        Resolution Foundation in percentage points; gaps of 5 points or more are highlighted.
+      </p>
     </div>
   );
 }
@@ -115,10 +139,8 @@ export default function ReportComparison({ data, dataset }) {
   const extra = rf.extra?.[dataset]?.["2024"];
   const short = DATASET_SHORT[dataset];
   return (
-    <>
-      <div className="pt-2">
+    <section className="section-card space-y-4">
         <SectionHeading
-          size="lg"
           title="Comparison with the Resolution Foundation's figures"
           description={
             <>
@@ -132,13 +154,13 @@ export default function ReportComparison({ data, dataset }) {
             </>
           }
         />
-      </div>
-      <section className="section-card space-y-4">
+      <div className="subsection space-y-4">
         <SectionHeading
           title="Shares of households, 2024-25"
           description="Each row is one share the report publishes, on a 0–100% scale. Shares count the income test alone; passporting is shown in its own rows."
         />
         <DotPlot rows={dotRows} />
+        <div className="chart-footer">
         <TableToggle label="Show every figure the report publishes">
           <Table
             minWidth={760}
@@ -168,17 +190,28 @@ export default function ReportComparison({ data, dataset }) {
             )}
           </ul>
         </TableToggle>
-      </section>
-      <section className="section-card">
-        <SectionHeading title="Figures this analysis does not reproduce" />
-        <ul className="list-disc space-y-1 pl-5 text-sm leading-6 text-slate-600">
-          {rf.not_modelled.map((n) => (
-            <li key={n.rf_statement}>
-              {n.rf_statement} (p. {n.page}). {n.reason}
-            </li>
-          ))}
-        </ul>
-      </section>
-    </>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/** Report statements the microdata cannot test; shown in the methodology. */
+export function NotReproduced({ data }) {
+  return (
+    <div className="space-y-2">
+      <p>
+        <strong>Figures this analysis does not reproduce.</strong> Statements in the Resolution
+        Foundation&apos;s report that the survey data cannot test, and the proxy used instead where
+        there is one.
+      </p>
+      <ul className="list-disc space-y-1 pl-5">
+        {data.rf_comparison.not_modelled.map((n) => (
+          <li key={n.rf_statement}>
+            {n.rf_statement} (p. {n.page}). {n.reason}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

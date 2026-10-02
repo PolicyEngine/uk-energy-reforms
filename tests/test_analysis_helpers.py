@@ -103,7 +103,7 @@ def test_no_cliffs_without_an_income_test():
     assert analysis.cliff_thresholds(schedule) == []
 
 
-def test_dead_zone_width_uses_the_top_earners_marginal_rate():
+def test_offset_width_uses_the_top_earners_marginal_rate():
     """£175 lost: a pensioner top earner (basic rate, no NI) needs £175 / 0.80 = £218.75
     more gross income; a working-age one (basic rate + 8% NI) £175 / 0.72 = £243.06.
     Under the household-income test the width is in equivalised income."""
@@ -114,10 +114,10 @@ def test_dead_zone_width_uses_the_top_earners_marginal_rate():
         }
     )
     drop = np.array([175.0, 175.0, 175.0])
-    widths = analysis.dead_zone_width(frame, drop, {"household_equivalised": False})
+    widths = analysis.offset_width(frame, drop, {"household_equivalised": False})
     assert widths[0] == pytest.approx(218.75)
     assert widths[1] == pytest.approx(175 / 0.72)
-    household = analysis.dead_zone_width(frame, drop, {"household_equivalised": True})
+    household = analysis.offset_width(frame, drop, {"household_equivalised": True})
     assert household[2] == pytest.approx(175 / 0.72 / 1.4)
 
 
@@ -155,3 +155,153 @@ def test_winner_bands():
         "no_change",
         "gain_more_than_5pct",
     ]
+
+
+def test_household_incomes():
+    """Taxable income summed over members, members with income, and the second-highest
+    member's income, including a household with no income and a negative income."""
+    from uk_energy_reforms.simulate import household_incomes
+
+    person = pd.DataFrame(
+        {
+            "household_id": [1, 1, 1, 2, 3, 3],
+            "total_income": [20_000.0, 15_000.0, 0.0, 0.0, 30_000.0, -500.0],
+        }
+    )
+    out = household_incomes(person)
+    assert out.taxable_income.to_dict() == {1: 35_000, 2: 0, 3: 29_500}
+    assert out.n_incomes.to_dict() == {1: 2, 2: 0, 3: 1}
+    assert out.second_income.to_dict() == {1: 15_000, 2: 0, 3: -500}
+
+
+def test_quantile_groups_keep_ties_together():
+    values = [0, 0, 0, 5, 6, 7, 8, 9, 10, 11]
+    groups = analysis._quantile_groups(values, np.ones(10), 5)
+    assert list(groups) == [1, 1, 1, 2, 3, 3, 4, 4, 5, 5]
+    # Weighted: the first household holds half the weight, so the second starts the
+    # upper half.
+    assert list(analysis._quantile_groups([1, 2, 3], [2.0, 1.0, 1.0], 2)) == [1, 2, 2]
+
+
+def distribution_frame(records: int = analysis.MIN_RECORDS):
+    """Ten households, one per income step, with two eligibility routes. Each household
+    is split into ``records`` survey records of equal weight, so every group clears the
+    minimum record count unless the test asks for fewer."""
+    n = 10
+    income = np.arange(1, n + 1) * 10_000.0
+    passported = np.array([1, 1, 0, 0, 0, 0, 0, 0, 0, 0], bool)
+    income_only = np.array([0, 0, 1, 0, 0, 0, 1, 0, 0, 0], bool)
+    eligible = passported | income_only
+    discount = np.where(eligible, 175.0, 0.0)
+    frame = pd.DataFrame(
+        {
+            "weight": np.ones(n),
+            "n_people": np.full(n, 2),
+            "n_children": np.zeros(n),
+            "eligible": eligible,
+            "passported": passported,
+            "income_only": income_only,
+            "discount": discount,
+            "gain": discount,
+            "rel_pov_bhc_base": np.arange(n) < 2,
+            "rel_pov_ahc_base": np.arange(n) < 3,
+            "eq_bhc_base": income,
+            "eq_ahc_base": income,
+            "net_bhc_base": income,
+            "net_ahc_base": income,
+            "taxable_income": income,
+            "highest_income": income / 2,
+            "second_income": np.where(np.arange(n) == 6, 20_000.0, 0.0),
+            "n_incomes": np.where(np.arange(n) == 6, 2, 1),
+            "household_type": ["Couple, no children"] * n,
+            # Every household has two people, so deciles of people match the steps.
+            "decile_bhc": np.arange(1, n + 1),
+            "decile_ahc": np.arange(1, n + 1),
+        }
+    )
+    frame = frame.loc[frame.index.repeat(records)].reset_index(drop=True)
+    frame["weight"] = 1 / records
+    return frame
+
+
+def test_income_distributions_shares_and_groups():
+    frame = distribution_frame()
+    schedule = {
+        "income_test": True,
+        "household_equivalised": False,
+        "thresholds": [0.0, 18_000.0, 24_000.0],
+    }
+    out = analysis.income_distributions(Run("test", 2026, {}, frame, schedule), frame)
+    for measure in out["distributions"].values():
+        rows = measure["deciles"]
+        for row in rows:
+            total = row["passported"] + row["income_only"] + row["not_eligible"]
+            assert total == pytest.approx(1)
+        assert sum(r["cost_share"] for r in rows) == pytest.approx(1)
+    taxable = out["distributions"]["taxable"]
+    # Deciles 1-3 hold households 1-3: the third is not passported but qualifies
+    # through the income test, so nobody in them is left out.
+    assert taxable["low_not_eligible"]["households_m"] == 0
+    # Deciles 6-10: household 7 qualifies through the income test alone.
+    top = taxable["top_income_only"]
+    assert top["households_m"] == pytest.approx(1e-6)
+    assert top["share_of_base"] == pytest.approx(0.5)
+    assert top["two_incomes_over_pa"] == pytest.approx(1)
+    assert top["taxable_at_or_above_line"] == pytest.approx(1)
+    assert top["cost_share"] == pytest.approx(175 / (4 * 175))
+    # Passported households are in deciles 1 and 2, so none is in the top half.
+    assert taxable["top_passported"]["households_m"] == 0
+    cells = out["crosstabs"]["eq_ahc|taxable"]["cells"]
+    assert sum(c["household_share"] or 0 for c in cells) == pytest.approx(1)
+    assert not any(c["suppressed"] for c in cells)
+    # Deciles of people: household 3 qualifies, so nobody in deciles 1-3 is left out.
+    check = out["person_deciles"]["eq_bhc"]
+    assert check["households_m"] == 0
+    assert check["people_share"] == 0
+
+
+def test_groups_on_too_few_records_are_blanked():
+    """A cell or group with fewer than MIN_RECORDS records keeps its position and
+    record count but none of its figures."""
+    frame = distribution_frame(records=analysis.MIN_RECORDS - 1)
+    # Three of household 1's nine records move to the top of the taxable ranking.
+    frame.loc[:2, "taxable_income"] = 1e6
+    schedule = {
+        "income_test": True,
+        "household_equivalised": False,
+        "thresholds": [0.0, 18_000.0, 24_000.0],
+    }
+    out = analysis.income_distributions(Run("test", 2026, {}, frame, schedule), frame)
+    cells = {
+        (c["row"], c["col"]): c for c in out["crosstabs"]["eq_ahc|taxable"]["cells"]
+    }
+    corner = cells[(1, 5)]
+    assert corner["suppressed"] and corner["sample_n"] == 3
+    assert corner["households_m"] is None and corner["eligible"] is None
+    # Households 1 and 2 have 15 records left in the first taxable quintile: shown.
+    assert not cells[(1, 1)]["suppressed"] and cells[(1, 1)]["sample_n"] == 15
+    top = out["distributions"]["taxable"]["top_income_only"]
+    assert top["suppressed"] and top["sample_n"] == 9
+    assert top["households_m"] is None and top["cost_share"] is None
+
+
+def test_household_income_test_has_no_individual_line_share():
+    frame = distribution_frame()
+    schedule = {
+        "income_test": True,
+        "household_equivalised": True,
+        "thresholds": [0.0, 30_000.0, 30_000.0],
+    }
+    out = analysis.income_distributions(Run("test", 2026, {}, frame, schedule), frame)
+    assert (
+        out["distributions"]["taxable"]["top_income_only"]["taxable_at_or_above_line"]
+        is None
+    )
+
+
+def test_round_to_significant_figures():
+    from uk_energy_reforms.dashboard_data import _round
+
+    assert _round(
+        {"a": 0.123456, "b": 123_456.7, "c": float("nan"), "d": 3, "e": [0.0]}
+    ) == {"a": 0.1235, "b": 123_500.0, "c": None, "d": 3, "e": [0.0]}

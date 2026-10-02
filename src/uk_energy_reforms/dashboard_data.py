@@ -8,6 +8,7 @@ time. Only aggregate estimates leave this module; no microdata.
 from __future__ import annotations
 
 import json
+import math
 from dataclasses import asdict
 from datetime import UTC, datetime
 from importlib.metadata import version
@@ -18,11 +19,11 @@ from uk_energy_reforms.reforms.targeted_energy_discount import DESCRIPTIONS
 from uk_energy_reforms.sources import EXTERNAL_SOURCES
 
 PRESET_LABELS = {
-    "rf_flat": "Flat £175",
-    "rf_tiered": "Tiered £220 / £85",
+    "rf_flat": "Flat payment",
+    "rf_tiered": "Tiered payment",
     "rf_tiered_own_income": "Tiered, passported by own income",
     "rf_household_income": "Household income test",
-    "passport_only": "Passporting only",
+    "passport_only": "Benefit recipients only",
 }
 
 VARIANT_LABELS = {
@@ -58,16 +59,64 @@ BREAKDOWN_KEYS = [
     "gain_pct_net_income",
     "mean_bill",
     "abs_ahc_poverty_rate",
-    "abs_ahc_poor_covered",
-    "abs_ahc_poor_missed_k",
-    "rel_ahc_poor_missed_k",
-    "bottom4_missed_k",
+    "abs_ahc_poverty_reached",
+    "abs_ahc_poverty_not_reached_k",
+    "rel_ahc_poverty_not_reached_k",
+    "bottom4_not_reached_k",
     "people_out_of_rel_ahc_poverty_k",
     "people_out_of_abs_ahc_poverty_k",
-    "just_above_top_threshold_k",
-    "just_above_bottom4_k",
-    "dead_zone_k",
 ]
+
+
+# Eligibility across income measures (analysis.income_distributions): the decile keys the
+# dashboard reads. Record counts stay out; effective sample sizes stay in. The
+# cross-tabulations and the divergence groups stay in the results and receipts only.
+DECILE_KEYS = [
+    "decile",
+    "households_m",
+    "people_m",
+    "ess",
+    "passported",
+    "income_only",
+    "not_eligible",
+    "average_gain",
+    "cost_share",
+]
+
+
+def _round(value, sig: int = 4):
+    """Round floats to ``sig`` significant figures (NaN to None), leaving ints alone.
+    Used for the income-measure block only: schedules keep full precision."""
+    if isinstance(value, dict):
+        return {k: _round(v, sig) for k, v in value.items()}
+    if isinstance(value, list):
+        return [_round(v, sig) for v in value]
+    if isinstance(value, float):
+        if math.isnan(value):
+            return None
+        if value == 0:
+            return 0.0
+        return round(value, sig - 1 - math.floor(math.log10(abs(value))))
+    return value
+
+
+def _distributions(d: dict) -> dict:
+    return _round(
+        {
+            "gb_households_m": d["gb_households_m"],
+            "distributions": {
+                key: {
+                    "cut_points": m["cut_points"],
+                    "negative_share": m["negative_share"],
+                    "zero_share": m["zero_share"],
+                    "deciles": [
+                        {k: row[k] for k in DECILE_KEYS} for row in m["deciles"]
+                    ],
+                }
+                for key, m in d["distributions"].items()
+            },
+        }
+    )
 
 
 def _split(key: str) -> tuple[str, str]:
@@ -98,7 +147,6 @@ def _result(r: dict) -> dict:
             }
             for c in r["coverage"]
         ],
-        "cliffs": r["cliffs"],
         "inequality": r["inequality"],
         "winners_losers": r["winners_losers"],
         "by_region": [
@@ -161,6 +209,19 @@ def build(analysis_dir: Path) -> dict:
         y: {dataset: r["baseline"] for dataset, r in by_year[y]["rf_flat"].items()}
         for y in years
     }
+    # Every scenario carries its own spending and gains across income measures.
+    # Never substitute the published payment basis for a missing variant.
+    distributions = {
+        y: {
+            key: {
+                dataset: _distributions(r["income_distributions"])
+                for dataset, r in by_dataset.items()
+            }
+            for key, by_dataset in by_year[y].items()
+            if all("income_distributions" in r for r in by_dataset.values())
+        }
+        for y in years
+    }
     datasets = sorted(
         {d for by_dataset in by_year[years[0]].values() for d in by_dataset}
     )
@@ -193,6 +254,7 @@ def build(analysis_dir: Path) -> dict:
         "scenarios": scenarios,
         "results": results,
         "baseline": baseline,
+        "distributions": distributions,
         "replication_2024": {
             key: {dataset: _result(r) for dataset, r in by_dataset.items()}
             for key, by_dataset in replication.items()

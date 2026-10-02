@@ -59,3 +59,51 @@ export function targetedEnergyDiscount(household, schedule, scale) {
     equivalisationFactor: factor,
   };
 }
+
+/**
+ * The discount as one adult's taxable income runs from 0 to maxIncome, everything else
+ * held fixed (including benefit receipt). Points every `step` pounds, plus the exact
+ * incomes where the tested income reaches a schedule line, so steps sit where they occur.
+ */
+export function supportCurve(household, schedule, scale, adultIndex, maxIncome, step = 100) {
+  const others = household.adultIncomes.filter((_, i) => i !== adultIndex);
+  const factor = equivalisationFactor(household, scale);
+  const lines = (schedule.bill_share ? schedule.rate_thresholds : schedule.thresholds).filter(
+    (t) => t > 0,
+  );
+  const breaks = lines.map((t) =>
+    schedule.household_equivalised ? t * factor - others.reduce((sum, v) => sum + v, 0) : t,
+  );
+  const incomes = new Set();
+  for (let x = 0; x <= maxIncome; x += step) incomes.add(x);
+  for (const b of breaks) {
+    if (b > 0 && b <= maxIncome) {
+      incomes.add(Math.ceil(b));
+      incomes.add(Math.ceil(b) - 1);
+    }
+  }
+  return [...incomes]
+    .sort((a, b) => a - b)
+    .map((income) => {
+      const adultIncomes = household.adultIncomes.map((v, i) => (i === adultIndex ? income : v));
+      return {
+        income,
+        amount: targetedEnergyDiscount({ ...household, adultIncomes }, schedule, scale).amount,
+      };
+    });
+}
+
+/** Runs of equal support along a curve: [{from, to, amount}], `to` null for the last. */
+export function supportSteps(curve) {
+  const steps = [];
+  for (const point of curve) {
+    const last = steps[steps.length - 1];
+    if (last && Math.abs(last.amount - point.amount) < 0.005) {
+      last.to = point.income;
+    } else {
+      steps.push({ from: point.income, to: point.income, amount: point.amount });
+    }
+  }
+  if (steps.length) steps[steps.length - 1].to = null;
+  return steps;
+}

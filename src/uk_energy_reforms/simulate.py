@@ -54,6 +54,26 @@ def _values(sim, variable, year, map_to=None):
     return np.asarray(sim.calculate(variable, year, map_to=map_to).values)
 
 
+def household_incomes(person: pd.DataFrame) -> pd.DataFrame:
+    """Per household: taxable income summed over members (the income test's concept
+    applied to the whole household), the number of members with taxable income above
+    zero, and the second-highest member's taxable income (0 with fewer than two members).
+    """
+    ranked = person.sort_values("total_income", ascending=False, kind="stable")
+    rank = ranked.groupby("household_id").cumcount()
+    g = person.groupby("household_id").total_income
+    return pd.DataFrame(
+        {
+            "taxable_income": g.sum(),
+            "n_incomes": (person.total_income > 0).groupby(person.household_id).sum(),
+            "second_income": ranked[rank == 1]
+            .set_index("household_id")
+            .total_income.reindex(g.sum().index)
+            .fillna(0.0),
+        }
+    )
+
+
 @lru_cache(maxsize=8)
 def baseline_frame(dataset: str, year: int) -> pd.DataFrame:
     """Household frame of baseline outcomes and demographics (cached per dataset-year)."""
@@ -67,6 +87,7 @@ def baseline_frame(dataset: str, year: int) -> pd.DataFrame:
             "elec": _values(sim, "electricity_consumption", year),
             "gas": _values(sim, "gas_consumption", year),
             "equivalisation_bhc": _values(sim, "household_equivalisation_bhc", year),
+            "equivalisation_ahc": _values(sim, "household_equivalisation_ahc", year),
         }
     )
     for variable, column in OUTCOMES.items():
@@ -93,10 +114,11 @@ def baseline_frame(dataset: str, year: int) -> pd.DataFrame:
         }
     )
     # Whether the highest-income member is over State Pension age (pays no employee
-    # NI), which sets the marginal rate used for dead zones.
+    # NI), which sets the marginal rate used for the offset range.
     top = person.sort_values("total_income", ascending=False, kind="stable")
     counts["top_earner_pensioner"] = top.groupby("household_id").sp_age.first()
     counts["household_type"] = classify(person)
+    counts = counts.join(household_incomes(person))
     frame = frame.merge(counts, left_on="household_id", right_index=True, how="left")
     frame["gb"] = frame.region != "NORTHERN_IRELAND"
     return frame

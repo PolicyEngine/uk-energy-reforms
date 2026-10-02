@@ -2,10 +2,60 @@
 
 import { series } from "../lib/colors";
 
-export function MetricCard({ label, value, note }) {
+const METRIC_ICONS = {
+  cost: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M14.5 8.5a2.5 2.5 0 0 0-4.5 1.5v6h5M8.5 12.5h4M8.5 16h1.5" />
+    </>
+  ),
+  households: (
+    <>
+      <path d="M3 10.5 12 3l9 7.5" />
+      <path d="M5 9v11h14V9" />
+      <path d="M10 20v-5h4v5" />
+    </>
+  ),
+  average: (
+    <>
+      <path d="M6 3h12v18l-3-2-3 2-3-2-3 2z" />
+      <path d="M9 8h6M9 12h6M9 16h3" />
+    </>
+  ),
+  energy: <path d="M13 2 4 14h7l-1 8 9-12h-7z" />,
+  benefit: (
+    <>
+      <path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z" />
+      <path d="m8.5 12 2.5 2.5 4.5-5" />
+    </>
+  ),
+  income: (
+    <>
+      <rect x="3" y="6" width="18" height="13" rx="2" />
+      <path d="M3 10h18M16 14.5h2" />
+    </>
+  ),
+  poverty: (
+    <>
+      <path d="m3 7 6 6 4-4 8 8" />
+      <path d="M15 17h6v-6" />
+    </>
+  ),
+};
+
+export function MetricCard({ label, value, note, icon }) {
   return (
     <div className="metric-card">
-      <p className="text-sm font-semibold leading-snug text-slate-700">{label}</p>
+      <div className="flex items-center gap-2.5">
+        {icon && (
+          <span className="metric-icon" aria-hidden>
+            <svg viewBox="0 0 24 24">{METRIC_ICONS[icon]}</svg>
+          </span>
+        )}
+        <p className="text-sm font-semibold leading-snug text-slate-700">
+          {label}
+        </p>
+      </div>
       <p className="mt-1 text-3xl font-bold">{value}</p>
       {note && (
         <p className="mt-2 border-t border-slate-100 pt-2 text-xs leading-5 text-slate-500">
@@ -26,21 +76,32 @@ export function SourceLink({ href, children }) {
 
 export function Toggle({ label, options, value, onChange }) {
   return (
-    <div>
-      {label && <p className="eyebrow mb-2 text-slate-500">{label}</p>}
-      <div className="flex flex-wrap gap-2">
-        {options.map((option) => (
-          <button
-            key={option.value}
-            type="button"
-            className={`toggle-button ${value === option.value ? "active" : ""}`}
-            onClick={() => onChange(option.value)}
-          >
-            {option.label}
-          </button>
-        ))}
-      </div>
-    </div>
+    <label className="option-select">
+      {label && <span className="eyebrow text-slate-500">{label}</span>}
+      <span className="option-select-box">
+        <select
+          value={value}
+          aria-label={label ? undefined : "View"}
+          onChange={(e) => onChange(e.target.value)}
+        >
+          {options.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+        <svg aria-hidden viewBox="0 0 20 20" className="option-select-chevron">
+          <path
+            d="M5 7.5l5 5 5-5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </span>
+    </label>
   );
 }
 
@@ -67,7 +128,8 @@ function textOn(hex) {
     const c = parseInt(hex.slice(i, i + 2), 16) / 255;
     return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
   };
-  const luminance = 0.2126 * channel(1) + 0.7152 * channel(3) + 0.0722 * channel(5);
+  const luminance =
+    0.2126 * channel(1) + 0.7152 * channel(3) + 0.0722 * channel(5);
   return luminance > 0.3 ? series.ink : "#FFFFFF";
 }
 
@@ -100,7 +162,7 @@ export function SplitBar({ segments }) {
 
 export function Legend({ items }) {
   return (
-    <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs text-slate-600">
+    <div className="legend-box">
       {items.map((item) => (
         <span key={item.label} className="flex items-center gap-1.5">
           <span
@@ -147,15 +209,24 @@ export function Table({ columns, rows, minWidth }) {
 /** A table under a chart, collapsed until the reader asks for the numbers. */
 export function TableToggle({ label = "Show the numbers", children }) {
   return (
-    <details className="table-toggle group">
-      <summary className="toggle-button inline-flex cursor-pointer list-none items-center gap-2">
-        <span aria-hidden className="transition-transform group-open:rotate-90">
-          ›
-        </span>
-        <span className="group-open:hidden">{label}</span>
-        <span className="hidden group-open:inline">Hide the numbers</span>
-      </summary>
+    <details className="disclosure">
+      <summary>{label}</summary>
       <div className="mt-3">{children}</div>
+    </details>
+  );
+}
+
+export function Disclosure({
+  title = "How to read this chart",
+  children,
+  className = "",
+}) {
+  return (
+    <details className={`disclosure ${className}`}>
+      <summary>{title}</summary>
+      <div className="mt-3 space-y-3 text-sm leading-6 text-slate-600">
+        {children}
+      </div>
     </details>
   );
 }
