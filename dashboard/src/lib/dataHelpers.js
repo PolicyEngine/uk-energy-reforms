@@ -35,6 +35,13 @@ export const DATASET_SHORT = {
   efrs_1573: "Enhanced FRS",
 };
 
+// The price level each dataset stores energy spend at. policyengine-uk does not uprate
+// energy spend between years, so bills in every scheme year stay at this level.
+export const PRICE_BASIS = {
+  microcosm_national: "2024-25 DESNZ prices",
+  efrs_1573: "Ofgem April–June 2026 unit rates",
+};
+
 const REPO = "https://github.com/PolicyEngine/uk-energy-reforms";
 
 /** The scheme year's results receipt, at its counts around every option's income

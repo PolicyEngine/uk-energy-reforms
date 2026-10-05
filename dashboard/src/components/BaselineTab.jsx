@@ -3,6 +3,7 @@
 import { useState } from "react";
 import {
   DATASET_SHORT,
+  PRICE_BASIS,
   getBaseline,
   getRfFigure,
   getSource,
@@ -27,11 +28,6 @@ const BILL_GROUPS = [
   { value: "bill_by_household_type", label: "Household type" },
   { value: "bill_by_tenure", label: "Tenure" },
 ];
-
-const PRICE_BASIS = {
-  microcosm_national: "2024-25 DESNZ prices",
-  efrs_1573: "Ofgem April–June 2026 unit rates",
-};
 
 // Each dataset's price level on Ofgem's 2023 typical-use basis, the only basis on which
 // the 2024-25 caps are published.
@@ -129,7 +125,7 @@ export default function BaselineTab({ data, dataset }) {
         },
         {
           key: "bill",
-          quantity: `Average annual gas and electricity bill (${yl})`,
+          quantity: `Average annual gas and electricity bill (${yl}, at ${PRICE_BASIS[dataset]})`,
           model: formatCurrency(b.mean_bill),
           external: (
             <>
@@ -221,7 +217,7 @@ export default function BaselineTab({ data, dataset }) {
               label="Average annual gas and electricity bill"
               icon="energy"
               value={formatCurrency(b.mean_bill)}
-              note={`Median ${formatCurrency(b.median_bill)}; electricity ${formatCurrency(b.mean_electricity)}, gas ${formatCurrency(b.mean_gas)}.`}
+              note={`At ${PRICE_BASIS[dataset]}. Median ${formatCurrency(b.median_bill)}; electricity ${formatCurrency(b.mean_electricity)}, gas ${formatCurrency(b.mean_gas)}.`}
             />
             <MetricCard
               label="Passported by a benefit"
