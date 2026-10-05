@@ -319,7 +319,10 @@ uv run uk-energy-reforms export-dashboard --analysis analyses/rf-billing-me-soft
   Northern Ireland is out of scope, as in the proposal.
 - **Passporting.** Households qualify through the Warm Home Discount benefits as modelled,
   including take-up. The report uses receipt reported in the FRS instead; the replication
-  table shows both.
+  table shows both. Any Pension Credit award passports, including the Savings Credit alone
+  (about 151,000 claimants in March 2026): RF's footnote 2 lists Pension Credit without
+  distinction, and the Warm Home Discount's low-income group has taken Savings Credit
+  awards since its 2025-26 expansion.
 - **Income test.** It uses `total_income`: earnings, pensions including the State Pension,
   property, savings, dividends and taxable benefits. Incomes are annual.
 - **Nominal thresholds.** The £24,000, £18,000 and £30,000 thresholds are held at their

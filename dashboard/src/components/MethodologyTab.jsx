@@ -337,7 +337,10 @@ export default function MethodologyTab({ data, dataset }) {
                     anyone in it receives Universal Credit, Pension Credit,
                     Housing Benefit, income-related Employment and Support
                     Allowance, income-based Jobseeker&apos;s Allowance or Income
-                    Support (the Warm Home Discount list, RF footnote 2). The
+                    Support (the Warm Home Discount list, RF footnote 2). Any
+                    Pension Credit award counts, including the Savings Credit
+                    alone, as in RF&apos;s footnote and the Warm Home Discount
+                    since 2025-26. The
                     main results use receipt as PolicyEngine models it, with its
                     take-up assumptions; the report&apos;s comparison also shows
                     receipt as survey respondents report it, which is the
