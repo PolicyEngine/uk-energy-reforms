@@ -105,18 +105,21 @@ def test_no_cliffs_without_an_income_test():
 
 def test_offset_width_uses_the_top_earners_marginal_rate():
     """£175 lost: a pensioner top earner (basic rate, no NI) needs £175 / 0.80 = £218.75
-    more gross income; a working-age one (basic rate + 8% NI) £175 / 0.72 = £243.06.
-    Under the household-income test the width is in equivalised income."""
+    more gross income; an employee (basic rate + 8% NI) £175 / 0.72 = £243.06; a
+    self-employed one (basic rate + 6% Class 4) £175 / 0.74 = £236.49. Under the
+    household-income test the width is in equivalised income."""
     frame = pd.DataFrame(
         {
-            "top_earner_pensioner": [True, False, False],
-            "equivalisation_bhc": [1, 1, 1.4],
+            "top_earner_pensioner": [True, False, False, False],
+            "top_earner_self_employed": [True, False, False, True],
+            "equivalisation_bhc": [1, 1, 1.4, 1],
         }
     )
-    drop = np.array([175.0, 175.0, 175.0])
+    drop = np.array([175.0, 175.0, 175.0, 175.0])
     widths = analysis.offset_width(frame, drop, {"household_equivalised": False})
     assert widths[0] == pytest.approx(218.75)
     assert widths[1] == pytest.approx(175 / 0.72)
+    assert widths[3] == pytest.approx(175 / 0.74)
     household = analysis.offset_width(frame, drop, {"household_equivalised": True})
     assert household[2] == pytest.approx(175 / 0.72 / 1.4)
 
@@ -345,6 +348,11 @@ def test_breakdown_poverty_adds_up_to_the_headline_basis():
         "thresholds": [0.0, 24_000.0, 24_000.0],
         "amounts": [175.0, 175.0, 0.0],
     }
+    # One record per household: a region where 1-9 records cross shows no change.
+    sparse = analysis.breakdown(Run("test", 2026, {}, frame, schedule), "region", frame)
+    assert sparse.people_out_of_abs_bhc_poverty_k.isna().any()
+    # Ten records per household, so no region's change rests on fewer than 10.
+    frame = split_records(frame, 10)
     run = Run("test", 2026, {}, frame, schedule)
     rows = analysis.breakdown(run, "region", frame)
     people = next(
@@ -375,3 +383,89 @@ def test_round_to_significant_figures():
     assert _round(
         {"a": 0.123456, "b": 123_456.7, "c": float("nan"), "d": 3, "e": [0.0]}
     ) == {"a": 0.1235, "b": 123_500.0, "c": None, "d": 3, "e": [0.0]}
+
+
+def take_up_frame():
+    """Four households: one passported and two through the income test leave absolute
+    BHC poverty or receive the discount; one does neither."""
+    crossed = np.array([True, True, False, False])
+    in_poverty = np.array([True, True, True, False])
+    frame = pd.DataFrame(
+        {
+            "weight": [2.0, 1.0, 3.0, 1.0],
+            "n_people": [2, 1, 3, 2],
+            "n_children": [1, 0, 1, 0],
+            "n_wa_adults": [1, 1, 2, 1],
+            "n_sp_age": [0, 0, 0, 1],
+            "passported": [True, False, False, False],
+            "recipient": [True, True, True, False],
+            "discount": [175.0, 175.0, 175.0, 0.0],
+            "abs_pov_bhc_base": in_poverty,
+            "abs_pov_bhc_reform": in_poverty & ~crossed,
+            **{
+                f"{m}_{s}": in_poverty
+                for m in ["abs_pov_ahc", "rel_pov_bhc", "rel_pov_ahc"]
+                for s in ["base", "reform"]
+            },
+        }
+    )
+    return Run("test", 2026, {}, frame), frame
+
+
+def split_records(frame, n=5):
+    """The same households as ``n`` survey records each, at a ``1/n`` of the weight."""
+    split = frame.loc[frame.index.repeat(n)].reset_index(drop=True)
+    split["weight"] = split.weight / n
+    return split
+
+
+def test_poverty_records_who_crosses_the_line():
+    run, frame = take_up_frame()
+    # As five records each, ten records cross.
+    rows = {
+        (p["measure"], p["group"]): p
+        for p in analysis.poverty(run, split_records(frame))
+    }
+    people = rows[("abs_pov_bhc", "people")]
+    # Two households cross: 2 x 2 people (passported) and 1 x 1 person (income test).
+    assert people["change_k"] == pytest.approx(-5 / 1e3)
+    assert people["change_k_income_only"] == pytest.approx(-1 / 1e3)
+    assert people["moved_records"] == 10 and not people["suppressed"]
+    # People weights of 0.8 (five records) and 0.2 (five records).
+    assert people["moved_ess"] == pytest.approx(25 / 3.4)
+    # Only the passported household has a child: five records cross.
+    children = rows[("abs_pov_bhc", "children")]
+    assert children["suppressed"] and children["change_k"] is None
+    assert children["baseline_rate"] == pytest.approx(1.0)
+    assert rows[("rel_pov_ahc", "people")]["moved_records"] == 0
+
+
+def test_changes_resting_on_fewer_than_ten_records_are_blanked():
+    run, frame = take_up_frame()
+    people = next(
+        p
+        for p in analysis.poverty(run, frame)
+        if p["measure"] == "abs_pov_bhc" and p["group"] == "people"
+    )
+    # Two records cross: the change and its sample are left out, as for the income
+    # measures' cells; the baseline rate stays.
+    assert people["suppressed"]
+    assert all(people[k] is None for k in analysis.POVERTY_SUPPRESSED)
+    assert people["baseline_rate"] == pytest.approx(14 / 16)
+    half = analysis.take_up_sensitivity(run, frame)[0]
+    assert half["abs_pov_bhc_change_k"] is None
+
+
+def test_take_up_scales_households_eligible_through_the_income_test():
+    run, frame = take_up_frame()
+    frame = split_records(frame)
+    half, three_quarters = analysis.take_up_sensitivity(run, frame)
+    assert half["take_up"] == 0.5 and three_quarters["take_up"] == 0.75
+    # Passported: 2 households x £175. Income test: 4 households x £175, half claim.
+    assert half["cost_bn"] == pytest.approx((350 + 0.5 * 700) / 1e9)
+    assert half["recipients_m"] == pytest.approx((2 + 0.5 * 4) / 1e6)
+    assert half["recipient_share"] == pytest.approx(4 / 7)
+    assert half["abs_pov_bhc_change_k"] == pytest.approx((-5 + 0.5 * 1) / 1e3)
+    assert three_quarters["rel_pov_ahc_change_k"] == 0
+    partial = Run("test", 2026, {}, frame, take_up=0.5)
+    assert analysis.take_up_sensitivity(partial, frame) == []

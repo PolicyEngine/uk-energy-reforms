@@ -2,7 +2,13 @@
 
 import { pe } from "../lib/colors";
 import { DATASET_SHORT } from "../lib/dataHelpers";
-import { formatBn, formatCurrency, formatShare, formatThousands } from "../lib/formatters";
+import {
+  formatBn,
+  formatCurrency,
+  formatDate,
+  formatShare,
+  formatThousands,
+} from "../lib/formatters";
 import SectionHeading from "./SectionHeading";
 import { Table, TableToggle } from "./ui";
 
@@ -146,7 +152,7 @@ export default function ReportComparison({ data, dataset }) {
             <>
               The report (
               <a href={data.meta.rf.url} target="_blank" rel="noreferrer" className="underline">
-                {data.meta.rf.authors}, {data.meta.rf.date}
+                {data.meta.rf.authors}, {formatDate(data.meta.rf.date)}
               </a>
               ) uses the Family Resources Survey 2024-25 for Great Britain with the IPPR tax-benefit
               model. PolicyEngine&apos;s like-for-like estimates use 2024-25 incomes; the

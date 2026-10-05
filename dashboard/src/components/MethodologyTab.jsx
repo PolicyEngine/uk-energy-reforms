@@ -191,11 +191,6 @@ const PRICE_LEVEL = {
     source: "ofgem_cap_fy2024_25",
     key: "mean",
   },
-  efrs_1573: {
-    label: "Ofgem April–June 2026 unit rates",
-    source: "ofgem_cap_2026_apr_jun",
-    key: "at_2023_tdcv",
-  },
 };
 
 export default function MethodologyTab({ data, dataset }) {
@@ -337,7 +332,10 @@ export default function MethodologyTab({ data, dataset }) {
                     anyone in it receives Universal Credit, Pension Credit,
                     Housing Benefit, income-related Employment and Support
                     Allowance, income-based Jobseeker&apos;s Allowance or Income
-                    Support (the Warm Home Discount list, RF footnote 2). The
+                    Support (the Warm Home Discount list, RF footnote 2). Any
+                    Pension Credit award counts, including the Savings Credit
+                    alone, as in RF&apos;s footnote and the Warm Home Discount
+                    since 2025-26. The
                     main results use receipt as PolicyEngine models it, with its
                     take-up assumptions; the report&apos;s comparison also shows
                     receipt as survey respondents report it, which is the
@@ -503,7 +501,14 @@ export default function MethodologyTab({ data, dataset }) {
                     CPI after that). Relative poverty uses 60% of the UK median
                     equivalised income before the reform, held fixed so the
                     discount moves people across the line without also moving
-                    the line.
+                    the line. In 2024-25, the absolute line&apos;s reference
+                    year, the official absolute and relative rates coincide.
+                    The model&apos;s absolute rates sit below the official
+                    ones because the datasets&apos; incomes run higher than
+                    HBAI&apos;s, not because of the line: each dataset&apos;s
+                    own median is above HBAI&apos;s, so its relative rate is
+                    above its absolute rate. The Baseline tab sets the rates
+                    side by side.
                   </>,
                   <>
                     <strong>Energy spend above 10% of income.</strong> A

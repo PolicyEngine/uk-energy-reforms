@@ -208,3 +208,17 @@ def test_household_income_option():
     ) == pytest.approx(29_000 / 1.4)
     assert calc(one_earner_family, household_test) == pytest.approx(175)
     assert calc(one_earner_family, preset("rf_flat")) == 0
+
+
+def test_a_members_loss_does_not_lower_household_income():
+    """Taxable income is floored at zero per person, as in the calculator: a partner's
+    trading loss does not pull a 40,000 GBP earner's household below 30,000 GBP."""
+    couple = household(
+        [earner(40_000), {"self_employment_income": -15_000}],
+        benunit={"universal_credit": 0},
+    )
+    household_test = preset("rf_household_income")
+    assert calc(
+        couple, household_test, "targeted_energy_discount_tested_income"
+    ) == pytest.approx(40_000)
+    assert calc(couple, household_test) == 0

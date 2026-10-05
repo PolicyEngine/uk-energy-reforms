@@ -9,6 +9,7 @@ import ReformTab from "../src/components/ReformTab";
 import NavigationTabs from "../src/components/NavigationTabs";
 import ScenarioControls from "../src/components/ScenarioControls";
 import { datasetFromQuery } from "../src/lib/dataHelpers";
+import { formatDate } from "../src/lib/formatters";
 import {
   dashboardQuery,
   dashboardState,
@@ -238,7 +239,7 @@ function Dashboard() {
               Replication code
             </a>
             {data?.meta
-              ? ` · policyengine-uk ${data.meta.policyengine_uk} · Results generated ${data.meta.generated}`
+              ? ` · policyengine-uk ${data.meta.policyengine_uk} · Results generated ${formatDate(data.meta.generated)}`
               : ""}
             .
           </p>

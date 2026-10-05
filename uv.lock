@@ -1716,7 +1716,7 @@ requires-dist = [
     { name = "huggingface-hub", specifier = ">=0.24" },
     { name = "numpy" },
     { name = "pandas" },
-    { name = "policyengine-uk", specifier = ">=2.102.3,<3" },
+    { name = "policyengine-uk", specifier = "==2.102.3" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=8" },
     { name = "pyyaml" },
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.6" },

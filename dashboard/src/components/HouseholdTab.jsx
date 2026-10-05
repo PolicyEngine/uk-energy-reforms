@@ -9,6 +9,7 @@ import {
 import { explain } from "../lib/explain";
 import {
   PRESET_ORDER,
+  PRICE_BASIS,
   getBaseline,
   getResult,
   yearLabel,
@@ -375,8 +376,8 @@ export default function HouseholdTab({
                 />
                 <p className="text-xs leading-5 text-slate-500">
                   The bill starts at the average GB bill in the model (
-                  {formatCurrency(baseline?.mean_bill ?? 0)},{" "}
-                  {yearLabel(data, year)}).
+                  {formatCurrency(baseline?.mean_bill ?? 0)} in{" "}
+                  {yearLabel(data, year)}, at {PRICE_BASIS[dataset]}).
                 </p>
               </div>
             )}

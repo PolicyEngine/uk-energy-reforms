@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { series } from "../lib/colors";
-import { getDistributions, yearLabel } from "../lib/dataHelpers";
+import { VARIANT_PROSE, getDistributions, yearLabel } from "../lib/dataHelpers";
 import {
   BASIS_OPTIONS,
   MEASURE_NAMES,
@@ -271,7 +271,7 @@ export default function IncomeMeasuresSection({
         <div className="subsection space-y-4">
           <SectionHeading
             title="Where does the support go?"
-            description={`Spending and gains use ${data.meta.variants[variant]} in ${yearLabel(data, year)}, with households ranked by ${measureName}. Share of spending is the part of the total budget each tenth receives; average gains include every household in each group.`}
+            description={`Spending and gains use ${VARIANT_PROSE[variant] ?? data.meta.variants[variant]} in ${yearLabel(data, year)}, with households ranked by ${measureName}. Share of spending is the part of the total budget each tenth receives; average gains include every household in each group.`}
           />
           <Toggle
             value={decileMetric}

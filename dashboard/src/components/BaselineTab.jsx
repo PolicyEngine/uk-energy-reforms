@@ -3,6 +3,7 @@
 import { useState } from "react";
 import {
   DATASET_SHORT,
+  PRICE_BASIS,
   getBaseline,
   getRfFigure,
   getSource,
@@ -28,16 +29,10 @@ const BILL_GROUPS = [
   { value: "bill_by_tenure", label: "Tenure" },
 ];
 
-const PRICE_BASIS = {
-  microcosm_national: "2024-25 DESNZ prices",
-  efrs_1573: "Ofgem April–June 2026 unit rates",
-};
-
 // Each dataset's price level on Ofgem's 2023 typical-use basis, the only basis on which
 // the 2024-25 caps are published.
 const PRICE_LEVEL_SOURCE = {
   microcosm_national: ["ofgem_cap_fy2024_25", "mean"],
-  efrs_1573: ["ofgem_cap_2026_apr_jun", "at_2023_tdcv"],
 };
 
 function sourceCell(source, text) {
@@ -79,9 +74,9 @@ export default function BaselineTab({ data, dataset }) {
   const winterGap =
     priceLevel && cap ? cap.value.at_2023_tdcv / priceLevel - 1 : null;
 
-  const povertyRate = (group) =>
+  const povertyRate = (group, measure = "rel_pov_ahc") =>
     replication?.poverty?.find(
-      (p) => p.measure === "rel_pov_ahc" && p.group === group,
+      (p) => p.measure === measure && p.group === group,
     )?.baseline_rate;
 
   const yl = yearLabel(data, year);
@@ -129,7 +124,7 @@ export default function BaselineTab({ data, dataset }) {
         },
         {
           key: "bill",
-          quantity: `Average annual gas and electricity bill (${yl})`,
+          quantity: `Average annual gas and electricity bill (${yl}, at ${PRICE_BASIS[dataset]})`,
           model: formatCurrency(b.mean_bill),
           external: (
             <>
@@ -143,7 +138,7 @@ export default function BaselineTab({ data, dataset }) {
               )}
             </>
           ),
-          notes: `The Ofgem figure is the October–December 2026 cap for typical consumption (2,500 kWh electricity, 9,500 kWh gas) paid by direct debit, with electricity VAT at 0% from October 2026 to March 2027. Family Spending averages all UK households in 2024-25. The model's spend is at ${PRICE_BASIS[dataset]}: policyengine-uk does not uprate energy spend between years, so every year keeps that price level${winterGap != null ? `, which the October–December 2026 cap exceeds by ${formatShare(winterGap)} on Ofgem's 2023 typical-use basis` : ""}.`,
+          notes: `The Ofgem figure is the October–December 2026 cap for typical consumption (2,500 kWh electricity, 9,500 kWh gas) paid by direct debit, with electricity VAT at 0% from October 2026 to March 2027. Family Spending averages all UK households in 2024-25. The model's spend is at ${PRICE_BASIS[dataset]}: policyengine-uk does not uprate energy spend between years, so every year keeps that price level${winterGap != null ? `, which the October–December 2026 cap exceeds by ${formatShare(winterGap)} on Ofgem's 2023 typical-use basis. That ${formatShare(winterGap)} compares prices for the same consumption; the cap's ${formatCurrency(cap?.value?.at_2026_tdcv)} against the model's ${formatCurrency(b.mean_bill)} also compares different consumption, so the two gaps differ` : ""}.`,
         },
         {
           key: "gas",
@@ -163,9 +158,42 @@ export default function BaselineTab({ data, dataset }) {
             over10,
             `${formatShare(over10?.value?.share, 1)} (England, 2025)`,
           ),
-          notes:
-            "The model divides actual spend by net income before housing costs; DESNZ divides modelled required spend by income after housing costs, for England. The bases differ, so the levels are not directly comparable.",
+          notes: (
+            <>
+              Three different measures. The model divides actual spend by net
+              income before housing costs. DESNZ&apos;s figure divides modelled
+              required spend by income after housing costs, for England. The
+              official fuel poverty measure for England, Low Income Low Energy
+              Efficiency, also needs a low energy efficiency rating:{" "}
+              {fuelPoverty ? (
+                <SourceLink href={fuelPoverty.url}>
+                  {formatShare(fuelPoverty.value.share, 1)} of households in{" "}
+                  {fuelPoverty.period}
+                </SourceLink>
+              ) : (
+                "see DESNZ"
+              )}
+              . The levels are not directly comparable.
+            </>
+          ),
         },
+        // The headline's basis: absolute poverty before housing costs. In 2024-25,
+        // the line's reference year, HBAI's absolute and relative rates coincide.
+        ...[
+          ["people", "All people", hbai],
+          ["children", "Children", hbaiKids],
+          ["pensioners", "Pensioners", hbaiPens],
+        ].map(([group, label, source]) => ({
+          key: `abs-pov-${group}`,
+          quantity: `Absolute poverty before housing costs: ${label.toLowerCase()} (2024-25)`,
+          model: formatShare(povertyRate(group, "abs_pov_bhc") ?? 0, 1),
+          external: sourceCell(
+            source,
+            `${formatShare(source?.value?.absolute_bhc, 1)} (HBAI)`,
+          ),
+          notes:
+            "Both use HBAI's line: 60% of the 2024-25 UK median, held constant in real terms. HBAI covers the UK, the model Great Britain. The number of people the discount moves above the line depends on how many sit just below it, so differences here carry over to that count.",
+        })),
         ...[
           ["people", "All people", hbai],
           ["children", "Children", hbaiKids],
@@ -221,7 +249,7 @@ export default function BaselineTab({ data, dataset }) {
               label="Average annual gas and electricity bill"
               icon="energy"
               value={formatCurrency(b.mean_bill)}
-              note={`Median ${formatCurrency(b.median_bill)}; electricity ${formatCurrency(b.mean_electricity)}, gas ${formatCurrency(b.mean_gas)}.`}
+              note={`At ${PRICE_BASIS[dataset]}. Median ${formatCurrency(b.median_bill)}; electricity ${formatCurrency(b.mean_electricity)}, gas ${formatCurrency(b.mean_gas)}.`}
             />
             <MetricCard
               label="Passported by a benefit"
@@ -354,6 +382,9 @@ export function DataCoverage({ data, dataset }) {
   const b = getBaseline(data, data.meta.years[0], dataset);
   const short = DATASET_SHORT[dataset];
   const fuelPoverty = getSource(data, "fuel_poverty_england_2025");
+  const over10 = getSource(data, "energy_cost_over_10pct_ahc_income_england_2025");
+  const offGrid = getSource(data, "desnz_off_gas_grid_share_gb_2024");
+  const onGrid = offGrid ? 1 - offGrid.value : null;
   return (
     <div className="space-y-3">
       <p>
@@ -368,7 +399,11 @@ export function DataCoverage({ data, dataset }) {
             Energy spend is priced at {PRICE_BASIS[dataset]}; policyengine-uk
             does not uprate energy spend between years, so every year keeps that
             price level. {formatShare(b.gas_spend_share)} of GB households have
-            gas spend and {formatShare(b.no_electricity_spend_share, 1)} have no
+            gas spend
+            {onGrid != null
+              ? `, against the ${formatShare(onGrid)} of properties on the gas grid in DESNZ's meter counts,`
+              : ""}{" "}
+            and {formatShare(b.no_electricity_spend_share, 1)} have no
             electricity spend recorded; under a bill share, households with no
             recorded spend receive £0.
           </p>
@@ -378,7 +413,8 @@ export function DataCoverage({ data, dataset }) {
       <p className="text-sm leading-6 text-slate-600">
         The data do not record prepayment meters, heating fuels off the gas
         grid, energy efficiency ratings or whether a household can afford to
-        keep warm. The official fuel poverty measure for England (
+        keep warm. The official fuel poverty measure for England, Low Income
+        Low Energy Efficiency (
         {fuelPoverty ? (
           <SourceLink href={fuelPoverty.url}>
             {formatShare(fuelPoverty.value.share, 1)} of households in{" "}
@@ -387,7 +423,19 @@ export function DataCoverage({ data, dataset }) {
         ) : (
           "DESNZ"
         )}
-        ) needs energy efficiency ratings, so the model cannot reproduce it.
+        ), needs energy efficiency ratings, so the model cannot reproduce it.
+        DESNZ also reports the share of households in England whose modelled
+        required energy spend exceeds 10% of income after housing costs (
+        {over10 ? (
+          <SourceLink href={over10.url}>
+            {formatShare(over10.value.share, 1)} in 2025
+          </SourceLink>
+        ) : (
+          "DESNZ"
+        )}
+        ). The model&apos;s &ldquo;energy spend above 10% of income&rdquo;
+        divides actual spend by net income before housing costs, a third
+        measure; the Baseline tab sets it beside DESNZ&apos;s.
       </p>
     </div>
   );

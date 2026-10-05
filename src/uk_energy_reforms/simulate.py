@@ -100,6 +100,9 @@ def baseline_frame(dataset: str, year: int) -> pd.DataFrame:
             "is_child": _values(sim, "is_child", year).astype(bool),
             "sp_age": _values(sim, "is_SP_age", year).astype(bool),
             "total_income": _values(sim, "total_income", year),
+            # Earns mainly from self-employment, so pays Class 4 rather than employee NI.
+            "self_employed": _values(sim, "self_employment_income", year)
+            > _values(sim, "employment_income", year),
         }
     )
     g = person.groupby("household_id")
@@ -114,9 +117,13 @@ def baseline_frame(dataset: str, year: int) -> pd.DataFrame:
         }
     )
     # Whether the highest-income member is over State Pension age (pays no employee
-    # NI), which sets the marginal rate used for the offset range.
+    # NI) or mainly self-employed (Class 4 NI), which sets the marginal rate used for
+    # the offset range.
     top = person.sort_values("total_income", ascending=False, kind="stable")
     counts["top_earner_pensioner"] = top.groupby("household_id").sp_age.first()
+    counts["top_earner_self_employed"] = top.groupby(
+        "household_id"
+    ).self_employed.first()
     counts["household_type"] = classify(person)
     counts = counts.join(household_incomes(person))
     frame = frame.merge(counts, left_on="household_id", right_index=True, how="left")

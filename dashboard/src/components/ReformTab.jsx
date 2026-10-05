@@ -7,7 +7,9 @@ import {
   formatBn,
   formatCurrency,
   formatMillions,
+  formatRoundedThousands,
   formatShare,
+  formatSignedPct,
   formatSignedPp,
   formatSignedThousands,
   formatThousands,
@@ -38,24 +40,12 @@ const COVERAGE_LABELS = {
   "relative AHC poverty": "Households in relative poverty after housing costs",
   "lowest four AHC deciles":
     "Households in the four lowest income deciles after housing costs",
-  "energy over 10% of net income":
-    "Households spending over 10% of net income on energy",
 };
 
-// The reach bars for each housing-cost basis; the energy-cost group is the same in both.
+// The reach bars for each housing-cost basis.
 const COVERAGE_GROUPS = {
-  bhc: [
-    "absolute BHC poverty",
-    "relative BHC poverty",
-    "lowest four BHC deciles",
-    "energy over 10% of net income",
-  ],
-  ahc: [
-    "absolute AHC poverty",
-    "relative AHC poverty",
-    "lowest four AHC deciles",
-    "energy over 10% of net income",
-  ],
+  bhc: ["absolute BHC poverty", "relative BHC poverty", "lowest four BHC deciles"],
+  ahc: ["absolute AHC poverty", "relative AHC poverty", "lowest four AHC deciles"],
 };
 
 const POVERTY_MEASURES = {
@@ -99,13 +89,10 @@ const DECILE_METRICS = [
   },
 ];
 
-function Headline({ result, levels }) {
+function Headline({ result }) {
   const h = result.headline;
   const pov = result.poverty.find(
     (p) => p.measure === "abs_pov_bhc" && p.group === "people",
-  );
-  const kids = result.poverty.find(
-    (p) => p.measure === "abs_pov_bhc" && p.group === "children",
   );
   return (
     <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
@@ -113,13 +100,13 @@ function Headline({ result, levels }) {
         label="Cost"
         icon="cost"
         value={formatBn(h.cost_bn)}
-        note="Total support paid in the year."
+        note="Total support paid in the year, if every eligible household receives it."
       />
       <MetricCard
         label="Households receiving support"
         icon="households"
         value={formatMillions(h.recipients_m, 2)}
-        note={`${formatShare(h.recipient_share, 1)} of ${formatMillions(h.gb_households_m)} GB households${levels}`}
+        note={`${formatShare(h.recipient_share, 1)} of ${formatMillions(h.gb_households_m)} GB households.`}
       />
       <MetricCard
         label="Average per receiving household"
@@ -130,8 +117,8 @@ function Headline({ result, levels }) {
       <MetricCard
         label="Fewer people in poverty"
         icon="poverty"
-        value={pov ? formatThousands(-pov.change_k) : "n/a"}
-        note={`Absolute poverty, before housing costs.${kids ? ` Includes ${formatThousands(-kids.change_k)} children.` : ""}`}
+        value={pov?.change_k != null ? formatRoundedThousands(-pov.change_k) : "n/a"}
+        note={`Absolute poverty before housing costs, counting the discount as income. Rounded: it rests on an effective sample of ${pov?.moved_ess != null ? Math.round(pov.moved_ess) : "few"} households.`}
       />
     </div>
   );
@@ -157,7 +144,7 @@ function DecileSection({ result }) {
       <PEImpactBarChart
         data={data}
         height={360}
-        xAxisLabel="Income decile"
+        xAxisLabel="Income decile of people, after housing costs"
         yAxisLabel={m.axis}
         yTickFormatter={m.tick}
         barLabelFormatter={m.format}
@@ -226,16 +213,23 @@ function WinnersSection({ result }) {
 }
 
 const INEQUALITY_MEASURES = [
-  { key: "gini", label: "Gini index", format: (v) => v.toFixed(4) },
+  {
+    key: "gini",
+    label: "Gini index",
+    format: (v) => v.toFixed(4),
+    change: (d) => `${d < 0 ? "\u2212" : d > 0 ? "+" : ""}${Math.abs(d).toFixed(4)}`,
+  },
   {
     key: "top_10_share",
     label: "Top 10% income share",
     format: (v) => formatShare(v, 1),
+    change: (d) => formatSignedPp(100 * d, 2),
   },
   {
     key: "top_1_share",
     label: "Top 1% income share",
     format: (v) => formatShare(v, 2),
+    change: (d) => formatSignedPp(100 * d, 3),
   },
 ];
 
@@ -304,10 +298,16 @@ function InequalitySection({ result, onMethodology }) {
                 format: (_, r) => r.format(r.value.reform),
               },
               {
+                key: "difference",
+                header: "Change",
+                align: "right",
+                format: (_, r) => r.change(r.value.reform - r.value.baseline),
+              },
+              {
                 key: "change",
                 header: "Relative change",
                 align: "right",
-                format: (_, r) => formatShare(r.value.change_pct, 2),
+                format: (_, r) => formatSignedPct(100 * r.value.change_pct, 2),
               },
             ]}
             rows={measures}
@@ -341,7 +341,7 @@ function PovertySection({ result, onMethodology }) {
   const measure = `${type}_pov_${basis}`;
   const rows = result.poverty.filter((p) => p.measure === measure);
   const data = POVERTY_CHART_GROUPS.map((g) => rows.find((p) => p.group === g))
-    .filter(Boolean)
+    .filter((p) => p && p.reform_rate != null)
     .map((p) => {
       const change = p.baseline_rate ? p.reform_rate / p.baseline_rate - 1 : 0;
       // Bars show the fall, so they grow from left to right like the other charts.
@@ -384,10 +384,23 @@ function PovertySection({ result, onMethodology }) {
         <Disclosure title="How to read this chart, with the numbers">
           <p>
             A fall from 20% to 19% is a 5% reduction, or 1 percentage point. The
-            discount counts as household income. Absolute poverty uses the
-            official line since March 2026: 60% of the 2024-25 median, held
-            constant in real terms. Relative poverty uses 60% of the baseline
-            median. The table gives the rates and changes in people.
+            discount counts as household income, so these are income-equivalent
+            readings: delivered as a cut in unit prices, as the report proposes,
+            it would not show up in the income that official poverty statistics
+            measure. Absolute poverty uses the official line since March 2026:
+            60% of the 2024-25 median, held constant in real terms. Relative
+            poverty uses 60% of the median before the discount, held fixed so
+            the line does not move with the transfer; official statistics
+            recompute the median each year.
+          </p>
+          <p>
+            The change in people counts those whose household moves above a
+            line, so it depends on how many people sit just below it. It moves
+            between years and datasets, and it rests on few survey households:
+            the table gives each change&apos;s effective sample, and shows
+            &ldquo;–&rdquo; where fewer than 10 survey households cross the line.
+            A blanked change is still included in the total for all people. The
+            Baseline tab sets the starting rates beside the official ones.
           </p>
           <button
             className="text-link"
@@ -419,13 +432,19 @@ function PovertySection({ result, onMethodology }) {
                 key: "change_pp",
                 header: "Change",
                 align: "right",
-                format: (v) => formatSignedPp(v),
+                format: (v) => (v == null ? "–" : formatSignedPp(v)),
               },
               {
                 key: "change_k",
                 header: "Change in people",
                 align: "right",
-                format: (v) => formatSignedThousands(v),
+                format: (v) => (v == null ? "–" : formatSignedThousands(v)),
+              },
+              {
+                key: "moved_ess",
+                header: "Effective sample",
+                align: "right",
+                format: (v) => (v == null ? "–" : Math.round(v).toLocaleString("en-GB")),
               },
             ]}
             rows={rows}
@@ -445,7 +464,7 @@ function ReachSection({ result, year }) {
     <section className="section-card space-y-5">
       <SectionHeading
         title="Which households does the reform reach?"
-        description="Share of households in each group that qualify, split by route: passported by a means-tested benefit, or through the income test alone. Groups: households in poverty, in the four lowest income deciles, or spending over 10% of net income on energy."
+        description="Share of households in each group that qualify, split by route: passported by a means-tested benefit, or through the income test alone. Groups: households in poverty, or in the four lowest income deciles."
       />
       <Toggle
         label="Housing costs"
@@ -503,7 +522,9 @@ function ReachSection({ result, year }) {
           <span>
             Counts of households within £1,000 of each income cut-off are in
             the{" "}
-            <SourceLink href={cutOffReceiptUrl(year)}>results receipt</SourceLink>
+            <SourceLink href={cutOffReceiptUrl(year)}>
+              detailed results (report.md)
+            </SourceLink>
             .
           </span>
         </p>
@@ -526,7 +547,7 @@ function BreakdownSection({ result }) {
     <section className="section-card space-y-5">
       <SectionHeading
         title="How does eligibility vary by region and household type?"
-        description="Share of households qualifying through benefits or the income test, ordered by the share qualifying through benefits. The table also shows payments and poverty effects. Its poverty columns use absolute poverty before housing costs, as in the headline figures. ESS is effective sample size: small values indicate that few survey records drive the estimate."
+        description="Share of households qualifying through benefits or the income test, ordered by the share qualifying through benefits. The table also shows payments and poverty effects. Its poverty columns use absolute poverty before housing costs, as in the headline figures; “–” marks a change resting on fewer than 10 survey households, which is still included in the national total. ESS is effective sample size: small values indicate that few survey records drive the estimate."
       />
       <Toggle
         value={by}
@@ -589,19 +610,19 @@ function BreakdownSection({ result }) {
               },
               {
                 key: "eligible_rate",
-                header: "Eligible",
+                header: "% eligible",
                 align: "right",
                 format: (v) => formatShare(v),
               },
               {
                 key: "passported_rate",
-                header: "Passported",
+                header: "% passported",
                 align: "right",
                 format: (v) => formatShare(v),
               },
               {
                 key: "income_only_rate",
-                header: "Income test only",
+                header: "% income test only",
                 align: "right",
                 format: (v) => formatShare(v),
               },
@@ -619,19 +640,19 @@ function BreakdownSection({ result }) {
               },
               {
                 key: "gain_pct_net_income",
-                header: "Gain, % income",
+                header: "Gain, % of net income",
                 align: "right",
                 format: (v) => `${(100 * v).toFixed(2)}%`,
               },
               {
                 key: "abs_bhc_poverty_reached",
-                header: "In poverty, reached",
+                header: "Households in poverty, % reached",
                 align: "right",
                 format: (v) => formatShare(v),
               },
               {
                 key: "abs_bhc_poverty_not_reached_k",
-                header: "In poverty, not reached",
+                header: "Households in poverty not reached",
                 align: "right",
                 format: (v) => formatThousands(v),
               },
@@ -639,7 +660,7 @@ function BreakdownSection({ result }) {
                 key: "people_out_of_abs_bhc_poverty_k",
                 header: "People out of poverty",
                 align: "right",
-                format: (v) => formatThousands(v),
+                format: (v) => (v == null ? "–" : formatThousands(v)),
               },
               {
                 key: "ess",
@@ -673,15 +694,11 @@ export default function ReformTab({ data, dataset, scenario, onMethodology }) {
     scenario.variant,
     dataset,
   );
-  const efrs =
-    data.results[scenario.year]?.rf_flat?.efrs_1573?.headline.gb_households_m;
-  const micro =
-    data.results[scenario.year]?.rf_flat?.microcosm_national?.headline
-      .gb_households_m;
-  const levels =
-    dataset === "efrs_1573" && efrs && micro
-      ? `; Enhanced FRS counts run ${formatShare(efrs / micro - 1)} above Microcosm's.`
-      : ".";
+  // Options with an income test: cost and reach if half of the households eligible
+  // through it alone take the discount up (passported households are enrolled).
+  const halfTakeUp = result?.schedule?.income_test
+    ? result.take_up_sensitivity?.find((t) => t.take_up === 0.5)
+    : null;
   return (
     <div className="space-y-5">
       <div>
@@ -697,11 +714,14 @@ export default function ReformTab({ data, dataset, scenario, onMethodology }) {
                 title="The reform at a glance"
                 description="Headline figures for the selected option, payment basis and year. Cost is the total discount paid; the poverty figure counts people moved above the absolute poverty line, before housing costs."
               />
-              <Headline result={result} levels={levels} />
+              <Headline result={result} />
               <p className="chart-footer text-xs leading-5 text-slate-500">
                 <span>
-                  The estimate assumes full take-up of the discount. Funding and
-                  behavioural changes are not modelled.{" "}
+                  The estimate assumes full take-up of the discount.
+                  {halfTakeUp
+                    ? ` If half of the households eligible through the income test alone took it up, it would cost ${formatBn(halfTakeUp.cost_bn)} and reach ${formatMillions(halfTakeUp.recipients_m, 1)} households.`
+                    : ""}{" "}
+                  Funding and behavioural changes are not modelled.{" "}
                   <button
                     className="text-link"
                     onClick={() => onMethodology("method-limitations")}

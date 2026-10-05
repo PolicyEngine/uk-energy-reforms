@@ -515,5 +515,27 @@
   "title": "Billing me softly (10 August 2026)",
   "url": "https://www.resolutionfoundation.org/publications/billing-me-softly/",
   "note": "Passporting reach is stated as 'around a quarter' of British households. The VAT figure (about £45 a year) matches Ofgem's statement for the Oct-Dec 2026 cap. Of the 490,000 working-age couples with children who lose out, 71% are in the poorest fifth; of the 780,000 pensioner households who gain, 81% (630,000) are in decile five or above. Also stated: more than 15% of second-quintile households could not afford to keep their home warm in 2022-23. The press release says 'second income quartile', but the report says quintile."
+ },
+ {
+  "id": "qep_gas_bills_actual_consumption_gb",
+  "quantity": "Average annual domestic gas bill per on-gas household at actual and temperature-adjusted average consumption, with GB on-gas households and actual domestic gas consumption",
+  "value": {
+   "bill_actual_2024": 773.1,
+   "bill_temperature_adjusted_2024": 840.56,
+   "on_gas_households_2024": 25009793,
+   "gb_households_2024": 28183963,
+   "consumption_actual_gwh_2024": 252345,
+   "bill_actual_2025": 751.77,
+   "bill_temperature_adjusted_2025": 803.1,
+   "on_gas_households_2025": 25259891,
+   "gb_households_2025": 28361561
+  },
+  "unit": "gbp_per_year",
+  "period": "2024 and 2025 (calendar years)",
+  "geography": "GB",
+  "publisher": "DESNZ",
+  "title": "Quarterly Energy Prices, Table 2.3.5: Average annual domestic gas bills by payment type based on various consumption levels (published 30 July 2026)",
+  "url": "https://assets.publishing.service.gov.uk/media/6a69ee74f23ff62c51c1a851/table_235.xlsx",
+  "note": "Cash terms, including VAT. Average consumption is Energy Trends domestic consumption (Table 1.3) divided by DESNZ's estimate of on-gas households, from its sub-national estimates of properties not connected to the gas network. Bills are for calendar years. Landing page: https://www.gov.uk/government/statistical-data-sets/annual-domestic-energy-price-statistics"
  }
 ]
