@@ -273,6 +273,7 @@ def markdown(results: dict, year: int) -> str:
             )
         lines.append("")
     lines += _hbai_lines(results, year)
+    lines += _caseload_lines(results)
     lines += _take_up_lines(results)
     lines += _cut_off_lines(results)
     for name, by_dataset in results.items():
@@ -393,6 +394,39 @@ def _hbai_lines(results: dict, year: int) -> list:
                 + f" | {100 * hbai:.1f}% |"
             )
     return [*lines, ""]
+
+
+def _caseload_lines(results: dict) -> list:
+    """Passported households beside DWP's two largest passporting caseloads. The
+    caseloads overlap (a household can hold both) and count benefit units, so they
+    bound the passported count loosely rather than match it."""
+    sources = {s.id: s for s in EXTERNAL_SOURCES}
+    uc = sources["dwp_uc_households_may2026"]
+    pc = sources["dwp_pension_credit_mar2026"]
+    first = next(iter(results.values()))
+    lines = ["## Passporting against benefit caseloads", ""]
+    for dataset, r in first.items():
+        h = r["headline"]
+        lines.append(
+            f"- `{dataset}`: {h['passported_share'] * h['gb_households_m']:.2f}m "
+            f"passported households ({100 * h['passported_share']:.1f}% of GB)."
+        )
+    lines += [
+        (
+            f"- DWP: {uc.value['households_on_uc'] / 1e6:.1f}m benefit units on "
+            f"Universal Credit, {uc.value['households_with_payment'] / 1e6:.1f}m of "
+            f"them with a payment ({uc.period}, {uc.geography}); "
+            f"{pc.value['claimants'] / 1e6:.2f}m Pension Credit claimants "
+            f"({pc.period}, {pc.geography})."
+        ),
+        (
+            "- The caseloads count benefit units and overlap where one household "
+            "holds both, so they bound the passported count loosely; Housing Benefit "
+            "and the legacy benefits add a little more."
+        ),
+        "",
+    ]
+    return lines
 
 
 def _take_up_lines(results: dict) -> list:
