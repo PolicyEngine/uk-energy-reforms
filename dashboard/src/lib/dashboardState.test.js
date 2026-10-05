@@ -29,7 +29,7 @@ test("invalid shared links fall back to an available scenario and old report lin
   const state = dashboardState(
     new URLSearchParams("tab=report&year=1900&preset=missing&variant=missing"),
     data,
-    "microcosm_979",
+    "microcosm_national",
   );
   expect(state.tab).toBe("baseline");
   expect(state.scenario).toEqual({

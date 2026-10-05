@@ -84,16 +84,17 @@ Microsimulation with baseline and reform side by side:
 ```python
 from uk_energy_reforms.simulate import run
 
-r = run("microcosm_979", 2026, preset("rf_tiered"))  # r.frame: one row per household
+# r.frame: one row per household
+r = run("microcosm_national", 2026, preset("rf_tiered"))
 ```
 
 Full receipt (JSON plus markdown with breakdowns by region, household type and decile,
 poverty impacts, winners and losers, inequality, coverage of households in poverty or with
-high energy costs, eligibility across five income measures, cliff edges and the baseline the
-scheme acts on):
+high energy costs, eligibility across five income measures, counts around the income
+cut-offs and the baseline the scheme acts on):
 
 ```bash
-uv run uk-energy-reforms run --datasets microcosm_979 efrs_1573 --year 2026 \
+uv run uk-energy-reforms run --datasets microcosm_national efrs_1573 --year 2026 \
   --presets rf_flat rf_tiered --bill-share --budget 2e9 --out analyses/<name>/results
 ```
 
@@ -117,8 +118,11 @@ and are set as an input, because policyengine-core forbids randomness inside for
 
 `datasets.py` pins each dataset by Hugging Face revision and sha256:
 
-- `microcosm_979`: the staged Microcosm UK 2024-25 national attempt
-  `uk-frs-calibration-attempt-20260923T134002Z-c1be1c9f`.
+- `microcosm_national`: the Microcosm UK 2024-25 national release published on 4 October
+  2026 (`microcosm-uk-2024-25-national`, cut
+  `microcosm-uk-2024-25-national-20261002T230158Z-5c6b3f68`). It replaced the staged
+  national attempt `uk-frs-calibration-attempt-20260923T134002Z-c1be1c9f` that the first
+  results used.
 - `efrs_1573`: Enhanced FRS 2024-25 from policyengine-uk-data 1.57.3.
 
 Use Microcosm for anything below national totals. eFRS weights are highly concentrated

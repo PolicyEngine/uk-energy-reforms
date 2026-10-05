@@ -29,14 +29,14 @@ const BILL_GROUPS = [
 ];
 
 const PRICE_BASIS = {
-  microcosm_979: "2024-25 DESNZ prices",
+  microcosm_national: "2024-25 DESNZ prices",
   efrs_1573: "Ofgem April–June 2026 unit rates",
 };
 
 // Each dataset's price level on Ofgem's 2023 typical-use basis, the only basis on which
 // the 2024-25 caps are published.
 const PRICE_LEVEL_SOURCE = {
-  microcosm_979: ["ofgem_cap_fy2024_25", "mean"],
+  microcosm_national: ["ofgem_cap_fy2024_25", "mean"],
   efrs_1573: ["ofgem_cap_2026_apr_jun", "at_2023_tdcv"],
 };
 

@@ -664,7 +664,7 @@ export default function ReformTab({ data, dataset, scenario, onMethodology }) {
   const efrs =
     data.results[scenario.year]?.rf_flat?.efrs_1573?.headline.gb_households_m;
   const micro =
-    data.results[scenario.year]?.rf_flat?.microcosm_979?.headline
+    data.results[scenario.year]?.rf_flat?.microcosm_national?.headline
       .gb_households_m;
   const levels =
     dataset === "efrs_1573" && efrs && micro

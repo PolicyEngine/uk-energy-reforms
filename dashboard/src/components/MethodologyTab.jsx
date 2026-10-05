@@ -186,7 +186,7 @@ function Bullets({ items }) {
 
 // Each dataset's stored price level on Ofgem's 2023 typical-use basis.
 const PRICE_LEVEL = {
-  microcosm_979: {
+  microcosm_national: {
     label: "2024-25 prices",
     source: "ofgem_cap_fy2024_25",
     key: "mean",
@@ -238,7 +238,7 @@ export default function MethodologyTab({ data, dataset }) {
       )
       .join(" / ");
   const cap = (id) => (data.external_sources ?? []).find((x) => x.id === id);
-  const level = PRICE_LEVEL[dataset] ?? PRICE_LEVEL.microcosm_979;
+  const level = PRICE_LEVEL[dataset] ?? PRICE_LEVEL.microcosm_national;
   const levelValue = cap(level.source)?.value?.[level.key];
   const winter = cap("ofgem_cap_2026_oct_dec")?.value?.at_2023_tdcv;
   const winterGap = levelValue && winter ? winter / levelValue - 1 : null;
@@ -609,7 +609,7 @@ export default function MethodologyTab({ data, dataset }) {
               </p>
               <Note eyebrow="Commands">
                 <code className="block overflow-x-auto whitespace-pre text-xs">
-                  {`uv run uk-energy-reforms run --datasets microcosm_979 efrs_1573 --year 2026 \\
+                  {`uv run uk-energy-reforms run --datasets microcosm_national efrs_1573 --year 2026 \\
   --presets rf_flat rf_tiered rf_tiered_own_income rf_household_income passport_only \\
   --bill-share --budget 2e9 --out analyses/rf-billing-me-softly/results-2026
 uv run uk-energy-reforms rf-compare --out analyses/rf-billing-me-softly

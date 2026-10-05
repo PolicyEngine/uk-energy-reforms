@@ -95,14 +95,14 @@ describe("exported income distributions", () => {
       "2026",
       "rf_flat",
       "published",
-      "microcosm_979",
+      "microcosm_national",
     );
     const billShare = getDistributions(
       data,
       "2026",
       "rf_flat",
       "bill_share",
-      "microcosm_979",
+      "microcosm_national",
     );
     expect(
       billShare.distributions.eq_bhc.deciles.map((d) => d.cost_share),

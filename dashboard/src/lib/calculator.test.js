@@ -9,7 +9,7 @@ const results = JSON.parse(readFileSync(join(DATA, "targeted_energy_discount_res
 const reference = JSON.parse(readFileSync(join(DATA, "calculator.json")));
 
 const year = String(reference.year);
-const dataset = "microcosm_979";
+const dataset = "microcosm_national";
 const schedules = Object.fromEntries(
   ["rf_flat", "rf_tiered", "rf_tiered_own_income", "rf_household_income", "passport_only"].map(
     (p) => [p, results.results[year][p][dataset].schedule],

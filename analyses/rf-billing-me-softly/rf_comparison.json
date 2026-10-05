@@ -8,9 +8,9 @@
    "page": 3,
    "unit": "millions",
    "policyengine": {
-    "microcosm_979": {
-     "2024": 28.2537,
-     "2026": 28.565264
+    "microcosm_national": {
+     "2024": 28.260656,
+     "2026": 28.572296
     },
     "efrs_1573": {
      "2024": 30.337822,
@@ -26,9 +26,9 @@
    "page": 1,
    "unit": "share",
    "policyengine": {
-    "microcosm_979": {
-     "2024": 0.2746606171131134,
-     "2026": 0.27195993065834045
+    "microcosm_national": {
+     "2024": 0.2647407352924347,
+     "2026": 0.26436731219291687
     },
     "efrs_1573": {
      "2024": 0.2615073621273041,
@@ -44,9 +44,9 @@
    "page": 1,
    "unit": "share",
    "policyengine": {
-    "microcosm_979": {
-     "2024": 0.23652008175849915,
-     "2026": 0.23652008175849915
+    "microcosm_national": {
+     "2024": 0.23821525275707245,
+     "2026": 0.23821529746055603
     },
     "efrs_1573": {
      "2024": 0.2593723237514496,
@@ -62,9 +62,9 @@
    "page": 1,
    "unit": "share",
    "policyengine": {
-    "microcosm_979": {
-     "2024": 0.4003314673900604,
-     "2026": 0.3641321063041687
+    "microcosm_national": {
+     "2024": 0.3820365369319916,
+     "2026": 0.34850871562957764
     },
     "efrs_1573": {
      "2024": 0.4060244560241699,
@@ -80,9 +80,9 @@
    "page": 6,
    "unit": "share",
    "policyengine": {
-    "microcosm_979": {
-     "2024": 0.7255478501319885,
-     "2026": 0.6794704794883728
+    "microcosm_national": {
+     "2024": 0.7128550410270691,
+     "2026": 0.6769626140594482
     },
     "efrs_1573": {
      "2024": 0.76659095287323,
@@ -98,9 +98,9 @@
    "page": 6,
    "unit": "share",
    "policyengine": {
-    "microcosm_979": {
-     "2024": 0.37600189447402954,
-     "2026": 0.3417467772960663
+    "microcosm_national": {
+     "2024": 0.3576979637145996,
+     "2026": 0.3287868797779083
     },
     "efrs_1573": {
      "2024": 0.37882086634635925,
@@ -116,9 +116,9 @@
    "page": 6,
    "unit": "share",
    "policyengine": {
-    "microcosm_979": {
-     "2024": 0.7390965819358826,
-     "2026": 0.6801631450653076
+    "microcosm_national": {
+     "2024": 0.7184398174285889,
+     "2026": 0.6704325675964355
     },
     "efrs_1573": {
      "2024": 0.7579333782196045,
@@ -134,9 +134,9 @@
    "page": 7,
    "unit": "millions",
    "policyengine": {
-    "microcosm_979": {
-     "2024": 1.603337049484253,
-     "2026": 1.3883987665176392
+    "microcosm_national": {
+     "2024": 1.41587233543396,
+     "2026": 1.265838861465454
     },
     "efrs_1573": {
      "2024": 1.454566240310669,
@@ -152,9 +152,9 @@
    "page": 7,
    "unit": "thousands",
    "policyengine": {
-    "microcosm_979": {
-     "2024": 652.6506958007812,
-     "2026": 535.7325439453125
+    "microcosm_national": {
+     "2024": 588.0603637695312,
+     "2026": 523.7125854492188
     },
     "efrs_1573": {
      "2024": 676.3201293945312,
@@ -170,9 +170,9 @@
    "page": 7,
    "unit": "share",
    "policyengine": {
-    "microcosm_979": {
-     "2024": 0.6113284826278687,
-     "2026": 0.6082425117492676
+    "microcosm_national": {
+     "2024": 0.6580722332000732,
+     "2026": 0.6648707389831543
     },
     "efrs_1573": {
      "2024": 0.5525246262550354,
@@ -188,9 +188,9 @@
    "page": 7,
    "unit": "thousands",
    "policyengine": {
-    "microcosm_979": {
-     "2024": 342.2149963378906,
-     "2026": 248.1580810546875
+    "microcosm_national": {
+     "2024": 295.6758117675781,
+     "2026": 235.4080810546875
     },
     "efrs_1573": {
      "2024": 343.6507873535156,
@@ -206,9 +206,9 @@
    "page": 7,
    "unit": "share",
    "policyengine": {
-    "microcosm_979": {
-     "2024": 0.765226423740387,
-     "2026": 0.7728206515312195
+    "microcosm_national": {
+     "2024": 0.754969596862793,
+     "2026": 0.8020144104957581
     },
     "efrs_1573": {
      "2024": 0.6451038122177124,
@@ -224,9 +224,9 @@
    "page": 8,
    "unit": "thousands",
    "policyengine": {
-    "microcosm_979": {
-     "2024": 1089.1435546875,
-     "2026": 1092.26708984375
+    "microcosm_national": {
+     "2024": 930.0182495117188,
+     "2026": 1017.1046752929688
     },
     "efrs_1573": {
      "2024": 823.7606811523438,
@@ -242,9 +242,9 @@
    "page": 8,
    "unit": "share",
    "policyengine": {
-    "microcosm_979": {
-     "2024": 0.7077997922897339,
-     "2026": 0.5929840803146362
+    "microcosm_national": {
+     "2024": 0.667768657207489,
+     "2026": 0.4679116904735565
     },
     "efrs_1573": {
      "2024": 0.5980474352836609,
@@ -260,9 +260,9 @@
    "page": 8,
    "unit": "thousands",
    "policyengine": {
-    "microcosm_979": {
-     "2024": 982.1008911132812,
-     "2026": 980.5919799804688
+    "microcosm_national": {
+     "2024": 877.6798706054688,
+     "2026": 951.1674194335938
     },
     "efrs_1573": {
      "2024": 814.8778076171875,
@@ -278,9 +278,9 @@
    "page": 8,
    "unit": "share",
    "policyengine": {
-    "microcosm_979": {
-     "2024": 0.7010895609855652,
-     "2026": 0.5813120007514954
+    "microcosm_national": {
+     "2024": 0.6801127791404724,
+     "2026": 0.47245100140571594
     },
     "efrs_1573": {
      "2024": 0.5949248671531677,
@@ -296,9 +296,9 @@
    "page": 9,
    "unit": "gbp",
    "policyengine": {
-    "microcosm_979": {
-     "2024": 151.27224496180224,
-     "2026": 159.51013798583998
+    "microcosm_national": {
+     "2024": 159.86417939318756,
+     "2026": 167.35148288057087
     },
     "efrs_1573": {
      "2024": 146.37241225467892,
@@ -314,9 +314,9 @@
    "page": 9,
    "unit": "gbp",
    "policyengine": {
-    "microcosm_979": {
-     "2024": 176.82144879538177,
-     "2026": 192.2794050490649
+    "microcosm_national": {
+     "2024": 185.2434511114283,
+     "2026": 200.84971480344745
     },
     "efrs_1573": {
      "2024": 162.36536461009825,
@@ -332,9 +332,9 @@
    "page": 9,
    "unit": "gbp",
    "policyengine": {
-    "microcosm_979": {
-     "2024": 168.91735840474792,
-     "2026": 177.2809704569192
+    "microcosm_national": {
+     "2024": 177.29344217990217,
+     "2026": 185.04201624580082
     },
     "efrs_1573": {
      "2024": 164.78668429632515,
@@ -350,9 +350,9 @@
    "page": 9,
    "unit": "gbp",
    "policyengine": {
-    "microcosm_979": {
-     "2024": 65.26352483819805,
-     "2026": 68.49492040380969
+    "microcosm_national": {
+     "2024": 68.49973902405311,
+     "2026": 71.49350627678669
     },
     "efrs_1573": {
      "2024": 63.667582569034714,
@@ -368,9 +368,9 @@
    "page": 9,
    "unit": "gbp",
    "policyengine": {
-    "microcosm_979": {
-     "2024": 211.17382437094773,
-     "2026": 230.8099419407492
+    "microcosm_national": {
+     "2024": 220.21886396740686,
+     "2026": 240.05012830437263
     },
     "efrs_1573": {
      "2024": 190.7199866586168,
@@ -386,9 +386,9 @@
    "page": 9,
    "unit": "gbp",
    "policyengine": {
-    "microcosm_979": {
-     "2024": 81.58988668877527,
-     "2026": 89.17656847710765
+    "microcosm_national": {
+     "2024": 85.08456107831628,
+     "2026": 92.74664048123488
     },
     "efrs_1573": {
      "2024": 73.6872675726474,
@@ -398,100 +398,100 @@
   }
  ],
  "extra": {
-  "microcosm_979": {
+  "microcosm_national": {
    "2024": {
-    "gb_households_m": 28.2537,
-    "passport_share": 0.2746606171131134,
-    "passport_share_reported": 0.23652008175849915,
-    "income_test_share": 0.4003314673900604,
-    "income_test_bottom4": 0.7255478501319885,
-    "household_test_share": 0.37600189447402954,
-    "household_test_bottom4": 0.7390965819358826,
-    "couples_children_household_eligible_m": 1.603337049484253,
-    "couples_children_lose_k": 652.6506958007812,
-    "couples_children_lose_bottom_quintile": 0.6113284826278687,
-    "couples_children_lose_policy_k": 342.2149963378906,
-    "couples_children_lose_policy_bottom_quintile": 0.765226423740387,
-    "pensioners_gain_k": 1089.1435546875,
-    "pensioners_gain_decile5plus": 0.7077997922897339,
-    "pensioners_gain_policy_k": 982.1008911132812,
-    "pensioners_gain_policy_decile5plus": 0.7010895609855652,
-    "couples_children_lose_bottom_quintile_hhw": 0.5410510897636414,
-    "couples_children_lose_policy_bottom_quintile_hhw": 0.6886520981788635,
-    "pensioners_gain_decile5plus_hhw": 0.7610656023025513,
-    "pensioners_gain_policy_decile5plus_hhw": 0.7587651610374451,
-    "couples_children_household_eligible_m_households": 1.411228625,
-    "couples_children_lose_k_households": 536.26525,
-    "couples_children_lose_policy_k_households": 326.03371875,
-    "couples_children_lose_bottom_quintile_households": 0.6414459347724915,
-    "pensioners_gain_k_households": 900.6818125,
-    "pensioners_gain_policy_k_households": 871.234375,
-    "pensioners_gain_decile5plus_households": 0.7407792210578918,
-    "multi_family_household_share": 0.2128870189189911,
-    "pensioners_gain_in_multi_family_share": 0.1703166663646698,
-    "pensioners_gain_policy_in_multi_family_share": 0.10987067222595215,
-    "flat_average_at_budget": 151.27224496180224,
-    "flat_average_at_budget_income_test": 176.82144879538177,
-    "tiered_low_at_budget_income_test": 211.17382437094773,
-    "tiered_high_at_budget_income_test": 81.58988668877527,
-    "tiered_low_at_budget": 168.91735840474792,
-    "tiered_high_at_budget": 65.26352483819805,
-    "tiered_low_at_budget_own_income": 195.9063410964486,
-    "tiered_high_at_budget_own_income": 75.69108633271878,
-    "cost_flat_at_175_bn": 2.313709056,
-    "cost_tiered_at_220_85_bn": 2.604824064,
-    "cost_tiered_own_income_at_220_85_bn": 2.2459712,
-    "sample_n_couples_children_lose": 868,
-    "sample_n_couples_children_lose_policy": 392,
-    "sample_n_pensioners_gain": 2341,
-    "sample_n_pensioners_gain_policy": 2239
+    "gb_households_m": 28.260656,
+    "passport_share": 0.2647407352924347,
+    "passport_share_reported": 0.23821525275707245,
+    "income_test_share": 0.3820365369319916,
+    "income_test_bottom4": 0.7128550410270691,
+    "household_test_share": 0.3576979637145996,
+    "household_test_bottom4": 0.7184398174285889,
+    "couples_children_household_eligible_m": 1.41587233543396,
+    "couples_children_lose_k": 588.0603637695312,
+    "couples_children_lose_bottom_quintile": 0.6580722332000732,
+    "couples_children_lose_policy_k": 295.6758117675781,
+    "couples_children_lose_policy_bottom_quintile": 0.754969596862793,
+    "pensioners_gain_k": 930.0182495117188,
+    "pensioners_gain_decile5plus": 0.667768657207489,
+    "pensioners_gain_policy_k": 877.6798706054688,
+    "pensioners_gain_policy_decile5plus": 0.6801127791404724,
+    "couples_children_lose_bottom_quintile_hhw": 0.5946487188339233,
+    "couples_children_lose_policy_bottom_quintile_hhw": 0.6818511486053467,
+    "pensioners_gain_decile5plus_hhw": 0.6838382482528687,
+    "pensioners_gain_policy_decile5plus_hhw": 0.6962354183197021,
+    "couples_children_household_eligible_m_households": 1.242136375,
+    "couples_children_lose_k_households": 497.7405625,
+    "couples_children_lose_policy_k_households": 287.7095,
+    "couples_children_lose_bottom_quintile_households": 0.660056471824646,
+    "pensioners_gain_k_households": 829.400625,
+    "pensioners_gain_policy_k_households": 804.135125,
+    "pensioners_gain_decile5plus_households": 0.6712527871131897,
+    "multi_family_household_share": 0.20971350371837616,
+    "pensioners_gain_in_multi_family_share": 0.10796497762203217,
+    "pensioners_gain_policy_in_multi_family_share": 0.0835571214556694,
+    "flat_average_at_budget": 159.86417939318756,
+    "flat_average_at_budget_income_test": 185.2434511114283,
+    "tiered_low_at_budget_income_test": 220.21886396740686,
+    "tiered_high_at_budget_income_test": 85.08456107831628,
+    "tiered_low_at_budget": 177.29344217990217,
+    "tiered_high_at_budget": 68.49973902405311,
+    "tiered_low_at_budget_own_income": 205.25224829580924,
+    "tiered_high_at_budget_own_income": 79.30200502338084,
+    "cost_flat_at_175_bn": 2.189358592,
+    "cost_tiered_at_220_85_bn": 2.48176128,
+    "cost_tiered_own_income_at_220_85_bn": 2.14370368,
+    "sample_n_couples_children_lose": 944,
+    "sample_n_couples_children_lose_policy": 398,
+    "sample_n_pensioners_gain": 2361,
+    "sample_n_pensioners_gain_policy": 2282
    },
    "2026": {
-    "gb_households_m": 28.565264,
-    "passport_share": 0.27195993065834045,
-    "passport_share_reported": 0.23652008175849915,
-    "income_test_share": 0.3641321063041687,
-    "income_test_bottom4": 0.6794704794883728,
-    "household_test_share": 0.3417467772960663,
-    "household_test_bottom4": 0.6801631450653076,
-    "couples_children_household_eligible_m": 1.3883987665176392,
-    "couples_children_lose_k": 535.7325439453125,
-    "couples_children_lose_bottom_quintile": 0.6082425117492676,
-    "couples_children_lose_policy_k": 248.1580810546875,
-    "couples_children_lose_policy_bottom_quintile": 0.7728206515312195,
-    "pensioners_gain_k": 1092.26708984375,
-    "pensioners_gain_decile5plus": 0.5929840803146362,
-    "pensioners_gain_policy_k": 980.5919799804688,
-    "pensioners_gain_policy_decile5plus": 0.5813120007514954,
-    "couples_children_lose_bottom_quintile_hhw": 0.5754618048667908,
-    "couples_children_lose_policy_bottom_quintile_hhw": 0.7428979277610779,
-    "pensioners_gain_decile5plus_hhw": 0.6354759931564331,
-    "pensioners_gain_policy_decile5plus_hhw": 0.6286431550979614,
-    "couples_children_household_eligible_m_households": 1.232254625,
-    "couples_children_lose_k_households": 445.93471875,
-    "couples_children_lose_policy_k_households": 239.506265625,
-    "couples_children_lose_bottom_quintile_households": 0.6171186566352844,
-    "pensioners_gain_k_households": 889.8024375,
-    "pensioners_gain_policy_k_households": 856.0663125,
-    "pensioners_gain_decile5plus_households": 0.6176814436912537,
-    "multi_family_household_share": 0.2128870040178299,
-    "pensioners_gain_in_multi_family_share": 0.18256540596485138,
-    "pensioners_gain_policy_in_multi_family_share": 0.12387537956237793,
-    "flat_average_at_budget": 159.51013798583998,
-    "flat_average_at_budget_income_test": 192.2794050490649,
-    "tiered_low_at_budget_income_test": 230.8099419407492,
-    "tiered_high_at_budget_income_test": 89.17656847710765,
-    "tiered_low_at_budget": 177.2809704569192,
-    "tiered_high_at_budget": 68.49492040380969,
-    "tiered_low_at_budget_own_income": 210.73166401568787,
-    "tiered_high_at_budget_own_income": 81.41905200606122,
-    "cost_flat_at_175_bn": 2.194217728,
-    "cost_tiered_at_220_85_bn": 2.481935872,
-    "cost_tiered_own_income_at_220_85_bn": 2.087963392,
-    "sample_n_couples_children_lose": 741,
-    "sample_n_couples_children_lose_policy": 288,
-    "sample_n_pensioners_gain": 2462,
-    "sample_n_pensioners_gain_policy": 2317
+    "gb_households_m": 28.572296,
+    "passport_share": 0.26436731219291687,
+    "passport_share_reported": 0.23821529746055603,
+    "income_test_share": 0.34850871562957764,
+    "income_test_bottom4": 0.6769626140594482,
+    "household_test_share": 0.3287868797779083,
+    "household_test_bottom4": 0.6704325675964355,
+    "couples_children_household_eligible_m": 1.265838861465454,
+    "couples_children_lose_k": 523.7125854492188,
+    "couples_children_lose_bottom_quintile": 0.6648707389831543,
+    "couples_children_lose_policy_k": 235.4080810546875,
+    "couples_children_lose_policy_bottom_quintile": 0.8020144104957581,
+    "pensioners_gain_k": 1017.1046752929688,
+    "pensioners_gain_decile5plus": 0.4679116904735565,
+    "pensioners_gain_policy_k": 951.1674194335938,
+    "pensioners_gain_policy_decile5plus": 0.47245100140571594,
+    "couples_children_lose_bottom_quintile_hhw": 0.6198921203613281,
+    "couples_children_lose_policy_bottom_quintile_hhw": 0.7982075810432434,
+    "pensioners_gain_decile5plus_hhw": 0.4989037811756134,
+    "pensioners_gain_policy_decile5plus_hhw": 0.5055915117263794,
+    "couples_children_household_eligible_m_households": 1.108073375,
+    "couples_children_lose_k_households": 433.40890625,
+    "couples_children_lose_policy_k_households": 221.747484375,
+    "couples_children_lose_bottom_quintile_households": 0.666361391544342,
+    "pensioners_gain_k_households": 918.38725,
+    "pensioners_gain_policy_k_households": 876.4618125,
+    "pensioners_gain_decile5plus_households": 0.48280951380729675,
+    "multi_family_household_share": 0.20971350371837616,
+    "pensioners_gain_in_multi_family_share": 0.0966944694519043,
+    "pensioners_gain_policy_in_multi_family_share": 0.07826656848192215,
+    "flat_average_at_budget": 167.35148288057087,
+    "flat_average_at_budget_income_test": 200.84971480344745,
+    "tiered_low_at_budget_income_test": 240.05012830437263,
+    "tiered_high_at_budget_income_test": 92.74664048123488,
+    "tiered_low_at_budget": 185.04201624580082,
+    "tiered_high_at_budget": 71.49350627678669,
+    "tiered_low_at_budget_own_income": 219.7393364095775,
+    "tiered_high_at_budget_own_income": 84.89928906733677,
+    "cost_flat_at_175_bn": 2.091406464,
+    "cost_tiered_at_220_85_bn": 2.377838336,
+    "cost_tiered_own_income_at_220_85_bn": 2.00237248,
+    "sample_n_couples_children_lose": 823,
+    "sample_n_couples_children_lose_policy": 330,
+    "sample_n_pensioners_gain": 2338,
+    "sample_n_pensioners_gain_policy": 2230
    }
   },
   "efrs_1573": {

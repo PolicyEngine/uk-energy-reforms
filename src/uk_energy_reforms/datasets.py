@@ -24,20 +24,21 @@ class DatasetSpec:
 DATASETS: dict[str, DatasetSpec] = {
     spec.key: spec
     for spec in [
+        # Release microcosm-uk-2024-25-national, published 4 October 2026: the
+        # commit of its immutable cut tag
+        # microcosm-uk-2024-25-national-20261002T230158Z-5c6b3f68 (the same bytes as
+        # microcosm_uk_2024_25.h5 on main). Built with policyengine-uk 2.100.0.
         DatasetSpec(
-            key="microcosm_979",
-            label="Microcosm UK 2024-25 (staged #979 national attempt)",
+            key="microcosm_national",
+            label="Microcosm UK 2024-25 (national release)",
             repo_id="policyengine/populace-uk-private",
             repo_type="dataset",
-            filename=(
-                "staged/uk-frs-calibration-attempt-20260923T134002Z-c1be1c9f/"
-                "microcosm_uk_2024_25.h5"
-            ),
-            revision="f6df65b1e98675ad305bcacf7ede3e0d34b57063",
-            sha256="c5f107ab6eaf74d05c1e17ecd65a4f6876666c4554bd004f76102099aa6de821",
+            filename="microcosm_uk_2024_25.h5",
+            revision="f9d1922cddab6b54a0dd37794a9bac74e3780c88",
+            sha256="aa31bdf67c977927ea2b325567d1cf7a79d94381239bc79918a0a0fc9c9588af",
             notes=(
                 "Energy spend priced with DESNZ QEP FY2024-25, raked to NEED, levelled "
-                "to Energy Trends. Staged candidate, not a certified release."
+                "to Energy Trends. Certified release, published 4 October 2026."
             ),
         ),
         DatasetSpec(
