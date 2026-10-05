@@ -256,7 +256,7 @@ def markdown(results: dict, year: int) -> str:
         "",
         (
             "A dash marks a poverty change resting on fewer than 10 survey records "
-            "crossing the line. A blanked change is still included in the totals "
+            "crossing the line. A blanked change is included in the totals "
             "shown: the change for all people, and the national figures for regions "
             "and household types."
         ),

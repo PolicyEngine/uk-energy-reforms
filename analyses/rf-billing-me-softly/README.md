@@ -414,7 +414,7 @@ uv run uk-energy-reforms export-dashboard --analysis analyses/rf-billing-me-soft
     every figure, including the lowest-three-decile group on deciles of people.
 - **Small samples in poverty changes.** A poverty change resting on fewer than 10 survey
   records crossing the line is blanked, nationally and by region or household type. A
-  blanked change is still included in the totals shown: the change for all people, and the
+  blanked change is included in the totals shown: the change for all people, and the
   national figures for regions and household types.
 - **Receipts.** `results-2026/report.md`, `results-2027/report.md` and
   `results-2024/report.md` hold every table,

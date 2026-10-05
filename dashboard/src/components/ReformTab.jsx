@@ -399,7 +399,7 @@ function PovertySection({ result, onMethodology }) {
             between years and datasets, and it rests on few survey households:
             the table gives each change&apos;s effective sample, and shows
             &ldquo;–&rdquo; where fewer than 10 survey households cross the line.
-            A blanked change is still included in the total for all people. The
+            A blanked change is included in the total for all people. The
             Baseline tab sets the starting rates beside the official ones.
           </p>
           <button
@@ -547,7 +547,7 @@ function BreakdownSection({ result }) {
     <section className="section-card space-y-5">
       <SectionHeading
         title="How does eligibility vary by region and household type?"
-        description="Share of households qualifying through benefits or the income test, ordered by the share qualifying through benefits. The table also shows payments and poverty effects. Its poverty columns use absolute poverty before housing costs, as in the headline figures; “–” marks a change resting on fewer than 10 survey households, which is still included in the national total. ESS is effective sample size: small values indicate that few survey records drive the estimate."
+        description="Share of households qualifying through benefits or the income test, ordered by the share qualifying through benefits. The table also shows payments and poverty effects. Its poverty columns use absolute poverty before housing costs, as in the headline figures; “–” marks a change resting on fewer than 10 survey households, which is included in the national total. ESS is effective sample size: small values indicate that few survey records drive the estimate."
       />
       <Toggle
         value={by}
