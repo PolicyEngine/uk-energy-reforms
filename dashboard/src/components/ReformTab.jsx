@@ -148,7 +148,7 @@ function DecileSection({ result }) {
     <section className="section-card">
       <SectionHeading
         title="Who gains across the income distribution?"
-        description="Average gain for each tenth of people, ranked by household income after housing costs, adjusted for household size, from the lowest income (1) to the highest (10). Averages include households that receive £0, so they reflect both how many qualify in each group and how much they receive. Switch to see gains as a share of net income, or the share of each group receiving support."
+        description="Average gain for each tenth of people, ranked from the lowest to the highest income. Averages include households that receive £0, so they reflect both how many qualify in each group and how much they receive. Switch to see gains as a share of net income, or the share of each group receiving support."
       />
       <div className="mb-4">
         <Toggle value={metric} onChange={setMetric} options={DECILE_METRICS} />
@@ -474,7 +474,7 @@ function ReachSection({ result, year }) {
     <section className="section-card space-y-5">
       <SectionHeading
         title="Which households does the reform reach?"
-        description="Share of households in each group that qualify, split by route: passported by a means-tested benefit, or through the income test alone. Groups: households in poverty, in the four lowest income deciles, or spending over 10% of net income on energy."
+        description="Share of households in each group that qualify, split by route: passported by a means-tested benefit, or through the income test alone. Groups: households in poverty, in the four lowest income deciles, or spending over 10% of net income on energy (actual spend, not the official fuel poverty measure; see Methodology)."
       />
       <Toggle
         label="Housing costs"
