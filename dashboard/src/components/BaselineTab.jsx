@@ -270,7 +270,7 @@ export default function BaselineTab({ data, dataset }) {
           <section id="baseline-bills" className="section-card space-y-4">
             <SectionHeading
               title="How do energy bills vary?"
-              description={`Average annual gas and electricity spend, by the group you choose. This affects the payment basis: a bill-share discount pays more to households with higher bills, while fixed amounts pay the same whatever the bill.${byDecile ? " Deciles rank people by household income after housing costs, adjusted for household size, from the lowest income (1) to the highest (10)." : ""}`}
+              description={`Average annual gas and electricity spend, by the group you choose. This affects the payment basis: a bill-share discount pays more to households with higher bills, while fixed amounts pay the same whatever the bill.${byDecile ? " Deciles rank people by household income after housing costs, adjusted for household size, from the lowest income (1) to the highest (10). Each holds a tenth of people, so their household counts differ." : ""}`}
             />
             <Toggle
               value={groupBy}
@@ -290,7 +290,10 @@ export default function BaselineTab({ data, dataset }) {
                 <Table
                   minWidth={720}
                   columns={[
-                    { key: "group", header: "Group" },
+                    {
+                      key: "group",
+                      header: byDecile ? "Decile (of people)" : "Group",
+                    },
                     {
                       key: "households_m",
                       header: "Households",
