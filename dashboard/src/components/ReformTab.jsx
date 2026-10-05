@@ -385,8 +385,9 @@ function PovertySection({ result, onMethodology }) {
           <p>
             A fall from 20% to 19% is a 5% reduction, or 1 percentage point. The
             discount counts as household income. Absolute poverty uses the
-            2010–11 line uprated by inflation; relative poverty uses 60% of the
-            baseline median. The table gives the rates and changes in people.
+            official line since March 2026: 60% of the 2024-25 median, held
+            constant in real terms. Relative poverty uses 60% of the baseline
+            median. The table gives the rates and changes in people.
           </p>
           <button
             className="text-link"

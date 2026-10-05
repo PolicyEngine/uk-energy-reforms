@@ -23,10 +23,10 @@ are comparable.
   £2.31bn.
 - **Poverty (flat option):** 227k / 207k fewer people in relative poverty after housing
   costs, of whom 36k / 75k are children and 122k / 31k pensioners.
-- **Absolute poverty after housing costs:** the scheme reaches 87% / 89% of the 3.6m / 5.0m
-  households below the line. It does not reach 0.46m / 0.56m, almost all of them
-  working-age. Before housing costs it reaches 96% / 95% of the 2.7m / 4.1m households below
-  the line and does not reach 0.11m / 0.21m.
+- **Absolute poverty after housing costs:** the scheme reaches 87% / 87% of the 4.7m / 6.3m
+  households below the line. It does not reach 0.63m / 0.80m, almost all of them
+  working-age. Before housing costs it reaches 93% / 94% of the 3.9m / 5.2m households below
+  the line and does not reach 0.27m / 0.31m.
 - **Winners and inequality (flat option):** 38% / 37% of people in Great Britain live in a
   household that gains, from 84% / 85% in the lowest income decile to 3% / 2% in the highest.
   0.3% / 1.0% of people gain more than 5% of net income. Nobody loses, because the analysis
@@ -152,10 +152,11 @@ with sources (`src/uk_energy_reforms/external_sources.json`).
 - **Gain relative to income:** 0.16–0.22% of average net income in the North, the Midlands,
   Wales and Scotland, against 0.08–0.10% in London and the South East (Microcosm).
 - **Households in absolute poverty after housing costs that the scheme does not reach:**
-  - London holds 141k / 107k and the South East 60k / 212k. Together they account for 44%
-    / 57% of the total, against 27% of households.
-  - London reaches 76% / 84% of its households in poverty, against 92–99% in the North
-    East, Wales and Scotland.
+  - London holds 148k / 116k and the South East 86k / 243k. Together they account for 37%
+    / 45% of the total, against 27% of households.
+  - London reaches 79% / 86% of its households in poverty. On Microcosm that is the lowest
+    of any region, against 93–94% in the North East, Wales and Scotland; on the Enhanced
+    FRS the South East is lowest (76%).
 
 ## By household type (flat option)
 
@@ -167,10 +168,10 @@ two datasets; counts differ as well (see "Data").
   test alone. They receive 21% / 24% of the spending.
 - **Pensioner couples:** 44% / 35% eligible, 7% / 6% through passporting. Each partner's
   income is tested separately.
-- **Couples with children:** 22% / 26% eligible. The scheme reaches 69% of those in
-  absolute poverty after housing costs on both datasets, the lowest share of any type. It
-  does not reach 189k / 183k such households in poverty, and 1.17m / 0.77m in the four
-  lowest income deciles.
+- **Couples with children:** 22% / 26% eligible. The scheme reaches 67% / 64% of those in
+  absolute poverty after housing costs, the lowest share of any type. It does not reach
+  277k / 303k such households in poverty, and 1.17m / 0.77m in the four lowest income
+  deciles.
 - **Couples without children:** 16% / 15% eligible. 578k / 757k of them are in the four
   lowest income deciles and unreached.
 
@@ -314,7 +315,7 @@ uv run uk-energy-reforms export-dashboard --analysis analyses/rf-billing-me-soft
   --calculator-out dashboard/public/data/calculator.json
 ```
 
-- **Model.** Static microsimulation with policyengine-uk 2.100.1 for Great Britain.
+- **Model.** Static microsimulation with policyengine-uk 2.102.3 for Great Britain.
   Northern Ireland is out of scope, as in the proposal.
 - **Passporting.** Households qualify through the Warm Home Discount benefits as modelled,
   including take-up. The report uses receipt reported in the FRS instead; the replication
@@ -341,7 +342,11 @@ uv run uk-energy-reforms export-dashboard --analysis analyses/rf-billing-me-soft
   HBAI income, as DWP counts the Warm Home Discount.
 - **Poverty lines.**
   - Relative poverty is 60% of the baseline UK median, held fixed for the reform.
-  - Absolute poverty uses the 2010-11 HBAI line uprated by CPI.
+  - Absolute poverty uses the line HBAI has used since March 2026: 60% of the 2024-25
+    median, held constant in real terms. That is £431.69 a week before housing costs and
+    £373.89 after, for a couple without children, in 2024-25. policyengine-uk uprates it
+    by CPI, to £456.63 and £395.49 in 2026-27. Results before policyengine-uk 2.102.3
+    used the 2010-11 line uprated by CPI, which HBAI no longer applies from 2021-22.
   - Deciles rank GB people by equivalised income after housing costs.
 - **Winners and inequality.** People are banded by their household's change in net income
   before housing costs relative to its baseline: above 5%, 0.1% to 5%, and within 0.1% (no
