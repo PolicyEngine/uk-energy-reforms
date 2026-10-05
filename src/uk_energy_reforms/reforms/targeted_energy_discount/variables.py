@@ -62,6 +62,11 @@ class targeted_energy_discount_bill(Variable):
 
 class targeted_energy_discount_person_income(Variable):
     label = "Individual income assessed by the targeted energy discount income test"
+    documentation = (
+        "Floored at zero: a person's taxable income cannot be negative, and one "
+        "member's loss does not reduce another's income in the household test "
+        "(the dashboard calculator does the same)."
+    )
     entity = Person
     definition_period = YEAR
     value_type = float
@@ -69,7 +74,7 @@ class targeted_energy_discount_person_income(Variable):
 
     def formula(person, period, parameters):
         p = _params(period, parameters)
-        return add(person, period, p.income_test.sources)
+        return max_(add(person, period, p.income_test.sources), 0)
 
 
 class targeted_energy_discount_highest_income(Variable):
