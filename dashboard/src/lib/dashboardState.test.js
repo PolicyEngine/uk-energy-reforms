@@ -1,10 +1,14 @@
 import { expect, test } from "bun:test";
 import data from "../../public/data/targeted_energy_discount_results.json";
-import { dashboardQuery, dashboardState } from "./dashboardState";
+import {
+  dashboardQuery,
+  dashboardState,
+  legacyAnchor,
+} from "./dashboardState";
 
-test("navigation keeps the scenario, eligibility view and dataset in shared links", () => {
+test("navigation keeps the scenario and dataset in shared links", () => {
   const initial = new URLSearchParams(
-    "tab=reform&preset=rf_tiered&variant=bill_share&year=2027&view=eligibility&dataset=efrs_1573",
+    "tab=reform&preset=rf_tiered&variant=bill_share&year=2027&dataset=efrs_1573",
   );
   const household = new URLSearchParams(
     dashboardQuery(initial, { tab: "household" }),
@@ -12,7 +16,6 @@ test("navigation keeps the scenario, eligibility view and dataset in shared link
   const state = dashboardState(household, data, "efrs_1573");
   expect(state).toEqual({
     tab: "household",
-    view: "eligibility",
     scenario: { year: "2027", preset: "rf_tiered", variant: "bill_share" },
   });
   expect(household.get("dataset")).toBe("efrs_1573");
@@ -37,4 +40,18 @@ test("invalid shared links fall back to an available scenario and old report lin
     preset: "rf_flat",
     variant: "published",
   });
+});
+
+test("old eligibility-view links map to the eligibility section and drop the parameter", () => {
+  const old = new URLSearchParams(
+    "tab=reform&preset=rf_tiered&year=2027&view=eligibility",
+  );
+  expect(legacyAnchor(old)).toBe("overview-targeting");
+  expect(legacyAnchor(new URLSearchParams("view=overview"))).toBeNull();
+  expect(legacyAnchor(new URLSearchParams("tab=reform"))).toBeNull();
+  const cleaned = new URLSearchParams(dashboardQuery(old, { view: null }));
+  expect(cleaned.has("view")).toBe(false);
+  expect(dashboardState(cleaned, data, "microcosm_national").scenario).toEqual(
+    dashboardState(old, data, "microcosm_national").scenario,
+  );
 });

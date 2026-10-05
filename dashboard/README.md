@@ -4,21 +4,24 @@ A static dashboard for the Resolution Foundation's targeted energy discount prop
 (*Billing me softly*, August 2026), built on the template of PolicyEngine's published UK
 dashboards. Four tabs:
 
-- **General impacts:** an Overview of cost, reach, gains, poverty and inequality, including
-  region and household-type breakdowns. A separate **Eligibility across income measures**
-  view explores qualification, spending and gains by different household income rankings.
+- **Economic impact:** cost, gains across the income distribution, poverty and inequality,
+  who qualifies, and region and household-type breakdowns. A collapsible section at the end
+  ranks households by other income measures to show whether those who qualify are also
+  lower-income. Counts around the income cut-offs stay in the results receipts, which the
+  tab links to.
 - **Your household:** the selected scenario's discount and support curve first, with a
   collapsed comparison of all options. Household inputs persist when switching tabs;
   Calculate applies edited inputs to the estimate.
-- **Baseline and comparisons:** households, bills and eligibility before the scheme, data
+- **Baseline:** households, bills and eligibility before the scheme in 2026-27, data
   coverage, the model beside official statistics and other organisations' estimates, and
   every figure the Resolution Foundation publishes beside PolicyEngine's.
 - **Methodology:** a guided data → eligibility → payments → income effects explanation,
   with expandable technical detail, assumptions, sources and reproduction instructions.
 
-General impacts and Your household share visible reform option, payment basis and year
-controls. The URL preserves these selections and the active tab/view for sharing; household
-inputs remain in browser memory and are not included in the URL.
+Economic impact and Your household share visible reform option, payment basis and year
+controls. The URL preserves these selections and the active tab for sharing (links to the
+former eligibility view, `?view=eligibility`, open its section of the Economic impact tab);
+household inputs remain in browser memory and are not included in the URL.
 
 The page shows the Microcosm dataset. The exported data also carry the Enhanced FRS for
 internal use: add `?dataset=efrs_1573` to the URL to switch every tab to it.

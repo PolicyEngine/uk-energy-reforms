@@ -12,6 +12,7 @@ import { datasetFromQuery } from "../src/lib/dataHelpers";
 import {
   dashboardQuery,
   dashboardState,
+  legacyAnchor,
   TABS,
 } from "../src/lib/dashboardState";
 
@@ -30,18 +31,30 @@ function Dashboard() {
   // Kept above the tabs so navigating away never discards an entered household.
   const [householdState, setHouseholdState] = useState(null);
   const dataset = datasetFromQuery(searchParams.get("dataset"), data);
-  const { tab, view, scenario } = dashboardState(searchParams, data, dataset);
+  const { tab, scenario } = dashboardState(searchParams, data, dataset);
 
-  const previousView = useRef({ tab, view });
+  const previousTab = useRef(tab);
   useEffect(() => {
-    if (
-      (previousView.current.tab !== tab ||
-        previousView.current.view !== view) &&
-      !window.location.hash
-    )
+    if (previousTab.current !== tab && !window.location.hash)
       window.scrollTo(0, 0);
-    previousView.current = { tab, view };
-  }, [tab, view]);
+    previousTab.current = tab;
+  }, [tab]);
+
+  // Links to the old eligibility view open its section on the Economic impact tab.
+  const legacy = legacyAnchor(searchParams);
+  useEffect(() => {
+    if (!legacy || !data) return;
+    const anchor = tab === "reform" ? legacy : "";
+    const query = dashboardQuery(currentQuery.current, { view: null });
+    currentQuery.current = query;
+    router.replace(`/?${query}${anchor ? `#${anchor}` : ""}`, { scroll: false });
+    if (!anchor) return;
+    requestAnimationFrame(() => {
+      const section = document.getElementById(anchor);
+      section?.querySelector("details")?.setAttribute("open", "");
+      section?.scrollIntoView({ block: "start" });
+    });
+  }, [legacy, data, tab, router]);
 
   useEffect(() => {
     let cancelled = false;

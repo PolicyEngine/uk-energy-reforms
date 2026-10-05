@@ -28,13 +28,18 @@ export function dashboardState(params, data, dataset) {
   const available = data && getResult(data, year, preset, variant, dataset);
   return {
     tab,
-    view: params.get("view") === "eligibility" ? "eligibility" : "overview",
     scenario: {
       year,
       preset: available ? preset : "rf_flat",
       variant: available ? variant : "published",
     },
   };
+}
+
+// The Economic impact tab once had a separate eligibility view (?view=eligibility). It
+// is now a section of the tab, so old links land on that section and lose the parameter.
+export function legacyAnchor(params) {
+  return params.get("view") === "eligibility" ? "overview-targeting" : null;
 }
 
 export function dashboardQuery(current, patch) {
