@@ -101,7 +101,7 @@ const DECILE_METRICS = [
   },
 ];
 
-function Headline({ result, levels }) {
+function Headline({ result, levels, costLevels }) {
   const h = result.headline;
   const pov = result.poverty.find(
     (p) => p.measure === "abs_pov_bhc" && p.group === "people",
@@ -112,7 +112,7 @@ function Headline({ result, levels }) {
         label="Cost"
         icon="cost"
         value={formatBn(h.cost_bn)}
-        note="Total support paid in the year, if every eligible household receives it."
+        note={`Total support paid in the year, if every eligible household receives it${costLevels}`}
       />
       <MetricCard
         label="Households receiving support"
@@ -401,7 +401,9 @@ function PovertySection({ result, onMethodology }) {
             it would not show up in the income that official poverty statistics
             measure. Absolute poverty uses the official line since March 2026:
             60% of the 2024-25 median, held constant in real terms. Relative
-            poverty uses 60% of the baseline median.
+            poverty uses 60% of the median before the discount, held fixed so
+            the line does not move with the transfer; official statistics
+            recompute the median each year.
           </p>
           <p>
             The change in people counts those whose household moves above a
@@ -711,6 +713,11 @@ export default function ReformTab({ data, dataset, scenario, onMethodology }) {
     dataset === "efrs_1573" && efrs && micro
       ? `; Enhanced FRS counts run ${formatShare(efrs / micro - 1)} above Microcosm's.`
       : ".";
+  // Enhanced FRS weights sum to more GB households, so its costs run high with them.
+  const costLevels =
+    dataset === "efrs_1573" && efrs && micro
+      ? `; with its ${formatShare(efrs / micro - 1)} more households than Microcosm, Enhanced FRS costs run high.`
+      : ".";
   // Options with an income test: cost and reach if half of the households eligible
   // through it alone take the discount up (passported households are enrolled).
   const halfTakeUp = result?.schedule?.income_test
@@ -731,7 +738,7 @@ export default function ReformTab({ data, dataset, scenario, onMethodology }) {
                 title="The reform at a glance"
                 description="Headline figures for the selected option, payment basis and year. Cost is the total discount paid; the poverty figure counts people moved above the absolute poverty line, before housing costs."
               />
-              <Headline result={result} levels={levels} />
+              <Headline result={result} levels={levels} costLevels={costLevels} />
               <p className="chart-footer text-xs leading-5 text-slate-500">
                 <span>
                   The estimate assumes full take-up of the discount.
