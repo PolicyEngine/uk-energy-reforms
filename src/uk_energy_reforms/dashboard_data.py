@@ -58,13 +58,13 @@ BREAKDOWN_KEYS = [
     "average_per_recipient",
     "gain_pct_net_income",
     "mean_bill",
-    "abs_ahc_poverty_rate",
-    "abs_ahc_poverty_reached",
-    "abs_ahc_poverty_not_reached_k",
-    "rel_ahc_poverty_not_reached_k",
+    # Poverty on the headline basis (absolute, before housing costs); the after
+    # housing costs columns stay in the results and receipts.
+    "abs_bhc_poverty_rate",
+    "abs_bhc_poverty_reached",
+    "abs_bhc_poverty_not_reached_k",
+    "people_out_of_abs_bhc_poverty_k",
     "bottom4_not_reached_k",
-    "people_out_of_rel_ahc_poverty_k",
-    "people_out_of_abs_ahc_poverty_k",
 ]
 
 

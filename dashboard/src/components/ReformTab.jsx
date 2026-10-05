@@ -514,7 +514,7 @@ function BreakdownSection({ result }) {
     <section className="section-card space-y-5">
       <SectionHeading
         title="How does eligibility vary by region and household type?"
-        description="Share of households qualifying through benefits or the income test, ordered by the share qualifying through benefits. The table also shows payments and poverty effects. “In poverty, reached” uses absolute poverty after housing costs. ESS is effective sample size: small values indicate that few survey records drive the estimate."
+        description="Share of households qualifying through benefits or the income test, ordered by the share qualifying through benefits. The table also shows payments and poverty effects. Its poverty columns use absolute poverty before housing costs, as in the headline figures. ESS is effective sample size: small values indicate that few survey records drive the estimate."
       />
       <Toggle
         value={by}
@@ -612,20 +612,20 @@ function BreakdownSection({ result }) {
                 format: (v) => `${(100 * v).toFixed(2)}%`,
               },
               {
-                key: "abs_ahc_poverty_reached",
+                key: "abs_bhc_poverty_reached",
                 header: "In poverty, reached",
                 align: "right",
                 format: (v) => formatShare(v),
               },
               {
-                key: "abs_ahc_poverty_not_reached_k",
+                key: "abs_bhc_poverty_not_reached_k",
                 header: "In poverty, not reached",
                 align: "right",
                 format: (v) => formatThousands(v),
               },
               {
-                key: "people_out_of_rel_ahc_poverty_k",
-                header: "People out of rel. poverty",
+                key: "people_out_of_abs_bhc_poverty_k",
+                header: "People out of poverty",
                 align: "right",
                 format: (v) => formatThousands(v),
               },
