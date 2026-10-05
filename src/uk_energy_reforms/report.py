@@ -254,6 +254,7 @@ def markdown(results: dict, year: int) -> str:
                 "children)."
             )
         lines.append("")
+    lines += _cut_off_lines(results)
     for name, by_dataset in results.items():
         lines += [f"## {name}", ""]
         for dataset, r in by_dataset.items():
@@ -314,12 +315,37 @@ def markdown(results: dict, year: int) -> str:
             )
             if "income_distributions" in r:
                 lines += _distribution_lines(r["income_distributions"])
-            lines += ["", "Cliff edges (households on the schedule by own income):", ""]
+            lines.append("")
+    return "\n".join(lines)
+
+
+def _cut_off_lines(results: dict) -> list:
+    """Every option's counts around its income cut-offs, under one heading the
+    dashboard links to (``#income-cut-offs``)."""
+    lines = [
+        "## Income cut-offs",
+        "",
+        (
+            "Households near each income threshold where support falls, counting only "
+            "households placed on the schedule by their own income. The offset range "
+            "holds households above a threshold whose extra income, after tax, is "
+            "smaller than the support they lose there. Options without an income test "
+            "have no cut-offs. By region, each option's tables below give the count "
+            "within GBP 1k above the top threshold and the offset range."
+        ),
+        "",
+    ]
+    for name, by_dataset in results.items():
+        if not any(r["cliffs"] for r in by_dataset.values()):
+            continue
+        lines += [f"**{name}**:", ""]
+        for dataset, r in by_dataset.items():
             for c in r["cliffs"]:
                 b = c["bands"]
                 lines.append(
-                    f"- GBP {c['threshold']:,.0f}: mean drop GBP {c['mean_drop']:.0f}; "
-                    f"GBP 1k below {b['1000_below']['households_k']:.0f}k "
+                    f"- `{dataset}`, GBP {c['threshold']:,.0f}: mean drop GBP "
+                    f"{c['mean_drop']:.0f}; GBP 1k below "
+                    f"{b['1000_below']['households_k']:.0f}k "
                     f"({b['1000_below']['bottom4_k']:.0f}k lowest-4); GBP 1k above "
                     f"{b['1000_above']['households_k']:.0f}k "
                     f"({b['1000_above']['bottom4_k']:.0f}k lowest-4, "
@@ -328,8 +354,8 @@ def markdown(results: dict, year: int) -> str:
                     f"{c['offset_range_k']:.0f}k (median width GBP "
                     f"{c['offset_range_median_width']:.0f})."
                 )
-            lines.append("")
-    return "\n".join(lines)
+        lines.append("")
+    return lines
 
 
 def _format(value, unit):
