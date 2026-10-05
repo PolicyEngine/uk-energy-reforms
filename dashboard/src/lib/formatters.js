@@ -113,6 +113,28 @@ export function formatSignedThousands(value) {
   return `${amount > 0 ? "+" : "−"}${Math.abs(amount).toLocaleString("en-GB")}k`;
 }
 
+const MONTHS = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+// "2026-08-10" is "10 August 2026"; anything else comes back unchanged.
+export function formatDate(iso) {
+  const [year, month, day] = String(iso).split("-").map(Number);
+  if (!year || !month || !day) return String(iso);
+  return `${day} ${MONTHS[month - 1]} ${year}`;
+}
+
 export function formatMillions(value, digits = 1) {
   return `${Number(value).toFixed(digits)}m`;
 }

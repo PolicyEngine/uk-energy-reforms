@@ -9,6 +9,7 @@ import {
   formatMillions,
   formatRoundedThousands,
   formatShare,
+  formatSignedPct,
   formatSignedPp,
   formatSignedThousands,
   formatThousands,
@@ -147,7 +148,7 @@ function DecileSection({ result }) {
     <section className="section-card">
       <SectionHeading
         title="Who gains across the income distribution?"
-        description="Average gain for each tenth of people, ranked from the lowest to the highest income. Averages include households that receive £0, so they reflect both how many qualify in each group and how much they receive. Switch to see gains as a share of net income, or the share of each group receiving support."
+        description="Average gain for each tenth of people, ranked by household income after housing costs, adjusted for household size, from the lowest income (1) to the highest (10). Averages include households that receive £0, so they reflect both how many qualify in each group and how much they receive. Switch to see gains as a share of net income, or the share of each group receiving support."
       />
       <div className="mb-4">
         <Toggle value={metric} onChange={setMetric} options={DECILE_METRICS} />
@@ -155,7 +156,7 @@ function DecileSection({ result }) {
       <PEImpactBarChart
         data={data}
         height={360}
-        xAxisLabel="Income decile"
+        xAxisLabel="Income decile of people, after housing costs"
         yAxisLabel={m.axis}
         yTickFormatter={m.tick}
         barLabelFormatter={m.format}
@@ -224,16 +225,23 @@ function WinnersSection({ result }) {
 }
 
 const INEQUALITY_MEASURES = [
-  { key: "gini", label: "Gini index", format: (v) => v.toFixed(4) },
+  {
+    key: "gini",
+    label: "Gini index",
+    format: (v) => v.toFixed(4),
+    change: (d) => `${d < 0 ? "\u2212" : d > 0 ? "+" : ""}${Math.abs(d).toFixed(4)}`,
+  },
   {
     key: "top_10_share",
     label: "Top 10% income share",
     format: (v) => formatShare(v, 1),
+    change: (d) => formatSignedPp(100 * d, 2),
   },
   {
     key: "top_1_share",
     label: "Top 1% income share",
     format: (v) => formatShare(v, 2),
+    change: (d) => formatSignedPp(100 * d, 3),
   },
 ];
 
@@ -302,10 +310,16 @@ function InequalitySection({ result, onMethodology }) {
                 format: (_, r) => r.format(r.value.reform),
               },
               {
+                key: "difference",
+                header: "Change",
+                align: "right",
+                format: (_, r) => r.change(r.value.reform - r.value.baseline),
+              },
+              {
                 key: "change",
                 header: "Relative change",
                 align: "right",
-                format: (_, r) => formatShare(r.value.change_pct, 2),
+                format: (_, r) => formatSignedPct(100 * r.value.change_pct, 2),
               },
             ]}
             rows={measures}
@@ -516,7 +530,9 @@ function ReachSection({ result, year }) {
           <span>
             Counts of households within £1,000 of each income cut-off are in
             the{" "}
-            <SourceLink href={cutOffReceiptUrl(year)}>results receipt</SourceLink>
+            <SourceLink href={cutOffReceiptUrl(year)}>
+              detailed results (report.md)
+            </SourceLink>
             .
           </span>
         </p>

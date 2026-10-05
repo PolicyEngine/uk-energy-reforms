@@ -139,7 +139,7 @@ export default function BaselineTab({ data, dataset }) {
               )}
             </>
           ),
-          notes: `The Ofgem figure is the October–December 2026 cap for typical consumption (2,500 kWh electricity, 9,500 kWh gas) paid by direct debit, with electricity VAT at 0% from October 2026 to March 2027. Family Spending averages all UK households in 2024-25. The model's spend is at ${PRICE_BASIS[dataset]}: policyengine-uk does not uprate energy spend between years, so every year keeps that price level${winterGap != null ? `, which the October–December 2026 cap exceeds by ${formatShare(winterGap)} on Ofgem's 2023 typical-use basis` : ""}.`,
+          notes: `The Ofgem figure is the October–December 2026 cap for typical consumption (2,500 kWh electricity, 9,500 kWh gas) paid by direct debit, with electricity VAT at 0% from October 2026 to March 2027. Family Spending averages all UK households in 2024-25. The model's spend is at ${PRICE_BASIS[dataset]}: policyengine-uk does not uprate energy spend between years, so every year keeps that price level${winterGap != null ? `, which the October–December 2026 cap exceeds by ${formatShare(winterGap)} on Ofgem's 2023 typical-use basis. That ${formatShare(winterGap)} compares prices for the same consumption; the cap's ${formatCurrency(cap?.value?.at_2026_tdcv)} against the model's ${formatCurrency(b.mean_bill)} also compares different consumption, so the two gaps differ` : ""}.`,
         },
         {
           key: "gas",

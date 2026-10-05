@@ -35,6 +35,13 @@ export const DATASET_SHORT = {
   efrs_1573: "Enhanced FRS",
 };
 
+// Payment variants as they read inside a sentence ("Spending and gains use …").
+export const VARIANT_PROSE = {
+  published: "RF's amounts",
+  budget_2bn: "amounts scaled to a £2bn budget",
+  bill_share: "a bill-share payment",
+};
+
 // The price level each dataset stores energy spend at. policyengine-uk does not uprate
 // energy spend between years, so bills in every scheme year stay at this level.
 export const PRICE_BASIS = {
