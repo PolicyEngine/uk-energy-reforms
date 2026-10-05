@@ -100,7 +100,15 @@ RF_FIGURES = [
     },
     {
         "id": "couples_children_lose_bottom_quintile",
-        "label": "Share of those couples in the lowest income fifth (RF's basis)",
+        "label": "Couples with children not passing the individual test: share in the lowest income fifth (RF's basis)",
+        "rf": 0.71,
+        "rf_statement": "71% of them are in the poorest fifth",
+        "page": 7,
+        "unit": "share",
+    },
+    {
+        "id": "couples_children_lose_bottom_quintile_hhw",
+        "label": "Couples with children not passing the individual test: share in the lowest income fifth, deciles of households (RF's basis)",
         "rf": 0.71,
         "rf_statement": "71% of them are in the poorest fifth",
         "page": 7,
@@ -116,7 +124,7 @@ RF_FIGURES = [
     },
     {
         "id": "couples_children_lose_policy_bottom_quintile",
-        "label": "Share of those couples in the lowest income fifth (policy count)",
+        "label": "Couples with children not eligible under the individual option: share in the lowest income fifth (policy count)",
         "rf": None,
         "rf_statement": "Not published",
         "page": 7,
@@ -132,7 +140,15 @@ RF_FIGURES = [
     },
     {
         "id": "pensioners_gain_decile5plus",
-        "label": "Share of those pensioner units in decile five or above (RF's basis)",
+        "label": "Pensioner units passing only the individual test: share in decile five or above (RF's basis)",
+        "rf": 0.81,
+        "rf_statement": "81% of them (630,000) are in decile five or above",
+        "page": 8,
+        "unit": "share",
+    },
+    {
+        "id": "pensioners_gain_decile5plus_hhw",
+        "label": "Pensioner units passing only the individual test: share in decile five or above, deciles of households (RF's basis)",
         "rf": 0.81,
         "rf_statement": "81% of them (630,000) are in decile five or above",
         "page": 8,
@@ -148,7 +164,7 @@ RF_FIGURES = [
     },
     {
         "id": "pensioners_gain_policy_decile5plus",
-        "label": "Share of those pensioner units in decile five or above (policy count)",
+        "label": "Pensioner units eligible only under the individual option: share in decile five or above (policy count)",
         "rf": None,
         "rf_statement": "Not published",
         "page": 8,
@@ -395,6 +411,13 @@ def compare(datasets: list[str], years: list[int]) -> dict:
         "figures": rows,
         "extra": values,
         "not_modelled": NOT_MODELLED,
+        # For the receipt only: pointers into the raw values.
+        "receipt_notes": [
+            (
+                "Household-weighted shares are also in `extra` (*_hhw), and counts of "
+                "households with a single benefit unit in `extra` (*_households)."
+            )
+        ],
         "notes": [
             "RF: Family Resources Survey 2024-25, GB, with the IPPR tax-benefit model.",
             "Eligibility shares are for the income test alone; passporting is separate.",
@@ -411,10 +434,17 @@ def compare(datasets: list[str], years: list[int]) -> dict:
                 "passported households are eligible under both. RF does not publish it."
             ),
             (
-                "Deciles are person-weighted equivalised AHC household income deciles "
-                "(the HBAI convention; our choice, as RF does not say). "
-                "Household-weighted versions are in `extra` (*_hhw), and counts of "
-                "households with a single benefit unit in `extra` (*_households)."
+                "Deciles rank people by equivalised household income after housing "
+                "costs, the HBAI convention; RF does not say which weighting it uses. "
+                "Rows marked 'deciles of households' rank households instead."
+            ),
+            (
+                "The family-type counts run above RF's. Part of the gap is the "
+                "passporting basis (modelled rather than reported receipt). Most of the "
+                "pensioner gap on Microcosm is household composition: it has more "
+                "multi-family households than the Enhanced FRS, and a pensioner living "
+                "with an adult child in work passes the individual test and can fail "
+                "the household one."
             ),
             (
                 "£2bn averages divide £2bn among all recipients (passported or passing "

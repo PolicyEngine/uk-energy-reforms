@@ -527,7 +527,9 @@ def rf_markdown(comparison: dict) -> str:
         for f in figures
     ]
     lines = ["# PolicyEngine estimates beside RF's figures", "", head, rule, *body, ""]
-    lines += ["Notes:", ""] + [f"- {n}" for n in comparison["notes"]]
+    lines += ["Notes:", ""] + [
+        f"- {n}" for n in comparison["notes"] + comparison.get("receipt_notes", [])
+    ]
     lines += ["", "Not modelled:", ""] + [
         f"- {n['rf_statement']} (p. {n['page']}): {n['reason']}"
         for n in comparison["not_modelled"]
