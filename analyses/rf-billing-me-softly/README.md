@@ -159,9 +159,12 @@ with sources (`src/uk_energy_reforms/external_sources.json`).
   HBAI covers the UK; the model covers Great Britain against 60% of the UK median in its
   own data.
 - **Absolute poverty before housing costs, 2024-25.** 12.3% / 15.2% of people, against 15.9%
-  in HBAI; children 14.5% / 18.2% against 20.5%. In 2024-25, the line's reference year,
-  HBAI's absolute and relative rates coincide. Each receipt sets every baseline rate beside
-  HBAI's.
+  in HBAI; children 14.5% / 18.2% against 20.5%.
+  - In 2024-25, the line's reference year, HBAI's absolute and relative rates coincide.
+  - The model's absolute rates sit below HBAI's because the datasets' incomes run higher,
+    not because of the line. Each dataset's own median is above HBAI's, so its relative
+    rate (14.4% / 19.7%) is above its absolute rate (12.3% / 15.2%).
+  - Each receipt sets every baseline rate beside HBAI's.
 
 ## By region (flat option)
 
