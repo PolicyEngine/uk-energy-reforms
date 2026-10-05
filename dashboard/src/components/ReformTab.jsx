@@ -726,7 +726,7 @@ export default function ReformTab({ data, dataset, scenario, onMethodology }) {
                     className="text-link"
                     onClick={() => onMethodology("method-limitations")}
                   >
-                    Assumptions and limits →
+                    Assumptions and limitations →
                   </button>
                 </span>
               </p>
