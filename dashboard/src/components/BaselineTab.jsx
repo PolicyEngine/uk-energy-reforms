@@ -29,14 +29,14 @@ const BILL_GROUPS = [
 ];
 
 const PRICE_BASIS = {
-  microcosm_979: "2024-25 DESNZ prices",
+  microcosm_national: "2024-25 DESNZ prices",
   efrs_1573: "Ofgem April–June 2026 unit rates",
 };
 
 // Each dataset's price level on Ofgem's 2023 typical-use basis, the only basis on which
 // the 2024-25 caps are published.
 const PRICE_LEVEL_SOURCE = {
-  microcosm_979: ["ofgem_cap_fy2024_25", "mean"],
+  microcosm_national: ["ofgem_cap_fy2024_25", "mean"],
   efrs_1573: ["ofgem_cap_2026_apr_jun", "at_2023_tdcv"],
 };
 
@@ -194,7 +194,7 @@ export default function BaselineTab({ data, dataset }) {
     // Deciles keep their order; other groups are sorted from the highest bill down.
     .sort((x, y) => (byDecile ? 0 : y.mean_bill - x.mean_bill));
   const chartData = rows.map((r) => ({
-    name: byDecile ? r.key : r.group,
+    name: r.group,
     value: r.mean_bill,
     hoverText: `${formatCurrency(r.mean_bill)} a year on average; ${formatMillions(r.households_m, 2)} households`,
   }));
@@ -244,7 +244,7 @@ export default function BaselineTab({ data, dataset }) {
           <section id="baseline-bills" className="section-card space-y-4">
             <SectionHeading
               title="How do energy bills vary?"
-              description="Average annual gas and electricity spend, by the group you choose. This matters for the payment basis: a bill-share discount pays more to households with higher bills, while fixed amounts pay the same whatever the bill."
+              description={`Average annual gas and electricity spend, by the group you choose. This affects the payment basis: a bill-share discount pays more to households with higher bills, while fixed amounts pay the same whatever the bill.${byDecile ? " Deciles rank people by household income after housing costs, adjusted for household size, from the lowest income (1) to the highest (10)." : ""}`}
             />
             <Toggle
               value={groupBy}
@@ -253,9 +253,7 @@ export default function BaselineTab({ data, dataset }) {
             />
             <PEImpactBarChart
               data={chartData}
-              horizontal={!byDecile}
-              height={byDecile ? 340 : undefined}
-              xAxisLabel={byDecile ? "Income decile (1 = lowest)" : undefined}
+              horizontal
               yAxisLabel="Average annual gas and electricity bill"
               yTickFormatter={formatCurrency}
               barLabelFormatter={formatCurrency}
@@ -360,8 +358,8 @@ export function DataCoverage({ data, dataset }) {
     <div className="space-y-3">
       <p>
         <strong>Data coverage.</strong> What the survey data record about energy
-        spending, and where they fall short. These gaps matter most for
-        bill-share payments, which depend on each household’s recorded spend.
+        spending, and what they omit. These gaps affect bill-share payments,
+        which depend on each household’s recorded spend.
       </p>
       {b && (
         <Note eyebrow={short}>
@@ -372,7 +370,7 @@ export function DataCoverage({ data, dataset }) {
             price level. {formatShare(b.gas_spend_share)} of GB households have
             gas spend and {formatShare(b.no_electricity_spend_share, 1)} have no
             electricity spend recorded; under a bill share, households with no
-            recorded spend get nothing.
+            recorded spend receive £0.
           </p>
           <p className="mt-1">{data.meta.datasets[dataset].notes}</p>
         </Note>

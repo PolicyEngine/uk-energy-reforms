@@ -8,8 +8,8 @@ benefit units in its family-type figures, and so do the matching rows here.
 
 The family-type rows come on two bases. The RF-comparable rows take the difference
 between the two income-test series, as RF's p. 7-8 figures do, without netting out
-passporting. The policy rows net it out: units whose household actually loses (or
-gains) the discount, since passported households are eligible under both options. RF
+passporting. The policy rows net it out: units whose household is eligible under only
+one of the two options, since passported households are eligible under both. RF
 publishes only the first.
 """
 
@@ -92,7 +92,7 @@ RF_FIGURES = [
     },
     {
         "id": "couples_children_lose_k",
-        "label": "Of those, failing the individual income test (RF's basis: passporting not netted out; thousands)",
+        "label": "Of those, not passing the individual income test (RF's basis: passporting not netted out; thousands)",
         "rf": 490,
         "rf_statement": "490,000 would not be eligible under the individual option",
         "page": 7,
@@ -108,7 +108,7 @@ RF_FIGURES = [
     },
     {
         "id": "couples_children_lose_policy_k",
-        "label": "Of those, losing the discount under the individual option (policy count: not passported; thousands)",
+        "label": "Of those, not eligible under the individual option (policy count: not passported; thousands)",
         "rf": None,
         "rf_statement": "Not published: RF's 490,000 does not net out passporting",
         "page": 7,
@@ -140,7 +140,7 @@ RF_FIGURES = [
     },
     {
         "id": "pensioners_gain_policy_k",
-        "label": "Pensioner units gaining the discount only under the individual option (policy count: not passported; thousands)",
+        "label": "Pensioner units eligible only under the individual option (policy count: not passported; thousands)",
         "rf": None,
         "rf_statement": "Not published: RF's 780,000 does not net out passporting",
         "page": 8,
@@ -213,7 +213,7 @@ NOT_MODELLED = [
         "page": 5,
         "reason": (
             "The HBAI material-deprivation item is not in either microdata file, so "
-            "this analysis proxies hardship with poverty, the four lowest income deciles and "
+            "this analysis proxies it with poverty, the four lowest income deciles and "
             "energy spend above 10% of net income."
         ),
     },
@@ -407,8 +407,8 @@ def compare(datasets: list[str], years: list[int]) -> dict:
                 "Figure 4 does, on two bases. RF's basis is the difference between the "
                 "two income-test series, without netting out passporting, which is what "
                 "RF's 490,000 and 780,000 measure. The policy count nets it out: units "
-                "whose household actually loses (or gains) the discount, since passported "
-                "households are eligible under both options. RF does not publish it."
+                "whose household is eligible under only one of the two options, since "
+                "passported households are eligible under both. RF does not publish it."
             ),
             (
                 "Deciles are person-weighted equivalised AHC household income deciles "

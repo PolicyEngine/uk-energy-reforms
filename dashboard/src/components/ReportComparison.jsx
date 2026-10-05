@@ -185,7 +185,7 @@ export default function ReportComparison({ data, dataset }) {
                 {formatBn(extra.cost_flat_at_175_bn)} and the tiered option{" "}
                 {formatBn(extra.cost_tiered_at_220_85_bn)} (
                 {formatBn(extra.cost_tiered_own_income_at_220_85_bn)} with passported households
-                tiered on their own income){dataset === "microcosm_979" ? "" : ` (${short})`}.
+                tiered on their own income){dataset === "microcosm_national" ? "" : ` (${short})`}.
               </li>
             )}
           </ul>

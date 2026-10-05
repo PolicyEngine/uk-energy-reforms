@@ -20,20 +20,28 @@ export const PRESET_NOTES = {
     "Benefit passporting alone, as the Warm Home Discount does, at £175.",
 };
 
-export const DATASET_ORDER = ["microcosm_979", "efrs_1573"];
+export const DATASET_ORDER = ["microcosm_national", "efrs_1573"];
 
 // The page shows Microcosm. The exported data also carries the Enhanced FRS for internal
 // use: open the page with ?dataset=efrs_1573 to switch every tab to it.
-export const DEFAULT_DATASET = "microcosm_979";
+export const DEFAULT_DATASET = "microcosm_national";
 
 export function datasetFromQuery(value, data) {
   return value && data?.meta?.datasets?.[value] ? value : DEFAULT_DATASET;
 }
 
 export const DATASET_SHORT = {
-  microcosm_979: "Microcosm",
+  microcosm_national: "Microcosm",
   efrs_1573: "Enhanced FRS",
 };
+
+const REPO = "https://github.com/PolicyEngine/uk-energy-reforms";
+
+/** The scheme year's results receipt, at its counts around every option's income
+ * cut-offs (the `## Income cut-offs` section `uk-energy-reforms run` writes). */
+export function cutOffReceiptUrl(year) {
+  return `${REPO}/blob/main/analyses/rf-billing-me-softly/results-${year}/report.md#income-cut-offs`;
+}
 
 export function scenarioId(preset, variant) {
   if (variant === "published") return preset;

@@ -22,7 +22,9 @@ def main(argv: list[str] | None = None) -> None:
     sub = parser.add_subparsers(dest="command", required=True)
 
     r = sub.add_parser("run", help="Simulate targeted energy discount scenarios")
-    r.add_argument("--datasets", nargs="+", default=["microcosm_979"], choices=DATASETS)
+    r.add_argument(
+        "--datasets", nargs="+", default=["microcosm_national"], choices=DATASETS
+    )
     r.add_argument("--year", type=int, default=2026)
     r.add_argument(
         "--presets", nargs="+", default=["rf_flat", "rf_tiered"], choices=PRESETS
@@ -53,7 +55,7 @@ def main(argv: list[str] | None = None) -> None:
     c.add_argument(
         "--datasets",
         nargs="+",
-        default=["microcosm_979", "efrs_1573"],
+        default=["microcosm_national", "efrs_1573"],
         choices=DATASETS,
     )
     c.add_argument("--years", nargs="+", type=int, default=[2024, 2026])

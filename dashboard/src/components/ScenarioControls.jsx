@@ -138,7 +138,7 @@ export default function ScenarioControls({
 }
 
 const PRICE_LEVEL = {
-  microcosm_979: {
+  microcosm_national: {
     label: "2024-25 prices",
     source: "ofgem_cap_fy2024_25",
     key: "mean",

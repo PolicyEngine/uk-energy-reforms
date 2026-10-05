@@ -44,7 +44,7 @@ const STEPS = {
   "Income measures": {
     id: "method-income-measures",
     title: "Understand the income comparisons",
-    lead: "The lower-income reach section ranks households in five ways. Its deciles group households; the main decile chart groups people.",
+    lead: "The income measures section ranks households in five ways. Its deciles group households; the main decile chart groups people.",
     detail: "Equivalisation, income measures and deciles",
   },
   "What the model leaves out": {
@@ -152,7 +152,7 @@ function Section({ title, children }) {
               <tr>
                 <td>Energy bills stay at the dataset’s price level</td>
                 <td>
-                  Bill-share payments and energy-burden estimates do not reflect
+                  Bill-share payments and energy-share estimates do not reflect
                   higher winter prices.
                 </td>
               </tr>
@@ -186,7 +186,7 @@ function Bullets({ items }) {
 
 // Each dataset's stored price level on Ofgem's 2023 typical-use basis.
 const PRICE_LEVEL = {
-  microcosm_979: {
+  microcosm_national: {
     label: "2024-25 prices",
     source: "ofgem_cap_fy2024_25",
     key: "mean",
@@ -238,7 +238,7 @@ export default function MethodologyTab({ data, dataset }) {
       )
       .join(" / ");
   const cap = (id) => (data.external_sources ?? []).find((x) => x.id === id);
-  const level = PRICE_LEVEL[dataset] ?? PRICE_LEVEL.microcosm_979;
+  const level = PRICE_LEVEL[dataset] ?? PRICE_LEVEL.microcosm_national;
   const levelValue = cap(level.source)?.value?.[level.key];
   const winter = cap("ofgem_cap_2026_oct_dec")?.value?.at_2023_tdcv;
   const winterGap = levelValue && winter ? winter / levelValue - 1 : null;
@@ -309,7 +309,7 @@ export default function MethodologyTab({ data, dataset }) {
                     here {level.label}. Ofgem&apos;s cap for October–December
                     2026 is {winterGap != null ? formatShare(winterGap) : "n/a"}{" "}
                     above that level on its 2023 typical-use basis, so bill
-                    levels, bill-share payments and energy-burden shares are
+                    levels, bill-share payments and energy-share figures are
                     understated in the scheme years. Fixed amounts and
                     eligibility do not depend on spend.
                   </>,
@@ -481,11 +481,12 @@ export default function MethodologyTab({ data, dataset }) {
                     income decile to the highest.
                   </>,
                   <>
-                    <strong>Winners and losers.</strong> Each person is placed
+                    <strong>Who gains.</strong> Each person is placed
                     in a band by the change in their household&apos;s net income
                     before housing costs, as a share of that income before the
                     reform: gains above 5%, gains of 0.1% to 5%, and no change
-                    (within 0.1%). An unfunded discount creates no losers.
+                    (within 0.1%). The funding is not modelled, so no
+                    household&apos;s net income falls.
                   </>,
                   <>
                     <strong>Inequality.</strong> Gini coefficients and the
@@ -502,9 +503,10 @@ export default function MethodologyTab({ data, dataset }) {
                     the line.
                   </>,
                   <>
-                    <strong>Energy burden.</strong> A household spends more than
-                    10% of its net income before housing costs on gas and
-                    electricity. This is the old fuel poverty test on actual
+                    <strong>Energy spend above 10% of income.</strong> A
+                    household spends more than 10% of its net income before
+                    housing costs on gas and electricity. This is the former
+                    fuel poverty test on actual
                     spend, not the official Low Income Low Energy Efficiency
                     measure, which needs energy efficiency ratings the data do
                     not have.
@@ -609,7 +611,7 @@ export default function MethodologyTab({ data, dataset }) {
               </p>
               <Note eyebrow="Commands">
                 <code className="block overflow-x-auto whitespace-pre text-xs">
-                  {`uv run uk-energy-reforms run --datasets microcosm_979 efrs_1573 --year 2026 \\
+                  {`uv run uk-energy-reforms run --datasets microcosm_national efrs_1573 --year 2026 \\
   --presets rf_flat rf_tiered rf_tiered_own_income rf_household_income passport_only \\
   --bill-share --budget 2e9 --out analyses/rf-billing-me-softly/results-2026
 uv run uk-energy-reforms rf-compare --out analyses/rf-billing-me-softly
