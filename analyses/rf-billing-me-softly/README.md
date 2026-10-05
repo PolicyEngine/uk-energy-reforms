@@ -21,8 +21,19 @@ are comparable.
   household receives the £220 tier.
 - **Tiered, with passported households tiered on their own income:** costs £2.00bn /
   £2.31bn.
-- **Poverty (flat option):** 227k / 207k fewer people in relative poverty after housing
-  costs, of whom 36k / 75k are children and 122k / 31k pensioners.
+- **Poverty (flat option):** counting the discount as household income, about 230k / 210k
+  fewer people are in relative poverty after housing costs, and about 140k / 100k fewer in
+  absolute poverty before housing costs, the dashboard's headline.
+  - These are income-equivalent readings. Delivered as a cut in unit prices, as RF
+    proposes, the discount would not show up in HBAI income.
+  - Each count rests on few survey households: effective samples of 15 / 12 and 19 / 7.
+    The counts move between years and datasets, and the receipts give the split by age
+    with its samples.
+- **Take-up:** every estimate assumes every eligible household receives the discount.
+  Passported households are enrolled automatically, as with the Warm Home Discount. If half
+  of the households eligible through the income test alone took it up, the flat option
+  would cost £1.71bn / £1.84bn and reach 9.8m / 10.5m households; at 75%, it would cost
+  £1.90bn / £2.07bn.
 - **Absolute poverty after housing costs:** the scheme reaches 87% / 87% of the 4.7m / 6.3m
   households below the line. It does not reach 0.63m / 0.80m, almost all of them
   working-age. Before housing costs it reaches 93% / 94% of the 3.9m / 5.2m households below
@@ -36,9 +47,10 @@ are comparable.
 - **2027-28 (the following winter):** the flat option costs £2.04bn / £2.26bn and reaches
   11.7m / 12.9m households (41% / 42%). The nominal £24,000 line covers fewer households as
   incomes rise: 33% / 37% pass the income test, down from 35% / 38%. Relative poverty after
-  housing costs falls by 231k / 135k people. Poverty counts move by tens of thousands
-  between years and datasets, because they depend on how many people sit just below the
-  line.
+  housing costs falls by about 230k / 140k people, and absolute poverty before housing costs
+  by about 110k / 63k, against 140k / 100k in 2026-27. Poverty counts move by tens of
+  thousands between years and datasets, because they depend on how many people sit just
+  below the line.
 
 ## Replication of the report's figures
 
@@ -135,10 +147,21 @@ with sources (`src/uk_energy_reforms/external_sources.json`).
   and £1,723 for October–December 2026.
 - **Gas.** 79% / 95% of households have gas spend; DESNZ puts 84% of properties on the gas
   grid.
+  - DESNZ's average gas bill at actual consumption was £773 per on-gas household in 2024
+    (Quarterly Energy Prices table 2.3.5).
+  - Per household with gas spend, Microcosm's £665 is 14% below it and the Enhanced FRS's
+    £725 is 6% below.
+  - In total, Microcosm's domestic gas spend is about a quarter below DESNZ's £19.3bn,
+    because fewer of its households have gas spend; the Enhanced FRS's is 8% above.
+  - Each receipt has the reconciliation.
 - **Relative poverty after housing costs, 2024-25.** 18.6% / 23.7% of people, against 19.6%
   in HBAI; children 24.7% / 32.9% against 27.4%; pensioners 16.0% / 17.5% against 13.9%.
   HBAI covers the UK; the model covers Great Britain against 60% of the UK median in its
   own data.
+- **Absolute poverty before housing costs, 2024-25.** 12.3% / 15.2% of people, against 15.9%
+  in HBAI; children 14.5% / 18.2% against 20.5%. In 2024-25, the line's reference year,
+  HBAI's absolute and relative rates coincide. Each receipt sets every baseline rate beside
+  HBAI's.
 
 ## By region (flat option)
 
@@ -291,7 +314,7 @@ dashboard.
     (Microcosm).
   - Support then follows bills: single adults average £141 and couples with children £235
     (Microcosm, flat option).
-  - Households in the offset range rise from 64k to 68k, because households with high bills
+  - Households in the offset range rise from 64k to 67k, because households with high bills
     receive more below the line.
   - Brackets paying the same fixed amount share one rate, so averages match across those
     brackets combined, not within each. On the Enhanced FRS the two flat brackets average
@@ -348,8 +371,13 @@ uv run uk-energy-reforms export-dashboard --analysis analyses/rf-billing-me-soft
     April–June 2026. Bill levels, bill-share payments and energy-burden shares are
     therefore understated in 2026-27 and 2027-28 on both datasets. Fixed amounts and
     eligibility do not depend on spend.
-- **Take-up and income treatment.** Every eligible household claims. The discount counts as
-  HBAI income, as DWP counts the Warm Home Discount.
+- **Take-up and income treatment.** Every eligible household claims.
+  - Each receipt adds a sensitivity with 50% and 75% take-up among households eligible
+    through the income test alone. These are expected values from the full take-up run,
+    since each household's outcome depends only on its own receipt.
+  - The discount counts as HBAI income, as DWP counts the Warm Home Discount. Poverty
+    changes are therefore income-equivalent readings: RF's unit-price cut would not show up
+    in HBAI income.
 - **Poverty lines.**
   - Relative poverty is 60% of the baseline UK median, held fixed for the reform.
   - Absolute poverty uses the line HBAI has used since March 2026: 60% of the 2024-25

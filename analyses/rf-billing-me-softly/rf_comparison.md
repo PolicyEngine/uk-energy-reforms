@@ -11,13 +11,15 @@
 | Share of the four lowest income deciles passing the £30,000 household test | 78% (p. 6) | 72% | 67% | 76% | 71% |
 | Couples with children (benefit units) passing the household income test (m) | 1.8m (p. 7) | 1.4m | 1.3m | 1.5m | 1.3m |
 | Of those, not passing the individual income test (RF's basis: passporting not netted out; thousands) | 490k (p. 7) | 588k | 524k | 676k | 608k |
-| Share of those couples in the lowest income fifth (RF's basis) | 71% (p. 7) | 66% | 66% | 55% | 72% |
+| Couples with children not passing the individual test: share in the lowest income fifth (RF's basis) | 71% (p. 7) | 66% | 66% | 55% | 72% |
+| Couples with children not passing the individual test: share in the lowest income fifth, deciles of households (RF's basis) | 71% (p. 7) | 59% | 62% | 51% | 60% |
 | Of those, not eligible under the individual option (policy count: not passported; thousands) | not published | 296k | 235k | 344k | 314k |
-| Share of those couples in the lowest income fifth (policy count) | not published | 75% | 80% | 65% | 92% |
+| Couples with children not eligible under the individual option: share in the lowest income fifth (policy count) | not published | 75% | 80% | 65% | 92% |
 | Pensioner units passing the individual test but not the household one (RF's basis; thousands) | 780k (p. 8) | 930k | 1,017k | 824k | 832k |
-| Share of those pensioner units in decile five or above (RF's basis) | 81% (p. 8) | 67% | 47% | 60% | 49% |
+| Pensioner units passing only the individual test: share in decile five or above (RF's basis) | 81% (p. 8) | 67% | 47% | 60% | 49% |
+| Pensioner units passing only the individual test: share in decile five or above, deciles of households (RF's basis) | 81% (p. 8) | 68% | 50% | 69% | 57% |
 | Pensioner units eligible only under the individual option (policy count: not passported; thousands) | not published | 878k | 951k | 815k | 820k |
-| Share of those pensioner units in decile five or above (policy count) | not published | 68% | 47% | 59% | 49% |
+| Pensioner units eligible only under the individual option: share in decile five or above (policy count) | not published | 68% | 47% | 59% | 49% |
 | Average support per eligible household in a £2bn flat scheme (£) | £175 (p. 9) | £160 | £167 | £146 | £153 |
 | Same, dividing £2bn among households passing the income test only (£) | £175 (p. 9) | £185 | £201 | £162 | £172 |
 | Tiered £2bn scheme: support below £18,000 (£) | £220 (p. 9) | £177 | £185 | £165 | £171 |
@@ -31,8 +33,10 @@ Notes:
 - Eligibility shares are for the income test alone; passporting is separate.
 - Passporting uses modelled receipt with the datasets' take-up draws; RF uses receipt reported in the FRS, which is also shown.
 - Family-type rows count benefit units wherever they live, as RF's Figure 4 does, on two bases. RF's basis is the difference between the two income-test series, without netting out passporting, which is what RF's 490,000 and 780,000 measure. The policy count nets it out: units whose household is eligible under only one of the two options, since passported households are eligible under both. RF does not publish it.
-- Deciles are person-weighted equivalised AHC household income deciles (the HBAI convention; our choice, as RF does not say). Household-weighted versions are in `extra` (*_hhw), and counts of households with a single benefit unit in `extra` (*_households).
+- Deciles rank people by equivalised household income after housing costs, the HBAI convention; RF does not say which weighting it uses. Rows marked 'deciles of households' rank households instead.
+- The family-type counts run above RF's. Part of the gap is the passporting basis (modelled rather than reported receipt). Most of the pensioner gap on Microcosm is household composition: it has more multi-family households than the Enhanced FRS, and a pensioner living with an adult child in work passes the individual test and can fail the household one.
 - £2bn averages divide £2bn among all recipients (passported or passing the test), and separately among households passing the income test only, which is closer to how RF's averages appear to be costed. For the tiered option, RF does not say which tier passported households get; the all-recipient figure places them in the top tier.
+- Household-weighted shares are also in `extra` (*_hhw), and counts of households with a single benefit unit in `extra` (*_households).
 
 Not modelled:
 

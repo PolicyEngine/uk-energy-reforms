@@ -641,7 +641,11 @@
      "baseline_rate": 0.12265412858658878,
      "reform_rate": 0.12090096227644623,
      "change_pp": -0.1753166310142539,
-     "change_k": -118.15479809345305
+     "change_k": -118.15479809345305,
+     "change_k_income_only": -46.051627604708074,
+     "moved_records": 168,
+     "moved_below_min_records": false,
+     "moved_ess": 15.106285404706114
     },
     {
      "measure": "abs_pov_bhc",
@@ -649,7 +653,11 @@
      "baseline_rate": 0.14497949867383647,
      "reform_rate": 0.14384420270035111,
      "change_pp": -0.11352959734853425,
-     "change_k": -15.951292189255357
+     "change_k": -15.951292189255357,
+     "change_k_income_only": -5.116867080688476,
+     "moved_records": 31,
+     "moved_below_min_records": false,
+     "moved_ess": 10.206248919445427
     },
     {
      "measure": "abs_pov_bhc",
@@ -657,7 +665,11 @@
      "baseline_rate": 0.11114821571092856,
      "reform_rate": 0.10948503311888726,
      "change_pp": -0.16631825920413074,
-     "change_k": -68.40965166349709
+     "change_k": -68.40965166349709,
+     "change_k_income_only": -21.05529326915741,
+     "moved_records": 94,
+     "moved_below_min_records": false,
+     "moved_ess": 6.208737287061645
     },
     {
      "measure": "abs_pov_bhc",
@@ -665,7 +677,11 @@
      "baseline_rate": 0.13572052835608722,
      "reform_rate": 0.1329534832297803,
      "change_pp": -0.2767045126306929,
-     "change_k": -33.793854240700604
+     "change_k": -33.793854240700604,
+     "change_k_income_only": -19.87946725486219,
+     "moved_records": 74,
+     "moved_below_min_records": false,
+     "moved_ess": 11.368189259597145
     },
     {
      "measure": "abs_pov_ahc",
@@ -673,7 +689,11 @@
      "baseline_rate": 0.1558503684257596,
      "reform_rate": 0.15256868734204065,
      "change_pp": -0.32816810837189714,
-     "change_k": -221.16918606677652
+     "change_k": -221.16918606677652,
+     "change_k_income_only": -23.73430185905099,
+     "moved_records": 165,
+     "moved_below_min_records": false,
+     "moved_ess": 3.708792824228749
     },
     {
      "measure": "abs_pov_ahc",
@@ -681,7 +701,11 @@
      "baseline_rate": 0.20381013285810984,
      "reform_rate": 0.1997225516879253,
      "change_pp": -0.40875811701845494,
-     "change_k": -57.43189715783298
+     "change_k": -57.43189715783298,
+     "change_k_income_only": -2.1394546037316324,
+     "moved_records": 28,
+     "moved_below_min_records": false,
+     "moved_ess": 2.2270664607798554
     },
     {
      "measure": "abs_pov_ahc",
@@ -689,7 +713,11 @@
      "baseline_rate": 0.1503524236678767,
      "reform_rate": 0.1478466394181604,
      "change_pp": -0.2505784249716316,
-     "change_k": -103.0673532101959
+     "change_k": -103.0673532101959,
+     "change_k_income_only": -6.238547584712506,
+     "moved_records": 65,
+     "moved_below_min_records": false,
+     "moved_ess": 1.838303129303663
     },
     {
      "measure": "abs_pov_ahc",
@@ -697,7 +725,11 @@
      "baseline_rate": 0.1191917606882833,
      "reform_rate": 0.1142240985597538,
      "change_pp": -0.49676621285295,
-     "change_k": -60.669935698747636
+     "change_k": -60.669935698747636,
+     "change_k_income_only": -15.356299670606852,
+     "moved_records": 104,
+     "moved_below_min_records": false,
+     "moved_ess": 32.68099683846149
     },
     {
      "measure": "rel_pov_bhc",
@@ -705,7 +737,11 @@
      "baseline_rate": 0.1438038666827253,
      "reform_rate": 0.1425380504872663,
      "change_pp": -0.1265816195458976,
-     "change_k": -85.30979413226247
+     "change_k": -85.30979413226247,
+     "change_k_income_only": -40.678618330717086,
+     "moved_records": 152,
+     "moved_below_min_records": false,
+     "moved_ess": 19.920652057661265
     },
     {
      "measure": "rel_pov_bhc",
@@ -713,7 +749,11 @@
      "baseline_rate": 0.1735993448504401,
      "reform_rate": 0.1721863896332129,
      "change_pp": -0.14129552172272034,
-     "change_k": -19.85249842041731
+     "change_k": -19.85249842041731,
+     "change_k_income_only": -6.888190574645996,
+     "moved_records": 19,
+     "moved_below_min_records": false,
+     "moved_ess": 4.4528096586144255
     },
     {
      "measure": "rel_pov_bhc",
@@ -721,7 +761,11 @@
      "baseline_rate": 0.12781885329375475,
      "reform_rate": 0.12716722102745212,
      "change_pp": -0.0651632266302639,
-     "change_k": -26.802791565865277
+     "change_k": -26.802791565865277,
+     "change_k_income_only": -12.642951296389104,
+     "moved_records": 52,
+     "moved_below_min_records": false,
+     "moved_ess": 11.000439982312733
     },
     {
      "measure": "rel_pov_bhc",
@@ -729,7 +773,11 @@
      "baseline_rate": 0.16336137992121952,
      "reform_rate": 0.16019634415628076,
      "change_pp": -0.3165035764938755,
-     "change_k": -38.65450414597988
+     "change_k": -38.65450414597988,
+     "change_k_income_only": -21.14747645968199,
+     "moved_records": 102,
+     "moved_below_min_records": false,
+     "moved_ess": 15.317932192667643
     },
     {
      "measure": "rel_pov_ahc",
@@ -737,7 +785,11 @@
      "baseline_rate": 0.18633222194523752,
      "reform_rate": 0.184953299082022,
      "change_pp": -0.1378922863215531,
-     "change_k": -92.93262798121572
+     "change_k": -92.93262798121572,
+     "change_k_income_only": -18.194470998466016,
+     "moved_records": 180,
+     "moved_below_min_records": false,
+     "moved_ess": 31.692797083292493
     },
     {
      "measure": "rel_pov_ahc",
@@ -745,7 +797,11 @@
      "baseline_rate": 0.2467858994575867,
      "reform_rate": 0.24521540012460177,
      "change_pp": -0.1570499332984918,
-     "change_k": -22.066046501129865
+     "change_k": -22.066046501129865,
+     "change_k_income_only": -1.708781007051468,
+     "moved_records": 32,
+     "moved_below_min_records": false,
+     "moved_ess": 6.9293991732185445
     },
     {
      "measure": "rel_pov_ahc",
@@ -753,7 +809,11 @@
      "baseline_rate": 0.1734466154157907,
      "reform_rate": 0.17258332212495622,
      "change_pp": -0.08632932908344777,
-     "change_k": -35.50878514002264
+     "change_k": -35.50878514002264,
+     "change_k_income_only": -5.504133541643619,
+     "moved_records": 83,
+     "moved_below_min_records": false,
+     "moved_ess": 15.181971931441604
     },
     {
      "measure": "rel_pov_ahc",
@@ -761,7 +821,33 @@
      "baseline_rate": 0.1601807946939376,
      "reform_rate": 0.15728569378763455,
      "change_pp": -0.28951009063030325,
-     "change_k": -35.35779634006322
+     "change_k": -35.35779634006322,
+     "change_k_income_only": -10.981556449770927,
+     "moved_records": 105,
+     "moved_below_min_records": false,
+     "moved_ess": 29.257926562340643
+    }
+   ],
+   "take_up_sensitivity": [
+    {
+     "take_up": 0.5,
+     "cost_bn": 1.7493320986413985,
+     "recipients_m": 9.996183422350938,
+     "recipient_share": 0.35371377870177323,
+     "abs_pov_bhc_change_k": -95.12898429109902,
+     "abs_pov_ahc_change_k": -209.302035137251,
+     "rel_pov_bhc_change_k": -64.97048496690392,
+     "rel_pov_ahc_change_k": -83.83539248198271
+    },
+    {
+     "take_up": 0.75,
+     "cost_bn": 1.9693452841167622,
+     "recipients_m": 11.253401624392179,
+     "recipient_share": 0.39820029741674007,
+     "abs_pov_bhc_change_k": -106.64189119227603,
+     "abs_pov_ahc_change_k": -215.23561060201376,
+     "rel_pov_bhc_change_k": -75.1401395495832,
+     "rel_pov_ahc_change_k": -88.3840102315992
     }
    ],
    "coverage": [
@@ -4764,7 +4850,11 @@
      "baseline_rate": 0.15244881964436677,
      "reform_rate": 0.14961408754970942,
      "change_pp": -0.28347320946573284,
-     "change_k": -190.47278815573455
+     "change_k": -190.47278815573455,
+     "change_k_income_only": -107.63063067120314,
+     "moved_records": 186,
+     "moved_below_min_records": false,
+     "moved_ess": 18.872130658406782
     },
     {
      "measure": "abs_pov_bhc",
@@ -4772,7 +4862,11 @@
      "baseline_rate": 0.18220222134880487,
      "reform_rate": 0.1797170142272885,
      "change_pp": -0.248520712151636,
-     "change_k": -36.76684062191844
+     "change_k": -36.76684062191844,
+     "change_k_income_only": -3.6064363574683664,
+     "moved_records": 18,
+     "moved_below_min_records": false,
+     "moved_ess": 4.910876958315632
     },
     {
      "measure": "abs_pov_bhc",
@@ -4780,7 +4874,11 @@
      "baseline_rate": 0.14369955097067294,
      "reform_rate": 0.14222127930701778,
      "change_pp": -0.14782716636551768,
-     "change_k": -60.05247309860587
+     "change_k": -60.05247309860587,
+     "change_k_income_only": -12.670884422630072,
+     "moved_records": 68,
+     "moved_below_min_records": false,
+     "moved_ess": 17.20796696568215
     },
     {
      "measure": "abs_pov_bhc",
@@ -4788,7 +4886,11 @@
      "baseline_rate": 0.1452508506925666,
      "reform_rate": 0.1372971343246085,
      "change_pp": -0.7953716367958128,
-     "change_k": -93.65347443521023
+     "change_k": -93.65347443521023,
+     "change_k_income_only": -91.3533098911047,
+     "moved_records": 129,
+     "moved_below_min_records": false,
+     "moved_ess": 8.15105386242631
     },
     {
      "measure": "abs_pov_ahc",
@@ -4796,7 +4898,11 @@
      "baseline_rate": 0.19576771448658578,
      "reform_rate": 0.19274166031900436,
      "change_pp": -0.3026054167581403,
-     "change_k": -203.3282000425458
+     "change_k": -203.3282000425458,
+     "change_k_income_only": -65.90931219965219,
+     "moved_records": 185,
+     "moved_below_min_records": false,
+     "moved_ess": 10.603271802076204
     },
     {
      "measure": "abs_pov_ahc",
@@ -4804,7 +4910,11 @@
      "baseline_rate": 0.2620698193528442,
      "reform_rate": 0.2601023133117003,
      "change_pp": -0.19675060411438325,
-     "change_k": -29.107827839016913
+     "change_k": -29.107827839016913,
+     "change_k_income_only": -1.4443009105920792,
+     "moved_records": 15,
+     "moved_below_min_records": false,
+     "moved_ess": 2.2104036930463855
     },
     {
      "measure": "abs_pov_ahc",
@@ -4812,7 +4922,11 @@
      "baseline_rate": 0.18919481168884023,
      "reform_rate": 0.18678778722256562,
      "change_pp": -0.24070244662746024,
-     "change_k": -97.78160236883163
+     "change_k": -97.78160236883163,
+     "change_k_income_only": -12.294159295797348,
+     "moved_records": 63,
+     "moved_below_min_records": false,
+     "moved_ess": 5.418387046228883
     },
     {
      "measure": "abs_pov_ahc",
@@ -4820,7 +4934,11 @@
      "baseline_rate": 0.13514015869950136,
      "reform_rate": 0.1286484369727072,
      "change_pp": -0.6491721726794158,
-     "change_k": -76.43876983469724
+     "change_k": -76.43876983469724,
+     "change_k_income_only": -52.170851993262765,
+     "moved_records": 133,
+     "moved_below_min_records": false,
+     "moved_ess": 5.956308582476104
     },
     {
      "measure": "rel_pov_bhc",
@@ -4828,7 +4946,11 @@
      "baseline_rate": 0.1974315292073872,
      "reform_rate": 0.19413940398244847,
      "change_pp": -0.3292125224938746,
-     "change_k": -221.20618443405627
+     "change_k": -221.20618443405627,
+     "change_k_income_only": -133.17204864001275,
+     "moved_records": 169,
+     "moved_below_min_records": false,
+     "moved_ess": 10.733788386766301
     },
     {
      "measure": "rel_pov_bhc",
@@ -4836,7 +4958,11 @@
      "baseline_rate": 0.24892116988489688,
      "reform_rate": 0.2460662313234415,
      "change_pp": -0.2854938561455384,
-     "change_k": -42.23674967193603
+     "change_k": -42.23674967193603,
+     "change_k_income_only": -0.6174464111328125,
+     "moved_records": 12,
+     "moved_below_min_records": false,
+     "moved_ess": 2.91348371197636
     },
     {
      "measure": "rel_pov_bhc",
@@ -4844,7 +4970,11 @@
      "baseline_rate": 0.17250269496637005,
      "reform_rate": 0.17108870459325787,
      "change_pp": -0.14139903731121883,
-     "change_k": -57.441146259307864
+     "change_k": -57.441146259307864,
+     "change_k_income_only": -15.795134819984437,
+     "moved_records": 65,
+     "moved_below_min_records": false,
+     "moved_ess": 11.65171356316021
     },
     {
      "measure": "rel_pov_bhc",
@@ -4852,7 +4982,11 @@
      "baseline_rate": 0.21874337890650355,
      "reform_rate": 0.20842233589914075,
      "change_pp": -1.0321043007362791,
-     "change_k": -121.52828850281239
+     "change_k": -121.52828850281239,
+     "change_k_income_only": -116.75946740889549,
+     "moved_records": 110,
+     "moved_below_min_records": false,
+     "moved_ess": 4.766888262663449
     },
     {
      "measure": "rel_pov_ahc",
@@ -4860,7 +4994,11 @@
      "baseline_rate": 0.23667188372904024,
      "reform_rate": 0.23295925780201046,
      "change_pp": -0.3712625927029768,
-     "change_k": -249.4606855559349
+     "change_k": -249.4606855559349,
+     "change_k_income_only": -65.79262622141837,
+     "moved_records": 210,
+     "moved_below_min_records": false,
+     "moved_ess": 14.46075798762792
     },
     {
      "measure": "rel_pov_ahc",
@@ -4868,7 +5006,11 @@
      "baseline_rate": 0.3286775253867377,
      "reform_rate": 0.32246580500634786,
      "change_pp": -0.6211720380389816,
-     "change_k": -91.89790711462497
+     "change_k": -91.89790711462497,
+     "change_k_income_only": 0.0,
+     "moved_records": 22,
+     "moved_below_min_records": false,
+     "moved_ess": 5.535887474476248
     },
     {
      "measure": "rel_pov_ahc",
@@ -4876,7 +5018,11 @@
      "baseline_rate": 0.22097310920513427,
      "reform_rate": 0.2182642284337848,
      "change_pp": -0.27088807713494784,
-     "change_k": -110.04404241001606
+     "change_k": -110.04404241001606,
+     "change_k_income_only": -19.96425714957714,
+     "moved_records": 96,
+     "moved_below_min_records": false,
+     "moved_ess": 15.083713631799899
     },
     {
      "measure": "rel_pov_ahc",
@@ -4884,7 +5030,33 @@
      "baseline_rate": 0.17523404164645226,
      "reform_rate": 0.17119841402199876,
      "change_pp": -0.40356276244534967,
-     "change_k": -47.51873603129387
+     "change_k": -47.51873603129387,
+     "change_k_income_only": -45.82836907184124,
+     "moved_records": 125,
+     "moved_below_min_records": false,
+     "moved_ess": 17.13284904605677
+    }
+   ],
+   "take_up_sensitivity": [
+    {
+     "take_up": 0.5,
+     "cost_bn": 1.8897673258708592,
+     "recipients_m": 10.798670434210464,
+     "recipient_share": 0.3559474518048944,
+     "abs_pov_bhc_change_k": -136.65747282013297,
+     "abs_pov_ahc_change_k": -170.37354394271972,
+     "rel_pov_bhc_change_k": -154.6201601140499,
+     "rel_pov_ahc_change_k": -216.56437244522573
+    },
+    {
+     "take_up": 0.75,
+     "cost_bn": 2.1404641339391546,
+     "recipients_m": 12.231223622424283,
+     "recipient_share": 0.4031674924595537,
+     "abs_pov_bhc_change_k": -163.56513048793377,
+     "abs_pov_ahc_change_k": -186.85087199263276,
+     "rel_pov_bhc_change_k": -187.91317227405307,
+     "rel_pov_ahc_change_k": -233.01252900058032
     }
    ],
    "coverage": [
@@ -8869,7 +9041,11 @@
      "baseline_rate": 0.12265412858658878,
      "reform_rate": 0.12083403915252243,
      "change_pp": -0.18200894340663373,
-     "change_k": -122.66508793261647
+     "change_k": -122.66508793261647,
+     "change_k_income_only": -42.18575584925711,
+     "moved_records": 203,
+     "moved_below_min_records": false,
+     "moved_ess": 16.452939186410195
     },
     {
      "measure": "abs_pov_bhc",
@@ -8877,7 +9053,11 @@
      "baseline_rate": 0.14497949867383647,
      "reform_rate": 0.14420092031558016,
      "change_pp": -0.07785783582563151,
-     "change_k": -10.939289114758372
+     "change_k": -10.939289114758372,
+     "change_k_income_only": 0.0,
+     "moved_records": 27,
+     "moved_below_min_records": false,
+     "moved_ess": 8.31765328986343
     },
     {
      "measure": "abs_pov_bhc",
@@ -8885,7 +9065,11 @@
      "baseline_rate": 0.11114821571092856,
      "reform_rate": 0.10955285682366706,
      "change_pp": -0.1595358887261509,
-     "change_k": -65.61994231906533
+     "change_k": -65.61994231906533,
+     "change_k_income_only": -13.84313729953766,
+     "moved_records": 93,
+     "moved_below_min_records": false,
+     "moved_ess": 5.688523338442028
     },
     {
      "measure": "abs_pov_bhc",
@@ -8893,7 +9077,11 @@
      "baseline_rate": 0.13572052835608722,
      "reform_rate": 0.1319453749033171,
      "change_pp": -0.3775153452770124,
-     "change_k": -46.10585649879277
+     "change_k": -46.10585649879277,
+     "change_k_income_only": -28.342618549719454,
+     "moved_records": 111,
+     "moved_below_min_records": false,
+     "moved_ess": 17.690418644077944
     },
     {
      "measure": "abs_pov_ahc",
@@ -8901,7 +9089,11 @@
      "baseline_rate": 0.1558503684257596,
      "reform_rate": 0.1522937507352899,
      "change_pp": -0.3556617690469732,
-     "change_k": -239.69856292691827
+     "change_k": -239.69856292691827,
+     "change_k_income_only": -21.810080915659665,
+     "moved_records": 202,
+     "moved_below_min_records": false,
+     "moved_ess": 4.32139881858457
     },
     {
      "measure": "abs_pov_ahc",
@@ -8909,7 +9101,11 @@
      "baseline_rate": 0.20381013285810984,
      "reform_rate": 0.19946072670256462,
      "change_pp": -0.43494061555452185,
-     "change_k": -61.11062670631707
+     "change_k": -61.11062670631707,
+     "change_k_income_only": -0.18980653244256973,
+     "moved_records": 34,
+     "moved_below_min_records": false,
+     "moved_ess": 2.4850281003994916
     },
     {
      "measure": "abs_pov_ahc",
@@ -8917,7 +9113,11 @@
      "baseline_rate": 0.1503524236678767,
      "reform_rate": 0.14769902741616595,
      "change_pp": -0.26533962517107834,
-     "change_k": -109.13889681948721
+     "change_k": -109.13889681948721,
+     "change_k_income_only": -4.460068060010672,
+     "moved_records": 76,
+     "moved_below_min_records": false,
+     "moved_ess": 2.050831921863344
     },
     {
      "measure": "abs_pov_ahc",
@@ -8925,7 +9125,11 @@
      "baseline_rate": 0.1191917606882833,
      "reform_rate": 0.1135052644208612,
      "change_pp": -0.5686496267422096,
-     "change_k": -69.44903940111399
+     "change_k": -69.44903940111399,
+     "change_k_income_only": -17.160206323206424,
+     "moved_records": 134,
+     "moved_below_min_records": false,
+     "moved_ess": 37.64861890970184
     },
     {
      "measure": "rel_pov_bhc",
@@ -8933,7 +9137,11 @@
      "baseline_rate": 0.1438038666827253,
      "reform_rate": 0.14198983227909262,
      "change_pp": -0.1814034403632659,
-     "change_k": -122.25700862251222
+     "change_k": -122.25700862251222,
+     "change_k_income_only": -40.35002623070776,
+     "moved_records": 181,
+     "moved_below_min_records": false,
+     "moved_ess": 21.860532884446233
     },
     {
      "measure": "rel_pov_bhc",
@@ -8941,7 +9149,11 @@
      "baseline_rate": 0.1735993448504401,
      "reform_rate": 0.1713996558639094,
      "change_pp": -0.2199688986530718,
-     "change_k": -30.906373817145823
+     "change_k": -30.906373817145823,
+     "change_k_income_only": -1.737169349193573,
+     "moved_records": 29,
+     "moved_below_min_records": false,
+     "moved_ess": 6.032942558206954
     },
     {
      "measure": "rel_pov_bhc",
@@ -8949,7 +9161,11 @@
      "baseline_rate": 0.12781885329375475,
      "reform_rate": 0.1267657011348826,
      "change_pp": -0.10531521588721449,
-     "change_k": -43.31801732525229
+     "change_k": -43.31801732525229,
+     "change_k_income_only": -13.189486289530992,
+     "moved_records": 66,
+     "moved_below_min_records": false,
+     "moved_ess": 11.06115356801007
     },
     {
      "measure": "rel_pov_bhc",
@@ -8957,7 +9173,11 @@
      "baseline_rate": 0.16336137992121952,
      "reform_rate": 0.15942846303179167,
      "change_pp": -0.3932916889427861,
-     "change_k": -48.032617480114105
+     "change_k": -48.032617480114105,
+     "change_k_income_only": -25.4233705919832,
+     "moved_records": 121,
+     "moved_below_min_records": false,
+     "moved_ess": 21.020184696162936
     },
     {
      "measure": "rel_pov_ahc",
@@ -8965,7 +9185,11 @@
      "baseline_rate": 0.18633222194523752,
      "reform_rate": 0.18392403939542995,
      "change_pp": -0.24081825498075668,
-     "change_k": -162.29967533516884
+     "change_k": -162.29967533516884,
+     "change_k_income_only": -48.55518376880884,
+     "moved_records": 205,
+     "moved_below_min_records": false,
+     "moved_ess": 20.103214433559206
     },
     {
      "measure": "rel_pov_ahc",
@@ -8973,7 +9197,11 @@
      "baseline_rate": 0.2467858994575867,
      "reform_rate": 0.24485002319422927,
      "change_pp": -0.1935876263357424,
-     "change_k": -27.19971588048339
+     "change_k": -27.19971588048339,
+     "change_k_income_only": 0.0,
+     "moved_records": 36,
+     "moved_below_min_records": false,
+     "moved_ess": 7.656614751944143
     },
     {
      "measure": "rel_pov_ahc",
@@ -8981,7 +9209,11 @@
      "baseline_rate": 0.1734466154157907,
      "reform_rate": 0.17199975290950645,
      "change_pp": -0.14468625062842547,
-     "change_k": -59.512022632703186
+     "change_k": -59.512022632703186,
+     "change_k_income_only": -3.2020541813075543,
+     "moved_records": 91,
+     "moved_below_min_records": false,
+     "moved_ess": 11.92585886454582
     },
     {
      "measure": "rel_pov_ahc",
@@ -8989,7 +9221,33 @@
      "baseline_rate": 0.1601807946939376,
      "reform_rate": 0.15399164471710658,
      "change_pp": -0.6189149976830993,
-     "change_k": -75.58793682198227
+     "change_k": -75.58793682198227,
+     "change_k_income_only": -45.353129587501286,
+     "moved_records": 124,
+     "moved_below_min_records": false,
+     "moved_ess": 7.0953717501554765
+    }
+   ],
+   "take_up_sensitivity": [
+    {
+     "take_up": 0.5,
+     "cost_bn": 2.0638728081638895,
+     "recipients_m": 9.996183422350938,
+     "recipient_share": 0.35371377870177323,
+     "abs_pov_bhc_change_k": -101.57221000798792,
+     "abs_pov_ahc_change_k": -228.79352246908843,
+     "rel_pov_bhc_change_k": -102.08199550715834,
+     "rel_pov_ahc_change_k": -138.02208345076443
+    },
+    {
+     "take_up": 0.75,
+     "cost_bn": 2.272817039879415,
+     "recipients_m": 11.253401624392179,
+     "recipient_share": 0.39820029741674007,
+     "abs_pov_bhc_change_k": -112.11864897030219,
+     "abs_pov_ahc_change_k": -234.24604269800335,
+     "rel_pov_bhc_change_k": -112.16950206483527,
+     "rel_pov_ahc_change_k": -150.16087939296662
     }
    ],
    "coverage": [
@@ -13042,7 +13300,11 @@
      "baseline_rate": 0.15244881964436677,
      "reform_rate": 0.14955581861225703,
      "change_pp": -0.2893001032109724,
-     "change_k": -194.38802480202912
+     "change_k": -194.38802480202912,
+     "change_k_income_only": -109.68673385363817,
+     "moved_records": 215,
+     "moved_below_min_records": false,
+     "moved_ess": 19.86225204647911
     },
     {
      "measure": "abs_pov_bhc",
@@ -13050,7 +13312,11 @@
      "baseline_rate": 0.18220222134880487,
      "reform_rate": 0.17983871295009415,
      "change_pp": -0.23635083987106986,
-     "change_k": -34.966396100997926
+     "change_k": -34.966396100997926,
+     "change_k_income_only": -1.7600219535827637,
+     "moved_records": 15,
+     "moved_below_min_records": false,
+     "moved_ess": 4.49399678345177
     },
     {
      "measure": "abs_pov_bhc",
@@ -13058,7 +13324,11 @@
      "baseline_rate": 0.14369955097067294,
      "reform_rate": 0.14225651398600547,
      "change_pp": -0.14430369846674673,
-     "change_k": -58.62111940085888
+     "change_k": -58.62111940085888,
+     "change_k_income_only": -9.643762450575828,
+     "moved_records": 73,
+     "moved_below_min_records": false,
+     "moved_ess": 17.30950392931524
     },
     {
      "measure": "abs_pov_bhc",
@@ -13066,7 +13336,11 @@
      "baseline_rate": 0.1452508506925666,
      "reform_rate": 0.13669015750361352,
      "change_pp": -0.8560693188953086,
-     "change_k": -100.80050930017232
+     "change_k": -100.80050930017232,
+     "change_k_income_only": -98.28294944947957,
+     "moved_records": 155,
+     "moved_below_min_records": false,
+     "moved_ess": 9.381115955361906
     },
     {
      "measure": "abs_pov_ahc",
@@ -13074,7 +13348,11 @@
      "baseline_rate": 0.19576771448658578,
      "reform_rate": 0.192539914447478,
      "change_pp": -0.32278000391077727,
-     "change_k": -216.88401320773363
+     "change_k": -216.88401320773363,
+     "change_k_income_only": -62.20385426098108,
+     "moved_records": 200,
+     "moved_below_min_records": false,
+     "moved_ess": 11.682183827730498
     },
     {
      "measure": "abs_pov_ahc",
@@ -13082,7 +13360,11 @@
      "baseline_rate": 0.2620698193528442,
      "reform_rate": 0.26011277351537576,
      "change_pp": -0.19570458374683752,
-     "change_k": -28.953076696515083
+     "change_k": -28.953076696515083,
+     "change_k_income_only": -0.8315454460382462,
+     "moved_records": 14,
+     "moved_below_min_records": false,
+     "moved_ess": 2.1874841925806163
     },
     {
      "measure": "abs_pov_ahc",
@@ -13090,7 +13372,11 @@
      "baseline_rate": 0.18919481168884023,
      "reform_rate": 0.18677099126340793,
      "change_pp": -0.2423820425432296,
-     "change_k": -98.46391192686558
+     "change_k": -98.46391192686558,
+     "change_k_income_only": -8.365618976950646,
+     "moved_records": 66,
+     "moved_below_min_records": false,
+     "moved_ess": 5.486590948667253
     },
     {
      "measure": "abs_pov_ahc",
@@ -13098,7 +13384,11 @@
      "baseline_rate": 0.13514015869950136,
      "reform_rate": 0.1275419853042221,
      "change_pp": -0.7598173395279257,
-     "change_k": -89.46702458435297
+     "change_k": -89.46702458435297,
+     "change_k_income_only": -53.00668983799219,
+     "moved_records": 142,
+     "moved_below_min_records": false,
+     "moved_ess": 7.217786857153264
     },
     {
      "measure": "rel_pov_bhc",
@@ -13106,7 +13396,11 @@
      "baseline_rate": 0.1974315292073872,
      "reform_rate": 0.1936863059839766,
      "change_pp": -0.3745223223410597,
-     "change_k": -251.65097998964785
+     "change_k": -251.65097998964785,
+     "change_k_income_only": -120.95706691455841,
+     "moved_records": 152,
+     "moved_below_min_records": false,
+     "moved_ess": 11.933425708837234
     },
     {
      "measure": "rel_pov_bhc",
@@ -13114,7 +13408,11 @@
      "baseline_rate": 0.24892116988489688,
      "reform_rate": 0.24406727778810708,
      "change_pp": -0.4853892096789784,
-     "change_k": -71.80982042646409
+     "change_k": -71.80982042646409,
+     "change_k_income_only": -0.9784061584472656,
+     "moved_records": 21,
+     "moved_below_min_records": false,
+     "moved_ess": 5.202513760250543
     },
     {
      "measure": "rel_pov_bhc",
@@ -13122,7 +13420,11 @@
      "baseline_rate": 0.17250269496637005,
      "reform_rate": 0.1708725903385591,
      "change_pp": -0.16301046278109754,
-     "change_k": -66.22044967532158
+     "change_k": -66.22044967532158,
+     "change_k_income_only": -11.96649399280548,
+     "moved_records": 66,
+     "moved_below_min_records": false,
+     "moved_ess": 12.952188085063229
     },
     {
      "measure": "rel_pov_bhc",
@@ -13130,7 +13432,11 @@
      "baseline_rate": 0.21874337890650355,
      "reform_rate": 0.2090939034820835,
      "change_pp": -0.964947542442004,
-     "change_k": -113.6207098878622
+     "change_k": -113.6207098878622,
+     "change_k_income_only": -108.01216676330566,
+     "moved_records": 91,
+     "moved_below_min_records": false,
+     "moved_ess": 4.174759105175978
     },
     {
      "measure": "rel_pov_ahc",
@@ -13138,7 +13444,11 @@
      "baseline_rate": 0.23667188372904024,
      "reform_rate": 0.23233318082866378,
      "change_pp": -0.43387029003764555,
-     "change_k": -291.5283740469217
+     "change_k": -291.5283740469217,
+     "change_k_income_only": -70.11415640056133,
+     "moved_records": 214,
+     "moved_below_min_records": false,
+     "moved_ess": 17.80678813779489
     },
     {
      "measure": "rel_pov_ahc",
@@ -13146,7 +13456,11 @@
      "baseline_rate": 0.3286775253867377,
      "reform_rate": 0.3216287880166717,
      "change_pp": -0.7048737370065995,
-     "change_k": -104.28096766149997
+     "change_k": -104.28096766149997,
+     "change_k_income_only": 0.0,
+     "moved_records": 24,
+     "moved_below_min_records": false,
+     "moved_ess": 6.588546443566265
     },
     {
      "measure": "rel_pov_ahc",
@@ -13154,7 +13468,11 @@
      "baseline_rate": 0.22097310920513427,
      "reform_rate": 0.2178329327568675,
      "change_pp": -0.31401764482667827,
-     "change_k": -127.56475438225269
+     "change_k": -127.56475438225269,
+     "change_k_income_only": -16.440281621813774,
+     "moved_records": 88,
+     "moved_below_min_records": false,
+     "moved_ess": 17.62466473007979
     },
     {
      "measure": "rel_pov_ahc",
@@ -13162,7 +13480,33 @@
      "baseline_rate": 0.17523404164645226,
      "reform_rate": 0.17016536812437003,
      "change_pp": -0.5068673522082225,
-     "change_k": -59.68265200316906
+     "change_k": -59.68265200316906,
+     "change_k_income_only": -53.67387477874756,
+     "moved_records": 137,
+     "moved_below_min_records": false,
+     "moved_ess": 19.27632499735249
+    }
+   ],
+   "take_up_sensitivity": [
+    {
+     "take_up": 0.5,
+     "cost_bn": 2.207751365089779,
+     "recipients_m": 10.798670434210464,
+     "recipient_share": 0.3559474518048944,
+     "abs_pov_bhc_change_k": -139.54465787521002,
+     "abs_pov_ahc_change_k": -185.7820860772431,
+     "rel_pov_bhc_change_k": -191.17244653236864,
+     "rel_pov_ahc_change_k": -256.47129584664106
+    },
+    {
+     "take_up": 0.75,
+     "cost_bn": 2.4389350003621044,
+     "recipients_m": 12.231223622424283,
+     "recipient_share": 0.4031674924595537,
+     "abs_pov_bhc_change_k": -166.96634133861957,
+     "abs_pov_ahc_change_k": -201.33304964248836,
+     "rel_pov_bhc_change_k": -221.41171326100826,
+     "rel_pov_ahc_change_k": -273.9998349467814
     }
    ],
    "coverage": [
@@ -17196,7 +17540,11 @@
      "baseline_rate": 0.12265412858658878,
      "reform_rate": 0.12091019881095966,
      "change_pp": -0.1743929775629114,
-     "change_k": -117.5323010352999
+     "change_k": -117.5323010352999,
+     "change_k_income_only": -45.42913054655492,
+     "moved_records": 167,
+     "moved_below_min_records": false,
+     "moved_ess": 14.96582115477676
     },
     {
      "measure": "abs_pov_bhc",
@@ -17204,7 +17552,11 @@
      "baseline_rate": 0.14497949867383647,
      "reform_rate": 0.14384420270035111,
      "change_pp": -0.11352959734853425,
-     "change_k": -15.951292189255357
+     "change_k": -15.951292189255357,
+     "change_k_income_only": -5.116867080688476,
+     "moved_records": 31,
+     "moved_below_min_records": false,
+     "moved_ess": 10.206248919445427
     },
     {
      "measure": "abs_pov_bhc",
@@ -17212,7 +17564,11 @@
      "baseline_rate": 0.11114821571092856,
      "reform_rate": 0.10950016733234313,
      "change_pp": -0.1648048378585435,
-     "change_k": -67.78715460534394
+     "change_k": -67.78715460534394,
+     "change_k_income_only": -20.432796211004256,
+     "moved_records": 93,
+     "moved_below_min_records": false,
+     "moved_ess": 6.105406764630331
     },
     {
      "measure": "abs_pov_bhc",
@@ -17220,7 +17576,11 @@
      "baseline_rate": 0.13572052835608722,
      "reform_rate": 0.1329534832297803,
      "change_pp": -0.2767045126306929,
-     "change_k": -33.793854240700604
+     "change_k": -33.793854240700604,
+     "change_k_income_only": -19.87946725486219,
+     "moved_records": 74,
+     "moved_below_min_records": false,
+     "moved_ess": 11.368189259597145
     },
     {
      "measure": "abs_pov_ahc",
@@ -17228,7 +17588,11 @@
      "baseline_rate": 0.1558503684257596,
      "reform_rate": 0.15256682571819824,
      "change_pp": -0.3283542707561387,
-     "change_k": -221.294650369823
+     "change_k": -221.294650369823,
+     "change_k_income_only": -23.859766162097454,
+     "moved_records": 164,
+     "moved_below_min_records": false,
+     "moved_ess": 3.7129933438334892
     },
     {
      "measure": "abs_pov_ahc",
@@ -17236,7 +17600,11 @@
      "baseline_rate": 0.20381013285810984,
      "reform_rate": 0.1997225516879253,
      "change_pp": -0.40875811701845494,
-     "change_k": -57.43189715783298
+     "change_k": -57.43189715783298,
+     "change_k_income_only": -2.1394546037316324,
+     "moved_records": 28,
+     "moved_below_min_records": false,
+     "moved_ess": 2.2270664607798554
     },
     {
      "measure": "abs_pov_ahc",
@@ -17244,7 +17612,11 @@
      "baseline_rate": 0.1503524236678767,
      "reform_rate": 0.1478435891169284,
      "change_pp": -0.250883455094831,
-     "change_k": -103.19281751324236
+     "change_k": -103.19281751324236,
+     "change_k_income_only": -6.36401188775897,
+     "moved_records": 64,
+     "moved_below_min_records": false,
+     "moved_ess": 1.8427717686494907
     },
     {
      "measure": "abs_pov_ahc",
@@ -17252,7 +17624,11 @@
      "baseline_rate": 0.1191917606882833,
      "reform_rate": 0.1142240985597538,
      "change_pp": -0.49676621285295,
-     "change_k": -60.669935698747636
+     "change_k": -60.669935698747636,
+     "change_k_income_only": -15.356299670606852,
+     "moved_records": 104,
+     "moved_below_min_records": false,
+     "moved_ess": 32.68099683846149
     },
     {
      "measure": "rel_pov_bhc",
@@ -17260,7 +17636,11 @@
      "baseline_rate": 0.1438038666827253,
      "reform_rate": 0.14244187425235477,
      "change_pp": -0.1361992430370499,
-     "change_k": -91.79159996643662
+     "change_k": -91.79159996643662,
+     "change_k_income_only": -47.160424164891246,
+     "moved_records": 163,
+     "moved_below_min_records": false,
+     "moved_ess": 22.233249525973118
     },
     {
      "measure": "rel_pov_bhc",
@@ -17268,7 +17648,11 @@
      "baseline_rate": 0.1735993448504401,
      "reform_rate": 0.17195077271784756,
      "change_pp": -0.16485721325925495,
-     "change_k": -23.162995726406574
+     "change_k": -23.162995726406574,
+     "change_k_income_only": -10.198687880635262,
+     "moved_records": 26,
+     "moved_below_min_records": false,
+     "moved_ess": 5.764107969961578
     },
     {
      "measure": "rel_pov_bhc",
@@ -17276,7 +17660,11 @@
      "baseline_rate": 0.12781885329375475,
      "reform_rate": 0.12709602357168046,
      "change_pp": -0.07228297220742858,
-     "change_k": -29.73126927599311
+     "change_k": -29.73126927599311,
+     "change_k_income_only": -15.571429006516933,
+     "moved_records": 63,
+     "moved_below_min_records": false,
+     "moved_ess": 13.032341113459179
     },
     {
      "measure": "rel_pov_bhc",
@@ -17284,7 +17672,11 @@
      "baseline_rate": 0.16336137992121952,
      "reform_rate": 0.16017646113770478,
      "change_pp": -0.3184918783514738,
-     "change_k": -38.89733496403694
+     "change_k": -38.89733496403694,
+     "change_k_income_only": -21.390307277739048,
+     "moved_records": 106,
+     "moved_below_min_records": false,
+     "moved_ess": 15.505415945771695
     },
     {
      "measure": "rel_pov_ahc",
@@ -17292,7 +17684,11 @@
      "baseline_rate": 0.18633222194523752,
      "reform_rate": 0.18470673729348516,
      "change_pp": -0.16254846517523597,
-     "change_k": -109.54968146529794
+     "change_k": -109.54968146529794,
+     "change_k_income_only": -34.811524482548236,
+     "moved_records": 181,
+     "moved_below_min_records": false,
+     "moved_ess": 31.27770311003206
     },
     {
      "measure": "rel_pov_ahc",
@@ -17300,7 +17696,11 @@
      "baseline_rate": 0.2467858994575867,
      "reform_rate": 0.24448605768030304,
      "change_pp": -0.22998417772836582,
-     "change_k": -32.31355438166857
+     "change_k": -32.31355438166857,
+     "change_k_income_only": -11.95628888759017,
+     "moved_records": 41,
+     "moved_below_min_records": false,
+     "moved_ess": 10.151133301713454
     },
     {
      "measure": "rel_pov_ahc",
@@ -17308,7 +17708,11 @@
      "baseline_rate": 0.1734466154157907,
      "reform_rate": 0.1724081839218461,
      "change_pp": -0.10384314939446054,
-     "change_k": -42.71253025199473
+     "change_k": -42.71253025199473,
+     "change_k_income_only": -12.707878653615714,
+     "moved_records": 90,
+     "moved_below_min_records": false,
+     "moved_ess": 17.063329345321506
     },
     {
      "measure": "rel_pov_ahc",
@@ -17316,7 +17720,33 @@
      "baseline_rate": 0.1601807946939376,
      "reform_rate": 0.15735399815054396,
      "change_pp": -0.2826796543393611,
-     "change_k": -34.52359683163464
+     "change_k": -34.52359683163464,
+     "change_k_income_only": -10.147356941342354,
+     "moved_records": 101,
+     "moved_below_min_records": false,
+     "moved_ess": 28.16579026131099
+    }
+   ],
+   "take_up_sensitivity": [
+    {
+     "take_up": 0.5,
+     "cost_bn": 1.6541920852645293,
+     "recipients_m": 9.452526202545192,
+     "recipient_share": 0.33447653170348174,
+     "abs_pov_bhc_change_k": -94.81773576202244,
+     "abs_pov_ahc_change_k": -209.36476728877426,
+     "rel_pov_bhc_change_k": -68.211387883991,
+     "rel_pov_ahc_change_k": -92.14391922402382
+    },
+    {
+     "take_up": 0.75,
+     "cost_bn": 1.8266352640514583,
+     "recipients_m": 10.437915794683558,
+     "recipient_share": 0.3693444269193029,
+     "abs_pov_bhc_change_k": -106.17501839866117,
+     "abs_pov_ahc_change_k": -215.32970882929862,
+     "rel_pov_bhc_change_k": -80.00149392521381,
+     "rel_pov_ahc_change_k": -100.84680034466088
     }
    ],
    "coverage": [
@@ -21320,7 +21750,11 @@
      "baseline_rate": 0.15244881964436677,
      "reform_rate": 0.14937086020617857,
      "change_pp": -0.30779594381881925,
-     "change_k": -206.8158458878398
+     "change_k": -206.8158458878398,
+     "change_k_income_only": -123.97368840330839,
+     "moved_records": 195,
+     "moved_below_min_records": false,
+     "moved_ess": 20.704748715018702
     },
     {
      "measure": "abs_pov_bhc",
@@ -21328,7 +21762,11 @@
      "baseline_rate": 0.18220222134880487,
      "reform_rate": 0.17916554568273513,
      "change_pp": -0.30366756660697364,
-     "change_k": -44.92541859719157
+     "change_k": -44.92541859719157,
+     "change_k_income_only": -11.765014332741499,
+     "moved_records": 24,
+     "moved_below_min_records": false,
+     "moved_ess": 6.199689420176859
     },
     {
      "measure": "abs_pov_bhc",
@@ -21336,7 +21774,11 @@
      "baseline_rate": 0.14369955097067294,
      "reform_rate": 0.1420364490620297,
      "change_pp": -0.16631019086432552,
-     "change_k": -67.56091257414222
+     "change_k": -67.56091257414222,
+     "change_k_income_only": -20.17932389816642,
+     "moved_records": 77,
+     "moved_below_min_records": false,
+     "moved_ess": 19.532752465535054
     },
     {
      "measure": "abs_pov_bhc",
@@ -21344,7 +21786,11 @@
      "baseline_rate": 0.1452508506925666,
      "reform_rate": 0.13723972019573427,
      "change_pp": -0.8011130496832344,
-     "change_k": -94.329514716506
+     "change_k": -94.329514716506,
+     "change_k_income_only": -92.02935017240047,
+     "moved_records": 131,
+     "moved_below_min_records": false,
+     "moved_ess": 8.265828685311176
     },
     {
      "measure": "abs_pov_ahc",
@@ -21352,7 +21798,11 @@
      "baseline_rate": 0.19576771448658578,
      "reform_rate": 0.19279835291003328,
      "change_pp": -0.2969361576552499,
-     "change_k": -199.51888208216428
+     "change_k": -199.51888208216428,
+     "change_k_income_only": -62.099994239270686,
+     "moved_records": 178,
+     "moved_below_min_records": false,
+     "moved_ess": 10.223186632392329
     },
     {
      "measure": "abs_pov_ahc",
@@ -21360,7 +21810,11 @@
      "baseline_rate": 0.2620698193528442,
      "reform_rate": 0.2599876611947771,
      "change_pp": -0.2082158158067021,
-     "change_k": -30.80402292609215
+     "change_k": -30.80402292609215,
+     "change_k_income_only": -3.140495997667313,
+     "moved_records": 21,
+     "moved_below_min_records": false,
+     "moved_ess": 2.4705759382259607
     },
     {
      "measure": "abs_pov_ahc",
@@ -21368,7 +21822,11 @@
      "baseline_rate": 0.18919481168884023,
      "reform_rate": 0.18685593121403107,
      "change_pp": -0.2338880474809161,
-     "change_k": -95.01335934901238
+     "change_k": -95.01335934901238,
+     "change_k_income_only": -9.525916275978089,
+     "moved_records": 60,
+     "moved_below_min_records": false,
+     "moved_ess": 5.122702657141415
     },
     {
      "measure": "abs_pov_ahc",
@@ -21376,7 +21834,11 @@
      "baseline_rate": 0.13514015869950136,
      "reform_rate": 0.1288809053307007,
      "change_pp": -0.6259253368800638,
-     "change_k": -73.70149980705976
+     "change_k": -73.70149980705976,
+     "change_k_income_only": -49.43358196562529,
+     "moved_records": 127,
+     "moved_below_min_records": false,
+     "moved_ess": 5.54922054548218
     },
     {
      "measure": "rel_pov_bhc",
@@ -21384,7 +21846,11 @@
      "baseline_rate": 0.1974315292073872,
      "reform_rate": 0.1941426735270576,
      "change_pp": -0.3288855680329585,
-     "change_k": -220.98649549806117
+     "change_k": -220.98649549806117,
+     "change_k_income_only": -132.95235970401765,
+     "moved_records": 163,
+     "moved_below_min_records": false,
+     "moved_ess": 10.710734510891491
     },
     {
      "measure": "rel_pov_bhc",
@@ -21392,7 +21858,11 @@
      "baseline_rate": 0.24892116988489688,
      "reform_rate": 0.24600799110855667,
      "change_pp": -0.2913178776340199,
-     "change_k": -43.09837149810791
+     "change_k": -43.09837149810791,
+     "change_k_income_only": -1.4790682373046875,
+     "moved_records": 15,
+     "moved_below_min_records": false,
+     "moved_ess": 3.0316578374699605
     },
     {
      "measure": "rel_pov_bhc",
@@ -21400,7 +21870,11 @@
      "baseline_rate": 0.17250269496637005,
      "reform_rate": 0.17111605343472047,
      "change_pp": -0.13866415316496053,
-     "change_k": -56.330142371058464
+     "change_k": -56.330142371058464,
+     "change_k_income_only": -14.684130931735039,
+     "moved_records": 59,
+     "moved_below_min_records": false,
+     "moved_ess": 11.221822087538982
     },
     {
      "measure": "rel_pov_bhc",
@@ -21408,7 +21882,11 @@
      "baseline_rate": 0.21874337890650355,
      "reform_rate": 0.2084198141485665,
      "change_pp": -1.0323564757937043,
-     "change_k": -121.55798162889481
+     "change_k": -121.55798162889481,
+     "change_k_income_only": -116.78916053497791,
+     "moved_records": 112,
+     "moved_below_min_records": false,
+     "moved_ess": 4.769216723442142
     },
     {
      "measure": "rel_pov_ahc",
@@ -21416,7 +21894,11 @@
      "baseline_rate": 0.23667188372904024,
      "reform_rate": 0.23252269847171536,
      "change_pp": -0.4149185257324889,
-     "change_k": -278.7942063473463
+     "change_k": -278.7942063473463,
+     "change_k_income_only": -95.12614701282978,
+     "moved_records": 202,
+     "moved_below_min_records": false,
+     "moved_ess": 14.76780298746678
     },
     {
      "measure": "rel_pov_ahc",
@@ -21424,7 +21906,11 @@
      "baseline_rate": 0.3286775253867377,
      "reform_rate": 0.32131161679616677,
      "change_pp": -0.7365908590570927,
-     "change_k": -108.97328630697727
+     "change_k": -108.97328630697727,
+     "change_k_income_only": -17.075379192352294,
+     "moved_records": 26,
+     "moved_below_min_records": false,
+     "moved_ess": 6.723414427184591
     },
     {
      "measure": "rel_pov_ahc",
@@ -21432,7 +21918,11 @@
      "baseline_rate": 0.22097310920513427,
      "reform_rate": 0.21795796876467313,
      "change_pp": -0.30151404404611415,
-     "change_k": -122.48536222469806
+     "change_k": -122.48536222469806,
+     "change_k_income_only": -32.40557696425915,
+     "moved_records": 90,
+     "moved_below_min_records": false,
+     "moved_ess": 14.417668156055491
     },
     {
      "measure": "rel_pov_ahc",
@@ -21440,7 +21930,33 @@
      "baseline_rate": 0.17523404164645226,
      "reform_rate": 0.17121397081346473,
      "change_pp": -0.40200708329875146,
-     "change_k": -47.33555781567097
+     "change_k": -47.33555781567097,
+     "change_k_income_only": -45.645190856218335,
+     "moved_records": 126,
+     "moved_below_min_records": false,
+     "moved_ess": 17.012068462922
+    }
+   ],
+   "take_up_sensitivity": [
+    {
+     "take_up": 0.5,
+     "cost_bn": 1.7831421117894801,
+     "recipients_m": 10.189383500944048,
+     "recipient_share": 0.33586404129288017,
+     "abs_pov_bhc_change_k": -144.82900168618562,
+     "abs_pov_ahc_change_k": -168.46888496252893,
+     "rel_pov_bhc_change_k": -154.51031564605233,
+     "rel_pov_ahc_change_k": -231.2311328409314
+    },
+    {
+     "take_up": 0.75,
+     "cost_bn": 1.9805263128170862,
+     "recipients_m": 11.317293222524658,
+     "recipient_share": 0.37304237669153234,
+     "abs_pov_bhc_change_k": -175.8224237870127,
+     "abs_pov_ahc_change_k": -183.9938835223466,
+     "rel_pov_bhc_change_k": -187.74840557205675,
+     "rel_pov_ahc_change_k": -255.01266959413886
     }
    ],
    "coverage": [
