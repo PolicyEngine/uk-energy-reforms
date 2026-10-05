@@ -15,7 +15,7 @@ Model: policyengine-uk 2.102.3. Absolute poverty uses the line HBAI has used sin
 
 **rf_flat_bill_share**: RF flat option: 175 GBP per household below 24,000 GBP or passported.
 - `microcosm_national`: cost GBP 2.04bn; 11.68m recipients (40.7% of GB households), average GBP 175; passported 26.3%, income test 33.5%; relative AHC poverty -171k people (-43k children).
-- `efrs_1573`: cost GBP 2.26bn; 11.87m recipients (38.6% of GB households), average GBP 190; passported 25.9%, income test 36.9%; relative AHC poverty -106k people (-25k children).
+- `efrs_1573`: cost GBP 2.26bn; 11.87m recipients (38.6% of GB households), average GBP 190; passported 25.9%, income test 36.9%; relative AHC poverty -106k people (– children).
 
 **rf_flat_budget_2bn**: RF flat option: 175 GBP per household below 24,000 GBP or passported.
 - `microcosm_national`: cost GBP 2.00bn; 11.68m recipients (40.7% of GB households), average GBP 171; passported 26.3%, income test 33.5%; relative AHC poverty -231k people (-66k children).
@@ -35,15 +35,15 @@ Model: policyengine-uk 2.102.3. Absolute poverty uses the line HBAI has used sin
 
 **rf_tiered_own_income**: RF tiered option with passported households tiered on their own income (85 GBP floor).
 - `microcosm_national`: cost GBP 1.94bn; 11.68m recipients (40.7% of GB households), average GBP 166; passported 26.3%, income test 33.5%; relative AHC poverty -194k people (-48k children).
-- `efrs_1573`: cost GBP 2.24bn; 12.90m recipients (41.9% of GB households), average GBP 174; passported 25.9%, income test 36.9%; relative AHC poverty -104k people (-18k children).
+- `efrs_1573`: cost GBP 2.24bn; 12.90m recipients (41.9% of GB households), average GBP 174; passported 25.9%, income test 36.9%; relative AHC poverty -104k people (– children).
 
 **rf_tiered_own_income_bill_share**: RF tiered option with passported households tiered on their own income (85 GBP floor).
 - `microcosm_national`: cost GBP 1.94bn; 11.68m recipients (40.7% of GB households), average GBP 166; passported 26.3%, income test 33.5%; relative AHC poverty -183k people (-49k children).
-- `efrs_1573`: cost GBP 2.24bn; 11.87m recipients (38.6% of GB households), average GBP 189; passported 25.9%, income test 36.9%; relative AHC poverty -52k people (-3k children).
+- `efrs_1573`: cost GBP 2.24bn; 11.87m recipients (38.6% of GB households), average GBP 189; passported 25.9%, income test 36.9%; relative AHC poverty -52k people (– children).
 
 **rf_tiered_own_income_budget_2bn**: RF tiered option with passported households tiered on their own income (85 GBP floor).
 - `microcosm_national`: cost GBP 2.00bn; 11.68m recipients (40.7% of GB households), average GBP 171; passported 26.3%, income test 33.5%; relative AHC poverty -199k people (-50k children).
-- `efrs_1573`: cost GBP 2.00bn; 12.90m recipients (41.9% of GB households), average GBP 155; passported 25.9%, income test 36.9%; relative AHC poverty -90k people (-15k children).
+- `efrs_1573`: cost GBP 2.00bn; 12.90m recipients (41.9% of GB households), average GBP 155; passported 25.9%, income test 36.9%; relative AHC poverty -90k people (– children).
 
 **rf_household_income**: RF comparator: 175 GBP per household with equivalised household income below 30,000 GBP, or passported.
 - `microcosm_national`: cost GBP 1.87bn; 10.67m recipients (37.2% of GB households), average GBP 175; passported 26.3%, income test 31.8%; relative AHC poverty -246k people (-66k children).
@@ -51,7 +51,7 @@ Model: policyengine-uk 2.102.3. Absolute poverty uses the line HBAI has used sin
 
 **rf_household_income_bill_share**: RF comparator: 175 GBP per household with equivalised household income below 30,000 GBP, or passported.
 - `microcosm_national`: cost GBP 1.87bn; 10.67m recipients (37.2% of GB households), average GBP 175; passported 26.3%, income test 31.8%; relative AHC poverty -192k people (-47k children).
-- `efrs_1573`: cost GBP 2.05bn; 10.68m recipients (34.7% of GB households), average GBP 191; passported 25.9%, income test 34.1%; relative AHC poverty -98k people (-25k children).
+- `efrs_1573`: cost GBP 2.05bn; 10.68m recipients (34.7% of GB households), average GBP 191; passported 25.9%, income test 34.1%; relative AHC poverty -98k people (– children).
 
 **rf_household_income_budget_2bn**: RF comparator: 175 GBP per household with equivalised household income below 30,000 GBP, or passported.
 - `microcosm_national`: cost GBP 2.00bn; 10.67m recipients (37.2% of GB households), average GBP 187; passported 26.3%, income test 31.8%; relative AHC poverty -249k people (-66k children).
@@ -63,7 +63,7 @@ Model: policyengine-uk 2.102.3. Absolute poverty uses the line HBAI has used sin
 
 **passport_only_bill_share**: Passporting only (no income test), 175 GBP per household.
 - `microcosm_national`: cost GBP 1.32bn; 7.55m recipients (26.3% of GB households), average GBP 175; passported 26.3%, income test 0.0%; relative AHC poverty -129k people (-39k children).
-- `efrs_1573`: cost GBP 1.40bn; 7.07m recipients (23.0% of GB households), average GBP 198; passported 25.9%, income test 0.0%; relative AHC poverty -69k people (-29k children).
+- `efrs_1573`: cost GBP 1.40bn; 7.07m recipients (23.0% of GB households), average GBP 198; passported 25.9%, income test 0.0%; relative AHC poverty -69k people (– children).
 
 **passport_only_budget_2bn**: Passporting only (no income test), 175 GBP per household.
 - `microcosm_national`: cost GBP 2.00bn; 7.55m recipients (26.3% of GB households), average GBP 265; passported 26.3%, income test 0.0%; relative AHC poverty -207k people (-65k children).
@@ -97,7 +97,7 @@ Model rates are for Great Britain in FY2027-28, before the reform. HBAI's are fo
 
 ## Gas spend against DESNZ
 
-DESNZ's average domestic gas bill at actual consumption was GBP 773 per on-gas household in 2024 (GBP 841 at temperature-adjusted consumption; GBP 752 in 2025), with 89% of GB households on gas: GBP 19.3bn in total (Quarterly Energy Prices table 2.3.5). Model figures are for FY2027-28 households at each dataset's stored price level: 2024-25 for Microcosm, April-June 2026 unit rates for the Enhanced FRS.
+DESNZ's average domestic gas bill at actual consumption was GBP 773 per on-gas household in 2024 (GBP 841 at temperature-adjusted consumption; GBP 752 in 2025), with 89% of GB households on gas: GBP 19.3bn in total (Quarterly Energy Prices table 2.3.5). That share is DESNZ's estimate of on-gas households over GB households. The 84% quoted elsewhere is a different basis: gas meters over all domestic properties, which include empty and second homes (sub-national consumption statistics). The reconciliation uses the household basis, as the bills do. Model figures are for FY2027-28 households at each dataset's stored price level: 2024-25 for Microcosm, April-June 2026 unit rates for the Enhanced FRS.
 
 | Dataset | Households with gas spend | Gas spend per such household (GBP) | Against DESNZ | Total gas spend (GBP bn) | Against DESNZ |
 |---|---|---|---|---|---|
@@ -220,15 +220,15 @@ By region:
 | Region | Households (m) | ESS | Eligible | Passported | Pass income test | Cost (GBP m) | Share of cost | Avg per recipient (GBP) | Gain, % net income | Mean bill (GBP) | In abs. BHC poverty, reached | In abs. BHC poverty, not reached (k) | People out of abs. BHC poverty (k) | In abs. AHC poverty, reached | In abs. AHC poverty, not reached (k) | Lowest-4-decile, not reached (k) | People out of rel. AHC poverty (k) | Within GBP 1k above top line (k) | Offset range (k) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | North East | 1.23 | 273 | 52.9% | 38.4% | 45.4% | 114 | 5.6% | 175 | 0.2% | 1,460 | 0.96 | 7.88 | 3.86 | 0.93 | 18.0 | 124 | 10.9 | 22.8 | 12.1 |
-| North West | 3.31 | 495 | 43.8% | 29.2% | 36.3% | 254 | 12.4% | 175 | 0.2% | 1,489 | 0.88 | 56.5 | 20.4 | 0.85 | 80.4 | 304 | 47.1 | 33.4 | 7.27 |
+| North West | 3.31 | 495 | 43.8% | 29.2% | 36.3% | 254 | 12.4% | 175 | 0.2% | 1,489 | 0.88 | 56.5 | – | 0.85 | 80.4 | 304 | 47.1 | 33.4 | 7.27 |
 | Yorkshire and the Humber | 2.42 | 580 | 44.5% | 28.8% | 37.7% | 188 | 9.2% | 175 | 0.2% | 1,420 | 0.90 | 38.5 | 5.42 | 0.88 | 48.6 | 288 | 14.1 | 40.1 | 12.0 |
 | East Midlands | 2.13 | 335 | 42.3% | 24.8% | 35.9% | 158 | 7.7% | 175 | 0.1% | 1,463 | 0.88 | 33.4 | 0.94 | 0.83 | 56.3 | 315 | 45.9 | 27.1 | 15.9 |
 | West Midlands | 2.54 | 345 | 47.7% | 30.9% | 37.1% | 212 | 10.4% | 175 | 0.2% | 1,440 | 0.93 | 16.6 | 5.64 | 0.87 | 40.8 | 210 | 63.2 | 13.2 | 1.58 |
-| East of England | 2.76 | 508 | 35.4% | 21.3% | 29.2% | 171 | 8.4% | 175 | 0.1% | 1,431 | 0.97 | 8.75 | 31.6 | 0.85 | 57.6 | 248 | 1.77 | 21.8 | 10.2 |
-| London | 3.66 | 420 | 35.0% | 29.7% | 26.4% | 224 | 11.0% | 175 | 0.1% | 1,393 | 0.91 | 31.8 | 4.11 | 0.78 | 156 | 380 | 6.78 | 9.32 | 3.02 |
+| East of England | 2.76 | 508 | 35.4% | 21.3% | 29.2% | 171 | 8.4% | 175 | 0.1% | 1,431 | 0.97 | 8.75 | 31.6 | 0.85 | 57.6 | 248 | – | 21.8 | 10.2 |
+| London | 3.66 | 420 | 35.0% | 29.7% | 26.4% | 224 | 11.0% | 175 | 0.1% | 1,393 | 0.91 | 31.8 | – | 0.78 | 156 | 380 | – | 9.32 | 3.02 |
 | South East | 4.02 | 734 | 33.8% | 20.2% | 28.0% | 238 | 11.6% | 175 | 0.1% | 1,568 | 0.93 | 34.4 | 5.50 | 0.79 | 132 | 396 | 26.2 | 71.1 | 1.48 |
 | South West | 2.56 | 356 | 39.5% | 22.5% | 33.2% | 177 | 8.6% | 175 | 0.1% | 1,367 | 0.87 | 42.9 | 10.8 | 0.86 | 60.6 | 301 | 2.39 | 50.9 | 4.24 |
-| Wales | 1.40 | 463 | 46.1% | 29.1% | 37.7% | 113 | 5.5% | 175 | 0.2% | 1,357 | 0.96 | 10.4 | 3.43 | 0.94 | 14.3 | 175 | 2.84 | 8.86 | 1.58 |
+| Wales | 1.40 | 463 | 46.1% | 29.1% | 37.7% | 113 | 5.5% | 175 | 0.2% | 1,357 | 0.96 | 10.4 | 3.43 | 0.94 | 14.3 | 175 | – | 8.86 | 1.58 |
 | Scotland | 2.67 | 586 | 42.2% | 23.9% | 35.7% | 197 | 9.6% | 175 | 0.2% | 1,334 | 0.97 | 15.1 | 16.4 | 0.93 | 39.5 | 217 | 10.2 | 33.6 | 6.22 |
 
 By household type:
@@ -238,10 +238,10 @@ By household type:
 | Single pensioner | 3.94 | 1,024 | 61.8% | 34.2% | 60.9% | 426 | 20.8% | 175 | 0.4% | 1,126 | 1.00 | 0.14 | 14.3 | 0.96 | 24.0 | 53.8 | 31.5 | 51.9 | 12.6 |
 | Pensioner couple | 3.59 | 787 | 41.2% | 6.7% | 40.8% | 259 | 12.7% | 175 | 0.2% | 1,581 | 0.94 | 19.6 | 35.4 | 0.97 | 7.01 | 144 | 27.5 | 80.8 | 24.0 |
 | Single, no children | 4.55 | 574 | 52.9% | 33.7% | 51.8% | 421 | 20.6% | 175 | 0.3% | 1,064 | 0.98 | 24.4 | 14.3 | 0.91 | 126 | 386 | 21.7 | 41.9 | 7.11 |
-| Couple, no children | 4.34 | 606 | 14.5% | 5.1% | 12.8% | 110 | 5.4% | 175 | 0.0% | 1,402 | 0.79 | 72.2 | 0.48 | 0.70 | 147 | 635 | 2.87 | 101 | 18.9 |
+| Couple, no children | 4.34 | 606 | 14.5% | 5.1% | 12.8% | 110 | 5.4% | 175 | 0.0% | 1,402 | 0.79 | 72.2 | – | 0.70 | 147 | 635 | – | 101 | 18.9 |
 | Lone parent | 1.26 | 295 | 91.7% | 90.2% | 69.7% | 202 | 9.9% | 175 | 0.4% | 1,355 | 0.99 | 3.24 | 7.99 | 0.97 | 12.5 | 40.6 | 60.8 | 0.97 | 0.04 |
-| Couple with children | 4.98 | 1,097 | 21.5% | 17.7% | 13.6% | 187 | 9.2% | 175 | 0.1% | 1,724 | 0.70 | 151 | 26.1 | 0.64 | 307 | 1,222 | 20.8 | 37.2 | 5.04 |
-| Multi-family household | 6.01 | 773 | 41.7% | 36.4% | 21.1% | 439 | 21.5% | 175 | 0.1% | 1,642 | 0.94 | 25.7 | 9.64 | 0.88 | 80.3 | 478 | 66.1 | 18.6 | 7.91 |
+| Couple with children | 4.98 | 1,097 | 21.5% | 17.7% | 13.6% | 187 | 9.2% | 175 | 0.1% | 1,724 | 0.70 | 151 | – | 0.64 | 307 | 1,222 | 20.8 | 37.2 | 5.04 |
+| Multi-family household | 6.01 | 773 | 41.7% | 36.4% | 21.1% | 439 | 21.5% | 175 | 0.1% | 1,642 | 0.94 | 25.7 | – | 0.88 | 80.3 | 478 | 66.1 | 18.6 | 7.91 |
 
 By AHC income decile (GB people):
 
@@ -340,17 +340,17 @@ By region:
 
 | Region | Households (m) | ESS | Eligible | Passported | Pass income test | Cost (GBP m) | Share of cost | Avg per recipient (GBP) | Gain, % net income | Mean bill (GBP) | In abs. BHC poverty, reached | In abs. BHC poverty, not reached (k) | People out of abs. BHC poverty (k) | In abs. AHC poverty, reached | In abs. AHC poverty, not reached (k) | Lowest-4-decile, not reached (k) | People out of rel. AHC poverty (k) | Within GBP 1k above top line (k) | Offset range (k) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| North East | 1.32 | 93.2 | 51.0% | 33.1% | 46.9% | 118 | 5.2% | 175 | 0.2% | 2,146 | 0.99 | 3.18 | 3.53 | 0.98 | 5.00 | 40.9 | 7.89 | 13.7 | 0.49 |
-| North West | 3.55 | 171 | 46.0% | 29.5% | 43.4% | 286 | 12.7% | 175 | 0.2% | 1,595 | 0.97 | 18.4 | 4.51 | 0.88 | 84.1 | 414 | 15.4 | 69.2 | 5.69 |
-| Yorkshire and the Humber | 2.59 | 153 | 45.0% | 27.9% | 40.2% | 204 | 9.0% | 175 | 0.2% | 1,918 | 0.97 | 13.7 | 1.98 | 0.96 | 20.5 | 219 | 17.2 | 20.1 | 2.13 |
-| East Midlands | 2.30 | 112 | 43.8% | 25.4% | 39.2% | 176 | 7.8% | 175 | 0.2% | 1,948 | 0.96 | 15.5 | 2.34 | 0.94 | 30.3 | 133 | 4.46 | 15.1 | 5.89 |
+| North East | 1.32 | 93.2 | 51.0% | 33.1% | 46.9% | 118 | 5.2% | 175 | 0.2% | 2,146 | 0.99 | 3.18 | – | 0.98 | 5.00 | 40.9 | – | 13.7 | 0.49 |
+| North West | 3.55 | 171 | 46.0% | 29.5% | 43.4% | 286 | 12.7% | 175 | 0.2% | 1,595 | 0.97 | 18.4 | – | 0.88 | 84.1 | 414 | 15.4 | 69.2 | 5.69 |
+| Yorkshire and the Humber | 2.59 | 153 | 45.0% | 27.9% | 40.2% | 204 | 9.0% | 175 | 0.2% | 1,918 | 0.97 | 13.7 | – | 0.96 | 20.5 | 219 | 17.2 | 20.1 | 2.13 |
+| East Midlands | 2.30 | 112 | 43.8% | 25.4% | 39.2% | 176 | 7.8% | 175 | 0.2% | 1,948 | 0.96 | 15.5 | – | 0.94 | 30.3 | 133 | 4.46 | 15.1 | 5.89 |
 | West Midlands | 2.71 | 79.7 | 43.1% | 23.5% | 39.9% | 205 | 9.1% | 175 | 0.2% | 1,401 | 0.85 | 80.6 | 3.30 | 0.81 | 128 | 251 | 2.79 | 12.4 | 2.36 |
-| East of England | 2.95 | 94.4 | 29.2% | 17.9% | 21.5% | 151 | 6.7% | 175 | 0.1% | 1,339 | 0.95 | 17.3 | 7.52 | 0.79 | 90.2 | 333 | 19.3 | 91.8 | 10.7 |
-| London | 3.98 | 120 | 41.3% | 31.1% | 32.9% | 287 | 12.7% | 175 | 0.1% | 1,085 | 0.89 | 54.4 | 1.27 | 0.85 | 119 | 391 | 6.88 | 19.0 | 1.51 |
+| East of England | 2.95 | 94.4 | 29.2% | 17.9% | 21.5% | 151 | 6.7% | 175 | 0.1% | 1,339 | 0.95 | 17.3 | 7.52 | 0.79 | 90.2 | 333 | – | 91.8 | 10.7 |
+| London | 3.98 | 120 | 41.3% | 31.1% | 32.9% | 287 | 12.7% | 175 | 0.1% | 1,085 | 0.89 | 54.4 | – | 0.85 | 119 | 391 | – | 19.0 | 1.51 |
 | South East | 4.28 | 95.1 | 39.1% | 23.0% | 34.7% | 293 | 13.0% | 175 | 0.1% | 1,573 | 0.90 | 72.4 | 10.0 | 0.76 | 247 | 521 | 26.7 | 45.5 | 2.92 |
 | South West | 2.78 | 118 | 40.9% | 25.4% | 36.1% | 199 | 8.8% | 175 | 0.1% | 1,317 | 0.97 | 14.7 | 14.0 | 0.95 | 30.4 | 182 | 3.31 | 21.7 | 5.51 |
 | Wales | 1.59 | 203 | 49.3% | 28.4% | 45.5% | 137 | 6.1% | 175 | 0.2% | 1,845 | 0.96 | 14.7 | 7.33 | 0.96 | 13.0 | 128 | 8.18 | 6.41 | 0.65 |
-| Scotland | 2.75 | 99.5 | 41.9% | 23.4% | 37.6% | 202 | 8.9% | 175 | 0.2% | 2,003 | 0.96 | 17.8 | 7.52 | 0.85 | 75.3 | 185 | 22.8 | 16.0 | 4.87 |
+| Scotland | 2.75 | 99.5 | 41.9% | 23.4% | 37.6% | 202 | 8.9% | 175 | 0.2% | 2,003 | 0.96 | 17.8 | 7.52 | 0.85 | 75.3 | 185 | – | 16.0 | 4.87 |
 
 By household type:
 
@@ -360,9 +360,9 @@ By household type:
 | Pensioner couple | 3.90 | 232 | 32.7% | 5.9% | 32.0% | 223 | 9.9% | 175 | 0.1% | 2,366 | 0.93 | 22.1 | 11.2 | 0.97 | 7.89 | 216 | 11.7 | 95.9 | 13.8 |
 | Single, no children | 5.66 | 258 | 63.0% | 48.7% | 58.1% | 625 | 27.7% | 175 | 0.5% | 1,164 | 0.99 | 17.2 | 15.3 | 0.91 | 218 | 518 | 13.3 | 30.0 | 6.58 |
 | Couple, no children | 7.21 | 170 | 13.8% | 2.0% | 13.3% | 174 | 7.7% | 175 | 0.0% | 1,726 | 0.89 | 73.2 | 8.82 | 0.81 | 171 | 797 | 14.5 | 87.7 | 3.97 |
-| Lone parent | 2.13 | 314 | 94.4% | 92.4% | 74.5% | 352 | 15.6% | 175 | 0.5% | 741 | 0.99 | 4.14 | 7.24 | 0.99 | 6.86 | 28.5 | 11.4 | 1.85 | 0.25 |
-| Couple with children | 5.00 | 374 | 26.0% | 16.2% | 17.5% | 228 | 10.1% | 175 | 0.1% | 1,629 | 0.77 | 119 | 0.28 | 0.63 | 318 | 790 | 31.5 | 41.9 | 4.27 |
-| Multi-family household | 2.78 | 154 | 23.2% | 17.2% | 12.9% | 113 | 5.0% | 175 | 0.0% | 1,960 | 0.71 | 87.3 | 7.25 | 0.71 | 113 | 402 | 23.6 | 19.6 | 2.73 |
+| Lone parent | 2.13 | 314 | 94.4% | 92.4% | 74.5% | 352 | 15.6% | 175 | 0.5% | 741 | 0.99 | 4.14 | – | 0.99 | 6.86 | 28.5 | – | 1.85 | 0.25 |
+| Couple with children | 5.00 | 374 | 26.0% | 16.2% | 17.5% | 228 | 10.1% | 175 | 0.1% | 1,629 | 0.77 | 119 | – | 0.63 | 318 | 790 | – | 41.9 | 4.27 |
+| Multi-family household | 2.78 | 154 | 23.2% | 17.2% | 12.9% | 113 | 5.0% | 175 | 0.0% | 1,960 | 0.71 | 87.3 | 7.25 | 0.71 | 113 | 402 | – | 19.6 | 2.73 |
 
 By AHC income decile (GB people):
 
@@ -384,7 +384,7 @@ Poverty (people unless stated):
 | Measure | Group | Baseline rate | Reform rate | Change (pp) | Change (k) | Records crossing | ESS crossing |
 |---|---|---|---|---|---|---|---|
 | abs_pov_bhc | people | 14.4% | 14.3% | -0.09 | -63.3 | 124 | 30.7 |
-| abs_pov_bhc | children | 16.6% | 16.6% | -0.02 | -3.71 | <10 | 2.08 |
+| abs_pov_bhc | children | 16.6% | – | – | – | <10 | – |
 | abs_pov_bhc | working_age_adults | 14.2% | 14.2% | -0.09 | -35.4 | 46 | 14.1 |
 | abs_pov_bhc | pensioners | 12.3% | 12.1% | -0.20 | -24.2 | 85 | 30.5 |
 | abs_pov_ahc | people | 18.8% | 18.7% | -0.07 | -46.5 | 139 | 41.4 |
@@ -464,15 +464,15 @@ By region:
 | Region | Households (m) | ESS | Eligible | Passported | Pass income test | Cost (GBP m) | Share of cost | Avg per recipient (GBP) | Gain, % net income | Mean bill (GBP) | In abs. BHC poverty, reached | In abs. BHC poverty, not reached (k) | People out of abs. BHC poverty (k) | In abs. AHC poverty, reached | In abs. AHC poverty, not reached (k) | Lowest-4-decile, not reached (k) | People out of rel. AHC poverty (k) | Within GBP 1k above top line (k) | Offset range (k) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | North East | 1.23 | 273 | 52.9% | 38.4% | 45.4% | 111 | 5.4% | 172 | 0.2% | 1,460 | 0.96 | 7.88 | 6.22 | 0.93 | 18.0 | 124 | 11.3 | 22.8 | 9.52 |
-| North West | 3.31 | 495 | 43.8% | 29.2% | 36.3% | 264 | 12.9% | 182 | 0.2% | 1,489 | 0.88 | 56.5 | 20.4 | 0.85 | 80.4 | 304 | 26.8 | 33.4 | 7.00 |
+| North West | 3.31 | 495 | 43.8% | 29.2% | 36.3% | 264 | 12.9% | 182 | 0.2% | 1,489 | 0.88 | 56.5 | – | 0.85 | 80.4 | 304 | 26.8 | 33.4 | 7.00 |
 | Yorkshire and the Humber | 2.42 | 580 | 44.5% | 28.8% | 37.7% | 188 | 9.2% | 175 | 0.2% | 1,420 | 0.90 | 38.5 | 7.25 | 0.88 | 48.6 | 288 | 13.5 | 40.1 | 9.66 |
 | East Midlands | 2.13 | 335 | 42.3% | 24.8% | 35.9% | 157 | 7.7% | 174 | 0.1% | 1,463 | 0.88 | 33.4 | 1.48 | 0.83 | 56.3 | 315 | 25.2 | 27.1 | 19.4 |
 | West Midlands | 2.54 | 345 | 47.7% | 30.9% | 37.1% | 213 | 10.4% | 176 | 0.2% | 1,440 | 0.93 | 16.6 | 5.82 | 0.87 | 40.8 | 210 | 48.6 | 13.2 | 1.90 |
-| East of England | 2.76 | 508 | 35.4% | 21.3% | 29.2% | 169 | 8.3% | 173 | 0.1% | 1,431 | 0.97 | 8.75 | 11.8 | 0.85 | 57.6 | 248 | 7.73 | 21.8 | 8.13 |
-| London | 3.66 | 420 | 35.0% | 29.7% | 26.4% | 220 | 10.8% | 172 | 0.1% | 1,393 | 0.91 | 31.8 | 0.71 | 0.78 | 156 | 380 | 1.73 | 9.32 | 3.37 |
+| East of England | 2.76 | 508 | 35.4% | 21.3% | 29.2% | 169 | 8.3% | 173 | 0.1% | 1,431 | 0.97 | 8.75 | 11.8 | 0.85 | 57.6 | 248 | – | 21.8 | 8.13 |
+| London | 3.66 | 420 | 35.0% | 29.7% | 26.4% | 220 | 10.8% | 172 | 0.1% | 1,393 | 0.91 | 31.8 | – | 0.78 | 156 | 380 | – | 9.32 | 3.37 |
 | South East | 4.02 | 734 | 33.8% | 20.2% | 28.0% | 260 | 12.7% | 191 | 0.1% | 1,568 | 0.93 | 34.4 | 6.92 | 0.79 | 132 | 396 | 23.0 | 71.1 | 1.27 |
 | South West | 2.56 | 356 | 39.5% | 22.5% | 33.2% | 168 | 8.2% | 167 | 0.1% | 1,367 | 0.87 | 42.9 | 3.43 | 0.86 | 60.6 | 301 | 1.78 | 50.9 | 7.05 |
-| Wales | 1.40 | 463 | 46.1% | 29.1% | 37.7% | 102 | 5.0% | 159 | 0.2% | 1,357 | 0.96 | 10.4 | 1.30 | 0.94 | 14.3 | 175 | 0.73 | 8.86 | 1.71 |
+| Wales | 1.40 | 463 | 46.1% | 29.1% | 37.7% | 102 | 5.0% | 159 | 0.2% | 1,357 | 0.96 | 10.4 | – | 0.94 | 14.3 | 175 | – | 8.86 | 1.71 |
 | Scotland | 2.67 | 586 | 42.2% | 23.9% | 35.7% | 192 | 9.4% | 171 | 0.2% | 1,334 | 0.97 | 15.1 | 13.8 | 0.93 | 39.5 | 217 | 10.5 | 33.6 | 4.77 |
 
 By household type:
@@ -482,9 +482,9 @@ By household type:
 | Single pensioner | 3.94 | 1,024 | 61.8% | 34.2% | 60.9% | 342 | 16.7% | 140 | 0.3% | 1,126 | 1.00 | 0.14 | 6.58 | 0.96 | 24.0 | 53.8 | 23.3 | 51.9 | 10.7 |
 | Pensioner couple | 3.59 | 787 | 41.2% | 6.7% | 40.8% | 275 | 13.4% | 186 | 0.2% | 1,581 | 0.94 | 19.6 | 4.62 | 0.97 | 7.01 | 144 | 23.4 | 80.8 | 26.2 |
 | Single, no children | 4.55 | 574 | 52.9% | 33.7% | 51.8% | 340 | 16.6% | 141 | 0.2% | 1,064 | 0.98 | 24.4 | 17.3 | 0.91 | 126 | 386 | 17.8 | 41.9 | 3.21 |
-| Couple, no children | 4.34 | 606 | 14.5% | 5.1% | 12.8% | 119 | 5.8% | 190 | 0.0% | 1,402 | 0.79 | 72.2 | 2.12 | 0.70 | 147 | 635 | 1.25 | 101 | 18.9 |
-| Lone parent | 1.26 | 295 | 91.7% | 90.2% | 69.7% | 204 | 10.0% | 176 | 0.4% | 1,355 | 0.99 | 3.24 | 8.10 | 0.97 | 12.5 | 40.6 | 14.1 | 0.97 | 0.04 |
-| Couple with children | 4.98 | 1,097 | 21.5% | 17.7% | 13.6% | 250 | 12.3% | 234 | 0.1% | 1,724 | 0.70 | 151 | 30.2 | 0.64 | 307 | 1,222 | 20.8 | 37.2 | 8.85 |
+| Couple, no children | 4.34 | 606 | 14.5% | 5.1% | 12.8% | 119 | 5.8% | 190 | 0.0% | 1,402 | 0.79 | 72.2 | – | 0.70 | 147 | 635 | – | 101 | 18.9 |
+| Lone parent | 1.26 | 295 | 91.7% | 90.2% | 69.7% | 204 | 10.0% | 176 | 0.4% | 1,355 | 0.99 | 3.24 | 8.10 | 0.97 | 12.5 | 40.6 | – | 0.97 | 0.04 |
+| Couple with children | 4.98 | 1,097 | 21.5% | 17.7% | 13.6% | 250 | 12.3% | 234 | 0.1% | 1,724 | 0.70 | 151 | – | 0.64 | 307 | 1,222 | 20.8 | 37.2 | 8.85 |
 | Multi-family household | 6.01 | 773 | 41.7% | 36.4% | 21.1% | 515 | 25.2% | 205 | 0.1% | 1,642 | 0.94 | 25.7 | 10.2 | 0.88 | 80.3 | 478 | 70.3 | 18.6 | 5.99 |
 
 By AHC income decile (GB people):
@@ -584,17 +584,17 @@ By region:
 
 | Region | Households (m) | ESS | Eligible | Passported | Pass income test | Cost (GBP m) | Share of cost | Avg per recipient (GBP) | Gain, % net income | Mean bill (GBP) | In abs. BHC poverty, reached | In abs. BHC poverty, not reached (k) | People out of abs. BHC poverty (k) | In abs. AHC poverty, reached | In abs. AHC poverty, not reached (k) | Lowest-4-decile, not reached (k) | People out of rel. AHC poverty (k) | Within GBP 1k above top line (k) | Offset range (k) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| North East | 1.32 | 93.2 | 51.0% | 33.1% | 46.9% | 191 | 8.5% | 306 | 0.3% | 2,146 | 0.90 | 26.1 | 3.55 | 0.88 | 35.0 | 88.1 | 1.27 | 13.7 | 6.68 |
-| North West | 3.55 | 171 | 46.0% | 29.5% | 43.4% | 316 | 14.0% | 214 | 0.2% | 1,595 | 0.86 | 82.9 | 4.04 | 0.76 | 165 | 519 | 10.4 | 69.2 | 6.33 |
-| Yorkshire and the Humber | 2.59 | 153 | 45.0% | 27.9% | 40.2% | 196 | 8.7% | 185 | 0.2% | 1,918 | 0.88 | 59.3 | 3.65 | 0.86 | 70.0 | 317 | 18.0 | 20.1 | 6.61 |
-| East Midlands | 2.30 | 112 | 43.8% | 25.4% | 39.2% | 176 | 7.8% | 210 | 0.2% | 1,948 | 0.80 | 83.8 | 5.94 | 0.75 | 124 | 294 | 9.03 | 15.1 | 7.98 |
+| North East | 1.32 | 93.2 | 51.0% | 33.1% | 46.9% | 191 | 8.5% | 306 | 0.3% | 2,146 | 0.90 | 26.1 | 3.55 | 0.88 | 35.0 | 88.1 | – | 13.7 | 6.68 |
+| North West | 3.55 | 171 | 46.0% | 29.5% | 43.4% | 316 | 14.0% | 214 | 0.2% | 1,595 | 0.86 | 82.9 | 4.04 | 0.76 | 165 | 519 | – | 69.2 | 6.33 |
+| Yorkshire and the Humber | 2.59 | 153 | 45.0% | 27.9% | 40.2% | 196 | 8.7% | 185 | 0.2% | 1,918 | 0.88 | 59.3 | – | 0.86 | 70.0 | 317 | 18.0 | 20.1 | 6.61 |
+| East Midlands | 2.30 | 112 | 43.8% | 25.4% | 39.2% | 176 | 7.8% | 210 | 0.2% | 1,948 | 0.80 | 83.8 | – | 0.75 | 124 | 294 | 9.03 | 15.1 | 7.98 |
 | West Midlands | 2.71 | 79.7 | 43.1% | 23.5% | 39.9% | 210 | 9.3% | 188 | 0.2% | 1,401 | 0.80 | 108 | 6.38 | 0.76 | 160 | 302 | 4.79 | 12.4 | 2.71 |
-| East of England | 2.95 | 94.4 | 29.2% | 17.9% | 21.5% | 120 | 5.3% | 158 | 0.1% | 1,339 | 0.90 | 33.9 | 2.92 | 0.75 | 111 | 425 | 3.72 | 91.8 | 10.7 |
-| London | 3.98 | 120 | 41.3% | 31.1% | 32.9% | 230 | 10.2% | 147 | 0.1% | 1,085 | 0.83 | 82.3 | 0.58 | 0.80 | 159 | 458 | 3.95 | 19.0 | 2.43 |
+| East of England | 2.95 | 94.4 | 29.2% | 17.9% | 21.5% | 120 | 5.3% | 158 | 0.1% | 1,339 | 0.90 | 33.9 | – | 0.75 | 111 | 425 | – | 91.8 | 10.7 |
+| London | 3.98 | 120 | 41.3% | 31.1% | 32.9% | 230 | 10.2% | 147 | 0.1% | 1,085 | 0.83 | 82.3 | – | 0.80 | 159 | 458 | – | 19.0 | 2.43 |
 | South East | 4.28 | 95.1 | 39.1% | 23.0% | 34.7% | 243 | 10.8% | 150 | 0.1% | 1,573 | 0.88 | 92.5 | 10.6 | 0.73 | 273 | 565 | 27.5 | 45.5 | 4.70 |
 | South West | 2.78 | 118 | 40.9% | 25.4% | 36.1% | 194 | 8.6% | 181 | 0.1% | 1,317 | 0.93 | 30.8 | 10.8 | 0.91 | 51.4 | 243 | 4.28 | 21.7 | 4.55 |
-| Wales | 1.59 | 203 | 49.3% | 28.4% | 45.5% | 166 | 7.4% | 237 | 0.2% | 1,845 | 0.88 | 44.0 | 2.15 | 0.87 | 46.9 | 186 | 0.77 | 6.41 | 4.09 |
-| Scotland | 2.75 | 99.5 | 41.9% | 23.4% | 37.6% | 215 | 9.5% | 206 | 0.2% | 2,003 | 0.88 | 55.6 | 5.69 | 0.78 | 110 | 293 | 22.5 | 16.0 | 11.7 |
+| Wales | 1.59 | 203 | 49.3% | 28.4% | 45.5% | 166 | 7.4% | 237 | 0.2% | 1,845 | 0.88 | 44.0 | – | 0.87 | 46.9 | 186 | 0.77 | 6.41 | 4.09 |
+| Scotland | 2.75 | 99.5 | 41.9% | 23.4% | 37.6% | 215 | 9.5% | 206 | 0.2% | 2,003 | 0.88 | 55.6 | 5.69 | 0.78 | 110 | 293 | – | 16.0 | 11.7 |
 
 By household type:
 
@@ -603,10 +603,10 @@ By household type:
 | Single pensioner | 4.10 | 76.7 | 75.5% | 38.8% | 74.4% | 650 | 28.8% | 220 | 0.6% | 1,315 | 0.95 | 41.8 | 11.2 | 0.94 | 49.0 | 139 | 14.0 | 54.1 | 11.7 |
 | Pensioner couple | 3.90 | 232 | 32.7% | 5.9% | 32.0% | 383 | 17.0% | 329 | 0.2% | 2,366 | 0.91 | 29.3 | 18.9 | 0.93 | 17.3 | 322 | 18.7 | 95.9 | 25.5 |
 | Single, no children | 5.66 | 258 | 63.0% | 48.7% | 58.1% | 450 | 19.9% | 140 | 0.3% | 1,164 | 0.88 | 235 | 9.40 | 0.80 | 467 | 853 | 2.73 | 30.0 | 6.69 |
-| Couple, no children | 7.21 | 170 | 13.8% | 2.0% | 13.3% | 238 | 10.5% | 251 | 0.1% | 1,726 | 0.85 | 95.8 | 7.04 | 0.78 | 202 | 837 | 14.7 | 87.7 | 14.5 |
-| Lone parent | 2.13 | 314 | 94.4% | 92.4% | 74.5% | 218 | 9.7% | 120 | 0.3% | 741 | 0.92 | 41.3 | 3.23 | 0.90 | 69.3 | 210 | 0.19 | 1.85 | 0.60 |
-| Couple with children | 5.00 | 374 | 26.0% | 16.2% | 17.5% | 201 | 8.9% | 167 | 0.1% | 1,629 | 0.72 | 143 | 1.70 | 0.58 | 356 | 885 | 31.5 | 41.9 | 6.15 |
-| Multi-family household | 2.78 | 154 | 23.2% | 17.2% | 12.9% | 118 | 5.2% | 200 | 0.0% | 1,960 | 0.63 | 113 | 4.79 | 0.64 | 144 | 445 | 24.3 | 19.6 | 3.28 |
+| Couple, no children | 7.21 | 170 | 13.8% | 2.0% | 13.3% | 238 | 10.5% | 251 | 0.1% | 1,726 | 0.85 | 95.8 | – | 0.78 | 202 | 837 | 14.7 | 87.7 | 14.5 |
+| Lone parent | 2.13 | 314 | 94.4% | 92.4% | 74.5% | 218 | 9.7% | 120 | 0.3% | 741 | 0.92 | 41.3 | – | 0.90 | 69.3 | 210 | – | 1.85 | 0.60 |
+| Couple with children | 5.00 | 374 | 26.0% | 16.2% | 17.5% | 201 | 8.9% | 167 | 0.1% | 1,629 | 0.72 | 143 | – | 0.58 | 356 | 885 | – | 41.9 | 6.15 |
+| Multi-family household | 2.78 | 154 | 23.2% | 17.2% | 12.9% | 118 | 5.2% | 200 | 0.0% | 1,960 | 0.63 | 113 | 4.79 | 0.64 | 144 | 445 | – | 19.6 | 3.28 |
 
 By AHC income decile (GB people):
 
@@ -628,7 +628,7 @@ Poverty (people unless stated):
 | Measure | Group | Baseline rate | Reform rate | Change (pp) | Change (k) | Records crossing | ESS crossing |
 |---|---|---|---|---|---|---|---|
 | abs_pov_bhc | people | 14.4% | 14.3% | -0.08 | -56.3 | 113 | 29.5 |
-| abs_pov_bhc | children | 16.6% | 16.6% | -0.02 | -2.42 | <10 | 1.90 |
+| abs_pov_bhc | children | 16.6% | – | – | – | <10 | – |
 | abs_pov_bhc | working_age_adults | 14.2% | 14.2% | -0.06 | -24.9 | 43 | 10.6 |
 | abs_pov_bhc | pensioners | 12.3% | 12.0% | -0.24 | -29.0 | 78 | 23.5 |
 | abs_pov_ahc | people | 18.8% | 18.7% | -0.12 | -78.8 | 125 | 4.45 |
@@ -640,7 +640,7 @@ Poverty (people unless stated):
 | rel_pov_bhc | working_age_adults | 17.5% | 17.4% | -0.13 | -55.1 | 56 | 9.97 |
 | rel_pov_bhc | pensioners | 20.0% | 18.8% | -1.28 | -153 | 114 | 3.76 |
 | rel_pov_ahc | people | 22.7% | 22.6% | -0.16 | -106 | 127 | 9.51 |
-| rel_pov_ahc | children | 30.6% | 30.4% | -0.17 | -25.5 | <10 | 2.48 |
+| rel_pov_ahc | children | 30.6% | – | – | – | <10 | – |
 | rel_pov_ahc | working_age_adults | 21.9% | 21.8% | -0.12 | -47.9 | 47 | 5.98 |
 | rel_pov_ahc | pensioners | 15.6% | 15.3% | -0.27 | -32.8 | 87 | 29.9 |
 
@@ -708,15 +708,15 @@ By region:
 | Region | Households (m) | ESS | Eligible | Passported | Pass income test | Cost (GBP m) | Share of cost | Avg per recipient (GBP) | Gain, % net income | Mean bill (GBP) | In abs. BHC poverty, reached | In abs. BHC poverty, not reached (k) | People out of abs. BHC poverty (k) | In abs. AHC poverty, reached | In abs. AHC poverty, not reached (k) | Lowest-4-decile, not reached (k) | People out of rel. AHC poverty (k) | Within GBP 1k above top line (k) | Offset range (k) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | North East | 1.23 | 273 | 52.9% | 38.4% | 45.4% | 111 | 5.6% | 171 | 0.2% | 1,460 | 0.96 | 7.88 | 3.86 | 0.93 | 18.0 | 124 | 10.9 | 22.8 | 12.1 |
-| North West | 3.31 | 495 | 43.8% | 29.2% | 36.3% | 248 | 12.4% | 171 | 0.2% | 1,489 | 0.88 | 56.5 | 20.4 | 0.85 | 80.4 | 304 | 47.1 | 33.4 | 7.27 |
+| North West | 3.31 | 495 | 43.8% | 29.2% | 36.3% | 248 | 12.4% | 171 | 0.2% | 1,489 | 0.88 | 56.5 | – | 0.85 | 80.4 | 304 | 47.1 | 33.4 | 7.27 |
 | Yorkshire and the Humber | 2.42 | 580 | 44.5% | 28.8% | 37.7% | 184 | 9.2% | 171 | 0.2% | 1,420 | 0.90 | 38.5 | 5.42 | 0.88 | 48.6 | 288 | 14.1 | 40.1 | 12.0 |
 | East Midlands | 2.13 | 335 | 42.3% | 24.8% | 35.9% | 154 | 7.7% | 171 | 0.1% | 1,463 | 0.88 | 33.4 | 0.94 | 0.83 | 56.3 | 315 | 45.9 | 27.1 | 15.9 |
 | West Midlands | 2.54 | 345 | 47.7% | 30.9% | 37.1% | 207 | 10.4% | 171 | 0.2% | 1,440 | 0.93 | 16.6 | 5.64 | 0.87 | 40.8 | 210 | 63.1 | 13.2 | 1.58 |
-| East of England | 2.76 | 508 | 35.4% | 21.3% | 29.2% | 167 | 8.4% | 171 | 0.1% | 1,431 | 0.97 | 8.75 | 31.6 | 0.85 | 57.6 | 248 | 1.77 | 21.8 | 7.53 |
-| London | 3.66 | 420 | 35.0% | 29.7% | 26.4% | 219 | 11.0% | 171 | 0.1% | 1,393 | 0.91 | 31.8 | 4.11 | 0.78 | 156 | 380 | 6.78 | 9.32 | 3.02 |
+| East of England | 2.76 | 508 | 35.4% | 21.3% | 29.2% | 167 | 8.4% | 171 | 0.1% | 1,431 | 0.97 | 8.75 | 31.6 | 0.85 | 57.6 | 248 | – | 21.8 | 7.53 |
+| London | 3.66 | 420 | 35.0% | 29.7% | 26.4% | 219 | 11.0% | 171 | 0.1% | 1,393 | 0.91 | 31.8 | – | 0.78 | 156 | 380 | – | 9.32 | 3.02 |
 | South East | 4.02 | 734 | 33.8% | 20.2% | 28.0% | 233 | 11.6% | 171 | 0.1% | 1,568 | 0.93 | 34.4 | 5.50 | 0.79 | 132 | 396 | 26.2 | 71.1 | 1.48 |
 | South West | 2.56 | 356 | 39.5% | 22.5% | 33.2% | 173 | 8.6% | 171 | 0.1% | 1,367 | 0.87 | 42.9 | 10.8 | 0.86 | 60.6 | 301 | 2.39 | 50.9 | 4.24 |
-| Wales | 1.40 | 463 | 46.1% | 29.1% | 37.7% | 110 | 5.5% | 171 | 0.2% | 1,357 | 0.96 | 10.4 | 3.43 | 0.94 | 14.3 | 175 | 2.84 | 8.86 | 0.56 |
+| Wales | 1.40 | 463 | 46.1% | 29.1% | 37.7% | 110 | 5.5% | 171 | 0.2% | 1,357 | 0.96 | 10.4 | 3.43 | 0.94 | 14.3 | 175 | – | 8.86 | 0.56 |
 | Scotland | 2.67 | 586 | 42.2% | 23.9% | 35.7% | 193 | 9.6% | 171 | 0.2% | 1,334 | 0.97 | 15.1 | 16.4 | 0.93 | 39.5 | 217 | 10.2 | 33.6 | 6.22 |
 
 By household type:
@@ -726,10 +726,10 @@ By household type:
 | Single pensioner | 3.94 | 1,024 | 61.8% | 34.2% | 60.9% | 417 | 20.8% | 171 | 0.4% | 1,126 | 1.00 | 0.14 | 14.3 | 0.96 | 24.0 | 53.8 | 31.4 | 51.9 | 12.6 |
 | Pensioner couple | 3.59 | 787 | 41.2% | 6.7% | 40.8% | 253 | 12.7% | 171 | 0.1% | 1,581 | 0.94 | 19.6 | 35.4 | 0.97 | 7.01 | 144 | 27.5 | 80.8 | 24.0 |
 | Single, no children | 4.55 | 574 | 52.9% | 33.7% | 51.8% | 412 | 20.6% | 171 | 0.3% | 1,064 | 0.98 | 24.4 | 14.3 | 0.91 | 126 | 386 | 21.7 | 41.9 | 7.11 |
-| Couple, no children | 4.34 | 606 | 14.5% | 5.1% | 12.8% | 107 | 5.4% | 171 | 0.0% | 1,402 | 0.79 | 72.2 | 0.48 | 0.70 | 147 | 635 | 2.87 | 101 | 16.2 |
+| Couple, no children | 4.34 | 606 | 14.5% | 5.1% | 12.8% | 107 | 5.4% | 171 | 0.0% | 1,402 | 0.79 | 72.2 | – | 0.70 | 147 | 635 | – | 101 | 16.2 |
 | Lone parent | 1.26 | 295 | 91.7% | 90.2% | 69.7% | 198 | 9.9% | 171 | 0.4% | 1,355 | 0.99 | 3.24 | 7.99 | 0.97 | 12.5 | 40.6 | 60.8 | 0.97 | 0.04 |
-| Couple with children | 4.98 | 1,097 | 21.5% | 17.7% | 13.6% | 183 | 9.2% | 171 | 0.1% | 1,724 | 0.70 | 151 | 26.1 | 0.64 | 307 | 1,222 | 20.8 | 37.2 | 4.02 |
-| Multi-family household | 6.01 | 773 | 41.7% | 36.4% | 21.1% | 430 | 21.5% | 171 | 0.1% | 1,642 | 0.94 | 25.7 | 9.64 | 0.88 | 80.3 | 478 | 66.1 | 18.6 | 7.91 |
+| Couple with children | 4.98 | 1,097 | 21.5% | 17.7% | 13.6% | 183 | 9.2% | 171 | 0.1% | 1,724 | 0.70 | 151 | – | 0.64 | 307 | 1,222 | – | 37.2 | 4.02 |
+| Multi-family household | 6.01 | 773 | 41.7% | 36.4% | 21.1% | 430 | 21.5% | 171 | 0.1% | 1,642 | 0.94 | 25.7 | – | 0.88 | 80.3 | 478 | 66.1 | 18.6 | 7.91 |
 
 By AHC income decile (GB people):
 
@@ -828,17 +828,17 @@ By region:
 
 | Region | Households (m) | ESS | Eligible | Passported | Pass income test | Cost (GBP m) | Share of cost | Avg per recipient (GBP) | Gain, % net income | Mean bill (GBP) | In abs. BHC poverty, reached | In abs. BHC poverty, not reached (k) | People out of abs. BHC poverty (k) | In abs. AHC poverty, reached | In abs. AHC poverty, not reached (k) | Lowest-4-decile, not reached (k) | People out of rel. AHC poverty (k) | Within GBP 1k above top line (k) | Offset range (k) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| North East | 1.32 | 93.2 | 51.0% | 33.1% | 46.9% | 104 | 5.2% | 155 | 0.2% | 2,146 | 0.99 | 3.18 | 3.53 | 0.98 | 5.00 | 40.9 | 7.89 | 13.7 | 0.49 |
-| North West | 3.55 | 171 | 46.0% | 29.5% | 43.4% | 253 | 12.7% | 155 | 0.2% | 1,595 | 0.97 | 18.4 | 2.01 | 0.88 | 84.1 | 414 | 10.2 | 69.2 | 5.69 |
-| Yorkshire and the Humber | 2.59 | 153 | 45.0% | 27.9% | 40.2% | 181 | 9.0% | 155 | 0.1% | 1,918 | 0.97 | 13.7 | 1.98 | 0.96 | 20.5 | 219 | 15.8 | 20.1 | 1.96 |
-| East Midlands | 2.30 | 112 | 43.8% | 25.4% | 39.2% | 156 | 7.8% | 155 | 0.1% | 1,948 | 0.96 | 15.5 | 2.34 | 0.94 | 30.3 | 133 | 4.46 | 15.1 | 5.89 |
+| North East | 1.32 | 93.2 | 51.0% | 33.1% | 46.9% | 104 | 5.2% | 155 | 0.2% | 2,146 | 0.99 | 3.18 | – | 0.98 | 5.00 | 40.9 | – | 13.7 | 0.49 |
+| North West | 3.55 | 171 | 46.0% | 29.5% | 43.4% | 253 | 12.7% | 155 | 0.2% | 1,595 | 0.97 | 18.4 | – | 0.88 | 84.1 | 414 | – | 69.2 | 5.69 |
+| Yorkshire and the Humber | 2.59 | 153 | 45.0% | 27.9% | 40.2% | 181 | 9.0% | 155 | 0.1% | 1,918 | 0.97 | 13.7 | – | 0.96 | 20.5 | 219 | 15.8 | 20.1 | 1.96 |
+| East Midlands | 2.30 | 112 | 43.8% | 25.4% | 39.2% | 156 | 7.8% | 155 | 0.1% | 1,948 | 0.96 | 15.5 | – | 0.94 | 30.3 | 133 | 4.46 | 15.1 | 5.89 |
 | West Midlands | 2.71 | 79.7 | 43.1% | 23.5% | 39.9% | 181 | 9.1% | 155 | 0.1% | 1,401 | 0.85 | 80.6 | 3.30 | 0.81 | 128 | 251 | 2.79 | 12.4 | 2.36 |
-| East of England | 2.95 | 94.4 | 29.2% | 17.9% | 21.5% | 134 | 6.7% | 155 | 0.1% | 1,339 | 0.95 | 17.3 | 7.52 | 0.79 | 90.2 | 333 | 19.3 | 91.8 | 10.0 |
-| London | 3.98 | 120 | 41.3% | 31.1% | 32.9% | 255 | 12.7% | 155 | 0.1% | 1,085 | 0.89 | 54.4 | 0.92 | 0.85 | 119 | 391 | 6.88 | 19.0 | 1.51 |
+| East of England | 2.95 | 94.4 | 29.2% | 17.9% | 21.5% | 134 | 6.7% | 155 | 0.1% | 1,339 | 0.95 | 17.3 | 7.52 | 0.79 | 90.2 | 333 | – | 91.8 | 10.0 |
+| London | 3.98 | 120 | 41.3% | 31.1% | 32.9% | 255 | 12.7% | 155 | 0.1% | 1,085 | 0.89 | 54.4 | – | 0.85 | 119 | 391 | – | 19.0 | 1.51 |
 | South East | 4.28 | 95.1 | 39.1% | 23.0% | 34.7% | 259 | 13.0% | 155 | 0.1% | 1,573 | 0.90 | 72.4 | 7.66 | 0.76 | 247 | 521 | 26.7 | 45.5 | 2.92 |
-| South West | 2.78 | 118 | 40.9% | 25.4% | 36.1% | 176 | 8.8% | 155 | 0.1% | 1,317 | 0.97 | 14.7 | 14.0 | 0.95 | 30.4 | 182 | 2.88 | 21.7 | 4.78 |
-| Wales | 1.59 | 203 | 49.3% | 28.4% | 45.5% | 121 | 6.1% | 155 | 0.2% | 1,845 | 0.96 | 14.7 | 7.15 | 0.96 | 13.0 | 128 | 8.18 | 6.41 | 0.65 |
-| Scotland | 2.75 | 99.5 | 41.9% | 23.4% | 37.6% | 179 | 8.9% | 155 | 0.1% | 2,003 | 0.96 | 17.8 | 6.73 | 0.85 | 75.3 | 185 | 22.7 | 16.0 | 4.87 |
+| South West | 2.78 | 118 | 40.9% | 25.4% | 36.1% | 176 | 8.8% | 155 | 0.1% | 1,317 | 0.97 | 14.7 | 14.0 | 0.95 | 30.4 | 182 | – | 21.7 | 4.78 |
+| Wales | 1.59 | 203 | 49.3% | 28.4% | 45.5% | 121 | 6.1% | 155 | 0.2% | 1,845 | 0.96 | 14.7 | – | 0.96 | 13.0 | 128 | 8.18 | 6.41 | 0.65 |
+| Scotland | 2.75 | 99.5 | 41.9% | 23.4% | 37.6% | 179 | 8.9% | 155 | 0.1% | 2,003 | 0.96 | 17.8 | 6.73 | 0.85 | 75.3 | 185 | – | 16.0 | 4.87 |
 
 By household type:
 
@@ -848,9 +848,9 @@ By household type:
 | Pensioner couple | 3.90 | 232 | 32.7% | 5.9% | 32.0% | 198 | 9.9% | 155 | 0.1% | 2,366 | 0.93 | 22.1 | 9.54 | 0.97 | 7.89 | 216 | 10.2 | 95.9 | 13.0 |
 | Single, no children | 5.66 | 258 | 63.0% | 48.7% | 58.1% | 554 | 27.7% | 155 | 0.4% | 1,164 | 0.99 | 17.2 | 14.6 | 0.91 | 218 | 518 | 13.3 | 30.0 | 6.58 |
 | Couple, no children | 7.21 | 170 | 13.8% | 2.0% | 13.3% | 154 | 7.7% | 155 | 0.0% | 1,726 | 0.89 | 73.2 | 8.82 | 0.81 | 171 | 797 | 14.5 | 87.7 | 3.24 |
-| Lone parent | 2.13 | 314 | 94.4% | 92.4% | 74.5% | 312 | 15.6% | 155 | 0.4% | 741 | 0.99 | 4.14 | 7.24 | 0.99 | 6.86 | 28.5 | 6.94 | 1.85 | 0.25 |
-| Couple with children | 5.00 | 374 | 26.0% | 16.2% | 17.5% | 202 | 10.1% | 155 | 0.1% | 1,629 | 0.77 | 119 | 0.28 | 0.63 | 318 | 790 | 31.5 | 41.9 | 4.27 |
-| Multi-family household | 2.78 | 154 | 23.2% | 17.2% | 12.9% | 100 | 5.0% | 155 | 0.0% | 1,960 | 0.71 | 87.3 | 7.25 | 0.71 | 113 | 402 | 23.6 | 19.6 | 2.56 |
+| Lone parent | 2.13 | 314 | 94.4% | 92.4% | 74.5% | 312 | 15.6% | 155 | 0.4% | 741 | 0.99 | 4.14 | – | 0.99 | 6.86 | 28.5 | – | 1.85 | 0.25 |
+| Couple with children | 5.00 | 374 | 26.0% | 16.2% | 17.5% | 202 | 10.1% | 155 | 0.1% | 1,629 | 0.77 | 119 | – | 0.63 | 318 | 790 | – | 41.9 | 4.27 |
+| Multi-family household | 2.78 | 154 | 23.2% | 17.2% | 12.9% | 100 | 5.0% | 155 | 0.0% | 1,960 | 0.71 | 87.3 | 7.25 | 0.71 | 113 | 402 | – | 19.6 | 2.56 |
 
 By AHC income decile (GB people):
 
@@ -872,7 +872,7 @@ Poverty (people unless stated):
 | Measure | Group | Baseline rate | Reform rate | Change (pp) | Change (k) | Records crossing | ESS crossing |
 |---|---|---|---|---|---|---|---|
 | abs_pov_bhc | people | 14.4% | 14.3% | -0.08 | -57.2 | 106 | 26.1 |
-| abs_pov_bhc | children | 16.6% | 16.6% | -0.02 | -3.71 | <10 | 2.08 |
+| abs_pov_bhc | children | 16.6% | – | – | – | <10 | – |
 | abs_pov_bhc | working_age_adults | 14.2% | 14.2% | -0.08 | -34.8 | 42 | 13.6 |
 | abs_pov_bhc | pensioners | 12.3% | 12.1% | -0.16 | -18.7 | 71 | 24.6 |
 | abs_pov_ahc | people | 18.8% | 18.7% | -0.06 | -39.9 | 117 | 33.1 |
@@ -951,12 +951,12 @@ By region:
 
 | Region | Households (m) | ESS | Eligible | Passported | Pass income test | Cost (GBP m) | Share of cost | Avg per recipient (GBP) | Gain, % net income | Mean bill (GBP) | In abs. BHC poverty, reached | In abs. BHC poverty, not reached (k) | People out of abs. BHC poverty (k) | In abs. AHC poverty, reached | In abs. AHC poverty, not reached (k) | Lowest-4-decile, not reached (k) | People out of rel. AHC poverty (k) | Within GBP 1k above top line (k) | Offset range (k) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| North East | 1.23 | 273 | 52.9% | 38.4% | 45.4% | 132 | 5.7% | 203 | 0.2% | 1,460 | 0.96 | 7.88 | 8.49 | 0.93 | 18.0 | 124 | 10.5 | 22.8 | 5.21 |
+| North East | 1.23 | 273 | 52.9% | 38.4% | 45.4% | 132 | 5.7% | 203 | 0.2% | 1,460 | 0.96 | 7.88 | 8.49 | 0.93 | 18.0 | 124 | – | 22.8 | 5.21 |
 | North West | 3.31 | 495 | 43.8% | 29.2% | 36.3% | 287 | 12.4% | 198 | 0.2% | 1,489 | 0.88 | 56.5 | 25.6 | 0.85 | 80.4 | 304 | 41.3 | 33.4 | 5.76 |
 | Yorkshire and the Humber | 2.42 | 580 | 44.5% | 28.8% | 37.7% | 217 | 9.3% | 201 | 0.2% | 1,420 | 0.90 | 38.5 | 7.94 | 0.88 | 48.6 | 288 | 13.9 | 40.1 | 8.85 |
 | East Midlands | 2.13 | 335 | 42.3% | 24.8% | 35.9% | 174 | 7.5% | 193 | 0.2% | 1,463 | 0.88 | 33.4 | 3.91 | 0.83 | 56.3 | 315 | 45.9 | 27.1 | 14.7 |
 | West Midlands | 2.54 | 345 | 47.7% | 30.9% | 37.1% | 238 | 10.3% | 197 | 0.2% | 1,440 | 0.93 | 16.6 | 9.76 | 0.87 | 40.8 | 210 | 63.2 | 13.2 | 1.27 |
-| East of England | 2.76 | 508 | 35.4% | 21.3% | 29.2% | 194 | 8.4% | 199 | 0.1% | 1,431 | 0.97 | 8.75 | 30.5 | 0.85 | 57.6 | 248 | 3.53 | 21.8 | 4.78 |
+| East of England | 2.76 | 508 | 35.4% | 21.3% | 29.2% | 194 | 8.4% | 199 | 0.1% | 1,431 | 0.97 | 8.75 | 30.5 | 0.85 | 57.6 | 248 | – | 21.8 | 4.78 |
 | London | 3.66 | 420 | 35.0% | 29.7% | 26.4% | 270 | 11.6% | 211 | 0.1% | 1,393 | 0.91 | 31.8 | 7.28 | 0.78 | 156 | 380 | 7.19 | 9.32 | 3.02 |
 | South East | 4.02 | 734 | 33.8% | 20.2% | 28.0% | 263 | 11.3% | 194 | 0.1% | 1,568 | 0.93 | 34.4 | 4.26 | 0.79 | 132 | 396 | 27.5 | 71.1 | 0.44 |
 | South West | 2.56 | 356 | 39.5% | 22.5% | 33.2% | 196 | 8.4% | 195 | 0.1% | 1,367 | 0.87 | 42.9 | 10.8 | 0.86 | 60.6 | 301 | 2.39 | 50.9 | 3.79 |
@@ -970,9 +970,9 @@ By household type:
 | Single pensioner | 3.94 | 1,024 | 61.8% | 34.2% | 60.9% | 472 | 20.3% | 194 | 0.4% | 1,126 | 1.00 | 0.14 | 13.2 | 0.96 | 24.0 | 53.8 | 37.9 | 51.9 | 11.1 |
 | Pensioner couple | 3.59 | 787 | 41.2% | 6.7% | 40.8% | 238 | 10.2% | 161 | 0.1% | 1,581 | 0.94 | 19.6 | 39.4 | 0.97 | 7.01 | 144 | 19.6 | 80.8 | 16.7 |
 | Single, no children | 4.55 | 574 | 52.9% | 33.7% | 51.8% | 499 | 21.5% | 207 | 0.4% | 1,064 | 0.98 | 24.4 | 11.0 | 0.91 | 126 | 386 | 22.3 | 41.9 | 2.14 |
-| Couple, no children | 4.34 | 606 | 14.5% | 5.1% | 12.8% | 111 | 4.8% | 176 | 0.0% | 1,402 | 0.79 | 72.2 | 3.80 | 0.70 | 147 | 635 | 2.87 | 101 | 15.0 |
+| Couple, no children | 4.34 | 606 | 14.5% | 5.1% | 12.8% | 111 | 4.8% | 176 | 0.0% | 1,402 | 0.79 | 72.2 | – | 0.70 | 147 | 635 | – | 101 | 15.0 |
 | Lone parent | 1.26 | 295 | 91.7% | 90.2% | 69.7% | 254 | 10.9% | 220 | 0.5% | 1,355 | 0.99 | 3.24 | 16.5 | 0.97 | 12.5 | 40.6 | 60.8 | 0.97 | 0.04 |
-| Couple with children | 4.98 | 1,097 | 21.5% | 17.7% | 13.6% | 222 | 9.5% | 207 | 0.1% | 1,724 | 0.70 | 151 | 30.4 | 0.64 | 307 | 1,222 | 21.8 | 37.2 | 2.10 |
+| Couple with children | 4.98 | 1,097 | 21.5% | 17.7% | 13.6% | 222 | 9.5% | 207 | 0.1% | 1,724 | 0.70 | 151 | – | 0.64 | 307 | 1,222 | 21.8 | 37.2 | 2.10 |
 | Multi-family household | 6.01 | 773 | 41.7% | 36.4% | 21.1% | 530 | 22.8% | 211 | 0.1% | 1,642 | 0.94 | 25.7 | 13.8 | 0.88 | 80.3 | 478 | 66.1 | 18.6 | 5.49 |
 
 By AHC income decile (GB people):
@@ -1072,17 +1072,17 @@ By region:
 
 | Region | Households (m) | ESS | Eligible | Passported | Pass income test | Cost (GBP m) | Share of cost | Avg per recipient (GBP) | Gain, % net income | Mean bill (GBP) | In abs. BHC poverty, reached | In abs. BHC poverty, not reached (k) | People out of abs. BHC poverty (k) | In abs. AHC poverty, reached | In abs. AHC poverty, not reached (k) | Lowest-4-decile, not reached (k) | People out of rel. AHC poverty (k) | Within GBP 1k above top line (k) | Offset range (k) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| North East | 1.32 | 93.2 | 51.0% | 33.1% | 46.9% | 132 | 5.3% | 197 | 0.2% | 2,146 | 0.99 | 3.18 | 3.20 | 0.98 | 5.00 | 40.9 | 8.05 | 13.7 | 0.09 |
-| North West | 3.55 | 171 | 46.0% | 29.5% | 43.4% | 316 | 12.6% | 193 | 0.2% | 1,595 | 0.97 | 18.4 | 0.82 | 0.88 | 84.1 | 414 | 15.8 | 69.2 | 5.11 |
-| Yorkshire and the Humber | 2.59 | 153 | 45.0% | 27.9% | 40.2% | 227 | 9.1% | 195 | 0.2% | 1,918 | 0.97 | 13.7 | 2.94 | 0.96 | 20.5 | 219 | 13.2 | 20.1 | 1.70 |
-| East Midlands | 2.30 | 112 | 43.8% | 25.4% | 39.2% | 192 | 7.7% | 191 | 0.2% | 1,948 | 0.96 | 15.5 | 2.86 | 0.94 | 30.3 | 133 | 2.67 | 15.1 | 1.59 |
+| North East | 1.32 | 93.2 | 51.0% | 33.1% | 46.9% | 132 | 5.3% | 197 | 0.2% | 2,146 | 0.99 | 3.18 | 3.20 | 0.98 | 5.00 | 40.9 | – | 13.7 | 0.09 |
+| North West | 3.55 | 171 | 46.0% | 29.5% | 43.4% | 316 | 12.6% | 193 | 0.2% | 1,595 | 0.97 | 18.4 | – | 0.88 | 84.1 | 414 | 15.8 | 69.2 | 5.11 |
+| Yorkshire and the Humber | 2.59 | 153 | 45.0% | 27.9% | 40.2% | 227 | 9.1% | 195 | 0.2% | 1,918 | 0.97 | 13.7 | – | 0.96 | 20.5 | 219 | 13.2 | 20.1 | 1.70 |
+| East Midlands | 2.30 | 112 | 43.8% | 25.4% | 39.2% | 192 | 7.7% | 191 | 0.2% | 1,948 | 0.96 | 15.5 | – | 0.94 | 30.3 | 133 | 2.67 | 15.1 | 1.59 |
 | West Midlands | 2.71 | 79.7 | 43.1% | 23.5% | 39.9% | 229 | 9.1% | 196 | 0.2% | 1,401 | 0.85 | 80.6 | 3.83 | 0.81 | 128 | 251 | 3.53 | 12.4 | 0.43 |
-| East of England | 2.95 | 94.4 | 29.2% | 17.9% | 21.5% | 166 | 6.6% | 193 | 0.1% | 1,339 | 0.95 | 17.3 | 7.78 | 0.79 | 90.2 | 333 | 19.3 | 91.8 | 3.74 |
-| London | 3.98 | 120 | 41.3% | 31.1% | 32.9% | 334 | 13.3% | 203 | 0.1% | 1,085 | 0.89 | 54.4 | 6.03 | 0.85 | 119 | 391 | 13.4 | 19.0 | 0.65 |
+| East of England | 2.95 | 94.4 | 29.2% | 17.9% | 21.5% | 166 | 6.6% | 193 | 0.1% | 1,339 | 0.95 | 17.3 | 7.78 | 0.79 | 90.2 | 333 | – | 91.8 | 3.74 |
+| London | 3.98 | 120 | 41.3% | 31.1% | 32.9% | 334 | 13.3% | 203 | 0.1% | 1,085 | 0.89 | 54.4 | – | 0.85 | 119 | 391 | 13.4 | 19.0 | 0.65 |
 | South East | 4.28 | 95.1 | 39.1% | 23.0% | 34.7% | 317 | 12.6% | 190 | 0.1% | 1,573 | 0.90 | 72.4 | 7.97 | 0.76 | 247 | 521 | 28.8 | 45.5 | 2.13 |
 | South West | 2.78 | 118 | 40.9% | 25.4% | 36.1% | 226 | 9.0% | 199 | 0.2% | 1,317 | 0.97 | 14.7 | 14.0 | 0.95 | 30.4 | 182 | 3.31 | 21.7 | 1.70 |
-| Wales | 1.59 | 203 | 49.3% | 28.4% | 45.5% | 154 | 6.2% | 197 | 0.2% | 1,845 | 0.96 | 14.7 | 7.15 | 0.96 | 13.0 | 128 | 11.7 | 6.41 | 0.51 |
-| Scotland | 2.75 | 99.5 | 41.9% | 23.4% | 37.6% | 215 | 8.6% | 186 | 0.2% | 2,003 | 0.96 | 17.8 | 7.01 | 0.85 | 75.3 | 185 | 22.5 | 16.0 | 4.67 |
+| Wales | 1.59 | 203 | 49.3% | 28.4% | 45.5% | 154 | 6.2% | 197 | 0.2% | 1,845 | 0.96 | 14.7 | – | 0.96 | 13.0 | 128 | 11.7 | 6.41 | 0.51 |
+| Scotland | 2.75 | 99.5 | 41.9% | 23.4% | 37.6% | 215 | 8.6% | 186 | 0.2% | 2,003 | 0.96 | 17.8 | 7.01 | 0.85 | 75.3 | 185 | – | 16.0 | 4.67 |
 
 By household type:
 
@@ -1091,10 +1091,10 @@ By household type:
 | Single pensioner | 4.10 | 76.7 | 75.5% | 38.8% | 74.4% | 589 | 23.5% | 190 | 0.5% | 1,315 | 1.00 | 0.00 | 8.78 | 0.99 | 8.09 | 44.1 | 31.4 | 54.1 | 7.26 |
 | Pensioner couple | 3.90 | 232 | 32.7% | 5.9% | 32.0% | 205 | 8.2% | 161 | 0.1% | 2,366 | 0.93 | 22.1 | 13.4 | 0.97 | 7.89 | 216 | 7.86 | 95.9 | 6.76 |
 | Single, no children | 5.66 | 258 | 63.0% | 48.7% | 58.1% | 754 | 30.1% | 211 | 0.5% | 1,164 | 0.99 | 17.2 | 14.2 | 0.91 | 218 | 518 | 17.8 | 30.0 | 1.81 |
-| Couple, no children | 7.21 | 170 | 13.8% | 2.0% | 13.3% | 148 | 5.9% | 149 | 0.0% | 1,726 | 0.89 | 73.2 | 8.82 | 0.81 | 171 | 797 | 3.32 | 87.7 | 2.27 |
-| Lone parent | 2.13 | 314 | 94.4% | 92.4% | 74.5% | 439 | 17.5% | 219 | 0.6% | 741 | 0.99 | 4.14 | 12.4 | 0.99 | 6.86 | 28.5 | 17.9 | 1.85 | 0.25 |
-| Couple with children | 5.00 | 374 | 26.0% | 16.2% | 17.5% | 242 | 9.7% | 186 | 0.1% | 1,629 | 0.77 | 119 | 0.00 | 0.63 | 318 | 790 | 40.3 | 41.9 | 2.96 |
-| Multi-family household | 2.78 | 154 | 23.2% | 17.2% | 12.9% | 131 | 5.2% | 202 | 0.1% | 1,960 | 0.71 | 87.3 | 6.07 | 0.71 | 113 | 402 | 23.6 | 19.6 | 1.01 |
+| Couple, no children | 7.21 | 170 | 13.8% | 2.0% | 13.3% | 148 | 5.9% | 149 | 0.0% | 1,726 | 0.89 | 73.2 | 8.82 | 0.81 | 171 | 797 | – | 87.7 | 2.27 |
+| Lone parent | 2.13 | 314 | 94.4% | 92.4% | 74.5% | 439 | 17.5% | 219 | 0.6% | 741 | 0.99 | 4.14 | – | 0.99 | 6.86 | 28.5 | – | 1.85 | 0.25 |
+| Couple with children | 5.00 | 374 | 26.0% | 16.2% | 17.5% | 242 | 9.7% | 186 | 0.1% | 1,629 | 0.77 | 119 | 0.00 | 0.63 | 318 | 790 | – | 41.9 | 2.96 |
+| Multi-family household | 2.78 | 154 | 23.2% | 17.2% | 12.9% | 131 | 5.2% | 202 | 0.1% | 1,960 | 0.71 | 87.3 | – | 0.71 | 113 | 402 | – | 19.6 | 1.01 |
 
 By AHC income decile (GB people):
 
@@ -1116,11 +1116,11 @@ Poverty (people unless stated):
 | Measure | Group | Baseline rate | Reform rate | Change (pp) | Change (k) | Records crossing | ESS crossing |
 |---|---|---|---|---|---|---|---|
 | abs_pov_bhc | people | 14.4% | 14.3% | -0.09 | -63.6 | 113 | 26.6 |
-| abs_pov_bhc | children | 16.6% | 16.6% | -0.04 | -6.18 | <10 | 2.90 |
+| abs_pov_bhc | children | 16.6% | – | – | – | <10 | – |
 | abs_pov_bhc | working_age_adults | 14.2% | 14.2% | -0.09 | -35.5 | 39 | 13.4 |
 | abs_pov_bhc | pensioners | 12.3% | 12.1% | -0.18 | -21.9 | 81 | 30.5 |
 | abs_pov_ahc | people | 18.8% | 18.6% | -0.15 | -99.6 | 143 | 4.17 |
-| abs_pov_ahc | children | 24.4% | 24.2% | -0.16 | -24.0 | <10 | 1.00 |
+| abs_pov_ahc | children | 24.4% | – | – | – | <10 | – |
 | abs_pov_ahc | working_age_adults | 19.0% | 18.9% | -0.10 | -42.9 | 49 | 3.01 |
 | abs_pov_ahc | pensioners | 11.1% | 10.8% | -0.27 | -32.7 | 106 | 25.3 |
 | rel_pov_bhc | people | 19.3% | 19.0% | -0.28 | -192 | 116 | 5.72 |
@@ -1200,11 +1200,11 @@ By region:
 | Yorkshire and the Humber | 2.42 | 580 | 44.5% | 28.8% | 37.7% | 215 | 9.2% | 200 | 0.2% | 1,420 | 0.90 | 38.5 | 7.40 | 0.88 | 48.6 | 288 | 16.6 | 40.1 | 9.45 |
 | East Midlands | 2.13 | 335 | 42.3% | 24.8% | 35.9% | 171 | 7.4% | 190 | 0.2% | 1,463 | 0.88 | 33.4 | 4.45 | 0.83 | 56.3 | 315 | 26.9 | 27.1 | 17.1 |
 | West Midlands | 2.54 | 345 | 47.7% | 30.9% | 37.1% | 241 | 10.4% | 199 | 0.2% | 1,440 | 0.93 | 16.6 | 6.14 | 0.87 | 40.8 | 210 | 63.5 | 13.2 | 0.62 |
-| East of England | 2.76 | 508 | 35.4% | 21.3% | 29.2% | 191 | 8.2% | 195 | 0.1% | 1,431 | 0.97 | 8.75 | 6.53 | 0.85 | 57.6 | 248 | 7.73 | 21.8 | 2.35 |
-| London | 3.66 | 420 | 35.0% | 29.7% | 26.4% | 264 | 11.4% | 206 | 0.1% | 1,393 | 0.91 | 31.8 | 0.35 | 0.78 | 156 | 380 | 2.28 | 9.32 | 3.02 |
+| East of England | 2.76 | 508 | 35.4% | 21.3% | 29.2% | 191 | 8.2% | 195 | 0.1% | 1,431 | 0.97 | 8.75 | – | 0.85 | 57.6 | 248 | – | 21.8 | 2.35 |
+| London | 3.66 | 420 | 35.0% | 29.7% | 26.4% | 264 | 11.4% | 206 | 0.1% | 1,393 | 0.91 | 31.8 | – | 0.78 | 156 | 380 | – | 9.32 | 3.02 |
 | South East | 4.02 | 734 | 33.8% | 20.2% | 28.0% | 294 | 12.7% | 217 | 0.1% | 1,568 | 0.93 | 34.4 | 5.65 | 0.79 | 132 | 396 | 23.0 | 71.1 | 1.01 |
 | South West | 2.56 | 356 | 39.5% | 22.5% | 33.2% | 182 | 7.8% | 181 | 0.1% | 1,367 | 0.87 | 42.9 | 3.18 | 0.86 | 60.6 | 301 | 1.83 | 50.9 | 4.24 |
-| Wales | 1.40 | 463 | 46.1% | 29.1% | 37.7% | 116 | 5.0% | 180 | 0.2% | 1,357 | 0.96 | 10.4 | 1.42 | 0.94 | 14.3 | 175 | 0.88 | 8.86 | 1.41 |
+| Wales | 1.40 | 463 | 46.1% | 29.1% | 37.7% | 116 | 5.0% | 180 | 0.2% | 1,357 | 0.96 | 10.4 | – | 0.94 | 14.3 | 175 | – | 8.86 | 1.41 |
 | Scotland | 2.67 | 586 | 42.2% | 23.9% | 35.7% | 219 | 9.4% | 194 | 0.2% | 1,334 | 0.97 | 15.1 | 14.5 | 0.93 | 39.5 | 217 | 14.6 | 33.6 | 2.06 |
 
 By household type:
@@ -1214,9 +1214,9 @@ By household type:
 | Single pensioner | 3.94 | 1,024 | 61.8% | 34.2% | 60.9% | 380 | 16.4% | 156 | 0.3% | 1,126 | 1.00 | 0.14 | 6.76 | 0.96 | 24.0 | 53.8 | 29.7 | 51.9 | 5.12 |
 | Pensioner couple | 3.59 | 787 | 41.2% | 6.7% | 40.8% | 254 | 10.9% | 172 | 0.1% | 1,581 | 0.94 | 19.6 | 3.97 | 0.97 | 7.01 | 144 | 22.3 | 80.8 | 20.7 |
 | Single, no children | 4.55 | 574 | 52.9% | 33.7% | 51.8% | 395 | 17.0% | 164 | 0.3% | 1,064 | 0.98 | 24.4 | 11.7 | 0.91 | 126 | 386 | 17.5 | 41.9 | 1.06 |
-| Couple, no children | 4.34 | 606 | 14.5% | 5.1% | 12.8% | 123 | 5.3% | 197 | 0.0% | 1,402 | 0.79 | 72.2 | 5.44 | 0.70 | 147 | 635 | 2.87 | 101 | 15.2 |
+| Couple, no children | 4.34 | 606 | 14.5% | 5.1% | 12.8% | 123 | 5.3% | 197 | 0.0% | 1,402 | 0.79 | 72.2 | – | 0.70 | 147 | 635 | – | 101 | 15.2 |
 | Lone parent | 1.26 | 295 | 91.7% | 90.2% | 69.7% | 254 | 10.9% | 220 | 0.5% | 1,355 | 0.99 | 3.24 | 8.10 | 0.97 | 12.5 | 40.6 | 31.5 | 0.97 | 0.04 |
-| Couple with children | 4.98 | 1,097 | 21.5% | 17.7% | 13.6% | 296 | 12.8% | 277 | 0.1% | 1,724 | 0.70 | 151 | 41.5 | 0.64 | 307 | 1,222 | 21.6 | 37.2 | 4.30 |
+| Couple with children | 4.98 | 1,097 | 21.5% | 17.7% | 13.6% | 296 | 12.8% | 277 | 0.1% | 1,724 | 0.70 | 151 | – | 0.64 | 307 | 1,222 | 21.6 | 37.2 | 4.30 |
 | Multi-family household | 6.01 | 773 | 41.7% | 36.4% | 21.1% | 620 | 26.7% | 247 | 0.1% | 1,642 | 0.94 | 25.7 | 10.2 | 0.88 | 80.3 | 478 | 68.8 | 18.6 | 5.69 |
 
 By AHC income decile (GB people):
@@ -1316,16 +1316,16 @@ By region:
 
 | Region | Households (m) | ESS | Eligible | Passported | Pass income test | Cost (GBP m) | Share of cost | Avg per recipient (GBP) | Gain, % net income | Mean bill (GBP) | In abs. BHC poverty, reached | In abs. BHC poverty, not reached (k) | People out of abs. BHC poverty (k) | In abs. AHC poverty, reached | In abs. AHC poverty, not reached (k) | Lowest-4-decile, not reached (k) | People out of rel. AHC poverty (k) | Within GBP 1k above top line (k) | Offset range (k) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| North East | 1.32 | 93.2 | 51.0% | 33.1% | 46.9% | 206 | 8.2% | 330 | 0.3% | 2,146 | 0.90 | 26.1 | 2.92 | 0.88 | 35.0 | 88.1 | 1.28 | 13.7 | 0.09 |
+| North East | 1.32 | 93.2 | 51.0% | 33.1% | 46.9% | 206 | 8.2% | 330 | 0.3% | 2,146 | 0.90 | 26.1 | – | 0.88 | 35.0 | 88.1 | – | 13.7 | 0.09 |
 | North West | 3.55 | 171 | 46.0% | 29.5% | 43.4% | 374 | 14.9% | 253 | 0.2% | 1,595 | 0.86 | 82.9 | 3.45 | 0.76 | 165 | 519 | 12.3 | 69.2 | 3.57 |
 | Yorkshire and the Humber | 2.59 | 153 | 45.0% | 27.9% | 40.2% | 204 | 8.1% | 192 | 0.2% | 1,918 | 0.88 | 59.3 | 5.38 | 0.86 | 70.0 | 317 | 8.47 | 20.1 | 1.49 |
 | East Midlands | 2.30 | 112 | 43.8% | 25.4% | 39.2% | 195 | 7.8% | 233 | 0.2% | 1,948 | 0.80 | 83.8 | 7.56 | 0.75 | 124 | 294 | 7.77 | 15.1 | 3.86 |
 | West Midlands | 2.71 | 79.7 | 43.1% | 23.5% | 39.9% | 254 | 10.1% | 228 | 0.2% | 1,401 | 0.80 | 108 | 5.06 | 0.76 | 160 | 302 | 6.36 | 12.4 | 0.62 |
-| East of England | 2.95 | 94.4 | 29.2% | 17.9% | 21.5% | 122 | 4.9% | 160 | 0.1% | 1,339 | 0.90 | 33.9 | 8.58 | 0.75 | 111 | 425 | 3.34 | 91.8 | 2.19 |
-| London | 3.98 | 120 | 41.3% | 31.1% | 32.9% | 284 | 11.3% | 181 | 0.1% | 1,085 | 0.83 | 82.3 | 0.90 | 0.80 | 159 | 458 | 15.4 | 19.0 | 0.39 |
+| East of England | 2.95 | 94.4 | 29.2% | 17.9% | 21.5% | 122 | 4.9% | 160 | 0.1% | 1,339 | 0.90 | 33.9 | 8.58 | 0.75 | 111 | 425 | – | 91.8 | 2.19 |
+| London | 3.98 | 120 | 41.3% | 31.1% | 32.9% | 284 | 11.3% | 181 | 0.1% | 1,085 | 0.83 | 82.3 | – | 0.80 | 159 | 458 | 15.4 | 19.0 | 0.39 |
 | South East | 4.28 | 95.1 | 39.1% | 23.0% | 34.7% | 249 | 9.9% | 154 | 0.1% | 1,573 | 0.88 | 92.5 | 9.61 | 0.73 | 273 | 565 | 31.0 | 45.5 | 0.63 |
 | South West | 2.78 | 118 | 40.9% | 25.4% | 36.1% | 237 | 9.4% | 221 | 0.2% | 1,317 | 0.93 | 30.8 | 11.0 | 0.91 | 51.4 | 243 | 6.46 | 21.7 | 0.58 |
-| Wales | 1.59 | 203 | 49.3% | 28.4% | 45.5% | 182 | 7.2% | 259 | 0.2% | 1,845 | 0.88 | 44.0 | 6.26 | 0.87 | 46.9 | 186 | 0.68 | 6.41 | 3.69 |
+| Wales | 1.59 | 203 | 49.3% | 28.4% | 45.5% | 182 | 7.2% | 259 | 0.2% | 1,845 | 0.88 | 44.0 | – | 0.87 | 46.9 | 186 | 0.68 | 6.41 | 3.69 |
 | Scotland | 2.75 | 99.5 | 41.9% | 23.4% | 37.6% | 203 | 8.1% | 194 | 0.2% | 2,003 | 0.88 | 55.6 | 10.7 | 0.78 | 110 | 293 | 23.0 | 16.0 | 5.73 |
 
 By household type:
@@ -1335,10 +1335,10 @@ By household type:
 | Single pensioner | 4.10 | 76.7 | 75.5% | 38.8% | 74.4% | 685 | 27.3% | 232 | 0.6% | 1,315 | 0.95 | 41.8 | 11.1 | 0.94 | 49.0 | 139 | 20.0 | 54.1 | 4.72 |
 | Pensioner couple | 3.90 | 232 | 32.7% | 5.9% | 32.0% | 360 | 14.3% | 309 | 0.2% | 2,366 | 0.91 | 29.3 | 27.5 | 0.93 | 17.3 | 322 | 21.0 | 95.9 | 8.28 |
 | Single, no children | 5.66 | 258 | 63.0% | 48.7% | 58.1% | 621 | 24.7% | 193 | 0.5% | 1,164 | 0.88 | 235 | 13.0 | 0.80 | 467 | 853 | 9.73 | 30.0 | 0.70 |
-| Couple, no children | 7.21 | 170 | 13.8% | 2.0% | 13.3% | 205 | 8.2% | 216 | 0.0% | 1,726 | 0.85 | 95.8 | 6.27 | 0.78 | 202 | 837 | 3.32 | 87.7 | 4.38 |
-| Lone parent | 2.13 | 314 | 94.4% | 92.4% | 74.5% | 314 | 12.5% | 174 | 0.4% | 741 | 0.92 | 41.3 | 7.24 | 0.90 | 69.3 | 210 | 6.82 | 1.85 | 0.25 |
-| Couple with children | 5.00 | 374 | 26.0% | 16.2% | 17.5% | 196 | 7.8% | 164 | 0.1% | 1,629 | 0.72 | 143 | 1.42 | 0.58 | 356 | 885 | 31.5 | 41.9 | 2.96 |
-| Multi-family household | 2.78 | 154 | 23.2% | 17.2% | 12.9% | 127 | 5.1% | 217 | 0.1% | 1,960 | 0.63 | 113 | 4.86 | 0.64 | 144 | 445 | 23.8 | 19.6 | 1.56 |
+| Couple, no children | 7.21 | 170 | 13.8% | 2.0% | 13.3% | 205 | 8.2% | 216 | 0.0% | 1,726 | 0.85 | 95.8 | – | 0.78 | 202 | 837 | – | 87.7 | 4.38 |
+| Lone parent | 2.13 | 314 | 94.4% | 92.4% | 74.5% | 314 | 12.5% | 174 | 0.4% | 741 | 0.92 | 41.3 | – | 0.90 | 69.3 | 210 | – | 1.85 | 0.25 |
+| Couple with children | 5.00 | 374 | 26.0% | 16.2% | 17.5% | 196 | 7.8% | 164 | 0.1% | 1,629 | 0.72 | 143 | – | 0.58 | 356 | 885 | – | 41.9 | 2.96 |
+| Multi-family household | 2.78 | 154 | 23.2% | 17.2% | 12.9% | 127 | 5.1% | 217 | 0.1% | 1,960 | 0.63 | 113 | 4.86 | 0.64 | 144 | 445 | – | 19.6 | 1.56 |
 
 By AHC income decile (GB people):
 
@@ -1360,11 +1360,11 @@ Poverty (people unless stated):
 | Measure | Group | Baseline rate | Reform rate | Change (pp) | Change (k) | Records crossing | ESS crossing |
 |---|---|---|---|---|---|---|---|
 | abs_pov_bhc | people | 14.4% | 14.3% | -0.10 | -71.4 | 121 | 29.1 |
-| abs_pov_bhc | children | 16.6% | 16.6% | -0.03 | -4.33 | <10 | 2.65 |
+| abs_pov_bhc | children | 16.6% | – | – | – | <10 | – |
 | abs_pov_bhc | working_age_adults | 14.2% | 14.2% | -0.08 | -32.2 | 43 | 12.3 |
 | abs_pov_bhc | pensioners | 12.3% | 12.0% | -0.29 | -34.9 | 88 | 25.9 |
 | abs_pov_ahc | people | 18.8% | 18.7% | -0.12 | -83.4 | 152 | 4.98 |
-| abs_pov_ahc | children | 24.4% | 24.4% | -0.00 | -0.01 | <10 | 1.61 |
+| abs_pov_ahc | children | 24.4% | – | – | – | <10 | – |
 | abs_pov_ahc | working_age_adults | 19.0% | 18.9% | -0.04 | -15.0 | 48 | 13.7 |
 | abs_pov_ahc | pensioners | 11.1% | 10.5% | -0.57 | -68.4 | 116 | 3.39 |
 | rel_pov_bhc | people | 19.3% | 18.9% | -0.34 | -233 | 126 | 7.65 |
@@ -1439,16 +1439,16 @@ By region:
 
 | Region | Households (m) | ESS | Eligible | Passported | Pass income test | Cost (GBP m) | Share of cost | Avg per recipient (GBP) | Gain, % net income | Mean bill (GBP) | In abs. BHC poverty, reached | In abs. BHC poverty, not reached (k) | People out of abs. BHC poverty (k) | In abs. AHC poverty, reached | In abs. AHC poverty, not reached (k) | Lowest-4-decile, not reached (k) | People out of rel. AHC poverty (k) | Within GBP 1k above top line (k) | Offset range (k) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| North East | 1.23 | 273 | 52.9% | 38.4% | 45.4% | 113 | 5.7% | 175 | 0.2% | 1,460 | 0.96 | 7.88 | 4.04 | 0.93 | 18.0 | 124 | 10.5 | 22.8 | 5.21 |
-| North West | 3.31 | 495 | 43.8% | 29.2% | 36.3% | 247 | 12.4% | 171 | 0.2% | 1,489 | 0.88 | 56.5 | 20.5 | 0.85 | 80.4 | 304 | 40.3 | 33.4 | 0.27 |
+| North East | 1.23 | 273 | 52.9% | 38.4% | 45.4% | 113 | 5.7% | 175 | 0.2% | 1,460 | 0.96 | 7.88 | 4.04 | 0.93 | 18.0 | 124 | – | 22.8 | 5.21 |
+| North West | 3.31 | 495 | 43.8% | 29.2% | 36.3% | 247 | 12.4% | 171 | 0.2% | 1,489 | 0.88 | 56.5 | – | 0.85 | 80.4 | 304 | 40.3 | 33.4 | 0.27 |
 | Yorkshire and the Humber | 2.42 | 580 | 44.5% | 28.8% | 37.7% | 186 | 9.3% | 173 | 0.2% | 1,420 | 0.90 | 38.5 | 7.34 | 0.88 | 48.6 | 288 | 13.9 | 40.1 | 8.85 |
-| East Midlands | 2.13 | 335 | 42.3% | 24.8% | 35.9% | 150 | 7.5% | 166 | 0.1% | 1,463 | 0.88 | 33.4 | 0.39 | 0.83 | 56.3 | 315 | 45.9 | 27.1 | 14.7 |
+| East Midlands | 2.13 | 335 | 42.3% | 24.8% | 35.9% | 150 | 7.5% | 166 | 0.1% | 1,463 | 0.88 | 33.4 | – | 0.83 | 56.3 | 315 | 45.9 | 27.1 | 14.7 |
 | West Midlands | 2.54 | 345 | 47.7% | 30.9% | 37.1% | 205 | 10.3% | 169 | 0.2% | 1,440 | 0.93 | 16.6 | 5.64 | 0.87 | 40.8 | 210 | 63.2 | 13.2 | 1.27 |
-| East of England | 2.76 | 508 | 35.4% | 21.3% | 29.2% | 167 | 8.4% | 171 | 0.1% | 1,431 | 0.97 | 8.75 | 26.2 | 0.85 | 57.6 | 248 | 1.83 | 21.8 | 4.78 |
-| London | 3.66 | 420 | 35.0% | 29.7% | 26.4% | 232 | 11.6% | 182 | 0.1% | 1,393 | 0.91 | 31.8 | 7.12 | 0.78 | 156 | 380 | 6.78 | 9.32 | 3.02 |
+| East of England | 2.76 | 508 | 35.4% | 21.3% | 29.2% | 167 | 8.4% | 171 | 0.1% | 1,431 | 0.97 | 8.75 | 26.2 | 0.85 | 57.6 | 248 | – | 21.8 | 4.78 |
+| London | 3.66 | 420 | 35.0% | 29.7% | 26.4% | 232 | 11.6% | 182 | 0.1% | 1,393 | 0.91 | 31.8 | – | 0.78 | 156 | 380 | – | 9.32 | 3.02 |
 | South East | 4.02 | 734 | 33.8% | 20.2% | 28.0% | 226 | 11.3% | 167 | 0.1% | 1,568 | 0.93 | 34.4 | 4.26 | 0.79 | 132 | 396 | 27.3 | 71.1 | 0.44 |
 | South West | 2.56 | 356 | 39.5% | 22.5% | 33.2% | 169 | 8.4% | 167 | 0.1% | 1,367 | 0.87 | 42.9 | 1.72 | 0.86 | 60.6 | 301 | 2.39 | 50.9 | 3.79 |
-| Wales | 1.40 | 463 | 46.1% | 29.1% | 37.7% | 111 | 5.5% | 172 | 0.2% | 1,357 | 0.96 | 10.4 | 2.26 | 0.94 | 14.3 | 175 | 2.84 | 8.86 | 0.56 |
+| Wales | 1.40 | 463 | 46.1% | 29.1% | 37.7% | 111 | 5.5% | 172 | 0.2% | 1,357 | 0.96 | 10.4 | 2.26 | 0.94 | 14.3 | 175 | – | 8.86 | 0.56 |
 | Scotland | 2.67 | 586 | 42.2% | 23.9% | 35.7% | 193 | 9.7% | 171 | 0.2% | 1,334 | 0.97 | 15.1 | 16.9 | 0.93 | 39.5 | 217 | 10.4 | 33.6 | 4.15 |
 
 By household type:
@@ -1458,10 +1458,10 @@ By household type:
 | Single pensioner | 3.94 | 1,024 | 61.8% | 34.2% | 60.9% | 406 | 20.3% | 167 | 0.4% | 1,126 | 1.00 | 0.14 | 11.5 | 0.96 | 24.0 | 53.8 | 32.9 | 51.9 | 11.1 |
 | Pensioner couple | 3.59 | 787 | 41.2% | 6.7% | 40.8% | 205 | 10.2% | 138 | 0.1% | 1,581 | 0.94 | 19.6 | 29.2 | 0.97 | 7.01 | 144 | 19.6 | 80.8 | 16.7 |
 | Single, no children | 4.55 | 574 | 52.9% | 33.7% | 51.8% | 429 | 21.5% | 178 | 0.3% | 1,064 | 0.98 | 24.4 | 8.46 | 0.91 | 126 | 386 | 21.3 | 41.9 | 2.14 |
-| Couple, no children | 4.34 | 606 | 14.5% | 5.1% | 12.8% | 95.3 | 4.8% | 152 | 0.0% | 1,402 | 0.79 | 72.2 | 0.48 | 0.70 | 147 | 635 | 2.87 | 101 | 15.0 |
+| Couple, no children | 4.34 | 606 | 14.5% | 5.1% | 12.8% | 95.3 | 4.8% | 152 | 0.0% | 1,402 | 0.79 | 72.2 | – | 0.70 | 147 | 635 | – | 101 | 15.0 |
 | Lone parent | 1.26 | 295 | 91.7% | 90.2% | 69.7% | 218 | 10.9% | 189 | 0.4% | 1,355 | 0.99 | 3.24 | 11.0 | 0.97 | 12.5 | 40.6 | 60.8 | 0.97 | 0.04 |
-| Couple with children | 4.98 | 1,097 | 21.5% | 17.7% | 13.6% | 191 | 9.5% | 178 | 0.1% | 1,724 | 0.70 | 151 | 26.1 | 0.64 | 307 | 1,222 | 21.8 | 37.2 | 2.10 |
-| Multi-family household | 6.01 | 773 | 41.7% | 36.4% | 21.1% | 456 | 22.8% | 182 | 0.1% | 1,642 | 0.94 | 25.7 | 9.64 | 0.88 | 80.3 | 478 | 66.1 | 18.6 | 0.00 |
+| Couple with children | 4.98 | 1,097 | 21.5% | 17.7% | 13.6% | 191 | 9.5% | 178 | 0.1% | 1,724 | 0.70 | 151 | – | 0.64 | 307 | 1,222 | 21.8 | 37.2 | 2.10 |
+| Multi-family household | 6.01 | 773 | 41.7% | 36.4% | 21.1% | 456 | 22.8% | 182 | 0.1% | 1,642 | 0.94 | 25.7 | – | 0.88 | 80.3 | 478 | 66.1 | 18.6 | 0.00 |
 
 By AHC income decile (GB people):
 
@@ -1560,17 +1560,17 @@ By region:
 
 | Region | Households (m) | ESS | Eligible | Passported | Pass income test | Cost (GBP m) | Share of cost | Avg per recipient (GBP) | Gain, % net income | Mean bill (GBP) | In abs. BHC poverty, reached | In abs. BHC poverty, not reached (k) | People out of abs. BHC poverty (k) | In abs. AHC poverty, reached | In abs. AHC poverty, not reached (k) | Lowest-4-decile, not reached (k) | People out of rel. AHC poverty (k) | Within GBP 1k above top line (k) | Offset range (k) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| North East | 1.32 | 93.2 | 51.0% | 33.1% | 46.9% | 106 | 5.3% | 157 | 0.2% | 2,146 | 0.99 | 3.18 | 2.92 | 0.98 | 5.00 | 40.9 | 7.89 | 13.7 | 0.09 |
-| North West | 3.55 | 171 | 46.0% | 29.5% | 43.4% | 252 | 12.6% | 154 | 0.1% | 1,595 | 0.97 | 18.4 | 0.43 | 0.88 | 84.1 | 414 | 15.0 | 69.2 | 4.66 |
-| Yorkshire and the Humber | 2.59 | 153 | 45.0% | 27.9% | 40.2% | 181 | 9.1% | 155 | 0.1% | 1,918 | 0.97 | 13.7 | 1.98 | 0.96 | 20.5 | 219 | 3.89 | 20.1 | 1.48 |
-| East Midlands | 2.30 | 112 | 43.8% | 25.4% | 39.2% | 153 | 7.7% | 152 | 0.1% | 1,948 | 0.96 | 15.5 | 1.77 | 0.94 | 30.3 | 133 | 2.37 | 15.1 | 1.59 |
+| North East | 1.32 | 93.2 | 51.0% | 33.1% | 46.9% | 106 | 5.3% | 157 | 0.2% | 2,146 | 0.99 | 3.18 | – | 0.98 | 5.00 | 40.9 | – | 13.7 | 0.09 |
+| North West | 3.55 | 171 | 46.0% | 29.5% | 43.4% | 252 | 12.6% | 154 | 0.1% | 1,595 | 0.97 | 18.4 | – | 0.88 | 84.1 | 414 | 15.0 | 69.2 | 4.66 |
+| Yorkshire and the Humber | 2.59 | 153 | 45.0% | 27.9% | 40.2% | 181 | 9.1% | 155 | 0.1% | 1,918 | 0.97 | 13.7 | – | 0.96 | 20.5 | 219 | 3.89 | 20.1 | 1.48 |
+| East Midlands | 2.30 | 112 | 43.8% | 25.4% | 39.2% | 153 | 7.7% | 152 | 0.1% | 1,948 | 0.96 | 15.5 | – | 0.94 | 30.3 | 133 | 2.37 | 15.1 | 1.59 |
 | West Midlands | 2.71 | 79.7 | 43.1% | 23.5% | 39.9% | 182 | 9.1% | 156 | 0.1% | 1,401 | 0.85 | 80.6 | 3.30 | 0.81 | 128 | 251 | 2.79 | 12.4 | 0.43 |
-| East of England | 2.95 | 94.4 | 29.2% | 17.9% | 21.5% | 132 | 6.6% | 154 | 0.1% | 1,339 | 0.95 | 17.3 | 7.06 | 0.79 | 90.2 | 333 | 19.3 | 91.8 | 2.26 |
-| London | 3.98 | 120 | 41.3% | 31.1% | 32.9% | 266 | 13.3% | 162 | 0.1% | 1,085 | 0.89 | 54.4 | 0.92 | 0.85 | 119 | 391 | 6.88 | 19.0 | 0.65 |
+| East of England | 2.95 | 94.4 | 29.2% | 17.9% | 21.5% | 132 | 6.6% | 154 | 0.1% | 1,339 | 0.95 | 17.3 | – | 0.79 | 90.2 | 333 | – | 91.8 | 2.26 |
+| London | 3.98 | 120 | 41.3% | 31.1% | 32.9% | 266 | 13.3% | 162 | 0.1% | 1,085 | 0.89 | 54.4 | – | 0.85 | 119 | 391 | – | 19.0 | 0.65 |
 | South East | 4.28 | 95.1 | 39.1% | 23.0% | 34.7% | 253 | 12.6% | 151 | 0.1% | 1,573 | 0.90 | 72.4 | 7.95 | 0.76 | 247 | 521 | 26.3 | 45.5 | 1.92 |
 | South West | 2.78 | 118 | 40.9% | 25.4% | 36.1% | 180 | 9.0% | 159 | 0.1% | 1,317 | 0.97 | 14.7 | 14.0 | 0.95 | 30.4 | 182 | 3.31 | 21.7 | 0.92 |
-| Wales | 1.59 | 203 | 49.3% | 28.4% | 45.5% | 123 | 6.2% | 157 | 0.2% | 1,845 | 0.96 | 14.7 | 7.04 | 0.96 | 13.0 | 128 | 7.96 | 6.41 | 0.51 |
-| Scotland | 2.75 | 99.5 | 41.9% | 23.4% | 37.6% | 171 | 8.6% | 148 | 0.1% | 2,003 | 0.96 | 17.8 | 6.00 | 0.85 | 75.3 | 185 | 22.5 | 16.0 | 4.60 |
+| Wales | 1.59 | 203 | 49.3% | 28.4% | 45.5% | 123 | 6.2% | 157 | 0.2% | 1,845 | 0.96 | 14.7 | – | 0.96 | 13.0 | 128 | 7.96 | 6.41 | 0.51 |
+| Scotland | 2.75 | 99.5 | 41.9% | 23.4% | 37.6% | 171 | 8.6% | 148 | 0.1% | 2,003 | 0.96 | 17.8 | 6.00 | 0.85 | 75.3 | 185 | – | 16.0 | 4.60 |
 
 By household type:
 
@@ -1579,10 +1579,10 @@ By household type:
 | Single pensioner | 4.10 | 76.7 | 75.5% | 38.8% | 74.4% | 469 | 23.5% | 151 | 0.4% | 1,315 | 1.00 | 0.00 | 6.67 | 0.99 | 8.09 | 44.1 | 28.1 | 54.1 | 6.99 |
 | Pensioner couple | 3.90 | 232 | 32.7% | 5.9% | 32.0% | 164 | 8.2% | 128 | 0.1% | 2,366 | 0.93 | 22.1 | 11.2 | 0.97 | 7.89 | 216 | 7.43 | 95.9 | 5.21 |
 | Single, no children | 5.66 | 258 | 63.0% | 48.7% | 58.1% | 601 | 30.1% | 168 | 0.4% | 1,164 | 0.99 | 17.2 | 14.2 | 0.91 | 218 | 518 | 13.0 | 30.0 | 1.03 |
-| Couple, no children | 7.21 | 170 | 13.8% | 2.0% | 13.3% | 118 | 5.9% | 119 | 0.0% | 1,726 | 0.89 | 73.2 | 8.04 | 0.81 | 171 | 797 | 3.05 | 87.7 | 2.27 |
-| Lone parent | 2.13 | 314 | 94.4% | 92.4% | 74.5% | 350 | 17.5% | 174 | 0.5% | 741 | 0.99 | 4.14 | 7.24 | 0.99 | 6.86 | 28.5 | 11.4 | 1.85 | 0.25 |
-| Couple with children | 5.00 | 374 | 26.0% | 16.2% | 17.5% | 193 | 9.7% | 149 | 0.1% | 1,629 | 0.77 | 119 | 0.00 | 0.63 | 318 | 790 | 31.5 | 41.9 | 2.96 |
-| Multi-family household | 2.78 | 154 | 23.2% | 17.2% | 12.9% | 104 | 5.2% | 161 | 0.0% | 1,960 | 0.71 | 87.3 | 6.07 | 0.71 | 113 | 402 | 23.6 | 19.6 | 0.41 |
+| Couple, no children | 7.21 | 170 | 13.8% | 2.0% | 13.3% | 118 | 5.9% | 119 | 0.0% | 1,726 | 0.89 | 73.2 | – | 0.81 | 171 | 797 | – | 87.7 | 2.27 |
+| Lone parent | 2.13 | 314 | 94.4% | 92.4% | 74.5% | 350 | 17.5% | 174 | 0.5% | 741 | 0.99 | 4.14 | – | 0.99 | 6.86 | 28.5 | – | 1.85 | 0.25 |
+| Couple with children | 5.00 | 374 | 26.0% | 16.2% | 17.5% | 193 | 9.7% | 149 | 0.1% | 1,629 | 0.77 | 119 | 0.00 | 0.63 | 318 | 790 | – | 41.9 | 2.96 |
+| Multi-family household | 2.78 | 154 | 23.2% | 17.2% | 12.9% | 104 | 5.2% | 161 | 0.0% | 1,960 | 0.71 | 87.3 | – | 0.71 | 113 | 402 | – | 19.6 | 0.41 |
 
 By AHC income decile (GB people):
 
@@ -1604,7 +1604,7 @@ Poverty (people unless stated):
 | Measure | Group | Baseline rate | Reform rate | Change (pp) | Change (k) | Records crossing | ESS crossing |
 |---|---|---|---|---|---|---|---|
 | abs_pov_bhc | people | 14.4% | 14.3% | -0.08 | -53.4 | 87 | 23.2 |
-| abs_pov_bhc | children | 16.6% | 16.6% | -0.02 | -3.62 | <10 | 1.98 |
+| abs_pov_bhc | children | 16.6% | – | – | – | <10 | – |
 | abs_pov_bhc | working_age_adults | 14.2% | 14.2% | -0.08 | -32.2 | 33 | 11.9 |
 | abs_pov_bhc | pensioners | 12.3% | 12.1% | -0.15 | -17.6 | 60 | 22.8 |
 | abs_pov_ahc | people | 18.8% | 18.7% | -0.05 | -35.9 | 112 | 38.4 |
@@ -1683,12 +1683,12 @@ By region:
 
 | Region | Households (m) | ESS | Eligible | Passported | Pass income test | Cost (GBP m) | Share of cost | Avg per recipient (GBP) | Gain, % net income | Mean bill (GBP) | In abs. BHC poverty, reached | In abs. BHC poverty, not reached (k) | People out of abs. BHC poverty (k) | In abs. AHC poverty, reached | In abs. AHC poverty, not reached (k) | Lowest-4-decile, not reached (k) | People out of rel. AHC poverty (k) | Within GBP 1k above top line (k) | Offset range (k) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| North East | 1.23 | 273 | 52.9% | 38.4% | 45.4% | 113 | 5.8% | 174 | 0.2% | 1,460 | 0.96 | 7.88 | 6.22 | 0.93 | 18.0 | 124 | 10.5 | 22.8 | 5.21 |
+| North East | 1.23 | 273 | 52.9% | 38.4% | 45.4% | 113 | 5.8% | 174 | 0.2% | 1,460 | 0.96 | 7.88 | 6.22 | 0.93 | 18.0 | 124 | – | 22.8 | 5.21 |
 | North West | 3.31 | 495 | 43.8% | 29.2% | 36.3% | 242 | 12.5% | 167 | 0.1% | 1,489 | 0.88 | 56.5 | 25.6 | 0.85 | 80.4 | 304 | 31.0 | 33.4 | 5.76 |
 | Yorkshire and the Humber | 2.42 | 580 | 44.5% | 28.8% | 37.7% | 185 | 9.5% | 172 | 0.2% | 1,420 | 0.90 | 38.5 | 7.04 | 0.88 | 48.6 | 288 | 13.9 | 40.1 | 8.85 |
 | East Midlands | 2.13 | 335 | 42.3% | 24.8% | 35.9% | 150 | 7.8% | 167 | 0.1% | 1,463 | 0.88 | 33.4 | 3.91 | 0.83 | 56.3 | 315 | 22.2 | 27.1 | 14.7 |
 | West Midlands | 2.54 | 345 | 47.7% | 30.9% | 37.1% | 194 | 10.0% | 160 | 0.2% | 1,440 | 0.93 | 16.6 | 9.44 | 0.87 | 40.8 | 210 | 61.9 | 13.2 | 1.27 |
-| East of England | 2.76 | 508 | 35.4% | 21.3% | 29.2% | 163 | 8.4% | 166 | 0.1% | 1,431 | 0.97 | 8.75 | 30.5 | 0.85 | 57.6 | 248 | 3.53 | 21.8 | 4.78 |
+| East of England | 2.76 | 508 | 35.4% | 21.3% | 29.2% | 163 | 8.4% | 166 | 0.1% | 1,431 | 0.97 | 8.75 | 30.5 | 0.85 | 57.6 | 248 | – | 21.8 | 4.78 |
 | London | 3.66 | 420 | 35.0% | 29.7% | 26.4% | 201 | 10.3% | 157 | 0.1% | 1,393 | 0.91 | 31.8 | 7.28 | 0.78 | 156 | 380 | 7.19 | 9.32 | 3.02 |
 | South East | 4.02 | 734 | 33.8% | 20.2% | 28.0% | 221 | 11.4% | 163 | 0.1% | 1,568 | 0.93 | 34.4 | 3.77 | 0.79 | 132 | 396 | 25.4 | 71.1 | 0.44 |
 | South West | 2.56 | 356 | 39.5% | 22.5% | 33.2% | 165 | 8.5% | 163 | 0.1% | 1,367 | 0.87 | 42.9 | 10.8 | 0.86 | 60.6 | 301 | 2.39 | 50.9 | 3.79 |
@@ -1702,10 +1702,10 @@ By household type:
 | Single pensioner | 3.94 | 1,024 | 61.8% | 34.2% | 60.9% | 454 | 23.4% | 186 | 0.4% | 1,126 | 1.00 | 0.14 | 13.2 | 0.96 | 24.0 | 53.8 | 37.9 | 51.9 | 11.1 |
 | Pensioner couple | 3.59 | 787 | 41.2% | 6.7% | 40.8% | 233 | 12.0% | 158 | 0.1% | 1,581 | 0.94 | 19.6 | 38.5 | 0.97 | 7.01 | 144 | 19.6 | 80.8 | 16.7 |
 | Single, no children | 4.55 | 574 | 52.9% | 33.7% | 51.8% | 489 | 25.2% | 203 | 0.4% | 1,064 | 0.98 | 24.4 | 8.75 | 0.91 | 126 | 386 | 22.3 | 41.9 | 2.14 |
-| Couple, no children | 4.34 | 606 | 14.5% | 5.1% | 12.8% | 98.3 | 5.1% | 157 | 0.0% | 1,402 | 0.79 | 72.2 | 3.80 | 0.70 | 147 | 635 | 1.86 | 101 | 15.0 |
-| Lone parent | 1.26 | 295 | 91.7% | 90.2% | 69.7% | 187 | 9.7% | 162 | 0.4% | 1,355 | 0.99 | 3.24 | 16.5 | 0.97 | 12.5 | 40.6 | 25.5 | 0.97 | 0.04 |
-| Couple with children | 4.98 | 1,097 | 21.5% | 17.7% | 13.6% | 150 | 7.8% | 140 | 0.0% | 1,724 | 0.70 | 151 | 30.1 | 0.64 | 307 | 1,222 | 20.6 | 37.2 | 2.10 |
-| Multi-family household | 6.01 | 773 | 41.7% | 36.4% | 21.1% | 326 | 16.8% | 130 | 0.1% | 1,642 | 0.94 | 25.7 | 13.3 | 0.88 | 80.3 | 478 | 66.1 | 18.6 | 5.49 |
+| Couple, no children | 4.34 | 606 | 14.5% | 5.1% | 12.8% | 98.3 | 5.1% | 157 | 0.0% | 1,402 | 0.79 | 72.2 | – | 0.70 | 147 | 635 | – | 101 | 15.0 |
+| Lone parent | 1.26 | 295 | 91.7% | 90.2% | 69.7% | 187 | 9.7% | 162 | 0.4% | 1,355 | 0.99 | 3.24 | 16.5 | 0.97 | 12.5 | 40.6 | – | 0.97 | 0.04 |
+| Couple with children | 4.98 | 1,097 | 21.5% | 17.7% | 13.6% | 150 | 7.8% | 140 | 0.0% | 1,724 | 0.70 | 151 | – | 0.64 | 307 | 1,222 | – | 37.2 | 2.10 |
+| Multi-family household | 6.01 | 773 | 41.7% | 36.4% | 21.1% | 326 | 16.8% | 130 | 0.1% | 1,642 | 0.94 | 25.7 | – | 0.88 | 80.3 | 478 | 66.1 | 18.6 | 5.49 |
 
 By AHC income decile (GB people):
 
@@ -1804,17 +1804,17 @@ By region:
 
 | Region | Households (m) | ESS | Eligible | Passported | Pass income test | Cost (GBP m) | Share of cost | Avg per recipient (GBP) | Gain, % net income | Mean bill (GBP) | In abs. BHC poverty, reached | In abs. BHC poverty, not reached (k) | People out of abs. BHC poverty (k) | In abs. AHC poverty, reached | In abs. AHC poverty, not reached (k) | Lowest-4-decile, not reached (k) | People out of rel. AHC poverty (k) | Within GBP 1k above top line (k) | Offset range (k) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| North East | 1.32 | 93.2 | 51.0% | 33.1% | 46.9% | 120 | 5.3% | 178 | 0.2% | 2,146 | 0.99 | 3.18 | 3.20 | 0.98 | 5.00 | 40.9 | 8.05 | 13.7 | 0.09 |
-| North West | 3.55 | 171 | 46.0% | 29.5% | 43.4% | 299 | 13.3% | 183 | 0.2% | 1,595 | 0.97 | 18.4 | 0.82 | 0.88 | 84.1 | 414 | 10.6 | 69.2 | 5.11 |
-| Yorkshire and the Humber | 2.59 | 153 | 45.0% | 27.9% | 40.2% | 205 | 9.1% | 176 | 0.2% | 1,918 | 0.97 | 13.7 | 2.94 | 0.96 | 20.5 | 219 | 4.40 | 20.1 | 1.70 |
-| East Midlands | 2.30 | 112 | 43.8% | 25.4% | 39.2% | 173 | 7.7% | 172 | 0.2% | 1,948 | 0.96 | 15.5 | 2.86 | 0.94 | 30.3 | 133 | 2.67 | 15.1 | 1.59 |
+| North East | 1.32 | 93.2 | 51.0% | 33.1% | 46.9% | 120 | 5.3% | 178 | 0.2% | 2,146 | 0.99 | 3.18 | 3.20 | 0.98 | 5.00 | 40.9 | – | 13.7 | 0.09 |
+| North West | 3.55 | 171 | 46.0% | 29.5% | 43.4% | 299 | 13.3% | 183 | 0.2% | 1,595 | 0.97 | 18.4 | – | 0.88 | 84.1 | 414 | 10.6 | 69.2 | 5.11 |
+| Yorkshire and the Humber | 2.59 | 153 | 45.0% | 27.9% | 40.2% | 205 | 9.1% | 176 | 0.2% | 1,918 | 0.97 | 13.7 | – | 0.96 | 20.5 | 219 | 4.40 | 20.1 | 1.70 |
+| East Midlands | 2.30 | 112 | 43.8% | 25.4% | 39.2% | 173 | 7.7% | 172 | 0.2% | 1,948 | 0.96 | 15.5 | – | 0.94 | 30.3 | 133 | 2.67 | 15.1 | 1.59 |
 | West Midlands | 2.71 | 79.7 | 43.1% | 23.5% | 39.9% | 212 | 9.4% | 181 | 0.2% | 1,401 | 0.85 | 80.6 | 3.80 | 0.81 | 128 | 251 | 2.90 | 12.4 | 0.43 |
-| East of England | 2.95 | 94.4 | 29.2% | 17.9% | 21.5% | 131 | 5.8% | 152 | 0.1% | 1,339 | 0.95 | 17.3 | 7.78 | 0.79 | 90.2 | 333 | 19.3 | 91.8 | 3.74 |
-| London | 3.98 | 120 | 41.3% | 31.1% | 32.9% | 282 | 12.6% | 172 | 0.1% | 1,085 | 0.89 | 54.4 | 6.03 | 0.85 | 119 | 391 | 13.3 | 19.0 | 0.65 |
+| East of England | 2.95 | 94.4 | 29.2% | 17.9% | 21.5% | 131 | 5.8% | 152 | 0.1% | 1,339 | 0.95 | 17.3 | 7.78 | 0.79 | 90.2 | 333 | – | 91.8 | 3.74 |
+| London | 3.98 | 120 | 41.3% | 31.1% | 32.9% | 282 | 12.6% | 172 | 0.1% | 1,085 | 0.89 | 54.4 | – | 0.85 | 119 | 391 | – | 19.0 | 0.65 |
 | South East | 4.28 | 95.1 | 39.1% | 23.0% | 34.7% | 286 | 12.7% | 171 | 0.1% | 1,573 | 0.90 | 72.4 | 7.97 | 0.76 | 247 | 521 | 5.03 | 45.5 | 2.13 |
 | South West | 2.78 | 118 | 40.9% | 25.4% | 36.1% | 199 | 8.9% | 176 | 0.1% | 1,317 | 0.97 | 14.7 | 14.0 | 0.95 | 30.4 | 182 | 3.31 | 21.7 | 1.70 |
-| Wales | 1.59 | 203 | 49.3% | 28.4% | 45.5% | 142 | 6.3% | 181 | 0.2% | 1,845 | 0.96 | 14.7 | 7.15 | 0.96 | 13.0 | 128 | 11.7 | 6.41 | 0.51 |
-| Scotland | 2.75 | 99.5 | 41.9% | 23.4% | 37.6% | 196 | 8.7% | 170 | 0.2% | 2,003 | 0.96 | 17.8 | 7.01 | 0.85 | 75.3 | 185 | 22.5 | 16.0 | 4.67 |
+| Wales | 1.59 | 203 | 49.3% | 28.4% | 45.5% | 142 | 6.3% | 181 | 0.2% | 1,845 | 0.96 | 14.7 | – | 0.96 | 13.0 | 128 | 11.7 | 6.41 | 0.51 |
+| Scotland | 2.75 | 99.5 | 41.9% | 23.4% | 37.6% | 196 | 8.7% | 170 | 0.2% | 2,003 | 0.96 | 17.8 | 7.01 | 0.85 | 75.3 | 185 | – | 16.0 | 4.67 |
 
 By household type:
 
@@ -1823,10 +1823,10 @@ By household type:
 | Single pensioner | 4.10 | 76.7 | 75.5% | 38.8% | 74.4% | 580 | 25.8% | 187 | 0.5% | 1,315 | 1.00 | 0.00 | 8.78 | 0.99 | 8.09 | 44.1 | 31.4 | 54.1 | 7.26 |
 | Pensioner couple | 3.90 | 232 | 32.7% | 5.9% | 32.0% | 201 | 8.9% | 157 | 0.1% | 2,366 | 0.93 | 22.1 | 13.4 | 0.97 | 7.89 | 216 | 7.86 | 95.9 | 6.76 |
 | Single, no children | 5.66 | 258 | 63.0% | 48.7% | 58.1% | 705 | 31.4% | 197 | 0.5% | 1,164 | 0.99 | 17.2 | 14.2 | 0.91 | 218 | 518 | 16.2 | 30.0 | 1.81 |
-| Couple, no children | 7.21 | 170 | 13.8% | 2.0% | 13.3% | 143 | 6.4% | 144 | 0.0% | 1,726 | 0.89 | 73.2 | 8.82 | 0.81 | 171 | 797 | 3.32 | 87.7 | 2.27 |
-| Lone parent | 2.13 | 314 | 94.4% | 92.4% | 74.5% | 360 | 16.0% | 179 | 0.5% | 741 | 0.99 | 4.14 | 12.4 | 0.99 | 6.86 | 28.5 | 13.4 | 1.85 | 0.25 |
-| Couple with children | 5.00 | 374 | 26.0% | 16.2% | 17.5% | 170 | 7.6% | 130 | 0.0% | 1,629 | 0.77 | 119 | 0.00 | 0.63 | 318 | 790 | 8.40 | 41.9 | 2.96 |
-| Multi-family household | 2.78 | 154 | 23.2% | 17.2% | 12.9% | 87.4 | 3.9% | 135 | 0.0% | 1,960 | 0.71 | 87.3 | 6.07 | 0.71 | 113 | 402 | 23.0 | 19.6 | 1.01 |
+| Couple, no children | 7.21 | 170 | 13.8% | 2.0% | 13.3% | 143 | 6.4% | 144 | 0.0% | 1,726 | 0.89 | 73.2 | 8.82 | 0.81 | 171 | 797 | – | 87.7 | 2.27 |
+| Lone parent | 2.13 | 314 | 94.4% | 92.4% | 74.5% | 360 | 16.0% | 179 | 0.5% | 741 | 0.99 | 4.14 | – | 0.99 | 6.86 | 28.5 | – | 1.85 | 0.25 |
+| Couple with children | 5.00 | 374 | 26.0% | 16.2% | 17.5% | 170 | 7.6% | 130 | 0.0% | 1,629 | 0.77 | 119 | 0.00 | 0.63 | 318 | 790 | – | 41.9 | 2.96 |
+| Multi-family household | 2.78 | 154 | 23.2% | 17.2% | 12.9% | 87.4 | 3.9% | 135 | 0.0% | 1,960 | 0.71 | 87.3 | – | 0.71 | 113 | 402 | – | 19.6 | 1.01 |
 
 By AHC income decile (GB people):
 
@@ -1848,7 +1848,7 @@ Poverty (people unless stated):
 | Measure | Group | Baseline rate | Reform rate | Change (pp) | Change (k) | Records crossing | ESS crossing |
 |---|---|---|---|---|---|---|---|
 | abs_pov_bhc | people | 14.4% | 14.3% | -0.09 | -63.6 | 112 | 26.6 |
-| abs_pov_bhc | children | 16.6% | 16.6% | -0.04 | -6.18 | <10 | 2.90 |
+| abs_pov_bhc | children | 16.6% | – | – | – | <10 | – |
 | abs_pov_bhc | working_age_adults | 14.2% | 14.2% | -0.09 | -35.5 | 38 | 13.4 |
 | abs_pov_bhc | pensioners | 12.3% | 12.1% | -0.18 | -21.9 | 81 | 30.5 |
 | abs_pov_ahc | people | 18.8% | 18.7% | -0.07 | -50.8 | 141 | 32.0 |
@@ -1860,7 +1860,7 @@ Poverty (people unless stated):
 | rel_pov_bhc | working_age_adults | 17.5% | 17.4% | -0.09 | -38.2 | 35 | 8.69 |
 | rel_pov_bhc | pensioners | 20.0% | 19.2% | -0.88 | -105 | 81 | 1.97 |
 | rel_pov_ahc | people | 22.7% | 22.6% | -0.15 | -104 | 122 | 10.8 |
-| rel_pov_ahc | children | 30.6% | 30.5% | -0.12 | -18.3 | <10 | 3.59 |
+| rel_pov_ahc | children | 30.6% | – | – | – | <10 | – |
 | rel_pov_ahc | working_age_adults | 21.9% | 21.8% | -0.11 | -46.4 | 42 | 6.71 |
 | rel_pov_ahc | pensioners | 15.6% | 15.3% | -0.33 | -38.9 | 83 | 5.26 |
 
@@ -1932,11 +1932,11 @@ By region:
 | Yorkshire and the Humber | 2.42 | 580 | 44.5% | 28.8% | 37.7% | 186 | 9.6% | 172 | 0.2% | 1,420 | 0.90 | 38.5 | 6.50 | 0.88 | 48.6 | 288 | 16.9 | 40.1 | 8.51 |
 | East Midlands | 2.13 | 335 | 42.3% | 24.8% | 35.9% | 150 | 7.7% | 166 | 0.1% | 1,463 | 0.88 | 33.4 | 4.45 | 0.83 | 56.3 | 315 | 26.1 | 27.1 | 15.8 |
 | West Midlands | 2.54 | 345 | 47.7% | 30.9% | 37.1% | 187 | 9.7% | 155 | 0.1% | 1,440 | 0.93 | 16.6 | 5.82 | 0.87 | 40.8 | 210 | 62.2 | 13.2 | 0.62 |
-| East of England | 2.76 | 508 | 35.4% | 21.3% | 29.2% | 155 | 8.0% | 159 | 0.1% | 1,431 | 0.97 | 8.75 | 2.39 | 0.85 | 57.6 | 248 | 8.02 | 21.8 | 2.35 |
-| London | 3.66 | 420 | 35.0% | 29.7% | 26.4% | 191 | 9.9% | 150 | 0.1% | 1,393 | 0.91 | 31.8 | 0.35 | 0.78 | 156 | 380 | 3.17 | 9.32 | 3.02 |
+| East of England | 2.76 | 508 | 35.4% | 21.3% | 29.2% | 155 | 8.0% | 159 | 0.1% | 1,431 | 0.97 | 8.75 | – | 0.85 | 57.6 | 248 | – | 21.8 | 2.35 |
+| London | 3.66 | 420 | 35.0% | 29.7% | 26.4% | 191 | 9.9% | 150 | 0.1% | 1,393 | 0.91 | 31.8 | – | 0.78 | 156 | 380 | – | 9.32 | 3.02 |
 | South East | 4.02 | 734 | 33.8% | 20.2% | 28.0% | 252 | 13.0% | 185 | 0.1% | 1,568 | 0.93 | 34.4 | 24.8 | 0.79 | 132 | 396 | 17.6 | 71.1 | 1.01 |
 | South West | 2.56 | 356 | 39.5% | 22.5% | 33.2% | 157 | 8.1% | 156 | 0.1% | 1,367 | 0.87 | 42.9 | 2.52 | 0.86 | 60.6 | 301 | 2.51 | 50.9 | 4.24 |
-| Wales | 1.40 | 463 | 46.1% | 29.1% | 37.7% | 97.2 | 5.0% | 151 | 0.2% | 1,357 | 0.96 | 10.4 | 1.62 | 0.94 | 14.3 | 175 | 1.90 | 8.86 | 1.41 |
+| Wales | 1.40 | 463 | 46.1% | 29.1% | 37.7% | 97.2 | 5.0% | 151 | 0.2% | 1,357 | 0.96 | 10.4 | – | 0.94 | 14.3 | 175 | – | 8.86 | 1.41 |
 | Scotland | 2.67 | 586 | 42.2% | 23.9% | 35.7% | 192 | 9.9% | 171 | 0.2% | 1,334 | 0.97 | 15.1 | 14.1 | 0.93 | 39.5 | 217 | 8.38 | 33.6 | 1.55 |
 
 By household type:
@@ -1946,9 +1946,9 @@ By household type:
 | Single pensioner | 3.94 | 1,024 | 61.8% | 34.2% | 60.9% | 384 | 19.8% | 158 | 0.3% | 1,126 | 1.00 | 0.14 | 6.36 | 0.96 | 24.0 | 53.8 | 30.0 | 51.9 | 4.72 |
 | Pensioner couple | 3.59 | 787 | 41.2% | 6.7% | 40.8% | 255 | 13.2% | 172 | 0.1% | 1,581 | 0.94 | 19.6 | 4.59 | 0.97 | 7.01 | 144 | 22.3 | 80.8 | 20.3 |
 | Single, no children | 4.55 | 574 | 52.9% | 33.7% | 51.8% | 412 | 21.3% | 171 | 0.3% | 1,064 | 0.98 | 24.4 | 8.80 | 0.91 | 126 | 386 | 19.2 | 41.9 | 1.02 |
-| Couple, no children | 4.34 | 606 | 14.5% | 5.1% | 12.8% | 112 | 5.8% | 178 | 0.0% | 1,402 | 0.79 | 72.2 | 5.44 | 0.70 | 147 | 635 | 3.13 | 101 | 15.2 |
+| Couple, no children | 4.34 | 606 | 14.5% | 5.1% | 12.8% | 112 | 5.8% | 178 | 0.0% | 1,402 | 0.79 | 72.2 | – | 0.70 | 147 | 635 | – | 101 | 15.2 |
 | Lone parent | 1.26 | 295 | 91.7% | 90.2% | 69.7% | 196 | 10.1% | 170 | 0.4% | 1,355 | 0.99 | 3.24 | 8.30 | 0.97 | 12.5 | 40.6 | 26.8 | 0.97 | 0.04 |
-| Couple with children | 4.98 | 1,097 | 21.5% | 17.7% | 13.6% | 209 | 10.8% | 196 | 0.1% | 1,724 | 0.70 | 151 | 37.1 | 0.64 | 307 | 1,222 | 20.6 | 37.2 | 2.57 |
+| Couple with children | 4.98 | 1,097 | 21.5% | 17.7% | 13.6% | 209 | 10.8% | 196 | 0.1% | 1,724 | 0.70 | 151 | – | 0.64 | 307 | 1,222 | – | 37.2 | 2.57 |
 | Multi-family household | 6.01 | 773 | 41.7% | 36.4% | 21.1% | 370 | 19.1% | 147 | 0.1% | 1,642 | 0.94 | 25.7 | 27.9 | 0.88 | 80.3 | 478 | 60.5 | 18.6 | 5.49 |
 
 By AHC income decile (GB people):
@@ -2048,17 +2048,17 @@ By region:
 
 | Region | Households (m) | ESS | Eligible | Passported | Pass income test | Cost (GBP m) | Share of cost | Avg per recipient (GBP) | Gain, % net income | Mean bill (GBP) | In abs. BHC poverty, reached | In abs. BHC poverty, not reached (k) | People out of abs. BHC poverty (k) | In abs. AHC poverty, reached | In abs. AHC poverty, not reached (k) | Lowest-4-decile, not reached (k) | People out of rel. AHC poverty (k) | Within GBP 1k above top line (k) | Offset range (k) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| North East | 1.32 | 93.2 | 51.0% | 33.1% | 46.9% | 187 | 8.3% | 299 | 0.3% | 2,146 | 0.90 | 26.1 | 2.93 | 0.88 | 35.0 | 88.1 | 1.27 | 13.7 | 0.09 |
+| North East | 1.32 | 93.2 | 51.0% | 33.1% | 46.9% | 187 | 8.3% | 299 | 0.3% | 2,146 | 0.90 | 26.1 | – | 0.88 | 35.0 | 88.1 | – | 13.7 | 0.09 |
 | North West | 3.55 | 171 | 46.0% | 29.5% | 43.4% | 339 | 15.1% | 229 | 0.2% | 1,595 | 0.86 | 82.9 | 2.94 | 0.76 | 165 | 519 | 3.68 | 69.2 | 3.94 |
-| Yorkshire and the Humber | 2.59 | 153 | 45.0% | 27.9% | 40.2% | 184 | 8.2% | 174 | 0.1% | 1,918 | 0.88 | 59.3 | 3.89 | 0.86 | 70.0 | 317 | 6.48 | 20.1 | 1.56 |
-| East Midlands | 2.30 | 112 | 43.8% | 25.4% | 39.2% | 177 | 7.9% | 211 | 0.2% | 1,948 | 0.80 | 83.8 | 6.18 | 0.75 | 124 | 294 | 7.37 | 15.1 | 3.86 |
+| Yorkshire and the Humber | 2.59 | 153 | 45.0% | 27.9% | 40.2% | 184 | 8.2% | 174 | 0.1% | 1,918 | 0.88 | 59.3 | – | 0.86 | 70.0 | 317 | 6.48 | 20.1 | 1.56 |
+| East Midlands | 2.30 | 112 | 43.8% | 25.4% | 39.2% | 177 | 7.9% | 211 | 0.2% | 1,948 | 0.80 | 83.8 | – | 0.75 | 124 | 294 | 7.37 | 15.1 | 3.86 |
 | West Midlands | 2.71 | 79.7 | 43.1% | 23.5% | 39.9% | 228 | 10.2% | 205 | 0.2% | 1,401 | 0.80 | 108 | 6.05 | 0.76 | 160 | 302 | 6.36 | 12.4 | 1.25 |
-| East of England | 2.95 | 94.4 | 29.2% | 17.9% | 21.5% | 101 | 4.5% | 134 | 0.1% | 1,339 | 0.90 | 33.9 | 7.86 | 0.75 | 111 | 425 | 3.34 | 91.8 | 4.25 |
-| London | 3.98 | 120 | 41.3% | 31.1% | 32.9% | 241 | 10.7% | 154 | 0.1% | 1,085 | 0.83 | 82.3 | 0.90 | 0.80 | 159 | 458 | 10.3 | 19.0 | 1.04 |
+| East of England | 2.95 | 94.4 | 29.2% | 17.9% | 21.5% | 101 | 4.5% | 134 | 0.1% | 1,339 | 0.90 | 33.9 | 7.86 | 0.75 | 111 | 425 | – | 91.8 | 4.25 |
+| London | 3.98 | 120 | 41.3% | 31.1% | 32.9% | 241 | 10.7% | 154 | 0.1% | 1,085 | 0.83 | 82.3 | – | 0.80 | 159 | 458 | – | 19.0 | 1.04 |
 | South East | 4.28 | 95.1 | 39.1% | 23.0% | 34.7% | 226 | 10.1% | 140 | 0.1% | 1,573 | 0.88 | 92.5 | 10.4 | 0.73 | 273 | 565 | 5.42 | 45.5 | 1.91 |
 | South West | 2.78 | 118 | 40.9% | 25.4% | 36.1% | 203 | 9.1% | 190 | 0.2% | 1,317 | 0.93 | 30.8 | 3.10 | 0.91 | 51.4 | 243 | 6.46 | 21.7 | 0.94 |
-| Wales | 1.59 | 203 | 49.3% | 28.4% | 45.5% | 167 | 7.4% | 239 | 0.2% | 1,845 | 0.88 | 44.0 | 6.26 | 0.87 | 46.9 | 186 | 0.88 | 6.41 | 3.91 |
-| Scotland | 2.75 | 99.5 | 41.9% | 23.4% | 37.6% | 191 | 8.5% | 183 | 0.2% | 2,003 | 0.88 | 55.6 | 4.73 | 0.78 | 110 | 293 | 0.32 | 16.0 | 6.43 |
+| Wales | 1.59 | 203 | 49.3% | 28.4% | 45.5% | 167 | 7.4% | 239 | 0.2% | 1,845 | 0.88 | 44.0 | – | 0.87 | 46.9 | 186 | 0.88 | 6.41 | 3.91 |
+| Scotland | 2.75 | 99.5 | 41.9% | 23.4% | 37.6% | 191 | 8.5% | 183 | 0.2% | 2,003 | 0.88 | 55.6 | 4.73 | 0.78 | 110 | 293 | – | 16.0 | 6.43 |
 
 By household type:
 
@@ -2067,10 +2067,10 @@ By household type:
 | Single pensioner | 4.10 | 76.7 | 75.5% | 38.8% | 74.4% | 648 | 28.9% | 220 | 0.6% | 1,315 | 0.95 | 41.8 | 10.9 | 0.94 | 49.0 | 139 | 17.4 | 54.1 | 6.74 |
 | Pensioner couple | 3.90 | 232 | 32.7% | 5.9% | 32.0% | 350 | 15.6% | 301 | 0.2% | 2,366 | 0.91 | 29.3 | 20.0 | 0.93 | 17.3 | 322 | 17.8 | 95.9 | 10.6 |
 | Single, no children | 5.66 | 258 | 63.0% | 48.7% | 58.1% | 547 | 24.4% | 170 | 0.4% | 1,164 | 0.88 | 235 | 5.07 | 0.80 | 467 | 853 | 4.64 | 30.0 | 1.80 |
-| Couple, no children | 7.21 | 170 | 13.8% | 2.0% | 13.3% | 204 | 9.1% | 215 | 0.0% | 1,726 | 0.85 | 95.8 | 6.27 | 0.78 | 202 | 837 | 3.32 | 87.7 | 5.28 |
-| Lone parent | 2.13 | 314 | 94.4% | 92.4% | 74.5% | 244 | 10.9% | 135 | 0.3% | 741 | 0.92 | 41.3 | 7.24 | 0.90 | 69.3 | 210 | 6.82 | 1.85 | 0.25 |
-| Couple with children | 5.00 | 374 | 26.0% | 16.2% | 17.5% | 157 | 7.0% | 131 | 0.0% | 1,629 | 0.72 | 143 | 1.42 | 0.58 | 356 | 885 | 0.05 | 41.9 | 2.96 |
-| Multi-family household | 2.78 | 154 | 23.2% | 17.2% | 12.9% | 94.8 | 4.2% | 161 | 0.0% | 1,960 | 0.63 | 113 | 4.35 | 0.64 | 144 | 445 | 1.82 | 19.6 | 1.56 |
+| Couple, no children | 7.21 | 170 | 13.8% | 2.0% | 13.3% | 204 | 9.1% | 215 | 0.0% | 1,726 | 0.85 | 95.8 | – | 0.78 | 202 | 837 | – | 87.7 | 5.28 |
+| Lone parent | 2.13 | 314 | 94.4% | 92.4% | 74.5% | 244 | 10.9% | 135 | 0.3% | 741 | 0.92 | 41.3 | – | 0.90 | 69.3 | 210 | – | 1.85 | 0.25 |
+| Couple with children | 5.00 | 374 | 26.0% | 16.2% | 17.5% | 157 | 7.0% | 131 | 0.0% | 1,629 | 0.72 | 143 | – | 0.58 | 356 | 885 | – | 41.9 | 2.96 |
+| Multi-family household | 2.78 | 154 | 23.2% | 17.2% | 12.9% | 94.8 | 4.2% | 161 | 0.0% | 1,960 | 0.63 | 113 | 4.35 | 0.64 | 144 | 445 | – | 19.6 | 1.56 |
 
 By AHC income decile (GB people):
 
@@ -2092,11 +2092,11 @@ Poverty (people unless stated):
 | Measure | Group | Baseline rate | Reform rate | Change (pp) | Change (k) | Records crossing | ESS crossing |
 |---|---|---|---|---|---|---|---|
 | abs_pov_bhc | people | 14.4% | 14.3% | -0.08 | -55.3 | 116 | 29.2 |
-| abs_pov_bhc | children | 16.6% | 16.6% | -0.03 | -4.33 | <10 | 2.65 |
+| abs_pov_bhc | children | 16.6% | – | – | – | <10 | – |
 | abs_pov_bhc | working_age_adults | 14.2% | 14.2% | -0.05 | -20.7 | 38 | 9.84 |
 | abs_pov_bhc | pensioners | 12.3% | 12.0% | -0.25 | -30.2 | 86 | 25.7 |
 | abs_pov_ahc | people | 18.8% | 18.7% | -0.12 | -82.3 | 145 | 4.86 |
-| abs_pov_ahc | children | 24.4% | 24.4% | -0.00 | -0.00 | <10 | 1.00 |
+| abs_pov_ahc | children | 24.4% | – | – | – | <10 | – |
 | abs_pov_ahc | working_age_adults | 19.0% | 18.9% | -0.04 | -15.3 | 49 | 14.2 |
 | abs_pov_ahc | pensioners | 11.1% | 10.5% | -0.56 | -67.0 | 108 | 3.26 |
 | rel_pov_bhc | people | 19.3% | 19.0% | -0.29 | -197 | 118 | 5.90 |
@@ -2104,7 +2104,7 @@ Poverty (people unless stated):
 | rel_pov_bhc | working_age_adults | 17.5% | 17.4% | -0.12 | -49.2 | 46 | 8.34 |
 | rel_pov_bhc | pensioners | 20.0% | 19.1% | -0.97 | -116 | 86 | 2.40 |
 | rel_pov_ahc | people | 22.7% | 22.7% | -0.08 | -51.9 | 146 | 32.1 |
-| rel_pov_ahc | children | 30.6% | 30.6% | -0.02 | -3.44 | <10 | 1.12 |
+| rel_pov_ahc | children | 30.6% | – | – | – | <10 | – |
 | rel_pov_ahc | working_age_adults | 21.9% | 21.9% | -0.03 | -13.7 | 48 | 11.8 |
 | rel_pov_ahc | pensioners | 15.6% | 15.3% | -0.29 | -34.7 | 105 | 33.9 |
 
@@ -2171,7 +2171,7 @@ By region:
 
 | Region | Households (m) | ESS | Eligible | Passported | Pass income test | Cost (GBP m) | Share of cost | Avg per recipient (GBP) | Gain, % net income | Mean bill (GBP) | In abs. BHC poverty, reached | In abs. BHC poverty, not reached (k) | People out of abs. BHC poverty (k) | In abs. AHC poverty, reached | In abs. AHC poverty, not reached (k) | Lowest-4-decile, not reached (k) | People out of rel. AHC poverty (k) | Within GBP 1k above top line (k) | Offset range (k) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| North East | 1.23 | 273 | 52.9% | 38.4% | 45.4% | 117 | 5.8% | 180 | 0.2% | 1,460 | 0.96 | 7.88 | 6.22 | 0.93 | 18.0 | 124 | 10.5 | 22.8 | 5.21 |
+| North East | 1.23 | 273 | 52.9% | 38.4% | 45.4% | 117 | 5.8% | 180 | 0.2% | 1,460 | 0.96 | 7.88 | 6.22 | 0.93 | 18.0 | 124 | – | 22.8 | 5.21 |
 | North West | 3.31 | 495 | 43.8% | 29.2% | 36.3% | 250 | 12.5% | 173 | 0.2% | 1,489 | 0.88 | 56.5 | 31.3 | 0.85 | 80.4 | 304 | 31.0 | 33.4 | 5.76 |
 | Yorkshire and the Humber | 2.42 | 580 | 44.5% | 28.8% | 37.7% | 191 | 9.5% | 177 | 0.2% | 1,420 | 0.90 | 38.5 | 7.12 | 0.88 | 48.6 | 288 | 13.9 | 40.1 | 8.85 |
 | East Midlands | 2.13 | 335 | 42.3% | 24.8% | 35.9% | 155 | 7.8% | 172 | 0.1% | 1,463 | 0.88 | 33.4 | 3.91 | 0.83 | 56.3 | 315 | 22.2 | 27.1 | 14.7 |
@@ -2190,10 +2190,10 @@ By household type:
 | Single pensioner | 3.94 | 1,024 | 61.8% | 34.2% | 60.9% | 468 | 23.4% | 192 | 0.4% | 1,126 | 1.00 | 0.14 | 13.3 | 0.96 | 24.0 | 53.8 | 38.1 | 51.9 | 11.1 |
 | Pensioner couple | 3.59 | 787 | 41.2% | 6.7% | 40.8% | 241 | 12.0% | 163 | 0.1% | 1,581 | 0.94 | 19.6 | 38.6 | 0.97 | 7.01 | 144 | 20.4 | 80.8 | 16.7 |
 | Single, no children | 4.55 | 574 | 52.9% | 33.7% | 51.8% | 505 | 25.2% | 210 | 0.4% | 1,064 | 0.98 | 24.4 | 14.4 | 0.91 | 126 | 386 | 22.3 | 41.9 | 2.14 |
-| Couple, no children | 4.34 | 606 | 14.5% | 5.1% | 12.8% | 101 | 5.1% | 162 | 0.0% | 1,402 | 0.79 | 72.2 | 3.80 | 0.70 | 147 | 635 | 1.86 | 101 | 15.0 |
+| Couple, no children | 4.34 | 606 | 14.5% | 5.1% | 12.8% | 101 | 5.1% | 162 | 0.0% | 1,402 | 0.79 | 72.2 | – | 0.70 | 147 | 635 | – | 101 | 15.0 |
 | Lone parent | 1.26 | 295 | 91.7% | 90.2% | 69.7% | 193 | 9.7% | 167 | 0.4% | 1,355 | 0.99 | 3.24 | 16.5 | 0.97 | 12.5 | 40.6 | 29.9 | 0.97 | 0.04 |
-| Couple with children | 4.98 | 1,097 | 21.5% | 17.7% | 13.6% | 155 | 7.8% | 145 | 0.0% | 1,724 | 0.70 | 151 | 30.1 | 0.64 | 307 | 1,222 | 20.6 | 37.2 | 2.10 |
-| Multi-family household | 6.01 | 773 | 41.7% | 36.4% | 21.1% | 337 | 16.8% | 134 | 0.1% | 1,642 | 0.94 | 25.7 | 13.3 | 0.88 | 80.3 | 478 | 66.1 | 18.6 | 5.49 |
+| Couple with children | 4.98 | 1,097 | 21.5% | 17.7% | 13.6% | 155 | 7.8% | 145 | 0.0% | 1,724 | 0.70 | 151 | – | 0.64 | 307 | 1,222 | – | 37.2 | 2.10 |
+| Multi-family household | 6.01 | 773 | 41.7% | 36.4% | 21.1% | 337 | 16.8% | 134 | 0.1% | 1,642 | 0.94 | 25.7 | – | 0.88 | 80.3 | 478 | 66.1 | 18.6 | 5.49 |
 
 By AHC income decile (GB people):
 
@@ -2292,17 +2292,17 @@ By region:
 
 | Region | Households (m) | ESS | Eligible | Passported | Pass income test | Cost (GBP m) | Share of cost | Avg per recipient (GBP) | Gain, % net income | Mean bill (GBP) | In abs. BHC poverty, reached | In abs. BHC poverty, not reached (k) | People out of abs. BHC poverty (k) | In abs. AHC poverty, reached | In abs. AHC poverty, not reached (k) | Lowest-4-decile, not reached (k) | People out of rel. AHC poverty (k) | Within GBP 1k above top line (k) | Offset range (k) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| North East | 1.32 | 93.2 | 51.0% | 33.1% | 46.9% | 107 | 5.3% | 159 | 0.2% | 2,146 | 0.99 | 3.18 | 2.92 | 0.98 | 5.00 | 40.9 | 8.05 | 13.7 | 0.09 |
-| North West | 3.55 | 171 | 46.0% | 29.5% | 43.4% | 266 | 13.3% | 163 | 0.2% | 1,595 | 0.97 | 18.4 | 0.82 | 0.88 | 84.1 | 414 | 10.1 | 69.2 | 4.66 |
-| Yorkshire and the Humber | 2.59 | 153 | 45.0% | 27.9% | 40.2% | 183 | 9.1% | 157 | 0.1% | 1,918 | 0.97 | 13.7 | 2.94 | 0.96 | 20.5 | 219 | 3.89 | 20.1 | 1.62 |
-| East Midlands | 2.30 | 112 | 43.8% | 25.4% | 39.2% | 154 | 7.7% | 153 | 0.1% | 1,948 | 0.96 | 15.5 | 2.50 | 0.94 | 30.3 | 133 | 2.66 | 15.1 | 1.59 |
+| North East | 1.32 | 93.2 | 51.0% | 33.1% | 46.9% | 107 | 5.3% | 159 | 0.2% | 2,146 | 0.99 | 3.18 | – | 0.98 | 5.00 | 40.9 | – | 13.7 | 0.09 |
+| North West | 3.55 | 171 | 46.0% | 29.5% | 43.4% | 266 | 13.3% | 163 | 0.2% | 1,595 | 0.97 | 18.4 | – | 0.88 | 84.1 | 414 | – | 69.2 | 4.66 |
+| Yorkshire and the Humber | 2.59 | 153 | 45.0% | 27.9% | 40.2% | 183 | 9.1% | 157 | 0.1% | 1,918 | 0.97 | 13.7 | – | 0.96 | 20.5 | 219 | 3.89 | 20.1 | 1.62 |
+| East Midlands | 2.30 | 112 | 43.8% | 25.4% | 39.2% | 154 | 7.7% | 153 | 0.1% | 1,948 | 0.96 | 15.5 | – | 0.94 | 30.3 | 133 | 2.66 | 15.1 | 1.59 |
 | West Midlands | 2.71 | 79.7 | 43.1% | 23.5% | 39.9% | 189 | 9.4% | 162 | 0.1% | 1,401 | 0.85 | 80.6 | 3.80 | 0.81 | 128 | 251 | 2.38 | 12.4 | 0.43 |
-| East of England | 2.95 | 94.4 | 29.2% | 17.9% | 21.5% | 117 | 5.8% | 136 | 0.1% | 1,339 | 0.95 | 17.3 | 7.06 | 0.79 | 90.2 | 333 | 19.3 | 91.8 | 3.37 |
-| London | 3.98 | 120 | 41.3% | 31.1% | 32.9% | 252 | 12.6% | 153 | 0.1% | 1,085 | 0.89 | 54.4 | 6.03 | 0.85 | 119 | 391 | 6.76 | 19.0 | 0.65 |
+| East of England | 2.95 | 94.4 | 29.2% | 17.9% | 21.5% | 117 | 5.8% | 136 | 0.1% | 1,339 | 0.95 | 17.3 | – | 0.79 | 90.2 | 333 | – | 91.8 | 3.37 |
+| London | 3.98 | 120 | 41.3% | 31.1% | 32.9% | 252 | 12.6% | 153 | 0.1% | 1,085 | 0.89 | 54.4 | – | 0.85 | 119 | 391 | – | 19.0 | 0.65 |
 | South East | 4.28 | 95.1 | 39.1% | 23.0% | 34.7% | 254 | 12.7% | 152 | 0.1% | 1,573 | 0.90 | 72.4 | 7.95 | 0.76 | 247 | 521 | 2.96 | 45.5 | 1.92 |
 | South West | 2.78 | 118 | 40.9% | 25.4% | 36.1% | 177 | 8.9% | 156 | 0.1% | 1,317 | 0.97 | 14.7 | 14.0 | 0.95 | 30.4 | 182 | 3.31 | 21.7 | 0.92 |
-| Wales | 1.59 | 203 | 49.3% | 28.4% | 45.5% | 126 | 6.3% | 161 | 0.2% | 1,845 | 0.96 | 14.7 | 7.04 | 0.96 | 13.0 | 128 | 7.96 | 6.41 | 0.51 |
-| Scotland | 2.75 | 99.5 | 41.9% | 23.4% | 37.6% | 175 | 8.7% | 151 | 0.1% | 2,003 | 0.96 | 17.8 | 6.23 | 0.85 | 75.3 | 185 | 22.5 | 16.0 | 4.67 |
+| Wales | 1.59 | 203 | 49.3% | 28.4% | 45.5% | 126 | 6.3% | 161 | 0.2% | 1,845 | 0.96 | 14.7 | – | 0.96 | 13.0 | 128 | 7.96 | 6.41 | 0.51 |
+| Scotland | 2.75 | 99.5 | 41.9% | 23.4% | 37.6% | 175 | 8.7% | 151 | 0.1% | 2,003 | 0.96 | 17.8 | 6.23 | 0.85 | 75.3 | 185 | – | 16.0 | 4.67 |
 
 By household type:
 
@@ -2311,10 +2311,10 @@ By household type:
 | Single pensioner | 4.10 | 76.7 | 75.5% | 38.8% | 74.4% | 517 | 25.8% | 167 | 0.5% | 1,315 | 1.00 | 0.00 | 8.04 | 0.99 | 8.09 | 44.1 | 27.9 | 54.1 | 7.05 |
 | Pensioner couple | 3.90 | 232 | 32.7% | 5.9% | 32.0% | 179 | 8.9% | 140 | 0.1% | 2,366 | 0.93 | 22.1 | 12.6 | 0.97 | 7.89 | 216 | 7.86 | 95.9 | 6.32 |
 | Single, no children | 5.66 | 258 | 63.0% | 48.7% | 58.1% | 628 | 31.4% | 176 | 0.5% | 1,164 | 0.99 | 17.2 | 14.2 | 0.91 | 218 | 518 | 12.5 | 30.0 | 1.03 |
-| Couple, no children | 7.21 | 170 | 13.8% | 2.0% | 13.3% | 128 | 6.4% | 128 | 0.0% | 1,726 | 0.89 | 73.2 | 8.04 | 0.81 | 171 | 797 | 3.32 | 87.7 | 2.27 |
-| Lone parent | 2.13 | 314 | 94.4% | 92.4% | 74.5% | 320 | 16.0% | 159 | 0.4% | 741 | 0.99 | 4.14 | 12.4 | 0.99 | 6.86 | 28.5 | 6.94 | 1.85 | 0.25 |
-| Couple with children | 5.00 | 374 | 26.0% | 16.2% | 17.5% | 151 | 7.6% | 116 | 0.0% | 1,629 | 0.77 | 119 | 0.00 | 0.63 | 318 | 790 | 8.40 | 41.9 | 2.96 |
-| Multi-family household | 2.78 | 154 | 23.2% | 17.2% | 12.9% | 77.9 | 3.9% | 120 | 0.0% | 1,960 | 0.71 | 87.3 | 6.07 | 0.71 | 113 | 402 | 23.0 | 19.6 | 0.56 |
+| Couple, no children | 7.21 | 170 | 13.8% | 2.0% | 13.3% | 128 | 6.4% | 128 | 0.0% | 1,726 | 0.89 | 73.2 | – | 0.81 | 171 | 797 | – | 87.7 | 2.27 |
+| Lone parent | 2.13 | 314 | 94.4% | 92.4% | 74.5% | 320 | 16.0% | 159 | 0.4% | 741 | 0.99 | 4.14 | – | 0.99 | 6.86 | 28.5 | – | 1.85 | 0.25 |
+| Couple with children | 5.00 | 374 | 26.0% | 16.2% | 17.5% | 151 | 7.6% | 116 | 0.0% | 1,629 | 0.77 | 119 | 0.00 | 0.63 | 318 | 790 | – | 41.9 | 2.96 |
+| Multi-family household | 2.78 | 154 | 23.2% | 17.2% | 12.9% | 77.9 | 3.9% | 120 | 0.0% | 1,960 | 0.71 | 87.3 | – | 0.71 | 113 | 402 | – | 19.6 | 0.56 |
 
 By AHC income decile (GB people):
 
@@ -2336,7 +2336,7 @@ Poverty (people unless stated):
 | Measure | Group | Baseline rate | Reform rate | Change (pp) | Change (k) | Records crossing | ESS crossing |
 |---|---|---|---|---|---|---|---|
 | abs_pov_bhc | people | 14.4% | 14.3% | -0.09 | -61.3 | 101 | 25.0 |
-| abs_pov_bhc | children | 16.6% | 16.6% | -0.04 | -6.18 | <10 | 2.90 |
+| abs_pov_bhc | children | 16.6% | – | – | – | <10 | – |
 | abs_pov_bhc | working_age_adults | 14.2% | 14.2% | -0.08 | -34.7 | 35 | 12.9 |
 | abs_pov_bhc | pensioners | 12.3% | 12.1% | -0.17 | -20.4 | 73 | 27.7 |
 | abs_pov_ahc | people | 18.8% | 18.7% | -0.06 | -38.3 | 120 | 41.8 |
@@ -2344,11 +2344,11 @@ Poverty (people unless stated):
 | abs_pov_ahc | working_age_adults | 19.0% | 18.9% | -0.03 | -13.9 | 42 | 9.41 |
 | abs_pov_ahc | pensioners | 11.1% | 10.9% | -0.20 | -24.4 | 90 | 45.6 |
 | rel_pov_bhc | people | 19.3% | 19.0% | -0.25 | -169 | 100 | 4.52 |
-| rel_pov_bhc | children | 23.6% | 23.4% | -0.20 | -30.7 | <10 | 3.67 |
+| rel_pov_bhc | children | 23.6% | – | – | – | <10 | – |
 | rel_pov_bhc | working_age_adults | 17.5% | 17.4% | -0.08 | -34.4 | 29 | 7.32 |
 | rel_pov_bhc | pensioners | 20.0% | 19.2% | -0.87 | -104 | 77 | 1.95 |
 | rel_pov_ahc | people | 22.7% | 22.6% | -0.13 | -89.9 | 109 | 8.64 |
-| rel_pov_ahc | children | 30.6% | 30.5% | -0.10 | -15.0 | <10 | 2.74 |
+| rel_pov_ahc | children | 30.6% | – | – | – | <10 | – |
 | rel_pov_ahc | working_age_adults | 21.9% | 21.9% | -0.10 | -39.5 | 39 | 5.25 |
 | rel_pov_ahc | pensioners | 15.6% | 15.3% | -0.30 | -35.4 | 73 | 4.41 |
 
@@ -2415,16 +2415,16 @@ By region:
 
 | Region | Households (m) | ESS | Eligible | Passported | Pass income test | Cost (GBP m) | Share of cost | Avg per recipient (GBP) | Gain, % net income | Mean bill (GBP) | In abs. BHC poverty, reached | In abs. BHC poverty, not reached (k) | People out of abs. BHC poverty (k) | In abs. AHC poverty, reached | In abs. AHC poverty, not reached (k) | Lowest-4-decile, not reached (k) | People out of rel. AHC poverty (k) | Within GBP 1k above top line (k) | Offset range (k) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| North East | 1.23 | 273 | 49.2% | 38.4% | 41.8% | 106 | 5.7% | 175 | 0.2% | 1,460 | 0.97 | 4.94 | 3.86 | 0.92 | 19.4 | 144 | 10.5 | 11.4 | 1.49 |
-| North West | 3.31 | 495 | 41.1% | 29.2% | 36.4% | 238 | 12.7% | 175 | 0.1% | 1,489 | 0.97 | 15.6 | 20.2 | 0.92 | 42.1 | 311 | 47.0 | 51.3 | 25.0 |
+| North East | 1.23 | 273 | 49.2% | 38.4% | 41.8% | 106 | 5.7% | 175 | 0.2% | 1,460 | 0.97 | 4.94 | 3.86 | 0.92 | 19.4 | 144 | – | 11.4 | 1.49 |
+| North West | 3.31 | 495 | 41.1% | 29.2% | 36.4% | 238 | 12.7% | 175 | 0.1% | 1,489 | 0.97 | 15.6 | – | 0.92 | 42.1 | 311 | 47.0 | 51.3 | 25.0 |
 | Yorkshire and the Humber | 2.42 | 580 | 42.0% | 28.8% | 36.7% | 178 | 9.5% | 175 | 0.2% | 1,420 | 0.99 | 2.38 | 5.78 | 0.94 | 24.0 | 284 | 30.4 | 16.2 | 2.39 |
 | East Midlands | 2.13 | 335 | 38.6% | 24.8% | 35.8% | 144 | 7.7% | 175 | 0.1% | 1,463 | 0.99 | 3.13 | 0.94 | 0.92 | 24.5 | 371 | 44.7 | 23.1 | 4.42 |
 | West Midlands | 2.54 | 345 | 41.3% | 30.9% | 33.5% | 183 | 9.8% | 175 | 0.1% | 1,440 | 0.98 | 5.10 | 11.5 | 0.93 | 22.6 | 301 | 63.2 | 25.8 | 1.68 |
-| East of England | 2.76 | 508 | 32.1% | 21.3% | 27.8% | 155 | 8.3% | 175 | 0.1% | 1,431 | 0.98 | 5.83 | 31.6 | 0.82 | 67.8 | 294 | 1.77 | 19.3 | 5.67 |
-| London | 3.66 | 420 | 34.8% | 29.7% | 27.7% | 223 | 11.9% | 175 | 0.1% | 1,393 | 0.96 | 14.5 | 4.11 | 0.81 | 136 | 380 | 6.78 | 5.64 | 0.39 |
+| East of England | 2.76 | 508 | 32.1% | 21.3% | 27.8% | 155 | 8.3% | 175 | 0.1% | 1,431 | 0.98 | 5.83 | 31.6 | 0.82 | 67.8 | 294 | – | 19.3 | 5.67 |
+| London | 3.66 | 420 | 34.8% | 29.7% | 27.7% | 223 | 11.9% | 175 | 0.1% | 1,393 | 0.96 | 14.5 | – | 0.81 | 136 | 380 | – | 5.64 | 0.39 |
 | South East | 4.02 | 734 | 29.1% | 20.2% | 24.4% | 205 | 11.0% | 175 | 0.1% | 1,568 | 0.91 | 41.9 | 5.00 | 0.78 | 135 | 515 | 26.2 | 42.0 | 12.4 |
 | South West | 2.56 | 356 | 34.6% | 22.5% | 29.8% | 155 | 8.3% | 175 | 0.1% | 1,367 | 0.90 | 35.6 | 10.8 | 0.87 | 53.7 | 386 | 2.39 | 20.7 | 2.77 |
-| Wales | 1.40 | 463 | 42.8% | 29.1% | 36.0% | 105 | 5.6% | 175 | 0.2% | 1,357 | 0.99 | 3.42 | 3.43 | 0.95 | 11.2 | 201 | 3.03 | 10.3 | 3.56 |
+| Wales | 1.40 | 463 | 42.8% | 29.1% | 36.0% | 105 | 5.6% | 175 | 0.2% | 1,357 | 0.99 | 3.42 | 3.43 | 0.95 | 11.2 | 201 | – | 10.3 | 3.56 |
 | Scotland | 2.67 | 586 | 38.1% | 23.9% | 33.1% | 178 | 9.5% | 175 | 0.1% | 1,334 | 0.99 | 3.04 | 16.4 | 0.91 | 46.4 | 305 | 9.98 | 19.8 | 6.03 |
 
 By household type:
@@ -2434,10 +2434,10 @@ By household type:
 | Single pensioner | 3.94 | 1,024 | 54.5% | 34.2% | 52.6% | 376 | 20.1% | 175 | 0.3% | 1,126 | 0.99 | 10.3 | 14.3 | 0.94 | 35.3 | 214 | 31.1 | 35.4 | 21.0 |
 | Pensioner couple | 3.59 | 787 | 26.1% | 6.7% | 25.3% | 164 | 8.8% | 175 | 0.1% | 1,581 | 0.99 | 3.54 | 35.4 | 0.95 | 12.3 | 435 | 42.7 | 49.9 | 16.1 |
 | Single, no children | 4.55 | 574 | 50.2% | 33.7% | 48.8% | 400 | 21.4% | 175 | 0.3% | 1,064 | 0.97 | 43.3 | 13.5 | 0.90 | 149 | 501 | 21.3 | 13.0 | 3.44 |
-| Couple, no children | 4.34 | 606 | 12.3% | 5.1% | 11.0% | 93.1 | 5.0% | 175 | 0.0% | 1,402 | 0.86 | 47.1 | 0.48 | 0.74 | 130 | 693 | 3.05 | 39.7 | 3.11 |
+| Couple, no children | 4.34 | 606 | 12.3% | 5.1% | 11.0% | 93.1 | 5.0% | 175 | 0.0% | 1,402 | 0.86 | 47.1 | – | 0.74 | 130 | 693 | – | 39.7 | 3.11 |
 | Lone parent | 1.26 | 295 | 92.1% | 90.2% | 80.8% | 203 | 10.9% | 175 | 0.4% | 1,355 | 1.00 | 0.89 | 7.99 | 0.98 | 8.61 | 35.5 | 60.8 | 0.05 | 0.00 |
 | Couple with children | 4.98 | 1,097 | 24.6% | 17.7% | 21.0% | 215 | 11.5% | 175 | 0.1% | 1,724 | 0.95 | 23.9 | 32.4 | 0.80 | 173 | 1,064 | 20.8 | 70.1 | 17.2 |
-| Multi-family household | 6.01 | 773 | 39.7% | 36.4% | 22.9% | 418 | 22.4% | 175 | 0.1% | 1,642 | 0.99 | 6.35 | 9.64 | 0.89 | 74.1 | 551 | 66.1 | 37.4 | 4.89 |
+| Multi-family household | 6.01 | 773 | 39.7% | 36.4% | 22.9% | 418 | 22.4% | 175 | 0.1% | 1,642 | 0.99 | 6.35 | – | 0.89 | 74.1 | 551 | 66.1 | 37.4 | 4.89 |
 
 By AHC income decile (GB people):
 
@@ -2536,17 +2536,17 @@ By region:
 
 | Region | Households (m) | ESS | Eligible | Passported | Pass income test | Cost (GBP m) | Share of cost | Avg per recipient (GBP) | Gain, % net income | Mean bill (GBP) | In abs. BHC poverty, reached | In abs. BHC poverty, not reached (k) | People out of abs. BHC poverty (k) | In abs. AHC poverty, reached | In abs. AHC poverty, not reached (k) | Lowest-4-decile, not reached (k) | People out of rel. AHC poverty (k) | Within GBP 1k above top line (k) | Offset range (k) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| North East | 1.32 | 93.2 | 47.9% | 33.1% | 45.3% | 111 | 5.4% | 175 | 0.2% | 2,146 | 0.99 | 2.09 | 3.53 | 0.98 | 7.37 | 64.6 | 7.62 | 2.53 | 0.00 |
-| North West | 3.55 | 171 | 43.0% | 29.5% | 40.8% | 267 | 13.1% | 175 | 0.2% | 1,595 | 0.99 | 3.20 | 4.51 | 0.97 | 24.2 | 478 | 15.0 | 21.1 | 5.38 |
-| Yorkshire and the Humber | 2.59 | 153 | 39.5% | 27.9% | 36.3% | 179 | 8.8% | 175 | 0.1% | 1,918 | 0.99 | 5.82 | 1.98 | 0.97 | 14.7 | 281 | 4.39 | 15.3 | 4.22 |
-| East Midlands | 2.30 | 112 | 36.2% | 25.4% | 33.6% | 145 | 7.1% | 175 | 0.1% | 1,948 | 0.99 | 4.40 | 2.34 | 0.95 | 23.2 | 180 | 3.73 | 24.7 | 0.95 |
+| North East | 1.32 | 93.2 | 47.9% | 33.1% | 45.3% | 111 | 5.4% | 175 | 0.2% | 2,146 | 0.99 | 2.09 | – | 0.98 | 7.37 | 64.6 | – | 2.53 | 0.00 |
+| North West | 3.55 | 171 | 43.0% | 29.5% | 40.8% | 267 | 13.1% | 175 | 0.2% | 1,595 | 0.99 | 3.20 | – | 0.97 | 24.2 | 478 | 15.0 | 21.1 | 5.38 |
+| Yorkshire and the Humber | 2.59 | 153 | 39.5% | 27.9% | 36.3% | 179 | 8.8% | 175 | 0.1% | 1,918 | 0.99 | 5.82 | – | 0.97 | 14.7 | 281 | 4.39 | 15.3 | 4.22 |
+| East Midlands | 2.30 | 112 | 36.2% | 25.4% | 33.6% | 145 | 7.1% | 175 | 0.1% | 1,948 | 0.99 | 4.40 | – | 0.95 | 23.2 | 180 | 3.73 | 24.7 | 0.95 |
 | West Midlands | 2.71 | 79.7 | 40.9% | 23.5% | 39.1% | 194 | 9.5% | 175 | 0.2% | 1,401 | 0.97 | 15.9 | 3.34 | 0.94 | 41.4 | 288 | 2.79 | 9.36 | 5.44 |
-| East of England | 2.95 | 94.4 | 26.3% | 17.9% | 20.2% | 136 | 6.6% | 175 | 0.1% | 1,339 | 0.99 | 3.66 | 7.52 | 0.79 | 90.6 | 382 | 19.0 | 57.7 | 5.99 |
-| London | 3.98 | 120 | 40.0% | 31.1% | 32.7% | 278 | 13.6% | 175 | 0.1% | 1,085 | 0.99 | 3.46 | 1.27 | 0.80 | 160 | 437 | 6.88 | 9.34 | 0.90 |
+| East of England | 2.95 | 94.4 | 26.3% | 17.9% | 20.2% | 136 | 6.6% | 175 | 0.1% | 1,339 | 0.99 | 3.66 | 7.52 | 0.79 | 90.6 | 382 | – | 57.7 | 5.99 |
+| London | 3.98 | 120 | 40.0% | 31.1% | 32.7% | 278 | 13.6% | 175 | 0.1% | 1,085 | 0.99 | 3.46 | – | 0.80 | 160 | 437 | – | 9.34 | 0.90 |
 | South East | 4.28 | 95.1 | 33.8% | 23.0% | 29.8% | 253 | 12.3% | 175 | 0.1% | 1,573 | 0.79 | 161 | 38.4 | 0.67 | 330 | 708 | 26.3 | 20.1 | 3.34 |
 | South West | 2.78 | 118 | 36.6% | 25.4% | 32.2% | 178 | 8.7% | 175 | 0.1% | 1,317 | 0.99 | 4.89 | 15.0 | 0.95 | 28.8 | 239 | 3.31 | 6.34 | 1.89 |
 | Wales | 1.59 | 203 | 46.7% | 28.4% | 43.6% | 130 | 6.3% | 175 | 0.2% | 1,845 | 0.98 | 8.74 | 7.23 | 0.97 | 11.1 | 147 | 7.98 | 7.07 | 2.36 |
-| Scotland | 2.75 | 99.5 | 36.3% | 23.4% | 33.2% | 175 | 8.5% | 175 | 0.1% | 2,003 | 0.97 | 13.3 | 8.03 | 0.85 | 76.6 | 260 | 22.5 | 40.2 | 35.4 |
+| Scotland | 2.75 | 99.5 | 36.3% | 23.4% | 33.2% | 175 | 8.5% | 175 | 0.1% | 2,003 | 0.97 | 13.3 | 8.03 | 0.85 | 76.6 | 260 | – | 40.2 | 35.4 |
 
 By household type:
 
@@ -2555,10 +2555,10 @@ By household type:
 | Single pensioner | 4.10 | 76.7 | 67.9% | 38.8% | 66.6% | 488 | 23.9% | 175 | 0.5% | 1,315 | 0.98 | 22.0 | 12.9 | 0.97 | 24.4 | 254 | 28.1 | 64.3 | 35.9 |
 | Pensioner couple | 3.90 | 232 | 19.6% | 5.9% | 18.9% | 134 | 6.5% | 175 | 0.1% | 2,366 | 0.97 | 7.95 | 11.5 | 0.97 | 7.87 | 468 | 9.32 | 47.9 | 8.25 |
 | Single, no children | 5.66 | 258 | 60.3% | 48.7% | 54.3% | 597 | 29.2% | 175 | 0.4% | 1,164 | 0.99 | 24.4 | 14.7 | 0.90 | 239 | 661 | 12.8 | 6.81 | 4.48 |
-| Couple, no children | 7.21 | 170 | 8.8% | 2.0% | 8.5% | 111 | 5.4% | 175 | 0.0% | 1,726 | 0.75 | 163 | 9.02 | 0.57 | 391 | 1,143 | 1.93 | 29.3 | 15.4 |
-| Lone parent | 2.13 | 314 | 94.3% | 92.4% | 77.5% | 351 | 17.2% | 175 | 0.5% | 741 | 1.00 | 0.71 | 7.30 | 0.99 | 4.63 | 26.6 | 12.0 | 0.66 | 0.28 |
-| Couple with children | 5.00 | 374 | 27.3% | 16.2% | 23.7% | 239 | 11.7% | 175 | 0.1% | 1,629 | 0.99 | 5.10 | 29.3 | 0.87 | 111 | 588 | 31.5 | 59.4 | 0.78 |
-| Multi-family household | 2.78 | 154 | 25.7% | 17.2% | 18.1% | 125 | 6.1% | 175 | 0.1% | 1,960 | 0.99 | 2.96 | 8.44 | 0.93 | 29.7 | 325 | 23.9 | 5.36 | 0.68 |
+| Couple, no children | 7.21 | 170 | 8.8% | 2.0% | 8.5% | 111 | 5.4% | 175 | 0.0% | 1,726 | 0.75 | 163 | 9.02 | 0.57 | 391 | 1,143 | – | 29.3 | 15.4 |
+| Lone parent | 2.13 | 314 | 94.3% | 92.4% | 77.5% | 351 | 17.2% | 175 | 0.5% | 741 | 1.00 | 0.71 | – | 0.99 | 4.63 | 26.6 | – | 0.66 | 0.28 |
+| Couple with children | 5.00 | 374 | 27.3% | 16.2% | 23.7% | 239 | 11.7% | 175 | 0.1% | 1,629 | 0.99 | 5.10 | – | 0.87 | 111 | 588 | – | 59.4 | 0.78 |
+| Multi-family household | 2.78 | 154 | 25.7% | 17.2% | 18.1% | 125 | 6.1% | 175 | 0.1% | 1,960 | 0.99 | 2.96 | 8.44 | 0.93 | 29.7 | 325 | – | 5.36 | 0.68 |
 
 By AHC income decile (GB people):
 
@@ -2580,11 +2580,11 @@ Poverty (people unless stated):
 | Measure | Group | Baseline rate | Reform rate | Change (pp) | Change (k) | Records crossing | ESS crossing |
 |---|---|---|---|---|---|---|---|
 | abs_pov_bhc | people | 14.4% | 14.3% | -0.14 | -93.1 | 132 | 8.97 |
-| abs_pov_bhc | children | 16.6% | 16.5% | -0.09 | -13.4 | <10 | 1.81 |
+| abs_pov_bhc | children | 16.6% | – | – | – | <10 | – |
 | abs_pov_bhc | working_age_adults | 14.2% | 14.1% | -0.14 | -55.7 | 56 | 6.74 |
 | abs_pov_bhc | pensioners | 12.3% | 12.1% | -0.20 | -24.0 | 85 | 30.2 |
 | abs_pov_ahc | people | 18.8% | 18.7% | -0.06 | -42.0 | 127 | 44.9 |
-| abs_pov_ahc | children | 24.4% | 24.4% | -0.00 | -0.72 | <10 | 1.12 |
+| abs_pov_ahc | children | 24.4% | – | – | – | <10 | – |
 | abs_pov_ahc | working_age_adults | 19.0% | 18.9% | -0.04 | -17.0 | 51 | 12.7 |
 | abs_pov_ahc | pensioners | 11.1% | 10.9% | -0.20 | -24.4 | 92 | 46.3 |
 | rel_pov_bhc | people | 19.3% | 19.0% | -0.27 | -187 | 95 | 5.43 |
@@ -2660,15 +2660,15 @@ By region:
 | Region | Households (m) | ESS | Eligible | Passported | Pass income test | Cost (GBP m) | Share of cost | Avg per recipient (GBP) | Gain, % net income | Mean bill (GBP) | In abs. BHC poverty, reached | In abs. BHC poverty, not reached (k) | People out of abs. BHC poverty (k) | In abs. AHC poverty, reached | In abs. AHC poverty, not reached (k) | Lowest-4-decile, not reached (k) | People out of rel. AHC poverty (k) | Within GBP 1k above top line (k) | Offset range (k) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | North East | 1.23 | 273 | 49.2% | 38.4% | 41.8% | 103 | 5.5% | 170 | 0.2% | 1,460 | 0.97 | 4.94 | 6.22 | 0.92 | 19.4 | 144 | 11.0 | 11.4 | 2.17 |
-| North West | 3.31 | 495 | 41.1% | 29.2% | 36.4% | 248 | 13.3% | 183 | 0.2% | 1,489 | 0.97 | 15.6 | 20.2 | 0.92 | 42.1 | 311 | 30.1 | 51.3 | 27.2 |
+| North West | 3.31 | 495 | 41.1% | 29.2% | 36.4% | 248 | 13.3% | 183 | 0.2% | 1,489 | 0.97 | 15.6 | – | 0.92 | 42.1 | 311 | 30.1 | 51.3 | 27.2 |
 | Yorkshire and the Humber | 2.42 | 580 | 42.0% | 28.8% | 36.7% | 175 | 9.3% | 172 | 0.1% | 1,420 | 0.99 | 2.38 | 7.61 | 0.94 | 24.0 | 284 | 29.9 | 16.2 | 1.40 |
 | East Midlands | 2.13 | 335 | 38.6% | 24.8% | 35.8% | 144 | 7.7% | 175 | 0.1% | 1,463 | 0.99 | 3.13 | 1.48 | 0.92 | 24.5 | 371 | 23.4 | 23.1 | 4.87 |
 | West Midlands | 2.54 | 345 | 41.3% | 30.9% | 33.5% | 190 | 10.2% | 181 | 0.1% | 1,440 | 0.98 | 5.10 | 11.6 | 0.93 | 22.6 | 301 | 48.6 | 25.8 | 2.36 |
-| East of England | 2.76 | 508 | 32.1% | 21.3% | 27.8% | 152 | 8.1% | 172 | 0.1% | 1,431 | 0.98 | 5.83 | 11.8 | 0.82 | 67.8 | 294 | 7.73 | 19.3 | 3.55 |
-| London | 3.66 | 420 | 34.8% | 29.7% | 27.7% | 219 | 11.7% | 172 | 0.1% | 1,393 | 0.96 | 14.5 | 0.71 | 0.81 | 136 | 380 | 3.09 | 5.64 | 2.98 |
+| East of England | 2.76 | 508 | 32.1% | 21.3% | 27.8% | 152 | 8.1% | 172 | 0.1% | 1,431 | 0.98 | 5.83 | 11.8 | 0.82 | 67.8 | 294 | – | 19.3 | 3.55 |
+| London | 3.66 | 420 | 34.8% | 29.7% | 27.7% | 219 | 11.7% | 172 | 0.1% | 1,393 | 0.96 | 14.5 | – | 0.81 | 136 | 380 | – | 5.64 | 2.98 |
 | South East | 4.02 | 734 | 29.1% | 20.2% | 24.4% | 229 | 12.2% | 195 | 0.1% | 1,568 | 0.91 | 41.9 | 6.42 | 0.78 | 135 | 515 | 24.7 | 42.0 | 10.9 |
 | South West | 2.56 | 356 | 34.6% | 22.5% | 29.8% | 145 | 7.7% | 164 | 0.1% | 1,367 | 0.90 | 35.6 | 3.43 | 0.87 | 53.7 | 386 | 1.78 | 20.7 | 4.29 |
-| Wales | 1.40 | 463 | 42.8% | 29.1% | 36.0% | 93.5 | 5.0% | 157 | 0.1% | 1,357 | 0.99 | 3.42 | 1.30 | 0.95 | 11.2 | 201 | 1.63 | 10.3 | 4.07 |
+| Wales | 1.40 | 463 | 42.8% | 29.1% | 36.0% | 93.5 | 5.0% | 157 | 0.1% | 1,357 | 0.99 | 3.42 | – | 0.95 | 11.2 | 201 | – | 10.3 | 4.07 |
 | Scotland | 2.67 | 586 | 38.1% | 23.9% | 33.1% | 170 | 9.1% | 168 | 0.1% | 1,334 | 0.99 | 3.04 | 13.8 | 0.91 | 46.4 | 305 | 10.3 | 19.8 | 5.70 |
 
 By household type:
@@ -2678,8 +2678,8 @@ By household type:
 | Single pensioner | 3.94 | 1,024 | 54.5% | 34.2% | 52.6% | 303 | 16.2% | 141 | 0.3% | 1,126 | 0.99 | 10.3 | 6.58 | 0.94 | 35.3 | 214 | 22.9 | 35.4 | 18.1 |
 | Pensioner couple | 3.59 | 787 | 26.1% | 6.7% | 25.3% | 172 | 9.2% | 183 | 0.1% | 1,581 | 0.99 | 3.54 | 4.62 | 0.95 | 12.3 | 435 | 40.1 | 49.9 | 19.7 |
 | Single, no children | 4.55 | 574 | 50.2% | 33.7% | 48.8% | 317 | 17.0% | 139 | 0.2% | 1,064 | 0.97 | 43.3 | 16.5 | 0.90 | 149 | 501 | 17.5 | 13.0 | 3.20 |
-| Couple, no children | 4.34 | 606 | 12.3% | 5.1% | 11.0% | 99.3 | 5.3% | 187 | 0.0% | 1,402 | 0.86 | 47.1 | 2.12 | 0.74 | 130 | 693 | 1.43 | 39.7 | 3.50 |
-| Lone parent | 1.26 | 295 | 92.1% | 90.2% | 80.8% | 203 | 10.9% | 175 | 0.4% | 1,355 | 1.00 | 0.89 | 8.10 | 0.98 | 8.61 | 35.5 | 14.1 | 0.05 | 0.00 |
+| Couple, no children | 4.34 | 606 | 12.3% | 5.1% | 11.0% | 99.3 | 5.3% | 187 | 0.0% | 1,402 | 0.86 | 47.1 | – | 0.74 | 130 | 693 | – | 39.7 | 3.50 |
+| Lone parent | 1.26 | 295 | 92.1% | 90.2% | 80.8% | 203 | 10.9% | 175 | 0.4% | 1,355 | 1.00 | 0.89 | 8.10 | 0.98 | 8.61 | 35.5 | – | 0.05 | 0.00 |
 | Couple with children | 4.98 | 1,097 | 24.6% | 17.7% | 21.0% | 283 | 15.1% | 230 | 0.1% | 1,724 | 0.95 | 23.9 | 36.6 | 0.80 | 173 | 1,064 | 25.9 | 70.1 | 20.1 |
 | Multi-family household | 6.01 | 773 | 39.7% | 36.4% | 22.9% | 492 | 26.3% | 206 | 0.1% | 1,642 | 0.99 | 6.35 | 10.2 | 0.89 | 74.1 | 551 | 70.3 | 37.4 | 4.89 |
 
@@ -2780,17 +2780,17 @@ By region:
 
 | Region | Households (m) | ESS | Eligible | Passported | Pass income test | Cost (GBP m) | Share of cost | Avg per recipient (GBP) | Gain, % net income | Mean bill (GBP) | In abs. BHC poverty, reached | In abs. BHC poverty, not reached (k) | People out of abs. BHC poverty (k) | In abs. AHC poverty, reached | In abs. AHC poverty, not reached (k) | Lowest-4-decile, not reached (k) | People out of rel. AHC poverty (k) | Within GBP 1k above top line (k) | Offset range (k) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| North East | 1.32 | 93.2 | 47.9% | 33.1% | 45.3% | 185 | 9.0% | 316 | 0.3% | 2,146 | 0.90 | 25.0 | 3.55 | 0.87 | 37.4 | 112 | 0.99 | 2.53 | 0.71 |
-| North West | 3.55 | 171 | 43.0% | 29.5% | 40.8% | 315 | 15.4% | 229 | 0.2% | 1,595 | 0.89 | 68.1 | 4.46 | 0.85 | 105 | 580 | 12.4 | 21.1 | 4.49 |
+| North East | 1.32 | 93.2 | 47.9% | 33.1% | 45.3% | 185 | 9.0% | 316 | 0.3% | 2,146 | 0.90 | 25.0 | 3.55 | 0.87 | 37.4 | 112 | – | 2.53 | 0.71 |
+| North West | 3.55 | 171 | 43.0% | 29.5% | 40.8% | 315 | 15.4% | 229 | 0.2% | 1,595 | 0.89 | 68.1 | 4.46 | 0.85 | 105 | 580 | – | 21.1 | 4.49 |
 | Yorkshire and the Humber | 2.59 | 153 | 39.5% | 27.9% | 36.3% | 161 | 7.9% | 175 | 0.1% | 1,918 | 0.90 | 52.0 | 4.35 | 0.87 | 64.4 | 377 | 5.15 | 15.3 | 5.04 |
-| East Midlands | 2.30 | 112 | 36.2% | 25.4% | 33.6% | 136 | 6.6% | 204 | 0.1% | 1,948 | 0.83 | 72.7 | 7.36 | 0.76 | 117 | 338 | 7.77 | 24.7 | 8.27 |
+| East Midlands | 2.30 | 112 | 36.2% | 25.4% | 33.6% | 136 | 6.6% | 204 | 0.1% | 1,948 | 0.83 | 72.7 | – | 0.76 | 117 | 338 | 7.77 | 24.7 | 8.27 |
 | West Midlands | 2.71 | 79.7 | 40.9% | 23.5% | 39.1% | 232 | 11.4% | 220 | 0.2% | 1,401 | 0.92 | 43.2 | 8.53 | 0.89 | 73.3 | 339 | 4.79 | 9.36 | 3.71 |
 | East of England | 2.95 | 94.4 | 26.3% | 17.9% | 20.2% | 106 | 5.2% | 156 | 0.1% | 1,339 | 0.94 | 20.2 | 7.91 | 0.75 | 111 | 471 | 6.32 | 57.7 | 5.82 |
-| London | 3.98 | 120 | 40.0% | 31.1% | 32.7% | 234 | 11.5% | 155 | 0.1% | 1,085 | 0.93 | 32.1 | 1.35 | 0.75 | 201 | 504 | 4.68 | 9.34 | 0.67 |
+| London | 3.98 | 120 | 40.0% | 31.1% | 32.7% | 234 | 11.5% | 155 | 0.1% | 1,085 | 0.93 | 32.1 | – | 0.75 | 201 | 504 | – | 9.34 | 0.67 |
 | South East | 4.28 | 95.1 | 33.8% | 23.0% | 29.8% | 193 | 9.4% | 138 | 0.1% | 1,573 | 0.76 | 181 | 41.8 | 0.65 | 356 | 751 | 28.0 | 20.1 | 12.1 |
 | South West | 2.78 | 118 | 36.6% | 25.4% | 32.2% | 171 | 8.4% | 180 | 0.1% | 1,317 | 0.95 | 21.3 | 12.5 | 0.91 | 49.7 | 299 | 4.99 | 6.34 | 2.08 |
-| Wales | 1.59 | 203 | 46.7% | 28.4% | 43.6% | 162 | 7.9% | 246 | 0.2% | 1,845 | 0.89 | 40.4 | 6.07 | 0.86 | 47.1 | 208 | 0.69 | 7.07 | 9.17 |
-| Scotland | 2.75 | 99.5 | 36.3% | 23.4% | 33.2% | 151 | 7.4% | 171 | 0.1% | 2,003 | 0.89 | 51.3 | 6.31 | 0.78 | 111 | 368 | 22.2 | 40.2 | 35.4 |
+| Wales | 1.59 | 203 | 46.7% | 28.4% | 43.6% | 162 | 7.9% | 246 | 0.2% | 1,845 | 0.89 | 40.4 | – | 0.86 | 47.1 | 208 | 0.69 | 7.07 | 9.17 |
+| Scotland | 2.75 | 99.5 | 36.3% | 23.4% | 33.2% | 151 | 7.4% | 171 | 0.1% | 2,003 | 0.89 | 51.3 | 6.31 | 0.78 | 111 | 368 | – | 40.2 | 35.4 |
 
 By household type:
 
@@ -2799,9 +2799,9 @@ By household type:
 | Single pensioner | 4.10 | 76.7 | 67.9% | 38.8% | 66.6% | 578 | 28.2% | 219 | 0.5% | 1,315 | 0.93 | 63.8 | 12.3 | 0.93 | 64.4 | 345 | 13.6 | 64.3 | 34.4 |
 | Pensioner couple | 3.90 | 232 | 19.6% | 5.9% | 18.9% | 228 | 11.2% | 345 | 0.1% | 2,366 | 0.95 | 15.6 | 21.4 | 0.93 | 16.8 | 568 | 23.0 | 47.9 | 33.1 |
 | Single, no children | 5.66 | 258 | 60.3% | 48.7% | 54.3% | 444 | 21.7% | 145 | 0.3% | 1,164 | 0.88 | 242 | 13.0 | 0.79 | 489 | 992 | 2.22 | 6.81 | 1.87 |
-| Couple, no children | 7.21 | 170 | 8.8% | 2.0% | 8.5% | 174 | 8.5% | 295 | 0.0% | 1,726 | 0.72 | 185 | 7.24 | 0.53 | 421 | 1,181 | 2.20 | 29.3 | 15.9 |
-| Lone parent | 2.13 | 314 | 94.3% | 92.4% | 77.5% | 226 | 11.0% | 125 | 0.3% | 741 | 0.93 | 37.9 | 9.09 | 0.91 | 67.1 | 208 | 0.19 | 0.66 | 0.43 |
-| Couple with children | 5.00 | 374 | 27.3% | 16.2% | 23.7% | 239 | 11.7% | 189 | 0.1% | 1,629 | 0.94 | 30.4 | 31.9 | 0.82 | 151 | 683 | 31.5 | 59.4 | 0.66 |
+| Couple, no children | 7.21 | 170 | 8.8% | 2.0% | 8.5% | 174 | 8.5% | 295 | 0.0% | 1,726 | 0.72 | 185 | 7.24 | 0.53 | 421 | 1,181 | – | 29.3 | 15.9 |
+| Lone parent | 2.13 | 314 | 94.3% | 92.4% | 77.5% | 226 | 11.0% | 125 | 0.3% | 741 | 0.93 | 37.9 | – | 0.91 | 67.1 | 208 | – | 0.66 | 0.43 |
+| Couple with children | 5.00 | 374 | 27.3% | 16.2% | 23.7% | 239 | 11.7% | 189 | 0.1% | 1,629 | 0.94 | 30.4 | – | 0.82 | 151 | 683 | – | 59.4 | 0.66 |
 | Multi-family household | 2.78 | 154 | 25.7% | 17.2% | 18.1% | 157 | 7.7% | 240 | 0.1% | 1,960 | 0.90 | 31.7 | 9.18 | 0.84 | 63.9 | 372 | 25.4 | 5.36 | 1.19 |
 
 By AHC income decile (GB people):
@@ -2828,7 +2828,7 @@ Poverty (people unless stated):
 | abs_pov_bhc | working_age_adults | 14.2% | 14.1% | -0.14 | -55.8 | 75 | 6.91 |
 | abs_pov_bhc | pensioners | 12.3% | 12.0% | -0.27 | -32.0 | 94 | 27.8 |
 | abs_pov_ahc | people | 18.8% | 18.7% | -0.12 | -79.5 | 122 | 4.52 |
-| abs_pov_ahc | children | 24.4% | 24.4% | -0.01 | -1.33 | <10 | 2.23 |
+| abs_pov_ahc | children | 24.4% | – | – | – | <10 | – |
 | abs_pov_ahc | working_age_adults | 19.0% | 18.9% | -0.04 | -16.7 | 50 | 15.7 |
 | abs_pov_ahc | pensioners | 11.1% | 10.6% | -0.51 | -61.4 | 88 | 2.74 |
 | rel_pov_bhc | people | 19.3% | 19.0% | -0.26 | -180 | 104 | 5.14 |
@@ -2836,7 +2836,7 @@ Poverty (people unless stated):
 | rel_pov_bhc | working_age_adults | 17.5% | 17.4% | -0.13 | -51.6 | 46 | 7.68 |
 | rel_pov_bhc | pensioners | 20.0% | 19.2% | -0.87 | -103 | 74 | 1.94 |
 | rel_pov_ahc | people | 22.7% | 22.6% | -0.14 | -98.1 | 128 | 8.53 |
-| rel_pov_ahc | children | 30.6% | 30.4% | -0.17 | -25.5 | <10 | 2.48 |
+| rel_pov_ahc | children | 30.6% | – | – | – | <10 | – |
 | rel_pov_ahc | working_age_adults | 21.9% | 21.9% | -0.09 | -37.4 | 48 | 4.37 |
 | rel_pov_ahc | pensioners | 15.6% | 15.3% | -0.29 | -35.2 | 93 | 30.6 |
 
@@ -2903,16 +2903,16 @@ By region:
 
 | Region | Households (m) | ESS | Eligible | Passported | Pass income test | Cost (GBP m) | Share of cost | Avg per recipient (GBP) | Gain, % net income | Mean bill (GBP) | In abs. BHC poverty, reached | In abs. BHC poverty, not reached (k) | People out of abs. BHC poverty (k) | In abs. AHC poverty, reached | In abs. AHC poverty, not reached (k) | Lowest-4-decile, not reached (k) | People out of rel. AHC poverty (k) | Within GBP 1k above top line (k) | Offset range (k) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| North East | 1.23 | 273 | 49.2% | 38.4% | 41.8% | 113 | 5.7% | 187 | 0.2% | 1,460 | 0.97 | 4.94 | 4.04 | 0.92 | 19.4 | 144 | 10.5 | 11.4 | 1.49 |
-| North West | 3.31 | 495 | 41.1% | 29.2% | 36.4% | 254 | 12.7% | 187 | 0.2% | 1,489 | 0.97 | 15.6 | 20.3 | 0.92 | 42.1 | 311 | 48.2 | 51.3 | 25.5 |
+| North East | 1.23 | 273 | 49.2% | 38.4% | 41.8% | 113 | 5.7% | 187 | 0.2% | 1,460 | 0.97 | 4.94 | 4.04 | 0.92 | 19.4 | 144 | – | 11.4 | 1.49 |
+| North West | 3.31 | 495 | 41.1% | 29.2% | 36.4% | 254 | 12.7% | 187 | 0.2% | 1,489 | 0.97 | 15.6 | – | 0.92 | 42.1 | 311 | 48.2 | 51.3 | 25.5 |
 | Yorkshire and the Humber | 2.42 | 580 | 42.0% | 28.8% | 36.7% | 191 | 9.5% | 187 | 0.2% | 1,420 | 0.99 | 2.38 | 7.71 | 0.94 | 24.0 | 284 | 30.4 | 16.2 | 2.39 |
 | East Midlands | 2.13 | 335 | 38.6% | 24.8% | 35.8% | 154 | 7.7% | 187 | 0.1% | 1,463 | 0.99 | 3.13 | 0.94 | 0.92 | 24.5 | 371 | 44.7 | 23.1 | 4.42 |
 | West Midlands | 2.54 | 345 | 41.3% | 30.9% | 33.5% | 196 | 9.8% | 187 | 0.2% | 1,440 | 0.98 | 5.10 | 11.5 | 0.93 | 22.6 | 301 | 63.2 | 25.8 | 1.68 |
-| East of England | 2.76 | 508 | 32.1% | 21.3% | 27.8% | 166 | 8.3% | 187 | 0.1% | 1,431 | 0.98 | 5.83 | 31.6 | 0.82 | 67.8 | 294 | 1.83 | 19.3 | 5.67 |
-| London | 3.66 | 420 | 34.8% | 29.7% | 27.7% | 238 | 11.9% | 187 | 0.1% | 1,393 | 0.96 | 14.5 | 8.84 | 0.81 | 136 | 380 | 6.78 | 5.64 | 0.39 |
+| East of England | 2.76 | 508 | 32.1% | 21.3% | 27.8% | 166 | 8.3% | 187 | 0.1% | 1,431 | 0.98 | 5.83 | 31.6 | 0.82 | 67.8 | 294 | – | 19.3 | 5.67 |
+| London | 3.66 | 420 | 34.8% | 29.7% | 27.7% | 238 | 11.9% | 187 | 0.1% | 1,393 | 0.96 | 14.5 | 8.84 | 0.81 | 136 | 380 | – | 5.64 | 0.39 |
 | South East | 4.02 | 734 | 29.1% | 20.2% | 24.4% | 219 | 11.0% | 187 | 0.1% | 1,568 | 0.91 | 41.9 | 5.59 | 0.78 | 135 | 515 | 27.3 | 42.0 | 12.4 |
 | South West | 2.56 | 356 | 34.6% | 22.5% | 29.8% | 166 | 8.3% | 187 | 0.1% | 1,367 | 0.90 | 35.6 | 10.9 | 0.87 | 53.7 | 386 | 2.39 | 20.7 | 2.77 |
-| Wales | 1.40 | 463 | 42.8% | 29.1% | 36.0% | 112 | 5.6% | 187 | 0.2% | 1,357 | 0.99 | 3.42 | 3.43 | 0.95 | 11.2 | 201 | 3.03 | 10.3 | 3.56 |
+| Wales | 1.40 | 463 | 42.8% | 29.1% | 36.0% | 112 | 5.6% | 187 | 0.2% | 1,357 | 0.99 | 3.42 | 3.43 | 0.95 | 11.2 | 201 | – | 10.3 | 3.56 |
 | Scotland | 2.67 | 586 | 38.1% | 23.9% | 33.1% | 190 | 9.5% | 187 | 0.2% | 1,334 | 0.99 | 3.04 | 18.0 | 0.91 | 46.4 | 305 | 10.4 | 19.8 | 6.03 |
 
 By household type:
@@ -2922,10 +2922,10 @@ By household type:
 | Single pensioner | 3.94 | 1,024 | 54.5% | 34.2% | 52.6% | 402 | 20.1% | 187 | 0.4% | 1,126 | 0.99 | 10.3 | 14.6 | 0.94 | 35.3 | 214 | 32.9 | 35.4 | 21.0 |
 | Pensioner couple | 3.59 | 787 | 26.1% | 6.7% | 25.3% | 176 | 8.8% | 187 | 0.1% | 1,581 | 0.99 | 3.54 | 38.9 | 0.95 | 12.3 | 435 | 42.7 | 49.9 | 16.1 |
 | Single, no children | 4.55 | 574 | 50.2% | 33.7% | 48.8% | 428 | 21.4% | 187 | 0.3% | 1,064 | 0.97 | 43.3 | 15.8 | 0.90 | 149 | 501 | 21.3 | 13.0 | 4.03 |
-| Couple, no children | 4.34 | 606 | 12.3% | 5.1% | 11.0% | 99.7 | 5.0% | 187 | 0.0% | 1,402 | 0.86 | 47.1 | 0.48 | 0.74 | 130 | 693 | 3.05 | 39.7 | 3.11 |
+| Couple, no children | 4.34 | 606 | 12.3% | 5.1% | 11.0% | 99.7 | 5.0% | 187 | 0.0% | 1,402 | 0.86 | 47.1 | – | 0.74 | 130 | 693 | – | 39.7 | 3.11 |
 | Lone parent | 1.26 | 295 | 92.1% | 90.2% | 80.8% | 217 | 10.9% | 187 | 0.4% | 1,355 | 1.00 | 0.89 | 11.0 | 0.98 | 8.61 | 35.5 | 60.8 | 0.05 | 0.00 |
 | Couple with children | 4.98 | 1,097 | 24.6% | 17.7% | 21.0% | 230 | 11.5% | 187 | 0.1% | 1,724 | 0.95 | 23.9 | 32.4 | 0.80 | 173 | 1,064 | 21.9 | 70.1 | 17.2 |
-| Multi-family household | 6.01 | 773 | 39.7% | 36.4% | 22.9% | 447 | 22.4% | 187 | 0.1% | 1,642 | 0.99 | 6.35 | 9.64 | 0.89 | 74.1 | 551 | 66.1 | 37.4 | 4.89 |
+| Multi-family household | 6.01 | 773 | 39.7% | 36.4% | 22.9% | 447 | 22.4% | 187 | 0.1% | 1,642 | 0.99 | 6.35 | – | 0.89 | 74.1 | 551 | 66.1 | 37.4 | 4.89 |
 
 By AHC income decile (GB people):
 
@@ -3024,17 +3024,17 @@ By region:
 
 | Region | Households (m) | ESS | Eligible | Passported | Pass income test | Cost (GBP m) | Share of cost | Avg per recipient (GBP) | Gain, % net income | Mean bill (GBP) | In abs. BHC poverty, reached | In abs. BHC poverty, not reached (k) | People out of abs. BHC poverty (k) | In abs. AHC poverty, reached | In abs. AHC poverty, not reached (k) | Lowest-4-decile, not reached (k) | People out of rel. AHC poverty (k) | Within GBP 1k above top line (k) | Offset range (k) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| North East | 1.32 | 93.2 | 47.9% | 33.1% | 45.3% | 108 | 5.4% | 171 | 0.2% | 2,146 | 0.99 | 2.09 | 3.53 | 0.98 | 7.37 | 64.6 | 7.62 | 2.53 | 0.00 |
-| North West | 3.55 | 171 | 43.0% | 29.5% | 40.8% | 261 | 13.1% | 171 | 0.2% | 1,595 | 0.99 | 3.20 | 4.51 | 0.97 | 24.2 | 478 | 15.0 | 21.1 | 5.38 |
-| Yorkshire and the Humber | 2.59 | 153 | 39.5% | 27.9% | 36.3% | 175 | 8.8% | 171 | 0.1% | 1,918 | 0.99 | 5.82 | 1.98 | 0.97 | 14.7 | 281 | 4.39 | 15.3 | 4.22 |
-| East Midlands | 2.30 | 112 | 36.2% | 25.4% | 33.6% | 142 | 7.1% | 171 | 0.1% | 1,948 | 0.99 | 4.40 | 2.34 | 0.95 | 23.2 | 180 | 3.73 | 24.7 | 0.95 |
+| North East | 1.32 | 93.2 | 47.9% | 33.1% | 45.3% | 108 | 5.4% | 171 | 0.2% | 2,146 | 0.99 | 2.09 | – | 0.98 | 7.37 | 64.6 | – | 2.53 | 0.00 |
+| North West | 3.55 | 171 | 43.0% | 29.5% | 40.8% | 261 | 13.1% | 171 | 0.2% | 1,595 | 0.99 | 3.20 | – | 0.97 | 24.2 | 478 | 15.0 | 21.1 | 5.38 |
+| Yorkshire and the Humber | 2.59 | 153 | 39.5% | 27.9% | 36.3% | 175 | 8.8% | 171 | 0.1% | 1,918 | 0.99 | 5.82 | – | 0.97 | 14.7 | 281 | 4.39 | 15.3 | 4.22 |
+| East Midlands | 2.30 | 112 | 36.2% | 25.4% | 33.6% | 142 | 7.1% | 171 | 0.1% | 1,948 | 0.99 | 4.40 | – | 0.95 | 23.2 | 180 | 3.73 | 24.7 | 0.95 |
 | West Midlands | 2.71 | 79.7 | 40.9% | 23.5% | 39.1% | 190 | 9.5% | 171 | 0.2% | 1,401 | 0.97 | 15.9 | 3.34 | 0.94 | 41.4 | 288 | 2.79 | 9.36 | 5.44 |
-| East of England | 2.95 | 94.4 | 26.3% | 17.9% | 20.2% | 133 | 6.6% | 171 | 0.1% | 1,339 | 0.99 | 3.66 | 7.52 | 0.79 | 90.6 | 382 | 19.0 | 57.7 | 5.51 |
-| London | 3.98 | 120 | 40.0% | 31.1% | 32.7% | 272 | 13.6% | 171 | 0.1% | 1,085 | 0.99 | 3.46 | 1.27 | 0.80 | 160 | 437 | 6.88 | 9.34 | 0.90 |
+| East of England | 2.95 | 94.4 | 26.3% | 17.9% | 20.2% | 133 | 6.6% | 171 | 0.1% | 1,339 | 0.99 | 3.66 | 7.52 | 0.79 | 90.6 | 382 | – | 57.7 | 5.51 |
+| London | 3.98 | 120 | 40.0% | 31.1% | 32.7% | 272 | 13.6% | 171 | 0.1% | 1,085 | 0.99 | 3.46 | – | 0.80 | 160 | 437 | – | 9.34 | 0.90 |
 | South East | 4.28 | 95.1 | 33.8% | 23.0% | 29.8% | 247 | 12.3% | 171 | 0.1% | 1,573 | 0.79 | 161 | 38.4 | 0.67 | 330 | 708 | 26.3 | 20.1 | 3.34 |
 | South West | 2.78 | 118 | 36.6% | 25.4% | 32.2% | 174 | 8.7% | 171 | 0.1% | 1,317 | 0.99 | 4.89 | 15.0 | 0.95 | 28.8 | 239 | 3.31 | 6.34 | 1.89 |
 | Wales | 1.59 | 203 | 46.7% | 28.4% | 43.6% | 127 | 6.3% | 171 | 0.2% | 1,845 | 0.98 | 8.74 | 7.23 | 0.97 | 11.1 | 147 | 7.98 | 7.07 | 2.32 |
-| Scotland | 2.75 | 99.5 | 36.3% | 23.4% | 33.2% | 171 | 8.5% | 171 | 0.1% | 2,003 | 0.97 | 13.3 | 8.03 | 0.85 | 76.6 | 260 | 22.5 | 40.2 | 35.4 |
+| Scotland | 2.75 | 99.5 | 36.3% | 23.4% | 33.2% | 171 | 8.5% | 171 | 0.1% | 2,003 | 0.97 | 13.3 | 8.03 | 0.85 | 76.6 | 260 | – | 40.2 | 35.4 |
 
 By household type:
 
@@ -3043,10 +3043,10 @@ By household type:
 | Single pensioner | 4.10 | 76.7 | 67.9% | 38.8% | 66.6% | 477 | 23.9% | 171 | 0.4% | 1,315 | 0.98 | 22.0 | 12.9 | 0.97 | 24.4 | 254 | 28.1 | 64.3 | 35.4 |
 | Pensioner couple | 3.90 | 232 | 19.6% | 5.9% | 18.9% | 131 | 6.5% | 171 | 0.1% | 2,366 | 0.97 | 7.95 | 11.5 | 0.97 | 7.87 | 468 | 9.32 | 47.9 | 8.25 |
 | Single, no children | 5.66 | 258 | 60.3% | 48.7% | 54.3% | 584 | 29.2% | 171 | 0.4% | 1,164 | 0.99 | 24.4 | 14.7 | 0.90 | 239 | 661 | 12.8 | 6.81 | 4.48 |
-| Couple, no children | 7.21 | 170 | 8.8% | 2.0% | 8.5% | 108 | 5.4% | 171 | 0.0% | 1,726 | 0.75 | 163 | 9.02 | 0.57 | 391 | 1,143 | 1.93 | 29.3 | 15.4 |
-| Lone parent | 2.13 | 314 | 94.3% | 92.4% | 77.5% | 343 | 17.2% | 171 | 0.5% | 741 | 1.00 | 0.71 | 7.30 | 0.99 | 4.63 | 26.6 | 12.0 | 0.66 | 0.28 |
-| Couple with children | 5.00 | 374 | 27.3% | 16.2% | 23.7% | 234 | 11.7% | 171 | 0.1% | 1,629 | 0.99 | 5.10 | 29.3 | 0.87 | 111 | 588 | 31.5 | 59.4 | 0.78 |
-| Multi-family household | 2.78 | 154 | 25.7% | 17.2% | 18.1% | 122 | 6.1% | 171 | 0.1% | 1,960 | 0.99 | 2.96 | 8.44 | 0.93 | 29.7 | 325 | 23.9 | 5.36 | 0.68 |
+| Couple, no children | 7.21 | 170 | 8.8% | 2.0% | 8.5% | 108 | 5.4% | 171 | 0.0% | 1,726 | 0.75 | 163 | 9.02 | 0.57 | 391 | 1,143 | – | 29.3 | 15.4 |
+| Lone parent | 2.13 | 314 | 94.3% | 92.4% | 77.5% | 343 | 17.2% | 171 | 0.5% | 741 | 1.00 | 0.71 | – | 0.99 | 4.63 | 26.6 | – | 0.66 | 0.28 |
+| Couple with children | 5.00 | 374 | 27.3% | 16.2% | 23.7% | 234 | 11.7% | 171 | 0.1% | 1,629 | 0.99 | 5.10 | – | 0.87 | 111 | 588 | – | 59.4 | 0.78 |
+| Multi-family household | 2.78 | 154 | 25.7% | 17.2% | 18.1% | 122 | 6.1% | 171 | 0.1% | 1,960 | 0.99 | 2.96 | 8.44 | 0.93 | 29.7 | 325 | – | 5.36 | 0.68 |
 
 By AHC income decile (GB people):
 
@@ -3068,11 +3068,11 @@ Poverty (people unless stated):
 | Measure | Group | Baseline rate | Reform rate | Change (pp) | Change (k) | Records crossing | ESS crossing |
 |---|---|---|---|---|---|---|---|
 | abs_pov_bhc | people | 14.4% | 14.3% | -0.14 | -93.1 | 132 | 8.97 |
-| abs_pov_bhc | children | 16.6% | 16.5% | -0.09 | -13.4 | <10 | 1.81 |
+| abs_pov_bhc | children | 16.6% | – | – | – | <10 | – |
 | abs_pov_bhc | working_age_adults | 14.2% | 14.1% | -0.14 | -55.7 | 56 | 6.74 |
 | abs_pov_bhc | pensioners | 12.3% | 12.1% | -0.20 | -24.0 | 85 | 30.2 |
 | abs_pov_ahc | people | 18.8% | 18.7% | -0.06 | -41.3 | 123 | 43.5 |
-| abs_pov_ahc | children | 24.4% | 24.4% | -0.00 | -0.72 | <10 | 1.12 |
+| abs_pov_ahc | children | 24.4% | – | – | – | <10 | – |
 | abs_pov_ahc | working_age_adults | 19.0% | 18.9% | -0.04 | -16.6 | 49 | 12.2 |
 | abs_pov_ahc | pensioners | 11.1% | 10.9% | -0.20 | -23.9 | 90 | 45.1 |
 | rel_pov_bhc | people | 19.3% | 19.0% | -0.27 | -186 | 93 | 5.39 |
@@ -3147,29 +3147,29 @@ By region:
 
 | Region | Households (m) | ESS | Eligible | Passported | Pass income test | Cost (GBP m) | Share of cost | Avg per recipient (GBP) | Gain, % net income | Mean bill (GBP) | In abs. BHC poverty, reached | In abs. BHC poverty, not reached (k) | People out of abs. BHC poverty (k) | In abs. AHC poverty, reached | In abs. AHC poverty, not reached (k) | Lowest-4-decile, not reached (k) | People out of rel. AHC poverty (k) | Within GBP 1k above top line (k) | Offset range (k) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| North East | 1.23 | 273 | 38.4% | 38.4% | 0.0% | 82.4 | 6.2% | 175 | 0.1% | 1,460 | 0.55 | 82.2 | 2.00 | 0.65 | 90.0 | 265 | 10.3 | 0.00 | 0.00 |
-| North West | 3.31 | 495 | 29.2% | 29.2% | 0.0% | 169 | 12.8% | 175 | 0.1% | 1,489 | 0.40 | 294 | 0.00 | 0.51 | 255 | 693 | 17.5 | 0.00 | 0.00 |
-| Yorkshire and the Humber | 2.42 | 580 | 28.8% | 28.8% | 0.0% | 122 | 9.2% | 175 | 0.1% | 1,420 | 0.45 | 208 | 4.90 | 0.50 | 212 | 595 | 13.3 | 0.00 | 0.00 |
-| East Midlands | 2.13 | 335 | 24.8% | 24.8% | 0.0% | 92.5 | 7.0% | 175 | 0.1% | 1,463 | 0.40 | 162 | 0.06 | 0.48 | 171 | 647 | 44.2 | 0.00 | 0.00 |
-| West Midlands | 2.54 | 345 | 30.9% | 30.9% | 0.0% | 137 | 10.4% | 175 | 0.1% | 1,440 | 0.44 | 141 | 4.30 | 0.60 | 126 | 527 | 60.8 | 0.00 | 0.00 |
-| East of England | 2.76 | 508 | 21.3% | 21.3% | 0.0% | 103 | 7.8% | 175 | 0.1% | 1,431 | 0.35 | 227 | 2.39 | 0.41 | 224 | 575 | 1.05 | 0.00 | 0.00 |
-| London | 3.66 | 420 | 29.7% | 29.7% | 0.0% | 190 | 14.4% | 175 | 0.1% | 1,393 | 0.57 | 148 | 0.12 | 0.59 | 286 | 561 | 4.16 | 0.00 | 0.00 |
-| South East | 4.02 | 734 | 20.2% | 20.2% | 0.0% | 142 | 10.8% | 175 | 0.1% | 1,568 | 0.38 | 300 | 3.23 | 0.47 | 332 | 858 | 25.0 | 0.00 | 0.00 |
-| South West | 2.56 | 356 | 22.5% | 22.5% | 0.0% | 101 | 7.6% | 175 | 0.1% | 1,367 | 0.30 | 239 | 0.00 | 0.42 | 242 | 670 | 1.77 | 0.00 | 0.00 |
-| Wales | 1.40 | 463 | 29.1% | 29.1% | 0.0% | 71.2 | 5.4% | 175 | 0.1% | 1,357 | 0.41 | 138 | 2.14 | 0.51 | 113 | 378 | 0.88 | 0.00 | 0.00 |
-| Scotland | 2.67 | 586 | 23.9% | 23.9% | 0.0% | 112 | 8.5% | 175 | 0.1% | 1,334 | 0.42 | 307 | 10.5 | 0.49 | 277 | 675 | 8.58 | 0.00 | 0.00 |
+| North East | 1.23 | 273 | 38.4% | 38.4% | 0.0% | 82.4 | 6.2% | 175 | 0.1% | 1,460 | 0.55 | 82.2 | – | 0.65 | 90.0 | 265 | – | 0.00 | 0.00 |
+| North West | 3.31 | 495 | 29.2% | 29.2% | 0.0% | 169 | 12.8% | 175 | 0.1% | 1,489 | 0.40 | 294 | 0.00 | 0.51 | 255 | 693 | – | 0.00 | 0.00 |
+| Yorkshire and the Humber | 2.42 | 580 | 28.8% | 28.8% | 0.0% | 122 | 9.2% | 175 | 0.1% | 1,420 | 0.45 | 208 | – | 0.50 | 212 | 595 | 13.3 | 0.00 | 0.00 |
+| East Midlands | 2.13 | 335 | 24.8% | 24.8% | 0.0% | 92.5 | 7.0% | 175 | 0.1% | 1,463 | 0.40 | 162 | – | 0.48 | 171 | 647 | 44.2 | 0.00 | 0.00 |
+| West Midlands | 2.54 | 345 | 30.9% | 30.9% | 0.0% | 137 | 10.4% | 175 | 0.1% | 1,440 | 0.44 | 141 | – | 0.60 | 126 | 527 | 60.8 | 0.00 | 0.00 |
+| East of England | 2.76 | 508 | 21.3% | 21.3% | 0.0% | 103 | 7.8% | 175 | 0.1% | 1,431 | 0.35 | 227 | – | 0.41 | 224 | 575 | – | 0.00 | 0.00 |
+| London | 3.66 | 420 | 29.7% | 29.7% | 0.0% | 190 | 14.4% | 175 | 0.1% | 1,393 | 0.57 | 148 | – | 0.59 | 286 | 561 | – | 0.00 | 0.00 |
+| South East | 4.02 | 734 | 20.2% | 20.2% | 0.0% | 142 | 10.8% | 175 | 0.1% | 1,568 | 0.38 | 300 | – | 0.47 | 332 | 858 | 25.0 | 0.00 | 0.00 |
+| South West | 2.56 | 356 | 22.5% | 22.5% | 0.0% | 101 | 7.6% | 175 | 0.1% | 1,367 | 0.30 | 239 | 0.00 | 0.42 | 242 | 670 | – | 0.00 | 0.00 |
+| Wales | 1.40 | 463 | 29.1% | 29.1% | 0.0% | 71.2 | 5.4% | 175 | 0.1% | 1,357 | 0.41 | 138 | – | 0.51 | 113 | 378 | – | 0.00 | 0.00 |
+| Scotland | 2.67 | 586 | 23.9% | 23.9% | 0.0% | 112 | 8.5% | 175 | 0.1% | 1,334 | 0.42 | 307 | – | 0.49 | 277 | 675 | 8.58 | 0.00 | 0.00 |
 
 By household type:
 
 | Household type | Households (m) | ESS | Eligible | Passported | Pass income test | Cost (GBP m) | Share of cost | Avg per recipient (GBP) | Gain, % net income | Mean bill (GBP) | In abs. BHC poverty, reached | In abs. BHC poverty, not reached (k) | People out of abs. BHC poverty (k) | In abs. AHC poverty, reached | In abs. AHC poverty, not reached (k) | Lowest-4-decile, not reached (k) | People out of rel. AHC poverty (k) | Within GBP 1k above top line (k) | Offset range (k) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | Single pensioner | 3.94 | 1,024 | 34.2% | 34.2% | 0.0% | 236 | 17.8% | 175 | 0.2% | 1,126 | 0.26 | 524 | 0.00 | 0.46 | 341 | 908 | 23.6 | 0.00 | 0.00 |
-| Pensioner couple | 3.59 | 787 | 6.7% | 6.7% | 0.0% | 42.3 | 3.2% | 175 | 0.0% | 1,581 | 0.10 | 315 | 1.87 | 0.22 | 205 | 1,081 | 5.76 | 0.00 | 0.00 |
+| Pensioner couple | 3.59 | 787 | 6.7% | 6.7% | 0.0% | 42.3 | 3.2% | 175 | 0.0% | 1,581 | 0.10 | 315 | – | 0.22 | 205 | 1,081 | – | 0.00 | 0.00 |
 | Single, no children | 4.55 | 574 | 33.7% | 33.7% | 0.0% | 269 | 20.3% | 175 | 0.2% | 1,064 | 0.45 | 701 | 4.70 | 0.51 | 716 | 1,239 | 17.5 | 0.00 | 0.00 |
-| Couple, no children | 4.34 | 606 | 5.1% | 5.1% | 0.0% | 38.7 | 2.9% | 175 | 0.0% | 1,402 | 0.22 | 262 | 0.00 | 0.23 | 380 | 1,002 | 2.62 | 0.00 | 0.00 |
+| Couple, no children | 4.34 | 606 | 5.1% | 5.1% | 0.0% | 38.7 | 2.9% | 175 | 0.0% | 1,402 | 0.22 | 262 | 0.00 | 0.23 | 380 | 1,002 | – | 0.00 | 0.00 |
 | Lone parent | 1.26 | 295 | 90.2% | 90.2% | 0.0% | 199 | 15.1% | 175 | 0.4% | 1,355 | 0.92 | 19.3 | 7.99 | 0.93 | 23.9 | 57.0 | 51.5 | 0.00 | 0.00 |
-| Couple with children | 4.98 | 1,097 | 17.7% | 17.7% | 0.0% | 154 | 11.7% | 175 | 0.0% | 1,724 | 0.43 | 289 | 6.03 | 0.46 | 464 | 1,409 | 20.7 | 0.00 | 0.00 |
-| Multi-family household | 6.01 | 773 | 36.4% | 36.4% | 0.0% | 383 | 29.0% | 175 | 0.1% | 1,642 | 0.70 | 135 | 9.00 | 0.71 | 196 | 746 | 65.9 | 0.00 | 0.00 |
+| Couple with children | 4.98 | 1,097 | 17.7% | 17.7% | 0.0% | 154 | 11.7% | 175 | 0.0% | 1,724 | 0.43 | 289 | – | 0.46 | 464 | 1,409 | – | 0.00 | 0.00 |
+| Multi-family household | 6.01 | 773 | 36.4% | 36.4% | 0.0% | 383 | 29.0% | 175 | 0.1% | 1,642 | 0.70 | 135 | – | 0.71 | 196 | 746 | – | 0.00 | 0.00 |
 
 By AHC income decile (GB people):
 
@@ -3193,7 +3193,7 @@ Poverty (people unless stated):
 | abs_pov_bhc | people | 11.4% | 11.3% | -0.04 | -29.6 | 46 | 9.73 |
 | abs_pov_bhc | children | 13.2% | 13.1% | -0.05 | -7.76 | 17 | 4.03 |
 | abs_pov_bhc | working_age_adults | 10.7% | 10.7% | -0.04 | -17.4 | 44 | 11.1 |
-| abs_pov_bhc | pensioners | 11.5% | 11.5% | -0.04 | -4.48 | <10 | 3.21 |
+| abs_pov_bhc | pensioners | 11.5% | – | – | – | <10 | – |
 | abs_pov_ahc | people | 15.2% | 15.1% | -0.14 | -96.0 | 65 | 10.3 |
 | abs_pov_ahc | children | 19.7% | 19.5% | -0.28 | -39.3 | 17 | 4.77 |
 | abs_pov_ahc | working_age_adults | 15.2% | 15.1% | -0.07 | -31.2 | 29 | 6.41 |
@@ -3268,29 +3268,29 @@ By region:
 
 | Region | Households (m) | ESS | Eligible | Passported | Pass income test | Cost (GBP m) | Share of cost | Avg per recipient (GBP) | Gain, % net income | Mean bill (GBP) | In abs. BHC poverty, reached | In abs. BHC poverty, not reached (k) | People out of abs. BHC poverty (k) | In abs. AHC poverty, reached | In abs. AHC poverty, not reached (k) | Lowest-4-decile, not reached (k) | People out of rel. AHC poverty (k) | Within GBP 1k above top line (k) | Offset range (k) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| North East | 1.32 | 93.2 | 33.1% | 33.1% | 0.0% | 76.5 | 5.5% | 175 | 0.1% | 2,146 | 0.72 | 71.8 | 2.09 | 0.76 | 70.9 | 255 | 6.63 | 0.00 | 0.00 |
-| North West | 3.55 | 171 | 29.5% | 29.5% | 0.0% | 183 | 13.1% | 175 | 0.1% | 1,595 | 0.57 | 259 | 0.01 | 0.58 | 296 | 943 | 13.3 | 0.00 | 0.00 |
-| Yorkshire and the Humber | 2.59 | 153 | 27.9% | 27.9% | 0.0% | 127 | 9.1% | 175 | 0.1% | 1,918 | 0.51 | 251 | 1.64 | 0.54 | 229 | 576 | 0.53 | 0.00 | 0.00 |
-| East Midlands | 2.30 | 112 | 25.4% | 25.4% | 0.0% | 102 | 7.3% | 175 | 0.1% | 1,948 | 0.59 | 175 | 0.00 | 0.65 | 172 | 418 | 0.23 | 0.00 | 0.00 |
-| West Midlands | 2.71 | 79.7 | 23.5% | 23.5% | 0.0% | 111 | 8.0% | 175 | 0.1% | 1,401 | 0.27 | 393 | 1.06 | 0.38 | 419 | 750 | 1.05 | 0.00 | 0.00 |
-| East of England | 2.95 | 94.4 | 17.9% | 17.9% | 0.0% | 92.2 | 6.6% | 175 | 0.1% | 1,339 | 0.39 | 207 | 4.53 | 0.41 | 258 | 626 | 16.6 | 0.00 | 0.00 |
-| London | 3.98 | 120 | 31.1% | 31.1% | 0.0% | 217 | 15.5% | 175 | 0.1% | 1,085 | 0.44 | 274 | 0.00 | 0.51 | 400 | 756 | 0.13 | 0.00 | 0.00 |
-| South East | 4.28 | 95.1 | 23.0% | 23.0% | 0.0% | 172 | 12.3% | 175 | 0.1% | 1,573 | 0.30 | 534 | 5.25 | 0.32 | 685 | 1,161 | 24.8 | 0.00 | 0.00 |
-| South West | 2.78 | 118 | 25.4% | 25.4% | 0.0% | 124 | 8.9% | 175 | 0.1% | 1,317 | 0.38 | 268 | 11.1 | 0.66 | 192 | 546 | 0.65 | 0.00 | 0.00 |
-| Wales | 1.59 | 203 | 28.4% | 28.4% | 0.0% | 79.0 | 5.7% | 175 | 0.1% | 1,845 | 0.42 | 221 | 5.00 | 0.54 | 159 | 426 | 0.86 | 0.00 | 0.00 |
-| Scotland | 2.75 | 99.5 | 23.4% | 23.4% | 0.0% | 113 | 8.1% | 175 | 0.1% | 2,003 | 0.62 | 184 | 5.12 | 0.64 | 178 | 555 | 22.0 | 0.00 | 0.00 |
+| North East | 1.32 | 93.2 | 33.1% | 33.1% | 0.0% | 76.5 | 5.5% | 175 | 0.1% | 2,146 | 0.72 | 71.8 | – | 0.76 | 70.9 | 255 | – | 0.00 | 0.00 |
+| North West | 3.55 | 171 | 29.5% | 29.5% | 0.0% | 183 | 13.1% | 175 | 0.1% | 1,595 | 0.57 | 259 | – | 0.58 | 296 | 943 | – | 0.00 | 0.00 |
+| Yorkshire and the Humber | 2.59 | 153 | 27.9% | 27.9% | 0.0% | 127 | 9.1% | 175 | 0.1% | 1,918 | 0.51 | 251 | – | 0.54 | 229 | 576 | – | 0.00 | 0.00 |
+| East Midlands | 2.30 | 112 | 25.4% | 25.4% | 0.0% | 102 | 7.3% | 175 | 0.1% | 1,948 | 0.59 | 175 | 0.00 | 0.65 | 172 | 418 | – | 0.00 | 0.00 |
+| West Midlands | 2.71 | 79.7 | 23.5% | 23.5% | 0.0% | 111 | 8.0% | 175 | 0.1% | 1,401 | 0.27 | 393 | – | 0.38 | 419 | 750 | – | 0.00 | 0.00 |
+| East of England | 2.95 | 94.4 | 17.9% | 17.9% | 0.0% | 92.2 | 6.6% | 175 | 0.1% | 1,339 | 0.39 | 207 | – | 0.41 | 258 | 626 | – | 0.00 | 0.00 |
+| London | 3.98 | 120 | 31.1% | 31.1% | 0.0% | 217 | 15.5% | 175 | 0.1% | 1,085 | 0.44 | 274 | 0.00 | 0.51 | 400 | 756 | – | 0.00 | 0.00 |
+| South East | 4.28 | 95.1 | 23.0% | 23.0% | 0.0% | 172 | 12.3% | 175 | 0.1% | 1,573 | 0.30 | 534 | – | 0.32 | 685 | 1,161 | – | 0.00 | 0.00 |
+| South West | 2.78 | 118 | 25.4% | 25.4% | 0.0% | 124 | 8.9% | 175 | 0.1% | 1,317 | 0.38 | 268 | – | 0.66 | 192 | 546 | – | 0.00 | 0.00 |
+| Wales | 1.59 | 203 | 28.4% | 28.4% | 0.0% | 79.0 | 5.7% | 175 | 0.1% | 1,845 | 0.42 | 221 | – | 0.54 | 159 | 426 | – | 0.00 | 0.00 |
+| Scotland | 2.75 | 99.5 | 23.4% | 23.4% | 0.0% | 113 | 8.1% | 175 | 0.1% | 2,003 | 0.62 | 184 | – | 0.64 | 178 | 555 | – | 0.00 | 0.00 |
 
 By household type:
 
 | Household type | Households (m) | ESS | Eligible | Passported | Pass income test | Cost (GBP m) | Share of cost | Avg per recipient (GBP) | Gain, % net income | Mean bill (GBP) | In abs. BHC poverty, reached | In abs. BHC poverty, not reached (k) | People out of abs. BHC poverty (k) | In abs. AHC poverty, reached | In abs. AHC poverty, not reached (k) | Lowest-4-decile, not reached (k) | People out of rel. AHC poverty (k) | Within GBP 1k above top line (k) | Offset range (k) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | Single pensioner | 4.10 | 76.7 | 38.8% | 38.8% | 0.0% | 279 | 20.0% | 175 | 0.3% | 1,315 | 0.14 | 765 | 0.00 | 0.42 | 506 | 1,333 | 18.3 | 0.00 | 0.00 |
-| Pensioner couple | 3.90 | 232 | 5.9% | 5.9% | 0.0% | 40.0 | 2.9% | 175 | 0.0% | 2,366 | 0.10 | 282 | 4.00 | 0.14 | 212 | 989 | 0.03 | 0.00 | 0.00 |
-| Single, no children | 5.66 | 258 | 48.7% | 48.7% | 0.0% | 483 | 34.6% | 175 | 0.4% | 1,164 | 0.69 | 611 | 14.2 | 0.69 | 725 | 1,289 | 1.82 | 0.00 | 0.00 |
-| Couple, no children | 7.21 | 170 | 2.0% | 2.0% | 0.0% | 25.5 | 1.8% | 175 | 0.0% | 1,726 | 0.07 | 614 | 4.31 | 0.08 | 829 | 1,629 | 0.00 | 0.00 | 0.00 |
-| Lone parent | 2.13 | 314 | 92.4% | 92.4% | 0.0% | 344 | 24.6% | 175 | 0.5% | 741 | 0.94 | 32.7 | 7.24 | 0.95 | 38.7 | 65.5 | 11.4 | 0.00 | 0.00 |
-| Couple with children | 5.00 | 374 | 16.2% | 16.2% | 0.0% | 141 | 10.1% | 175 | 0.0% | 1,629 | 0.37 | 328 | 0.00 | 0.40 | 512 | 1,146 | 31.5 | 0.00 | 0.00 |
-| Multi-family household | 2.78 | 154 | 17.2% | 17.2% | 0.0% | 83.8 | 6.0% | 175 | 0.0% | 1,960 | 0.33 | 205 | 6.07 | 0.40 | 237 | 560 | 23.6 | 0.00 | 0.00 |
+| Pensioner couple | 3.90 | 232 | 5.9% | 5.9% | 0.0% | 40.0 | 2.9% | 175 | 0.0% | 2,366 | 0.10 | 282 | – | 0.14 | 212 | 989 | – | 0.00 | 0.00 |
+| Single, no children | 5.66 | 258 | 48.7% | 48.7% | 0.0% | 483 | 34.6% | 175 | 0.4% | 1,164 | 0.69 | 611 | 14.2 | 0.69 | 725 | 1,289 | – | 0.00 | 0.00 |
+| Couple, no children | 7.21 | 170 | 2.0% | 2.0% | 0.0% | 25.5 | 1.8% | 175 | 0.0% | 1,726 | 0.07 | 614 | – | 0.08 | 829 | 1,629 | 0.00 | 0.00 | 0.00 |
+| Lone parent | 2.13 | 314 | 92.4% | 92.4% | 0.0% | 344 | 24.6% | 175 | 0.5% | 741 | 0.94 | 32.7 | – | 0.95 | 38.7 | 65.5 | – | 0.00 | 0.00 |
+| Couple with children | 5.00 | 374 | 16.2% | 16.2% | 0.0% | 141 | 10.1% | 175 | 0.0% | 1,629 | 0.37 | 328 | 0.00 | 0.40 | 512 | 1,146 | – | 0.00 | 0.00 |
+| Multi-family household | 2.78 | 154 | 17.2% | 17.2% | 0.0% | 83.8 | 6.0% | 175 | 0.0% | 1,960 | 0.33 | 205 | – | 0.40 | 237 | 560 | – | 0.00 | 0.00 |
 
 By AHC income decile (GB people):
 
@@ -3312,7 +3312,7 @@ Poverty (people unless stated):
 | Measure | Group | Baseline rate | Reform rate | Change (pp) | Change (k) | Records crossing | ESS crossing |
 |---|---|---|---|---|---|---|---|
 | abs_pov_bhc | people | 14.4% | 14.4% | -0.05 | -35.8 | 33 | 11.7 |
-| abs_pov_bhc | children | 16.6% | 16.6% | -0.02 | -3.62 | <10 | 1.98 |
+| abs_pov_bhc | children | 16.6% | – | – | – | <10 | – |
 | abs_pov_bhc | working_age_adults | 14.2% | 14.2% | -0.07 | -28.4 | 27 | 9.59 |
 | abs_pov_bhc | pensioners | 12.3% | 12.2% | -0.03 | -3.74 | 12 | 4.79 |
 | abs_pov_ahc | people | 18.8% | 18.8% | -0.02 | -12.8 | 36 | 9.03 |
@@ -3391,29 +3391,29 @@ By region:
 
 | Region | Households (m) | ESS | Eligible | Passported | Pass income test | Cost (GBP m) | Share of cost | Avg per recipient (GBP) | Gain, % net income | Mean bill (GBP) | In abs. BHC poverty, reached | In abs. BHC poverty, not reached (k) | People out of abs. BHC poverty (k) | In abs. AHC poverty, reached | In abs. AHC poverty, not reached (k) | Lowest-4-decile, not reached (k) | People out of rel. AHC poverty (k) | Within GBP 1k above top line (k) | Offset range (k) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| North East | 1.23 | 273 | 38.4% | 38.4% | 0.0% | 76.5 | 5.8% | 163 | 0.1% | 1,460 | 0.55 | 82.2 | 4.36 | 0.65 | 90.0 | 265 | 9.78 | 0.00 | 0.00 |
-| North West | 3.31 | 495 | 29.2% | 29.2% | 0.0% | 175 | 13.2% | 181 | 0.1% | 1,489 | 0.40 | 294 | 0.00 | 0.51 | 255 | 693 | 6.41 | 0.00 | 0.00 |
-| Yorkshire and the Humber | 2.42 | 580 | 28.8% | 28.8% | 0.0% | 122 | 9.2% | 175 | 0.1% | 1,420 | 0.45 | 208 | 5.07 | 0.50 | 212 | 595 | 12.9 | 0.00 | 0.00 |
-| East Midlands | 2.13 | 335 | 24.8% | 24.8% | 0.0% | 88.4 | 6.7% | 167 | 0.1% | 1,463 | 0.40 | 162 | 0.60 | 0.48 | 171 | 647 | 18.2 | 0.00 | 0.00 |
-| West Midlands | 2.54 | 345 | 30.9% | 30.9% | 0.0% | 138 | 10.5% | 176 | 0.1% | 1,440 | 0.44 | 141 | 3.98 | 0.60 | 126 | 527 | 47.1 | 0.00 | 0.00 |
-| East of England | 2.76 | 508 | 21.3% | 21.3% | 0.0% | 104 | 7.9% | 178 | 0.1% | 1,431 | 0.35 | 227 | 6.53 | 0.41 | 224 | 575 | 1.05 | 0.00 | 0.00 |
-| London | 3.66 | 420 | 29.7% | 29.7% | 0.0% | 180 | 13.6% | 166 | 0.1% | 1,393 | 0.57 | 148 | 0.24 | 0.59 | 286 | 561 | 0.20 | 0.00 | 0.00 |
-| South East | 4.02 | 734 | 20.2% | 20.2% | 0.0% | 165 | 12.5% | 203 | 0.1% | 1,568 | 0.38 | 300 | 4.38 | 0.47 | 332 | 858 | 22.9 | 0.00 | 0.00 |
-| South West | 2.56 | 356 | 22.5% | 22.5% | 0.0% | 92.0 | 7.0% | 160 | 0.1% | 1,367 | 0.30 | 239 | 1.52 | 0.42 | 242 | 670 | 1.09 | 0.00 | 0.00 |
-| Wales | 1.40 | 463 | 29.1% | 29.1% | 0.0% | 65.1 | 4.9% | 160 | 0.1% | 1,357 | 0.41 | 138 | 0.90 | 0.51 | 113 | 378 | 0.73 | 0.00 | 0.00 |
-| Scotland | 2.67 | 586 | 23.9% | 23.9% | 0.0% | 115 | 8.7% | 180 | 0.1% | 1,334 | 0.42 | 307 | 10.3 | 0.49 | 277 | 675 | 8.71 | 0.00 | 0.00 |
+| North East | 1.23 | 273 | 38.4% | 38.4% | 0.0% | 76.5 | 5.8% | 163 | 0.1% | 1,460 | 0.55 | 82.2 | – | 0.65 | 90.0 | 265 | – | 0.00 | 0.00 |
+| North West | 3.31 | 495 | 29.2% | 29.2% | 0.0% | 175 | 13.2% | 181 | 0.1% | 1,489 | 0.40 | 294 | 0.00 | 0.51 | 255 | 693 | – | 0.00 | 0.00 |
+| Yorkshire and the Humber | 2.42 | 580 | 28.8% | 28.8% | 0.0% | 122 | 9.2% | 175 | 0.1% | 1,420 | 0.45 | 208 | – | 0.50 | 212 | 595 | 12.9 | 0.00 | 0.00 |
+| East Midlands | 2.13 | 335 | 24.8% | 24.8% | 0.0% | 88.4 | 6.7% | 167 | 0.1% | 1,463 | 0.40 | 162 | – | 0.48 | 171 | 647 | – | 0.00 | 0.00 |
+| West Midlands | 2.54 | 345 | 30.9% | 30.9% | 0.0% | 138 | 10.5% | 176 | 0.1% | 1,440 | 0.44 | 141 | – | 0.60 | 126 | 527 | 47.1 | 0.00 | 0.00 |
+| East of England | 2.76 | 508 | 21.3% | 21.3% | 0.0% | 104 | 7.9% | 178 | 0.1% | 1,431 | 0.35 | 227 | – | 0.41 | 224 | 575 | – | 0.00 | 0.00 |
+| London | 3.66 | 420 | 29.7% | 29.7% | 0.0% | 180 | 13.6% | 166 | 0.1% | 1,393 | 0.57 | 148 | – | 0.59 | 286 | 561 | – | 0.00 | 0.00 |
+| South East | 4.02 | 734 | 20.2% | 20.2% | 0.0% | 165 | 12.5% | 203 | 0.1% | 1,568 | 0.38 | 300 | – | 0.47 | 332 | 858 | 22.9 | 0.00 | 0.00 |
+| South West | 2.56 | 356 | 22.5% | 22.5% | 0.0% | 92.0 | 7.0% | 160 | 0.1% | 1,367 | 0.30 | 239 | – | 0.42 | 242 | 670 | – | 0.00 | 0.00 |
+| Wales | 1.40 | 463 | 29.1% | 29.1% | 0.0% | 65.1 | 4.9% | 160 | 0.1% | 1,357 | 0.41 | 138 | – | 0.51 | 113 | 378 | – | 0.00 | 0.00 |
+| Scotland | 2.67 | 586 | 23.9% | 23.9% | 0.0% | 115 | 8.7% | 180 | 0.1% | 1,334 | 0.42 | 307 | – | 0.49 | 277 | 675 | – | 0.00 | 0.00 |
 
 By household type:
 
 | Household type | Households (m) | ESS | Eligible | Passported | Pass income test | Cost (GBP m) | Share of cost | Avg per recipient (GBP) | Gain, % net income | Mean bill (GBP) | In abs. BHC poverty, reached | In abs. BHC poverty, not reached (k) | People out of abs. BHC poverty (k) | In abs. AHC poverty, reached | In abs. AHC poverty, not reached (k) | Lowest-4-decile, not reached (k) | People out of rel. AHC poverty (k) | Within GBP 1k above top line (k) | Offset range (k) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| Single pensioner | 3.94 | 1,024 | 34.2% | 34.2% | 0.0% | 192 | 14.6% | 143 | 0.2% | 1,126 | 0.26 | 524 | 0.12 | 0.46 | 341 | 908 | 19.0 | 0.00 | 0.00 |
-| Pensioner couple | 3.59 | 787 | 6.7% | 6.7% | 0.0% | 45.0 | 3.4% | 186 | 0.0% | 1,581 | 0.10 | 315 | 0.90 | 0.22 | 205 | 1,081 | 0.00 | 0.00 | 0.00 |
+| Single pensioner | 3.94 | 1,024 | 34.2% | 34.2% | 0.0% | 192 | 14.6% | 143 | 0.2% | 1,126 | 0.26 | 524 | – | 0.46 | 341 | 908 | 19.0 | 0.00 | 0.00 |
+| Pensioner couple | 3.59 | 787 | 6.7% | 6.7% | 0.0% | 45.0 | 3.4% | 186 | 0.0% | 1,581 | 0.10 | 315 | – | 0.22 | 205 | 1,081 | 0.00 | 0.00 | 0.00 |
 | Single, no children | 4.55 | 574 | 33.7% | 33.7% | 0.0% | 201 | 15.2% | 131 | 0.1% | 1,064 | 0.45 | 701 | 8.13 | 0.51 | 716 | 1,239 | 15.1 | 0.00 | 0.00 |
-| Couple, no children | 4.34 | 606 | 5.1% | 5.1% | 0.0% | 41.2 | 3.1% | 186 | 0.0% | 1,402 | 0.22 | 262 | 1.63 | 0.23 | 380 | 1,002 | 1.00 | 0.00 | 0.00 |
-| Lone parent | 1.26 | 295 | 90.2% | 90.2% | 0.0% | 195 | 14.7% | 171 | 0.4% | 1,355 | 0.92 | 19.3 | 8.10 | 0.93 | 23.9 | 57.0 | 4.86 | 0.00 | 0.00 |
-| Couple with children | 4.98 | 1,097 | 17.7% | 17.7% | 0.0% | 206 | 15.6% | 233 | 0.1% | 1,724 | 0.43 | 289 | 9.85 | 0.46 | 464 | 1,409 | 20.7 | 0.00 | 0.00 |
-| Multi-family household | 6.01 | 773 | 36.4% | 36.4% | 0.0% | 441 | 33.4% | 202 | 0.1% | 1,642 | 0.70 | 135 | 9.10 | 0.71 | 196 | 746 | 68.5 | 0.00 | 0.00 |
+| Couple, no children | 4.34 | 606 | 5.1% | 5.1% | 0.0% | 41.2 | 3.1% | 186 | 0.0% | 1,402 | 0.22 | 262 | – | 0.23 | 380 | 1,002 | – | 0.00 | 0.00 |
+| Lone parent | 1.26 | 295 | 90.2% | 90.2% | 0.0% | 195 | 14.7% | 171 | 0.4% | 1,355 | 0.92 | 19.3 | 8.10 | 0.93 | 23.9 | 57.0 | – | 0.00 | 0.00 |
+| Couple with children | 4.98 | 1,097 | 17.7% | 17.7% | 0.0% | 206 | 15.6% | 233 | 0.1% | 1,724 | 0.43 | 289 | – | 0.46 | 464 | 1,409 | – | 0.00 | 0.00 |
+| Multi-family household | 6.01 | 773 | 36.4% | 36.4% | 0.0% | 441 | 33.4% | 202 | 0.1% | 1,642 | 0.70 | 135 | – | 0.71 | 196 | 746 | 68.5 | 0.00 | 0.00 |
 
 By AHC income decile (GB people):
 
@@ -3437,7 +3437,7 @@ Poverty (people unless stated):
 | abs_pov_bhc | people | 11.4% | 11.3% | -0.06 | -37.9 | 47 | 12.3 |
 | abs_pov_bhc | children | 13.2% | 13.1% | -0.07 | -9.83 | 18 | 5.04 |
 | abs_pov_bhc | working_age_adults | 10.7% | 10.7% | -0.06 | -24.4 | 45 | 14.4 |
-| abs_pov_bhc | pensioners | 11.5% | 11.5% | -0.03 | -3.63 | <10 | 2.48 |
+| abs_pov_bhc | pensioners | 11.5% | – | – | – | <10 | – |
 | abs_pov_ahc | people | 15.2% | 15.1% | -0.14 | -98.1 | 64 | 10.4 |
 | abs_pov_ahc | children | 19.7% | 19.4% | -0.30 | -42.1 | 22 | 5.41 |
 | abs_pov_ahc | working_age_adults | 15.2% | 15.1% | -0.08 | -33.3 | 34 | 7.19 |
@@ -3512,29 +3512,29 @@ By region:
 
 | Region | Households (m) | ESS | Eligible | Passported | Pass income test | Cost (GBP m) | Share of cost | Avg per recipient (GBP) | Gain, % net income | Mean bill (GBP) | In abs. BHC poverty, reached | In abs. BHC poverty, not reached (k) | People out of abs. BHC poverty (k) | In abs. AHC poverty, reached | In abs. AHC poverty, not reached (k) | Lowest-4-decile, not reached (k) | People out of rel. AHC poverty (k) | Within GBP 1k above top line (k) | Offset range (k) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| North East | 1.32 | 93.2 | 33.1% | 33.1% | 0.0% | 95.4 | 6.8% | 244 | 0.2% | 2,146 | 0.63 | 94.4 | 2.09 | 0.66 | 101 | 301 | 0.02 | 0.00 | 0.00 |
-| North West | 3.55 | 171 | 29.5% | 29.5% | 0.0% | 271 | 19.4% | 299 | 0.2% | 1,595 | 0.47 | 319 | 0.99 | 0.47 | 374 | 1,039 | 8.40 | 0.00 | 0.00 |
-| Yorkshire and the Humber | 2.59 | 153 | 27.9% | 27.9% | 0.0% | 113 | 8.1% | 178 | 0.1% | 1,918 | 0.44 | 287 | 1.19 | 0.46 | 271 | 658 | 0.52 | 0.00 | 0.00 |
-| East Midlands | 2.30 | 112 | 25.4% | 25.4% | 0.0% | 78.2 | 5.6% | 184 | 0.1% | 1,948 | 0.45 | 236 | 0.00 | 0.47 | 261 | 570 | 0.24 | 0.00 | 0.00 |
-| West Midlands | 2.71 | 79.7 | 23.5% | 23.5% | 0.0% | 125 | 8.9% | 211 | 0.1% | 1,401 | 0.24 | 413 | 1.01 | 0.34 | 445 | 794 | 0.43 | 0.00 | 0.00 |
-| East of England | 2.95 | 94.4 | 17.9% | 17.9% | 0.0% | 60.0 | 4.3% | 136 | 0.0% | 1,339 | 0.37 | 212 | 4.53 | 0.39 | 268 | 702 | 0.00 | 0.00 | 0.00 |
-| London | 3.98 | 120 | 31.1% | 31.1% | 0.0% | 224 | 16.1% | 191 | 0.1% | 1,085 | 0.40 | 294 | 0.00 | 0.47 | 433 | 814 | 8.64 | 0.00 | 0.00 |
-| South East | 4.28 | 95.1 | 23.0% | 23.0% | 0.0% | 127 | 9.1% | 135 | 0.1% | 1,573 | 0.28 | 547 | 4.31 | 0.31 | 703 | 1,194 | 25.3 | 0.00 | 0.00 |
-| South West | 2.78 | 118 | 25.4% | 25.4% | 0.0% | 147 | 10.5% | 226 | 0.1% | 1,317 | 0.36 | 278 | 7.92 | 0.64 | 207 | 600 | 0.42 | 0.00 | 0.00 |
-| Wales | 1.59 | 203 | 28.4% | 28.4% | 0.0% | 68.5 | 4.9% | 181 | 0.1% | 1,845 | 0.36 | 244 | 4.01 | 0.45 | 191 | 477 | 2.76 | 0.00 | 0.00 |
-| Scotland | 2.75 | 99.5 | 23.4% | 23.4% | 0.0% | 88.6 | 6.3% | 163 | 0.1% | 2,003 | 0.55 | 217 | 4.11 | 0.58 | 208 | 651 | 22.7 | 0.00 | 0.00 |
+| North East | 1.32 | 93.2 | 33.1% | 33.1% | 0.0% | 95.4 | 6.8% | 244 | 0.2% | 2,146 | 0.63 | 94.4 | – | 0.66 | 101 | 301 | – | 0.00 | 0.00 |
+| North West | 3.55 | 171 | 29.5% | 29.5% | 0.0% | 271 | 19.4% | 299 | 0.2% | 1,595 | 0.47 | 319 | – | 0.47 | 374 | 1,039 | – | 0.00 | 0.00 |
+| Yorkshire and the Humber | 2.59 | 153 | 27.9% | 27.9% | 0.0% | 113 | 8.1% | 178 | 0.1% | 1,918 | 0.44 | 287 | – | 0.46 | 271 | 658 | – | 0.00 | 0.00 |
+| East Midlands | 2.30 | 112 | 25.4% | 25.4% | 0.0% | 78.2 | 5.6% | 184 | 0.1% | 1,948 | 0.45 | 236 | 0.00 | 0.47 | 261 | 570 | – | 0.00 | 0.00 |
+| West Midlands | 2.71 | 79.7 | 23.5% | 23.5% | 0.0% | 125 | 8.9% | 211 | 0.1% | 1,401 | 0.24 | 413 | – | 0.34 | 445 | 794 | – | 0.00 | 0.00 |
+| East of England | 2.95 | 94.4 | 17.9% | 17.9% | 0.0% | 60.0 | 4.3% | 136 | 0.0% | 1,339 | 0.37 | 212 | – | 0.39 | 268 | 702 | 0.00 | 0.00 | 0.00 |
+| London | 3.98 | 120 | 31.1% | 31.1% | 0.0% | 224 | 16.1% | 191 | 0.1% | 1,085 | 0.40 | 294 | 0.00 | 0.47 | 433 | 814 | – | 0.00 | 0.00 |
+| South East | 4.28 | 95.1 | 23.0% | 23.0% | 0.0% | 127 | 9.1% | 135 | 0.1% | 1,573 | 0.28 | 547 | – | 0.31 | 703 | 1,194 | – | 0.00 | 0.00 |
+| South West | 2.78 | 118 | 25.4% | 25.4% | 0.0% | 147 | 10.5% | 226 | 0.1% | 1,317 | 0.36 | 278 | – | 0.64 | 207 | 600 | – | 0.00 | 0.00 |
+| Wales | 1.59 | 203 | 28.4% | 28.4% | 0.0% | 68.5 | 4.9% | 181 | 0.1% | 1,845 | 0.36 | 244 | – | 0.45 | 191 | 477 | – | 0.00 | 0.00 |
+| Scotland | 2.75 | 99.5 | 23.4% | 23.4% | 0.0% | 88.6 | 6.3% | 163 | 0.1% | 2,003 | 0.55 | 217 | – | 0.58 | 208 | 651 | – | 0.00 | 0.00 |
 
 By household type:
 
 | Household type | Households (m) | ESS | Eligible | Passported | Pass income test | Cost (GBP m) | Share of cost | Avg per recipient (GBP) | Gain, % net income | Mean bill (GBP) | In abs. BHC poverty, reached | In abs. BHC poverty, not reached (k) | People out of abs. BHC poverty (k) | In abs. AHC poverty, reached | In abs. AHC poverty, not reached (k) | Lowest-4-decile, not reached (k) | People out of rel. AHC poverty (k) | Within GBP 1k above top line (k) | Offset range (k) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | Single pensioner | 4.10 | 76.7 | 38.8% | 38.8% | 0.0% | 392 | 28.1% | 264 | 0.4% | 1,315 | 0.13 | 777 | 0.00 | 0.39 | 526 | 1,388 | 2.99 | 0.00 | 0.00 |
-| Pensioner couple | 3.90 | 232 | 5.9% | 5.9% | 0.0% | 25.8 | 1.8% | 188 | 0.0% | 2,366 | 0.10 | 283 | 1.93 | 0.13 | 215 | 1,077 | 0.03 | 0.00 | 0.00 |
+| Pensioner couple | 3.90 | 232 | 5.9% | 5.9% | 0.0% | 25.8 | 1.8% | 188 | 0.0% | 2,366 | 0.10 | 283 | – | 0.13 | 215 | 1,077 | – | 0.00 | 0.00 |
 | Single, no children | 5.66 | 258 | 48.7% | 48.7% | 0.0% | 436 | 31.2% | 180 | 0.3% | 1,164 | 0.59 | 813 | 13.3 | 0.59 | 960 | 1,598 | 5.09 | 0.00 | 0.00 |
-| Couple, no children | 7.21 | 170 | 2.0% | 2.0% | 0.0% | 19.0 | 1.4% | 161 | 0.0% | 1,726 | 0.05 | 622 | 4.31 | 0.07 | 844 | 1,651 | 0.00 | 0.00 | 0.00 |
-| Lone parent | 2.13 | 314 | 92.4% | 92.4% | 0.0% | 333 | 23.8% | 188 | 0.4% | 741 | 0.87 | 69.6 | 7.24 | 0.86 | 101 | 246 | 6.82 | 0.00 | 0.00 |
-| Couple with children | 5.00 | 374 | 16.2% | 16.2% | 0.0% | 110 | 7.9% | 155 | 0.0% | 1,629 | 0.32 | 350 | 0.00 | 0.36 | 549 | 1,237 | 31.4 | 0.00 | 0.00 |
-| Multi-family household | 2.78 | 154 | 17.2% | 17.2% | 0.0% | 79.6 | 5.7% | 188 | 0.0% | 1,960 | 0.25 | 228 | 3.42 | 0.33 | 266 | 601 | 23.1 | 0.00 | 0.00 |
+| Couple, no children | 7.21 | 170 | 2.0% | 2.0% | 0.0% | 19.0 | 1.4% | 161 | 0.0% | 1,726 | 0.05 | 622 | – | 0.07 | 844 | 1,651 | 0.00 | 0.00 | 0.00 |
+| Lone parent | 2.13 | 314 | 92.4% | 92.4% | 0.0% | 333 | 23.8% | 188 | 0.4% | 741 | 0.87 | 69.6 | – | 0.86 | 101 | 246 | – | 0.00 | 0.00 |
+| Couple with children | 5.00 | 374 | 16.2% | 16.2% | 0.0% | 110 | 7.9% | 155 | 0.0% | 1,629 | 0.32 | 350 | 0.00 | 0.36 | 549 | 1,237 | – | 0.00 | 0.00 |
+| Multi-family household | 2.78 | 154 | 17.2% | 17.2% | 0.0% | 79.6 | 5.7% | 188 | 0.0% | 1,960 | 0.25 | 228 | – | 0.33 | 266 | 601 | – | 0.00 | 0.00 |
 
 By AHC income decile (GB people):
 
@@ -3556,11 +3556,11 @@ Poverty (people unless stated):
 | Measure | Group | Baseline rate | Reform rate | Change (pp) | Change (k) | Records crossing | ESS crossing |
 |---|---|---|---|---|---|---|---|
 | abs_pov_bhc | people | 14.4% | 14.4% | -0.04 | -30.2 | 24 | 9.34 |
-| abs_pov_bhc | children | 16.6% | 16.6% | -0.02 | -3.62 | <10 | 1.98 |
+| abs_pov_bhc | children | 16.6% | – | – | – | <10 | – |
 | abs_pov_bhc | working_age_adults | 14.2% | 14.2% | -0.06 | -24.4 | 24 | 8.10 |
-| abs_pov_bhc | pensioners | 12.3% | 12.2% | -0.02 | -2.19 | <10 | 3.48 |
+| abs_pov_bhc | pensioners | 12.3% | – | – | – | <10 | – |
 | abs_pov_ahc | people | 18.8% | 18.8% | -0.01 | -7.39 | 23 | 5.99 |
-| abs_pov_ahc | children | 24.4% | 24.4% | -0.00 | -0.01 | <10 | 1.61 |
+| abs_pov_ahc | children | 24.4% | – | – | – | <10 | – |
 | abs_pov_ahc | working_age_adults | 19.0% | 19.0% | -0.01 | -5.02 | 11 | 3.05 |
 | abs_pov_ahc | pensioners | 11.1% | 11.1% | -0.02 | -2.36 | 14 | 6.47 |
 | rel_pov_bhc | people | 19.3% | 19.1% | -0.16 | -108 | 29 | 7.32 |
@@ -3568,7 +3568,7 @@ Poverty (people unless stated):
 | rel_pov_bhc | working_age_adults | 17.5% | 17.4% | -0.12 | -51.1 | 21 | 8.27 |
 | rel_pov_bhc | pensioners | 20.0% | 20.0% | -0.02 | -2.31 | 11 | 4.62 |
 | rel_pov_ahc | people | 22.7% | 22.6% | -0.10 | -69.4 | 32 | 4.23 |
-| rel_pov_ahc | children | 30.6% | 30.4% | -0.19 | -28.8 | <10 | 3.04 |
+| rel_pov_ahc | children | 30.6% | – | – | – | <10 | – |
 | rel_pov_ahc | working_age_adults | 21.9% | 21.9% | -0.09 | -37.6 | 22 | 4.17 |
 | rel_pov_ahc | pensioners | 15.6% | 15.6% | -0.03 | -3.00 | 11 | 3.89 |
 
@@ -3635,29 +3635,29 @@ By region:
 
 | Region | Households (m) | ESS | Eligible | Passported | Pass income test | Cost (GBP m) | Share of cost | Avg per recipient (GBP) | Gain, % net income | Mean bill (GBP) | In abs. BHC poverty, reached | In abs. BHC poverty, not reached (k) | People out of abs. BHC poverty (k) | In abs. AHC poverty, reached | In abs. AHC poverty, not reached (k) | Lowest-4-decile, not reached (k) | People out of rel. AHC poverty (k) | Within GBP 1k above top line (k) | Offset range (k) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| North East | 1.23 | 273 | 38.4% | 38.4% | 0.0% | 125 | 6.2% | 265 | 0.2% | 1,460 | 0.55 | 82.2 | 4.44 | 0.65 | 90.0 | 265 | 11.4 | 0.00 | 0.00 |
-| North West | 3.31 | 495 | 29.2% | 29.2% | 0.0% | 255 | 12.8% | 265 | 0.2% | 1,489 | 0.40 | 294 | 5.15 | 0.51 | 255 | 693 | 19.8 | 0.00 | 0.00 |
+| North East | 1.23 | 273 | 38.4% | 38.4% | 0.0% | 125 | 6.2% | 265 | 0.2% | 1,460 | 0.55 | 82.2 | 4.44 | 0.65 | 90.0 | 265 | – | 0.00 | 0.00 |
+| North West | 3.31 | 495 | 29.2% | 29.2% | 0.0% | 255 | 12.8% | 265 | 0.2% | 1,489 | 0.40 | 294 | – | 0.51 | 255 | 693 | 19.8 | 0.00 | 0.00 |
 | Yorkshire and the Humber | 2.42 | 580 | 28.8% | 28.8% | 0.0% | 184 | 9.2% | 265 | 0.2% | 1,420 | 0.45 | 208 | 5.50 | 0.50 | 212 | 595 | 15.7 | 0.00 | 0.00 |
-| East Midlands | 2.13 | 335 | 24.8% | 24.8% | 0.0% | 140 | 7.0% | 265 | 0.1% | 1,463 | 0.40 | 162 | 3.38 | 0.48 | 171 | 647 | 45.9 | 0.00 | 0.00 |
-| West Midlands | 2.54 | 345 | 30.9% | 30.9% | 0.0% | 208 | 10.4% | 265 | 0.2% | 1,440 | 0.44 | 141 | 8.41 | 0.60 | 126 | 527 | 60.8 | 0.00 | 0.00 |
-| East of England | 2.76 | 508 | 21.3% | 21.3% | 0.0% | 155 | 7.8% | 265 | 0.1% | 1,431 | 0.35 | 227 | 6.74 | 0.41 | 224 | 575 | 3.57 | 0.00 | 0.00 |
-| London | 3.66 | 420 | 29.7% | 29.7% | 0.0% | 288 | 14.4% | 265 | 0.1% | 1,393 | 0.57 | 148 | 3.13 | 0.59 | 286 | 561 | 4.57 | 0.00 | 0.00 |
-| South East | 4.02 | 734 | 20.2% | 20.2% | 0.0% | 215 | 10.8% | 265 | 0.1% | 1,568 | 0.38 | 300 | 4.87 | 0.47 | 332 | 858 | 28.7 | 0.00 | 0.00 |
-| South West | 2.56 | 356 | 22.5% | 22.5% | 0.0% | 153 | 7.6% | 265 | 0.1% | 1,367 | 0.30 | 239 | 3.33 | 0.42 | 242 | 670 | 2.39 | 0.00 | 0.00 |
-| Wales | 1.40 | 463 | 29.1% | 29.1% | 0.0% | 108 | 5.4% | 265 | 0.2% | 1,357 | 0.41 | 138 | 2.14 | 0.51 | 113 | 378 | 0.88 | 0.00 | 0.00 |
+| East Midlands | 2.13 | 335 | 24.8% | 24.8% | 0.0% | 140 | 7.0% | 265 | 0.1% | 1,463 | 0.40 | 162 | – | 0.48 | 171 | 647 | 45.9 | 0.00 | 0.00 |
+| West Midlands | 2.54 | 345 | 30.9% | 30.9% | 0.0% | 208 | 10.4% | 265 | 0.2% | 1,440 | 0.44 | 141 | – | 0.60 | 126 | 527 | 60.8 | 0.00 | 0.00 |
+| East of England | 2.76 | 508 | 21.3% | 21.3% | 0.0% | 155 | 7.8% | 265 | 0.1% | 1,431 | 0.35 | 227 | – | 0.41 | 224 | 575 | – | 0.00 | 0.00 |
+| London | 3.66 | 420 | 29.7% | 29.7% | 0.0% | 288 | 14.4% | 265 | 0.1% | 1,393 | 0.57 | 148 | – | 0.59 | 286 | 561 | – | 0.00 | 0.00 |
+| South East | 4.02 | 734 | 20.2% | 20.2% | 0.0% | 215 | 10.8% | 265 | 0.1% | 1,568 | 0.38 | 300 | – | 0.47 | 332 | 858 | 28.7 | 0.00 | 0.00 |
+| South West | 2.56 | 356 | 22.5% | 22.5% | 0.0% | 153 | 7.6% | 265 | 0.1% | 1,367 | 0.30 | 239 | – | 0.42 | 242 | 670 | 2.39 | 0.00 | 0.00 |
+| Wales | 1.40 | 463 | 29.1% | 29.1% | 0.0% | 108 | 5.4% | 265 | 0.2% | 1,357 | 0.41 | 138 | – | 0.51 | 113 | 378 | – | 0.00 | 0.00 |
 | Scotland | 2.67 | 586 | 23.9% | 23.9% | 0.0% | 169 | 8.5% | 265 | 0.1% | 1,334 | 0.42 | 307 | 14.2 | 0.49 | 277 | 675 | 13.0 | 0.00 | 0.00 |
 
 By household type:
 
 | Household type | Households (m) | ESS | Eligible | Passported | Pass income test | Cost (GBP m) | Share of cost | Avg per recipient (GBP) | Gain, % net income | Mean bill (GBP) | In abs. BHC poverty, reached | In abs. BHC poverty, not reached (k) | People out of abs. BHC poverty (k) | In abs. AHC poverty, reached | In abs. AHC poverty, not reached (k) | Lowest-4-decile, not reached (k) | People out of rel. AHC poverty (k) | Within GBP 1k above top line (k) | Offset range (k) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| Single pensioner | 3.94 | 1,024 | 34.2% | 34.2% | 0.0% | 357 | 17.8% | 265 | 0.3% | 1,126 | 0.26 | 524 | 1.39 | 0.46 | 341 | 908 | 34.7 | 0.00 | 0.00 |
-| Pensioner couple | 3.59 | 787 | 6.7% | 6.7% | 0.0% | 64.1 | 3.2% | 265 | 0.0% | 1,581 | 0.10 | 315 | 3.40 | 0.22 | 205 | 1,081 | 5.76 | 0.00 | 0.00 |
+| Single pensioner | 3.94 | 1,024 | 34.2% | 34.2% | 0.0% | 357 | 17.8% | 265 | 0.3% | 1,126 | 0.26 | 524 | – | 0.46 | 341 | 908 | 34.7 | 0.00 | 0.00 |
+| Pensioner couple | 3.59 | 787 | 6.7% | 6.7% | 0.0% | 64.1 | 3.2% | 265 | 0.0% | 1,581 | 0.10 | 315 | – | 0.22 | 205 | 1,081 | – | 0.00 | 0.00 |
 | Single, no children | 4.55 | 574 | 33.7% | 33.7% | 0.0% | 407 | 20.3% | 265 | 0.3% | 1,064 | 0.45 | 701 | 9.80 | 0.51 | 716 | 1,239 | 17.5 | 0.00 | 0.00 |
-| Couple, no children | 4.34 | 606 | 5.1% | 5.1% | 0.0% | 58.6 | 2.9% | 265 | 0.0% | 1,402 | 0.22 | 262 | 4.95 | 0.23 | 380 | 1,002 | 3.89 | 0.00 | 0.00 |
+| Couple, no children | 4.34 | 606 | 5.1% | 5.1% | 0.0% | 58.6 | 2.9% | 265 | 0.0% | 1,402 | 0.22 | 262 | – | 0.23 | 380 | 1,002 | – | 0.00 | 0.00 |
 | Lone parent | 1.26 | 295 | 90.2% | 90.2% | 0.0% | 301 | 15.1% | 265 | 0.6% | 1,355 | 0.92 | 19.3 | 17.0 | 0.93 | 23.9 | 57.0 | 57.1 | 0.00 | 0.00 |
-| Couple with children | 4.98 | 1,097 | 17.7% | 17.7% | 0.0% | 234 | 11.7% | 265 | 0.1% | 1,724 | 0.43 | 289 | 10.4 | 0.46 | 464 | 1,409 | 21.8 | 0.00 | 0.00 |
-| Multi-family household | 6.01 | 773 | 36.4% | 36.4% | 0.0% | 579 | 29.0% | 265 | 0.1% | 1,642 | 0.70 | 135 | 14.4 | 0.71 | 196 | 746 | 65.9 | 0.00 | 0.00 |
+| Couple with children | 4.98 | 1,097 | 17.7% | 17.7% | 0.0% | 234 | 11.7% | 265 | 0.1% | 1,724 | 0.43 | 289 | – | 0.46 | 464 | 1,409 | 21.8 | 0.00 | 0.00 |
+| Multi-family household | 6.01 | 773 | 36.4% | 36.4% | 0.0% | 579 | 29.0% | 265 | 0.1% | 1,642 | 0.70 | 135 | 14.4 | 0.71 | 196 | 746 | – | 0.00 | 0.00 |
 
 By AHC income decile (GB people):
 
@@ -3756,29 +3756,29 @@ By region:
 
 | Region | Households (m) | ESS | Eligible | Passported | Pass income test | Cost (GBP m) | Share of cost | Avg per recipient (GBP) | Gain, % net income | Mean bill (GBP) | In abs. BHC poverty, reached | In abs. BHC poverty, not reached (k) | People out of abs. BHC poverty (k) | In abs. AHC poverty, reached | In abs. AHC poverty, not reached (k) | Lowest-4-decile, not reached (k) | People out of rel. AHC poverty (k) | Within GBP 1k above top line (k) | Offset range (k) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| North East | 1.32 | 93.2 | 33.1% | 33.1% | 0.0% | 110 | 5.5% | 251 | 0.2% | 2,146 | 0.72 | 71.8 | 2.09 | 0.76 | 70.9 | 255 | 6.63 | 0.00 | 0.00 |
-| North West | 3.55 | 171 | 29.5% | 29.5% | 0.0% | 263 | 13.1% | 251 | 0.2% | 1,595 | 0.57 | 259 | 8.51 | 0.58 | 296 | 943 | 14.1 | 0.00 | 0.00 |
-| Yorkshire and the Humber | 2.59 | 153 | 27.9% | 27.9% | 0.0% | 181 | 9.1% | 251 | 0.1% | 1,918 | 0.51 | 251 | 1.64 | 0.54 | 229 | 576 | 9.31 | 0.00 | 0.00 |
-| East Midlands | 2.30 | 112 | 25.4% | 25.4% | 0.0% | 146 | 7.3% | 251 | 0.1% | 1,948 | 0.59 | 175 | 0.36 | 0.65 | 172 | 418 | 0.27 | 0.00 | 0.00 |
-| West Midlands | 2.71 | 79.7 | 23.5% | 23.5% | 0.0% | 160 | 8.0% | 251 | 0.1% | 1,401 | 0.27 | 393 | 1.09 | 0.38 | 419 | 750 | 1.26 | 0.00 | 0.00 |
-| East of England | 2.95 | 94.4 | 17.9% | 17.9% | 0.0% | 132 | 6.6% | 251 | 0.1% | 1,339 | 0.39 | 207 | 4.53 | 0.41 | 258 | 626 | 16.6 | 0.00 | 0.00 |
-| London | 3.98 | 120 | 31.1% | 31.1% | 0.0% | 310 | 15.5% | 251 | 0.1% | 1,085 | 0.44 | 274 | 5.11 | 0.51 | 400 | 756 | 7.18 | 0.00 | 0.00 |
-| South East | 4.28 | 95.1 | 23.0% | 23.0% | 0.0% | 247 | 12.3% | 251 | 0.1% | 1,573 | 0.30 | 534 | 5.27 | 0.32 | 685 | 1,161 | 27.8 | 0.00 | 0.00 |
-| South West | 2.78 | 118 | 25.4% | 25.4% | 0.0% | 177 | 8.9% | 251 | 0.1% | 1,317 | 0.38 | 268 | 11.1 | 0.66 | 192 | 546 | 0.65 | 0.00 | 0.00 |
-| Wales | 1.59 | 203 | 28.4% | 28.4% | 0.0% | 113 | 5.7% | 251 | 0.2% | 1,845 | 0.42 | 221 | 5.00 | 0.54 | 159 | 426 | 4.57 | 0.00 | 0.00 |
-| Scotland | 2.75 | 99.5 | 23.4% | 23.4% | 0.0% | 161 | 8.1% | 251 | 0.1% | 2,003 | 0.62 | 184 | 5.36 | 0.64 | 178 | 555 | 22.0 | 0.00 | 0.00 |
+| North East | 1.32 | 93.2 | 33.1% | 33.1% | 0.0% | 110 | 5.5% | 251 | 0.2% | 2,146 | 0.72 | 71.8 | – | 0.76 | 70.9 | 255 | – | 0.00 | 0.00 |
+| North West | 3.55 | 171 | 29.5% | 29.5% | 0.0% | 263 | 13.1% | 251 | 0.2% | 1,595 | 0.57 | 259 | – | 0.58 | 296 | 943 | – | 0.00 | 0.00 |
+| Yorkshire and the Humber | 2.59 | 153 | 27.9% | 27.9% | 0.0% | 181 | 9.1% | 251 | 0.1% | 1,918 | 0.51 | 251 | – | 0.54 | 229 | 576 | – | 0.00 | 0.00 |
+| East Midlands | 2.30 | 112 | 25.4% | 25.4% | 0.0% | 146 | 7.3% | 251 | 0.1% | 1,948 | 0.59 | 175 | – | 0.65 | 172 | 418 | – | 0.00 | 0.00 |
+| West Midlands | 2.71 | 79.7 | 23.5% | 23.5% | 0.0% | 160 | 8.0% | 251 | 0.1% | 1,401 | 0.27 | 393 | – | 0.38 | 419 | 750 | – | 0.00 | 0.00 |
+| East of England | 2.95 | 94.4 | 17.9% | 17.9% | 0.0% | 132 | 6.6% | 251 | 0.1% | 1,339 | 0.39 | 207 | – | 0.41 | 258 | 626 | – | 0.00 | 0.00 |
+| London | 3.98 | 120 | 31.1% | 31.1% | 0.0% | 310 | 15.5% | 251 | 0.1% | 1,085 | 0.44 | 274 | – | 0.51 | 400 | 756 | – | 0.00 | 0.00 |
+| South East | 4.28 | 95.1 | 23.0% | 23.0% | 0.0% | 247 | 12.3% | 251 | 0.1% | 1,573 | 0.30 | 534 | – | 0.32 | 685 | 1,161 | 27.8 | 0.00 | 0.00 |
+| South West | 2.78 | 118 | 25.4% | 25.4% | 0.0% | 177 | 8.9% | 251 | 0.1% | 1,317 | 0.38 | 268 | – | 0.66 | 192 | 546 | – | 0.00 | 0.00 |
+| Wales | 1.59 | 203 | 28.4% | 28.4% | 0.0% | 113 | 5.7% | 251 | 0.2% | 1,845 | 0.42 | 221 | – | 0.54 | 159 | 426 | – | 0.00 | 0.00 |
+| Scotland | 2.75 | 99.5 | 23.4% | 23.4% | 0.0% | 161 | 8.1% | 251 | 0.1% | 2,003 | 0.62 | 184 | – | 0.64 | 178 | 555 | – | 0.00 | 0.00 |
 
 By household type:
 
 | Household type | Households (m) | ESS | Eligible | Passported | Pass income test | Cost (GBP m) | Share of cost | Avg per recipient (GBP) | Gain, % net income | Mean bill (GBP) | In abs. BHC poverty, reached | In abs. BHC poverty, not reached (k) | People out of abs. BHC poverty (k) | In abs. AHC poverty, reached | In abs. AHC poverty, not reached (k) | Lowest-4-decile, not reached (k) | People out of rel. AHC poverty (k) | Within GBP 1k above top line (k) | Offset range (k) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| Single pensioner | 4.10 | 76.7 | 38.8% | 38.8% | 0.0% | 399 | 20.0% | 251 | 0.4% | 1,315 | 0.14 | 765 | 0.36 | 0.42 | 506 | 1,333 | 21.9 | 0.00 | 0.00 |
-| Pensioner couple | 3.90 | 232 | 5.9% | 5.9% | 0.0% | 57.3 | 2.9% | 251 | 0.0% | 2,366 | 0.10 | 282 | 4.00 | 0.14 | 212 | 989 | 0.03 | 0.00 | 0.00 |
+| Single pensioner | 4.10 | 76.7 | 38.8% | 38.8% | 0.0% | 399 | 20.0% | 251 | 0.4% | 1,315 | 0.14 | 765 | – | 0.42 | 506 | 1,333 | 21.9 | 0.00 | 0.00 |
+| Pensioner couple | 3.90 | 232 | 5.9% | 5.9% | 0.0% | 57.3 | 2.9% | 251 | 0.0% | 2,366 | 0.10 | 282 | – | 0.14 | 212 | 989 | – | 0.00 | 0.00 |
 | Single, no children | 5.66 | 258 | 48.7% | 48.7% | 0.0% | 691 | 34.6% | 251 | 0.5% | 1,164 | 0.69 | 611 | 14.5 | 0.69 | 725 | 1,289 | 6.53 | 0.00 | 0.00 |
-| Couple, no children | 7.21 | 170 | 2.0% | 2.0% | 0.0% | 36.5 | 1.8% | 251 | 0.0% | 1,726 | 0.07 | 614 | 4.31 | 0.08 | 829 | 1,629 | 0.00 | 0.00 | 0.00 |
-| Lone parent | 2.13 | 314 | 92.4% | 92.4% | 0.0% | 493 | 24.6% | 251 | 0.7% | 741 | 0.94 | 32.7 | 20.9 | 0.95 | 38.7 | 65.5 | 17.9 | 0.00 | 0.00 |
-| Couple with children | 5.00 | 374 | 16.2% | 16.2% | 0.0% | 203 | 10.1% | 251 | 0.1% | 1,629 | 0.37 | 328 | 0.00 | 0.40 | 512 | 1,146 | 40.3 | 0.00 | 0.00 |
-| Multi-family household | 2.78 | 154 | 17.2% | 17.2% | 0.0% | 120 | 6.0% | 251 | 0.0% | 1,960 | 0.33 | 205 | 6.07 | 0.40 | 237 | 560 | 23.7 | 0.00 | 0.00 |
+| Couple, no children | 7.21 | 170 | 2.0% | 2.0% | 0.0% | 36.5 | 1.8% | 251 | 0.0% | 1,726 | 0.07 | 614 | – | 0.08 | 829 | 1,629 | 0.00 | 0.00 | 0.00 |
+| Lone parent | 2.13 | 314 | 92.4% | 92.4% | 0.0% | 493 | 24.6% | 251 | 0.7% | 741 | 0.94 | 32.7 | – | 0.95 | 38.7 | 65.5 | – | 0.00 | 0.00 |
+| Couple with children | 5.00 | 374 | 16.2% | 16.2% | 0.0% | 203 | 10.1% | 251 | 0.1% | 1,629 | 0.37 | 328 | 0.00 | 0.40 | 512 | 1,146 | – | 0.00 | 0.00 |
+| Multi-family household | 2.78 | 154 | 17.2% | 17.2% | 0.0% | 120 | 6.0% | 251 | 0.0% | 1,960 | 0.33 | 205 | – | 0.40 | 237 | 560 | – | 0.00 | 0.00 |
 
 By AHC income decile (GB people):
 
@@ -3800,11 +3800,11 @@ Poverty (people unless stated):
 | Measure | Group | Baseline rate | Reform rate | Change (pp) | Change (k) | Records crossing | ESS crossing |
 |---|---|---|---|---|---|---|---|
 | abs_pov_bhc | people | 14.4% | 14.4% | -0.07 | -50.1 | 40 | 12.0 |
-| abs_pov_bhc | children | 16.6% | 16.6% | -0.08 | -11.8 | <10 | 3.10 |
+| abs_pov_bhc | children | 16.6% | – | – | – | <10 | – |
 | abs_pov_bhc | working_age_adults | 14.2% | 14.2% | -0.08 | -34.1 | 32 | 11.8 |
 | abs_pov_bhc | pensioners | 12.3% | 12.2% | -0.03 | -4.11 | 14 | 5.53 |
 | abs_pov_ahc | people | 18.8% | 18.7% | -0.12 | -83.9 | 52 | 2.89 |
-| abs_pov_ahc | children | 24.4% | 24.2% | -0.19 | -28.1 | <10 | 1.33 |
+| abs_pov_ahc | children | 24.4% | – | – | – | <10 | – |
 | abs_pov_ahc | working_age_adults | 19.0% | 18.9% | -0.11 | -44.5 | 24 | 3.13 |
 | abs_pov_ahc | pensioners | 11.1% | 11.0% | -0.10 | -11.4 | 30 | 4.25 |
 | rel_pov_bhc | people | 19.3% | 19.1% | -0.16 | -111 | 36 | 9.29 |
