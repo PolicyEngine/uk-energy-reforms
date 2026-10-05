@@ -269,9 +269,10 @@ dashboard.
 - **Offset range** (Microcosm). Just above a line, a household's extra income after tax is
   smaller than the support it no longer receives. The offset range is the band of tested
   income over which that holds: the support lost grossed up at the top earner's marginal
-  rate of 28% (basic-rate tax plus 8% employee NI), or 20% where the top earner is over
-  State Pension age and pays no NI. For £175 of support it is £243 wide, or £219 for a
-  pensioner. Households in that band:
+  rate of 28% (basic-rate tax plus 8% employee NI), 26% where the top earner is mainly
+  self-employed (6% Class 4 NI), or 20% where the top earner is over State Pension age and
+  pays no NI. For £175 of support it is £243 wide, £236 for a self-employed top earner and
+  £219 for a pensioner. Households in that band:
   - flat option: 64k households at £24,000;
   - tiered option: 45k at £18,000 plus 32k at £24,000.
 - **Bill-share delivery.** The report proposes a cut in unit prices (pence per kWh). The

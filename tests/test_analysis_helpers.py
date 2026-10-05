@@ -105,18 +105,21 @@ def test_no_cliffs_without_an_income_test():
 
 def test_offset_width_uses_the_top_earners_marginal_rate():
     """£175 lost: a pensioner top earner (basic rate, no NI) needs £175 / 0.80 = £218.75
-    more gross income; a working-age one (basic rate + 8% NI) £175 / 0.72 = £243.06.
-    Under the household-income test the width is in equivalised income."""
+    more gross income; an employee (basic rate + 8% NI) £175 / 0.72 = £243.06; a
+    self-employed one (basic rate + 6% Class 4) £175 / 0.74 = £236.49. Under the
+    household-income test the width is in equivalised income."""
     frame = pd.DataFrame(
         {
-            "top_earner_pensioner": [True, False, False],
-            "equivalisation_bhc": [1, 1, 1.4],
+            "top_earner_pensioner": [True, False, False, False],
+            "top_earner_self_employed": [True, False, False, True],
+            "equivalisation_bhc": [1, 1, 1.4, 1],
         }
     )
-    drop = np.array([175.0, 175.0, 175.0])
+    drop = np.array([175.0, 175.0, 175.0, 175.0])
     widths = analysis.offset_width(frame, drop, {"household_equivalised": False})
     assert widths[0] == pytest.approx(218.75)
     assert widths[1] == pytest.approx(175 / 0.72)
+    assert widths[3] == pytest.approx(175 / 0.74)
     household = analysis.offset_width(frame, drop, {"household_equivalised": True})
     assert household[2] == pytest.approx(175 / 0.72 / 1.4)
 

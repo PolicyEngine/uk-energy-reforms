@@ -48,10 +48,12 @@ REGION_LABELS = {
 
 GROUPS = {"region": REGIONS, "household_type": HOUSEHOLD_TYPES}
 # Offset range: the marginal rate on the extra gross income needed to make up lost
-# support. Basic-rate income tax plus 8% employee NI, or basic rate alone where the
-# household's highest-income member is over State Pension age (no employee NI).
+# support. Basic-rate income tax plus 8% employee NI, or plus 6% Class 4 NI where the
+# household's highest-income member earns mainly from self-employment, or basic rate
+# alone where they are over State Pension age (no employee or Class 4 NI).
 BASIC_RATE = 0.20
 EMPLOYEE_NI = 0.08
+CLASS_4_NI = 0.06
 HIGH_BURDEN = 0.10  # energy spend above 10% of net income (old fuel-poverty test)
 
 
@@ -331,7 +333,13 @@ def offset_width(f: pd.DataFrame, drop: np.ndarray, schedule: dict) -> np.ndarra
     by one pound divided by the household's equivalisation factor.
     """
     pensioner = f.top_earner_pensioner.values.astype(bool)
-    rate = np.where(pensioner, BASIC_RATE, BASIC_RATE + EMPLOYEE_NI)
+    self_employed = (
+        f.top_earner_self_employed.values.astype(bool)
+        if "top_earner_self_employed" in f
+        else np.zeros(len(f), bool)
+    )
+    ni = np.where(self_employed, CLASS_4_NI, EMPLOYEE_NI)
+    rate = np.where(pensioner, BASIC_RATE, BASIC_RATE + ni)
     scale = (
         f.equivalisation_bhc.values if schedule.get("household_equivalised") else 1.0
     )
