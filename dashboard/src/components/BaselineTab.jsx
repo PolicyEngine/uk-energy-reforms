@@ -5,7 +5,6 @@ import {
   DATASET_SHORT,
   PRICE_BASIS,
   getBaseline,
-  getRfFigure,
   getSource,
   yearLabel,
 } from "../lib/dataHelpers";
@@ -52,6 +51,8 @@ export default function BaselineTab({ data, dataset }) {
   const year = data.meta.years[0];
   const [groupBy, setGroupBy] = useState("bill_by_decile");
   const b = getBaseline(data, year, dataset);
+  const nextYearKey = data.meta.years[1];
+  const nextYear = nextYearKey ? getBaseline(data, nextYearKey, dataset) : null;
   const replication = data.replication_2024?.rf_flat?.[dataset];
   const short = DATASET_SHORT[dataset];
 
@@ -68,7 +69,6 @@ export default function BaselineTab({ data, dataset }) {
   const hbaiKids = src("hbai_children_low_income_rates_fye2025");
   const hbaiPens = src("hbai_pensioners_low_income_rates_fye2025");
   const fuelPoverty = src("fuel_poverty_england_2025");
-  const reported = getRfFigure(data, "passport_share_reported");
   const [levelId, levelKey] = PRICE_LEVEL_SOURCE[dataset] ?? [];
   const priceLevel = src(levelId)?.value?.[levelKey];
   const winterGap =
@@ -101,26 +101,6 @@ export default function BaselineTab({ data, dataset }) {
           ),
           notes:
             "ONS publishes UK and country totals; the GB figure is England, Wales and Scotland summed.",
-        },
-        {
-          key: "passported",
-          quantity: "Households receiving a passporting means-tested benefit",
-          model: `${formatShare(b.passported_share)} modelled (${yl}); ${formatShare(
-            reported?.policyengine?.[dataset]?.["2024"] ?? 0,
-          )} reported (2024-25)`,
-          external: (
-            <>
-              {sourceCell(
-                whd,
-                `${formatMillions(whd?.value?.households_gb_core_groups / 1e6, 2)} Warm Home Discount rebates (${formatShare(whd?.value?.share_of_gb_households, 1)})`,
-              )}
-              <span className="mt-1 block">
-                around a quarter (Resolution Foundation, p. 1)
-              </span>
-            </>
-          ),
-          notes:
-            "Modelled receipt applies PolicyEngine's take-up assumptions; reported receipt is what survey respondents report. Warm Home Discount rebates reach the named bill-payer where government data matching succeeds, and the count excludes Scotland's Broader Group (about 186,000 households), so it sits below the number of households receiving the benefits.",
         },
         {
           key: "bill",
@@ -255,13 +235,31 @@ export default function BaselineTab({ data, dataset }) {
               label="Passported by a benefit"
               icon="benefit"
               value={formatShare(b.passported_share)}
-              note="Receive Universal Credit, Pension Credit, Housing Benefit, income-related ESA, income-based JSA or Income Support, as modelled."
+              note={
+                <>
+                  Receive Universal Credit, Pension Credit, Housing Benefit,
+                  income-related ESA, income-based JSA or Income Support, as
+                  modelled with take-up. The report says around a quarter, on
+                  receipt reported in the survey (see the comparison with the
+                  report).{" "}
+                  {whd ? (
+                    <SourceLink href={whd.url}>
+                      {formatMillions(whd.value.households_gb_core_groups / 1e6, 2)}{" "}
+                      Warm Home Discount rebates
+                    </SourceLink>
+                  ) : (
+                    "Warm Home Discount rebates"
+                  )}{" "}
+                  in 2025-26 went to bill-payers that government data
+                  matching found, excluding Scotland&apos;s Broader Group.
+                </>
+              }
             />
             <MetricCard
               label="Highest individual income below £24,000"
               icon="income"
               value={formatShare(b.income_test_share)}
-              note="Share of households passing the income test, whether or not passported."
+              note={`Households passing the income test, whether or not passported. The £24,000 line is not uprated, so the share falls as incomes rise${nextYear != null ? `: ${formatShare(nextYear.income_test_share)} in ${yearLabel(data, nextYearKey)}` : ""}. The comparison with the report gives 2024-25.`}
             />
           </div>
         )}
