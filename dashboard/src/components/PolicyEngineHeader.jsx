@@ -22,7 +22,7 @@ export default function PolicyEngineHeader() {
           "linear-gradient(to right, var(--pe-color-primary-800, #234E52), var(--pe-color-primary-600, #2C7A7B))",
       }}
     >
-      <div className="mx-auto flex h-[58px] max-w-[1400px] items-center gap-5 px-4 md:gap-8 md:px-8">
+      <div className="mx-auto flex min-h-[58px] max-w-[1400px] items-center gap-5 px-4 py-2 md:gap-8 md:px-8">
         <a
           href="https://policyengine.org/uk"
           aria-label="PolicyEngine UK home"
@@ -36,7 +36,9 @@ export default function PolicyEngineHeader() {
           />
         </a>
 
-        <div className="flex min-w-0 items-center gap-4 overflow-x-auto md:gap-8">
+        {/* On narrow phones the links wrap onto a second line rather than run off
+            the edge, so every one stays visible. */}
+        <div className="flex min-w-0 flex-wrap items-center gap-x-4 gap-y-1 md:gap-x-8">
           {NAV_LINKS.map((link) => (
             <a
               key={link.label}
