@@ -325,7 +325,13 @@ uv run uk-energy-reforms export-dashboard --analysis analyses/rf-billing-me-soft
   distinction, and the Warm Home Discount's low-income group has taken Savings Credit
   awards since its 2025-26 expansion.
 - **Income test.** It uses `total_income`: earnings, pensions including the State Pension,
-  property, savings, dividends and taxable benefits. Incomes are annual.
+  property, savings, dividends and taxable benefits. Incomes are annual, and each person's
+  is floored at zero, as taxable income is.
+  - Property income in Microcosm totals £30.7bn across 2.87m landlords in 2024-25, with no
+    losses. More than half is landlords' profit after allowable expenses, drawn from
+    HMRC's Survey of Personal Incomes, which is the taxable concept the test needs; the rest
+    is rent reported in the FRS (sub-letting, lodgers and other property). How it is built
+    is under review in [microcosm#1106](https://github.com/PolicyEngine/microcosm/issues/1106).
 - **Nominal thresholds.** The £24,000, £18,000 and £30,000 thresholds are held at their
   nominal values while incomes are uprated from 2024-25. That is why the £24,000 test
   covers 38% / 41% of households on 2024-25 incomes, 35% / 38% in 2026-27 and 33% / 37% in
