@@ -30,6 +30,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
+        with:
+          # The packageManager pin; bun.lock is a v2 lockfile, which bun 1.3 refuses.
+          bun-version-file: dashboard/package.json
       - name: Install
         run: bun install --frozen-lockfile
       - name: Lint
