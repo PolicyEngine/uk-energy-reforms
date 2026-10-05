@@ -75,9 +75,9 @@ export default function BaselineTab({ data, dataset }) {
   const winterGap =
     priceLevel && cap ? cap.value.at_2023_tdcv / priceLevel - 1 : null;
 
-  const povertyRate = (group) =>
+  const povertyRate = (group, measure = "rel_pov_ahc") =>
     replication?.poverty?.find(
-      (p) => p.measure === "rel_pov_ahc" && p.group === group,
+      (p) => p.measure === measure && p.group === group,
     )?.baseline_rate;
 
   const yl = yearLabel(data, year);
@@ -159,9 +159,42 @@ export default function BaselineTab({ data, dataset }) {
             over10,
             `${formatShare(over10?.value?.share, 1)} (England, 2025)`,
           ),
-          notes:
-            "The model divides actual spend by net income before housing costs; DESNZ divides modelled required spend by income after housing costs, for England. The bases differ, so the levels are not directly comparable.",
+          notes: (
+            <>
+              Three different measures. The model divides actual spend by net
+              income before housing costs. DESNZ&apos;s figure divides modelled
+              required spend by income after housing costs, for England. The
+              official fuel poverty measure for England, Low Income Low Energy
+              Efficiency, also needs a low energy efficiency rating:{" "}
+              {fuelPoverty ? (
+                <SourceLink href={fuelPoverty.url}>
+                  {formatShare(fuelPoverty.value.share, 1)} of households in{" "}
+                  {fuelPoverty.period}
+                </SourceLink>
+              ) : (
+                "see DESNZ"
+              )}
+              . The levels are not directly comparable.
+            </>
+          ),
         },
+        // The headline's basis: absolute poverty before housing costs. In 2024-25,
+        // the line's reference year, HBAI's absolute and relative rates coincide.
+        ...[
+          ["people", "All people", hbai],
+          ["children", "Children", hbaiKids],
+          ["pensioners", "Pensioners", hbaiPens],
+        ].map(([group, label, source]) => ({
+          key: `abs-pov-${group}`,
+          quantity: `Absolute poverty before housing costs: ${label.toLowerCase()} (2024-25)`,
+          model: formatShare(povertyRate(group, "abs_pov_bhc") ?? 0, 1),
+          external: sourceCell(
+            source,
+            `${formatShare(source?.value?.absolute_bhc, 1)} (HBAI)`,
+          ),
+          notes:
+            "Both use HBAI's line: 60% of the 2024-25 UK median, held constant in real terms. HBAI covers the UK, the model Great Britain. The number of people the discount moves above the line depends on how many sit just below it, so differences here carry over to that count.",
+        })),
         ...[
           ["people", "All people", hbai],
           ["children", "Children", hbaiKids],
@@ -350,6 +383,9 @@ export function DataCoverage({ data, dataset }) {
   const b = getBaseline(data, data.meta.years[0], dataset);
   const short = DATASET_SHORT[dataset];
   const fuelPoverty = getSource(data, "fuel_poverty_england_2025");
+  const over10 = getSource(data, "energy_cost_over_10pct_ahc_income_england_2025");
+  const offGrid = getSource(data, "desnz_off_gas_grid_share_gb_2024");
+  const onGrid = offGrid ? 1 - offGrid.value : null;
   return (
     <div className="space-y-3">
       <p>
@@ -364,9 +400,16 @@ export function DataCoverage({ data, dataset }) {
             Energy spend is priced at {PRICE_BASIS[dataset]}; policyengine-uk
             does not uprate energy spend between years, so every year keeps that
             price level. {formatShare(b.gas_spend_share)} of GB households have
-            gas spend and {formatShare(b.no_electricity_spend_share, 1)} have no
+            gas spend
+            {onGrid != null
+              ? `, against the ${formatShare(onGrid)} of properties on the gas grid in DESNZ's meter counts,`
+              : ""}{" "}
+            and {formatShare(b.no_electricity_spend_share, 1)} have no
             electricity spend recorded; under a bill share, households with no
             recorded spend receive £0.
+            {dataset === "efrs_1573"
+              ? " The Enhanced FRS's gas share is well above DESNZ's, so its bill-share results are not comparable with Microcosm's."
+              : ""}
           </p>
           <p className="mt-1">{data.meta.datasets[dataset].notes}</p>
         </Note>
@@ -374,7 +417,8 @@ export function DataCoverage({ data, dataset }) {
       <p className="text-sm leading-6 text-slate-600">
         The data do not record prepayment meters, heating fuels off the gas
         grid, energy efficiency ratings or whether a household can afford to
-        keep warm. The official fuel poverty measure for England (
+        keep warm. The official fuel poverty measure for England, Low Income
+        Low Energy Efficiency (
         {fuelPoverty ? (
           <SourceLink href={fuelPoverty.url}>
             {formatShare(fuelPoverty.value.share, 1)} of households in{" "}
@@ -383,7 +427,19 @@ export function DataCoverage({ data, dataset }) {
         ) : (
           "DESNZ"
         )}
-        ) needs energy efficiency ratings, so the model cannot reproduce it.
+        ), needs energy efficiency ratings, so the model cannot reproduce it.
+        DESNZ also reports the share of households in England whose modelled
+        required energy spend exceeds 10% of income after housing costs (
+        {over10 ? (
+          <SourceLink href={over10.url}>
+            {formatShare(over10.value.share, 1)} in 2025
+          </SourceLink>
+        ) : (
+          "DESNZ"
+        )}
+        ). The model&apos;s &ldquo;energy spend above 10% of income&rdquo;
+        divides actual spend by net income before housing costs, a third
+        measure; the Baseline tab sets it beside DESNZ&apos;s.
       </p>
     </div>
   );
