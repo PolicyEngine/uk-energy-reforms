@@ -164,7 +164,7 @@ export default function HouseholdTab({
     <div className="space-y-6">
       <section className="section-card space-y-5">
         <SectionHeading
-          title="What would your household get?"
+          title="Discount for your household"
           description="See the payment and eligibility rules for the reform selected above. Start with the example household, or enter your own details below. The result shows whether the household qualifies, by which route, and its total support for the year."
         />
         {focusResult && (

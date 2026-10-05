@@ -84,8 +84,8 @@ export default function IncomeMeasuresSection({
       <summary>
         <span className="expandable-head">
           <SectionHeading
-            title="Does the discount reach lower-income households?"
-            description="The income test looks at the highest individual taxable income in a household, not the household’s total income. Open this section to rank households by a wider income measure and see whether those who qualify are also lower-income on it. The rules stay the same; only the ranking changes."
+            title="Explore eligibility across income measures"
+            description="The income test looks at the highest individual taxable income in a household, not the household’s total income. Open this section to rank households by other income measures and see eligibility and spending in each decile. The rules stay the same; the ranking changes."
           />
           <span className="expandable-toggle" aria-hidden>
             <svg viewBox="0 0 20 20">
@@ -161,7 +161,7 @@ export default function IncomeMeasuresSection({
         <div className="subsection space-y-4">
           <SectionHeading
             title="Who qualifies across the income distribution"
-            description={`Each row is a tenth of GB households, ranked by ${measureName}, split by how they qualify, ${yearLabel(data, year)}. Households can be passported through benefits at any income, so higher deciles still include some recipients.`}
+            description={`Each row is a tenth of GB households, ranked by ${measureName}, split by how they qualify, ${yearLabel(data, year)}. Households can be passported through benefits at any income, so higher deciles also include recipients.`}
           />
           <div className="decile-bars">
             <div className="bar-row bar-axis-head">

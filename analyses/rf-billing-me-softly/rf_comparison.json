@@ -146,7 +146,7 @@
   },
   {
    "id": "couples_children_lose_k",
-   "label": "Of those, failing the individual income test (RF's basis: passporting not netted out; thousands)",
+   "label": "Of those, not passing the individual income test (RF's basis: passporting not netted out; thousands)",
    "rf": 490,
    "rf_statement": "490,000 would not be eligible under the individual option",
    "page": 7,
@@ -182,7 +182,7 @@
   },
   {
    "id": "couples_children_lose_policy_k",
-   "label": "Of those, losing the discount under the individual option (policy count: not passported; thousands)",
+   "label": "Of those, not eligible under the individual option (policy count: not passported; thousands)",
    "rf": null,
    "rf_statement": "Not published: RF's 490,000 does not net out passporting",
    "page": 7,
@@ -254,7 +254,7 @@
   },
   {
    "id": "pensioners_gain_policy_k",
-   "label": "Pensioner units gaining the discount only under the individual option (policy count: not passported; thousands)",
+   "label": "Pensioner units eligible only under the individual option (policy count: not passported; thousands)",
    "rf": null,
    "rf_statement": "Not published: RF's 780,000 does not net out passporting",
    "page": 8,
@@ -595,7 +595,7 @@
   {
    "rf_statement": "More than 15% of second-quintile households could not afford to keep their home warm in 2022-23",
    "page": 5,
-   "reason": "The HBAI material-deprivation item is not in either microdata file, so this analysis proxies hardship with poverty, the four lowest income deciles and energy spend above 10% of net income."
+   "reason": "The HBAI material-deprivation item is not in either microdata file, so this analysis proxies it with poverty, the four lowest income deciles and energy spend above 10% of net income."
   },
   {
    "rf_statement": "Income is assessed over the three months before the scheme",
@@ -607,7 +607,7 @@
   "RF: Family Resources Survey 2024-25, GB, with the IPPR tax-benefit model.",
   "Eligibility shares are for the income test alone; passporting is separate.",
   "Passporting uses modelled receipt with the datasets' take-up draws; RF uses receipt reported in the FRS, which is also shown.",
-  "Family-type rows count benefit units wherever they live, as RF's Figure 4 does, on two bases. RF's basis is the difference between the two income-test series, without netting out passporting, which is what RF's 490,000 and 780,000 measure. The policy count nets it out: units whose household actually loses (or gains) the discount, since passported households are eligible under both options. RF does not publish it.",
+  "Family-type rows count benefit units wherever they live, as RF's Figure 4 does, on two bases. RF's basis is the difference between the two income-test series, without netting out passporting, which is what RF's 490,000 and 780,000 measure. The policy count nets it out: units whose household is eligible under only one of the two options, since passported households are eligible under both. RF does not publish it.",
   "Deciles are person-weighted equivalised AHC household income deciles (the HBAI convention; our choice, as RF does not say). Household-weighted versions are in `extra` (*_hhw), and counts of households with a single benefit unit in `extra` (*_households).",
   "\u00a32bn averages divide \u00a32bn among all recipients (passported or passing the test), and separately among households passing the income test only, which is closer to how RF's averages appear to be costed. For the tiered option, RF does not say which tier passported households get; the all-recipient figure places them in the top tier."
  ]

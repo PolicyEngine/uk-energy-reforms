@@ -244,7 +244,7 @@ export default function BaselineTab({ data, dataset }) {
           <section id="baseline-bills" className="section-card space-y-4">
             <SectionHeading
               title="How do energy bills vary?"
-              description={`Average annual gas and electricity spend, by the group you choose. This matters for the payment basis: a bill-share discount pays more to households with higher bills, while fixed amounts pay the same whatever the bill.${byDecile ? " Deciles rank people by household income after housing costs, adjusted for household size, from the lowest income (1) to the highest (10)." : ""}`}
+              description={`Average annual gas and electricity spend, by the group you choose. This affects the payment basis: a bill-share discount pays more to households with higher bills, while fixed amounts pay the same whatever the bill.${byDecile ? " Deciles rank people by household income after housing costs, adjusted for household size, from the lowest income (1) to the highest (10)." : ""}`}
             />
             <Toggle
               value={groupBy}
@@ -358,8 +358,8 @@ export function DataCoverage({ data, dataset }) {
     <div className="space-y-3">
       <p>
         <strong>Data coverage.</strong> What the survey data record about energy
-        spending, and where they fall short. These gaps matter most for
-        bill-share payments, which depend on each household’s recorded spend.
+        spending, and what they omit. These gaps affect bill-share payments,
+        which depend on each household’s recorded spend.
       </p>
       {b && (
         <Note eyebrow={short}>
@@ -370,7 +370,7 @@ export function DataCoverage({ data, dataset }) {
             price level. {formatShare(b.gas_spend_share)} of GB households have
             gas spend and {formatShare(b.no_electricity_spend_share, 1)} have no
             electricity spend recorded; under a bill share, households with no
-            recorded spend get nothing.
+            recorded spend receive £0.
           </p>
           <p className="mt-1">{data.meta.datasets[dataset].notes}</p>
         </Note>

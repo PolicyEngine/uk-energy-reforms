@@ -54,13 +54,13 @@ estimates the following, set beside the Resolution Foundation's published figure
 | Households with equivalised household income below £30,000 | around 40% (p. 6) | 36% | 38% |
 | Four lowest income deciles passing the £30,000 household test | 78% (p. 6) | 72% | 76% |
 | Couples with children (benefit units) passing the household income test | 1.8m (p. 7) | 1.4m | 1.5m |
-| …of which failing the individual income test (RF's basis) | 490,000 (p. 7) | 588,000 | 676,000 |
+| …of which not passing the individual income test (RF's basis) | 490,000 (p. 7) | 588,000 | 676,000 |
 | …of which in the lowest income fifth (RF's basis) | 71% (p. 7) | 66% | 55% |
-| …of which losing the discount, as not passported (policy count) | not published | 296,000 | 344,000 |
+| …of which not eligible under the individual option, as not passported (policy count) | not published | 296,000 | 344,000 |
 | …of which in the lowest income fifth (policy count) | not published | 75% | 65% |
 | Pensioner units passing the individual test but not the household one (RF's basis) | 780,000 (p. 8) | 930,000 | 824,000 |
 | …of which in decile five or above (RF's basis) | 81% (p. 8) | 67% | 60% |
-| Pensioner units gaining the discount only under the individual option (policy count) | not published | 878,000 | 815,000 |
+| Pensioner units eligible only under the individual option (policy count) | not published | 878,000 | 815,000 |
 | …of which in decile five or above (policy count) | not published | 68% | 59% |
 | Flat average of a £2bn scheme, over households passing the income test | £175 (p. 9) | £185 | £162 |
 | Tiered amounts of a £2bn scheme, over households passing the income test | £220 / £85 (p. 9) | £220 / £85 | £191 / £74 |
@@ -72,18 +72,18 @@ How to read the table, and what explains the gaps:
   26%, either side of RF's "around a quarter"; modelled receipt puts both datasets at 26%.
 - **Family rows on two bases.** RF's p. 7-8 figures compare the two income-test series,
   and both of its figures show passporting as a separate series. So RF's 490,000 and
-  780,000 are units that pass one income test and fail the other, whether or not they are
+  780,000 are units that pass one income test and not the other, whether or not they are
   passported. The "RF's basis" rows measure exactly that.
   - The "policy count" rows net out passporting, because a passported household is
-    eligible under both options and loses or gains nothing. They count the units that
-    actually lose or gain the discount. RF does not publish them.
-  - On RF's basis, 588k / 676k couples with children fail the individual test, 20–38%
-    above RF's 490,000. Netting out passporting halves that to 296k / 344k.
-  - The pensioner rows barely move: 930k / 824k on RF's basis and 878k / 815k as a
-    policy count, since few of these pensioners are passported.
+    eligible under both options. They count the units eligible under only one of the two
+    options. RF does not publish them.
+  - On RF's basis, 588k / 676k couples with children do not pass the individual test,
+    20–38% above RF's 490,000. Netting out passporting halves that to 296k / 344k.
+  - The pensioner rows move less: 930k / 824k on RF's basis and 878k / 815k as a
+    policy count, because 6% / 1% of these pensioner units are passported.
   - Every row counts benefit units wherever they live, as RF's Figure 4 does. Counted as
     households with a single benefit unit, 1.2m / 1.4m couples pass the household test,
-    498k / 584k fail the individual test (288k / 284k as a policy count), and 829k /
+    498k / 584k do not pass the individual test (288k / 284k as a policy count), and 829k /
     810k pensioner households pass only the individual test (804k / 804k).
 - **Decile basis.** Deciles are person-weighted AHC deciles, the HBAI convention. RF's
   footnote 6 names the income measure but not the weighting, so this is our choice.
@@ -98,11 +98,11 @@ How to read the table, and what explains the gaps:
     FRS.
   - 11% of Microcosm's pensioner units on RF's basis live in one, against 2% in the
     Enhanced FRS. A pensioner living with an adult child in work passes the individual
-    test and can fail the household one.
-- **Small samples in the couples rows.** The lowest-income-fifth shares rest on few survey
-  records and move between years. On the Enhanced FRS the policy-count share is 65% in
-  2024-25 and 92% in 2026-27, on 440 and 356 records. `rf_comparison.json` records every
-  row's sample size (`sample_n_*`).
+    test and may not pass the household one.
+- **Small samples in the couples rows.** The lowest-income-fifth shares rest on a few
+  hundred survey records and move between years. On the Enhanced FRS the policy-count
+  share is 65% in 2024-25 and 92% in 2026-27, on 440 and 356 records.
+  `rf_comparison.json` records every row's sample size (`sample_n_*`).
 - **Denominator for the £2bn averages.** Dividing £2bn among all eligible households
   (passported or passing the test) gives £160 / £146. The published £175 is closer to the
   income-test group (£185 / £162), and on Microcosm the tiered amounts over that group
@@ -127,8 +127,8 @@ with sources (`src/uk_energy_reforms/external_sources.json`).
   government data and the count excludes Scotland's Broader Group, so it sits below the
   number of households receiving the benefits.
 - **Bills.** Microcosm averages £1,437 at 2024-25 prices, 19% below ONS Family Spending's
-  £1,773 for the same year (UK, weekly spend × 52). Most of the gap is gas: £523 against
-  £733, with electricity £915 against £1,040. The Enhanced FRS averages £1,586 at
+  £1,773 for the same year (UK, weekly spend × 52). Gas accounts for £210 of the £336 gap:
+  £523 against £733, with electricity £915 against £1,040. The Enhanced FRS averages £1,586 at
   April–June 2026 unit rates, a price level within 2% of 2024-25's, so its higher average
   is consumption. Its median is £906, pulled down by the 14% of its households with no
   electricity spend. For comparison, Ofgem's typical-use cap is £1,477 for April–June 2026
@@ -159,8 +159,8 @@ with sources (`src/uk_energy_reforms/external_sources.json`).
 
 ## By household type (flat option)
 
-Eligibility rates within most household types are close across the two datasets, single
-pensioners aside; counts differ (see "Data").
+Eligibility rates within household types differ by 1 to 19 percentage points between the
+two datasets; counts differ as well (see "Data").
 
 - **Lone parents:** 92% / 94% eligible, almost all through passporting.
 - **Single pensioners:** 63% / 77% eligible, of whom 45% / 49% qualify through the income
@@ -203,28 +203,28 @@ household. Figures are 2026-27, Microcosm / Enhanced FRS.
   - Counted the HBAI way, with deciles of people rather than households, 1.57m / 1.28m
     households in the lowest three deciles do not qualify, holding 22% / 19% of the people
     in them.
-- **Households in the top half that qualify through the income test alone:** few.
+- **Households in the top half that qualify through the income test alone:**
   - 0.10m / 0.21m households: 2% / 4% of those qualifying through the income test alone,
     and 0.9% / 2% of spending.
   - About half are pensioner couples (51%, Microcosm).
   - 48% / 43% have two or more members with taxable income above £12,570.
-  - These figures rest on few survey records (effective samples of 23 / 5).
-- **Households in the top half that qualify through passporting:** many more.
+  - These figures rest on effective samples of 23 / 5.
+- **Households in the top half that qualify through passporting:**
   - 1.83m / 1.74m households: 24% / 22% of passported households, and 15% / 13% of
     spending.
   - On Microcosm, 45% are multi-family households. There, one benefit unit's Universal
     Credit, Pension Credit or Housing Benefit passports a household whose combined taxable
     income averages £57,700.
   - On the Enhanced FRS the group is mostly single pensioners and single adults, and rests
-    on few records (effective sample 27). The difference follows the datasets' share of
+    on an effective sample of 27. The difference follows the datasets' share of
     multi-family households (21% / 9%).
-- **Unequivalised income changes who looks low-income.**
+- **Removing the size adjustment changes the ranking.**
   - Ranked by household net income without the size adjustment, the households left out in
     the lowest three deciles are mostly single adults and single pensioners (76% / 77%) with
-    one income (81% / 83%). A single earner just above £24,000 has a low household income,
-    but not once household size is counted.
-  - Ranked by household taxable income, few households in the lowest three deciles are
-    left out (0.35m, or 4%, / none). That follows from the rule: if combined taxable income
+    one income (81% / 83%). A single earner just above £24,000 sits in the lower deciles of
+    household income, but not once household size is counted.
+  - Ranked by household taxable income, 0.35m households (4%) / none in the lowest three
+    deciles are left out. That follows from the rule: if combined taxable income
     is below £24,000, every member's is too. On Microcosm the third decile reaches up to
     £26,800, so the 0.35m are households with combined taxable income between £24,000 and
     £26,800, including single earners just over the line (an effective sample of 61). On
@@ -232,13 +232,14 @@ household. Figures are 2026-27, Microcosm / Enhanced FRS.
 - **Other rules, on equivalised income before housing costs.**
   - The household-income test leaves out more households in the lowest three deciles
     (1.70m / 1.20m, against 1.26m / 1.01m).
-  - It all but removes top-half households qualifying through the income test (0.03m /
-    0.04m).
+  - It reduces top-half households qualifying through the income test to 0.03m / 0.04m
+    (from 0.10m / 0.21m).
   - Passporting alone leaves out 4.82m / 4.91m, or 56% / 53% of the lowest three deciles.
 
-The dashboard section "Does the discount reach lower-income households?" shows who
-qualifies by decile on every measure. The cross-tabulations of equivalised against unequivalised income and the
-make-up of each group are in the receipts and `results.json`, not on the dashboard.
+The dashboard section "Explore eligibility across income measures" shows who qualifies by
+decile on every measure. The cross-tabulations of equivalised against unequivalised
+income and the make-up of each group are in the receipts and `results.json`, not on the
+dashboard.
 
 ## The tiered option and income thresholds
 

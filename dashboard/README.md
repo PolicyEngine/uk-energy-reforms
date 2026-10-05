@@ -6,9 +6,9 @@ dashboards. Four tabs:
 
 - **Economic impact:** cost, gains across the income distribution, poverty and inequality,
   who qualifies, and region and household-type breakdowns. A collapsible section at the end
-  ranks households by other income measures to show whether those who qualify are also
-  lower-income. Counts around the income cut-offs stay in the results receipts, which the
-  tab links to.
+  ranks households by other income measures and shows eligibility and spending in each
+  decile. Counts around the income cut-offs stay in the results receipts, which the tab
+  links to.
 - **Your household:** the selected scenario's discount and support curve first, with a
   collapsed comparison of all options. Household inputs persist when switching tabs;
   Calculate applies edited inputs to the estimate.

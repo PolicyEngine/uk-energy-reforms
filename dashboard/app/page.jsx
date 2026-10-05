@@ -137,7 +137,7 @@ function Dashboard() {
               microsimulation model on survey data for GB households. See the
               total cost, who gains across the income distribution, the effect
               on poverty and inequality, and who qualifies. You can also
-              calculate what your own household would get. The{" "}
+              calculate the discount for your own household. The{" "}
               <button className="underline" onClick={() => methodology()}>
                 methodology
               </button>{" "}
