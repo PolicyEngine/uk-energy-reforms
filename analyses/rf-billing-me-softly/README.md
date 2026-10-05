@@ -412,6 +412,10 @@ uv run uk-energy-reforms export-dashboard --analysis analyses/rf-billing-me-soft
   - Means are withheld below an effective sample of 30. Cross-tabulation cells and groups
     with fewer than 10 survey records are blanked. `analysis.income_distributions` writes
     every figure, including the lowest-three-decile group on deciles of people.
+- **Small samples in poverty changes.** A poverty change resting on fewer than 10 survey
+  records crossing the line is blanked, nationally and by region or household type. A
+  blanked change is still included in the totals shown: the change for all people, and the
+  national figures for regions and household types.
 - **Receipts.** `results-2026/report.md`, `results-2027/report.md` and
   `results-2024/report.md` hold every table,
   including effective sample sizes. `results.json` holds the raw numbers.

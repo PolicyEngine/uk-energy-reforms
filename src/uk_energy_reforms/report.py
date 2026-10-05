@@ -253,6 +253,13 @@ def markdown(results: dict, year: int) -> str:
             "2024-25 median, held constant in real terms. Relative poverty uses 60% of "
             "the baseline UK median, held fixed for the reform."
         ),
+        "",
+        (
+            "A dash marks a poverty change resting on fewer than 10 survey records "
+            "crossing the line. A blanked change is still included in the totals "
+            "shown: the change for all people, and the national figures for regions "
+            "and household types."
+        ),
     ]
     lines += ["", "## Headlines", ""]
     for name, by_dataset in results.items():
