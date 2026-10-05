@@ -387,9 +387,9 @@ uv run uk-energy-reforms export-dashboard --analysis analyses/rf-billing-me-soft
 - **Enhanced FRS.** Enhanced FRS 2024-25 from policyengine-uk-data 1.57.3. Its energy spend
   is imputed from the LCFS and raked to NEED 2023.
   - 14% of its GB households have no electricity spend.
-  - Its weights are concentrated: the Kish effective sample size is about 1,100, and 207
-    records carry 10m households. Treat its regional, household-type and band estimates as
-    indicative, and set aside its bill-share results.
+  - Its weights are highly concentrated: the Kish effective sample size is about 1,100, 2%
+    of its 47,000 GB records, and 207 records carry 10m households. Treat its regional,
+    household-type and band estimates as indicative, and set aside its bill-share results.
   - Its weights sum to 30.7m GB households in 2026-27, 7% above Microcosm and 10% above
     the report's 28m, so every Enhanced FRS count (recipients, households in poverty,
     people moved out of poverty) runs high by about that much.
