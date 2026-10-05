@@ -274,6 +274,7 @@ def markdown(results: dict, year: int) -> str:
         lines.append("")
     lines += _hbai_lines(results, year)
     lines += _caseload_lines(results)
+    lines += _gas_lines(results, year)
     lines += _take_up_lines(results)
     lines += _cut_off_lines(results)
     for name, by_dataset in results.items():
@@ -306,7 +307,12 @@ def markdown(results: dict, year: int) -> str:
             lines += ["", "Poverty (people unless stated):", ""]
             lines.append(
                 _table(
-                    r["poverty"],
+                    [
+                        {**p, "moved_records": "<10"}
+                        if p.get("moved_below_min_records")
+                        else p
+                        for p in r["poverty"]
+                    ],
                     {
                         "measure": "Measure",
                         "group": "Group",
@@ -415,9 +421,10 @@ def _caseload_lines(results: dict) -> list:
         (
             f"- DWP: {uc.value['households_on_uc'] / 1e6:.1f}m benefit units on "
             f"Universal Credit, {uc.value['households_with_payment'] / 1e6:.1f}m of "
-            f"them with a payment ({uc.period}, {uc.geography}); "
+            f"them with a payment ({uc.geography}, "
+            f"{uc.period.replace(' (', ', ').rstrip(')')}); "
             f"{pc.value['claimants'] / 1e6:.2f}m Pension Credit claimants "
-            f"({pc.period}, {pc.geography})."
+            f"({pc.geography}, {pc.period})."
         ),
         (
             "- The caseloads count benefit units and overlap where one household "
@@ -427,6 +434,48 @@ def _caseload_lines(results: dict) -> list:
         "",
     ]
     return lines
+
+
+def _gas_lines(results: dict, year: int) -> list:
+    """Gas spend beside DESNZ's average bill at actual consumption (Quarterly Energy
+    Prices table 2.3.5): per household with gas spend, and in total. Each dataset keeps
+    spend at its stored price level in every year."""
+    v = {s.id: s for s in EXTERNAL_SOURCES}["qep_gas_bills_actual_consumption_gb"].value
+    bill = v["bill_actual_2024"]
+    on_gas = v["on_gas_households_2024"] / v["gb_households_2024"]
+    total = bill * v["on_gas_households_2024"] / 1e9
+    lines = [
+        "## Gas spend against DESNZ",
+        "",
+        (
+            "DESNZ's average domestic gas bill at actual consumption was GBP "
+            f"{bill:,.0f} per on-gas household in 2024 (GBP "
+            f"{v['bill_temperature_adjusted_2024']:,.0f} at temperature-adjusted "
+            f"consumption; GBP {v['bill_actual_2025']:,.0f} in 2025), with "
+            f"{100 * on_gas:.0f}% of GB households on gas: GBP {total:.1f}bn in total "
+            "(Quarterly Energy Prices table 2.3.5). Model figures are for "
+            f"FY{year}-{str(year + 1)[-2:]} households at each dataset's stored price "
+            "level: 2024-25 for Microcosm, April-June 2026 unit rates for the Enhanced "
+            "FRS."
+        ),
+        "",
+        (
+            "| Dataset | Households with gas spend | Gas spend per such household "
+            "(GBP) | Against DESNZ | Total gas spend (GBP bn) | Against DESNZ |"
+        ),
+        "|---|---|---|---|---|---|",
+    ]
+    for dataset, r in next(iter(results.values())).items():
+        b = r["baseline"]
+        share = b["gas_spend_share"]
+        per = b["mean_gas"] / share if share else float("nan")
+        spend = b["mean_gas"] * b["households_m"] / 1e3
+        lines.append(
+            f"| `{dataset}` | {100 * share:.1f}% | {per:,.0f} | "
+            f"{100 * (per / bill - 1):+.0f}% | {spend:.1f} | "
+            f"{100 * (spend / total - 1):+.0f}% |"
+        )
+    return [*lines, ""]
 
 
 def _take_up_lines(results: dict) -> list:

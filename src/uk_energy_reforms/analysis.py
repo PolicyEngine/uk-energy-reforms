@@ -187,6 +187,8 @@ def poverty(run: Run, f: pd.DataFrame | None = None) -> list:
     crosses a line. ``moved_records`` and ``moved_ess`` describe those households: how
     many survey records cross and their effective sample size. A change that rests on
     few records moves with small differences in the data, between years or datasets.
+    Record counts below ``MIN_RECORDS`` are not kept (``moved_below_min_records``), as
+    for the income measures' cells.
     ``change_k_income_only`` is the part from households that are not passported, which
     partial take-up of the income test would scale (``take_up_sensitivity``).
     """
@@ -202,6 +204,8 @@ def poverty(run: Run, f: pd.DataFrame | None = None) -> list:
             reform = float((people * f[f"{measure}_reform"]).sum())
             total = float(people.sum())
             moved = (before != after) & (f[count].values > 0)
+            records = int(moved.sum())
+            few = 0 < records < MIN_RECORDS
             shift = people.values * (after.astype(float) - before.astype(float))
             rows.append(
                 {
@@ -212,7 +216,8 @@ def poverty(run: Run, f: pd.DataFrame | None = None) -> list:
                     "change_pp": 100 * (reform - base) / total,
                     "change_k": (reform - base) / 1e3,
                     "change_k_income_only": float(shift[not_passported].sum()) / 1e3,
-                    "moved_records": int(moved.sum()),
+                    "moved_records": None if few else records,
+                    "moved_below_min_records": few,
                     "moved_ess": _ess(people.values[moved]),
                 }
             )

@@ -414,13 +414,24 @@ def test_poverty_records_who_crosses_the_line():
     # Two households cross: 2 x 2 people (passported) and 1 x 1 person (income test).
     assert people["change_k"] == pytest.approx(-5 / 1e3)
     assert people["change_k_income_only"] == pytest.approx(-1 / 1e3)
-    assert people["moved_records"] == 2
+    # Two records cross: too few to give the count, as for the income measures.
+    assert people["moved_records"] is None and people["moved_below_min_records"]
     assert people["moved_ess"] == pytest.approx(25 / 17)
     # Only the passported household has a child.
     children = rows[("abs_pov_bhc", "children")]
-    assert children["moved_records"] == 1
+    assert children["moved_below_min_records"]
     assert children["change_k_income_only"] == 0
     assert rows[("rel_pov_ahc", "people")]["moved_records"] == 0
+    # The same households as five records each: ten records cross, so the count shows.
+    split = frame.loc[frame.index.repeat(5)].reset_index(drop=True)
+    split["weight"] = split.weight / 5
+    people = next(
+        p
+        for p in analysis.poverty(run, split)
+        if p["measure"] == "abs_pov_bhc" and p["group"] == "people"
+    )
+    assert people["moved_records"] == 10 and not people["moved_below_min_records"]
+    assert people["change_k"] == pytest.approx(-5 / 1e3)
 
 
 def test_take_up_scales_households_eligible_through_the_income_test():
