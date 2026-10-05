@@ -40,24 +40,12 @@ const COVERAGE_LABELS = {
   "relative AHC poverty": "Households in relative poverty after housing costs",
   "lowest four AHC deciles":
     "Households in the four lowest income deciles after housing costs",
-  "energy over 10% of net income":
-    "Households spending over 10% of net income on energy",
 };
 
-// The reach bars for each housing-cost basis; the energy-cost group is the same in both.
+// The reach bars for each housing-cost basis.
 const COVERAGE_GROUPS = {
-  bhc: [
-    "absolute BHC poverty",
-    "relative BHC poverty",
-    "lowest four BHC deciles",
-    "energy over 10% of net income",
-  ],
-  ahc: [
-    "absolute AHC poverty",
-    "relative AHC poverty",
-    "lowest four AHC deciles",
-    "energy over 10% of net income",
-  ],
+  bhc: ["absolute BHC poverty", "relative BHC poverty", "lowest four BHC deciles"],
+  ahc: ["absolute AHC poverty", "relative AHC poverty", "lowest four AHC deciles"],
 };
 
 const POVERTY_MEASURES = {
@@ -474,7 +462,7 @@ function ReachSection({ result, year }) {
     <section className="section-card space-y-5">
       <SectionHeading
         title="Which households does the reform reach?"
-        description="Share of households in each group that qualify, split by route: passported by a means-tested benefit, or through the income test alone. Groups: households in poverty, in the four lowest income deciles, or spending over 10% of net income on energy (actual spend, not the official fuel poverty measure; see Methodology)."
+        description="Share of households in each group that qualify, split by route: passported by a means-tested benefit, or through the income test alone. Groups: households in poverty, or in the four lowest income deciles."
       />
       <Toggle
         label="Housing costs"
