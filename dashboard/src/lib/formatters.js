@@ -97,6 +97,16 @@ export function formatThousands(value) {
   return `${Math.round(Number(value)).toLocaleString("en-GB")}k`;
 }
 
+// Counts of people moved across a poverty line rest on few survey records, so they are
+// shown to two significant figures: 142.3 is "140k", 11.2 is "11k".
+export function formatRoundedThousands(value) {
+  const amount = Math.abs(Number(value));
+  if (!Number.isFinite(amount) || amount === 0) return "0k";
+  const step = 10 ** (Math.floor(Math.log10(amount)) - 1);
+  const rounded = Math.round(amount / step) * step;
+  return `${rounded.toLocaleString("en-GB", { maximumFractionDigits: 1 })}k`;
+}
+
 export function formatSignedThousands(value) {
   const amount = Math.round(Number(value));
   if (amount === 0) return "0";

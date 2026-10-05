@@ -7,6 +7,7 @@ import {
   formatBn,
   formatCurrency,
   formatMillions,
+  formatRoundedThousands,
   formatShare,
   formatSignedPp,
   formatSignedThousands,
@@ -104,16 +105,13 @@ function Headline({ result, levels }) {
   const pov = result.poverty.find(
     (p) => p.measure === "abs_pov_bhc" && p.group === "people",
   );
-  const kids = result.poverty.find(
-    (p) => p.measure === "abs_pov_bhc" && p.group === "children",
-  );
   return (
     <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
       <MetricCard
         label="Cost"
         icon="cost"
         value={formatBn(h.cost_bn)}
-        note="Total support paid in the year."
+        note="Total support paid in the year, if every eligible household receives it."
       />
       <MetricCard
         label="Households receiving support"
@@ -130,8 +128,8 @@ function Headline({ result, levels }) {
       <MetricCard
         label="Fewer people in poverty"
         icon="poverty"
-        value={pov ? formatThousands(-pov.change_k) : "n/a"}
-        note={`Absolute poverty, before housing costs.${kids ? ` Includes ${formatThousands(-kids.change_k)} children.` : ""}`}
+        value={pov ? formatRoundedThousands(-pov.change_k) : "n/a"}
+        note={`Absolute poverty before housing costs, counting the discount as income. Rounded: it rests on an effective sample of ${pov?.moved_ess != null ? Math.round(pov.moved_ess) : "few"} households.`}
       />
     </div>
   );
@@ -384,10 +382,19 @@ function PovertySection({ result, onMethodology }) {
         <Disclosure title="How to read this chart, with the numbers">
           <p>
             A fall from 20% to 19% is a 5% reduction, or 1 percentage point. The
-            discount counts as household income. Absolute poverty uses the
-            official line since March 2026: 60% of the 2024-25 median, held
-            constant in real terms. Relative poverty uses 60% of the baseline
-            median. The table gives the rates and changes in people.
+            discount counts as household income, so these are income-equivalent
+            readings: delivered as a cut in unit prices, as the report proposes,
+            it would not show up in the income that official poverty statistics
+            measure. Absolute poverty uses the official line since March 2026:
+            60% of the 2024-25 median, held constant in real terms. Relative
+            poverty uses 60% of the baseline median.
+          </p>
+          <p>
+            The change in people counts those whose household moves above a
+            line, so it depends on how many people sit just below it. It moves
+            between years and datasets, and it rests on few survey households:
+            the table gives each change&apos;s effective sample. The Baseline tab
+            sets the starting rates beside the official ones.
           </p>
           <button
             className="text-link"
@@ -426,6 +433,12 @@ function PovertySection({ result, onMethodology }) {
                 header: "Change in people",
                 align: "right",
                 format: (v) => formatSignedThousands(v),
+              },
+              {
+                key: "moved_ess",
+                header: "Effective sample",
+                align: "right",
+                format: (v) => (v == null ? "n/a" : Math.round(v).toLocaleString("en-GB")),
               },
             ]}
             rows={rows}
@@ -682,6 +695,11 @@ export default function ReformTab({ data, dataset, scenario, onMethodology }) {
     dataset === "efrs_1573" && efrs && micro
       ? `; Enhanced FRS counts run ${formatShare(efrs / micro - 1)} above Microcosm's.`
       : ".";
+  // Options with an income test: cost and reach if half of the households eligible
+  // through it alone take the discount up (passported households are enrolled).
+  const halfTakeUp = result?.schedule?.income_test
+    ? result.take_up_sensitivity?.find((t) => t.take_up === 0.5)
+    : null;
   return (
     <div className="space-y-5">
       <div>
@@ -700,8 +718,11 @@ export default function ReformTab({ data, dataset, scenario, onMethodology }) {
               <Headline result={result} levels={levels} />
               <p className="chart-footer text-xs leading-5 text-slate-500">
                 <span>
-                  The estimate assumes full take-up of the discount. Funding and
-                  behavioural changes are not modelled.{" "}
+                  The estimate assumes full take-up of the discount.
+                  {halfTakeUp
+                    ? ` If half of the households eligible through the income test alone took it up, it would cost ${formatBn(halfTakeUp.cost_bn)} and reach ${formatMillions(halfTakeUp.recipients_m, 1)} households.`
+                    : ""}{" "}
+                  Funding and behavioural changes are not modelled.{" "}
                   <button
                     className="text-link"
                     onClick={() => onMethodology("method-limitations")}
