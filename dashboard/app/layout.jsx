@@ -9,19 +9,24 @@ const description =
   "changes household incomes, with PolicyEngine UK estimates beside the Resolution " +
   "Foundation's figures.";
 
+// The live deployment. The page moves to policyengine.org/uk/targeted-energy-discount
+// once policyengine-app-v2 rewrites that path to this zone; until then that address
+// returns 404, so the canonical and Open Graph URLs point here.
+const SITE = "https://uk-targeted-energy-discount.vercel.app";
+const PAGE = `${SITE}/uk/targeted-energy-discount`;
+
 export const metadata = {
-  // Resolves the generated Open Graph image URL (with the base path) against the
-  // live deployment, so link previews work before the policyengine.org rewrite exists.
-  metadataBase: new URL(
-    "https://uk-targeted-energy-discount.vercel.app/uk/targeted-energy-discount",
-  ),
+  // An origin without a path: Next.js joins metadataBase's path onto the generated
+  // Open Graph image URL, which already carries the base path, so a path here doubles
+  // it (and the image 404s).
+  metadataBase: new URL(SITE),
   title: "Targeted energy discount | PolicyEngine",
   description,
-  alternates: { canonical: "https://policyengine.org/uk/targeted-energy-discount" },
+  alternates: { canonical: PAGE },
   openGraph: {
     title: "Targeted energy discount",
     description,
-    url: "https://policyengine.org/uk/targeted-energy-discount",
+    url: PAGE,
     siteName: "PolicyEngine",
     type: "website",
   },
