@@ -149,6 +149,10 @@ with sources (`src/uk_energy_reforms/external_sources.json`).
   grid.
   - DESNZ's average gas bill at actual consumption was £773 per on-gas household in 2024
     (Quarterly Energy Prices table 2.3.5).
+  - That table puts 89% of GB households on gas, against the 84% above, because the bases
+    differ. The 84% is gas meters over all domestic properties, which include empty and
+    second homes. The 89% is DESNZ's estimate of on-gas households (25.0m) over 28.2m
+    households. The reconciliation uses the household basis, as the bills do.
   - Per household with gas spend, Microcosm's £665 is 14% below it and the Enhanced FRS's
     £725 is 6% below.
   - In total, Microcosm's domestic gas spend is about a quarter below DESNZ's £19.3bn,
