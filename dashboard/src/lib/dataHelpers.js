@@ -35,6 +35,14 @@ export const DATASET_SHORT = {
   efrs_1573: "Enhanced FRS",
 };
 
+const REPO = "https://github.com/PolicyEngine/uk-energy-reforms";
+
+/** The scheme year's results receipt, at its counts around every option's income
+ * cut-offs (the `## Income cut-offs` section `uk-energy-reforms run` writes). */
+export function cutOffReceiptUrl(year) {
+  return `${REPO}/blob/main/analyses/rf-billing-me-softly/results-${year}/report.md#income-cut-offs`;
+}
+
 export function scenarioId(preset, variant) {
   if (variant === "published") return preset;
   if (variant === "bill_share") return `${preset}_bill_share`;

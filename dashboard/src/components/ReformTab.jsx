@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { series } from "../lib/colors";
-import { getResult } from "../lib/dataHelpers";
+import { cutOffReceiptUrl, getResult } from "../lib/dataHelpers";
 import {
   formatBn,
   formatCurrency,
@@ -22,6 +22,7 @@ import {
   Legend,
   MetricCard,
   Disclosure,
+  SourceLink,
   SplitBar,
   Table,
   TableToggle,
@@ -434,7 +435,7 @@ function PovertySection({ result, onMethodology }) {
   );
 }
 
-function ReachSection({ result }) {
+function ReachSection({ result, year }) {
   const [basis, setBasis] = useState("bhc");
   const rows = COVERAGE_GROUPS[basis]
     .map((g) => result.coverage.find((c) => c.group === g))
@@ -496,6 +497,16 @@ function ReachSection({ result }) {
           { label: "Does not qualify", color: series.neutral },
         ]}
       />
+      {result.schedule.income_test && (
+        <p className="chart-footer text-xs leading-5 text-slate-500">
+          <span>
+            Counts of households just below and just above each income cut-off
+            are in the{" "}
+            <SourceLink href={cutOffReceiptUrl(year)}>results receipt</SourceLink>
+            .
+          </span>
+        </p>
+      )}
     </section>
   );
 }
@@ -717,7 +728,7 @@ export default function ReformTab({ data, dataset, scenario, onMethodology }) {
                   </div>
                 </div>
                 <div id="overview-reach" className="space-y-3">
-                  <ReachSection result={result} />
+                  <ReachSection result={result} year={scenario.year} />
                 </div>
                 <div id="overview-groups">
                   <BreakdownSection result={result} />
