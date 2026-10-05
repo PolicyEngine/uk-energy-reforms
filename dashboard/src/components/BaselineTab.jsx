@@ -194,7 +194,7 @@ export default function BaselineTab({ data, dataset }) {
     // Deciles keep their order; other groups are sorted from the highest bill down.
     .sort((x, y) => (byDecile ? 0 : y.mean_bill - x.mean_bill));
   const chartData = rows.map((r) => ({
-    name: byDecile ? r.key : r.group,
+    name: r.group,
     value: r.mean_bill,
     hoverText: `${formatCurrency(r.mean_bill)} a year on average; ${formatMillions(r.households_m, 2)} households`,
   }));
@@ -244,7 +244,7 @@ export default function BaselineTab({ data, dataset }) {
           <section id="baseline-bills" className="section-card space-y-4">
             <SectionHeading
               title="How do energy bills vary?"
-              description="Average annual gas and electricity spend, by the group you choose. This matters for the payment basis: a bill-share discount pays more to households with higher bills, while fixed amounts pay the same whatever the bill."
+              description={`Average annual gas and electricity spend, by the group you choose. This matters for the payment basis: a bill-share discount pays more to households with higher bills, while fixed amounts pay the same whatever the bill.${byDecile ? " Deciles rank people by household income after housing costs, adjusted for household size, from the lowest income (1) to the highest (10)." : ""}`}
             />
             <Toggle
               value={groupBy}
@@ -253,9 +253,7 @@ export default function BaselineTab({ data, dataset }) {
             />
             <PEImpactBarChart
               data={chartData}
-              horizontal={!byDecile}
-              height={byDecile ? 340 : undefined}
-              xAxisLabel={byDecile ? "Income decile (1 = lowest)" : undefined}
+              horizontal
               yAxisLabel="Average annual gas and electricity bill"
               yTickFormatter={formatCurrency}
               barLabelFormatter={formatCurrency}
