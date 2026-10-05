@@ -495,9 +495,12 @@ export default function MethodologyTab({ data, dataset }) {
                     costs, weighted by people, for Great Britain.
                   </>,
                   <>
-                    <strong>Poverty.</strong> Absolute poverty uses
-                    PolicyEngine&apos;s fixed line (the 2010-11 HBAI line
-                    uprated by CPI). Relative poverty uses 60% of the UK median
+                    <strong>Poverty.</strong> Absolute poverty uses the line
+                    in DWP&apos;s Households Below Average Income statistics
+                    since March 2026: 60% of the 2024-25 UK median, held
+                    constant in real terms (£431.69 a week before housing
+                    costs for a couple without children in 2024-25, uprated by
+                    CPI after that). Relative poverty uses 60% of the UK median
                     equivalised income before the reform, held fixed so the
                     discount moves people across the line without also moving
                     the line.

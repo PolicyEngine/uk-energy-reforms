@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import math
+from importlib.metadata import version
 from pathlib import Path
 
 import pandas as pd
@@ -24,6 +25,7 @@ def results_for(r: Run, distributions: bool = True) -> dict:
     out = {
         "dataset": r.dataset,
         "year": r.year,
+        "policyengine_uk": version("policyengine-uk"),
         "take_up": r.take_up,
         "changes": r.changes,
         "schedule": r.schedule,
@@ -228,6 +230,19 @@ def markdown(results: dict, year: int) -> str:
             f"- `{key}`: {spec.label} ({spec.repo_id}@{spec.revision[:8]}, "
             f"sha256 {spec.sha256[:12]}…). {spec.notes}"
         )
+    engines = sorted(
+        {r.get("policyengine_uk") for d in results.values() for r in d.values()}
+        - {None}
+    )
+    lines += [
+        "",
+        (
+            f"Model: policyengine-uk {', '.join(engines) or 'version not recorded'}. "
+            "Absolute poverty uses the line HBAI has used since March 2026: 60% of the "
+            "2024-25 median, held constant in real terms. Relative poverty uses 60% of "
+            "the baseline UK median, held fixed for the reform."
+        ),
+    ]
     lines += ["", "## Headlines", ""]
     for name, by_dataset in results.items():
         base = name.split("_bill_share")[0].split("_budget")[0]

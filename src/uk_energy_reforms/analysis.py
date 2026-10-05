@@ -4,9 +4,10 @@ Scope is Great Britain (the scheme's scope) unless noted. The relative poverty l
 60% of the baseline UK person-weighted median of equivalised household income, held
 fixed for the reform: the discount is a temporary transfer, and on heavily weighted
 data a recomputed median can move by more than the transfer itself. Absolute poverty
-is policyengine-uk's fixed line
-(``in_poverty_bhc`` / ``in_poverty_ahc``: 2010-11 HBAI line uprated by CPI). Income
-deciles rank GB people by baseline equivalised AHC income (RF's Figure 3 basis).
+is policyengine-uk's line (``in_poverty_bhc`` / ``in_poverty_ahc``): HBAI's absolute
+line since March 2026, 60% of the 2024-25 median held constant in real terms (uprated
+by CPI after 2024-25). Income deciles rank GB people by baseline equivalised AHC
+income (RF's Figure 3 basis).
 """
 
 from __future__ import annotations
