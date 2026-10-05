@@ -299,6 +299,76 @@ def test_household_income_test_has_no_individual_line_share():
     )
 
 
+def test_breakdown_poverty_adds_up_to_the_headline_basis():
+    """The region table's absolute BHC poverty columns add up to the national figures:
+    the headline's fall in people in poverty and the households not reached."""
+    n = 4 * len(analysis.REGIONS)
+    i = np.arange(n)
+    base = i % 3 == 0
+    # Some households leave poverty and one enters it, so the change is a net one.
+    reform = (base & (i % 2 == 0)) | (i == 1)
+    recipient = i % 4 < 2
+    frame = pd.DataFrame(
+        {
+            "region": np.repeat(analysis.REGIONS, 4),
+            "household_type": "Couple, no children",
+            "weight": 1.0 + (i % 5) / 4,
+            "n_people": 1 + i % 3,
+            "n_children": i % 2,
+            "n_wa_adults": 1,
+            "n_sp_age": (i + 1) % 2,
+            "eligible": recipient,
+            "passported": recipient & (i % 8 == 0),
+            "income_route": recipient,
+            "recipient": recipient,
+            "discount": np.where(recipient, 175.0, 0.0),
+            "gain": np.where(recipient, 175.0, 0.0),
+            "net_bhc_base": 20_000.0,
+            "bill": 1_500.0,
+            "assessed_income": 30_000.0,
+            "tested_income": 30_000.0,
+            "top_earner_pensioner": False,
+            "equivalisation_bhc": 1.0,
+            "bottom4": base,
+            "high_burden": False,
+            "decile_bhc": 1 + i % 10,
+            **{
+                f"{m}_{s}": base if s == "base" else reform
+                for m in ["abs_pov_bhc", "abs_pov_ahc", "rel_pov_bhc", "rel_pov_ahc"]
+                for s in ["base", "reform"]
+            },
+        }
+    )
+    schedule = {
+        "income_test": True,
+        "bill_share": False,
+        "thresholds": [0.0, 24_000.0, 24_000.0],
+        "amounts": [175.0, 175.0, 0.0],
+    }
+    run = Run("test", 2026, {}, frame, schedule)
+    rows = analysis.breakdown(run, "region", frame)
+    people = next(
+        p
+        for p in analysis.poverty(run, frame)
+        if p["measure"] == "abs_pov_bhc" and p["group"] == "people"
+    )
+    assert rows.people_out_of_abs_bhc_poverty_k.sum() == pytest.approx(
+        -people["change_k"]
+    )
+    missed = next(
+        c for c in analysis.coverage(run, frame) if c["group"] == "absolute BHC poverty"
+    )
+    assert rows.abs_bhc_poverty_not_reached_k.sum() / 1e3 == pytest.approx(
+        missed["missed_m"]
+    )
+    reached = (rows.abs_bhc_poverty_reached * rows.abs_bhc_poverty_rate) @ (
+        rows.households_m
+    )
+    assert reached / (rows.abs_bhc_poverty_rate @ rows.households_m) == pytest.approx(
+        missed["covered"]
+    )
+
+
 def test_round_to_significant_figures():
     from uk_energy_reforms.dashboard_data import _round
 

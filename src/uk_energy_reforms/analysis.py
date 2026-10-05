@@ -352,6 +352,7 @@ def breakdown(run: Run, by: str, f: pd.DataFrame | None = None) -> pd.DataFrame:
         cost = float((g.discount * g.weight).sum())
         recipients = _w(g, g.recipient)
         in_poverty = g.abs_pov_ahc_base
+        in_poverty_bhc = g.abs_pov_bhc_base
         rows.append(
             {
                 by: REGION_LABELS.get(group, group),
@@ -385,6 +386,16 @@ def breakdown(run: Run, by: str, f: pd.DataFrame | None = None) -> pd.DataFrame:
                 "people_out_of_abs_ahc_poverty_k": float(
                     (people[m] * (g.abs_pov_ahc_base & ~g.abs_pov_ahc_reform)).sum()
                     - (people[m] * (~g.abs_pov_ahc_base & g.abs_pov_ahc_reform)).sum()
+                )
+                / 1e3,
+                # The headline poverty basis: absolute poverty before housing costs.
+                "abs_bhc_poverty_rate": _share(g, in_poverty_bhc),
+                "abs_bhc_poverty_reached": _share(g, g.recipient, in_poverty_bhc),
+                "abs_bhc_poverty_not_reached_k": _w(g, in_poverty_bhc & ~g.recipient)
+                / 1e3,
+                "people_out_of_abs_bhc_poverty_k": float(
+                    (people[m] * (g.abs_pov_bhc_base & ~g.abs_pov_bhc_reform)).sum()
+                    - (people[m] * (~g.abs_pov_bhc_base & g.abs_pov_bhc_reform)).sum()
                 )
                 / 1e3,
                 "just_above_top_threshold_k": _w(f, m & near_top) / 1e3,
