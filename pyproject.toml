@@ -5,7 +5,9 @@ description = "PolicyEngine UK reforms and analysis for household energy bill su
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-    "policyengine-uk>=2.102.3,<3",
+    # Pinned: later releases change benefit rules that move passporting. Bump on purpose,
+    # with a regeneration and a regression against the previous results.
+    "policyengine-uk==2.102.3",
     "huggingface-hub>=0.24",
     "numpy",
     "pandas",
