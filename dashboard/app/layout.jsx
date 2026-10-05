@@ -1,7 +1,13 @@
+import Script from "next/script";
+
 import PolicyEngineFooter from "../src/components/PolicyEngineFooter";
 import PolicyEngineHeader from "../src/components/PolicyEngineHeader";
 
 import "./globals.css";
+
+// PolicyEngine's Google Analytics property, shared with policyengine.org and the
+// other dashboards it serves.
+const GA_ID = "G-2YHG89FY0N";
 
 const description =
   "Who a targeted energy discount for households on means-tested benefits or with a " +
@@ -35,6 +41,20 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en-GB">
+      <head>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}');
+          `}
+        </Script>
+      </head>
       <body>
         <PolicyEngineHeader />
         {children}
