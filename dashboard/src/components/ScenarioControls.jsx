@@ -7,8 +7,8 @@ import {
   getResult,
   yearLabel,
 } from "../lib/dataHelpers";
-import { formatCurrency, formatMillions, formatShare } from "../lib/formatters";
-import { Disclosure, Toggle, Warning } from "./ui";
+import { formatShare } from "../lib/formatters";
+import { Disclosure, Toggle } from "./ui";
 
 const VARIANT_NOTES = {
   published:
@@ -48,7 +48,6 @@ export default function ScenarioControls({
 }) {
   const { preset, variant, year } = scenario;
   const result = getResult(data, year, preset, variant, dataset);
-  const published = getResult(data, year, preset, "published", dataset);
   return (
     <section aria-label="Selected reform" className="scenario-bar">
       <div className="grid gap-4 sm:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_minmax(0,0.7fr)]">
@@ -117,22 +116,6 @@ export default function ScenarioControls({
       {variant === "bill_share" && result && (
         <BillSharePriceNote data={data} dataset={dataset} result={result} />
       )}
-      {dataset === "efrs_1573" &&
-        variant === "bill_share" &&
-        result &&
-        published && (
-          <div className="mt-3">
-            <Warning>
-              Some Enhanced FRS households have no recorded energy spending.
-              They receive no bill-share payment: recipients fall from{" "}
-              {formatMillions(published.headline.recipients_m, 2)} to{" "}
-              {formatMillions(result.headline.recipients_m, 2)} and the average
-              payment rises to{" "}
-              {formatCurrency(result.headline.average_per_recipient)}. The
-              written analysis sets these results aside.
-            </Warning>
-          </div>
-        )}
     </section>
   );
 }
@@ -142,11 +125,6 @@ const PRICE_LEVEL = {
     label: "2024-25 prices",
     source: "ofgem_cap_fy2024_25",
     key: "mean",
-  },
-  efrs_1573: {
-    label: "April–June 2026 unit rates",
-    source: "ofgem_cap_2026_apr_jun",
-    key: "at_2023_tdcv",
   },
 };
 

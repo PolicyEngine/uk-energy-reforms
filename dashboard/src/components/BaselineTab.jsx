@@ -33,7 +33,6 @@ const BILL_GROUPS = [
 // the 2024-25 caps are published.
 const PRICE_LEVEL_SOURCE = {
   microcosm_national: ["ofgem_cap_fy2024_25", "mean"],
-  efrs_1573: ["ofgem_cap_2026_apr_jun", "at_2023_tdcv"],
 };
 
 function sourceCell(source, text) {
@@ -407,9 +406,6 @@ export function DataCoverage({ data, dataset }) {
             and {formatShare(b.no_electricity_spend_share, 1)} have no
             electricity spend recorded; under a bill share, households with no
             recorded spend receive £0.
-            {dataset === "efrs_1573"
-              ? " The Enhanced FRS's gas share is well above DESNZ's, so its bill-share results are not comparable with Microcosm's."
-              : ""}
           </p>
           <p className="mt-1">{data.meta.datasets[dataset].notes}</p>
         </Note>

@@ -26,6 +26,15 @@ PRESET_LABELS = {
     "passport_only": "Benefit recipients only",
 }
 
+# The page shows Microcosm only. The Enhanced FRS stays in the results and receipts,
+# where its caveats sit beside it, but is not exported to the dashboard.
+DASHBOARD_DATASETS = ("microcosm_national",)
+
+
+def _shown(by_dataset: dict) -> dict:
+    return {d: r for d, r in by_dataset.items() if d in DASHBOARD_DATASETS}
+
+
 VARIANT_LABELS = {
     "published": "RF's amounts",
     "budget_2bn": "Scaled to £2bn",
@@ -187,6 +196,15 @@ def build(analysis_dir: Path) -> dict:
         (analysis_dir / "results-2024" / "results.json").read_text()
     )
     comparison = json.loads((analysis_dir / "rf_comparison.json").read_text())
+    comparison = {
+        **comparison,
+        "figures": [
+            {**f, "policyengine": _shown(f["policyengine"])}
+            for f in comparison["figures"]
+        ],
+        "extra": _shown(comparison["extra"]),
+    }
+    comparison.pop("receipt_notes", None)
 
     scenarios = []
     for key in by_year[years[0]]:
@@ -202,7 +220,7 @@ def build(analysis_dir: Path) -> dict:
         )
     results = {
         y: {
-            key: {dataset: _result(r) for dataset, r in by_dataset.items()}
+            key: {dataset: _result(r) for dataset, r in _shown(by_dataset).items()}
             for key, by_dataset in by_year[y].items()
         }
         for y in years
@@ -210,7 +228,10 @@ def build(analysis_dir: Path) -> dict:
     # The pre-reform picture, taken from the flat option's run (passporting and the
     # income test flags follow its rules).
     baseline = {
-        y: {dataset: r["baseline"] for dataset, r in by_year[y]["rf_flat"].items()}
+        y: {
+            dataset: r["baseline"]
+            for dataset, r in _shown(by_year[y]["rf_flat"]).items()
+        }
         for y in years
     }
     # Every scenario carries its own spending and gains across income measures.
@@ -219,7 +240,7 @@ def build(analysis_dir: Path) -> dict:
         y: {
             key: {
                 dataset: _distributions(r["income_distributions"])
-                for dataset, r in by_dataset.items()
+                for dataset, r in _shown(by_dataset).items()
             }
             for key, by_dataset in by_year[y].items()
             if all("income_distributions" in r for r in by_dataset.values())
@@ -227,7 +248,7 @@ def build(analysis_dir: Path) -> dict:
         for y in years
     }
     datasets = sorted(
-        {d for by_dataset in by_year[years[0]].values() for d in by_dataset}
+        {d for by_dataset in by_year[years[0]].values() for d in _shown(by_dataset)}
     )
     return {
         "meta": {
@@ -260,7 +281,7 @@ def build(analysis_dir: Path) -> dict:
         "baseline": baseline,
         "distributions": distributions,
         "replication_2024": {
-            key: {dataset: _result(r) for dataset, r in by_dataset.items()}
+            key: {dataset: _result(r) for dataset, r in _shown(by_dataset).items()}
             for key, by_dataset in replication.items()
         },
         "rf_comparison": comparison,

@@ -20,10 +20,10 @@ export const PRESET_NOTES = {
     "Benefit passporting alone, as the Warm Home Discount does, at £175.",
 };
 
-export const DATASET_ORDER = ["microcosm_national", "efrs_1573"];
+export const DATASET_ORDER = ["microcosm_national"];
 
-// The page shows Microcosm. The exported data also carries the Enhanced FRS for internal
-// use: open the page with ?dataset=efrs_1573 to switch every tab to it.
+// The page shows Microcosm, the only dataset exported. The Enhanced FRS stays in the
+// analysis results and receipts; a ?dataset= link to it falls back to Microcosm.
 export const DEFAULT_DATASET = "microcosm_national";
 
 export function datasetFromQuery(value, data) {
@@ -32,7 +32,6 @@ export function datasetFromQuery(value, data) {
 
 export const DATASET_SHORT = {
   microcosm_national: "Microcosm",
-  efrs_1573: "Enhanced FRS",
 };
 
 // Payment variants as they read inside a sentence ("Spending and gains use …").
@@ -46,7 +45,6 @@ export const VARIANT_PROSE = {
 // energy spend between years, so bills in every scheme year stay at this level.
 export const PRICE_BASIS = {
   microcosm_national: "2024-25 DESNZ prices",
-  efrs_1573: "Ofgem April–June 2026 unit rates",
 };
 
 const REPO = "https://github.com/PolicyEngine/uk-energy-reforms";

@@ -23,8 +23,8 @@ controls. The URL preserves these selections and the active tab for sharing (lin
 former eligibility view, `?view=eligibility`, open its section of the Economic impact tab);
 household inputs remain in browser memory and are not included in the URL.
 
-The page shows the Microcosm dataset. The exported data also carry the Enhanced FRS for
-internal use: add `?dataset=efrs_1573` to the URL to switch every tab to it.
+The page shows the Microcosm dataset, the only one exported. The Enhanced FRS stays in the
+analysis results and receipts (`analyses/rf-billing-me-softly`).
 
 Stack: Next.js 14 (App Router), React 18, Tailwind 3 with `@policyengine/design-system`
 tokens, Recharts, bun. It is path-mounted for the policyengine.org multizone at

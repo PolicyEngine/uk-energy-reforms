@@ -191,11 +191,6 @@ const PRICE_LEVEL = {
     source: "ofgem_cap_fy2024_25",
     key: "mean",
   },
-  efrs_1573: {
-    label: "Ofgem April–June 2026 unit rates",
-    source: "ofgem_cap_2026_apr_jun",
-    key: "at_2023_tdcv",
-  },
 };
 
 export default function MethodologyTab({ data, dataset }) {

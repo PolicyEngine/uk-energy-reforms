@@ -8,22 +8,22 @@ import {
 
 test("navigation keeps the scenario and dataset in shared links", () => {
   const initial = new URLSearchParams(
-    "tab=reform&preset=rf_tiered&variant=bill_share&year=2027&dataset=efrs_1573",
+    "tab=reform&preset=rf_tiered&variant=bill_share&year=2027&dataset=microcosm_national",
   );
   const household = new URLSearchParams(
     dashboardQuery(initial, { tab: "household" }),
   );
-  const state = dashboardState(household, data, "efrs_1573");
+  const state = dashboardState(household, data, "microcosm_national");
   expect(state).toEqual({
     tab: "household",
     scenario: { year: "2027", preset: "rf_tiered", variant: "bill_share" },
   });
-  expect(household.get("dataset")).toBe("efrs_1573");
+  expect(household.get("dataset")).toBe("microcosm_national");
   expect(
     dashboardState(
       new URLSearchParams(dashboardQuery(household, { tab: "reform" })),
       data,
-      "efrs_1573",
+      "microcosm_national",
     ).scenario,
   ).toEqual(state.scenario);
 });
