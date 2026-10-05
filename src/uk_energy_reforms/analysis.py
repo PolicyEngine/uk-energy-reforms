@@ -179,14 +179,28 @@ POVERTY_GROUPS = {
 
 
 def poverty(run: Run, f: pd.DataFrame | None = None) -> list:
+    """People in poverty before and after the reform, by measure and group.
+
+    Both lines stay fixed for the reform, so a change counts people whose household
+    crosses a line. ``moved_records`` and ``moved_ess`` describe those households: how
+    many survey records cross and their effective sample size. A change that rests on
+    few records moves with small differences in the data, between years or datasets.
+    ``change_k_income_only`` is the part from households that are not passported, which
+    partial take-up of the income test would scale (``take_up_sensitivity``).
+    """
     f = prepare(run) if f is None else f
+    not_passported = ~f.passported.values.astype(bool)
     rows = []
     for measure in ["abs_pov_bhc", "abs_pov_ahc", "rel_pov_bhc", "rel_pov_ahc"]:
+        before = f[f"{measure}_base"].values.astype(bool)
+        after = f[f"{measure}_reform"].values.astype(bool)
         for group, count in POVERTY_GROUPS.items():
             people = f.weight * f[count]
             base = float((people * f[f"{measure}_base"]).sum())
             reform = float((people * f[f"{measure}_reform"]).sum())
             total = float(people.sum())
+            moved = (before != after) & (f[count].values > 0)
+            shift = people.values * (after.astype(float) - before.astype(float))
             rows.append(
                 {
                     "measure": measure,
@@ -195,8 +209,58 @@ def poverty(run: Run, f: pd.DataFrame | None = None) -> list:
                     "reform_rate": reform / total,
                     "change_pp": 100 * (reform - base) / total,
                     "change_k": (reform - base) / 1e3,
+                    "change_k_income_only": float(shift[not_passported].sum()) / 1e3,
+                    "moved_records": int(moved.sum()),
+                    "moved_ess": _ess(people.values[moved]),
                 }
             )
+    return rows
+
+
+# Illustrative take-up among households eligible through the income test alone. RF
+# expects them to self-declare this winter, with lower take-up than automatic
+# enrolment would give (pp. 9-10), and does not put a figure on it.
+TAKE_UP_RATES = (0.5, 0.75)
+
+
+def take_up_sensitivity(
+    run: Run,
+    f: pd.DataFrame | None = None,
+    pov: list | None = None,
+    rates: tuple = TAKE_UP_RATES,
+) -> list:
+    """Cost, reach and the change in people in poverty if only a share of the
+    households eligible through the income test alone receive the discount.
+    Passported households are enrolled automatically, as with the Warm Home Discount.
+
+    The poverty lines are fixed and each household's outcome depends only on its own
+    receipt, so expected values follow from the full take-up run: households that are
+    not passported count with their weight times the take-up rate. Empty for a run
+    that already has partial take-up.
+    """
+    if run.take_up < 1:
+        return []
+    f = prepare(run) if f is None else f
+    pov = poverty(run, f) if pov is None else pov
+    passported = f.passported.values.astype(bool)
+    paid = (f.discount * f.weight).values
+    receiving = (f.weight * f.recipient).values
+    rows = []
+    for rate in rates:
+        scale = np.where(passported, 1.0, rate)
+        recipients = float((receiving * scale).sum())
+        row = {
+            "take_up": rate,
+            "cost_bn": float((paid * scale).sum() / 1e9),
+            "recipients_m": recipients / 1e6,
+            "recipient_share": recipients / _w(f),
+        }
+        for p in pov:
+            if p["group"] == "people":
+                row[f"{p['measure']}_change_k"] = (
+                    p["change_k"] - (1 - rate) * p["change_k_income_only"]
+                )
+        rows.append(row)
     return rows
 
 

@@ -133,7 +133,11 @@ def _result(r: dict) -> dict:
         "by_bracket": r["headline"]["by_bracket"],
         "schedule": r["schedule"],
         "deciles": r["deciles_ahc"],
-        "poverty": r["poverty"],
+        # Record counts stay out, as for the income measures; effective samples stay in.
+        "poverty": [
+            {k: v for k, v in p.items() if k != "moved_records"} for p in r["poverty"]
+        ],
+        "take_up_sensitivity": r.get("take_up_sensitivity", []),
         "coverage": [
             {
                 k: c[k]

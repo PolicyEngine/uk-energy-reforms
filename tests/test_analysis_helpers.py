@@ -375,3 +375,60 @@ def test_round_to_significant_figures():
     assert _round(
         {"a": 0.123456, "b": 123_456.7, "c": float("nan"), "d": 3, "e": [0.0]}
     ) == {"a": 0.1235, "b": 123_500.0, "c": None, "d": 3, "e": [0.0]}
+
+
+def take_up_frame():
+    """Four households: one passported and two through the income test leave absolute
+    BHC poverty or receive the discount; one does neither."""
+    crossed = np.array([True, True, False, False])
+    in_poverty = np.array([True, True, True, False])
+    frame = pd.DataFrame(
+        {
+            "weight": [2.0, 1.0, 3.0, 1.0],
+            "n_people": [2, 1, 3, 2],
+            "n_children": [1, 0, 1, 0],
+            "n_wa_adults": [1, 1, 2, 1],
+            "n_sp_age": [0, 0, 0, 1],
+            "passported": [True, False, False, False],
+            "recipient": [True, True, True, False],
+            "discount": [175.0, 175.0, 175.0, 0.0],
+            "abs_pov_bhc_base": in_poverty,
+            "abs_pov_bhc_reform": in_poverty & ~crossed,
+            **{
+                f"{m}_{s}": in_poverty
+                for m in ["abs_pov_ahc", "rel_pov_bhc", "rel_pov_ahc"]
+                for s in ["base", "reform"]
+            },
+        }
+    )
+    return Run("test", 2026, {}, frame), frame
+
+
+def test_poverty_records_who_crosses_the_line():
+    run, frame = take_up_frame()
+    rows = {(p["measure"], p["group"]): p for p in analysis.poverty(run, frame)}
+    people = rows[("abs_pov_bhc", "people")]
+    # Two households cross: 2 x 2 people (passported) and 1 x 1 person (income test).
+    assert people["change_k"] == pytest.approx(-5 / 1e3)
+    assert people["change_k_income_only"] == pytest.approx(-1 / 1e3)
+    assert people["moved_records"] == 2
+    assert people["moved_ess"] == pytest.approx(25 / 17)
+    # Only the passported household has a child.
+    children = rows[("abs_pov_bhc", "children")]
+    assert children["moved_records"] == 1
+    assert children["change_k_income_only"] == 0
+    assert rows[("rel_pov_ahc", "people")]["moved_records"] == 0
+
+
+def test_take_up_scales_households_eligible_through_the_income_test():
+    run, frame = take_up_frame()
+    half, three_quarters = analysis.take_up_sensitivity(run, frame)
+    assert half["take_up"] == 0.5 and three_quarters["take_up"] == 0.75
+    # Passported: 2 households x £175. Income test: 4 households x £175, half claim.
+    assert half["cost_bn"] == pytest.approx((350 + 0.5 * 700) / 1e9)
+    assert half["recipients_m"] == pytest.approx((2 + 0.5 * 4) / 1e6)
+    assert half["recipient_share"] == pytest.approx(4 / 7)
+    assert half["abs_pov_bhc_change_k"] == pytest.approx((-5 + 0.5 * 1) / 1e3)
+    assert three_quarters["rel_pov_ahc_change_k"] == 0
+    partial = Run("test", 2026, {}, frame, take_up=0.5)
+    assert analysis.take_up_sensitivity(partial, frame) == []

@@ -13,6 +13,7 @@ from uk_energy_reforms import analysis, calibrate
 from uk_energy_reforms.datasets import DATASETS
 from uk_energy_reforms.reforms.targeted_energy_discount import DESCRIPTIONS, preset
 from uk_energy_reforms.simulate import Run, run
+from uk_energy_reforms.sources import EXTERNAL_SOURCES
 
 
 def results_for(r: Run, distributions: bool = True) -> dict:
@@ -22,6 +23,7 @@ def results_for(r: Run, distributions: bool = True) -> dict:
     from each run's household outcomes, including zero bills in bill-share scenarios.
     """
     f = analysis.prepare(r)
+    pov = analysis.poverty(r, f)
     out = {
         "dataset": r.dataset,
         "year": r.year,
@@ -34,7 +36,8 @@ def results_for(r: Run, distributions: bool = True) -> dict:
         "inequality": analysis.inequality(r, f),
         "winners_losers": analysis.winners_losers(r, f),
         "deciles_ahc": analysis.deciles(r, f, "ahc"),
-        "poverty": analysis.poverty(r, f),
+        "poverty": pov,
+        "take_up_sensitivity": analysis.take_up_sensitivity(r, f, pov),
         "coverage": analysis.coverage(r, f),
         "cliffs": analysis.cliffs(r, f),
         "by_region": analysis.breakdown(r, "region", f).to_dict(orient="records"),
@@ -106,7 +109,7 @@ def _table(rows: list[dict], columns: dict) -> str:
                 cells.append(value)
             elif any(s in column for s in ("rate", "share", "covered", "pct")):
                 cells.append(f"{100 * value:.1f}%")
-            elif column in ("sample_n", "decile"):
+            elif column in ("sample_n", "decile", "moved_records"):
                 cells.append(f"{int(value):,}")
             elif abs(value) < 10:
                 cells.append(f"{value:,.2f}")
@@ -269,6 +272,8 @@ def markdown(results: dict, year: int) -> str:
                 "children)."
             )
         lines.append("")
+    lines += _hbai_lines(results, year)
+    lines += _take_up_lines(results)
     lines += _cut_off_lines(results)
     for name, by_dataset in results.items():
         lines += [f"## {name}", ""]
@@ -308,6 +313,8 @@ def markdown(results: dict, year: int) -> str:
                         "reform_rate": "Reform rate",
                         "change_pp": "Change (pp)",
                         "change_k": "Change (k)",
+                        "moved_records": "Records crossing",
+                        "moved_ess": "ESS crossing",
                     },
                 )
             )
@@ -332,6 +339,114 @@ def markdown(results: dict, year: int) -> str:
                 lines += _distribution_lines(r["income_distributions"])
             lines.append("")
     return "\n".join(lines)
+
+
+# HBAI's published rates for the same groups (external_sources.json). In 2024-25, the
+# reference year of the absolute line, absolute and relative rates coincide.
+HBAI_RATES = {
+    "people": "hbai_individuals_low_income_rates_fye2025",
+    "children": "hbai_children_low_income_rates_fye2025",
+    "pensioners": "hbai_pensioners_low_income_rates_fye2025",
+}
+HBAI_MEASURES = {
+    "abs_pov_bhc": "absolute_bhc",
+    "abs_pov_ahc": "absolute_ahc",
+    "rel_pov_bhc": "relative_bhc",
+    "rel_pov_ahc": "relative_ahc",
+}
+
+
+def _hbai_lines(results: dict, year: int) -> list:
+    """Baseline poverty rates beside HBAI's. The baseline does not depend on the
+    option, so the first one's is used."""
+    sources = {s.id: s for s in EXTERNAL_SOURCES}
+    first = next(iter(results.values()))
+    datasets = list(first)
+    lines = [
+        "## Baseline poverty against HBAI",
+        "",
+        (
+            f"Model rates are for Great Britain in FY{year}-{str(year + 1)[-2:]}, before "
+            "the reform. HBAI's are for the UK in 2024-25, the latest year it covers. The "
+            "model's relative line is 60% of the median in its own data. The numbers of "
+            "people moved across a line depend on how many sit near it, so they inherit "
+            "these differences."
+        ),
+        "",
+        "| Measure | Group | " + " | ".join(f"`{d}`" for d in datasets) + " | HBAI |",
+        "|---|---|" + "---|" * (len(datasets) + 1),
+    ]
+    for measure, key in HBAI_MEASURES.items():
+        for group, source in HBAI_RATES.items():
+            model = [
+                next(
+                    p["baseline_rate"]
+                    for p in first[d]["baseline"]["poverty_rates"]
+                    if p["measure"] == measure and p["group"] == group
+                )
+                for d in datasets
+            ]
+            hbai = sources[source].value[key]
+            lines.append(
+                f"| {measure} | {group} | "
+                + " | ".join(f"{100 * m:.1f}%" for m in model)
+                + f" | {100 * hbai:.1f}% |"
+            )
+    return [*lines, ""]
+
+
+def _take_up_lines(results: dict) -> list:
+    """Each option at RF's amounts with lower take-up among households eligible
+    through the income test alone (passported households are enrolled automatically)."""
+    lines = [
+        "## Take-up sensitivity",
+        "",
+        (
+            "Every figure elsewhere assumes that every eligible household receives the "
+            "discount. Here households eligible through the income test alone take it "
+            "up at the given rate; passported households are enrolled automatically. "
+            "Expected values from the full take-up run "
+            "(`analysis.take_up_sensitivity`). Poverty columns are the change in people."
+        ),
+        "",
+        (
+            "| Option | Dataset | Take-up | Cost (GBP bn) | Recipients (m) "
+            "| Abs. BHC poverty (k) | Rel. AHC poverty (k) |"
+        ),
+        "|---|---|---|---|---|---|---|",
+    ]
+    for name, by_dataset in results.items():
+        if name != name.split("_bill_share")[0].split("_budget")[0]:
+            continue
+        for dataset, r in by_dataset.items():
+            if not r["schedule"].get("income_test") or not r.get("take_up_sensitivity"):
+                continue
+            people = {p["measure"]: p for p in r["poverty"] if p["group"] == "people"}
+            h = r["headline"]
+            rows = [
+                (
+                    r["take_up"],
+                    h["cost_bn"],
+                    h["recipients_m"],
+                    people["abs_pov_bhc"]["change_k"],
+                    people["rel_pov_ahc"]["change_k"],
+                )
+            ] + [
+                (
+                    t["take_up"],
+                    t["cost_bn"],
+                    t["recipients_m"],
+                    t["abs_pov_bhc_change_k"],
+                    t["rel_pov_ahc_change_k"],
+                )
+                for t in r["take_up_sensitivity"]
+            ]
+            for rate, cost, recipients, absolute, relative in rows:
+                lines.append(
+                    f"| {name} | `{dataset}` | {100 * rate:.0f}% | {cost:.2f} | "
+                    f"{recipients:.2f} | {absolute:+,.0f} | {relative:+,.0f} |"
+                )
+    return [*lines, ""]
 
 
 def _cut_off_lines(results: dict) -> list:
