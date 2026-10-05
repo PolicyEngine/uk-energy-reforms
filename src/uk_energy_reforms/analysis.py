@@ -187,8 +187,8 @@ def poverty(run: Run, f: pd.DataFrame | None = None) -> list:
     crosses a line. ``moved_records`` and ``moved_ess`` describe those households: how
     many survey records cross and their effective sample size. A change that rests on
     few records moves with small differences in the data, between years or datasets.
-    Record counts below ``MIN_RECORDS`` are not kept (``moved_below_min_records``), as
-    for the income measures' cells.
+    Where 1 to 9 records cross, the change is blanked (``suppressed``), as the income
+    measures' cells are: the reform rate, the change and its sample are left out.
     ``change_k_income_only`` is the part from households that are not passported, which
     partial take-up of the income test would scale (``take_up_sensitivity``).
     """
@@ -205,23 +205,35 @@ def poverty(run: Run, f: pd.DataFrame | None = None) -> list:
             total = float(people.sum())
             moved = (before != after) & (f[count].values > 0)
             records = int(moved.sum())
-            few = 0 < records < MIN_RECORDS
             shift = people.values * (after.astype(float) - before.astype(float))
-            rows.append(
-                {
-                    "measure": measure,
-                    "group": group,
-                    "baseline_rate": base / total,
-                    "reform_rate": reform / total,
-                    "change_pp": 100 * (reform - base) / total,
-                    "change_k": (reform - base) / 1e3,
-                    "change_k_income_only": float(shift[not_passported].sum()) / 1e3,
-                    "moved_records": None if few else records,
-                    "moved_below_min_records": few,
-                    "moved_ess": _ess(people.values[moved]),
-                }
-            )
+            row = {
+                "measure": measure,
+                "group": group,
+                "baseline_rate": base / total,
+                "reform_rate": reform / total,
+                "change_pp": 100 * (reform - base) / total,
+                "change_k": (reform - base) / 1e3,
+                "change_k_income_only": float(shift[not_passported].sum()) / 1e3,
+                "moved_records": records,
+                "moved_ess": _ess(people.values[moved]),
+                "suppressed": 0 < records < MIN_RECORDS,
+            }
+            if row["suppressed"]:
+                for key in POVERTY_SUPPRESSED:
+                    row[key] = None
+            rows.append(row)
     return rows
+
+
+# What a poverty row leaves out when fewer than MIN_RECORDS survey records cross.
+POVERTY_SUPPRESSED = [
+    "reform_rate",
+    "change_pp",
+    "change_k",
+    "change_k_income_only",
+    "moved_records",
+    "moved_ess",
+]
 
 
 # Illustrative take-up among households eligible through the income test alone. RF
@@ -265,7 +277,9 @@ def take_up_sensitivity(
         for p in pov:
             if p["group"] == "people":
                 row[f"{p['measure']}_change_k"] = (
-                    p["change_k"] - (1 - rate) * p["change_k_income_only"]
+                    None
+                    if p["suppressed"]
+                    else p["change_k"] - (1 - rate) * p["change_k_income_only"]
                 )
         rows.append(row)
     return rows
@@ -423,6 +437,21 @@ def breakdown(run: Run, by: str, f: pd.DataFrame | None = None) -> pd.DataFrame:
         & (drop > 0)
     )
     people = f.weight * f.n_people
+
+    def moved_k(g, m, measure):
+        """People in the group's households moved out of ``measure``'s poverty, net, in
+        thousands; None where 1-9 survey records cross the line."""
+        base, reform = g[f"{measure}_base"], g[f"{measure}_reform"]
+        if 0 < int((base.values != reform.values).sum()) < MIN_RECORDS:
+            return None
+        return (
+            float(
+                (people[m] * (base & ~reform)).sum()
+                - (people[m] * (~base & reform)).sum()
+            )
+            / 1e3
+        )
+
     rows = []
     for group in GROUPS[by]:
         m = (f[by] == group).values
@@ -456,26 +485,14 @@ def breakdown(run: Run, by: str, f: pd.DataFrame | None = None) -> pd.DataFrame:
                 )
                 / 1e3,
                 "bottom4_not_reached_k": _w(g, g.bottom4 & ~g.recipient) / 1e3,
-                "people_out_of_rel_ahc_poverty_k": float(
-                    (people[m] * (g.rel_pov_ahc_base & ~g.rel_pov_ahc_reform)).sum()
-                    - (people[m] * (~g.rel_pov_ahc_base & g.rel_pov_ahc_reform)).sum()
-                )
-                / 1e3,
-                "people_out_of_abs_ahc_poverty_k": float(
-                    (people[m] * (g.abs_pov_ahc_base & ~g.abs_pov_ahc_reform)).sum()
-                    - (people[m] * (~g.abs_pov_ahc_base & g.abs_pov_ahc_reform)).sum()
-                )
-                / 1e3,
+                "people_out_of_rel_ahc_poverty_k": moved_k(g, m, "rel_pov_ahc"),
+                "people_out_of_abs_ahc_poverty_k": moved_k(g, m, "abs_pov_ahc"),
                 # The headline poverty basis: absolute poverty before housing costs.
                 "abs_bhc_poverty_rate": _share(g, in_poverty_bhc),
                 "abs_bhc_poverty_reached": _share(g, g.recipient, in_poverty_bhc),
                 "abs_bhc_poverty_not_reached_k": _w(g, in_poverty_bhc & ~g.recipient)
                 / 1e3,
-                "people_out_of_abs_bhc_poverty_k": float(
-                    (people[m] * (g.abs_pov_bhc_base & ~g.abs_pov_bhc_reform)).sum()
-                    - (people[m] * (~g.abs_pov_bhc_base & g.abs_pov_bhc_reform)).sum()
-                )
-                / 1e3,
+                "people_out_of_abs_bhc_poverty_k": moved_k(g, m, "abs_pov_bhc"),
                 "just_above_top_threshold_k": _w(f, m & near_top) / 1e3,
                 "just_above_bottom4_k": _w(f, m & near_top & f.bottom4.values) / 1e3,
                 "offset_range_k": _w(f, m & offset) / 1e3,

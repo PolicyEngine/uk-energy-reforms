@@ -105,7 +105,9 @@ def _table(rows: list[dict], columns: dict) -> str:
     for _, row in df.iterrows():
         cells = []
         for column, value in row.items():
-            if isinstance(value, str):
+            if value is None or (isinstance(value, float) and math.isnan(value)):
+                cells.append("–")  # blanked: fewer than 10 survey records
+            elif isinstance(value, str):
                 cells.append(value)
             elif any(s in column for s in ("rate", "share", "covered", "pct")):
                 cells.append(f"{100 * value:.1f}%")
@@ -204,6 +206,12 @@ def _distribution_lines(d: dict) -> list:
     return lines
 
 
+def _signed_k(value, unit: str = "k") -> str:
+    """A signed count in thousands, or a dash where it is blanked (fewer than 10 survey
+    records cross the line)."""
+    return "–" if value is None else f"{value:+,.0f}{unit}"
+
+
 def _group(g: dict, base: str, cost: bool = False) -> str:
     """One divergence group for the receipt; groups resting on too few records say so."""
     if g.get("suppressed"):
@@ -268,8 +276,8 @@ def markdown(results: dict, year: int) -> str:
                 f"of GB households), average GBP {h['average_per_recipient']:.0f}; "
                 f"passported {100 * h['passported_share']:.1f}%, "
                 f"income test {100 * h['income_test_share']:.1f}%; relative AHC "
-                f"poverty {rel['change_k']:+,.0f}k people ({kids['change_k']:+,.0f}k "
-                "children)."
+                f"poverty {_signed_k(rel['change_k'])} people "
+                f"({_signed_k(kids['change_k'])} children)."
             )
         lines.append("")
     lines += _hbai_lines(results, year)
@@ -308,9 +316,7 @@ def markdown(results: dict, year: int) -> str:
             lines.append(
                 _table(
                     [
-                        {**p, "moved_records": "<10"}
-                        if p.get("moved_below_min_records")
-                        else p
+                        {**p, "moved_records": "<10"} if p.get("suppressed") else p
                         for p in r["poverty"]
                     ],
                     {
@@ -527,7 +533,8 @@ def _take_up_lines(results: dict) -> list:
             for rate, cost, recipients, absolute, relative in rows:
                 lines.append(
                     f"| {name} | `{dataset}` | {100 * rate:.0f}% | {cost:.2f} | "
-                    f"{recipients:.2f} | {absolute:+,.0f} | {relative:+,.0f} |"
+                    f"{recipients:.2f} | {_signed_k(absolute, '')} | "
+                    f"{_signed_k(relative, '')} |"
                 )
     return [*lines, ""]
 

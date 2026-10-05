@@ -117,7 +117,7 @@ function Headline({ result }) {
       <MetricCard
         label="Fewer people in poverty"
         icon="poverty"
-        value={pov ? formatRoundedThousands(-pov.change_k) : "n/a"}
+        value={pov?.change_k != null ? formatRoundedThousands(-pov.change_k) : "n/a"}
         note={`Absolute poverty before housing costs, counting the discount as income. Rounded: it rests on an effective sample of ${pov?.moved_ess != null ? Math.round(pov.moved_ess) : "few"} households.`}
       />
     </div>
@@ -341,7 +341,7 @@ function PovertySection({ result, onMethodology }) {
   const measure = `${type}_pov_${basis}`;
   const rows = result.poverty.filter((p) => p.measure === measure);
   const data = POVERTY_CHART_GROUPS.map((g) => rows.find((p) => p.group === g))
-    .filter(Boolean)
+    .filter((p) => p && p.reform_rate != null)
     .map((p) => {
       const change = p.baseline_rate ? p.reform_rate / p.baseline_rate - 1 : 0;
       // Bars show the fall, so they grow from left to right like the other charts.
@@ -397,8 +397,9 @@ function PovertySection({ result, onMethodology }) {
             The change in people counts those whose household moves above a
             line, so it depends on how many people sit just below it. It moves
             between years and datasets, and it rests on few survey households:
-            the table gives each change&apos;s effective sample. The Baseline tab
-            sets the starting rates beside the official ones.
+            the table gives each change&apos;s effective sample, and shows
+            &ldquo;–&rdquo; where fewer than 10 survey households cross the line.
+            The Baseline tab sets the starting rates beside the official ones.
           </p>
           <button
             className="text-link"
@@ -430,19 +431,19 @@ function PovertySection({ result, onMethodology }) {
                 key: "change_pp",
                 header: "Change",
                 align: "right",
-                format: (v) => formatSignedPp(v),
+                format: (v) => (v == null ? "–" : formatSignedPp(v)),
               },
               {
                 key: "change_k",
                 header: "Change in people",
                 align: "right",
-                format: (v) => formatSignedThousands(v),
+                format: (v) => (v == null ? "–" : formatSignedThousands(v)),
               },
               {
                 key: "moved_ess",
                 header: "Effective sample",
                 align: "right",
-                format: (v) => (v == null ? "n/a" : Math.round(v).toLocaleString("en-GB")),
+                format: (v) => (v == null ? "–" : Math.round(v).toLocaleString("en-GB")),
               },
             ]}
             rows={rows}
@@ -545,7 +546,7 @@ function BreakdownSection({ result }) {
     <section className="section-card space-y-5">
       <SectionHeading
         title="How does eligibility vary by region and household type?"
-        description="Share of households qualifying through benefits or the income test, ordered by the share qualifying through benefits. The table also shows payments and poverty effects. Its poverty columns use absolute poverty before housing costs, as in the headline figures. ESS is effective sample size: small values indicate that few survey records drive the estimate."
+        description="Share of households qualifying through benefits or the income test, ordered by the share qualifying through benefits. The table also shows payments and poverty effects. Its poverty columns use absolute poverty before housing costs, as in the headline figures; “–” marks a change resting on fewer than 10 survey households. ESS is effective sample size: small values indicate that few survey records drive the estimate."
       />
       <Toggle
         value={by}
@@ -658,7 +659,7 @@ function BreakdownSection({ result }) {
                 key: "people_out_of_abs_bhc_poverty_k",
                 header: "People out of poverty",
                 align: "right",
-                format: (v) => formatThousands(v),
+                format: (v) => (v == null ? "–" : formatThousands(v)),
               },
               {
                 key: "ess",

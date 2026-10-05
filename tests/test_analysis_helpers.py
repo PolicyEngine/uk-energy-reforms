@@ -348,6 +348,11 @@ def test_breakdown_poverty_adds_up_to_the_headline_basis():
         "thresholds": [0.0, 24_000.0, 24_000.0],
         "amounts": [175.0, 175.0, 0.0],
     }
+    # One record per household: a region where 1-9 records cross shows no change.
+    sparse = analysis.breakdown(Run("test", 2026, {}, frame, schedule), "region", frame)
+    assert sparse.people_out_of_abs_bhc_poverty_k.isna().any()
+    # Ten records per household, so no region's change rests on fewer than 10.
+    frame = split_records(frame, 10)
     run = Run("test", 2026, {}, frame, schedule)
     rows = analysis.breakdown(run, "region", frame)
     people = next(
@@ -407,35 +412,53 @@ def take_up_frame():
     return Run("test", 2026, {}, frame), frame
 
 
+def split_records(frame, n=5):
+    """The same households as ``n`` survey records each, at a ``1/n`` of the weight."""
+    split = frame.loc[frame.index.repeat(n)].reset_index(drop=True)
+    split["weight"] = split.weight / n
+    return split
+
+
 def test_poverty_records_who_crosses_the_line():
     run, frame = take_up_frame()
-    rows = {(p["measure"], p["group"]): p for p in analysis.poverty(run, frame)}
+    # As five records each, ten records cross.
+    rows = {
+        (p["measure"], p["group"]): p
+        for p in analysis.poverty(run, split_records(frame))
+    }
     people = rows[("abs_pov_bhc", "people")]
     # Two households cross: 2 x 2 people (passported) and 1 x 1 person (income test).
     assert people["change_k"] == pytest.approx(-5 / 1e3)
     assert people["change_k_income_only"] == pytest.approx(-1 / 1e3)
-    # Two records cross: too few to give the count, as for the income measures.
-    assert people["moved_records"] is None and people["moved_below_min_records"]
-    assert people["moved_ess"] == pytest.approx(25 / 17)
-    # Only the passported household has a child.
+    assert people["moved_records"] == 10 and not people["suppressed"]
+    # People weights of 0.8 (five records) and 0.2 (five records).
+    assert people["moved_ess"] == pytest.approx(25 / 3.4)
+    # Only the passported household has a child: five records cross.
     children = rows[("abs_pov_bhc", "children")]
-    assert children["moved_below_min_records"]
-    assert children["change_k_income_only"] == 0
+    assert children["suppressed"] and children["change_k"] is None
+    assert children["baseline_rate"] == pytest.approx(1.0)
     assert rows[("rel_pov_ahc", "people")]["moved_records"] == 0
-    # The same households as five records each: ten records cross, so the count shows.
-    split = frame.loc[frame.index.repeat(5)].reset_index(drop=True)
-    split["weight"] = split.weight / 5
+
+
+def test_changes_resting_on_fewer_than_ten_records_are_blanked():
+    run, frame = take_up_frame()
     people = next(
         p
-        for p in analysis.poverty(run, split)
+        for p in analysis.poverty(run, frame)
         if p["measure"] == "abs_pov_bhc" and p["group"] == "people"
     )
-    assert people["moved_records"] == 10 and not people["moved_below_min_records"]
-    assert people["change_k"] == pytest.approx(-5 / 1e3)
+    # Two records cross: the change and its sample are left out, as for the income
+    # measures' cells; the baseline rate stays.
+    assert people["suppressed"]
+    assert all(people[k] is None for k in analysis.POVERTY_SUPPRESSED)
+    assert people["baseline_rate"] == pytest.approx(14 / 16)
+    half = analysis.take_up_sensitivity(run, frame)[0]
+    assert half["abs_pov_bhc_change_k"] is None
 
 
 def test_take_up_scales_households_eligible_through_the_income_test():
     run, frame = take_up_frame()
+    frame = split_records(frame)
     half, three_quarters = analysis.take_up_sensitivity(run, frame)
     assert half["take_up"] == 0.5 and three_quarters["take_up"] == 0.75
     # Passported: 2 households x £175. Income test: 4 households x £175, half claim.
