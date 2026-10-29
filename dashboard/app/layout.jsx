@@ -15,10 +15,10 @@ const description =
   "changes household incomes, with PolicyEngine UK estimates beside the Resolution " +
   "Foundation's figures.";
 
-// The live deployment. The page moves to policyengine.org/uk/targeted-energy-discount
-// once policyengine-app-v2 rewrites that path to this zone; until then that address
-// returns 404, so the canonical and Open Graph URLs point here.
-const SITE = "https://uk-targeted-energy-discount.vercel.app";
+// policyengine.org serves this zone at /uk/targeted-energy-discount through
+// policyengine-app-v2's rewrite, so the canonical and Open Graph URLs name that
+// address, not the Vercel deployment.
+const SITE = "https://policyengine.org";
 const PAGE = `${SITE}/uk/targeted-energy-discount`;
 
 export const metadata = {
